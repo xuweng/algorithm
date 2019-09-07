@@ -354,4 +354,41 @@ public class ArrayUtils {
         return startIndex;
     }
 
+    /**
+     * 合并两个有序数组
+     * 特别注意边界问题
+     *
+     * @param array
+     * @param middle     中间索引
+     * @param startIndex 开始索引
+     * @param endIndex   结束索引
+     * @return 一个有序数组
+     */
+    public static Integer[] merge(Integer[] array, Integer middle, Integer startIndex, Integer endIndex) {
+        requireNonEmpty(array);
+        checkIndexRange(middle, array.length);
+        checkStartIndexRange(startIndex, endIndex);
+
+        //左有序左数组
+        Integer[] left = new Integer[middle - startIndex + 1];
+        //右有序数组
+        Integer[] right = new Integer[endIndex - middle + 1];
+
+        Integer[] result = new Integer[left.length + right.length];
+        //左数组赋值
+        Integer leftIndex = 0;
+        for (int i = startIndex; i <= middle; i++) {
+            left[leftIndex++] = array[i];
+        }
+        //右数组赋值
+        Integer rightIndex = 0;
+        for (int i = middle + 1; i <= endIndex; i++) {
+            left[rightIndex++] = array[i];
+        }
+        //左数组：指针是i,范围
+        //右数组:指针是j,范围
+
+
+        return result;
+    }
 }
