@@ -1,5 +1,7 @@
 package com.algorithm.study.search;
 
+import java.util.Objects;
+
 public class BinarySearch {
     /**
      * 递归二分查找
@@ -10,7 +12,8 @@ public class BinarySearch {
      * @param value 查找的值
      * @return 找到返回索引;否则返回-1
      */
-    public static int searchRecursive(int array[], int low, int high, int value) {
+    public static int searchRecursive(Integer array[], int low, int high, int value) {
+        Objects.requireNonNull(array);
         if (low < 0 || high >= array.length) {
             throw new IllegalArgumentException();
         }
@@ -39,7 +42,8 @@ public class BinarySearch {
      * @param value 查找的值
      * @return 找到返回索引;否则返回-1
      */
-    public static int searchFor(int array[], int value) {
+    public static int searchFor(Integer array[], int value) {
+        Objects.requireNonNull(array);
         if (array.length == 0) {
             return -1;
         }

@@ -24,7 +24,7 @@ public class ArrayUtils {
      * @param max 指定范围最大值
      * @return
      */
-    public static Integer[] sortArrayWithoutRepetition(int min, int max) {
+    public static Integer[] generateSortArray(int min, int max) {
         if (min > max) {
             throw new IllegalArgumentException();
         }

@@ -20,7 +20,7 @@ public class ArrayUtilsTests {
 
     @Test
     public void sortArrayWithoutRepetitionTest() {
-        Integer[] array = ArrayUtils.sortArrayWithoutRepetition(1, 100);
+        Integer[] array = ArrayUtils.generateSortArray(1, 100);
 
         Assert.assertEquals(100, array.length);
         ArrayUtils.println(array);
@@ -28,7 +28,7 @@ public class ArrayUtilsTests {
 
     @Test
     public void shuffleTest() {
-        Integer[] array = ArrayUtils.sortArrayWithoutRepetition(1, 100);
+        Integer[] array = ArrayUtils.generateSortArray(1, 100);
         ArrayUtils.shuffle(array);
 
         Assert.assertEquals(100, array.length);
