@@ -5,6 +5,30 @@ import java.util.stream.Collectors;
 
 public class ArrayUtils {
     /**
+     * 判断数组是否排序
+     *
+     * @param array    数组
+     * @param sortType 排序类型
+     */
+    public static boolean isSorted(Integer[] array, SortType sortType) {
+        Objects.requireNonNull(array);
+
+        for (int i = 0; i < array.length - 1; i++) {
+            if (sortType == SortType.ASC) {
+                if (array[i] > array[i + 1]) {
+                    return false;
+                }
+            } else {
+                if (array[i] < array[i + 1]) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
+
+    /**
      * 打乱一个顺序的数组
      *
      * @param array 顺序的数组

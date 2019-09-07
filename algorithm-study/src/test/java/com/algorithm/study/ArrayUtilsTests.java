@@ -1,6 +1,7 @@
 package com.algorithm.study;
 
 import com.algorithm.study.common.ArrayUtils;
+import com.algorithm.study.common.SortType;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,6 +16,14 @@ public class ArrayUtilsTests {
         Integer[] array = ArrayUtils.randomArrayHasRepetition(1, 100, 100);
 
         Assert.assertEquals(100, array.length);
+        ArrayUtils.println(array);
+    }
+
+    @Test
+    public void isSortedTest() {
+        Integer[] array = ArrayUtils.generateSortArray(1, 100);
+
+        Assert.assertTrue(ArrayUtils.isSorted(array, SortType.ASC));
         ArrayUtils.println(array);
     }
 
