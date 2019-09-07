@@ -40,7 +40,8 @@ public class Sort {
 
     /**
      * 快速排序
-     * 复杂度：O(nlogn)
+     * 最坏情况：O(n2)
+     * 平均情况：O(nlogn)
      *
      * @param array
      * @param startIndex 开始索引
