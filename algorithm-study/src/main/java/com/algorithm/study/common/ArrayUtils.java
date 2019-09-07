@@ -64,6 +64,20 @@ public class ArrayUtils {
     }
 
     /**
+     * 随机生成不重复的数组
+     *
+     * @param min 指定范围最小值
+     * @param max 指定范围最大值
+     * @return
+     */
+    public static Integer[] generateShuffleArray(int min, int max) {
+        Integer[] array = generateSortArray(min, max);
+        ArrayUtils.shuffle(array);
+
+        return array;
+    }
+
+    /**
      * 随机指定范围内N个不重复的数
      *
      * @param min  指定范围最小值
@@ -207,6 +221,19 @@ public class ArrayUtils {
         }
 
         return maxIndex;
+    }
+
+    /**
+     * 交换值
+     *
+     * @param array
+     * @param index1 索引1
+     * @param index2 索引2
+     */
+    public static void swapValue(Integer[] array, Integer index1, Integer index2) {
+        Integer temp = array[index1];
+        array[index1] = array[index2];
+        array[index2] = temp;
     }
 
 }

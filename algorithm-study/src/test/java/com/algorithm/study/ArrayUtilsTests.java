@@ -32,10 +32,12 @@ public class ArrayUtilsTests {
     @Test
     public void findMinValueIndexTest() {
         Integer[] array = ArrayUtils.generateSortArray(1, 100);
-        int minIndex = ArrayUtils.findMinValueIndex(array, 0, array.length);
+//        int minIndex = ArrayUtils.findMinValueIndex(array, 0, array.length);
+        int minIndex = ArrayUtils.findMinValueIndex(array, 50, array.length);
         int maxIndex = ArrayUtils.findMaxValueIndex(array, 0, array.length);
 
-        assertEquals(0, minIndex);
+        assertEquals((Integer) 51, array[minIndex]);
+        assertEquals(50, minIndex);
         assertEquals(99, maxIndex);
         ArrayUtils.println(array);
     }
@@ -49,9 +51,8 @@ public class ArrayUtilsTests {
     }
 
     @Test
-    public void shuffleTest() {
-        Integer[] array = ArrayUtils.generateSortArray(1, 100);
-        ArrayUtils.shuffle(array);
+    public void generateShuffleArrayTest() {
+        Integer[] array = ArrayUtils.generateShuffleArray(1, 100);
 
         assertEquals(100, array.length);
         ArrayUtils.println(array);

@@ -2,9 +2,7 @@ package com.algorithm.study.sort;
 
 import com.algorithm.study.common.ArrayUtils;
 
-import java.util.Objects;
-
-public class SelectSort {
+public class Sort {
     /**
      * 选择排序
      * 复杂度：O(lgn2)
@@ -16,7 +14,11 @@ public class SelectSort {
             return;
         }
 
+        for (int i = 0; i < array.length; i++) {
+            int minIndex = ArrayUtils.findMinValueIndex(array, i, array.length);
 
+            ArrayUtils.swapValue(array, i, minIndex);
+        }
     }
 
 }
