@@ -38,4 +38,25 @@ public class Sort {
         }
     }
 
+    /**
+     * 快速排序
+     *
+     * @param array
+     * @param startIndex 开始索引
+     * @param endIndex   结束索引
+     */
+    public static void quickSort(Integer[] array, Integer startIndex, Integer endIndex) {
+        if (ArrayUtils.isEmpty(array)) {
+            return;
+        }
+        //一个元素就是有序
+        if (startIndex >= endIndex) {
+            return;
+        }
+
+        int partitionIndex = ArrayUtils.partition(array, startIndex, endIndex);
+        quickSort(array, startIndex, partitionIndex - 1);
+        quickSort(array, partitionIndex + 1, endIndex);
+    }
+
 }

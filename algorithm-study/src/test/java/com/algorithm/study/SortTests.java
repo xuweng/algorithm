@@ -25,4 +25,13 @@ public class SortTests {
         assertTrue(ArrayUtils.isSorted(array, SortType.ASC));
         ArrayUtils.println(array);
     }
+
+    @Test
+    public void quickSort() {
+        Integer[] array = ArrayUtils.generateShuffleArray(1, 100);
+        Sort.quickSort(array, 0, array.length - 1);
+
+        assertTrue(ArrayUtils.isSorted(array, SortType.ASC));
+        ArrayUtils.println(array);
+    }
 }
