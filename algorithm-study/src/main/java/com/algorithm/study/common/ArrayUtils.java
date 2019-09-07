@@ -127,4 +127,86 @@ public class ArrayUtils {
 
     }
 
+    /**
+     * 空
+     *
+     * @param array
+     * @return
+     */
+    public static boolean isEmpty(Integer[] array) {
+        return !isNonEmpty(array);
+    }
+
+    /**
+     * 非空
+     *
+     * @param array
+     * @return
+     */
+    public static boolean isNonEmpty(Integer[] array) {
+        Objects.requireNonNull(array);
+
+        return array.length > 0;
+    }
+
+    /**
+     * 非空
+     *
+     * @param array
+     * @return
+     */
+    public static void requireNonEmpty(Integer[] array) {
+        if (isEmpty(array)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    /**
+     * 从数组中查找最小值
+     *
+     * @param array      数组
+     * @param startIndex 开始索引
+     * @param endIndex   结束索引
+     * @return 最小值索引
+     */
+    public static Integer findMinValueIndex(Integer[] array, Integer startIndex, Integer endIndex) {
+        requireNonEmpty(array);
+        if (startIndex > endIndex) {
+            throw new IllegalArgumentException();
+        }
+
+        int minIndex = startIndex;
+        for (int i = startIndex; i < endIndex; i++) {
+            if (array[minIndex] > array[i]) {
+                minIndex = i;
+            }
+        }
+
+        return minIndex;
+    }
+
+    /**
+     * 从数组中查找最大值
+     *
+     * @param array      数组
+     * @param startIndex 开始索引
+     * @param endIndex   结束索引
+     * @return 最大值索引
+     */
+    public static Integer findMaxValueIndex(Integer[] array, Integer startIndex, Integer endIndex) {
+        requireNonEmpty(array);
+        if (startIndex > endIndex) {
+            throw new IllegalArgumentException();
+        }
+
+        int maxIndex = startIndex;
+        for (int i = startIndex; i < endIndex; i++) {
+            if (array[maxIndex] < array[i]) {
+                maxIndex = i;
+            }
+        }
+
+        return maxIndex;
+    }
+
 }

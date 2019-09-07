@@ -2,7 +2,6 @@ package com.algorithm.study;
 
 import com.algorithm.study.common.ArrayUtils;
 import com.algorithm.study.common.SortType;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -10,12 +9,15 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
+
 public class ArrayUtilsTests {
     @Test
     public void randomArrayHasRepetitionTest() {
         Integer[] array = ArrayUtils.randomArrayHasRepetition(1, 100, 100);
 
-        Assert.assertEquals(100, array.length);
+        assertEquals(100, array.length);
         ArrayUtils.println(array);
     }
 
@@ -23,7 +25,18 @@ public class ArrayUtilsTests {
     public void isSortedTest() {
         Integer[] array = ArrayUtils.generateSortArray(1, 100);
 
-        Assert.assertTrue(ArrayUtils.isSorted(array, SortType.ASC));
+        assertTrue(ArrayUtils.isSorted(array, SortType.ASC));
+        ArrayUtils.println(array);
+    }
+
+    @Test
+    public void findMinValueIndexTest() {
+        Integer[] array = ArrayUtils.generateSortArray(1, 100);
+        int minIndex = ArrayUtils.findMinValueIndex(array, 0, array.length);
+        int maxIndex = ArrayUtils.findMaxValueIndex(array, 0, array.length);
+
+        assertEquals(0, minIndex);
+        assertEquals(99, maxIndex);
         ArrayUtils.println(array);
     }
 
@@ -31,7 +44,7 @@ public class ArrayUtilsTests {
     public void sortArrayWithoutRepetitionTest() {
         Integer[] array = ArrayUtils.generateSortArray(1, 100);
 
-        Assert.assertEquals(100, array.length);
+        assertEquals(100, array.length);
         ArrayUtils.println(array);
     }
 
@@ -40,7 +53,7 @@ public class ArrayUtilsTests {
         Integer[] array = ArrayUtils.generateSortArray(1, 100);
         ArrayUtils.shuffle(array);
 
-        Assert.assertEquals(100, array.length);
+        assertEquals(100, array.length);
         ArrayUtils.println(array);
     }
 
@@ -48,7 +61,7 @@ public class ArrayUtilsTests {
     public void randomArrayWithoutRepetitionTest() {
         Integer[] array = ArrayUtils.randomArrayWithoutRepetition(1, 100, 90);
 
-        Assert.assertEquals(90, array.length);
+        assertEquals(90, array.length);
         ArrayUtils.println(array);
     }
 

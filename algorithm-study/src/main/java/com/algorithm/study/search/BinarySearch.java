@@ -5,6 +5,8 @@ import java.util.Objects;
 public class BinarySearch {
     /**
      * 递归二分查找
+     * <p>
+     * 复杂度：O(lgn)
      *
      * @param array 有序数组
      * @param low   开始索引
@@ -12,15 +14,12 @@ public class BinarySearch {
      * @param value 查找的值
      * @return 找到返回索引;否则返回-1
      */
-    public static int searchRecursive(Integer array[], int low, int high, int value) {
+    public static int searchRecursive(Integer[] array, int low, int high, int value) {
         Objects.requireNonNull(array);
         if (low < 0 || high >= array.length) {
             throw new IllegalArgumentException();
         }
-        if (array.length == 0) {
-            return -1;
-        }
-        if (low > high) {
+        if (array.length == 0 || low > high) {
             return -1;
         }
 
@@ -38,11 +37,14 @@ public class BinarySearch {
     }
 
     /**
+     * 遍历二分查找
+     * 复杂度：O(lgn)
+     *
      * @param array 有序数组
      * @param value 查找的值
      * @return 找到返回索引;否则返回-1
      */
-    public static int searchFor(Integer array[], int value) {
+    public static int searchFor(Integer[] array, int value) {
         Objects.requireNonNull(array);
         if (array.length == 0) {
             return -1;
