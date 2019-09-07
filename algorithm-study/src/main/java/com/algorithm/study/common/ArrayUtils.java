@@ -295,4 +295,16 @@ public class ArrayUtils {
         }
     }
 
+    /**
+     * 编写涉及数组的递归函数时，基线条件通常是数组为空或只包含一个元素。陷入困境时，
+     * 请检查基线条件是不是这样的。
+     *
+     * @param array
+     * @return
+     */
+    public static boolean isBaselineCondition(int[] array) {
+        Objects.requireNonNull(array);
+        return array.length == 0 || array.length == 1;
+    }
+
 }
