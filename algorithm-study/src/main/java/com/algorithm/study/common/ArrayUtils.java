@@ -3,6 +3,9 @@ package com.algorithm.study.common;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * 需要特别注意边界问题,特别是索引
+ */
 public class ArrayUtils {
     /**
      * 判断数组是否排序
@@ -305,6 +308,48 @@ public class ArrayUtils {
     public static boolean isBaselineCondition(int[] array) {
         Objects.requireNonNull(array);
         return array.length == 0 || array.length == 1;
+    }
+
+    /**
+     * 分区函数
+     *
+     * @param array
+     * @param startIndex 开始索引
+     * @param endIndex   结束索引
+     */
+    public static void partition(Integer[] array, Integer startIndex, Integer endIndex) {
+        requireNonEmpty(array);
+        checkStartIndexRange(startIndex, endIndex);
+
+        Integer pivotIndex = getPivot(array, startIndex, endIndex);
+
+        while (startIndex <= endIndex) {
+            //左边第一个大于基准
+            while (array[startIndex] <= array[pivotIndex] && startIndex <= endIndex) {
+                startIndex++;
+            }
+            //右边第一个小于基准
+            while (array[endIndex] >= array[pivotIndex] && startIndex <= endIndex) {
+                endIndex--;
+            }
+            if (startIndex < endIndex) {
+                swapValue(array, startIndex, endIndex);
+            }
+        }
+
+        swapValue(array, startIndex - 1, pivotIndex);
+    }
+
+    /**
+     * 简单的,默认基准索引
+     *
+     * @param array
+     * @param startIndex 开始索引
+     * @param endIndex   结束索引
+     * @return 默认基准索引
+     */
+    public static Integer getPivot(Integer[] array, Integer startIndex, Integer endIndex) {
+        return startIndex;
     }
 
 }

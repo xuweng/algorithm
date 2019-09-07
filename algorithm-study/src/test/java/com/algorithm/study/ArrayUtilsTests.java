@@ -59,6 +59,15 @@ public class ArrayUtilsTests {
     }
 
     @Test
+    public void partitionTest() {
+        Integer[] array = ArrayUtils.generateShuffleArray(1, 100);
+        ArrayUtils.println(array);
+
+        ArrayUtils.partition(array, 0, array.length - 1);
+        ArrayUtils.println(array);
+    }
+
+    @Test
     public void randomArrayWithoutRepetitionTest() {
         Integer[] array = ArrayUtils.randomArrayWithoutRepetition(1, 100, 90);
 
