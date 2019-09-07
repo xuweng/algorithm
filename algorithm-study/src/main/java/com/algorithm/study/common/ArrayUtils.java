@@ -1,7 +1,6 @@
 package com.algorithm.study.common;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * 需要特别注意边界问题,特别是索引
@@ -316,8 +315,9 @@ public class ArrayUtils {
      * @param array
      * @param startIndex 开始索引
      * @param endIndex   结束索引
+     * @return 分区索引
      */
-    public static void partition(Integer[] array, Integer startIndex, Integer endIndex) {
+    public static Integer partition(Integer[] array, Integer startIndex, Integer endIndex) {
         requireNonEmpty(array);
         checkStartIndexRange(startIndex, endIndex);
 
@@ -338,6 +338,8 @@ public class ArrayUtils {
         }
 
         swapValue(array, startIndex - 1, pivotIndex);
+
+        return startIndex - 1;
     }
 
     /**
