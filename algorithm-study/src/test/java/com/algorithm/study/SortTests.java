@@ -16,4 +16,13 @@ public class SortTests {
         assertTrue(ArrayUtils.isSorted(array, SortType.ASC));
         ArrayUtils.println(array);
     }
+
+    @Test
+    public void insertSortTest() {
+        Integer[] array = ArrayUtils.generateShuffleArray(1, 100);
+        Sort.insertSort(array);
+
+        assertTrue(ArrayUtils.isSorted(array, SortType.ASC));
+        ArrayUtils.println(array);
+    }
 }

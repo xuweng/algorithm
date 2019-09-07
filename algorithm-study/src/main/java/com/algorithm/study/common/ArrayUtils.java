@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 public class ArrayUtils {
     /**
      * 判断数组是否排序
+     * 复杂度：O(n)
      *
      * @param array    数组
      * @param sortType 排序类型
@@ -43,6 +44,7 @@ public class ArrayUtils {
 
     /**
      * 顺序生成不重复的数组
+     * 复杂度：O(n)
      *
      * @param min 指定范围最小值
      * @param max 指定范围最大值
@@ -115,6 +117,7 @@ public class ArrayUtils {
 
     /**
      * 随机指定范围内N个数
+     * 复杂度：O(n)
      *
      * @param min  指定范围最小值
      * @param max  指定范围最大值
@@ -176,7 +179,32 @@ public class ArrayUtils {
     }
 
     /**
-     * 从数组中查找最小值
+     * 校验索引范围
+     *
+     * @param index  索引
+     * @param length
+     */
+    public static void checkIndexRange(Integer index, Integer length) {
+        if (index < 0 || index >= length) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    /**
+     * 校验开始索引范围
+     *
+     * @param startIndex 开始索引
+     * @param endIndex   结束索引
+     */
+    public static void checkStartIndexRange(Integer startIndex, Integer endIndex) {
+        if (startIndex > endIndex) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    /**
+     * 从数组中查找最小值索引
+     * 复杂度：O(n)
      *
      * @param array      数组
      * @param startIndex 开始索引
@@ -185,9 +213,7 @@ public class ArrayUtils {
      */
     public static Integer findMinValueIndex(Integer[] array, Integer startIndex, Integer endIndex) {
         requireNonEmpty(array);
-        if (startIndex > endIndex) {
-            throw new IllegalArgumentException();
-        }
+        checkStartIndexRange(startIndex, endIndex);
 
         int minIndex = startIndex;
         for (int i = startIndex; i < endIndex; i++) {
@@ -200,7 +226,8 @@ public class ArrayUtils {
     }
 
     /**
-     * 从数组中查找最大值
+     * 从数组中查找最大值索引
+     * 复杂度：O(n)
      *
      * @param array      数组
      * @param startIndex 开始索引
@@ -209,9 +236,7 @@ public class ArrayUtils {
      */
     public static Integer findMaxValueIndex(Integer[] array, Integer startIndex, Integer endIndex) {
         requireNonEmpty(array);
-        if (startIndex > endIndex) {
-            throw new IllegalArgumentException();
-        }
+        checkStartIndexRange(startIndex, endIndex);
 
         int maxIndex = startIndex;
         for (int i = startIndex; i < endIndex; i++) {
@@ -225,15 +250,49 @@ public class ArrayUtils {
 
     /**
      * 交换值
+     * 复杂度：O(1)
      *
      * @param array
      * @param index1 索引1
      * @param index2 索引2
      */
     public static void swapValue(Integer[] array, Integer index1, Integer index2) {
+        checkIndexRange(index1, array.length);
+        checkIndexRange(index2, array.length);
+
         Integer temp = array[index1];
         array[index1] = array[index2];
         array[index2] = temp;
+    }
+
+    /**
+     * 设置第一个小于目标值的值并且移动元素
+     * 复杂度：O(n)
+     *
+     * @param array
+     * @param startIndex  开始索引
+     * @param targetIndex 目标值索引,1<=targetIndex<array.length
+     */
+    public static void setFirstSmallValue(Integer[] array, Integer startIndex, Integer targetIndex) {
+        requireNonEmpty(array);
+        if (array.length == 1) {
+            return;
+        }
+        checkIndexRange(targetIndex, array.length);
+
+        Integer index = targetIndex;
+        Integer targetValue = array[targetIndex];
+        for (int i = targetIndex - 1; i >= startIndex; i--) {
+            if (targetValue < array[i]) {
+                array[i + 1] = array[i];
+                index = i;
+            }
+        }
+
+        //数据有移动
+        if (!index.equals(targetIndex)) {
+            array[index] = targetValue;
+        }
     }
 
 }

@@ -6,7 +6,7 @@ public class BinarySearch {
     /**
      * 递归二分查找
      * <p>
-     * 复杂度：O(lgn)
+     * 复杂度：O(logn)
      *
      * @param array 有序数组
      * @param low   开始索引
@@ -38,7 +38,7 @@ public class BinarySearch {
 
     /**
      * 遍历二分查找
-     * 复杂度：O(lgn)
+     * 复杂度：O(logn)
      *
      * @param array 有序数组
      * @param value 查找的值
