@@ -1,6 +1,6 @@
 package com.algorithm.study.graph;
 
-import java.util.Map;
+import java.util.*;
 
 /**
  * 图算法
@@ -19,6 +19,45 @@ public class Graph {
      */
     public static Integer getIntimacy() {
         return 0;
+    }
+
+    /**
+     * 广度优先搜索
+     *
+     * @param relationshipMap 图结构人际关系
+     * @param searchName      需要搜索的姓名
+     * @return
+     */
+    public static boolean breadthFirstSearch(Map<String, String[]> relationshipMap, String searchName) {
+        Objects.requireNonNull(relationshipMap);
+        Objects.requireNonNull(searchName);
+        //列出需要的数据结构
+        //已经搜索过的人,用于记录检查过的人
+        Set<String> hasSearch = new HashSet<>();
+        //待搜索队列
+        Queue<String> needSearchQueue = new LinkedList<>();
+        //从friend1开始搜索
+        if ("friend1".equals(searchName)) {
+            return true;
+        }
+
+
+        needSearchQueue.addAll(new HashSet<>(Arrays.asList(relationshipMap.get(searchName))));
+
+        while (!needSearchQueue.isEmpty()) {
+            String currentName = needSearchQueue.poll();
+
+            if (!hasSearch.contains(currentName)) {//仅当这个人没检查过时才检查
+                if (currentName.equals(searchName)) {
+                    return true;
+                } else {
+                    needSearchQueue.addAll(new HashSet<>(Arrays.asList(relationshipMap.get(currentName))));
+                    hasSearch.add(currentName);//将这个人标记为检查过
+                }
+            }
+        }
+
+        return false;
     }
 
 
