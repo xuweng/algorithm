@@ -2,6 +2,7 @@ package com.algorithm.study.graph;
 
 /**
  * 图算法
+ * 散列表是一对一映射,图是一对多映射
  */
 public class Graph {
     /**

@@ -3,6 +3,7 @@ package com.algorithm.study.hash;
 /**
  * 散列表
  * 复杂度:O(1)
+ * 散列表是一对一映射,图是一对多映射
  */
 public class Hash {
     /**
