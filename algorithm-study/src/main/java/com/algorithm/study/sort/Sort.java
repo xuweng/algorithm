@@ -2,6 +2,10 @@ package com.algorithm.study.sort;
 
 import com.algorithm.study.common.ArrayUtils;
 
+/**
+ * 排序复杂度
+ * 排序：O（n2）。O（nlogn）。
+ */
 public class Sort {
     /**
      * 选择排序

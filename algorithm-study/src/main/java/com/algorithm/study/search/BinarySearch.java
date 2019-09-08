@@ -2,6 +2,10 @@ package com.algorithm.study.search;
 
 import java.util.Objects;
 
+/**
+ * 查找复杂度
+ * 查找：O（n）。O（logn）。O（1）。
+ */
 public class BinarySearch {
     /**
      * 递归二分查找
