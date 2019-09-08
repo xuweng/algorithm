@@ -2,6 +2,7 @@ package com.algorithm.study.hash;
 
 /**
  * 散列表
+ * 复杂度:O(1)
  */
 public class Hash {
     /**
