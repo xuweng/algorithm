@@ -67,11 +67,11 @@ public class Graph {
      * 第level与第(level-1)之间的关系
      *
      * @param relationshipMap
-     * @param name            姓名
+     * @param startName            从startName开始搜索
      * @param level           层次,第几层
      * @param number          朋友数量
      */
-    public static void createRelationship(Map<String, String[]> relationshipMap, String name, Integer level, Integer number) {
+    public static void createRelationship(Map<String, String[]> relationshipMap, String startName, Integer level, Integer number) {
         if (level < 1) {
             return;
         }
@@ -80,7 +80,7 @@ public class Graph {
             String friend = "friend" + level + i;
             friendFriends[i - 1] = friend;
         }
-        relationshipMap.put(name, friendFriends);
+        relationshipMap.put(startName, friendFriends);
 
         for (String friendName : friendFriends) {
             createRelationship(relationshipMap, friendName, level - 1, number);
