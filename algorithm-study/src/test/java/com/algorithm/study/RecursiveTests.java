@@ -2,9 +2,10 @@ package com.algorithm.study;
 
 import com.algorithm.study.common.ArrayUtils;
 import com.algorithm.study.recursive.Recursive;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class RecursiveTests {
     @Test
