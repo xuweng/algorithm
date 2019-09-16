@@ -16,6 +16,9 @@ public class StringsTests {
         ArrayUtils.println(arry);
     }
 
+    /**
+     * 非数字字符报错
+     */
     @Test
     public void stringToIntFail() {
         String s = "123ab45678";
@@ -26,5 +29,18 @@ public class StringsTests {
         });
 
         assertEquals("非数字字符报错", exception.getMessage());
+    }
+
+    /**
+     * 空指针
+     */
+    @Test
+    public void stringToIntFail1() {
+        String s = null;
+
+        Throwable exception = assertThrows(NullPointerException.class, () -> {
+            Integer[] arry = Strings.stringToInt(s);
+            ArrayUtils.println(arry);
+        });
     }
 }
