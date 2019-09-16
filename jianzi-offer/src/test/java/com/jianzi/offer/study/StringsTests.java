@@ -1,12 +1,15 @@
 package com.jianzi.offer.study;
 
 import com.jianzi.offer.study.common.ArrayUtils;
+import com.jianzi.offer.study.common.annotation.ExceptionUserCase;
+import com.jianzi.offer.study.common.annotation.NormalUserCase;
 import com.jianzi.offer.study.strings.Strings;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class StringsTests {
+    @NormalUserCase
     @Test
     public void stringToIntSuccess() {
         String s = "12345678";
@@ -19,6 +22,7 @@ public class StringsTests {
     /**
      * 非数字字符报错
      */
+    @ExceptionUserCase
     @Test
     public void stringToIntFail() {
         String s = "123ab45678";
@@ -34,6 +38,7 @@ public class StringsTests {
     /**
      * 空指针
      */
+    @ExceptionUserCase
     @Test
     public void stringToIntFail1() {
         String s = null;
