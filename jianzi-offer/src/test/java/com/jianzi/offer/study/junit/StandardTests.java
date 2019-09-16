@@ -1,4 +1,4 @@
-package com.jianzi.offer.study;
+package com.jianzi.offer.study.junit;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
