@@ -22,7 +22,7 @@ public class LinkedLists {
         Node<Integer> pBehind = headNode.next;
 
         for (int i = 0; i < k - 1; i++) {
-            pAhead = pBehind.next;
+            pAhead = pAhead.next;
         }
 
         while (pAhead.getNext() != null) {
