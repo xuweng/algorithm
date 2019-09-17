@@ -4,6 +4,8 @@ import java.util.Objects;
 
 /**
  * 链表
+ * <p>
+ * 考虑边界条件、特殊输入、错误处理
  */
 public class LinkedLists {
     /**
