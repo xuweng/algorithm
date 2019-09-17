@@ -8,14 +8,19 @@ import java.util.Objects;
 public class LinkedLists {
     /**
      * 链表倒数第k个结点
+     * k的取值就是链表的范围
      *
      * @param headNode 头结点
      * @param k        第k个
-     * @return
+     * @param size     链表大小
+     * @return 链表倒数第k个结点
      */
-    public static Node<Integer> findKthToTail(Node<Integer> headNode, int k) {
+    public static Node<Integer> findKthToTail(Node<Integer> headNode, int k, int size) {
         Objects.requireNonNull(headNode);
 
+        if (k > size || k <= 0) {
+            throw new IllegalArgumentException();
+        }
         //前指针
         Node<Integer> pAhead = headNode.next;
         //后指针
@@ -37,7 +42,7 @@ public class LinkedLists {
      * 顺序生成带头结点自然数链表,头结点时0
      *
      * @param size 个数
-     * @return
+     * @return 头结点
      */
     public static Node<Integer> generateLinkedList(int size) {
         Node<Integer> head = new Node<>(0, null);

@@ -22,7 +22,7 @@ public class LinkedListsTests {
     @Test
     public void findKthToTailSuccess() {
         //k是正常值
-        LinkedLists.Node<Integer> node = LinkedLists.findKthToTail(headNode, 2);
+        LinkedLists.Node<Integer> node = LinkedLists.findKthToTail(headNode, 2, 20);
 
         assertEquals(19, node.getData());
     }
@@ -35,8 +35,8 @@ public class LinkedListsTests {
     public void findKthToTailFail1() {
         //链表中的结点数小于k时
 
-        Throwable exception = assertThrows(NullPointerException.class, () -> {
-            LinkedLists.Node<Integer> node = LinkedLists.findKthToTail(headNode, 30);
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            LinkedLists.Node<Integer> node = LinkedLists.findKthToTail(headNode, 30, 20);
         });
     }
 
@@ -47,8 +47,9 @@ public class LinkedListsTests {
     @Test
     public void findKthToTailFail2() {
         //k<=0
-        LinkedLists.Node<Integer> node = LinkedLists.findKthToTail(headNode, 0);
 
-        assertEquals(20, node.getData());
+        Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
+            LinkedLists.Node<Integer> node = LinkedLists.findKthToTail(headNode, 0, 20);
+        });
     }
 }
