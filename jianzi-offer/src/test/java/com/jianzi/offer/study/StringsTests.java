@@ -58,4 +58,14 @@ public class StringsTests {
 
         System.out.println(new String(array));
     }
+
+    @NormalUserCase
+    @Test
+    public void replaceBlankSuccess1() {
+        String s = "iamhappy.#**********";
+        char[] array = s.toCharArray();
+        assertDoesNotThrow(() -> Strings.replaceBlank(array, array.length));
+
+        System.out.println(new String(array));
+    }
 }
