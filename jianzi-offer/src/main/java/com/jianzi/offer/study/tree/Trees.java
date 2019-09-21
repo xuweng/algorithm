@@ -67,6 +67,9 @@ public class Trees {
 
         int rootValue = preArray[preStart];
         TreeNode treeNode = new TreeNode(rootValue, null, null);
+        if (preStart >= preEnd || middleStart >= middleEnd) {
+            return treeNode;
+        }
 
         int rootIndex = findIndex(middleArray, rootValue, middleStart, middleEnd);
         //左子树个数
