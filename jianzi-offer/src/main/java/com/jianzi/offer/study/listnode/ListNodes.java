@@ -4,6 +4,10 @@ import java.util.Objects;
 
 /**
  * 链表
+ * <p>
+ * 特别注意条件范围
+ * <p>
+ * 抽取公共部分,比如查找等等
  */
 public class ListNodes {
     /**
