@@ -8,6 +8,8 @@ import java.util.Objects;
  * 递归:分解、关系(递推公式)、检查
  * <p>
  * 递归:通过改变函数参数进行递归
+ * <p>
+ * 分治:缩小数据规模(改变函数参数)
  */
 public class Trees {
     /**
