@@ -1,9 +1,13 @@
 package com.jianzi.offer.study.tree;
 
+import java.util.Objects;
+
 /**
  * 树
  * <p>
  * 递归:分解、关系(递推公式)、检查
+ * <p>
+ * 递归:通过改变函数参数进行递归
  */
 public class Trees {
     /**
@@ -44,6 +48,61 @@ public class Trees {
         System.out.println("treeNode.value = " + treeNode.value + ",");
         printfPre(treeNode.left);
         printfPre(treeNode.right);
+    }
+
+    /**
+     * 重建二叉树
+     * <p>
+     * 递归:通过改变函数参数进行递归
+     * 分解、关系、检查
+     * <p>
+     * 2个指针划分3部分,1个指针划分为2部分
+     *
+     * @param preArray    前序序列
+     * @param middleArray 中序序列
+     */
+    public static TreeNode constructBinaryTree(int[] preArray, int preStart, int preEnd, int[] middleArray, int middleStart, int middleEnd) {
+        Objects.requireNonNull(preArray);
+        Objects.requireNonNull(middleArray);
+
+        int rootValue = preArray[preStart];
+        TreeNode treeNode = new TreeNode(rootValue, null, null);
+
+        int rootIndex = findIndex(middleArray, rootValue, middleStart, middleEnd);
+        //左子树个数
+        int leftNumber = rootIndex - middleStart;
+        int leftIndex = preStart + leftNumber;
+
+        TreeNode left = constructBinaryTree(preArray, preStart + 1, leftIndex, middleArray, middleStart, rootIndex - 1);
+        TreeNode right = constructBinaryTree(preArray, leftIndex + 1, preEnd, middleArray, rootIndex + 1, middleEnd);
+
+        treeNode.left = left;
+        treeNode.right = right;
+
+        return treeNode;
+
+    }
+
+    /**
+     * 根据值查找索引
+     *
+     * @param array
+     * @param value
+     * @param start
+     * @param end
+     * @return 索引
+     */
+    public static int findIndex(int[] array, int value, int start, int end) {
+        Objects.requireNonNull(array);
+        if (start < 0 || end > array.length) {
+            throw new IllegalArgumentException();
+        }
+        for (int i = start; i <= end; i++) {
+            if (array[i] == value) {
+                return i;
+            }
+        }
+        return 0;
     }
 
     public static class TreeNode {
