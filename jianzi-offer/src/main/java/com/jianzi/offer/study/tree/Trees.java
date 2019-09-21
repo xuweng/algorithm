@@ -14,6 +14,8 @@ import java.util.Objects;
 public class Trees {
     /**
      * 递归顺序生成树
+     * <p>
+     * 分治:缩小数据规模(改变函数参数)
      *
      * @param value 结点的值,一般从1开始
      * @param high  树的高度
@@ -59,6 +61,8 @@ public class Trees {
      * 分解、关系、检查
      * <p>
      * 2个指针划分3部分,1个指针划分为2部分
+     * <p>
+     * 分治:缩小数据规模(改变函数参数)
      *
      * @param preArray    前序序列
      * @param middleArray 中序序列
@@ -67,11 +71,11 @@ public class Trees {
         Objects.requireNonNull(preArray);
         Objects.requireNonNull(middleArray);
 
+        if (preStart > preEnd || middleStart > middleEnd) {
+            return null;
+        }
         int rootValue = preArray[preStart];
         TreeNode treeNode = new TreeNode(rootValue, null, null);
-        if (preStart >= preEnd || middleStart >= middleEnd) {
-            return treeNode;
-        }
 
         int rootIndex = findIndex(middleArray, rootValue, middleStart, middleEnd);
         //左子树个数
