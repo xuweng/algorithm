@@ -1,6 +1,7 @@
 package com.jianzi.offer.study.listnode;
 
 import java.util.Objects;
+import java.util.Stack;
 
 /**
  * 链表
@@ -17,7 +18,7 @@ public class ListNodes {
      * @param value
      * @return
      */
-    public boolean addToTail(Node pHead, int value) {
+    public static boolean addToTail(Node pHead, int value) {
         Node node = new Node();
         node.value = value;
         node.next = null;
@@ -118,6 +119,72 @@ public class ListNodes {
         }
 
         return (pNodeNext.value == value) ? pNode : null;
+    }
+
+    /**
+     * 顺序生成不带头结点自然数链表,头结点时0
+     *
+     * @param size 个数
+     * @return 头结点
+     */
+    public static Node generateLinkedList(int size) {
+        Node head = new Node(1, null);
+        Node result = head;
+        for (int i = 2; i <= size; i++) {
+            Node node = new Node(i, null);
+            head.next = node;
+
+            head = node;
+        }
+
+        return result;
+    }
+
+    /**
+     * 顺序打印链表
+     *
+     * @param pHead
+     */
+    public static void printf(Node pHead) {
+        if (pHead == null) {
+            return;
+        }
+
+        System.out.println("pHead = " + pHead.value + ",");
+        printf(pHead.next);
+    }
+
+    /**
+     * 反转打印链表
+     *
+     * @param pHead
+     */
+    public static void printfReversing(Node pHead) {
+        if (pHead == null) {
+            return;
+        }
+
+        printfReversing(pHead.next);
+        System.out.println("pHead = " + pHead.value + ",");
+    }
+
+    /**
+     * 使用栈反转打印链表
+     *
+     * @param pHead
+     */
+    public static void printfReversingUseStack(Node pHead) {
+        Objects.requireNonNull(pHead);
+        Stack<Node> stack = new Stack<Node>();
+        Node pNode = pHead;
+        while (pNode != null) {
+            stack.push(pNode);
+            pNode = pNode.next;
+        }
+        while (!stack.isEmpty()) {
+            pNode = stack.pop();
+            System.out.println("pNode = " + pNode.value + ",");
+        }
     }
 
     /**
