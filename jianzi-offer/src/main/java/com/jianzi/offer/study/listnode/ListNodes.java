@@ -21,10 +21,7 @@ public class ListNodes {
         if (pHead == null) {
             pHead = node;
         } else {
-            Node head = pHead;
-            while (head != null) {
-                head = head.next;
-            }
+            Node head = findLastNode(pHead);
             head.next = node;
         }
 
@@ -56,6 +53,23 @@ public class ListNodes {
             pToBeDelete = null;
         }
         return true;
+    }
+
+    /**
+     * 查找最后一个结点
+     *
+     * @param pHead 结点
+     * @return 返回最后一个结点
+     */
+    public static Node findLastNode(Node pHead) {
+        Objects.requireNonNull(pHead);
+        Node pNode = pHead;
+
+        while (pNode.next != null) {
+            pNode = pNode.next;
+        }
+
+        return pNode;
     }
 
     /**
