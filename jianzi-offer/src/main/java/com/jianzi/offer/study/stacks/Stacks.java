@@ -4,6 +4,10 @@ import java.util.Stack;
 
 /**
  * 栈
+ * <p>
+ * 考虑全面。考虑细节
+ * <p>
+ * 多检查代码
  */
 public class Stacks {
     //stack1用来入队
