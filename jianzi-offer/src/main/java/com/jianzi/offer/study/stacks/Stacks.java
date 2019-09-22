@@ -8,6 +8,10 @@ import java.util.Stack;
  * 考虑全面。考虑细节
  * <p>
  * 多检查代码
+ * <p>
+ * 学算法的意义:考虑全面。考虑细节
+ * <p>
+ * 锻炼思维、回顾代码
  */
 public class Stacks {
     //stack1用来入队
