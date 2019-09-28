@@ -17,6 +17,8 @@ public class Recursive {
 
     /**
      * 递归求自然数和
+     * <p>
+     * 时间复杂度：O(n)
      *
      * @param n
      * @return
@@ -27,6 +29,8 @@ public class Recursive {
 
     /**
      * 循环求自然数和
+     * <p>
+     * 时间复杂度：O(n)
      *
      * @param n
      * @return
