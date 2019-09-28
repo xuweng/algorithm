@@ -23,6 +23,6 @@ public class RecursiveTests {
 
     @Test
     public void fibonacciTest() {
-        System.out.println(Recursive.fibonacci(100));
+        assertEquals(-811192543, Recursive.fibonacci(49));
     }
 }

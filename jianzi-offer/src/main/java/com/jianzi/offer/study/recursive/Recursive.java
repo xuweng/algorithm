@@ -1,5 +1,8 @@
 package com.jianzi.offer.study.recursive;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 递归和循环
  * <p>
@@ -10,6 +13,8 @@ package com.jianzi.offer.study.recursive;
  * 递归：重复计算、栈溢出
  */
 public class Recursive {
+    public static final Map<Integer, Integer> map = new HashMap<>();
+
     /**
      * 递归求自然数和
      *
@@ -38,6 +43,8 @@ public class Recursive {
      * 递归求解斐波那数列
      * <p>
      * 用递归树分析：很多重复计算，而且重复的结点随n的增大会急剧增大，恐怖；递归的复杂度是n的指数，恐怖
+     * <p>
+     * 解决重复计算：保存已经计算的值
      *
      * @param n
      * @return
@@ -49,6 +56,12 @@ public class Recursive {
         if (n == 1) {
             return 1;
         }
-        return fibonacci(n - 1) + fibonacci(n - 2);
+        if (map.containsKey(n)) {
+            return map.get(n);
+        } else {
+            int value = fibonacci(n - 1) + fibonacci(n - 2);
+            map.put(n, value);
+            return value;
+        }
     }
 }
