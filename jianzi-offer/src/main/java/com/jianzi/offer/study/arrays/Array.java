@@ -4,6 +4,8 @@ import java.util.Objects;
 
 /**
  * 数组
+ * <p>
+ * 对于排序、递增的数组,一定要考虑重复数据、相同数据
  */
 public class Array {
     /**
