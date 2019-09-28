@@ -20,4 +20,9 @@ public class RecursiveTests {
     public void addToNForTest() {
         assertEquals(5050, Recursive.addToNFor(100));
     }
+
+    @Test
+    public void fibonacciTest() {
+        System.out.println(Recursive.fibonacci(100));
+    }
 }
