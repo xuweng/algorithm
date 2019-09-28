@@ -33,4 +33,22 @@ public class Recursive {
         }
         return sum;
     }
+
+    /**
+     * 递归求解斐波那数列
+     * <p>
+     * 用递归树分析：很多重复计算，而且重复的结点随n的增大会急剧增大，恐怖；递归的复杂度是n的指数，恐怖
+     *
+     * @param n
+     * @return
+     */
+    public static int fibonacci(int n) {
+        if (n <= 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return 1;
+        }
+        return fibonacci(n - 1) + fibonacci(n - 2);
+    }
 }
