@@ -23,6 +23,9 @@ public class RecursiveTests {
 
     @Test
     public void fibonacciTest() {
-        assertEquals(-811192543, Recursive.fibonacci(49));
+//        assertEquals(-811192543, Recursive.fibonacci(100));
+        //结果太大，使用int会发生溢出
+        System.out.println(Recursive.fibonacci(100));
+        assertEquals(Recursive.fibonacciFor(100), Recursive.fibonacci(100));
     }
 }
