@@ -6,6 +6,8 @@ package com.jianzi.offer.study.recursive;
  * 重复计算相同的问题
  * <p>
  * 递归:只有数据规模不同,解法相同
+ * <p>
+ * 递归：重复计算、栈溢出
  */
 public class Recursive {
     /**
