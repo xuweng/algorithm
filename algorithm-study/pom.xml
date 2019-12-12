@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>algorithm.study</groupId>
-    <artifactId>algorithm-practice</artifactId>
+    <artifactId>algorithm-study</artifactId>
     <version>1.0-SNAPSHOT</version>
     <build>
         <plugins>
