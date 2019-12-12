@@ -1,4 +1,4 @@
-package com.algorithm.study.recursive;
+package com.algorithm.study.algorithm.recursive;
 
 /**
  * 递归

@@ -1,4 +1,4 @@
-package com.algorithm.study.search;
+package com.algorithm.study.algorithm.search;
 
 import java.util.Objects;
 

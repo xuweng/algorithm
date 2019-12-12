@@ -1,4 +1,4 @@
-package com.algorithm.study.hash;
+package com.algorithm.study.algorithm.hash;
 
 /**
  * 散列表

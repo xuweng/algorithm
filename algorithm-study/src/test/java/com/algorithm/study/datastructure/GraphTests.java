@@ -1,6 +1,6 @@
-package com.algorithm.study;
+package com.algorithm.study.datastructure;
 
-import com.algorithm.study.graph.Graph;
+import com.algorithm.study.datastructure.graph.Graph;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;

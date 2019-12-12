@@ -1,8 +1,8 @@
-package com.algorithm.study;
+package com.algorithm.study.algorithm;
 
 import com.algorithm.study.common.ArrayUtils;
 import com.algorithm.study.common.SortType;
-import com.algorithm.study.sort.Sort;
+import com.algorithm.study.algorithm.sort.Sort;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

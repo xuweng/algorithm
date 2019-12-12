@@ -1,4 +1,4 @@
-package com.algorithm.study.sort;
+package com.algorithm.study.algorithm.sort;
 
 import com.algorithm.study.common.ArrayUtils;
 

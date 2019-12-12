@@ -1,4 +1,4 @@
-package com.algorithm.study.graph;
+package com.algorithm.study.datastructure.graph;
 
 import java.util.*;
 
