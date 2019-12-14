@@ -134,6 +134,76 @@ public class LinkedList {
     }
 
     /**
+     * 在date后面插入value
+     *
+     * @param date
+     * @param value
+     * @return
+     */
+    public static Integer insert(Integer date, Integer value) {
+        SingleNode<Integer> prev = findPrefix(date);
+        if (prev == null) {
+            return value;
+        }
+        SingleNode<Integer> node = new SingleNode<>(value);
+        node.next = prev.next;
+        prev.next = node;
+
+        return value;
+    }
+
+    /**
+     * 删除date结点
+     *
+     * @param date
+     * @return
+     */
+    public static Integer remove(Integer date) {
+        SingleNode<Integer> prev = findPrefix(date);
+        if (prev == null) {
+            return date;
+        }
+        prev.next = prev.next.next;
+
+        return date;
+    }
+
+    /**
+     * 在node后面插入value
+     *
+     * @param node
+     * @param value
+     * @return
+     */
+    public static Integer insert(SingleNode<Integer> node, Integer value) {
+        SingleNode<Integer> prev = findPrefix(node);
+        if (prev == null) {
+            return value;
+        }
+        SingleNode<Integer> newNode = new SingleNode<>(value);
+        node.next = prev.next;
+        prev.next = node;
+
+        return value;
+    }
+
+    /**
+     * 删除node结点
+     *
+     * @param node
+     * @return
+     */
+    public static SingleNode<Integer> remove(SingleNode<Integer> node) {
+        SingleNode<Integer> prev = findPrefix(node);
+        if (prev == null) {
+            return node;
+        }
+        prev.next = prev.next.next;
+
+        return node;
+    }
+
+    /**
      * 检查index
      *
      * @param index
