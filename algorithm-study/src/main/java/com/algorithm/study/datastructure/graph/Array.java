@@ -10,6 +10,8 @@ public class Array {
     private static int capacity = 16;
     //大小
     private static int size = 0;
+    //加载因子
+    private static double loadFactor = 0.75;
 
     private static int[] table = new int[capacity];
 
@@ -25,9 +27,7 @@ public class Array {
             throw new IllegalArgumentException();
         }
         //扩容
-        if (size >= capacity) {
-            resize();
-        }
+        resize();
         //在数组的末尾插入元素，那就不需要移动数据
         if (k == size - 1) {
             table[k] = date;
@@ -53,9 +53,7 @@ public class Array {
             throw new IllegalArgumentException();
         }
         //扩容
-        if (size >= capacity) {
-            resize();
-        }
+        resize();
         //在数组的末尾插入元素，那就不需要移动数据
         if (k == size - 1) {
             table[k] = date;
@@ -95,6 +93,9 @@ public class Array {
      * 2倍扩容
      */
     private static void resize() {
+        if (!resizeStrategy()) {
+            return;
+        }
         capacity = capacity * 2;
         int[] newTable = new int[capacity];
 
@@ -103,6 +104,11 @@ public class Array {
         }
 
         table = newTable;
+    }
+
+    private static boolean resizeStrategy() {
+        //return size >= capacity;
+        return size >= loadFactor * capacity;
     }
 
 }
