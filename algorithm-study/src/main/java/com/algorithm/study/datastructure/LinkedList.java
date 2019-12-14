@@ -41,12 +41,8 @@ public class LinkedList {
 
         SingleNode<Integer> cur = singleHead;
 
-        for (int i = 1; i <= k; i++) {
-            if (cur == null) {
-                break;
-            } else {
-                cur = cur.next;
-            }
+        for (int i = 1; i <= k && cur != null; i++) {
+            cur = cur.next;
         }
         return (cur == null) ? null : cur.date;
     }
