@@ -34,6 +34,7 @@ public class Array {
         if (k == capacity - 1) {
             table[k] = date;
         } else {
+            //k后面没有数据不需要移动
             for (int i = k; i < capacity; i++) {
                 table[i + 1] = table[i];
             }
@@ -60,6 +61,7 @@ public class Array {
         if (k == capacity - 1) {
             table[k] = date;
         } else {
+            //k后面没有数据不需要移动
             table[capacity - 1] = table[k];
             table[k] = date;
         }
@@ -82,6 +84,7 @@ public class Array {
         if (k == capacity - 1) {
             table[k] = 0;
         } else {
+            //k后面没有数据不需要移动
             for (int i = k; i < capacity; i++) {
                 table[i] = table[i + 1];
             }
