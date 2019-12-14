@@ -23,9 +23,7 @@ public class Array {
      * @return
      */
     public static int insertMove(int date, int k) {
-        if (k < 0 || k >= capacity) {
-            throw new IllegalArgumentException();
-        }
+        checkIndex(k);
         //扩容
         resize();
         //在数组的末尾插入元素，那就不需要移动数据
@@ -49,9 +47,7 @@ public class Array {
      * @return
      */
     public static int insertNoMove(int date, int k) {
-        if (k < 0 || k >= capacity) {
-            throw new IllegalArgumentException();
-        }
+        checkIndex(k);
         //扩容
         resize();
         //在数组的末尾插入元素，那就不需要移动数据
@@ -72,9 +68,7 @@ public class Array {
      * @return
      */
     public static int remove(int k) {
-        if (k < 0 || k >= capacity) {
-            throw new IllegalArgumentException();
-        }
+        checkIndex(k);
 
         //在数组的末尾删除元素，那就不需要移动数据
         if (k == size - 1) {
@@ -87,6 +81,18 @@ public class Array {
         }
         size--;
         return k;
+    }
+
+    /**
+     * 检查index
+     *
+     * @param index
+     * @return
+     */
+    private static void checkIndex(int index) {
+        if (index < 0 || index >= size) {
+            throw new IllegalArgumentException();
+        }
     }
 
     /**
