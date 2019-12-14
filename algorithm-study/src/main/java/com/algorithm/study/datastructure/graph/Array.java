@@ -18,6 +18,49 @@ public class Array {
     private static int[] table = new int[capacity];
 
     /**
+     * 根据下标查找
+     *
+     * @param k 数组下标
+     * @return
+     */
+    public static int find(int k) {
+        checkIndexByCapacity(k);
+        return table[k];
+    }
+
+    /**
+     * 查找k前缀
+     *
+     * @param k 数组下标
+     * @return
+     */
+    public static int findPrefix(int k) {
+        checkIndexByCapacity(k);
+
+        if (k == 0) {
+            return table[k];
+        } else {
+            return table[k - 1];
+        }
+    }
+
+    /**
+     * 查找k后缀
+     *
+     * @param k 数组下标
+     * @return
+     */
+    public static int findSuffix(int k) {
+        checkIndexByCapacity(k);
+
+        if (k == capacity - 1) {
+            return table[k];
+        } else {
+            return table[k + 1];
+        }
+    }
+
+    /**
      * 移动插入
      * <p>
      * 在有数据区域插入需要移动,在没有数据区域插入不需要移动
