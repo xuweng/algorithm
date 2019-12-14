@@ -11,7 +11,10 @@ public class LinkedStack {
 
     public static boolean push(String item) {
         Objects.requireNonNull(item);
-        tail.next = new Node<>(item);
+
+        Node<String> node = new Node<>(item);
+        tail.next = node;
+        tail = node;
 
         return true;
     }
