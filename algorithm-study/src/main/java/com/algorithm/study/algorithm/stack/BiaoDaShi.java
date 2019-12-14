@@ -144,7 +144,7 @@ public class BiaoDaShi {
     /**
      * 加减乘除
      */
-    private static enum Operation {
+    private enum Operation {
         PIUS('+', 1), MINUS('-', 1),
         TIMES('*', 2), DIVIDE('/', 2),
         LEFT('(', 3), RIGHT(')', 3);
