@@ -1,4 +1,4 @@
-package com.algorithm.study.algorithm;
+package com.algorithm.study.algorithm.recursive;
 
 import com.algorithm.study.common.ArrayUtils;
 import com.algorithm.study.algorithm.recursive.Recursive;
