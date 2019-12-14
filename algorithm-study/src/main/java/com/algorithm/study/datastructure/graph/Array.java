@@ -2,6 +2,8 @@ package com.algorithm.study.datastructure.graph;
 
 /**
  * 数组
+ * <p>
+ * 插入,删除最后一个元素不用移动元素
  */
 public class Array {
     //容量
@@ -27,7 +29,7 @@ public class Array {
             resize();
         }
         //在数组的末尾插入元素，那就不需要移动数据
-        if (k == capacity - 1) {
+        if (k == size - 1) {
             table[k] = date;
         } else {
             for (int i = k; i < size; i++) {
@@ -55,7 +57,7 @@ public class Array {
             resize();
         }
         //在数组的末尾插入元素，那就不需要移动数据
-        if (k == capacity - 1) {
+        if (k == size - 1) {
             table[k] = date;
         } else {
             table[size - 1] = table[k];
@@ -63,6 +65,30 @@ public class Array {
         }
         size++;
         return date;
+    }
+
+    /**
+     * 删除
+     *
+     * @param k 数组下标.删除第k个位置
+     * @return
+     */
+    public static int remove(int k) {
+        if (k < 0 || k >= capacity) {
+            throw new IllegalArgumentException();
+        }
+
+        //在数组的末尾删除元素，那就不需要移动数据
+        if (k == size - 1) {
+            table[k] = 0;
+        } else {
+            for (int i = k; i < size; i++) {
+                table[i] = table[i + 1];
+            }
+            table[k] = 0;
+        }
+        size--;
+        return k;
     }
 
     /**
