@@ -45,13 +45,16 @@ public class BiaoDaShi {
                 dateStack.push(Double.parseDouble(String.valueOf(c)));
             } else {
                 //获取栈顶元素,不删除栈顶元素
-                if (operatorPriorityMax(operatorStack.peek(), c)) {
-                    //如果比运算符栈顶元素的优先级高，就将当前运算符压入栈
+                if (operatorPriorityMax(c, operatorStack.peek())) {
+                    //如果当前运算符比运算符栈顶元素的优先级高，就将当前运算符压入栈
                     operatorStack.push(c);
                 } else {
                     //获取栈顶元素,删除栈顶元素
-                    dateStack.push(compute(operatorStack.pop(), dateStack.pop(), dateStack.pop()));
+                    while (!operatorStack.empty() && operatorPriorityMax(operatorStack.peek(), c)) {
+                        dateStack.push(compute(operatorStack.pop(), dateStack.pop(), dateStack.pop()));
+                    }
                 }
+
             }
         }
 
