@@ -1,6 +1,8 @@
 package com.algorithm.study.datastructure;
 
 
+import java.util.Objects;
+
 // 基于数组实现的顺序栈
 public class ArrayStack {
     private String[] items;  // 数组
@@ -18,6 +20,7 @@ public class ArrayStack {
 
     // 入栈操作
     public boolean push(String item) {
+        Objects.requireNonNull(item);
         // 数组空间不够了，直接返回false，入栈失败。
         if (isFull()) {
             return false;
@@ -34,10 +37,9 @@ public class ArrayStack {
         if (isEmpty()) {
             return null;
         }
-        // 返回下标为count-1的数组元素，并且栈中元素个数count减一
-        String tmp = items[top--];
         --size;
-        return tmp;
+        // 返回下标为top的数组元素，并且栈中元素个数减一
+        return items[top--];
     }
 
     /**

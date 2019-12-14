@@ -7,10 +7,10 @@ import java.util.Objects;
  */
 public class LinkedList {
     private static SingleNode<Integer> singleHead = new SingleNode<>();
-    private static SingleNode<Integer> singleTail = new SingleNode<>();
+    private static SingleNode<Integer> singleTail = singleHead;
 
     private static DoubleNode<Integer> doubleHead = new DoubleNode<>();
-    private static DoubleNode<Integer> doubleTail = new DoubleNode<>();
+    private static DoubleNode<Integer> doubleTail = doubleHead;
 
     //大小
     private static int size = 0;
