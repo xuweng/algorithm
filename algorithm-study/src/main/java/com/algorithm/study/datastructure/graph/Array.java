@@ -12,11 +12,15 @@ public class Array {
     private static int size = 0;
     //加载因子
     private static double loadFactor = 0.75;
+    //缩容因子
+    private static double shrinkFactor = 0.25;
 
     private static int[] table = new int[capacity];
 
     /**
      * 移动插入
+     * <p>
+     * 在有数据区域插入需要移动,在没有数据区域插入不需要移动
      *
      * @param date 数据
      * @param k    数组下标.插入到第k个位置 0<=k<=capacity-1
@@ -27,10 +31,10 @@ public class Array {
         //扩容
         resize();
         //在数组的末尾插入元素，那就不需要移动数据
-        if (k == size - 1) {
+        if (k == capacity - 1) {
             table[k] = date;
         } else {
-            for (int i = k; i < size; i++) {
+            for (int i = k; i < capacity; i++) {
                 table[i + 1] = table[i];
             }
             table[k] = date;
@@ -41,6 +45,8 @@ public class Array {
 
     /**
      * 不移动插入
+     * <p>
+     * 在有数据区域插入需要移动,在没有数据区域插入不需要移动
      *
      * @param date 数据
      * @param k    下标.插入到第k个位置 0<=k<=capacity-1
@@ -51,10 +57,10 @@ public class Array {
         //扩容
         resize();
         //在数组的末尾插入元素，那就不需要移动数据
-        if (k == size - 1) {
+        if (k == capacity - 1) {
             table[k] = date;
         } else {
-            table[size - 1] = table[k];
+            table[capacity - 1] = table[k];
             table[k] = date;
         }
         size++;
@@ -63,6 +69,8 @@ public class Array {
 
     /**
      * 删除
+     * <p>
+     * 在有数据区域插入需要删除,在没有数据区域插入不需要删除
      *
      * @param k 数组下标.删除第k个位置
      * @return
@@ -71,13 +79,12 @@ public class Array {
         checkIndexByCapacity(k);
 
         //在数组的末尾删除元素，那就不需要移动数据
-        if (k == size - 1) {
+        if (k == capacity - 1) {
             table[k] = 0;
         } else {
-            for (int i = k; i < size; i++) {
+            for (int i = k; i < capacity; i++) {
                 table[i] = table[i + 1];
             }
-            table[k] = 0;
         }
         size--;
         return k;
@@ -114,19 +121,51 @@ public class Array {
         if (!resizeStrategy()) {
             return;
         }
-        capacity = capacity * 2;
-        int[] newTable = new int[capacity];
+        int newCapacity = capacity * 2;
+        int[] newTable = new int[newCapacity];
 
-        for (int i = 0; i < size - 1; i++) {
+        for (int i = 0; i < capacity - 1; i++) {
             newTable[i] = table[i];
         }
-
+        capacity = newCapacity;
         table = newTable;
     }
 
+    /**
+     * 2倍缩容
+     */
+    private static void shrink() {
+        if (!shrinkStrategy()) {
+            return;
+        }
+        int newCapacity = capacity / 2;
+        int[] newTable = new int[newCapacity];
+
+        for (int i = 0; i < capacity - 1; i++) {
+            newTable[i] = table[i];
+        }
+        capacity = newCapacity;
+        table = newTable;
+    }
+
+    /**
+     * 扩容策略
+     *
+     * @return
+     */
     private static boolean resizeStrategy() {
         //return size >= capacity;
         return size >= loadFactor * capacity;
+    }
+
+    /**
+     * 缩容策略
+     *
+     * @return
+     */
+    private static boolean shrinkStrategy() {
+        //return size >= capacity;
+        return size <= shrinkFactor * capacity;
     }
 
 }
