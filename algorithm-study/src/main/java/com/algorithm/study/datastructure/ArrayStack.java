@@ -35,7 +35,7 @@ public class ArrayStack {
             return null;
         }
         // 返回下标为count-1的数组元素，并且栈中元素个数count减一
-        String tmp = items[top];
+        String tmp = items[top--];
         --size;
         return tmp;
     }
