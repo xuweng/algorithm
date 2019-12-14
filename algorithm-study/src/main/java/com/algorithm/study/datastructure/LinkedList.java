@@ -10,6 +10,9 @@ public class LinkedList {
     private static DoubleNode<Integer> doubleHead = new DoubleNode<>();
     private static DoubleNode<Integer> doubleTail = new DoubleNode<>();
 
+    //大小
+    private static int size = 0;
+
     /**
      * 查找数据是否存在
      *
@@ -49,13 +52,69 @@ public class LinkedList {
     }
 
     /**
+     * 查找k前缀
+     * <p>
+     * 条件判断很麻烦
+     * <p>
+     * 三指针:prev,cur,next.
+     * <p>
+     * 前一个指针,当前指针,后一个指针
+     *
+     * @param k 不是下标
+     * @return
+     */
+    public static SingleNode<Integer> findPrefix(int k) {
+        checkIndex(k);
+
+        SingleNode<Integer> prev = singleHead, cur = singleHead.next;
+        for (int i = 1; i < k && cur != null && cur.next != null; i++) {
+            prev = prev.next;
+            cur = cur.next;
+        }
+        return prev;
+
+    }
+
+    /**
+     * 查找值前缀
+     *
+     * @param date 值
+     * @return
+     */
+    public static SingleNode<Integer> findPrefix(Integer date) {
+        SingleNode<Integer> prev = singleHead, cur = singleHead.next;
+        while (cur != null && !date.equals(cur.date)) {
+            prev = prev.next;
+            cur = cur.next;
+        }
+
+        return (cur == null) ? null : prev;
+    }
+
+    /**
+     * 查找结点前缀
+     *
+     * @param node
+     * @return
+     */
+    public static SingleNode<Integer> findPrefix(SingleNode<Integer> node) {
+        SingleNode<Integer> prev = singleHead, cur = singleHead.next;
+        while (cur != null && node != cur) {
+            prev = prev.next;
+            cur = cur.next;
+        }
+
+        return (cur == null) ? null : prev;
+    }
+
+    /**
      * 检查index
      *
      * @param index
      * @return
      */
     private static void checkIndex(int index) {
-        if (index <= 0) {
+        if (index <= 0 || index > size) {
             throw new IllegalArgumentException();
         }
     }
