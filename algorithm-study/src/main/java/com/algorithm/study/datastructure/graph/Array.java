@@ -19,11 +19,11 @@ public class Array {
      * 移动插入
      *
      * @param date 数据
-     * @param k    插入到第k个位置 0<=k<=capacity-1
+     * @param k    数组下标.插入到第k个位置 0<=k<=capacity-1
      * @return
      */
     public static int insertMove(int date, int k) {
-        checkIndex(k);
+        checkIndexByCapacity(k);
         //扩容
         resize();
         //在数组的末尾插入元素，那就不需要移动数据
@@ -47,7 +47,7 @@ public class Array {
      * @return
      */
     public static int insertNoMove(int date, int k) {
-        checkIndex(k);
+        checkIndexByCapacity(k);
         //扩容
         resize();
         //在数组的末尾插入元素，那就不需要移动数据
@@ -68,7 +68,7 @@ public class Array {
      * @return
      */
     public static int remove(int k) {
-        checkIndex(k);
+        checkIndexByCapacity(k);
 
         //在数组的末尾删除元素，那就不需要移动数据
         if (k == size - 1) {
@@ -84,13 +84,25 @@ public class Array {
     }
 
     /**
-     * 检查index
+     * 根据size检查index
      *
      * @param index
      * @return
      */
-    private static void checkIndex(int index) {
+    private static void checkIndexBySize(int index) {
         if (index < 0 || index >= size) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    /**
+     * 根据capacity检查index
+     *
+     * @param index
+     * @return
+     */
+    private static void checkIndexByCapacity(int index) {
+        if (index < 0 || index >= capacity) {
             throw new IllegalArgumentException();
         }
     }
