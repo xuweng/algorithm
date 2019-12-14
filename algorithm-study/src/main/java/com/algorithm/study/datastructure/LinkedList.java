@@ -104,6 +104,36 @@ public class LinkedList {
     }
 
     /**
+     * 查找值后缀
+     *
+     * @param date 值
+     * @return
+     */
+    public static SingleNode<Integer> findSuffix(Integer date) {
+        SingleNode<Integer> cur = singleHead.next;
+        while (cur != null && !date.equals(cur.date)) {
+            cur = cur.next;
+        }
+
+        return (cur == null) ? null : cur.next;
+    }
+
+    /**
+     * 查找结点后缀
+     *
+     * @param node
+     * @return
+     */
+    public static SingleNode<Integer> findSuffix(SingleNode<Integer> node) {
+        SingleNode<Integer> cur = singleHead.next;
+        while (cur != null && node != cur) {
+            cur = cur.next;
+        }
+
+        return (cur == null) ? null : cur.next;
+    }
+
+    /**
      * 检查index
      *
      * @param index
