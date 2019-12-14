@@ -53,6 +53,7 @@ public class BiaoDaShi {
                     while (!operatorStack.empty() && operatorPriorityMax(operatorStack.peek(), c)) {
                         dateStack.push(compute(operatorStack.pop(), dateStack.pop(), dateStack.pop()));
                     }
+                    operatorStack.push(c);
                 }
 
             }
