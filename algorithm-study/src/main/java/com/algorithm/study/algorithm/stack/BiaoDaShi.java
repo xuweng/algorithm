@@ -16,9 +16,12 @@ public class BiaoDaShi {
     private static Stack<Character> operatorStack = new Stack<>();
 
     static {
-        for (Operation operation : Operation.values()) {
-            operatorPriorityMap.put(operation.PIUS.c, operation.PIUS.priority);
-        }
+        operatorPriorityMap.put(Operation.PIUS.c, Operation.PIUS.priority);
+        operatorPriorityMap.put(Operation.MINUS.c, Operation.MINUS.priority);
+        operatorPriorityMap.put(Operation.TIMES.c, Operation.TIMES.priority);
+        operatorPriorityMap.put(Operation.DIVIDE.c, Operation.DIVIDE.priority);
+        operatorPriorityMap.put(Operation.LEFT.c, Operation.LEFT.priority);
+        operatorPriorityMap.put(Operation.RIGHT.c, Operation.RIGHT.priority);
     }
 
     /**
@@ -36,7 +39,6 @@ public class BiaoDaShi {
         if (!isExp(exp)) {
             return null;
         }
-        operatorStack.push(exp.charAt(1));
 
         for (int i = 0; i < exp.length(); i++) {
             char c = exp.charAt(i);
@@ -44,18 +46,21 @@ public class BiaoDaShi {
                 //当遇到数字，我们就直接压入操作数栈
                 dateStack.push(Double.parseDouble(String.valueOf(c)));
             } else {
-                //获取栈顶元素,不删除栈顶元素
-                if (operatorPriorityMax(c, operatorStack.peek())) {
-                    //如果当前运算符比运算符栈顶元素的优先级高，就将当前运算符压入栈
+                if (operatorStack.empty()) {
                     operatorStack.push(c);
                 } else {
-                    //获取栈顶元素,删除栈顶元素
-                    while (!operatorStack.empty() && operatorPriorityMax(operatorStack.peek(), c)) {
-                        dateStack.push(compute(operatorStack.pop(), dateStack.pop(), dateStack.pop()));
+                    //获取栈顶元素,不删除栈顶元素
+                    if (operatorPriorityMax(c, operatorStack.peek())) {
+                        //如果当前运算符比运算符栈顶元素的优先级高，就将当前运算符压入栈
+                        operatorStack.push(c);
+                    } else {
+                        //获取栈顶元素,删除栈顶元素
+                        while (!operatorStack.empty() && operatorPriorityEqueMax(operatorStack.peek(), c)) {
+                            dateStack.push(compute(operatorStack.pop(), dateStack.pop(), dateStack.pop()));
+                        }
+                        operatorStack.push(c);
                     }
-                    operatorStack.push(c);
                 }
-
             }
         }
 
@@ -98,6 +103,17 @@ public class BiaoDaShi {
      */
     private static boolean operatorPriorityMax(char c, char c1) {
         return operatorPriorityMap.get(c) > operatorPriorityMap.get(c1);
+    }
+
+    /**
+     * 运算符优先级
+     *
+     * @param c
+     * @param c1
+     * @return
+     */
+    private static boolean operatorPriorityEqueMax(char c, char c1) {
+        return operatorPriorityMap.get(c) >= operatorPriorityMap.get(c1);
     }
 
     /**
