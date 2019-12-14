@@ -43,7 +43,7 @@ public class Graph {
         //已经搜索过的人,用于记录检查过的人
         Set<String> hasSearch = new HashSet<>();
         //待搜索队列
-        Queue<String> needSearchQueue = new LinkedList<>();
+        Queue<String> needSearchQueue = new java.util.LinkedList<>();
         //从startName开始搜索
         if (startName.equals(searchName)) {
             return true;
