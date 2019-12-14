@@ -1,5 +1,7 @@
 package com.algorithm.study.datastructure;
 
+import java.util.Objects;
+
 /**
  * 链表
  */
@@ -94,6 +96,8 @@ public class LinkedList {
      * @return
      */
     public static SingleNode<Integer> findPrefix(SingleNode<Integer> node) {
+        Objects.requireNonNull(node);
+
         SingleNode<Integer> prev = singleHead, cur = singleHead.next;
         while (cur != null && node != cur) {
             prev = prev.next;
@@ -125,6 +129,8 @@ public class LinkedList {
      * @return
      */
     public static SingleNode<Integer> findSuffix(SingleNode<Integer> node) {
+        Objects.requireNonNull(node);
+
         SingleNode<Integer> cur = singleHead.next;
         while (cur != null && node != cur) {
             cur = cur.next;
@@ -149,6 +155,7 @@ public class LinkedList {
         node.next = prev.next;
         prev.next = node;
 
+        singleTail = node;
         return value;
     }
 
@@ -163,6 +170,9 @@ public class LinkedList {
         if (prev == null) {
             return date;
         }
+        if (singleTail.date.equals(date)) {
+            singleTail = prev;
+        }
         prev.next = prev.next.next;
 
         return date;
@@ -176,6 +186,8 @@ public class LinkedList {
      * @return
      */
     public static Integer insert(SingleNode<Integer> node, Integer value) {
+        Objects.requireNonNull(node);
+
         SingleNode<Integer> prev = findPrefix(node);
         if (prev == null) {
             return value;
@@ -184,6 +196,7 @@ public class LinkedList {
         newNode.next = prev.next;
         prev.next = newNode;
 
+        singleTail = newNode;
         return value;
     }
 
@@ -194,12 +207,16 @@ public class LinkedList {
      * @return
      */
     public static SingleNode<Integer> remove(SingleNode<Integer> node) {
+        Objects.requireNonNull(node);
+
         SingleNode<Integer> prev = findPrefix(node);
         if (prev == null) {
             return node;
         }
+        if (singleTail == node) {
+            singleTail = prev;
+        }
         prev.next = prev.next.next;
-
         return node;
     }
 
@@ -211,6 +228,8 @@ public class LinkedList {
      * @return
      */
     public static Integer insertDoubleNode(DoubleNode<Integer> node, Integer value) {
+        Objects.requireNonNull(node);
+
         //直接获取前缀
         DoubleNode<Integer> prev = node.prev;
         if (prev == null) {
@@ -222,6 +241,7 @@ public class LinkedList {
         prev.next.prev = newNode;
         prev.next = newNode;
 
+        doubleTail = newNode;
         return value;
     }
 
@@ -232,10 +252,15 @@ public class LinkedList {
      * @return
      */
     public static DoubleNode<Integer> removeDoubleNode(DoubleNode<Integer> node) {
+        Objects.requireNonNull(node);
+
         //直接获取前缀
         DoubleNode<Integer> prev = node.prev;
         if (prev == null) {
             return node;
+        }
+        if (node == doubleTail) {
+            doubleTail = prev;
         }
         DoubleNode<Integer> next = prev.next.next;
         prev.next = next;
