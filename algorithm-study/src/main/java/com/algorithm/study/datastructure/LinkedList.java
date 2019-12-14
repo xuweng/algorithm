@@ -181,8 +181,8 @@ public class LinkedList {
             return value;
         }
         SingleNode<Integer> newNode = new SingleNode<>(value);
-        node.next = prev.next;
-        prev.next = node;
+        newNode.next = prev.next;
+        prev.next = newNode;
 
         return value;
     }
@@ -199,6 +199,49 @@ public class LinkedList {
             return node;
         }
         prev.next = prev.next.next;
+
+        return node;
+    }
+
+    /**
+     * 在node后面插入value
+     *
+     * @param node
+     * @param value
+     * @return
+     */
+    public static Integer insertDoubleNode(DoubleNode<Integer> node, Integer value) {
+        //直接获取前缀
+        DoubleNode<Integer> prev = node.prev;
+        if (prev == null) {
+            return value;
+        }
+        DoubleNode<Integer> newNode = new DoubleNode<>(value);
+        newNode.next = prev.next;
+        newNode.prev = prev;
+        prev.next.prev = newNode;
+        prev.next = newNode;
+
+        return value;
+    }
+
+    /**
+     * 删除node结点
+     *
+     * @param node
+     * @return
+     */
+    public static DoubleNode<Integer> removeDoubleNode(DoubleNode<Integer> node) {
+        //直接获取前缀
+        DoubleNode<Integer> prev = node.prev;
+        if (prev == null) {
+            return node;
+        }
+        DoubleNode<Integer> next = prev.next.next;
+        prev.next = next;
+        if (next != null) {
+            next.prev = prev;
+        }
 
         return node;
     }
