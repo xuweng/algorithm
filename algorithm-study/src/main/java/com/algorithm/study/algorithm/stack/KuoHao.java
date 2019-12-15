@@ -38,11 +38,7 @@ public class KuoHao {
             if (isLeft(c)) {
                 kuoStack.push(c);
             } else {
-                if (kuoStack.isEmpty()) {
-                    kuoStack.push(c);
-                }else {
-
-                }
+                kuoStack.peek();
             }
         }
 
@@ -57,6 +53,10 @@ public class KuoHao {
      */
     private static boolean isStr(String str) {
         Objects.requireNonNull(str);
+        //第一个是否左括号
+        if (!isLeft(str.charAt(0))) {
+            return false;
+        }
 
         for (int i = 0; i < str.length(); i++) {
             if (!isLeft(str.charAt(i)) || !isRight(str.charAt(i))) {

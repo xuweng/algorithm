@@ -68,6 +68,9 @@ public class BiaoDaShi {
             dateStack.push(compute(operatorStack.pop(), dateStack.pop(), dateStack.pop()));
         }
 
+        dateStack.clear();
+        operatorStack.clear();
+
         return dateStack.pop();
     }
 
