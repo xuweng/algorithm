@@ -63,7 +63,7 @@ public class KuoHao {
         }
 
         for (int i = 0; i < str.length(); i++) {
-            if (!isLeft(str.charAt(i)) || !isRight(str.charAt(i))) {
+            if (!isLeft(str.charAt(i)) && !isRight(str.charAt(i))) {
                 return false;
             }
         }
