@@ -98,6 +98,8 @@ public class JavaLinkedList<E> {
     }
 
     /**
+     * 删除f和f之前的结点
+     * <p>
      * Unlinks non-null first node f.
      */
     private E unlinkFirst(Node<E> f) {
@@ -118,6 +120,8 @@ public class JavaLinkedList<E> {
     }
 
     /**
+     * 删除l和l之后的结点
+     * <p>
      * Unlinks non-null last node l.
      */
     private E unlinkLast(Node<E> l) {
