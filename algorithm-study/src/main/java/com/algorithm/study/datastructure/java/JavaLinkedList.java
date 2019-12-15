@@ -1,11 +1,15 @@
 package com.algorithm.study.datastructure.java;
 
 
-import java.util.LinkedList;
 import java.util.NoSuchElementException;
 import java.util.Queue;
 
 /**
+ * 对first或者last操作,画出3个结点操作一遍
+ * <p>
+ * 删除last时,需要prev,所以使用双链表好
+ *
+ * <p>
  * 类库LinkedList
  */
 public class JavaLinkedList<E> {
