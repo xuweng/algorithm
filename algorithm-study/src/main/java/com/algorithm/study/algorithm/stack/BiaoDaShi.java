@@ -46,7 +46,7 @@ public class BiaoDaShi {
                 //当遇到数字，我们就直接压入操作数栈
                 dateStack.push(Double.parseDouble(String.valueOf(c)));
             } else {
-                if (operatorStack.empty()) {
+                if (operatorStack.isEmpty()) {
                     operatorStack.push(c);
                 } else {
                     //获取栈顶元素,不删除栈顶元素
@@ -55,7 +55,7 @@ public class BiaoDaShi {
                         operatorStack.push(c);
                     } else {
                         //获取栈顶元素,删除栈顶元素
-                        while (!operatorStack.empty() && operatorPriorityEqueMax(operatorStack.peek(), c)) {
+                        while (!operatorStack.isEmpty() && operatorPriorityEqueMax(operatorStack.peek(), c)) {
                             dateStack.push(compute(operatorStack.pop(), dateStack.pop(), dateStack.pop()));
                         }
                         operatorStack.push(c);
@@ -64,7 +64,7 @@ public class BiaoDaShi {
             }
         }
 
-        while (!operatorStack.empty()) {
+        while (!operatorStack.isEmpty()) {
             dateStack.push(compute(operatorStack.pop(), dateStack.pop(), dateStack.pop()));
         }
 
