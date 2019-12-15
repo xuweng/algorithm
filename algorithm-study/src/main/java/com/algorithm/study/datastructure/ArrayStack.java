@@ -3,7 +3,9 @@ package com.algorithm.study.datastructure;
 
 import java.util.Objects;
 
-// 基于数组实现的顺序栈
+/**
+ * 基于数组实现的顺序栈
+ */
 public class ArrayStack {
     private String[] elementData;  // 数组
     private int elementCount;       // 栈中元素个数
