@@ -26,7 +26,11 @@ public class LinkedStack {
         }
 
         String value = tail.date;
-        tail = findPrefix(tail);
+        Node<String> prev = findPrefix(tail);
+        //删除最后一个结点
+        tail = null;
+        prev.next = null;
+        tail = prev;
         return value;
     }
 
