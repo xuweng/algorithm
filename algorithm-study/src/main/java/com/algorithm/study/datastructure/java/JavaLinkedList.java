@@ -142,6 +142,8 @@ public class JavaLinkedList<E> {
     }
 
     /**
+     * 删除x
+     * <p>
      * Unlinks non-null node x.
      */
     E unlink(Node<E> x) {
