@@ -15,8 +15,8 @@ public class KuoHao {
 
     static {
         leftMap.put(Kuo.YUAN.left, Kuo.YUAN.right);
-        leftMap.put(Kuo.FANG.left, Kuo.FANG.left);
-        leftMap.put(Kuo.HUA.left, Kuo.HUA.left);
+        leftMap.put(Kuo.FANG.left, Kuo.FANG.right);
+        leftMap.put(Kuo.HUA.left, Kuo.HUA.right);
     }
 
     /**
@@ -39,10 +39,11 @@ public class KuoHao {
             if (isLeft(c)) {
                 kuoStack.push(c);
             } else {
-                if ((leftMap.get(kuoStack.pop()) != c) || kuoStack.isEmpty()) {
-                    //不能能够匹配
+                if ((leftMap.get(kuoStack.peek()) != c) || kuoStack.isEmpty()) {
+                    //不能能够匹配,或者栈中没有数据
                     return false;
                 }
+                kuoStack.pop();
             }
         }
         //当所有的括号都扫描完成之后，如果栈为空，则说明字符串为合法格式；否则，说明有未匹配的左括号，为非法格式。
