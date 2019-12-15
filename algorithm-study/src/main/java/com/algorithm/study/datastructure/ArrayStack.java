@@ -18,7 +18,12 @@ public class ArrayStack {
         this.top = -1;
     }
 
-    // 入栈操作
+    /**
+     * 入栈操作
+     *
+     * @param item
+     * @return
+     */
     public boolean push(String item) {
         Objects.requireNonNull(item);
         // 数组空间不够了，直接返回false，入栈失败。
@@ -31,7 +36,11 @@ public class ArrayStack {
         return true;
     }
 
-    // 出栈操作
+    /**
+     * 出栈操作,删除栈顶元素
+     *
+     * @return
+     */
     public String pop() {
         // 栈为空，则直接返回null
         if (isEmpty()) {
@@ -44,6 +53,11 @@ public class ArrayStack {
         return result;
     }
 
+    /**
+     * 获取栈顶元素,不删除栈顶元素
+     *
+     * @return
+     */
     public String peek() {
         // 栈为空，则直接返回null
         if (isEmpty()) {
