@@ -9,13 +9,14 @@ import java.util.Stack;
  * 括号匹配
  */
 public class KuoHao {
-    private static Map<Character, Character> map = new HashMap<>();
+    //存放左括号
+    private static Map<Character, Character> leftMap = new HashMap<>();
     private static Stack<Character> kuoStack = new Stack<>();
 
     static {
-        map.put(Kuo.YUAN.left, Kuo.YUAN.right);
-        map.put(Kuo.FANG.left, Kuo.FANG.left);
-        map.put(Kuo.HUA.left, Kuo.HUA.left);
+        leftMap.put(Kuo.YUAN.left, Kuo.YUAN.right);
+        leftMap.put(Kuo.FANG.left, Kuo.FANG.left);
+        leftMap.put(Kuo.HUA.left, Kuo.HUA.left);
     }
 
     /**
@@ -38,11 +39,14 @@ public class KuoHao {
             if (isLeft(c)) {
                 kuoStack.push(c);
             } else {
-                kuoStack.peek();
+                if ((leftMap.get(kuoStack.pop()) != c) || kuoStack.isEmpty()) {
+                    //不能能够匹配
+                    return false;
+                }
             }
         }
-
-        return true;
+        //当所有的括号都扫描完成之后，如果栈为空，则说明字符串为合法格式；否则，说明有未匹配的左括号，为非法格式。
+        return kuoStack.isEmpty();
     }
 
     /**
