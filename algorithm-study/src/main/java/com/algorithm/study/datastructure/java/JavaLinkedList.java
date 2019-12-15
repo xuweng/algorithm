@@ -48,6 +48,7 @@ public class JavaLinkedList<E> {
      */
     private void linkFirst(E e) {
         final Node<E> f = first;
+        //prev==null
         final Node<E> newNode = new Node<>(null, e, f);
         first = newNode;
         if (f == null) {
@@ -70,6 +71,7 @@ public class JavaLinkedList<E> {
      */
     void linkLast(E e) {
         final Node<E> l = last;
+        //next==null
         final Node<E> newNode = new Node<>(l, e, null);
         last = newNode;
         if (l == null) {
@@ -207,6 +209,34 @@ public class JavaLinkedList<E> {
             throw new NoSuchElementException();
         }
         return l.item;
+    }
+
+    /**
+     * Removes and returns the first element from this list.
+     *
+     * @return the first element from this list
+     * @throws NoSuchElementException if this list is empty
+     */
+    public E removeFirst() {
+        final Node<E> f = first;
+        if (f == null) {
+            throw new NoSuchElementException();
+        }
+        return unlinkFirst(f);
+    }
+
+    /**
+     * Removes and returns the last element from this list.
+     *
+     * @return the last element from this list
+     * @throws NoSuchElementException if this list is empty
+     */
+    public E removeLast() {
+        final Node<E> l = last;
+        if (l == null) {
+            throw new NoSuchElementException();
+        }
+        return unlinkLast(l);
     }
 
     /**
