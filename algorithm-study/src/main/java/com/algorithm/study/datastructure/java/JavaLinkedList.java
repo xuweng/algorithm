@@ -38,7 +38,12 @@ public class JavaLinkedList<E> {
 
 
     /**
+     * first一定在last前面
+     * <p>
      * 不正常的双链表
+     * <p>
+     * 从右往左增加结点
+     * <---------
      * <p>
      * 将e链接为第一个元素。
      * <p>
@@ -61,7 +66,12 @@ public class JavaLinkedList<E> {
     }
 
     /**
+     * first一定在last前面
+     * <p>
      * 正常的双链表
+     * <p>
+     * 从左往右增加结点
+     * ------------>
      * <p>
      * 将e链接为最后一个元素。
      * <p>
@@ -212,6 +222,10 @@ public class JavaLinkedList<E> {
     }
 
     /**
+     * first和last在两端
+     * <p>
+     * 删除first
+     * <p>
      * Removes and returns the first element from this list.
      *
      * @return the first element from this list
@@ -226,6 +240,10 @@ public class JavaLinkedList<E> {
     }
 
     /**
+     * first和last在两端
+     * <p>
+     * 删除last
+     * <p>
      * Removes and returns the last element from this list.
      *
      * @return the last element from this list
