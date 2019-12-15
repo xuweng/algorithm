@@ -304,7 +304,7 @@ public class Array {
         //索引检查 0 <= index <= size
         rangeCheckForAdd(index);
 
-        //确保容量内置 size>=oldCapacity 是否扩容
+        //确保容量内置 size + 1 > oldCapacity 是否扩容
         ensureCapacityInternal(size + 1);  // Increments modCount!!
         //移动元素
         System.arraycopy(elementData, index, elementData, index + 1,
@@ -316,7 +316,7 @@ public class Array {
     /**
      * 确保容量内置
      *
-     * @param minCapacity
+     * @param minCapacity 最小容量 (size + 1)
      */
     private void ensureCapacityInternal(int minCapacity) {
         ensureExplicitCapacity(calculateCapacity(elementData, minCapacity));
@@ -344,6 +344,7 @@ public class Array {
     private void ensureExplicitCapacity(int minCapacity) {
         // overflow-conscious code
         //有溢出意识的代码
+        //size+1>elementData.length?
         if (minCapacity - elementData.length > 0) {
             //旧数组的数据搬到新数组
             grow(minCapacity);
