@@ -1,6 +1,9 @@
 package com.algorithm.study.datastructure.java;
 
 
+import java.util.LinkedList;
+import java.util.NoSuchElementException;
+
 /**
  * 类库LinkedList
  */
@@ -170,6 +173,40 @@ public class JavaLinkedList<E> {
         size--;
         modCount++;
         return element;
+    }
+
+    /**
+     * 双端队列使用
+     * <p>
+     * 检索但不删除此双端队列的第一个元素。
+     * <p>
+     * 获取第一个元素
+     *
+     * @return
+     */
+    public E getFirst() {
+        final Node<E> f = first;
+        if (f == null) {
+            throw new NoSuchElementException();
+        }
+        return f.item;
+    }
+
+    /**
+     * 双端队列使用
+     * <p>
+     * 检索但不删除此双端队列的最后一个元素。
+     * <p>
+     * 获取最后一个元素
+     *
+     * @return
+     */
+    public E getLast() {
+        final Node<E> l = last;
+        if (l == null) {
+            throw new NoSuchElementException();
+        }
+        return l.item;
     }
 
     /**
