@@ -76,4 +76,72 @@ public class Sort {
         quickSort(array, partitionIndex + 1, endIndex);
     }
 
+    /**
+     * 排序的过程就是一种增加有序度，减少逆序度的过程，最后达到满有序度
+     * <p>
+     * 每交换一次，有序度就加 1。不管算法怎么改进，交换次数总是确定的，即为逆序度
+     *
+     * <p>
+     * 冒泡排序，a表示数组，n表示数组大小
+     * <p>
+     * 交换、移动
+     * <p>
+     * 有数据区域、无数据区域
+     * <p>
+     * 排序区域、没排序区域
+     *
+     * @param a
+     * @param n
+     */
+    public void bubbleSort(int[] a, int n) {
+        //一个元素
+        if (n <= 1) {
+            return;
+        }
+
+        for (int i = 0; i < n; ++i) {
+            // 提前退出冒泡循环的标志位
+            boolean isSwap = false;
+            for (int j = 0; j < n - i - 1; ++j) {
+                //稳定排序
+                if (a[j] > a[j + 1]) { // 交换
+                    int tmp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = tmp;
+                    isSwap = true;  // 表示有数据交换
+                }
+            }
+            if (!isSwap) {
+                break;  // 没有数据交换，提前退出
+            }
+        }
+    }
+
+
+    /**
+     * 插入排序，a表示数组，n表示数组大小
+     *
+     * @param a
+     * @param n
+     */
+    public void insertionSort(int[] a, int n) {
+        //一个元素
+        if (n <= 1) {
+            return;
+        }
+
+        for (int i = 1; i < n; ++i) {
+            int value = a[i];
+            int j = i - 1;
+            // 查找插入的位置
+            for (; j >= 0; --j) {
+                if (a[j] > value) {
+                    a[j + 1] = a[j];  // 数据移动
+                } else {
+                    break;
+                }
+            }
+            a[j + 1] = value; // 插入数据
+        }
+    }
 }
