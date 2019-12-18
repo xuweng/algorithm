@@ -14,13 +14,6 @@ import java.util.Scanner;
  * 归并排序的非递归算法
  */
 public class MergeSort {
-    public static void main(String args[]) {
-        MergeSort mer = new MergeSort();
-        int[] array = mer.getArray();
-        System.out.println("OriginalArray:" + Arrays.toString(array));
-        mer.mergeSort(array);
-        System.out.println("SortedArray:" + Arrays.toString(array));
-    }
 
     public int[] getArray() {
         Scanner cin = new Scanner(System.in);

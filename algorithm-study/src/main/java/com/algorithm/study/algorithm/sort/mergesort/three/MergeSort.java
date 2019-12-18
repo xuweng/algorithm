@@ -46,14 +46,4 @@ public class MergeSort {
         int[] data = {543, 23, 45, 65, 76, 1, 456, 7, 77, 88, 3, 9};
         return data;
     }
-
-    public static void main(String args[]) {
-        int[] a = getArray();
-        System.out.print("数组排序前：");
-        printArray(a);
-        System.out.print("\n");
-        mergeSort(a, 0, a.length - 1);
-        System.out.print("归并排序后：");
-        printArray(a);
-    }
 }
