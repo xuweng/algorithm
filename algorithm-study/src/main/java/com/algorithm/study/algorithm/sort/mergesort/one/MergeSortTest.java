@@ -1,4 +1,4 @@
-package com.algorithm.study.algorithm.sort.mergesort;
+package com.algorithm.study.algorithm.sort.mergesort.one;
 
 /**
  * 代码模板
