@@ -23,7 +23,7 @@ public class Permutation {
             ArrayUtils.swap(array, i, n);
             permutation(array, n - 1);
 
-            //恢复数据
+            //一次排列后恢复数据
             ArrayUtils.swap(array, i, n);
         }
     }
