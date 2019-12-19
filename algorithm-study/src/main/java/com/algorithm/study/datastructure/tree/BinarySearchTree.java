@@ -6,6 +6,13 @@ package com.algorithm.study.datastructure.tree;
 public class BinarySearchTree {
     private BinaryNode<Integer> root;
 
+    /**
+     * 插入
+     *
+     * @param root
+     * @param date
+     * @return
+     */
     public BinaryNode<Integer> insert(BinaryNode<Integer> root, Integer date) {
         if (root == null) {
             return new BinaryNode<Integer>(date, null, null);
@@ -18,6 +25,28 @@ public class BinarySearchTree {
         }
 
         return root;
+    }
+
+    /**
+     * 查找
+     *
+     * @param root
+     * @param date
+     * @return
+     */
+    public BinaryNode<Integer> find(BinaryNode<Integer> root, Integer date) {
+        if (root == null) {
+            return null;
+        }
+
+        if (date < root.date) {
+            return find(root.left, date);
+        } else if (date > root.date) {
+            return find(root.right, date);
+        } else {
+            return root;
+        }
+
     }
 
     /**
