@@ -1,4 +1,4 @@
-package com.algorithm.study.datastructure;
+package com.algorithm.study.datastructure.queue;
 
 /**
  * 环形队列

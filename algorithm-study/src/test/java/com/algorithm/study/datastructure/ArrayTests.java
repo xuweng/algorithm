@@ -1,5 +1,6 @@
 package com.algorithm.study.datastructure;
 
+import com.algorithm.study.datastructure.array.Array;
 import org.junit.Test;
 
 public class ArrayTests {

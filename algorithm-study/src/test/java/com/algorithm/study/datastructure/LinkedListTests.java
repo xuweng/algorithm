@@ -1,5 +1,6 @@
 package com.algorithm.study.datastructure;
 
+import com.algorithm.study.datastructure.link.LinkedList;
 import org.junit.Test;
 
 public class LinkedListTests {

@@ -1,4 +1,4 @@
-package com.algorithm.study.datastructure;
+package com.algorithm.study.datastructure.stack;
 
 
 import java.util.Objects;

@@ -1,5 +1,6 @@
 package com.algorithm.study.datastructure;
 
+import com.algorithm.study.datastructure.stack.ArrayStack;
 import org.junit.Test;
 
 public class ArrayStackTests {
