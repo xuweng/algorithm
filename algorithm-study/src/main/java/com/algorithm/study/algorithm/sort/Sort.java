@@ -2,6 +2,9 @@ package com.algorithm.study.algorithm.sort;
 
 import com.algorithm.study.common.ArrayUtils;
 
+import java.util.Arrays;
+import java.util.stream.Stream;
+
 /**
  * 排序复杂度
  * 排序：O（n2）。O（nlogn）。
@@ -142,6 +145,52 @@ public class Sort {
                 }
             }
             a[j + 1] = value; // 插入数据
+        }
+    }
+
+
+    /**
+     * 计数排序，a是数组，n是数组大小。假设数组中存储的都是非负整数。
+     *
+     * @param a
+     * @param n
+     */
+    public void countingSort(Integer[] a, int n) {
+        if (n <= 1) {
+            return;
+        }
+
+        //int a = Stream.of(2,1,4,5,3).max(Integer::compare).get();------5
+        //int b = Stream.of(2,1,4,5,3).min(Integer::compare).get();------1
+        //int a = Stream.of(1,2,4,5,3).mapToInt(i -> i).max().getAsInt();
+        // 查找数组中数据的范围
+        int max = Stream.of(a).max(Integer::compare).get();
+        // 申请一个计数数组c，下标大小[0,max]
+        int[] c = new int[max + 1];
+        Arrays.fill(c, 0);
+
+        // 计算每个元素的个数，放入c中
+        for (int i = 0; i < n; ++i) {
+            c[a[i]]++;
+        }
+
+        // 依次累加
+        for (int i = 1; i <= max; ++i) {
+            c[i] = c[i - 1] + c[i];
+        }
+
+        // 临时数组r，存储排序之后的结果
+        int[] r = new int[n];
+        // 计算排序的关键步骤，有点难理解
+        for (int i = n - 1; i >= 0; --i) {
+            int index = c[a[i]] - 1;
+            r[index] = a[i];
+            c[a[i]]--;
+        }
+
+        // 将结果拷贝给a数组
+        for (int i = 0; i < n; ++i) {
+            a[i] = r[i];
         }
     }
 }
