@@ -391,4 +391,35 @@ public class ArrayUtils {
 
         return result;
     }
+
+    /**
+     * 交换
+     *
+     * @param array
+     * @param i     数组下标
+     * @param j     数组下标
+     */
+    public static void swap(int[] array, int i, int j) {
+        checkIndex(array.length, i);
+        checkIndex(array.length, j);
+
+        if (i == j) {
+            return;
+        }
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    /**
+     * 检查下标
+     *
+     * @param length
+     * @param index
+     */
+    public static void checkIndex(int length, int index) {
+        if (index < 0 || index >= length) {
+            throw new IndexOutOfBoundsException();
+        }
+    }
 }
