@@ -7,6 +7,8 @@ package com.algorithm.study.algorithm.sort.quicksort.one;
  * 不管是当条件是大于等于还是小于等于v，当数组中重复元素非常多的时候，等于v的元素太多，
  * 那么就将数组分成了极度不平衡的两个部分，因为等于v的部分总是集中在数组的某一边。
  * <p>
+ * 归并排序是二分。极度平衡。
+ * <p>
  * 挖坑填数+分治法
  */
 public class QuickSort {
