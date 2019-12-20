@@ -3,6 +3,10 @@ package com.algorithm.study.algorithm.sort.quicksort.one;
 /**
  * 快速排序
  * <p>
+ * 双路快排。等于v这种情况包含进了大于v的情况里面
+ * 不管是当条件是大于等于还是小于等于v，当数组中重复元素非常多的时候，等于v的元素太多，
+ * 那么就将数组分成了极度不平衡的两个部分，因为等于v的部分总是集中在数组的某一边。
+ * <p>
  * 挖坑填数+分治法
  */
 public class QuickSort {
@@ -65,6 +69,7 @@ public class QuickSort {
             }
             //两个条件，保证i<j
             // 从左向右找大于或等于x的数来填s[j]
+            //等于的元素放在右边
             while (i < j && s[i] < x) {
                 i++;
             }
