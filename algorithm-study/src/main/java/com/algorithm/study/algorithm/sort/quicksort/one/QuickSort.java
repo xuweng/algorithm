@@ -1,6 +1,11 @@
 package com.algorithm.study.algorithm.sort.quicksort.one;
 
 /**
+ * 什么样的数据?
+ * 1,2,3,4,5,6
+ * 6,5,4,3,2,1
+ * 2,1,1,1,1,1
+ * <p>
  * 快速排序
  * <p>
  * 双路快排。等于v这种情况包含进了大于v的情况里面
