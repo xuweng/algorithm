@@ -4,7 +4,9 @@ package com.algorithm.study.algorithm.sort.quicksort.one;
  * 什么样的数据?
  * 1,2,3,4,5,6
  * 6,5,4,3,2,1
- * 2,1,1,1,1,1
+ * 2,2,2,2,2,1
+ * <p>
+ * 即使有重复数据。一边慢，但是一边快。
  * <p>
  * 快速排序
  * <p>
