@@ -10,6 +10,8 @@ package com.algorithm.study.algorithm.sort.quicksort.one;
  * 归并排序是二分。极度平衡。
  * <p>
  * 挖坑填数+分治法
+ * <p>
+ * 挖坑填数不是交换，不是拿基准数据不断交换
  */
 public class QuickSort {
     //快速排序
@@ -18,17 +20,29 @@ public class QuickSort {
             //Swap(s[l], s[(l + r) / 2]); //将中间的这个数和第一个数交换 参见注1
             int i = l, j = r, x = s[l];
             while (i < j) {
+                //用一些数据来验证
+                //1,2,3,4,5,6
+                //退出时，i=j。
                 while (i < j && s[j] >= x) // 从右向左找第一个小于x的数
                 {
                     j--;
                 }
+                if (i == j) {
+                    return;
+                }
                 if (i < j) {
                     s[i++] = s[j];
                 }
-
+                //用一些数据来验证
+                //6,5,4,3,2,1
+                //退出时，i=j。
+                //等于x放在右边
                 while (i < j && s[i] < x) // 从左向右找第一个大于等于x的数
                 {
                     i++;
+                }
+                if (i == j) {
+                    return;
                 }
                 if (i < j) {
                     s[j--] = s[i];
