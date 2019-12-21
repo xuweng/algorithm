@@ -15,6 +15,9 @@ package com.algorithm.study.algorithm.sort.insert;
  */
 public class InsertSort {
     /**
+     * 逆序:O(n2)
+     * 正序:O(n)。不需要移动元素。
+     * <p>
      * 直接插入排序的原理：先将原序列分为有序区和无序区，然后再经过比较和后移操作将无序区元素插入到有序区中。
      * <p>
      * 具体如下（实现为升序）：
@@ -47,9 +50,15 @@ public class InsertSort {
         // 0-(i-1) 为有序区；i-(length-1)为无序区 （i从1开始）
         for (i = 1; i < length; i++) {
             int temp = arr[i];
+            boolean noYiDong = true;//没有移动
             // 边找位置边后移元素
             for (j = i - 1; j >= 0 && arr[j] > temp; j--) {
                 arr[j + 1] = arr[j];    // 如果已排序的元素大于新元素，将该元素移到下一位置
+                noYiDong = false;
+            }
+            //没有移动元素直接退出
+            if (noYiDong) {
+                return;
             }
 
             // 将 arr[i] 放到正确位置上
