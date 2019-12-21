@@ -75,6 +75,8 @@ public class BinarySearch {
     }
 
     /**
+     * 最简单的情况就是有序数组中不存在重复元素
+     *
      * @param a     数据
      * @param n     数量
      * @param value 值
