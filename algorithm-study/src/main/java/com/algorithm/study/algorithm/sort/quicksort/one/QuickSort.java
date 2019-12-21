@@ -22,7 +22,7 @@ package com.algorithm.study.algorithm.sort.quicksort.one;
  */
 public class QuickSort {
     //快速排序
-    public void quick_sort(int s[], int l, int r) {
+    public static void quick_sort(int s[], int l, int r) {
         if (l < r) {
             //Swap(s[l], s[(l + r) / 2]); //将中间的这个数和第一个数交换 参见注1
             int i = l, j = r, x = s[l];
@@ -70,41 +70,43 @@ public class QuickSort {
     }
 
     /**
+     * 大于等于的元素放在右边
+     * <p>
      * 分区函数
      * <p>
      * 返回调整后基准数的位置
      *
-     * @param s
-     * @param l
-     * @param r
+     * @param array 数据
+     * @param l     数组下标
+     * @param r     数组下标
      * @return 调整后基准数的位置
      */
-    public int partition(int s[], int l, int r) {
+    public static int partition(int[] array, int l, int r) {
         int i = l, j = r;
-        int x = s[l]; //s[l]即s[i]就是第一个坑
+        int x = array[l]; //s[l]即s[i]就是第一个坑
         while (i < j) {
             //两个条件，保证i<j
             // 从右向左找小于x的数来填s[i]
-            while (i < j && s[j] >= x) {
+            while (i < j && array[j] >= x) {
                 j--;
             }
             if (i < j) {
-                s[i] = s[j]; //将s[j]填到s[i]中，s[j]就形成了一个新的坑
+                array[i] = array[j]; //将s[j]填到s[i]中，s[j]就形成了一个新的坑
                 i++;
             }
             //两个条件，保证i<j
             // 从左向右找大于或等于x的数来填s[j]
             //等于的元素放在右边
-            while (i < j && s[i] < x) {
+            while (i < j && array[i] < x) {
                 i++;
             }
             if (i < j) {
-                s[j] = s[i]; //将s[i]填到s[j]中，s[i]就形成了一个新的坑
+                array[j] = array[i]; //将s[i]填到s[j]中，s[i]就形成了一个新的坑
                 j--;
             }
         }
         //退出时，i等于j。将x填到这个坑中。
-        s[i] = x;
+        array[i] = x;
 
         return i;
     }
