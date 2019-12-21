@@ -108,6 +108,8 @@ public class InsertSort {
 
     /**
      * 希尔排序
+     * <p>
+     * space=1时就是普通的插入排序
      *
      * @param arr
      */
