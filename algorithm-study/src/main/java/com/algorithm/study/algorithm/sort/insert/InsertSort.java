@@ -31,7 +31,7 @@ public class InsertSort {
         if (length <= 1) {
             return;
         }
-        int i, j, k;
+        int i, j;
 
         // 将arr分成有序区和无序区，初始有序区有一个元素
         // 0-(i-1) 为有序区；i-(length-1)为无序区 （i从1开始）
