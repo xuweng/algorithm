@@ -75,6 +75,8 @@ public class BinarySearch {
     }
 
     /**
+     * 代码模板
+     * <p>
      * 最简单的情况就是有序数组中不存在重复元素
      * <p>
      * 一个数不需要排序。但是一个数还需要查找。
@@ -85,8 +87,8 @@ public class BinarySearch {
      * @return
      */
     public static int bsearch(int[] a, int n, int value) {
-        int low = 0;//下标
-        int high = n - 1;//下标
+        int low = 0;//数组下标
+        int high = n - 1;//数组下标
 
         while (low <= high) {
 //            int mid = (low + high) / 2;
@@ -116,6 +118,17 @@ public class BinarySearch {
         return bsearchInternally(a, 0, n - 1, val);
     }
 
+    /**
+     * 代码模板
+     * <p>
+     * 就用这个代码模板
+     *
+     * @param a
+     * @param low   数组下标
+     * @param high  数组下标
+     * @param value
+     * @return
+     */
     private static int bsearchInternally(int[] a, int low, int high, int value) {
         if (low > high) {
             return -1;
