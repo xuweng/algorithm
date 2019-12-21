@@ -3,6 +3,8 @@ package com.algorithm.study.algorithm.search;
 import java.util.Objects;
 
 /**
+ * 看似越简单的东西往往越难掌握好，想要灵活应用就更加困难。
+ * <p>
  * 查找复杂度
  * 查找：O（n）。O（logn）。O（1）。
  */
