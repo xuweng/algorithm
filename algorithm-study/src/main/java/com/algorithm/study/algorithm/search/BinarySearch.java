@@ -76,6 +76,8 @@ public class BinarySearch {
 
     /**
      * 最简单的情况就是有序数组中不存在重复元素
+     * <p>
+     * 一个数不需要排序。但是一个数还需要查找。
      *
      * @param a     数据
      * @param n     数量
@@ -87,7 +89,8 @@ public class BinarySearch {
         int high = n - 1;//下标
 
         while (low <= high) {
-            int mid = (low + high) / 2;
+//            int mid = (low + high) / 2;
+            int mid = low + ((high - low) >> 1);
             if (a[mid] == value) {
                 return mid;
             } else if (a[mid] < value) {
