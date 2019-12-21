@@ -189,12 +189,15 @@ public class QuickSort {
             while (j >= left + 1 && arr[j] > v) {
                 j--;
             }
-            //i==j。交换没有意义。
+            //i==j。交换同一个数没有意义。
             if (i >= j) {
                 break;
             }
             //i，j两两交换。两个数相等时也会交换
-            ArrayUtils.swap(arr, i, j);
+            //arr[i]==arr[j]。交换相等的数没有意义。
+            if (arr[i] != arr[j]) {
+                ArrayUtils.swap(arr, i, j);
+            }
             i++;
             j--;
         }
