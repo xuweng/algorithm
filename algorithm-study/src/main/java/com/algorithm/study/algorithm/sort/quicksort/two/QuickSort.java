@@ -20,7 +20,7 @@ public class QuickSort {
      * @param r   右边界
      * @return
      */
-    int partition(int arr[], int l, int r) {
+    public static int partition(int arr[], int l, int r) {
         int v = arr[l];
         int i, j;
         i = l + 1;
@@ -56,7 +56,7 @@ public class QuickSort {
      * @param l
      * @param r
      */
-    void __quicksort2(int arr[], int l, int r) {
+    public static void __quicksort2(int arr[], int l, int r) {
         //终止条件
         if (l >= r) {
             return;
@@ -69,7 +69,7 @@ public class QuickSort {
     }
 
 
-    void quicksort(int arr[], int n) {
+    public static void quicksort(int arr[], int n) {
         __quicksort2(arr, 0, n - 1);
     }
 

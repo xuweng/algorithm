@@ -64,7 +64,7 @@ public class QuickSort {
         }
     }
 
-    public void quick_sort1(int s[], int l, int r) {
+    public static void quick_sort1(int s[], int l, int r) {
         if (l < r) {
             int i = partition(s, l, r);//先成挖坑填数法调整s[]
             quick_sort1(s, l, i - 1); // 递归调用
