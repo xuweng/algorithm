@@ -2,8 +2,7 @@ package com.algorithm.study.algorithm.sort.insert;
 
 /**
  * 冒泡:扫描----------是否需要交换?
- * 插入:扫描----------是否需要移动?
- * 扫描是必须的。至少需要扫描一次------------->判断是否需要交换或者移动------>不需要则退出循环。
+ * 插入、选择----------划分有序区和无序区。冒泡没有划分。
  * <p>
  * 直接插入排序
  * 二分查找插入排序---------一样需要移动元素。没什么优化。
@@ -54,15 +53,9 @@ public class InsertSort {
         // 0-(i-1) 为有序区；i-(length-1)为无序区 （i从1开始）
         for (i = 1; i < length; i++) {
             int temp = arr[i];
-            boolean noYiDong = true;//没有移动
             // 边找位置边后移元素
             for (j = i - 1; j >= 0 && arr[j] > temp; j--) {
                 arr[j + 1] = arr[j];    // 如果已排序的元素大于新元素，将该元素移到下一位置
-                noYiDong = false;
-            }
-            //没有移动元素直接退出
-            if (noYiDong) {
-                return;
             }
 
             // 将 arr[i] 放到正确位置上
