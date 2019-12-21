@@ -126,7 +126,11 @@ public class InsertSort {
     }
 
     /**
-     * 希尔子序列排序
+     * 根据步长来将数据分组。
+     * <p>
+     * https://www.cnblogs.com/heyuquan/p/insert-sort.html
+     * <p>
+     * 一次步长的希尔子序列排序
      * <p>
      * 对于普通插入排序。space=1。
      *
@@ -137,6 +141,8 @@ public class InsertSort {
     private static void shellInsert(int[] arr, int length, int space) {
         // 将arr子序列分成有序区和无序区，初始有序区有一个元素
         // 0-(i-1) 为有序区；i-(length-1)为无序区
+
+        //这里虽然是i++，但是数据量变少。数据量仅仅是同一组的数据。
         for (int i = space; i < length; i++) {
             int temp = arr[i];
             //j是有序区
