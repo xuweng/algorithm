@@ -11,28 +11,31 @@ import com.algorithm.study.common.ArrayUtils;
  */
 public class QuickSort {
     /**
+     * 画图分析
+     * <p>
      * 一开始将小于v和大于v的元素放在数组的两端,等于v稍后再处理
      * arr[l+1...l-1]<v
      * arr[j...r]>v
      *
-     * @param arr 数据
-     * @param l   左边界
-     * @param r   右边界
+     * @param arr   数据
+     * @param left  左边界。数组下标。
+     * @param right 右边界。数组下标。
      * @return
      */
-    public static int partition(int arr[], int l, int r) {
-        int v = arr[l];
-        int i, j;
-        i = l + 1;
-        j = r;
+    public static int partition(int arr[], int left, int right) {
+        //swap(arr[left],arr[rand()%(r-l+1)+l]);//随机取参考值的大小
+        //arr[left]是一个随机选择数
+        //v是一个随机选择数。应付高度有序。
+        int v = arr[left];
+        int i = left + 1, j = right;
         while (true) {
             //合并
             //当i的元素小于v的时候继续向后扫描，直到碰到了arr[i]>=v
-            while (arr[i] < v && i <= r) {
+            while (arr[i] < v && i <= right) {
                 i++;
             }
             //直到碰到某个元素arr[i]<=v
-            while (j >= l + 1 && arr[j] > v) {
+            while (j >= left + 1 && arr[j] > v) {
                 j--;
             }
 
@@ -44,7 +47,8 @@ public class QuickSort {
             i++;
             j--;
         }
-        ArrayUtils.swap(arr, l, j);
+        //设置基准元素
+        ArrayUtils.swap(arr, left, j);
 
         return j;
     }
