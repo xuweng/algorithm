@@ -22,7 +22,7 @@ package com.algorithm.study.algorithm.sort.quicksort.one;
  */
 public class QuickSort {
     //快速排序
-    void quick_sort(int s[], int l, int r) {
+    public void quick_sort(int s[], int l, int r) {
         if (l < r) {
             //Swap(s[l], s[(l + r) / 2]); //将中间的这个数和第一个数交换 参见注1
             int i = l, j = r, x = s[l];
@@ -61,15 +61,17 @@ public class QuickSort {
         }
     }
 
-    void quick_sort1(int s[], int l, int r) {
+    public void quick_sort1(int s[], int l, int r) {
         if (l < r) {
-            int i = AdjustArray(s, l, r);//先成挖坑填数法调整s[]
+            int i = partition(s, l, r);//先成挖坑填数法调整s[]
             quick_sort1(s, l, i - 1); // 递归调用
             quick_sort1(s, i + 1, r);
         }
     }
 
     /**
+     * 分区函数
+     * <p>
      * 返回调整后基准数的位置
      *
      * @param s
@@ -77,7 +79,7 @@ public class QuickSort {
      * @param r
      * @return 调整后基准数的位置
      */
-    int AdjustArray(int s[], int l, int r) {
+    public int partition(int s[], int l, int r) {
         int i = l, j = r;
         int x = s[l]; //s[l]即s[i]就是第一个坑
         while (i < j) {
