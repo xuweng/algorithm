@@ -139,6 +139,7 @@ public class InsertSort {
         // 0-(i-1) 为有序区；i-(length-1)为无序区
         for (int i = space; i < length; i++) {
             int temp = arr[i];
+            //j是有序区
             int j = i - space;
             // 边找位置边后移元素
             for (; j >= 0 && arr[j] > temp; j = j - space) {
