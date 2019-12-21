@@ -3,6 +3,7 @@ package com.algorithm.study.algorithm.sort.insert;
 /**
  * 冒泡:扫描----------是否需要交换?
  * 插入、选择----------划分有序区和无序区。冒泡没有划分。
+ * 有序区---------最后一个数最大。
  * <p>
  * 直接插入排序
  * 二分查找插入排序---------一样需要移动元素。没什么优化。
@@ -47,14 +48,17 @@ public class InsertSort {
         if (length <= 1) {
             return;
         }
-        int i, j;
 
         // 将arr分成有序区和无序区，初始有序区有一个元素
         // 0-(i-1) 为有序区；i-(length-1)为无序区 （i从1开始）
-        for (i = 1; i < length; i++) {
-            int temp = arr[i];
+        for (int i = 1; i < length; i++) {
+            int temp = arr[i], j = i - 1;
             // 边找位置边后移元素
-            for (j = i - 1; j >= 0 && arr[j] > temp; j--) {
+            //arr[j]是有序区最后一个元素。也是有序区最大的元素。
+            if (arr[j] <= temp) {
+                continue;
+            }
+            for (; j >= 0 && arr[j] > temp; j--) {
                 arr[j + 1] = arr[j];    // 如果已排序的元素大于新元素，将该元素移到下一位置
             }
 
