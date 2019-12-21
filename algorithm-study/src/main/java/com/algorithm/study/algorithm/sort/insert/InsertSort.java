@@ -55,9 +55,7 @@ public class InsertSort {
             int temp = arr[i], j = i - 1;
             // 边找位置边后移元素
             //arr[j]是有序区最后一个元素。也是有序区最大的元素。
-            if (arr[j] <= temp) {
-                continue;
-            }
+            //条件写在循环条件里面很巧妙。
             for (; j >= 0 && arr[j] > temp; j--) {
                 arr[j + 1] = arr[j];    // 如果已排序的元素大于新元素，将该元素移到下一位置
             }
