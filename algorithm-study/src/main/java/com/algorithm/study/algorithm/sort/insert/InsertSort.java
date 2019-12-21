@@ -105,4 +105,49 @@ public class InsertSort {
             }
         }
     }
+
+    /**
+     * 希尔排序
+     *
+     * @param arr
+     */
+    public static void ShellSort(int[] arr) {
+        int length = arr.length;
+        if (length <= 1) {
+            return;
+        }
+        // 间隔增量，所有距离为space的倍数的记录放在同一个组中
+        int space = length / 2;
+        while (space >= 1) {
+            shellInsert(arr, length, space);
+            // 每次增量为原先的1/2
+            space = space / 2;
+        }
+    }
+
+    /**
+     * 希尔子序列排序
+     * <p>
+     * 对于普通插入排序。space=1。
+     *
+     * @param arr    待排序数组
+     * @param length 待排序数组长度
+     * @param space  间隔增量
+     */
+    private static void shellInsert(int[] arr, int length, int space) {
+        // 将arr子序列分成有序区和无序区，初始有序区有一个元素
+        // 0-(i-1) 为有序区；i-(length-1)为无序区
+        for (int i = space; i < length; i++) {
+            int temp = arr[i];
+            int j = i - space;
+            // 边找位置边后移元素
+            for (; j >= 0 && arr[j] > temp; j = j - space) {
+                // 如果已排序的元素大于新元素，将该元素移到下一位置
+                //普通移动是一个一个元素移动。这里移动是按照增量移动。用i += step_size而不是i++
+                arr[j + space] = arr[j];
+            }
+            // 将 arr[i] 放到正确位置上
+            arr[j + space] = temp;
+        }
+    }
 }
