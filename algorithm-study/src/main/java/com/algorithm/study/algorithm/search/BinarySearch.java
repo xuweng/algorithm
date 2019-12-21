@@ -73,4 +73,28 @@ public class BinarySearch {
 
         return -1;
     }
+
+    /**
+     * @param a     数据
+     * @param n     数量
+     * @param value 值
+     * @return
+     */
+    public static int bsearch(int[] a, int n, int value) {
+        int low = 0;//下标
+        int high = n - 1;//下标
+
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (a[mid] == value) {
+                return mid;
+            } else if (a[mid] < value) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return -1;
+    }
 }
