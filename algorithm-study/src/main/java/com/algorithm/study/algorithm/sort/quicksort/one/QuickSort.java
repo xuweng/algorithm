@@ -113,4 +113,18 @@ public class QuickSort {
 
         return i;
     }
+
+    /**
+     * 随机选择基准元素。对高度有序数据很有用。
+     * <p>
+     * 1,2,3,4,5,6---------->选择3。不是选择1。
+     *
+     * @param arry  数据
+     * @param left  左指针
+     * @param right 右指针
+     * @return 基准元素下标
+     */
+    public static int selectPartitionRandom(int[] arry, int left, int right) {
+        return 0;
+    }
 }
