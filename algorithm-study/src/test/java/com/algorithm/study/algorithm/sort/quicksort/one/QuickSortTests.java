@@ -13,7 +13,7 @@ public class QuickSortTests {
     private int[] array3 = {4, 3, 7, 8, 2, 1, 6, 5};
 
     /**
-     * 重复数据测试
+     * 重复数据测试--------1:n-1
      */
     @Test
     public void partitionTest() {
@@ -25,7 +25,7 @@ public class QuickSortTests {
     }
 
     /**
-     * 正序数据测试
+     * 正序数据测试--------1:n-1
      */
     @Test
     public void partitionTest1() {
@@ -49,7 +49,7 @@ public class QuickSortTests {
     }
 
     /**
-     * 重复数据测试
+     * 重复数据测试--------1:1
      */
     @Test
     public void advancedPartitionTest() {
@@ -61,7 +61,7 @@ public class QuickSortTests {
     }
 
     /**
-     * 正序数据测试
+     * 正序数据测试--------1:1
      */
     @Test
     public void advancedPartitionTest1() {
