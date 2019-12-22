@@ -1,5 +1,6 @@
 package com.algorithm.study.datastructure.skiptable;
 
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -103,5 +104,102 @@ public class SkipList {
      */
     private static boolean isEmpty(SkipListEntry skipListEntry) {
         return (skipListEntry != null) && (skipListEntry.key.equals(SkipListEntry.posInf));
+    }
+
+    /**
+     * 指针太多
+     *
+     * @param key
+     * @param value
+     * @return
+     */
+    public Integer put(String key, Integer value) {
+        int i = 0;
+        // 查找适合插入的位子
+        SkipListEntry p = findEntry(key);
+        // 如果跳跃表中存在含有key值的节点，则进行value的修改操作即可完成
+        if (p.key.equals(key)) {
+            Integer oldValue = p.value;
+            p.value = value;
+            return oldValue;
+        }
+
+        // 如果跳跃表中不存在含有key值的节点，则进行新增操作
+        SkipListEntry q = new SkipListEntry(key, value, null, null, p, p.right);
+        p.right.left = q;
+        p.right = q;
+        // 再使用随机数决定是否要向更高level攀升
+        //以 0-1 的随机值决定一个数据是否能够攀升到高层次的链表中
+        while (r.nextDouble() < 0.5) {
+            // 如果新元素的级别已经达到跳跃表的最大高度，则新建空白层
+            if (i >= h) {
+                addEmptyLevel();
+            }
+
+            // 从p向左扫描含有高层节点的节点
+            while (p.up == null) {
+                p = p.left;
+            }
+            //p是上层
+            p = p.up;
+
+            // 新增和q指针指向的节点含有相同key值的节点对象
+            // 这里需要注意的是除底层节点之外的节点对象是不需要value值的
+            SkipListEntry z = new SkipListEntry(key, null);
+
+            //z与p连接起来
+            z.left = p;
+            z.right = p.right;
+            p.right.left = z;
+            p.right = z;
+
+            //z是上层
+            //q是本层
+            z.down = q;
+            q.up = z;
+
+            //继续向上抽取
+            q = z;
+            i = i + 1;
+        }
+
+        n = n + 1;
+        // 返回null，没有旧节点的value值
+        return null;
+    }
+
+    private void addEmptyLevel() {
+        SkipListEntry p1 = new SkipListEntry(SkipListEntry.negInf, null);
+        SkipListEntry p2 = new SkipListEntry(SkipListEntry.posInf, null);
+
+        p1.right = p2;
+        p1.down = head;
+
+        p2.left = p1;
+        p2.down = tail;
+
+        head.up = p1;
+        tail.up = p2;
+
+        head = p1;
+        tail = p2;
+
+        h = h + 1;
+    }
+
+    public Integer remove(String key) {
+        SkipListEntry p = findEntry(key);
+        if (p == null || !Objects.equals(p.key, key)) {
+            return null;
+        }
+
+        Integer oldValue = p.value;
+        while (p != null) {
+            p.left.right = p.right;
+            p.right.left = p.left;
+            p = p.up;
+        }
+
+        return oldValue;
     }
 }

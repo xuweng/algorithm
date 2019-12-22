@@ -5,7 +5,7 @@ public class SkipListEntry {
     public String key;
     public Integer value;
 
-    // links
+    // links。4个指针。
     public SkipListEntry up;
     public SkipListEntry down;
     public SkipListEntry left;
