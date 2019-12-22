@@ -86,6 +86,8 @@ public class BinarySearch {
     }
 
     /**
+     * 举例子：[6,9].[8,9]。value=7.mid=9.
+     * <p>
      * 在大于等于时动手脚。易读。
      * <p>
      * 变体三：查找第一个大于等于给定值的元素
@@ -109,6 +111,38 @@ public class BinarySearch {
                 }
             } else {
                 low = mid + 1;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 一个数情况。
+     * <p>
+     * 举例子：[5,6].[5,8]。value=7.mid=5.
+     * <p>
+     * 在小于等于动手脚。易读。
+     * <p>
+     * 变体四：查找最后一个小于等于给定值的元素
+     *
+     * @param a
+     * @param n
+     * @param value
+     * @return
+     */
+    public int searchLastLessEqual(int[] a, int n, int value) {
+        int low = 0;
+        int high = n - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (a[mid] <= value) {
+                if ((mid == n - 1) || (a[mid + 1] > value)) {
+                    return mid;
+                } else {
+                    low = mid + 1;
+                }
+            } else {
+                high = mid - 1;
             }
         }
         return -1;
