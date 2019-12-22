@@ -54,6 +54,9 @@ public class SkipList {
             return null;
         }
 
+        //key>=pnext这个最小值。
+        // 相等时可以不用向右移动，直接走到最底层，找到第一个相等的数。
+        // 相等时可以向右移动，找到最后一个相等的数。
         while (true) {
             // 从左向右查找，直到右节点的key值大于要查找的key值
             //当前指针从p开始找。但是拿p.right比较，就是拿第一个数比较，不能拿head来比较。不是拿p来比较。还是很容易理解。
@@ -63,10 +66,10 @@ public class SkipList {
             }
 
             // 如果有更低层的节点，则向低层移动
-            if (p.down != null) {
-                p = p.down;
-            } else {
+            if (p.down == null) {
                 break;
+            } else {
+                p = p.down;
             }
         }
 
