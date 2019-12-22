@@ -1,6 +1,8 @@
 package com.algorithm.study.algorithm.search.two;
 
 /**
+ * 不用高大上。易读、易理解。
+ * <p>
  * 普通二分------相等即返回
  * <p>
  * 没什么难度。代码模板就是这样。第一个或者前一个。最后一个或者后一个。
