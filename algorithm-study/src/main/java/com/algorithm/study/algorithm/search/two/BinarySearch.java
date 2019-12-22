@@ -1,6 +1,8 @@
 package com.algorithm.study.algorithm.search.two;
 
 /**
+ * 普通二分------相等即返回
+ * <p>
  * 二分查找变形
  * <p>
  * 很多人都觉得变形的二分查找很难写，主要原因是太追求第一种那样完美、简洁的写法。
@@ -8,7 +10,9 @@ package com.algorithm.study.algorithm.search.two;
  */
 public class BinarySearch {
     /**
-     * 变体一：查找第一个值等于给定值的元素
+     * 在相等时动手脚。
+     * <p>
+     * 变体一：查找第一个值等于给定值的元素。
      * <p>
      * 当 a[mid] 等于要查找的值时，a[mid] 就是我们要找的元素。
      * 但是，如果我们求解的是第一个值等于给定值的元素，当 a[mid] 等于要查找的值时，
@@ -45,7 +49,9 @@ public class BinarySearch {
     }
 
     /**
-     * 变体二：查找最后一个值等于给定值的元素
+     * 在相等时动手脚。
+     * <p>
+     * 变体二：查找最后一个值等于给定值的元素。
      * <p>
      * 如果 a[mid] 这个元素已经是数组中的最后一个元素了，那它肯定是我们要找的；
      * 如果 a[mid] 的后一个元素 a[mid+1] 不等于 value，
@@ -72,6 +78,35 @@ public class BinarySearch {
                 } else {
                     low = mid + 1;
                 }
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * 在大于等于时动手脚。易读。
+     * <p>
+     * 变体三：查找第一个大于等于给定值的元素
+     *
+     * @param a
+     * @param n
+     * @param value
+     * @return
+     */
+    public int searchFirstGreaterEqual(int[] a, int n, int value) {
+        int low = 0;
+        int high = n - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (a[mid] >= value) {
+                //注意下标越界
+                if ((mid == 0) || (a[mid - 1] < value)) {
+                    return mid;
+                } else {
+                    high = mid - 1;
+                }
+            } else {
+                low = mid + 1;
             }
         }
         return -1;
