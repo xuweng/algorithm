@@ -40,14 +40,25 @@ public class SkipList {
         r = new Random();
     }
 
+    /**
+     * 有序链表。第一个数最小值。
+     *
+     * @param key
+     * @return
+     */
     private SkipListEntry findEntry(String key) {
         //head没有数据。pnext才是真正有意义的结点。
-        SkipListEntry p = head;
+        SkipListEntry p = head, pnext = head.right;
+        //pnext为空或者pnext这个最小值>key
+        if (isEmpty(pnext) || pnext.key.compareTo(key) > 0) {
+            return null;
+        }
 
         while (true) {
             // 从左向右查找，直到右节点的key值大于要查找的key值
             //当前指针从p开始找。但是拿p.right比较，就是拿第一个数比较，不能拿head来比较。不是拿p来比较。还是很容易理解。
-            while (!isLast(p.right) && p.right.key.compareTo(key) <= 0) {
+            //当p没有移动?p=head。
+            while (!isEmpty(p.right) && p.right.key.compareTo(key) <= 0) {
                 p = p.right;
             }
 
@@ -64,13 +75,15 @@ public class SkipList {
     }
 
     /**
+     * skipListEntry是否空
+     * <p>
      * 边界条件
      * 是否最后一个结点
      *
      * @param skipListEntry
      * @return
      */
-    private static boolean isLast(SkipListEntry skipListEntry) {
+    private static boolean isEmpty(SkipListEntry skipListEntry) {
         return (skipListEntry != null) && (skipListEntry.key.equals(SkipListEntry.posInf));
     }
 }
