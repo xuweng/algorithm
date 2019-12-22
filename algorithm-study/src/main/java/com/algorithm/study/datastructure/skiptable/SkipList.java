@@ -62,6 +62,7 @@ public class SkipList {
             // 从左向右查找，直到右节点的key值大于要查找的key值
             //当前指针从p开始找。但是拿p.right比较，就是拿第一个数比较，不能拿head来比较。不是拿p来比较。还是很容易理解。
             //当p没有移动?p=head。
+            //条件写在循环条件里面
             while (!isEmpty(p.right) && p.right.key.compareTo(key) <= 0) {
                 p = p.right;
             }
