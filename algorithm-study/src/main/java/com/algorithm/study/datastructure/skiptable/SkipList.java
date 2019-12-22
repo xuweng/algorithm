@@ -42,7 +42,7 @@ public class SkipList {
 
     private SkipListEntry findEntry(String key) {
         //head没有数据。pnext才是真正有意义的结点。
-        SkipListEntry p = head, pnext = head.right;
+        SkipListEntry p = head;
 
         while (true) {
             // 从左向右查找，直到右节点的key值大于要查找的key值
