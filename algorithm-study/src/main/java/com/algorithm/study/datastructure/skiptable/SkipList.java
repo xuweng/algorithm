@@ -4,6 +4,8 @@ import java.util.Objects;
 import java.util.Random;
 
 /**
+ * 时间复杂度一样的数据结构比较。
+ * <p>
  * 横向单链表+纵向单链表。
  * 先连接横向单链表，再连接纵向单链表。
  * 横向双链表+纵向双链表。
