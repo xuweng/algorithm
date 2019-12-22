@@ -27,7 +27,7 @@ public class SkipList {
 
     public SkipList() {
         //初始化head和tail
-        // 创建一个 -oo 和一个 +oo 对象
+        // 创建一个 -oo 和一个 +oo 对象。这里初始化head和tail两个结点。
         head = new SkipListEntry(SkipListEntry.negInf, null);
         tail = new SkipListEntry(SkipListEntry.posInf, null);
 
