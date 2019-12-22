@@ -152,12 +152,14 @@ public class SkipList {
             // 这里需要注意的是除底层节点之外的节点对象是不需要value值的
             SkipListEntry z = new SkipListEntry(key, null);
 
+            //先连接横向单链表
             //z与p连接起来
             z.left = p;
             z.right = p.right;
             p.right.left = z;
             p.right = z;
 
+            //再连接纵向单链表
             //z是上层
             //q是本层
             z.down = q;
@@ -206,5 +208,17 @@ public class SkipList {
         }
 
         return oldValue;
+    }
+
+    /**
+     * 按照区间查找数据
+     * 比如查找值在 [100, 356] 之间的数据
+     *
+     * @param start 开始数据
+     * @param end   结束数据
+     * @return
+     */
+    public Integer[] findByQuJian(int start, int end) {
+        return null;
     }
 }
