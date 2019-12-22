@@ -1,7 +1,7 @@
 package com.algorithm.study.algorithm.search;
 
 import com.algorithm.study.common.ArrayUtils;
-import com.algorithm.study.algorithm.search.BinarySearch;
+import com.algorithm.study.algorithm.search.one.BinarySearch;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
