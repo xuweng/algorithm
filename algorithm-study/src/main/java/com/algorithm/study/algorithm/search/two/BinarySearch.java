@@ -12,7 +12,7 @@ package com.algorithm.study.algorithm.search.two;
  */
 public class BinarySearch {
     /**
-     * 在相等时动手脚。
+     * 在相等时判断是否第一个。
      * <p>
      * 变体一：查找第一个值等于给定值的元素。
      * <p>
@@ -51,7 +51,7 @@ public class BinarySearch {
     }
 
     /**
-     * 在相等时动手脚。
+     * 在相等时判断是否是最后一个。
      * <p>
      * 变体二：查找最后一个值等于给定值的元素。
      * <p>
@@ -88,7 +88,7 @@ public class BinarySearch {
     /**
      * 举例子：[6,9].[8,9]。value=7.mid=9.
      * <p>
-     * 在大于等于时动手脚。易读。
+     * 在大于等于时判断是否是第一个。易读。
      * <p>
      * 变体三：查找第一个大于等于给定值的元素
      *
@@ -121,7 +121,7 @@ public class BinarySearch {
      * <p>
      * 举例子：[5,6].[5,8]。value=7.mid=5.
      * <p>
-     * 在小于等于动手脚。易读。
+     * 在小于等于时判断是否是最后一个。易读。
      * <p>
      * 变体四：查找最后一个小于等于给定值的元素
      *
