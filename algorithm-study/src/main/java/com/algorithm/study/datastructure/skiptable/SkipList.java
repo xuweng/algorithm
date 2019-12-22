@@ -75,6 +75,23 @@ public class SkipList {
     }
 
     /**
+     * 比较:拿当前比较。拿后一个比较。拿前一个比较。
+     * 二分。链表。
+     *
+     * @param key
+     * @return
+     */
+    public Integer get(String key) {
+        SkipListEntry p = findEntry(key);
+
+        if (p.key.equals(key)) {
+            return p.value;
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * skipListEntry是否空
      * <p>
      * 边界条件
