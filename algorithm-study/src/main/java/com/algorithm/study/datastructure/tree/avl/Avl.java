@@ -177,19 +177,21 @@ public class Avl<T extends Comparable> {
                     p = rotateRightLeft(p);
                 }
             }
-        }
-        //已找到需要删除的元素,并且要删除的结点拥有两个子节点
-        else if (p.right != null && p.left != null) {
-
-            //寻找替换结点
-            p.data = findMin(p.right).data;
-
-            //移除用于替换的结点
-            p.right = remove(p.data, p.right);
         } else {
-            //只有一个孩子结点或者只是叶子结点的情况
-            p = (p.left != null) ? p.left : p.right;
+            //已找到需要删除的元素,并且要删除的结点拥有两个子节点
+            if (p.right != null && p.left != null) {
+
+                //寻找替换结点
+                p.data = findMin(p.right).data;
+
+                //移除用于替换的结点
+                p.right = remove(p.data, p.right);
+            } else {
+                //只有一个孩子结点或者只是叶子结点的情况
+                p = (p.left != null) ? p.left : p.right;
+            }
         }
+
 
         //更新高度值
         if (p != null) {
