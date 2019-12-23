@@ -1,4 +1,4 @@
-package com.algorithm.study.datastructure.tree;
+package com.algorithm.study.datastructure.tree.bst.one;
 
 /**
  * 二叉查找树
