@@ -324,6 +324,8 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     }
 
     /**
+     * 递归思维。左子树插入，右子树插入。
+     * <p>
      * 插入操作,递归实现
      *
      * @param data
@@ -358,6 +360,8 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     }
 
     /**
+     * 递归思维。删除root，删除左子树，删除右子树。
+     * <p>
      * 分3种情况
      * 1.删除叶子结点(也就是没有孩子结点)
      * 2.删除拥有一个孩子结点的结点(可能是左孩子也可能是右孩子)
