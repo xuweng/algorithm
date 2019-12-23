@@ -377,15 +377,18 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
             root.left = remove(data, root.left);
         } else if (compareResult > 0) {
             root.right = remove(data, root.right);
-        } else if (root.left != null && root.right != null) {//已找到结点并判断是否有两个子结点(情况3)
-            //中继替换，找到右子树中最小的元素并替换需要删除的元素值
-            root.data = (T) findMin(root.right).data;
-            //移除用于替换的结点
-            root.right = remove(root.data, root.right);
         } else {
-            //拥有一个孩子结点的结点和叶子结点的情况
-            root = (root.left != null) ? root.left : root.right;
+            if (root.left != null && root.right != null) {//已找到结点并判断是否有两个子结点(情况3)
+                //中继替换，找到右子树中最小的元素并替换需要删除的元素值
+                root.data = (T) findMin(root.right).data;
+                //移除用于替换的结点
+                root.right = remove(root.data, root.right);
+            } else {
+                //拥有一个孩子结点的结点和叶子结点的情况
+                root = (root.left != null) ? root.left : root.right;
+            }
         }
+
 
         return root;//返回该结点
     }
