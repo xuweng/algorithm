@@ -1,5 +1,11 @@
 package com.algorithm.study.datastructure.tree;
 
+/**
+ * 线段树是一个查询和修改复杂度都为log(n)的数据结构。
+ * 主要用于数组的单点修改&&单点查询&&区间求和&&区间修改.
+ * 另外一个拥有类似功能的是树状数组，但是树状数组最常用的是单点修改&&区间求和.
+ * 线段树完全涵盖树状数组所有功能
+ */
 public class SegmentTree {
     Node root;
 
