@@ -76,25 +76,42 @@ public class DirectedGraph {
         }
     }
 
+    /**
+     * 第一步：遍历图中所有的顶点，将入度为0的顶点入队列。
+     * <p>
+     * 第二步：从队列中出一个顶点，打印顶点，更新该顶点的邻接点的入度(减1)，如果邻接点的入度减1之后变成了0，
+     * 则将该邻接点入队列。
+     * <p>
+     * 第三步：一直执行上面 第二步，直到队列为空。
+     *
+     * @throws Exception
+     */
     public void topoSort() throws Exception {
         int count = 0;
 
         Queue<Vertex> queue = new LinkedList<>();// 拓扑排序中用到的栈,也可用队列.
         //扫描所有的顶点,将入度为0的顶点入队列
         Collection<Vertex> vertexs = directedGraph.values();
-        for (Vertex vertex : vertexs)
-            if (vertex.inDegree == 0)
+        for (Vertex vertex : vertexs) {
+            if (vertex.inDegree == 0) {
                 queue.offer(vertex);
+            }
+        }
 
         while (!queue.isEmpty()) {
             Vertex v = queue.poll();
             System.out.print(v.vertexLabel + " ");
             count++;
-            for (Edge e : v.adjEdges)
-                if (--e.endVertex.inDegree == 0)
+            //更新该顶点的邻接点的入度(减1)，如果邻接点的入度减1之后变成了0，则将该邻接点入队列。
+            for (Edge e : v.adjEdges) {
+                if (--e.endVertex.inDegree == 0) {
                     queue.offer(e.endVertex);
+                }
+            }
         }
-        if (count != directedGraph.size())
+        //如果图有环，则提示异常。
+        if (count != directedGraph.size()) {
             throw new Exception("Graph has circle");
+        }
     }
 }
