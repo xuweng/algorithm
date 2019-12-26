@@ -35,6 +35,8 @@ public class BinaryHeap {
     }
 
     /**
+     * 向上移动。
+     * <p>
      * 边界条件
      * 边界条件
      * 代码简洁。
@@ -103,7 +105,11 @@ public class BinaryHeap {
     private int currentSize;      // Number of elements in heap
     private Comparable[] array; // The heap array
 
-
+    /**
+     * 向下移动
+     *
+     * @param hole
+     */
     private void percolateDown(int hole) {
         int child;
         Comparable tmp = array[hole];
