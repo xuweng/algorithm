@@ -4,6 +4,8 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
+ * https://www.cnblogs.com/v-July-v/archive/2011/02/14/1983678.html
+ * <p>
  * 是从一个顶点到其余各顶点的最短路径算法，解决的是有权图中最短路径问题。
  */
 public class Dijkstra {
