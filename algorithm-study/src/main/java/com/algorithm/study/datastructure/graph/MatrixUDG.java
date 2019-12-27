@@ -283,8 +283,9 @@ public class MatrixUDG {
 
         // 初始化"顶点的权值数组"，
         // 将每个顶点的权值初始化为"第start个顶点"到"该顶点"的权值。
-        for (int i = 0; i < num; i++)
+        for (int i = 0; i < num; i++) {
             weights[i] = mMatrix[start][i];
+        }
         // 将第start个顶点的权值初始化为0。
         // 可以理解为"第start个顶点到它自身的距离为0"。
         weights[start] = 0;
@@ -338,12 +339,15 @@ public class MatrixUDG {
         }
         // 打印最小生成树
         System.out.printf("PRIM(%c)=%d: ", mVexs[start], sum);
-        for (int i = 0; i < index; i++)
+        for (int i = 0; i < index; i++) {
             System.out.printf("%c ", prims[i]);
+        }
         System.out.printf("\n");
     }
 
     /**
+     * 图算法。大神代码。算法关键步骤封装为一个函数。让函数形成概念。易读。
+     * <p>
      * 克鲁斯卡尔（Kruskal)最小生成树
      */
     public void kruskal() {
