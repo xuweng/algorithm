@@ -117,9 +117,11 @@ public class MatrixUDG {
      * 返回ch位置
      */
     private int getPosition(char ch) {
-        for (int i = 0; i < mVexs.length; i++)
-            if (mVexs[i] == ch)
+        for (int i = 0; i < mVexs.length; i++) {
+            if (mVexs[i] == ch) {
                 return i;
+            }
+        }
         return -1;
     }
 
@@ -341,17 +343,15 @@ public class MatrixUDG {
         System.out.printf("\n");
     }
 
-    /*
+    /**
      * 克鲁斯卡尔（Kruskal)最小生成树
      */
     public void kruskal() {
         int index = 0;                      // rets数组的索引
         int[] vends = new int[mEdgNum];     // 用于保存"已有最小生成树"中每个顶点在该最小树中的终点。
         EData[] rets = new EData[mEdgNum];  // 结果数组，保存kruskal最小生成树的边
-        EData[] edges;                      // 图对应的所有边
-
         // 获取"图中所有的边"
-        edges = getEdges();
+        EData[] edges = getEdges();
         // 将边按照"权"的大小进行排序(从小到大)
         sortEdges(edges, mEdgNum);
 
@@ -370,22 +370,23 @@ public class MatrixUDG {
 
         // 统计并打印"kruskal最小生成树"的信息
         int length = 0;
-        for (int i = 0; i < index; i++)
+        for (int i = 0; i < index; i++) {
             length += rets[i].weight;
+        }
         System.out.printf("Kruskal=%d: ", length);
-        for (int i = 0; i < index; i++)
+        for (int i = 0; i < index; i++) {
             System.out.printf("(%c,%c) ", rets[i].start, rets[i].end);
+        }
         System.out.printf("\n");
     }
 
-    /*
+    /**
      * 获取图中的边
      */
     private EData[] getEdges() {
         int index = 0;
-        EData[] edges;
+        EData[] edges = new EData[mEdgNum];
 
-        edges = new EData[mEdgNum];
         for (int i = 0; i < mVexs.length; i++) {
             for (int j = i + 1; j < mVexs.length; j++) {
                 if (mMatrix[i][j] != INF) {
@@ -401,10 +402,8 @@ public class MatrixUDG {
      * 对边按照权值大小进行排序(由小到大)
      */
     private void sortEdges(EData[] edges, int elen) {
-
         for (int i = 0; i < elen; i++) {
             for (int j = i + 1; j < elen; j++) {
-
                 if (edges[i].weight > edges[j].weight) {
                     // 交换"边i"和"边j"
                     EData tmp = edges[i];
@@ -419,8 +418,9 @@ public class MatrixUDG {
      * 获取i的终点
      */
     private int getEnd(int[] vends, int i) {
-        while (vends[i] != 0)
+        while (vends[i] != 0) {
             i = vends[i];
+        }
         return i;
     }
 
@@ -480,11 +480,19 @@ public class MatrixUDG {
             System.out.printf("  shortest(%c, %c)=%d\n", mVexs[vs], mVexs[i], dist[i]);
     }
 
-    // 边的结构体
+    /**
+     * 图用邻接矩阵
+     * <p>
+     * 定义结点数据结构
+     */
     private static class EData {
-        char start; // 边的起点
-        char end;   // 边的终点
-        int weight; // 边的权重
+        // 结点坐标
+        // 边的起点。横坐标。
+        char start;
+        // 边的终点。纵坐标。
+        char end;
+        // 边的权重
+        int weight;
 
         public EData(char start, char end, int weight) {
             this.start = start;
@@ -492,9 +500,6 @@ public class MatrixUDG {
             this.weight = weight;
         }
     }
-
-    ;
-
 
     public static void main(String[] args) {
         char[] vexs = {'A', 'B', 'C', 'D', 'E', 'F', 'G'};
