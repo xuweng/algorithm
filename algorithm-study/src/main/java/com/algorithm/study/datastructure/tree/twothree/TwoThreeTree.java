@@ -9,6 +9,8 @@ package com.algorithm.study.datastructure.tree.twothree;
  * <p>
  * 删除比插入麻烦
  * <p>
+ * 模仿二叉搜索树的删除方式：当要被删除的节点有两个儿子时，用该节点的前趋或者后继节点来顶替它，并且将这个前趋或者后继节点删除。
+ * <p>
  * https://blog.csdn.net/u013565163/article/details/80820685
  * https://riteme.site/blog/2016-3-12/2-3-tree-and-red-black-tree.html
  * <p>
