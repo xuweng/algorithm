@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ * 掌控自己的学习进度。掌握自己的学习进度。
+ * <p>
  * https://blog.csdn.net/seagal890/article/details/90614064
  * <p>
  * 贪心算法。先排序。
