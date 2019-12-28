@@ -9,7 +9,9 @@ package com.algorithm.study.datastructure.tree.redblack.one;
  * <p>
  * 红黑树画平太厉害了。将某个节点染为红色，表示它和父亲的的链接是红色的。
  * <p>
- * 红黑树
+ * 红黑树。
+ * <p>
+ * 旋转操作看作将边顺时针或者逆时针旋转。
  */
 public class RedBlack {
 }
