@@ -4,6 +4,7 @@ package com.algorithm.study.datastructure.tree.twothree;
  * 所有的算法都是先有API，再有实现，之后是证明，最后是数据。这种先接口后实现、强调测试的做法
  * <p>
  * https://blog.csdn.net/u013565163/article/details/80820685
+ * https://riteme.site/blog/2016-3-12/2-3-tree-and-red-black-tree.html
  * <p>
  * 很多文章，发现都没有讲明白红黑树的原理，只是简单列了红黑树的几条规则，就开始讲解红黑树的插入，
  * 让人一直不知其所以然。也很难深刻的理解红黑树。
