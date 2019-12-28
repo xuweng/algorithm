@@ -7,6 +7,8 @@ package com.algorithm.study.datastructure.tree.twothree;
  * <p>
  * bst-----》2-3树------》红黑树
  * <p>
+ * 删除比插入麻烦
+ * <p>
  * https://blog.csdn.net/u013565163/article/details/80820685
  * https://riteme.site/blog/2016-3-12/2-3-tree-and-red-black-tree.html
  * <p>
