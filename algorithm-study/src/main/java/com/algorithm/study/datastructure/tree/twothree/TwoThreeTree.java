@@ -1,4 +1,4 @@
-package com.algorithm.study.datastructure.tree;
+package com.algorithm.study.datastructure.tree.twothree;
 
 /**
  * https://blog.csdn.net/u013565163/article/details/80820685
@@ -7,6 +7,14 @@ package com.algorithm.study.datastructure.tree;
  * 让人一直不知其所以然。也很难深刻的理解红黑树。
  * 最后翻起了《算法》这本书，仔细了解了二叉树查找树、2-3树、红黑树，才明白了红黑树不是平白无故产生的，
  * 而是符合科学的发展观念是循序渐进，站在巨人的肩旁上发展起来的。
+ * <p>
+ * <p>
+ * 注意二叉查找树是向下生长，而2-3树是向上生长。
+ * <p>
+ * 2-3树包括左子树，中子树，右子树
+ * <p>
+ * <p>
+ * 我们把2-3树中的2节点用黑色表示，3节点用红色表示（3节点的左节点为黑色、右节点为红色）
  * <p>
  * 这也是我们从学生时代的填鸭式的学习方式的转变，不仅仅是只学习结论，并且要了解结论产生的历史及发展。
  * 这样我们才能从搬砖、码农成长为工程师、科学家。
