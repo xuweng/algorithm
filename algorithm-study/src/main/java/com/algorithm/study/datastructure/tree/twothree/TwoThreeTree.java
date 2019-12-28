@@ -3,6 +3,10 @@ package com.algorithm.study.datastructure.tree.twothree;
 /**
  * 所有的算法都是先有API，再有实现，之后是证明，最后是数据。这种先接口后实现、强调测试的做法
  * <p>
+ * 2-3树只有2结点没有3结点就是bst。
+ * <p>
+ * bst-----》2-3树------》红黑树
+ * <p>
  * https://blog.csdn.net/u013565163/article/details/80820685
  * https://riteme.site/blog/2016-3-12/2-3-tree-and-red-black-tree.html
  * <p>
