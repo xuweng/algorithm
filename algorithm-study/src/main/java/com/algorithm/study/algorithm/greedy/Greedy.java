@@ -1,11 +1,13 @@
 package com.algorithm.study.algorithm.greedy;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * https://blog.csdn.net/seagal890/article/details/90614064
  * <p>
- * 贪心算法
+ * 贪心算法。先排序。
  */
 public class Greedy {
     /**
@@ -34,5 +36,32 @@ public class Greedy {
         }
         //返回装载的古董的数量
         return counter;
+    }
+
+    /**
+     * 循环一定要注意索引。当前索引，上一个索引，下一个索引等等
+     * <p>
+     * 活动安排问题就是要在所给的活动集合中选出最大的相容活动子集合。活动按结束时间升序。
+     * <p>
+     * 优先选择结束时间最小的活动
+     *
+     * @param start 活动的起始时间
+     * @param end   活动的结束时间
+     * @return
+     */
+    public static List<Integer> arrangeActivity(int[] start, int[] end) {
+        int total = start.length;
+        int endFlag = end[0];
+        List<Integer> results = new ArrayList<>();
+        //先选择最小结束时间
+        results.add(0);
+        //选择当前开始时间大于上一个结束时间的活动。注意循环表达式里面的条件。一开始写错了。
+        for (int i = 1; i < total; i++) {
+            if (start[i] >= endFlag) {
+                results.add(i);
+                endFlag = end[i];
+            }
+        }
+        return results;
     }
 }
