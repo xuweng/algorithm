@@ -1,6 +1,10 @@
 package com.algorithm.study.algorithm.recursive;
 
 /**
+ * 积极查资料，积极看书。
+ * 不要死记硬背结论，这样学习没意思。
+ * 熟悉知识点的历史和背景，知识点的来龙去脉。
+ * <p>
  * 递归
  */
 public class Recursive {
