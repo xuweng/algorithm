@@ -360,6 +360,8 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
     }
 
     /**
+     * 递归思维。递归思维。递归思维。
+     * <p>
      * 递归思维。删除root，删除左子树，删除右子树。
      * <p>
      * 分3种情况
@@ -378,16 +380,20 @@ public class BinarySearchTree<T extends Comparable> implements Tree<T> {
         }
         int compareResult = data.compareTo(root.data);
         if (compareResult < 0) {//左边查找删除结点
+            //删除左子树
             root.left = remove(data, root.left);
         } else if (compareResult > 0) {
+            //删除右子树
             root.right = remove(data, root.right);
         } else {
+            //删除root
             if (root.left != null && root.right != null) {//已找到结点并判断是否有两个子结点(情况3)
                 //中继替换，找到右子树中最小的元素并替换需要删除的元素值
                 root.data = (T) findMin(root.right).data;
                 //移除用于替换的结点
                 root.right = remove(root.data, root.right);
             } else {
+                //这行代码很巧妙
                 //拥有一个孩子结点的结点和叶子结点的情况
                 root = (root.left != null) ? root.left : root.right;
             }
