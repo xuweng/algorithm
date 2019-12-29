@@ -1,4 +1,4 @@
-package com.algorithm.study.datastructure.heap;
+package com.algorithm.study.datastructure.heap.one;
 
 
 import java.util.Arrays;
