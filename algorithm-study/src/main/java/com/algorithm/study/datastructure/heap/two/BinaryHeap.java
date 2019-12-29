@@ -51,9 +51,12 @@ public class BinaryHeap {
 
     /**
      * 自上往下堆化
+     * 从i到n堆化。指定堆化范围。堆化范围。堆化范围。堆化范围。堆化范围。
+     * 堆化范围。堆化范围。堆化范围。堆化范围。堆化范围。堆化范围。堆化范围。
+     * 从i到n堆化。从i到n堆化。从i到n堆化。从i到n堆化。
      *
      * @param a
-     * @param n
+     * @param n 表示数据的个数。最后一个结点位置。
      * @param i 从下标i开始堆化
      */
     private void heapify(int[] a, int n, int i) {
@@ -91,7 +94,28 @@ public class BinaryHeap {
     private void buildHeap(int[] a, int n) {
         //直接从第一个非叶子节点开始
         for (int i = n / 2; i >= 1; --i) {
+            //从i到n堆化。
             heapify(a, n, i);
+        }
+    }
+
+    /**
+     * 数组a中的数据从下标1到n的位置。
+     * 我们把下标为 n 的元素放到堆顶，然后再通过堆化的方法，将剩下的 n−1 个元素重新构建成堆
+     *
+     * @param a
+     * @param n 表示数据的个数
+     */
+    public void sort(int[] a, int n) {
+        //建堆
+        buildHeap(a, n);
+        int k = n;
+        while (k > 1) {
+            //堆顶元素与最后一个元素交换，最大元素就放到了下标为 n 的位置。
+            swap(a, 1, k);
+            --k;
+            //从1到k堆化。
+            heapify(a, k, 1);
         }
     }
 
