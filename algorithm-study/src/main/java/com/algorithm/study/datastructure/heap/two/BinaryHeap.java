@@ -54,7 +54,7 @@ public class BinaryHeap {
      *
      * @param a
      * @param n
-     * @param i
+     * @param i 从下标i开始堆化
      */
     private void heapify(int[] a, int n, int i) {
         while (true) {
