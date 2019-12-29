@@ -3,6 +3,9 @@ package com.algorithm.study.datastructure.heap.two;
 
 import static com.algorithm.study.common.ArrayUtils.swap;
 
+/**
+ * 完全二叉树。数组不能出现空洞
+ */
 public class BinaryHeap {
     private int[] a; // 数组，从下标1开始存储数据
     private int n;  // 堆可以存储的最大数据个数
