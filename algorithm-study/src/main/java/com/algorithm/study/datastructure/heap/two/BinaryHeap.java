@@ -49,7 +49,14 @@ public class BinaryHeap {
         return top;
     }
 
-    private void heapify(int[] a, int n, int i) { // 自上往下堆化
+    /**
+     * 自上往下堆化
+     *
+     * @param a
+     * @param n
+     * @param i
+     */
+    private void heapify(int[] a, int n, int i) {
         while (true) {
             //默认是左孩子
             int child = i * 2;
