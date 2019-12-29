@@ -4,7 +4,14 @@ package com.algorithm.study.datastructure.heap.two;
 import static com.algorithm.study.common.ArrayUtils.swap;
 
 /**
- * 完全二叉树。数组不能出现空洞
+ * 学习能力。方法。策略。不能盲目用时间去堆。
+ * 告诉我结论我只能死记硬背。学习推理。学习推理。学习推理。
+ * <p>
+ * 不能用时间去堆。不能用时间去堆。不能用时间去堆。
+ * <p>
+ * 完全二叉树。数组不能出现空洞。
+ * <p>
+ * 叶子结点在数组后面。第一个非叶子结点开始堆化。
  */
 public class BinaryHeap {
     private int[] a; // 数组，从下标1开始存储数据
