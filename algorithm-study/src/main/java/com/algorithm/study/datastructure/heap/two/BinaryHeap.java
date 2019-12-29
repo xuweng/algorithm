@@ -41,16 +41,16 @@ public class BinaryHeap {
     private void heapify(int[] a, int n, int i) { // 自上往下堆化
         while (true) {
             //默认是左孩子
-            int maxPos = i * 2;
-            if (maxPos + 1 <= n && a[maxPos] < a[maxPos + 1]) {
+            int child = i * 2;
+            if (child + 1 <= n && a[child] < a[child + 1]) {
                 //右孩子
-                maxPos = maxPos + 1;
+                child = child + 1;
             }
-            if (maxPos == i) {
+            if (child == i) {
                 break;
             }
-            swap(a, i, maxPos);
-            i = maxPos;
+            swap(a, i, child);
+            i = child;
         }
     }
 
