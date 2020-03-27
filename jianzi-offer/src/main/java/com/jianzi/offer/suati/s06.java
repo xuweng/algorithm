@@ -10,16 +10,14 @@ public class s06 {
         if (head == null) {
             return new int[0];
         }
-        Stack<Integer> stack = new Stack<Integer>();
+        Stack<Integer> stack = new Stack<>();
         ListNode node = head;
-        int length = 0;
         while (node != null) {
             stack.push(node.val);
             node = node.next;
-            length++;
         }
-        int[] result = new int[length];
-        for (int i = 0; i < length; i++) {
+        int[] result = new int[stack.size()];
+        for (int i = 0; i < stack.size(); i++) {
             result[i] = stack.pop();
         }
         return result;
