@@ -1,4 +1,4 @@
-package com.jianzi.offer.suaiti;
+package com.jianzi.offer.suati;
 
 /**
  * 面试题04. 二维数组中的查找

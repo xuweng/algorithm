@@ -1,4 +1,4 @@
-package com.jianzi.offer.suaiti;
+package com.jianzi.offer.suati;
 
 import java.util.HashMap;
 import java.util.Map;
