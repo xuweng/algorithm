@@ -29,14 +29,17 @@ public class s07 {
     }
 
     public TreeNode buildTree(int[] preorder, int preorderStart, int preorderEnd, int[] inorder, int inorderStart, int inorderEnd, Map<Integer, Integer> indexMap) {
+        //区域没有数据
         if (preorderStart > preorderEnd) {
             return null;
         }
         int rootVal = preorder[preorderStart];
         TreeNode root = new TreeNode(rootVal);
+        //区域只有一个数据
         if (preorderStart == preorderEnd) {
             return root;
         } else {
+            //区域多于一个数据才递归
             int rootIndex = indexMap.get(rootVal);
             //这里的变量就是注释,参数运算不能太多
             int leftNodes = rootIndex - inorderStart, rightNodes = inorderEnd - rootIndex;
