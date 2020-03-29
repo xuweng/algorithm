@@ -38,17 +38,17 @@ public class s07 {
         //区域只有一个数据
         if (preorderStart == preorderEnd) {
             return root;
-        } else {
-            //区域多于一个数据才递归
-            int rootIndex = indexMap.get(rootVal);
-            //这里的变量就是注释,参数运算不能太多
-            int leftNodes = rootIndex - inorderStart, rightNodes = inorderEnd - rootIndex;
-            TreeNode leftSubtree = buildTree(preorder, preorderStart + 1, preorderStart + leftNodes, inorder, inorderStart, rootIndex - 1, indexMap);
-            TreeNode rightSubtree = buildTree(preorder, preorderEnd - rightNodes + 1, preorderEnd, inorder, rootIndex + 1, inorderEnd, indexMap);
-            root.left = leftSubtree;
-            root.right = rightSubtree;
-            return root;
         }
+        //区域多于一个数据才递归
+        int rootIndex = indexMap.get(rootVal);
+        //这里的变量就是注释,参数运算不能太多
+        int leftNodes = rootIndex - inorderStart, rightNodes = inorderEnd - rootIndex;
+        TreeNode leftSubtree = buildTree(preorder, preorderStart + 1, preorderStart + leftNodes, inorder, inorderStart, rootIndex - 1, indexMap);
+        TreeNode rightSubtree = buildTree(preorder, preorderEnd - rightNodes + 1, preorderEnd, inorder, rootIndex + 1, inorderEnd, indexMap);
+        root.left = leftSubtree;
+        root.right = rightSubtree;
+        return root;
+
     }
 
     class TreeNode {
