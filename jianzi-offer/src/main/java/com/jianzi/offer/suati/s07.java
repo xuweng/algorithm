@@ -16,8 +16,7 @@ public class s07 {
         if (preorder == null || preorder.length == 0) {
             return null;
         }
-        TreeNode root = buildTree(preorder, 0, preorder.length - 1, inorder, 0, preorder.length - 1, getIndexMap(preorder, inorder));
-        return root;
+        return buildTree(preorder, 0, preorder.length - 1, inorder, 0, preorder.length - 1, getIndexMap(preorder, inorder));
     }
 
     public Map<Integer, Integer> getIndexMap(int[] preorder, int[] inorder) {
@@ -47,7 +46,6 @@ public class s07 {
             return root;
         }
     }
-
 
     class TreeNode {
         int val;
