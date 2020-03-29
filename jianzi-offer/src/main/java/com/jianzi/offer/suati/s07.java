@@ -16,13 +16,17 @@ public class s07 {
         if (preorder == null || preorder.length == 0) {
             return null;
         }
+        TreeNode root = buildTree(preorder, 0, preorder.length - 1, inorder, 0, preorder.length - 1, getIndexMap(preorder, inorder));
+        return root;
+    }
+
+    public Map<Integer, Integer> getIndexMap(int[] preorder, int[] inorder) {
         Map<Integer, Integer> indexMap = new HashMap<>();
-        int length = preorder.length;
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < preorder.length; i++) {
             indexMap.put(inorder[i], i);
         }
-        TreeNode root = buildTree(preorder, 0, length - 1, inorder, 0, length - 1, indexMap);
-        return root;
+
+        return indexMap;
     }
 
     public TreeNode buildTree(int[] preorder, int preorderStart, int preorderEnd, int[] inorder, int inorderStart, int inorderEnd, Map<Integer, Integer> indexMap) {
