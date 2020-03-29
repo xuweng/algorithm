@@ -38,6 +38,7 @@ public class s07 {
             return root;
         } else {
             int rootIndex = indexMap.get(rootVal);
+            //这里的变量就是注释,参数运算不能太多
             int leftNodes = rootIndex - inorderStart, rightNodes = inorderEnd - rootIndex;
             TreeNode leftSubtree = buildTree(preorder, preorderStart + 1, preorderStart + leftNodes, inorder, inorderStart, rootIndex - 1, indexMap);
             TreeNode rightSubtree = buildTree(preorder, preorderEnd - rightNodes + 1, preorderEnd, inorder, rootIndex + 1, inorderEnd, indexMap);
