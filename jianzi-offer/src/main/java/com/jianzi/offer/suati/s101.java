@@ -1,6 +1,10 @@
 package com.jianzi.offer.suati;
 
 /**
+ * 递归法
+ * 记忆化递归法
+ * 动态规划
+ * <p>
  * 面试题10- I. 斐波那契数列
  */
 public class s101 {
