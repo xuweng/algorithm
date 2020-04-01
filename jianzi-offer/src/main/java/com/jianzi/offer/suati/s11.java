@@ -5,6 +5,10 @@ package com.jianzi.offer.suati;
  * <p>
  * 算法严禁,逻辑清晰,算法证明
  * <p>
+ * 转为顺序查找
+ * <p>
+ * 功能测试、边界值测试、性能测试
+ * <p>
  * 作者：jyd
  * 链接：https://leetcode-cn.com/problems/xuan-zhuan-shu-zu-de-zui-xiao-shu-zi-lcof/solution/mian-shi-ti-11-xuan-zhuan-shu-zu-de-zui-xiao-shu-3/
  * 来源：力扣（LeetCode）
