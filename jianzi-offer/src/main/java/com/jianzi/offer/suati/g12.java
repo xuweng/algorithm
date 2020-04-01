@@ -10,6 +10,13 @@ public class g12 {
     private int row;
     private int col;
 
+    /**
+     * 精雕细琢的代码
+     *
+     * @param board
+     * @param word
+     * @return
+     */
     public boolean exist(char[][] board, String word) {
         len = word.length();
         if (len == 0) {
@@ -17,11 +24,15 @@ public class g12 {
         }
         row = board.length;
         col = board[0].length;
+        //搜索word起点
         char c = word.charAt(0);
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
+                //起点相等才递归
+                //在这里判断当前坐标
                 if (board[i][j] == c) {
                     board[i][j] = 0;
+                    //只需要找到一条可行路径即可
                     if (check(board, word, 1, i, j)) {
                         return true;
                     }
@@ -33,6 +44,8 @@ public class g12 {
     }
 
     /**
+     * 只需要找到一条可行路径即可
+     *
      * @param board 矩阵
      * @param word  搜索word
      * @param pos   当前word位置
