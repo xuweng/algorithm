@@ -48,7 +48,7 @@ public class g12 {
 
         //剪枝
         //递归条件
-        //向上
+        //向上。最上行不用向上递归
         if (i > 0 && board[i - 1][j] == c) {
             board[i - 1][j] = 0;
             if (check(board, word, pos + 1, i - 1, j)) {
@@ -56,7 +56,7 @@ public class g12 {
             }
             board[i - 1][j] = c;
         }
-        //向下
+        //向下。最下行不用向下递归
         if (i < row - 1 && board[i + 1][j] == c) {
             board[i + 1][j] = 0;
             if (check(board, word, pos + 1, i + 1, j)) {
@@ -64,7 +64,7 @@ public class g12 {
             }
             board[i + 1][j] = c;
         }
-        //向左
+        //向左。最左行不用向左递归
         if (j > 0 && board[i][j - 1] == c) {
             board[i][j - 1] = 0;
             if (check(board, word, pos + 1, i, j - 1)) {
@@ -72,7 +72,7 @@ public class g12 {
             }
             board[i][j - 1] = c;
         }
-        //向右
+        //向右。最右行不用向右递归
         if (j < col - 1 && board[i][j + 1] == c) {
             board[i][j + 1] = 0;
             if (check(board, word, pos + 1, i, j + 1)) {
