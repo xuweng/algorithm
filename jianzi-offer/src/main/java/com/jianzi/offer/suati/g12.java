@@ -46,6 +46,8 @@ public class g12 {
         }
         char c = word.charAt(pos);
 
+        //剪枝
+        //递归条件
         //向上
         if (i > 0 && board[i - 1][j] == c) {
             board[i - 1][j] = 0;
