@@ -17,6 +17,7 @@ public class s14 {
    * @return
    */
   public int cuttingRope(int n) {
+    // 长度为 n 的绳子，把绳子剪成整数长度的 m 段，最大乘积
     int[] dpMax = new int[n + 1];
     dpMax[0] = 1;
     dpMax[1] = 1;
