@@ -3,6 +3,10 @@ package com.jianzi.offer.suati;
 /**
  * 面试题17. 打印从1到最大的n位数
  *
+ * <p>类似:两数相加
+ *
+ * <p>考虑大数问题。字符串或者数组
+ *
  * <p>大数溢出
  */
 public class s17 {
