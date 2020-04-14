@@ -2,6 +2,12 @@ package com.leetcode.tag.dp;
 
 /**
  * 279. 完全平方数
+ *
+ * <p>假设最少是k,最后一个数值为ak
+ *
+ * <p>前面是k-1,值为n-ak
+ *
+ * <p>方程:f(n)=min( f(n-ak)+1 );思考ak?枚举ak
  */
 public class s279 {
   /**
