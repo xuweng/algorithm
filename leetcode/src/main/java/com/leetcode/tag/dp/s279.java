@@ -8,6 +8,8 @@ package com.leetcode.tag.dp;
  * <p>前面是k-1,值为n-ak
  *
  * <p>方程:f(n)=min( f(n-ak)+1 );思考ak?枚举ak
+ *
+ * <p>初始化;边界条件;计算顺序
  */
 public class s279 {
   /**
