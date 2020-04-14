@@ -2,6 +2,8 @@ package com.jianzi.offer.suati;
 
 /**
  * 面试题18. O(1)时间删除链表的节点
+ *
+ * <p>删除尾结点;结点是否在链表中
  */
 public class s18 {
   public ListNode deleteNode1(ListNode head, int val) {
