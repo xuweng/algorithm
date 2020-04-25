@@ -7,6 +7,8 @@ public class S687 {
   /**
    * 整体思路:分治法。每个子问题都要考虑,不要遗漏任何一个子问题
    *
+   * <p>小数据规模(1,2,3)验证算法正确性
+   *
    * <p>left,right,root-left,root-right,left-root-right;
    *
    * <p>确定问题;所有解法;coding;test
