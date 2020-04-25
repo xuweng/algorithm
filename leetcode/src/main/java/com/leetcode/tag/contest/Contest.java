@@ -1,11 +1,11 @@
-package com.leetcode.tag.competition;
+package com.leetcode.tag.contest;
 
 import java.util.Arrays;
 
 /**
  * 竞赛
  */
-public class Competition {
+public class Contest {
   public int minTime(int[] time, int m) {
     if (time == null || time.length == 0 || time.length <= m) {
       return 0;
