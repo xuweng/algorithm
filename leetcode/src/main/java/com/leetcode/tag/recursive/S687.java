@@ -11,6 +11,8 @@ public class S687 {
    *
    * <p>知道自己哪里错了,感觉最好。知道自己哪里错了。知道自己哪里做错。
    *
+   * <p>通过递归想得到2个返回值?
+   *
    * <p>left,right,root-left,root-right,left-root-right;
    *
    * <p>确定问题;所有解法;coding;test
