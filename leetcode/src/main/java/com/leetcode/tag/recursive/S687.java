@@ -9,6 +9,8 @@ public class S687 {
    *
    * <p>小数据规模(1,2,3)验证算法正确性。只要有一个子问题计算错误,后面的计算都会错误
    *
+   * <p>知道自己哪里错了,感觉最好。知道自己哪里错了。知道自己哪里做错。
+   *
    * <p>left,right,root-left,root-right,left-root-right;
    *
    * <p>确定问题;所有解法;coding;test
