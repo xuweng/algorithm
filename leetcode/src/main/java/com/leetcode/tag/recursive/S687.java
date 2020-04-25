@@ -13,6 +13,8 @@ public class S687 {
    *
    * <p>通过递归想得到2个返回值?
    *
+   * <p>小数据规模验证算法正确性。小数据规模。小数据规模。小数据规模。小数据规模。小数据规模。小数据规模
+   *
    * <p>left,right,root-left,root-right,left-root-right;
    *
    * <p>确定问题;所有解法;coding;test
@@ -30,9 +32,29 @@ public class S687 {
     int right = (root.right != null && root.val == root.right.val) ? 1 : 0;
     if (left == right && left == 1) {
       // left-root-right
-      return longestUnivaluePath(root.left) + left + longestUnivaluePath(root.right) + right;
+      int h = height(root);
+      int s = longestUnivaluePath(root.left) + left + longestUnivaluePath(root.right) + right;
+      return (h == 1) ? s : Math.min(s, h);
     }
     return Math.max(longestUnivaluePath(root.left) + left, longestUnivaluePath(root.right) + right);
+  }
+
+  /**
+   * 树的高度
+   *
+   * <p>null----->0
+   *
+   * <p>叶子结点----->0
+   *
+   * @param root
+   * @return
+   */
+  public int height(TreeNode root) {
+    if ((root == null) || (root.left == null && root.right == null)) {
+      return 0;
+    }
+    // 递归
+    return Math.max(height(root.left), height(root.right)) + 1;
   }
 
   // Definition for a binary tree node.
