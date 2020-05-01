@@ -4,6 +4,21 @@ package com.leetcode.tag.recursive;
  * 779. 第K个语法符号
  */
 public class s779 {
+  /**
+   * 复杂度分析
+   *
+   * <p>时间复杂度： O(2^N)，其为生成字符串的总长度 2^0 + 2^1 + 2^{N-1}2 0 +2 1 +⋯+2 N−1 。
+   *
+   * <p>空间复杂度： O(2^N)，其为最后一行字符串的长度。
+   *
+   * <p>作者：LeetCode
+   * 链接：https://leetcode-cn.com/problems/k-th-symbol-in-grammar/solution/di-kge-yu-fa-fu-hao-by-leetcode/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   *
+   * @param N
+   * @param K
+   * @return
+   */
   public int kthGrammar(int N, int K) {
     String str = re(N);
     if (K > str.length()) {
