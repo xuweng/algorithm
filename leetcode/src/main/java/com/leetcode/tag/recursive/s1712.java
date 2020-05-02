@@ -45,6 +45,7 @@ public class s1712 {
     re(root.right);
     if (left != null) {
       left.right = root;
+      root.left = null;
     }
     if (right != null) {
       root.right = right;
@@ -65,7 +66,7 @@ public class s1712 {
     }
   }
 
-  public class TreeNode {
+  public static class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
