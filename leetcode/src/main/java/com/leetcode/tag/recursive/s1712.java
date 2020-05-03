@@ -1,7 +1,11 @@
 package com.leetcode.tag.recursive;
 
 /**
- * 面试题 17.12. BiNode
+ * 根据原问题定义递归.
+ *
+ * <p>根据原问题定义子问题.
+ *
+ * <p>面试题 17.12. BiNode
  */
 public class s1712 {
   public TreeNode convertBiNode(TreeNode root) {
