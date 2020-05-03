@@ -11,45 +11,44 @@ public class s1712 {
     if (root.left == null && root.right == null) {
       return root;
     }
-    TreeNode node = root;
-    while (node.left != null) {
-      node = node.left;
-    }
 
-    re(root);
-
-    return node;
+    return re(root);
   }
 
   /**
    * 左子树最大值,右子树最小值
+   *
+   * <p>整个树变成单链表,并且返回头结点
    *
    * <p>左右子树求值不一样
    *
    * @param root
    * @return
    */
-  public void re(TreeNode root) {
+  public TreeNode re(TreeNode root) {
+    // 根结点为null.当前层考虑
     if (root == null) {
-      return;
+      return null;
     }
+    // 叶子结点.当前层考虑
     if (root.left == null && root.right == null) {
-      return;
+      return root;
     }
-    // 先查询,再改变树结构
-    TreeNode left = jie(root.left, true);
-    TreeNode right = jie(root.right, false);
-    // 左子树变成单链表
-    re(root.left);
-    // 右子树变成单链表
-    re(root.right);
-    if (left != null) {
-      left.right = root;
-      root.left = null;
+    // 左子树变成单链表,并且返回头结点
+    TreeNode l = re(root.left);
+    // 右子树变成单链表,并且返回头结点
+    TreeNode r = re(root.right);
+    TreeNode node = l;
+    while (node != null && node.right != null) {
+      node = node.right;
     }
-    if (right != null) {
-      root.right = right;
+    if (node != null) {
+      node.right = root;
     }
+    root.right = r;
+    root.left = null;
+
+    return l;
   }
 
   public TreeNode jie(TreeNode node, boolean isLeft) {
