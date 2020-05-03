@@ -48,6 +48,7 @@ public class s1712 {
     if (root.left == null && root.right == null) {
       return root;
     }
+    // 保存左子树最右结点
     TreeNode j = jie(root.left, true);
     // 左子树变成单链表,并且返回头结点
     TreeNode l = re(root.left);
