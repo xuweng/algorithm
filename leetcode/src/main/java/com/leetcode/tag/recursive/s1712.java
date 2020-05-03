@@ -39,11 +39,13 @@ public class s1712 {
     // 右子树变成单链表,并且返回头结点
     TreeNode r = re(root.right);
     TreeNode node = l;
+    // 结束位置错误.确定开始位置和结束位置.
     while (node != null && node.right != null) {
       node = node.right;
     }
     if (node != null) {
       node.right = root;
+      node.left = null;
     }
     root.right = r;
     root.left = null;
@@ -65,9 +67,9 @@ public class s1712 {
       return node;
     }
     if (isLeft) {
-      return jie(node.right, isLeft);
-    } else {
       return jie(node.left, isLeft);
+    } else {
+      return jie(node.right, isLeft);
     }
   }
 
