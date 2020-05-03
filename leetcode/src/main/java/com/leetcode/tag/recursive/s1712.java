@@ -66,7 +66,7 @@ public class s1712 {
       r.left = null;
     }
 
-    return l;
+    return (l == null) ? root : l;
   }
 
   public TreeNode jie(TreeNode node, boolean isLeft) {
