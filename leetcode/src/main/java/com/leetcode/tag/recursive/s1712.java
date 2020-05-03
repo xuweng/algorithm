@@ -47,6 +47,12 @@ public class s1712 {
     }
     root.right = r;
     root.left = null;
+    if (l != null) {
+      l.left = null;
+    }
+    if (r != null) {
+      r.left = null;
+    }
 
     return l;
   }
