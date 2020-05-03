@@ -36,7 +36,7 @@ public class s1712 {
     if (root.left == null && root.right == null) {
       return root;
     }
-    TreeNode j = jie(root, true);
+    TreeNode j = jie(root.left, true);
     // 左子树变成单链表,并且返回头结点
     TreeNode l = re(root.left);
     // 右子树变成单链表,并且返回头结点
@@ -61,7 +61,7 @@ public class s1712 {
     if (node == null) {
       return null;
     }
-    if (node.left == null && node.right == null) {
+    if (node.right == null) {
       return node;
     }
     if (isLeft) {
