@@ -16,17 +16,6 @@ package com.leetcode.tag.recursive;
  * <p>面试题 17.12. BiNode
  */
 public class s1712 {
-  public TreeNode convertBiNode(TreeNode root) {
-    if (root == null) {
-      return null;
-    }
-    if (root.left == null && root.right == null) {
-      return root;
-    }
-
-    return re(root);
-  }
-
   /**
    * 确定链表的开始位置和结束位置.
    *
@@ -39,7 +28,7 @@ public class s1712 {
    * @param root
    * @return
    */
-  public TreeNode re(TreeNode root) {
+  public TreeNode convertBiNode(TreeNode root) {
     // 根结点为null.当前层考虑
     if (root == null) {
       return null;
@@ -49,11 +38,11 @@ public class s1712 {
       return root;
     }
     // 保存左子树最右结点
-    TreeNode j = jie(root.left, true);
+    TreeNode j = jie(root.left);
     // 左子树变成单链表,并且返回头结点
-    TreeNode l = re(root.left);
+    TreeNode l = convertBiNode(root.left);
     // 右子树变成单链表,并且返回头结点
-    TreeNode r = re(root.right);
+    TreeNode r = convertBiNode(root.right);
     if (j != null) {
       j.right = root;
       j.left = null;
@@ -67,21 +56,18 @@ public class s1712 {
       r.left = null;
     }
 
+    // 小数据
     return (l == null) ? root : l;
   }
 
-  public TreeNode jie(TreeNode node, boolean isLeft) {
+  public TreeNode jie(TreeNode node) {
     if (node == null) {
       return null;
     }
     if (node.right == null) {
       return node;
     }
-    if (isLeft) {
-      return jie(node.right, isLeft);
-    } else {
-      return jie(node.left, isLeft);
-    }
+    return jie(node.right);
   }
 
   public static class TreeNode {
