@@ -26,7 +26,7 @@ public class JumpGame {
    * <p>最少的跳跃次数到达数组的n位置
    *
    * @param nums
-   * @param n    下标
+   * @param n 下标
    * @return 最少的跳跃次数到达数组的n位置
    */
   public int re(int[] nums, int n) {
@@ -41,6 +41,7 @@ public class JumpGame {
     // 初始化错误?
     int min = Integer.MAX_VALUE;
     for (int i = 0; i <= n - 1; i++) {
+      // 扫描所有子问题
       if (n - i <= nums[i]) {
         min = Math.min(min, re(nums, i));
       }
