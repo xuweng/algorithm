@@ -3,7 +3,9 @@ package com.leetcode.tag.daily;
 import java.util.Arrays;
 
 /**
- * 45. 跳跃游戏 II
+ * 递归和dp更加简单,两者写成公式直接求解更加简单;贪心需要处理很多细节
+ *
+ * <p>45. 跳跃游戏 II
  */
 public class JumpGame {
   int[] memo;
@@ -69,5 +71,26 @@ public class JumpGame {
     }
 
     return dp[dp.length - 1];
+  }
+
+  /**
+   * 贪心
+   *
+   * @param nums
+   * @return
+   */
+  public int tan(int[] nums) {
+    int length = nums.length;
+    int end = 0;
+    int maxPosition = 0;
+    int steps = 0;
+    for (int i = 0; i < length - 1; i++) {
+      maxPosition = Math.max(maxPosition, i + nums[i]);
+      if (i == end) {
+        end = maxPosition;
+        steps++;
+      }
+    }
+    return steps;
   }
 }
