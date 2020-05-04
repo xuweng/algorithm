@@ -51,4 +51,23 @@ public class JumpGame {
     memo[n] = min + 1;
     return memo[n];
   }
+
+  public int dp(int[] nums) {
+    int[] dp = new int[nums.length];
+
+    dp[0] = 0;
+    for (int i = 1; i < nums.length; i++) {
+      int min = Integer.MAX_VALUE;
+      dp[i] = Integer.MAX_VALUE;
+      for (int j = 0; j <= i - 1; j++) {
+        // 扫描所有子问题
+        if (i - j <= nums[j]) {
+          min = Math.min(min, dp[j]);
+        }
+      }
+      dp[i] = min + 1;
+    }
+
+    return dp[dp.length - 1];
+  }
 }
