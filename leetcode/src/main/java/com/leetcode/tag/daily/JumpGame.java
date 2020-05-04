@@ -103,6 +103,7 @@ public class JumpGame {
     int max = nums[0];
     while (max < nums.length - 1) {
       int temp = max;
+      // temp越界?
       for (int j = start; j <= temp; j++) {
         // 改变max,直接跳到最大值
         max = Math.max(max, nums[j] + j);
