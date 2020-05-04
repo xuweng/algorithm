@@ -93,4 +93,23 @@ public class JumpGame {
     }
     return steps;
   }
+
+  public int jump2(int[] nums) {
+    if (nums.length == 1) {
+      return 0;
+    }
+    int start = 1;
+    int times = 1;
+    int max = nums[0];
+    while (max < nums.length - 1) {
+      int temp = max;
+      for (int j = start; j <= temp; j++) {
+        // 改变max,直接跳到最大值
+        max = Math.max(max, nums[j] + j);
+      }
+      start = temp + 1;
+      times++;
+    }
+    return times;
+  }
 }
