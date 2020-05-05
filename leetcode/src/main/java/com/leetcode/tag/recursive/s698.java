@@ -1,7 +1,7 @@
 package com.leetcode.tag.recursive;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  */
 public class s698 {
     public boolean canPartitionKSubsets(int[] nums, int k) {
-        Map<Integer, Integer> map = new ConcurrentHashMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
         re(nums, nums.length - 1, map);
 
         AtomicBoolean result = new AtomicBoolean(false);
@@ -24,7 +24,9 @@ public class s698 {
     }
 
     /**
-     * 把树放入list
+     * 逻辑错误.逻辑错误.逻辑错误.逻辑错误.逻辑错误.逻辑错误.逻辑错误
+     *
+     * <p>把树放入list
      *
      * <p>把整个树放入list;把左子树放入list;把右子树放入list
      *
@@ -44,15 +46,20 @@ public class s698 {
         re(nums, n - 1, map);
         // 处理n.知道哪里错误
         // 包含nums[n]如何计算?不包含nums[n]如何计算?
+        // 一边遍历map一边添加数据,有病.
+
+        Map<Integer, Integer> m = new HashMap<>();
         map.forEach(
                 (k, v) -> {
                     int key = nums[n] + k;
                     if (map.containsKey(key)) {
-                        map.put(key, map.get(key) + 1);
+                        // 这里+1逻辑错误
+                        m.put(key, map.get(key) + 1);
                     } else {
-                        map.put(key, 1);
+                        m.put(key, 1);
                     }
                 });
+        m.forEach(map::put);
         if (map.containsKey(nums[n])) {
             map.put(nums[n], map.get(nums[n]) + 1);
         } else {
