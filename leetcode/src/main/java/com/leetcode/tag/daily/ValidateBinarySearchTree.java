@@ -100,6 +100,53 @@ public class ValidateBinarySearchTree {
     return jieLeft(root.left);
   }
 
+  /**
+   * 如果该二叉树的左子树不为空，则左子树上所有节点的值均小于它的根节点的值；
+   *
+   * <p>若它的右子树不空，则右子树上所有节点的值均大于它的根节点的值；
+   *
+   * <p>它的左右子树也为二叉搜索树。
+   *
+   * <p>作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/validate-binary-search-tree/solution/yan-zheng-er-cha-sou-suo-shu-by-leetcode-solution/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution {
+    /**
+     * 这个递归函数不太容易想到
+     *
+     * <p>上下界:官方通过传参,我需要在函数里面计算;传参代码简洁,但是不容易想到;在函数里面计算容易想到
+     *
+     * <p>这启示我们设计一个递归函数 helper(root, lower, upper) 来递归判断，函数表示考虑以 root 为根的子树，
+     *
+     * <p>判断子树中所有节点的值是否都在 (l,r) 的范围内（注意是开区间）。如果 root 节点的值 val 不在 (l,r)
+     * 的范围内说明不满足条件直接返回，否则我们要继续递归调用检查它的左右子树是否满足，如果都满足才说明这是一棵二叉搜索树。
+     *
+     * @param node
+     * @param lower
+     * @param upper
+     * @return
+     */
+    public boolean helper(TreeNode node, Integer lower, Integer upper) {
+      if (node == null) {
+        return true;
+      }
+
+      if (lower != null && node.val <= lower) {
+        return false;
+      }
+      if (upper != null && node.val >= upper) {
+        return false;
+      }
+
+      return helper(node.right, node.val, upper) && helper(node.left, lower, node.val);
+    }
+
+    public boolean isValidBST(TreeNode root) {
+      return helper(root, null, null);
+    }
+  }
+
   public class TreeNode {
     int val;
     TreeNode left;
