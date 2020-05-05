@@ -53,6 +53,53 @@ public class ValidateBinarySearchTree {
     zhong(root.right, list);
   }
 
+  /**
+   * 判断是否bst
+   *
+   * <p>递归
+   *
+   * @param root
+   */
+  public boolean re(TreeNode root) {
+    if (root == null) {
+      return true;
+    }
+    // 叶子结点
+    if (root.left == null && root.right == null) {
+      return true;
+    }
+    TreeNode left = jieLeft(root.left);
+    TreeNode right = jieRight(root.right);
+    boolean l = (left == null) || (left.val < root.val);
+    boolean r = (right == null) || (right.val > root.val);
+
+    boolean c = re(root.left) && re(root.right);
+
+    return c & l & r;
+  }
+
+  public TreeNode jieLeft(TreeNode root) {
+    if (root == null) {
+      return null;
+    }
+    // 叶子结点
+    if (root.right == null) {
+      return root;
+    }
+    return jieLeft(root.right);
+  }
+
+  public TreeNode jieRight(TreeNode root) {
+    if (root == null) {
+      return null;
+    }
+    // 叶子结点
+    if (root.left == null) {
+      return root;
+    }
+    return jieLeft(root.left);
+  }
+
   public class TreeNode {
     int val;
     TreeNode left;
