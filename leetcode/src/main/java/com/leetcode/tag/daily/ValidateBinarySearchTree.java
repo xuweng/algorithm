@@ -5,6 +5,8 @@ import java.util.List;
 
 /**
  * 98. 验证二叉搜索树
+ *
+ * <p>递归计算:计算好在递归调用入口传参;递归函数里面计算
  */
 public class ValidateBinarySearchTree {
   public boolean isValidBST(TreeNode root) {
