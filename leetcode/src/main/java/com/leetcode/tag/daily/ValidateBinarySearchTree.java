@@ -131,10 +131,11 @@ public class ValidateBinarySearchTree {
       if (node == null) {
         return true;
       }
-
+      // 下界
       if (lower != null && node.val <= lower) {
         return false;
       }
+      // 上界
       if (upper != null && node.val >= upper) {
         return false;
       }
