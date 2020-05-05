@@ -6,6 +6,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * 698. 划分为k个相等的子集
+ *
+ * <p>搞懂题目.搞懂题目.搞懂题目
+ *
+ * <p>题目看漏.数组刚刚好划分k个子集.不能有剩余
  */
 public class s698 {
     public boolean canPartitionKSubsets(int[] nums, int k) {
