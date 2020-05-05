@@ -122,9 +122,9 @@ public class ValidateBinarySearchTree {
      * <p>判断子树中所有节点的值是否都在 (l,r) 的范围内（注意是开区间）。如果 root 节点的值 val 不在 (l,r)
      * 的范围内说明不满足条件直接返回，否则我们要继续递归调用检查它的左右子树是否满足，如果都满足才说明这是一棵二叉搜索树。
      *
-     * @param node
-     * @param lower
-     * @param upper
+     * @param node 根结点
+     * @param lower 下界,最小值
+     * @param upper 上界,最大值
      * @return
      */
     public boolean helper(TreeNode node, Integer lower, Integer upper) {
@@ -144,6 +144,8 @@ public class ValidateBinarySearchTree {
     }
 
     public boolean isValidBST(TreeNode root) {
+      // 函数递归调用的入口为 helper(root, -inf, +inf)， inf 表示一个无穷大的值
+      // 传参还是很容易想到,在递归调用的入口计算好参数
       return helper(root, null, null);
     }
   }
