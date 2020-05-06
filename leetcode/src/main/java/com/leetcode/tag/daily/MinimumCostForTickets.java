@@ -9,6 +9,10 @@ public class MinimumCostForTickets {
   /**
    * 状态方程错误
    *
+   * <p>代码简洁
+   *
+   * <p>子问题错误.后面推导都错
+   *
    * <p>审题.审题.审题
    *
    * <p>数据范围.数据范围.数据范围.数据范围.数据范围
@@ -23,7 +27,7 @@ public class MinimumCostForTickets {
    */
   public int mincostTickets(int[] days, int[] costs) {
     int[] dpMin = new int[366];
-    dpMin[1] = costs[0];
+    dpMin[days[0]] = costs[0];
     for (int i = 1; i < days.length; i++) {
       int a = dpMin[days[i - 1]] + costs[0];
       // dpMin[days[i] - 7]已经计算?
