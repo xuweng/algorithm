@@ -6,6 +6,8 @@ import java.util.Set;
 /**
  * 983. 最低票价
  *
+ * <p>早知道看答案 dp计算顺序 线性dp计算顺序
+ *
  * <p>看出用dp来做
  */
 public class MinimumCostForTickets {
