@@ -27,14 +27,16 @@ public class MinimumCostForTickets {
    */
   public int mincostTickets(int[] days, int[] costs) {
     int[] dpMin = new int[366];
-    dpMin[days[0]] = costs[0];
+    dpMin[days[0]] = Math.min(Math.min(costs[0], costs[1]), costs[2]);
     for (int i = 1; i < days.length; i++) {
       int a = dpMin[days[i - 1]] + costs[0];
       // dpMin[days[i] - 7]已经计算?
       int xia = xia(days, i, days[i] - 7);
-      int b = (xia == -1) ? Integer.MAX_VALUE : dpMin[days[xia]] + costs[1];
+      int b = xia == 0 ? costs[1] : xia == -1 ? Integer.MAX_VALUE : dpMin[days[xia]] + costs[1];
+
       int xia1 = xia(days, i, days[i] - 30);
-      int c = (xia == -1) ? Integer.MAX_VALUE : dpMin[days[xia1]] + costs[2];
+      int c =
+              (xia1 == 0) ? costs[2] : (xia1 == -1) ? Integer.MAX_VALUE : dpMin[days[xia1]] + costs[2];
       dpMin[days[i]] = Math.min(Math.min(a, b), c);
     }
 
