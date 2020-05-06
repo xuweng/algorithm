@@ -58,7 +58,7 @@ public class MinimumCostForTickets {
       return -1;
     }
     int i = index;
-    while (i >= 0 && value <= days[i]) {
+    while (i >= 0 && value < days[i]) {
       i--;
     }
     return i + 1;
