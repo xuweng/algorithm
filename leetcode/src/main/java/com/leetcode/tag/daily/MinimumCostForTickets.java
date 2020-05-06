@@ -82,6 +82,30 @@ public class MinimumCostForTickets {
       return dp(1);
     }
 
+    /**
+     * 早知道看答案.浪费时间
+     *
+     * <p>动态规划不是很明显
+     *
+     * <p>动态规划计算顺序
+     *
+     * <p>计算顺序
+     *
+     * <p>计算顺序
+     *
+     * <p>方法一：记忆化搜索（日期变量型） 思路和算法
+     *
+     * <p>我们用 dp(i) 来表示从第 i 天开始到一年的结束，我们需要花的钱。考虑到一张通行证可以让我们在「接下来」的若干天进行旅行，
+     *
+     * <p>所以我们「从后往前」倒着进行动态规划。
+     *
+     * <p>作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/minimum-cost-for-tickets/solution/zui-di-piao-jie-by-leetcode-solution/
+     * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     *
+     * @param i
+     * @return
+     */
     public int dp(int i) {
       if (i > 365) {
         return 0;
