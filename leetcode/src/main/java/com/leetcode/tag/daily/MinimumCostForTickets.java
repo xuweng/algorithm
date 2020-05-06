@@ -25,23 +25,36 @@ public class MinimumCostForTickets {
     int[] dpMin = new int[366];
     dpMin[1] = costs[0];
     for (int i = 1; i < days.length; i++) {
-      if (days[i] >= 1 && days[i] <= 7) {
-        dpMin[days[i]] = Math.min(dpMin[days[i - 1]] + costs[0], costs[1]);
-      } else if (days[i] > 7) {
-        int a = dpMin[days[i - 1]] + costs[0];
-        // dpMin[days[i] - 7]已经计算?
-        int b = Integer.MAX_VALUE;
-        if (days[i] - 7 <= days[i - 1] && days[i] - 7 < days.length) {
-          b = dpMin[days[days[i] - 7]] + costs[1];
-        }
-        int c = Integer.MAX_VALUE;
-        if (days[i] >= 30 && days[i] - 30 <= days[i - 1] && days[i] - 30 < days.length) {
-          c = dpMin[days[days[i] - 30]] + costs[2];
-        }
-        dpMin[days[i]] = Math.min(Math.min(a, b), c);
-      }
+      int a = dpMin[days[i - 1]] + costs[0];
+      // dpMin[days[i] - 7]已经计算?
+      int xia = xia(days, i, days[i] - 7);
+      int b = (xia == -1) ? Integer.MAX_VALUE : dpMin[days[xia]] + costs[1];
+      int xia1 = xia(days, i, days[i] - 30);
+      int c = (xia == -1) ? Integer.MAX_VALUE : dpMin[days[xia1]] + costs[2];
+      dpMin[days[i]] = Math.min(Math.min(a, b), c);
     }
 
     return dpMin[days[days.length - 1]];
+  }
+
+  /**
+   * days 按顺序严格递增
+   *
+   * @param days
+   * @param value
+   * @return
+   */
+  public int xia(int[] days, int index, int value) {
+    if (value <= 0) {
+      return 0;
+    }
+    if (value > days[index - 1]) {
+      return -1;
+    }
+    int i = index;
+    while (i >= 0 && value <= days[i]) {
+      i--;
+    }
+    return i + 1;
   }
 }
