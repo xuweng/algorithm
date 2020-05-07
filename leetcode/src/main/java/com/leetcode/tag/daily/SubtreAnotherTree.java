@@ -99,6 +99,9 @@ public class SubtreAnotherTree {
    * @return
    */
   public boolean isSubtree1(TreeNode s, TreeNode t) {
+    if (s.left == null && s.right == null && t.left == null && t.right == null) {
+      return s.val == t.val;
+    }
     StringBuilder sb1 = new StringBuilder();
     StringBuilder sb2 = new StringBuilder();
 
