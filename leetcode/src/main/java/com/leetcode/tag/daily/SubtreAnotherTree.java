@@ -16,6 +16,12 @@ public class SubtreAnotherTree {
    *
    * <p>感觉参数不够.添加参数.添加参数.添加参数
    *
+   * <p>小数据规模正确,用小数据规模推导大数据规模错误.真失败.这样推导错误
+   *
+   * <p>方程错误.方程错误.方程错误
+   *
+   * <p>根本性错误.
+   *
    * @param s
    * @param t
    * @return
@@ -40,6 +46,7 @@ public class SubtreAnotherTree {
     }
     // 相同结构
     if (s.val == t.val) {
+      // 方程错误
       return isSubtree(s.left, t.left) && isSubtree(s.right, t.right);
     }
 
