@@ -7,6 +7,12 @@ import java.util.Arrays;
  *
  * <p>审题.审题.审题.审题
  *
+ * <p>两个数组上用分治
+ *
+ * <p>一个数组上用分治
+ *
+ * <p>一个数组.两个数组
+ *
  * <p>4. 寻找两个正序数组的中位数
  */
 public class MedianTwoSorted {
