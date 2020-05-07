@@ -1,5 +1,8 @@
 package com.leetcode.tag.daily;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 与树相关首先想到递归
  *
@@ -37,6 +40,40 @@ public class SubtreAnotherTree {
     }
 
     return isSubtree(s.left, t) || isSubtree(s.right, t);
+  }
+
+  /**
+   * 用遍历方法错误
+   *
+   * @param s
+   * @param t
+   * @return
+   */
+  public boolean isSubtree1(TreeNode s, TreeNode t) {
+    List<Integer> l1 = new ArrayList<>();
+    List<Integer> l2 = new ArrayList<>();
+
+    pre(s, l1);
+    pre(t, l2);
+
+    int j = 0;
+    for (int i = 0; i < l1.size(); i++) {
+      Integer integer = l1.get(i);
+      if (integer.equals(l2.get(0))) {
+        j = i;
+      }
+    }
+
+    return l2.size() == j;
+  }
+
+  public void pre(TreeNode s, List<Integer> list) {
+    if (s == null) {
+      return;
+    }
+    pre(s.left, list);
+    list.add(s.val);
+    pre(s.right, list);
   }
 
   public class TreeNode {
