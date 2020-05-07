@@ -20,6 +20,8 @@ public class SubtreAnotherTree {
    *
    * <p>方程错误.方程错误.方程错误
    *
+   * <p>修改递归方程,不用修改递归终止条件
+   *
    * <p>根本性错误.
    *
    * @param s
