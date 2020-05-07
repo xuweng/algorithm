@@ -1,8 +1,5 @@
 package com.leetcode.tag.daily;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * dp.递归
  *
@@ -102,39 +99,28 @@ public class SubtreAnotherTree {
    * @return
    */
   public boolean isSubtree1(TreeNode s, TreeNode t) {
-    List<Integer> l1 = new ArrayList<>();
-    List<Integer> l2 = new ArrayList<>();
+    StringBuilder sb1 = new StringBuilder();
+    StringBuilder sb2 = new StringBuilder();
 
-    pre(s, l1);
-    pre(t, l2);
+    pre(s, sb1);
+    pre(t, sb2);
 
-    int j = 0;
-    for (int i = 0; i < l1.size() && j < l2.size(); i++) {
-      Integer integer = l1.get(i);
-      if (j > 0 && !integer.equals(l2.get(j))) {
-        return false;
-      }
-      if (integer.equals(l2.get(j))) {
-        j++;
-      }
-    }
-
-    return l2.size() == j;
+    return sb1.toString().contains(sb2.toString());
   }
 
-  public void pre(TreeNode s, List<Integer> list) {
+  public void pre(TreeNode s, StringBuilder sb) {
     if (s == null) {
       return;
     }
-    list.add(s.val);
+    sb.append(s.val);
     if (s.left == null) {
-      list.add(Integer.MAX_VALUE);
+      sb.append(Integer.MAX_VALUE);
     }
     if (s.right == null) {
-      list.add(Integer.MAX_VALUE);
+      sb.append(Integer.MAX_VALUE);
     }
-    pre(s.left, list);
-    pre(s.right, list);
+    pre(s.left, sb);
+    pre(s.right, sb);
   }
 
   /**
