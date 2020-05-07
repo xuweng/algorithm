@@ -17,9 +17,21 @@ public class SubtreAnotherTree {
     if (s == null) {
       return t == null;
     }
+    // 这个递归终止条件错误
+    // 仔细分析,需要考虑叶子结点
     if (t == null) {
-      return true;
+      return false;
     }
+    // t是叶子结点
+    if (t.left == null && t.right == null) {
+      // s也是叶子结点
+      if ((s.left == null && s.right == null)) {
+        return s.val == t.val;
+      } else {
+        return isSubtree(s.left, t) || isSubtree(s.right, t);
+      }
+    }
+    // 相同结构
     if (s.val == t.val) {
       return isSubtree(s.left, t.left) && isSubtree(s.right, t.right);
     }
