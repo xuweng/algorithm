@@ -106,12 +106,62 @@ public class SubtreAnotherTree {
     pre(s.right, list);
   }
 
+  /**
+   * 想不到两次递归
+   *
+   * <p>两次递归
+   *
+   * <p>遍历中递归
+   *
+   * <p>遍历中递归.
+   *
+   * <p>遍历中递归.遍历中递归.遍历中递归.遍历中递归
+   *
+   * <p>作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/subtree-of-another-tree/solution/ling-yi-ge-shu-de-zi-shu-by-leetcode-solution/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution {
+    public boolean check(TreeNode o, TreeNode t) {
+      if (o == null && t == null) {
+        return true;
+      }
+      if ((o != null && t == null) || (o == null && t != null) || (o.val != t.val)) {
+        return false;
+      }
+      return check(o.left, t.left) && check(o.right, t.right);
+    }
+
+    // check每个结点
+    boolean dfs(TreeNode o, TreeNode t) {
+      if (o == null) {
+        return false;
+      }
+      return check(o, t) || dfs(o.left, t) || dfs(o.right, t);
+    }
+
+    /**
+     * 这是一种最朴素的方法 —— DFS 枚举 s 中的每一个节点，判断这个点的子树是否和 t 相等。
+     *
+     * <p>如何判断一个节点的子树是否和 t 相等呢，我们又需要做一次 DFS 来检查，即让两个指针一开始先指向该节点和 t
+     * 的根，然后「同步移动」两根指针来「同步遍历」这两棵树，判断对应位置是否相等。
+     *
+     * @param s
+     * @param t
+     * @return
+     */
+    boolean isSubtree(TreeNode s, TreeNode t) {
+      return dfs(s, t);
+    }
+  }
+
   public class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
 
-    TreeNode() {}
+    TreeNode() {
+    }
 
     TreeNode(int val) {
       this.val = val;
