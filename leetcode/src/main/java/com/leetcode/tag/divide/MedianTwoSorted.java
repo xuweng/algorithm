@@ -3,7 +3,11 @@ package com.leetcode.tag.divide;
 import java.util.Arrays;
 
 /**
- * 审题
+ * 由于 A 中有 m 个元素， 所以我们有 m+1 种划分的方法（i = 0∼m）
+ *
+ * <p>遍历每种划分.遍历每种划分.遍历每种划分
+ *
+ * <p>审题
  *
  * <p>审题.审题.审题.审题
  *
