@@ -113,15 +113,10 @@ public class SubtreAnotherTree {
 
   public void pre(TreeNode s, StringBuilder sb) {
     if (s == null) {
+      sb.append(Integer.MAX_VALUE);
       return;
     }
     sb.append(s.val);
-    if (s.left == null) {
-      sb.append(Integer.MAX_VALUE);
-    }
-    if (s.right == null) {
-      sb.append(Integer.MAX_VALUE);
-    }
     pre(s.left, sb);
     pre(s.right, sb);
   }
