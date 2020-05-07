@@ -109,10 +109,13 @@ public class SubtreAnotherTree {
     pre(t, l2);
 
     int j = 0;
-    for (int i = 0; i < l1.size(); i++) {
+    for (int i = 0; i < l1.size() && j < l2.size(); i++) {
       Integer integer = l1.get(i);
-      if (integer.equals(l2.get(0))) {
-        j = i;
+      if (j > 0 && !integer.equals(l2.get(j))) {
+        return false;
+      }
+      if (integer.equals(l2.get(j))) {
+        j++;
       }
     }
 
@@ -123,8 +126,14 @@ public class SubtreAnotherTree {
     if (s == null) {
       return;
     }
-    pre(s.left, list);
     list.add(s.val);
+    if (s.left == null) {
+      list.add(Integer.MAX_VALUE);
+    }
+    if (s.right == null) {
+      list.add(Integer.MAX_VALUE);
+    }
+    pre(s.left, list);
     pre(s.right, list);
   }
 
