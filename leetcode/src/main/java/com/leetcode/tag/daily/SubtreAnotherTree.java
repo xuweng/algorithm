@@ -12,6 +12,10 @@ public class SubtreAnotherTree {
   /**
    * 2个参数递归终止条件
    *
+   * <p>添加参数
+   *
+   * <p>感觉参数不够.添加参数.添加参数.添加参数
+   *
    * @param s
    * @param t
    * @return
@@ -81,8 +85,7 @@ public class SubtreAnotherTree {
     TreeNode left;
     TreeNode right;
 
-    TreeNode() {
-    }
+    TreeNode() {}
 
     TreeNode(int val) {
       this.val = val;
