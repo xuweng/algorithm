@@ -37,7 +37,7 @@ public class SubtreAnotherTree {
     if (t == null) {
       return false;
     }
-    // t是叶子结点
+    // 处理t是叶子结点
     if (t.left == null && t.right == null) {
       // s也是叶子结点
       if ((s.left == null && s.right == null)) {
@@ -49,10 +49,21 @@ public class SubtreAnotherTree {
     // 相同结构
     if (s.val == t.val) {
       // 方程错误
-      return isSubtree(s.left, t.left) && isSubtree(s.right, t.right);
+      boolean isHeight = (height(s) == height(t));
+      return isHeight && isSubtree(s.left, t.left) && isSubtree(s.right, t.right);
     }
 
     return isSubtree(s.left, t) || isSubtree(s.right, t);
+  }
+
+  public int height(TreeNode root) {
+    if (root == null) {
+      return 0;
+    }
+    if (root.left == null && root.right == null) {
+      return 1;
+    }
+    return Math.max(height(root.left), height(root.right)) + 1;
   }
 
   /**
