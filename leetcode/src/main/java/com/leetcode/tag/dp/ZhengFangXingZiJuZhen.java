@@ -19,6 +19,14 @@ public class ZhengFangXingZiJuZhen {
   /**
    * 统计全为 1 的正方形子矩阵
    *
+   * <p>我们用 f[i][j] 表示以 (i, j) 为右下角的正方形的最大边长，
+   *
+   * <p>那么除此定义之外，f[i][j] = x 也表示以 (i, j) 为右下角的正方形的数目为 x（即边长为 1, 2, ..., x 的正方形各一个）
+   *
+   * <p>作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/count-square-submatrices-with-all-ones/solution/tong-ji-quan-wei-1-de-zheng-fang-xing-zi-ju-zhen-2/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   *
    * @param matrix
    * @return
    */
