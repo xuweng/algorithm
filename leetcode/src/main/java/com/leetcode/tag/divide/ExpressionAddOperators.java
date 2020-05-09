@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 审题
+ * 在数字之间添加二元运
+ *
+ * <p>审题
  *
  * <p>审题.审题.审题
  *
@@ -37,13 +39,40 @@ public class ExpressionAddOperators {
    */
   public List<String> divide(String num, int n, int target) {
     if (n <= 0) {
+      return new ArrayList<>();
+    }
+    if (n <= 1) {
+      int i = Integer.parseInt(String.valueOf(num.charAt(n)));
+      int j = Integer.parseInt(String.valueOf(num.charAt(n - 1)));
+
       List<String> list = new ArrayList<>();
+      if (i + j == target) {
+        list.add(i + "+" + j);
+      }
+      if (i - j == target) {
+        list.add(i + "-" + j);
+      }
+      if (i * j == target) {
+        list.add(i + "*" + j);
+      }
       list.add(String.valueOf(num.charAt(n)));
       return list;
     }
+
     // 第n个数
     int i = Integer.parseInt(String.valueOf(num.charAt(n)));
-    if (i >= target) {
+    if (i == target) {
+      // 计算前n-1
+      // 前n-1 - i
+      List<String> list = divide(num, n - 1, i + target);
+
+      // 处理list
+      List<String> list1 = new ArrayList<>();
+      for (String s : list) {
+        list1.add(s + "-" + i);
+      }
+      return list1;
+    } else if (i > target) {
       // 计算前n-1
       // 前n-1 - i
       List<String> list = divide(num, n - 1, i + target);
