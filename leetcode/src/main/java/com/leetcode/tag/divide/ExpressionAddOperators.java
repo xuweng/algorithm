@@ -42,8 +42,8 @@ public class ExpressionAddOperators {
       return new ArrayList<>();
     }
     if (n <= 1) {
-      int i = Integer.parseInt(String.valueOf(num.charAt(n)));
-      int j = Integer.parseInt(String.valueOf(num.charAt(n - 1)));
+      int j = Integer.parseInt(String.valueOf(num.charAt(n)));
+      int i = Integer.parseInt(String.valueOf(num.charAt(n - 1)));
 
       List<String> list = new ArrayList<>();
       if (i + j == target) {
