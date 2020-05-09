@@ -4,6 +4,12 @@ package com.leetcode.tag.divide;
  * 面试题 16.17. 连续数列
  */
 public class ContiguousSequenceLcci {
+  /**
+   * dp定义巧妙.dp定义巧妙.dp定义巧妙.dp定义巧妙.dp定义巧妙
+   *
+   * @param nums
+   * @return
+   */
   public int maxSubArray(int[] nums) {
     if (nums == null || nums.length <= 0) {
       return 0;
@@ -57,7 +63,9 @@ public class ContiguousSequenceLcci {
     }
 
     /**
-     * 此函数计算nums[left]到nums[right]之间的最大连续总和 最大连续总和只可能出现在数组的左边，或者右边，或者中间
+     * 分治套路
+     *
+     * <p>此函数计算nums[left]到nums[right]之间的最大连续总和 最大连续总和只可能出现在数组的左边，或者右边，或者中间
      */
     private int MaxSum(int left, int right) {
       if (left == right) {
