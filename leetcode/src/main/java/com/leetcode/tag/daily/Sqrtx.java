@@ -56,9 +56,7 @@ public class Sqrtx {
     }
   }
 
-  /**
-   * 二分查找
-   */
+  /** 二分查找 */
   class Solution2 {
     public int mySqrt(int x) {
       int l = 0, r = x, ans = -1;
@@ -72,6 +70,30 @@ public class Sqrtx {
         }
       }
       return ans;
+    }
+  }
+
+  class Solution3 {
+    /**
+     * 方法三：牛顿迭代
+     *
+     * @param x
+     * @return
+     */
+    public int mySqrt(int x) {
+      if (x == 0) {
+        return 0;
+      }
+
+      double C = x, x0 = x;
+      while (true) {
+        double xi = 0.5 * (x0 + C / x0);
+        if (Math.abs(x0 - xi) < 1e-7) {
+          break;
+        }
+        x0 = xi;
+      }
+      return (int) x0;
     }
   }
 }
