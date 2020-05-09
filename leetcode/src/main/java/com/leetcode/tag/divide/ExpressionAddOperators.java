@@ -60,6 +60,7 @@ public class ExpressionAddOperators {
       return list;
     }
 
+    // 固定第n个数
     // 第n个数
     int i = Integer.parseInt(String.valueOf(num.charAt(n)));
     if (i == target) {
