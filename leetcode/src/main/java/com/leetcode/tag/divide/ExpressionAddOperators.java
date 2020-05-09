@@ -55,7 +55,6 @@ public class ExpressionAddOperators {
       if (i * j == target) {
         list.add(i + "*" + j);
       }
-      list.add(String.valueOf(num.charAt(n)));
       return list;
     }
 
