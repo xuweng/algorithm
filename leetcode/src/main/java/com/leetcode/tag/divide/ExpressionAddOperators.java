@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 在数字之间添加二元运
+ * f(i):这类算法都是固定最后一个数
+ *
+ * <p>在数字之间添加二元运
  *
  * <p>审题
  *
