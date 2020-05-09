@@ -65,12 +65,18 @@ public class ExpressionAddOperators {
       // 计算前n-1
       // 前n-1 - i
       List<String> list = divide(num, n - 1, i + target);
-
       // 处理list
       List<String> list1 = new ArrayList<>();
       for (String s : list) {
         list1.add(s + "-" + i);
       }
+      // 前n-1 + i
+      List<String> list2 = divide(num, n - 1, target - i);
+      List<String> list3 = new ArrayList<>();
+      for (String s : list2) {
+        list3.add(s + "+" + i);
+      }
+      list1.addAll(list3);
       return list1;
     } else if (i > target) {
       // 计算前n-1
