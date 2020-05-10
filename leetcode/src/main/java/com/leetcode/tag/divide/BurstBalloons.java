@@ -65,7 +65,7 @@ public class BurstBalloons {
     }
     int max = Integer.MIN_VALUE;
     // i的范围?low<i<high
-    for (int i = low + 1; i <= high - 1; i++) {
+    for (int i = low + 1; i < high; i++) {
       max = Math.max(max, re(nums, low, i) + re(nums, i, high) + nums[low] * nums[i] * nums[high]);
     }
     me[low][high] = max;
