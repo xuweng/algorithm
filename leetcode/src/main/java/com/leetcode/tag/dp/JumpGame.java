@@ -1,7 +1,15 @@
 package com.leetcode.tag.dp;
 
 /**
- * 55. 跳跃游戏
+ * 最优解
+ *
+ * <p>最优解方案
+ *
+ * <p>贪心:一条路径
+ *
+ * <p>动态规划:已经尝试所有路径
+ *
+ * <p>55. 跳跃游戏
  */
 public class JumpGame {
   /**
