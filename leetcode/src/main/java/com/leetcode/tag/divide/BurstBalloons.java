@@ -82,7 +82,7 @@ public class BurstBalloons {
      *
      * <p>子问题依赖
      *
-     * <p>那我们假设不戳爆x，则x两边的气球就没有了依赖关系！这个气球x，我们可以放在最后戳爆它。
+     * <p>那我们假设不戳爆x，则x两边的气球就没有了依赖关系！这个气球x，我们可以放在最后戳爆它。x就是最后剩下的数
      *
      * <p>作者：mei-tian-you-ni
      * 链接：https://leetcode-cn.com/problems/burst-balloons/solution/jie-ti-guan-jian-xu-ni-qi-qiu-hui-su-fen-zhi-dong-/
@@ -115,7 +115,7 @@ public class BurstBalloons {
                         ans,
                         nums[left] * nums[i] * nums[right]
                                 + dp(memo, nums, left, i)
-                    + dp(memo, nums, i, right));
+                                + dp(memo, nums, i, right));
       }
       // add to the cache
       memo[left][right] = ans;
