@@ -115,6 +115,18 @@ public class BurstBalloons {
    * 方法二：动态规划（自底向上）
    */
   class Solution2 {
+    /**
+     * 定义方法 dp，使其返回开区间 (left, right) 中所能得到的最大金币数
+     *
+     * <p>开区间?
+     *
+     * <p>闭区间?
+     *
+     * <p>相邻问题?
+     *
+     * @param nums
+     * @return
+     */
     public int maxCoins(int[] nums) {
       // reframe the problem
       int n = nums.length + 2;
