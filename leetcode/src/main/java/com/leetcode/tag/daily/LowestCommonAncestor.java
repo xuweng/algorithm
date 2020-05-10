@@ -22,15 +22,19 @@ public class LowestCommonAncestor {
     if (root == null) {
       return null;
     }
+    // 递归终止条件
     // 一个节点也可以是它自己的祖先
-    if (root.val == p.val && root.val == q.val) {
+    if (root.val == p.val || root.val == q.val) {
       return root;
     }
+    // 相等肯定是root,不等也可以是root
     // 递归方程错误
     TreeNode left = re(root.left, p, q);
     TreeNode right = re(root.right, p, q);
-    TreeNode node = (left == null) ? right : left;
-    return (node == null) ? root : node;
+    if (left != null && right != null) {
+      return root;
+    }
+    return left == null ? right : left;
   }
 
   public class TreeNode {
