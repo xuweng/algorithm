@@ -129,8 +129,11 @@ public class BurstBalloons {
 
       // iterate over dp and incrementally build up to dp[0][n-1]
       for (int left = n - 2; left > -1; left--) {
+        // 固定left
         for (int right = left + 2; right < n; right++) {
+          // 固定right
           for (int i = left + 1; i < right; ++i)
+          // i在left到right之间
           // same formula to get the best score from (left, right) as before
           {
             dp[left][right] =
