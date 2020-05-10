@@ -11,6 +11,8 @@ public class BeautifulArray {
    *
    * <p>新题型?新题型?新题型
    *
+   * <p>例子:n=4--------->n=5?
+   *
    * @param N
    * @return
    */
