@@ -239,5 +239,5 @@ public class CountSmallerNumbers {
 
       return Arrays.asList(res);
     }
-  };
+  }
 }
