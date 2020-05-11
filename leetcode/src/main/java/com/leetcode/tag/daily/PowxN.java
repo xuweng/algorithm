@@ -6,8 +6,15 @@ package com.leetcode.tag.daily;
 public class PowxN {
   public double myPow(double x, int n) {
     // 递归终止条件
+    // 两个参数,递归终止条件比较麻烦
     if (n == 0) {
       return 1.0;
+    }
+    if (x == 1) {
+      return 1;
+    }
+    if (x == -1) {
+      return n % 2 == 0 ? 1 : -1;
     }
     if (n == 1) {
       return x;
