@@ -8,6 +8,13 @@ import java.util.Arrays;
 public class PowxN {
   double[] me;
 
+  /**
+   * Integer.MAX_VALUE + 1 = Integer.MIN_VALUE = -2147483648
+   *
+   * @param x
+   * @param n
+   * @return
+   */
   public double myPow(double x, int n) {
     me = new double[Math.abs(n) + 1];
     Arrays.fill(me, Double.MIN_VALUE);
