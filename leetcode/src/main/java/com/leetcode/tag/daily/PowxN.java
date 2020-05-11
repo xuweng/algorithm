@@ -1,12 +1,13 @@
 package com.leetcode.tag.daily;
 
-import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 实现 pow(x, n) ，即计算 x 的 n 次幂函数。
  */
 public class PowxN {
-  double[] me;
+  Map<String, Double> map = new HashMap<>();
 
   /**
    * Integer.MAX_VALUE + 1 = Integer.MIN_VALUE = -2147483648
@@ -16,15 +17,12 @@ public class PowxN {
    * @return
    */
   public double myPow(double x, int n) {
-    me = new double[Math.abs(n) + 1];
-    Arrays.fill(me, Double.MIN_VALUE);
-
     return (n >= 0) ? re(x, n) : 1 / re(x, -n);
   }
 
   public double re(double x, int n) {
-    if (me[n] != Double.MIN_VALUE) {
-      return me[n];
+    if (map.containsKey(String.valueOf(n))) {
+      return map.get(String.valueOf(n));
     }
     // 递归终止条件
     // 两个参数,递归终止条件比较麻烦
@@ -35,11 +33,12 @@ public class PowxN {
       return n % 2 == 0 ? 1 : -1;
     }
     if (n == 1) {
-      me[n] = x;
-      return me[n];
+      map.put(String.valueOf(n), x);
+      return map.get(String.valueOf(n));
     }
     double mid = re(x, n >> 1);
-    me[n] = n % 2 == 0 ? mid * mid : mid * mid * x;
-    return me[n];
+    double result = n % 2 == 0 ? mid * mid : mid * mid * x;
+    map.put(String.valueOf(n), result);
+    return map.get(String.valueOf(n));
   }
 }
