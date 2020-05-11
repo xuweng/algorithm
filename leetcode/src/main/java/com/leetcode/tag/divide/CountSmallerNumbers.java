@@ -119,8 +119,7 @@ public class CountSmallerNumbers {
     SegmentTreeNode left;
     SegmentTreeNode right;
 
-    public SegmentTreeNode() {
-    }
+    public SegmentTreeNode() {}
 
     SegmentTreeNode(int start, int end) {
       count = 0;
@@ -132,7 +131,7 @@ public class CountSmallerNumbers {
      * 构造线段树 找出数组中最小和最大的元素，做为根节点的线段范围
      *
      * @param start 最小值
-     * @param end   最大值
+     * @param end 最大值
      * @return
      */
     public SegmentTreeNode build(int start, int end) {
@@ -153,7 +152,9 @@ public class CountSmallerNumbers {
     }
 
     /**
-     * 返回[start, end]的count值
+     * 这个函数比较难理解
+     *
+     * <p>返回[start, end]的count值
      *
      * @param root
      * @param start
