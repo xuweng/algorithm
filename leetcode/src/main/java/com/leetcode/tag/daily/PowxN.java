@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 实现 pow(x, n) ，即计算 x 的 n 次幂函数。
+ * n很大，结果会溢出呀，为什么不处理溢出呢
+ *
+ * <p>实现 pow(x, n) ，即计算 x 的 n 次幂函数。
  */
 public class PowxN {
   Map<String, Double> map = new HashMap<>();
@@ -87,19 +89,24 @@ public class PowxN {
     }
   }
 
+  /**
+   * 直接从左到右进行推导看上去很困难，因为在每一步中，我们不知道在将上一次的结果平方之后，还需不需要额外乘 x。
+   *
+   * <p>但如果我们从右往左看，分治的思想就十分明显了：
+   */
   class Solution1 {
     double quickMul(double x, long N) {
       double ans = 1.0;
       // 贡献的初始值为 x
-      double x_contribute = x;
+      double xContribute = x;
       // 在对 N 进行二进制拆分的同时计算答案
       while (N > 0) {
         if (N % 2 == 1) {
           // 如果 N 二进制表示的最低位为 1，那么需要计入贡献
-          ans *= x_contribute;
+          ans *= xContribute;
         }
         // 将贡献不断地平方
-        x_contribute *= x_contribute;
+        xContribute *= xContribute;
         // 舍弃 N 二进制表示的最低位，这样我们每次只要判断最低位即可
         N /= 2;
       }
