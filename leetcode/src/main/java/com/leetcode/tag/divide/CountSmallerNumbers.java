@@ -24,4 +24,75 @@ public class CountSmallerNumbers {
     list.add(0);
     return list;
   }
+
+  /**
+   * 分治.递归
+   *
+   * <p>重叠子问题?子问题依赖?
+   *
+   * <p>右子问题没有依赖.左子问题依赖右子问题
+   *
+   * @param nums
+   * @return
+   */
+  public List<Integer> divide(int[] nums) {
+    if (nums == null || nums.length == 0) {
+      return new ArrayList<>();
+    }
+
+    return null;
+  }
+
+  /**
+   * 把输入数组反过来插入一个有序数组（降序）中，插入的位置就是在原数组中位于它右侧的元素的个数
+   *
+   * <p>反常思维.反常思维.反常思维.反常思维.反常思维.反常思维.反常思维.反常思维.反常思维
+   *
+   * <p>左----->右
+   *
+   * <p>右----->左
+   *
+   * <p>搞破.不搞破
+   *
+   * @param nums
+   * @return
+   */
+  public List<Integer> countSmaller1(int[] nums) {
+    if (nums == null || nums.length == 0) {
+      return new ArrayList<>();
+    }
+    int[] sortNums = new int[nums.length];
+    List<Integer> list = new ArrayList<>();
+    for (int i = nums.length - 1; i >= 0; i--) {
+      list.add(insert(sortNums, nums[i]));
+    }
+    List<Integer> result = new ArrayList<>();
+    for (int i = list.size() - 1; i >= 0; i--) {
+      result.add(list.get(i));
+    }
+
+    return result;
+  }
+
+  int count;
+
+  public int insert(int[] sortNums, int target) {
+    if (count == 0) {
+      count++;
+      sortNums[0] = target;
+      return 0;
+    }
+    int i = count - 1;
+    if (target == sortNums[i]) {
+      return 0;
+    }
+    while (i >= 0 && target < sortNums[i]) {
+      sortNums[i + 1] = sortNums[i];
+      i--;
+    }
+    count++;
+    sortNums[i + 1] = target;
+
+    return i + 1;
+  }
 }
