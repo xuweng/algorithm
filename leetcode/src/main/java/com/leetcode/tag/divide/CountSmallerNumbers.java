@@ -121,8 +121,7 @@ public class CountSmallerNumbers {
     // 叶子结点改为单链表,统计count容易多
     SegmentTreeNode next;
 
-    public SegmentTreeNode() {
-    }
+    public SegmentTreeNode() {}
 
     SegmentTreeNode(int start, int end) {
       count = 0;
@@ -155,7 +154,13 @@ public class CountSmallerNumbers {
     }
 
     /**
-     * 这个函数比较难理解
+     * 画图
+     *
+     * <p>逻辑清晰多了.如果错误肯定有哪些情况没有考虑到
+     *
+     * <p>只在左,只在右,左右.3种情况
+     *
+     * <p>这个函数比较难理解
      *
      * <p>返回[start, end]的count值
      *
@@ -172,25 +177,16 @@ public class CountSmallerNumbers {
         return root.count;
       }
       int mid = root.start + (root.end - root.start) / 2;
-      int leftcount = 0, rightcount = 0;
-
-      if (start <= mid) {
-        if (mid < end) {
-          leftcount = count(root.left, start, mid);
-        } else {
-          leftcount = count(root.left, start, end);
-        }
+      if (root.start <= start && end <= mid) {
+        // 只在左
+        return count(root.left, start, end);
+      } else if (start > mid && end <= root.end) {
+        // 只在右
+        return count(root.right, start, end);
+      } else {
+        // 在左右,横跨mid
+        return count(root.left, start, mid) + count(root.right, mid + 1, end);
       }
-
-      if (mid < end) {
-        if (start <= mid) {
-          rightcount = count(root.right, mid + 1, end);
-        } else {
-          rightcount = count(root.right, start, end);
-        }
-      }
-
-      return (leftcount + rightcount);
     }
 
     /**
