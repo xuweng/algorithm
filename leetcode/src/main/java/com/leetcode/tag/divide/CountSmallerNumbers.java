@@ -1,6 +1,7 @@
 package com.leetcode.tag.divide;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -62,16 +63,12 @@ public class CountSmallerNumbers {
       return new ArrayList<>();
     }
     int[] sortNums = new int[nums.length];
-    List<Integer> list = new ArrayList<>();
+    Integer[] result = new Integer[nums.length];
     for (int i = nums.length - 1; i >= 0; i--) {
-      list.add(insert(sortNums, nums[i]));
-    }
-    List<Integer> result = new ArrayList<>();
-    for (int i = list.size() - 1; i >= 0; i--) {
-      result.add(list.get(i));
+      result[i] = insert(sortNums, nums[i]);
     }
 
-    return result;
+    return Arrays.asList(result);
   }
 
   // 已经排序数组的数量
