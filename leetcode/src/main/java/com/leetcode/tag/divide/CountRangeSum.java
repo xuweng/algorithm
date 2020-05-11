@@ -60,28 +60,28 @@ public class CountRangeSum {
 
     private static long[] aux;
 
-    private int countRangeSum(long[] sums, int lo, int hi, int lower, int upper) {
+    private int countRangeSum(long[] sums, int low, int high, int lower, int upper) {
       // 计算sum的lo-hi能构成多少个,即nums的lo-(hi-1)构成的
-      if (lo >= hi) {
+      if (low >= high) {
         return 0;
       }
-      int mid = lo + (hi - lo) / 2;
-      int leftCnt = countRangeSum(sums, lo, mid, lower, upper);
-      int rightCnt = countRangeSum(sums, mid + 1, hi, lower, upper);
+      int mid = low + (high - low) / 2;
+      int leftCnt = countRangeSum(sums, low, mid, lower, upper);
+      int rightCnt = countRangeSum(sums, mid + 1, high, lower, upper);
       int cnt = 0;
       int leftP = mid + 1, rightP = mid + 1;
-      for (int i = lo; i <= mid; i++) {
-        while (leftP <= hi && sums[leftP] - sums[i] < lower) {
+      for (int i = low; i <= mid; i++) {
+        while (leftP <= high && sums[leftP] - sums[i] < lower) {
           leftP++;
         }
-        while (rightP <= hi && sums[rightP] - sums[i] <= upper) {
+        while (rightP <= high && sums[rightP] - sums[i] <= upper) {
           rightP++;
         }
 
         cnt += rightP - leftP;
       }
 
-      mergerSort(sums, lo, mid, hi);
+      mergerSort(sums, low, mid, high);
       return leftCnt + rightCnt + cnt;
     }
 
