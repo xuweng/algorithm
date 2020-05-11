@@ -83,10 +83,7 @@ public class CountSmallerNumbers {
       return 0;
     }
     int i = count - 1;
-    if (target == sortNums[i]) {
-      return 0;
-    }
-    while (i >= 0 && target < sortNums[i]) {
+    while (i >= 0 && target <= sortNums[i]) {
       sortNums[i + 1] = sortNums[i];
       i--;
     }
