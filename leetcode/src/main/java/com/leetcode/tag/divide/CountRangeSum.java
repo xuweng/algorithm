@@ -20,11 +20,8 @@ public class CountRangeSum {
     }
     int count = 0;
     for (int i = 0; i < nums.length; i++) {
-      long sum = nums[i];
-      if (sum >= lower && sum <= upper) {
-        count++;
-      }
-      for (int j = i + 1; j < nums.length; j++) {
+      long sum = 0;
+      for (int j = i; j < nums.length; j++) {
         // 相加会导致大数溢出
         // 相乘会导致大数溢出
         sum += nums[j];
