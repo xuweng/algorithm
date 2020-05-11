@@ -50,7 +50,6 @@ public class CountRangeSum {
       int n = nums.length;
       // 前缀和
       long[] sums = new long[n + 1];
-      aux = new long[n + 1];
       for (int i = 1; i <= n; i++) {
         sums[i] = nums[i - 1] + sums[i - 1];
       }
