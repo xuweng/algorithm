@@ -74,20 +74,21 @@ public class CountSmallerNumbers {
     return result;
   }
 
-  int count;
+  // 已经排序数组的数量
+  int sortNumsCount;
 
   public int insert(int[] sortNums, int target) {
-    if (count == 0) {
-      count++;
+    if (sortNumsCount == 0) {
+      sortNumsCount++;
       sortNums[0] = target;
       return 0;
     }
-    int i = count - 1;
+    int i = sortNumsCount - 1;
     while (i >= 0 && target <= sortNums[i]) {
       sortNums[i + 1] = sortNums[i];
       i--;
     }
-    count++;
+    sortNumsCount++;
     sortNums[i + 1] = target;
 
     return i + 1;
