@@ -190,13 +190,13 @@ public class CountSmallerNumbers {
     }
 
     /**
-     * 插入一个元素，并更新线段树的count值
+     * 更新线段树的count值
      *
      * @param root
      * @param index
      * @param val
      */
-    void insert(SegmentTreeNode root, int index, int val) {
+    void updateCount(SegmentTreeNode root, int index, int val) {
       if (root.start == index && root.end == index) {
         root.count += val;
         return;
@@ -204,10 +204,10 @@ public class CountSmallerNumbers {
 
       int mid = root.start + (root.end - root.start) / 2;
       if (index >= root.start && index <= mid) {
-        insert(root.left, index, val);
+        updateCount(root.left, index, val);
       }
       if (index > mid && index <= root.end) {
-        insert(root.right, index, val);
+        updateCount(root.right, index, val);
       }
 
       // 左子树和右子树搞完后,更新root的count
@@ -236,7 +236,7 @@ public class CountSmallerNumbers {
       for (int i = nums.length - 1; i >= 0; i--) {
         // 统计线段树中[min, x-1]范围内的元素，即右侧小于x的元素个数
         res[i] = root.count(root, min, nums[i] - 1);
-        root.insert(root, nums[i], 1);
+        root.updateCount(root, nums[i], 1);
       }
 
       return Arrays.asList(res);
