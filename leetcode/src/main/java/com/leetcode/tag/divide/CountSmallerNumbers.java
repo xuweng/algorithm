@@ -215,8 +215,6 @@ public class CountSmallerNumbers {
     }
   }
 
-  ;
-
   /**
    * 作者：Dufre
    * 链接：https://leetcode-cn.com/problems/count-of-smaller-numbers-after-self/solution/c-xian-duan-shu-jie-fa-by-dufre/
