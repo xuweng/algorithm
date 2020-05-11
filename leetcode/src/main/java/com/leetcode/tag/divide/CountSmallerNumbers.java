@@ -118,8 +118,11 @@ public class CountSmallerNumbers {
 
     SegmentTreeNode left;
     SegmentTreeNode right;
+    // 叶子结点改为单链表,统计count容易多
+    SegmentTreeNode next;
 
-    public SegmentTreeNode() {}
+    public SegmentTreeNode() {
+    }
 
     SegmentTreeNode(int start, int end) {
       count = 0;
