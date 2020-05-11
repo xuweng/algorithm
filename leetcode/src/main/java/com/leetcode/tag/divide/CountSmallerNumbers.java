@@ -234,6 +234,7 @@ public class CountSmallerNumbers {
       SegmentTreeNode root = new SegmentTreeNode().build(min, max);
 
       for (int i = nums.length - 1; i >= 0; i--) {
+        // 统计线段树中[min, x-1]范围内的元素，即右侧小于x的元素个数
         res[i] = root.count(root, min, nums[i] - 1);
         root.insert(root, nums[i], 1);
       }
