@@ -118,4 +118,28 @@ public class PowxN {
       return N >= 0 ? quickMul(x, N) : 1.0 / quickMul(x, -N);
     }
   }
+
+  class Solution3 {
+    public double myPow(double x, int n) {
+      if (x == 1) {
+        return 1;
+      }
+      if (x == -1) {
+        return n % 2 == 0 ? 1 : -1;
+      }
+
+      if (n == 0) {
+        return 1;
+      }
+      if (n == 1) {
+        return x;
+      }
+      if (n == -1) {
+        return 1 / x;
+      }
+
+      double prev = myPow(x, n / 2);
+      return prev * prev * myPow(x, n % 2);
+    }
+  }
 }
