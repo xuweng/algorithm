@@ -20,20 +20,16 @@ public class PowxN {
    * @return
    */
   public double myPow(double x, int n) {
-    return (n >= 0) ? re(x, n) : 1.0 / re(x, -n);
+    // java中int类型的范围n∈[−2147483648,2147483647]，如果n=−2147483648，执行-n就会出现越界，所以转为long来操作就安全了。
+    long N = n;
+    return (n >= 0) ? re(x, N) : 1.0 / re(x, -N);
   }
 
-  public double re(double x, int n) {
+  public double re(double x, long n) {
     // 递归终止条件
     // 两个参数,递归终止条件比较麻烦
-    if (n == 0 || x == 1.0) {
+    if (n == 0) {
       return 1.0;
-    }
-    if (x == -1) {
-      return n % 2 == 0 ? 1 : -1;
-    }
-    if (n == 1) {
-      return x;
     }
     double mid = re(x, n >> 1);
     return n % 2 == 0 ? mid * mid : mid * mid * x;
