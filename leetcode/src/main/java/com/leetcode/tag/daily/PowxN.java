@@ -32,7 +32,7 @@ public class PowxN {
     }
     // 递归终止条件
     // 两个参数,递归终止条件比较麻烦
-    if (n == 0.0 || x == 1.0) {
+    if (n == 0 || x == 1.0) {
       return 1.0;
     }
     if (x == -1) {
@@ -46,5 +46,24 @@ public class PowxN {
     double result = n % 2 == 0 ? mid * mid : mid * mid * x;
     map.put(String.valueOf(n), result);
     return map.get(String.valueOf(n));
+  }
+
+  public double loop(double x, int n) {
+    if (n == 0 || x == 1.0) {
+      return 1.0;
+    }
+    if (x == -1) {
+      return n % 2 == 0 ? 1 : -1;
+    }
+    if (n == 1) {
+      return x;
+    }
+
+    double result = x;
+    for (int i = 2; i <= n; i = 2 * i) {
+      result = n % 2 == 0 ? result * result : result * result * x;
+    }
+
+    return result;
   }
 }
