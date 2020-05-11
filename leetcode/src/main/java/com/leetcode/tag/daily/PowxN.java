@@ -10,7 +10,13 @@ public class PowxN {
   Map<String, Double> map = new HashMap<>();
 
   /**
-   * Integer.MAX_VALUE + 1 = Integer.MIN_VALUE = -2147483648
+   * 没有重叠子问题
+   *
+   * <p>没有子问题依赖
+   *
+   * <p>加上缓存也没有用
+   *
+   * <p>Integer.MAX_VALUE + 1 = Integer.MIN_VALUE = -2147483648
    *
    * @param x
    * @param n
