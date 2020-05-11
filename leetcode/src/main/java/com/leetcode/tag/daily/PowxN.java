@@ -1,16 +1,11 @@
 package com.leetcode.tag.daily;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * n很大，结果会溢出呀，为什么不处理溢出呢
  *
  * <p>实现 pow(x, n) ，即计算 x 的 n 次幂函数。
  */
 public class PowxN {
-  Map<String, Double> map = new HashMap<>();
-
   /**
    * 没有重叠子问题
    *
@@ -25,13 +20,10 @@ public class PowxN {
    * @return
    */
   public double myPow(double x, int n) {
-    return (n >= 0) ? re(x, n) : 1 / re(x, -n);
+    return (n >= 0) ? re(x, n) : 1.0 / re(x, -n);
   }
 
   public double re(double x, int n) {
-    if (map.containsKey(String.valueOf(n))) {
-      return map.get(String.valueOf(n));
-    }
     // 递归终止条件
     // 两个参数,递归终止条件比较麻烦
     if (n == 0 || x == 1.0) {
@@ -41,13 +33,10 @@ public class PowxN {
       return n % 2 == 0 ? 1 : -1;
     }
     if (n == 1) {
-      map.put(String.valueOf(n), x);
-      return map.get(String.valueOf(n));
+      return x;
     }
     double mid = re(x, n >> 1);
-    double result = n % 2 == 0 ? mid * mid : mid * mid * x;
-    map.put(String.valueOf(n), result);
-    return map.get(String.valueOf(n));
+    return n % 2 == 0 ? mid * mid : mid * mid * x;
   }
 
   public double loop(double x, int n) {
