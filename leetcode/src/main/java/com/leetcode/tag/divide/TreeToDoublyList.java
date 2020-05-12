@@ -8,8 +8,8 @@ public class TreeToDoublyList {
     if (root == null) {
       return null;
     }
-    Node head = re(root);
     Node hou = findHou(root);
+    Node head = re(root);
     head.right = hou;
     hou.left = head;
 
@@ -18,6 +18,8 @@ public class TreeToDoublyList {
 
   /**
    * 递归逻辑思维顺序
+   *
+   * <p>指针形成环
    *
    * @param root
    * @return
@@ -28,17 +30,16 @@ public class TreeToDoublyList {
     }
     // root前驱
     Node qian = findHou(root.left);
-    if (qian != null) {
-      // 形成环
-      qian.right = root;
-    }
     Node left = re(root.left);
     Node right = re(root.right);
+    if (qian != null) {
+      qian.right = root;
+    }
+    root.left = qian;
     root.right = right;
     if (right != null) {
       right.left = root;
     }
-    root.left = qian;
     return (left == null) ? root : left;
   }
 
@@ -67,8 +68,7 @@ public class TreeToDoublyList {
     public Node left;
     public Node right;
 
-    public Node() {
-    }
+    public Node() {}
 
     public Node(int _val) {
       val = _val;

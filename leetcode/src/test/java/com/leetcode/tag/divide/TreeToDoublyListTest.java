@@ -5,8 +5,6 @@ import org.junit.Test;
 public class TreeToDoublyListTest {
   @Test
   public void test() {
-    int[] arr = {0, 0, 1, 2, 4, 2, 2, 3, 1, 4};
-    int k = 8;
     TreeToDoublyList treeToDoublyList = new TreeToDoublyList();
 
     TreeToDoublyList.Node root = new TreeToDoublyList.Node();
