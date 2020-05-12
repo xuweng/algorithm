@@ -1,4 +1,4 @@
-package com.leetcode.tag.divide;
+package com.leetcode.tag.daily;
 
 import java.util.Stack;
 
