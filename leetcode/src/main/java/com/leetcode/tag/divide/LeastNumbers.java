@@ -30,10 +30,10 @@ public class LeastNumbers {
     int p = arr[low];
     while (low < high) {
       // 边界判断边界麻烦
-      while (low < high && arr[high] > p) {
+      while (low < high && arr[high] >= p) {
         high--;
       }
-      while (low < high && arr[low] <= p) {
+      while (low < high && arr[low] < p) {
         low++;
       }
       if (low != high) {
