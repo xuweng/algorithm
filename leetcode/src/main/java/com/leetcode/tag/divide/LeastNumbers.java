@@ -53,13 +53,14 @@ public class LeastNumbers {
       while (low < high && arr[high] >= p) {
         high--;
       }
+      if (low < high) {
+        arr[low] = arr[high];
+      }
       while (low < high && arr[low] < p) {
         low++;
       }
       if (low < high) {
-        int temp = arr[low];
-        arr[low] = arr[high];
-        arr[high] = temp;
+        arr[high] = arr[low];
       }
     }
     arr[low] = p;
