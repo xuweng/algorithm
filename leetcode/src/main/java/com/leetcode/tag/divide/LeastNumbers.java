@@ -29,7 +29,8 @@ public class LeastNumbers {
     int p = patition(arr, low, high);
     if (p == k - 1) {
       return;
-    } else if (p < k - 1) {
+    }
+    if (p < k - 1) {
       divide(arr, p + 1, high, k);
     } else {
       divide(arr, low, p - 1, k);
