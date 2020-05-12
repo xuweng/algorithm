@@ -16,9 +16,21 @@ public class TreeToDoublyList {
     return head;
   }
 
+  /**
+   * 递归逻辑思维顺序
+   *
+   * @param root
+   * @return
+   */
   public Node re(Node root) {
     if (root == null) {
       return null;
+    }
+    // root前驱
+    Node qian = findHou(root.left);
+    if (qian != null) {
+      // 形成环
+      qian.right = root;
     }
     Node left = re(root.left);
     Node right = re(root.right);
@@ -26,36 +38,31 @@ public class TreeToDoublyList {
     if (right != null) {
       right.left = root;
     }
-    // root前驱
-    Node qian = findHou(root.left);
-    if (qian != null) {
-      qian.right = root;
-    }
     root.left = qian;
     return (left == null) ? root : left;
   }
 
   public Node findQian(Node root) {
-    if (root == null) {
-      return null;
-    }
-    if (root.left == null) {
+    if (root == null || root.left == null) {
       return root;
     }
     return findQian(root.left);
   }
 
+  /**
+   * java.lang.StackOverflowError
+   *
+   * @param root
+   * @return
+   */
   public Node findHou(Node root) {
-    if (root == null) {
-      return null;
-    }
-    if (root.right == null) {
+    if (root == null || root.right == null) {
       return root;
     }
     return findHou(root.right);
   }
 
-  class Node {
+  static class Node {
     public int val;
     public Node left;
     public Node right;
@@ -72,7 +79,5 @@ public class TreeToDoublyList {
       left = _left;
       right = _right;
     }
-  }
-
-  ;
+  };
 }
