@@ -10,16 +10,14 @@ public class TreeToDoublyList {
     }
     Node hou = findHou(root);
     Node head = re(root);
-    head.right = hou;
-    hou.left = head;
+    hou.right = head;
+    head.left = hou;
 
     return head;
   }
 
   /**
-   * 递归逻辑思维顺序
-   *
-   * <p>指针形成环
+   * 递归都是同一层,同一层不需要注意计算顺序
    *
    * @param root
    * @return
@@ -28,10 +26,12 @@ public class TreeToDoublyList {
     if (root == null) {
       return null;
     }
-    // root前驱
-    Node qian = findHou(root.left);
+    // 注意计算顺序
+    // 不需要注意顺序,都是一个root
     Node left = re(root.left);
     Node right = re(root.right);
+    // 保存root前驱
+    Node qian = findHou(root.left);
     if (qian != null) {
       qian.right = root;
     }
