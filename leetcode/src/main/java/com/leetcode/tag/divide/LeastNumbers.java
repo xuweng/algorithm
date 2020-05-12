@@ -15,21 +15,24 @@ public class LeastNumbers {
     if (arr == null || arr.length == 0 || k <= 0 || k > arr.length) {
       return new int[0];
     }
-    int index = divide(arr, 0, arr.length - 1, k);
+    divide(arr, 0, arr.length - 1, k);
     int[] result = new int[k];
-    System.arraycopy(arr, 0, result, 0, index + 1);
+    System.arraycopy(arr, 0, result, 0, k);
     return result;
   }
 
-  public int divide(int[] arr, int low, int high, int k) {
+  public void divide(int[] arr, int low, int high, int k) {
     // 递归终止条件
+    if (low >= high) {
+      return;
+    }
     int p = patition(arr, low, high);
     if (p == k - 1) {
-      return p;
+      return;
     } else if (p < k - 1) {
-      return divide(arr, p + 1, high, k);
+      divide(arr, p + 1, high, k);
     } else {
-      return divide(arr, low, p - 1, k);
+      divide(arr, low, p - 1, k);
     }
   }
 
