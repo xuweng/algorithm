@@ -1,7 +1,9 @@
 package com.leetcode.tag.divide;
 
 /**
- * 面试题36. 二叉搜索树与双向链表
+ * 递归同一层放心写.同一层不需要考虑顺序
+ *
+ * <p>面试题36. 二叉搜索树与双向链表
  */
 public class TreeToDoublyList {
   public Node treeToDoublyList(Node root) {
