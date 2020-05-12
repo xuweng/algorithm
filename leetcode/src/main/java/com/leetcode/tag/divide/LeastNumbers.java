@@ -16,6 +16,11 @@ public class LeastNumbers {
   }
 
   public int divide(int[] arr, int low, int high, int k) {
+    // 递归终止条件
+    if (high - low == k - 1) {
+      return high;
+    }
+
     int p = patition(arr, low, high);
     if (p == k - 1) {
       return p;
@@ -26,8 +31,21 @@ public class LeastNumbers {
     }
   }
 
+  /**
+   * 1,2,3,4....
+   *
+   * <p>2,1
+   *
+   * <p>小数据规模验证
+   *
+   * @param arr
+   * @param low
+   * @param high
+   * @return
+   */
   public int patition(int[] arr, int low, int high) {
     int p = arr[low];
+    // 死循环?
     while (low < high) {
       // 边界判断边界麻烦
       while (low < high && arr[high] >= p) {
@@ -36,7 +54,7 @@ public class LeastNumbers {
       while (low < high && arr[low] < p) {
         low++;
       }
-      if (low != high) {
+      if (low < high) {
         int temp = arr[low];
         arr[low] = arr[high];
         arr[high] = temp;
