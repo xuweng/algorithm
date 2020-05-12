@@ -1,7 +1,5 @@
 package com.leetcode.tag.divide;
 
-import java.util.stream.IntStream;
-
 /**
  * 面试题42. 连续子数组的最大和
  */
@@ -28,14 +26,6 @@ public class MaxSubArray {
     return re(nums, 0, nums.length - 1);
   }
 
-  /**
-   * 理解错误
-   *
-   * @param nums
-   * @param low
-   * @param high
-   * @return
-   */
   private int re(int[] nums, int low, int high) {
     if (low > high) {
       return 0;
@@ -44,12 +34,22 @@ public class MaxSubArray {
       return nums[low];
     }
     int mid = low + (high - low) / 2;
-    int left = re(nums, low, mid);
-    int right = re(nums, mid + 1, high);
+    int leftMax = re(nums, low, mid);
+    int rightMax = re(nums, mid + 1, high);
 
-    int l = IntStream.rangeClosed(low, mid).map(i -> nums[i]).sum();
-    int r = IntStream.rangeClosed(mid + 1, high).map(i -> nums[i]).sum();
+    int lSum = 0;
+    int lMax = Integer.MIN_VALUE;
+    for (int i = mid; i >= low; i--) {
+      lSum += nums[i];
+      lMax = Math.max(lMax, lSum);
+    }
+    int rSum = 0;
+    int rMax = Integer.MIN_VALUE;
+    for (int i = mid + 1; i <= high; i++) {
+      rSum += nums[i];
+      rMax = Math.max(rMax, rSum);
+    }
 
-    return Math.max(Math.max(left, right), l + r);
+    return Math.max(Math.max(leftMax, rightMax), lMax + rMax);
   }
 }
