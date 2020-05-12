@@ -1,7 +1,13 @@
 package com.leetcode.tag.divide;
 
 /**
- * 面试题40. 最小的k个数
+ * 调试
+ *
+ * <p>看答案
+ *
+ * <p>不用浪费时间
+ *
+ * <p>面试题40. 最小的k个数
  */
 public class LeastNumbers {
   public int[] getLeastNumbers(int[] arr, int k) {
@@ -17,10 +23,6 @@ public class LeastNumbers {
 
   public int divide(int[] arr, int low, int high, int k) {
     // 递归终止条件
-    if (high - low == k - 1) {
-      return high;
-    }
-
     int p = patition(arr, low, high);
     if (p == k - 1) {
       return p;
