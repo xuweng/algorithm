@@ -82,6 +82,7 @@ class MinStack {
       return head.min;
     }
 
+    /** 自定义数据结构 */
     private class Node {
       int val;
       // 最小值
