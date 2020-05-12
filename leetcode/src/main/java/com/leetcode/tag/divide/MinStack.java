@@ -52,6 +52,53 @@ class MinStack {
   public int getMin() {
     return minStack.peek();
   }
+
+  class MinStack1 {
+    private Node head;
+
+    /**
+     * initialize your data structure here.
+     */
+    public MinStack1() {
+    }
+
+    public void push(int x) {
+      if (head == null) {
+        head = new Node(x, x);
+      } else {
+        head = new Node(x, Math.min(x, head.min), head);
+      }
+    }
+
+    public void pop() {
+      head = head.next;
+    }
+
+    public int top() {
+      return head.val;
+    }
+
+    public int getMin() {
+      return head.min;
+    }
+
+    private class Node {
+      int val;
+      // 最小值
+      int min;
+      Node next;
+
+      private Node(int val, int min) {
+        this(val, min, null);
+      }
+
+      private Node(int val, int min, Node next) {
+        this.val = val;
+        this.min = min;
+        this.next = next;
+      }
+    }
+  }
 }
 
 /**
