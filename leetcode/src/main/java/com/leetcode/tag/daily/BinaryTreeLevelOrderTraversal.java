@@ -131,6 +131,61 @@ public class BinaryTreeLevelOrderTraversal {
     }
   }
 
+  /**
+   * 真正的层次遍历
+   *
+   * <p>作者：nettee
+   * 链接：https://leetcode-cn.com/problems/binary-tree-level-order-traversal/solution/bfs-de-shi-yong-chang-jing-zong-jie-ceng-xu-bian-l/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   *
+   * @param root
+   */
+  // 二叉树的层序遍历
+  void bfs(TreeNode root) {
+    Queue<TreeNode> queue = new ArrayDeque<>();
+    queue.add(root);
+    while (!queue.isEmpty()) {
+      // 在每一层遍历开始前，先记录队列中的结点数量 n（也就是这一层的结点数量），然后一口气处理完这一层的 n 个结点。
+      int n = queue.size();
+      for (int i = 0; i < n; i++) {
+        // 变量 i 无实际意义，只是为了循环 n 次
+        TreeNode node = queue.poll();
+        if (node.left != null) {
+          queue.add(node.left);
+        }
+        if (node.right != null) {
+          queue.add(node.right);
+        }
+      }
+    }
+  }
+
+  public List<List<Integer>> levelOrder1(TreeNode root) {
+    List<List<Integer>> res = new ArrayList<>();
+
+    Queue<TreeNode> queue = new ArrayDeque<>();
+    if (root != null) {
+      queue.add(root);
+    }
+    while (!queue.isEmpty()) {
+      int n = queue.size();
+      List<Integer> level = new ArrayList<>();
+      for (int i = 0; i < n; i++) {
+        TreeNode node = queue.poll();
+        level.add(node.val);
+        if (node.left != null) {
+          queue.add(node.left);
+        }
+        if (node.right != null) {
+          queue.add(node.right);
+        }
+      }
+      res.add(level);
+    }
+
+    return res;
+  }
+
   public static class TreeNode {
     int val;
     TreeNode left;
