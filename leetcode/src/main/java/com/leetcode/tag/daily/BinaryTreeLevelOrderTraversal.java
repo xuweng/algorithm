@@ -5,6 +5,10 @@ import java.util.List;
 
 /**
  * 102. 二叉树的层序遍历
+ *
+ * <p>子问题依赖和子问题重复不一样
+ *
+ * <p>子问题是递归同一层的问题相互依赖.子问题重复不是在递归同一层
  */
 public class BinaryTreeLevelOrderTraversal {
   /**
