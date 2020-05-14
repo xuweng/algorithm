@@ -3,6 +3,7 @@ package com.leetcode.tag.divide;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
+import java.util.Random;
 
 /**
  * 代码模板太好用
@@ -172,7 +173,9 @@ public class FindKthLargest {
   }
 
   /**
-   * 作者：LeetCode
+   * 方法一：堆
+   *
+   * <p>作者：LeetCode
    * 链接：https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/shu-zu-zhong-de-di-kge-zui-da-yuan-su-by-leetcode/
    * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
    */
@@ -191,6 +194,7 @@ public class FindKthLargest {
       PriorityQueue<Integer> heap = new PriorityQueue<>(Comparator.comparingInt(n -> n));
 
       // keep k largest elements in the heap
+      // 先把元素入堆,再把最小值干掉
       for (int n : nums) {
         // 先把k+1个元素入堆
         heap.add(n);
@@ -202,6 +206,86 @@ public class FindKthLargest {
 
       // output
       return heap.poll();
+    }
+  }
+
+  /**
+   * 方方法二：快速选择
+   *
+   * <p>作者：LeetCode
+   * 链接：https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/shu-zu-zhong-de-di-kge-zui-da-yuan-su-by-leetcode/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution3 {
+    int[] nums;
+
+    public void swap(int a, int b) {
+      int tmp = this.nums[a];
+      this.nums[a] = this.nums[b];
+      this.nums[b] = tmp;
+    }
+
+    /**
+     * 快速选择
+     *
+     * @param left
+     * @param right
+     * @param pivotIndex
+     * @return
+     */
+    public int partition(int left, int right, int pivotIndex) {
+      int pivot = this.nums[pivotIndex];
+      // 1. move pivot to end
+      swap(pivotIndex, right);
+      int storeIndex = left;
+
+      // 2. move all smaller elements to the left
+      for (int i = left; i <= right; i++) {
+        if (this.nums[i] < pivot) {
+          swap(storeIndex, i);
+          storeIndex++;
+        }
+      }
+
+      // 3. move pivot to its final place
+      swap(storeIndex, right);
+
+      return storeIndex;
+    }
+
+    public int quickSelect(int left, int right, int kSmallest) {
+      /*
+      Returns the k-th smallest element of list within left..right.
+      */
+
+      if (left == right) // If the list contains only one element,
+      {
+        return this.nums[left]; // return that element
+      }
+
+      // select a random pivot_index
+      Random randomNum = new Random();
+      int pivotIndex = left + randomNum.nextInt(right - left);
+
+      pivotIndex = partition(left, right, pivotIndex);
+
+      // the pivot is on (N - k)th smallest position
+      if (kSmallest == pivotIndex) {
+        return this.nums[kSmallest];
+      }
+      // go left side
+      else if (kSmallest < pivotIndex) {
+        return quickSelect(left, pivotIndex - 1, kSmallest);
+      }
+      // go right side
+      return quickSelect(pivotIndex + 1, right, kSmallest);
+    }
+
+    public int findKthLargest(int[] nums, int k) {
+      this.nums = nums;
+      int size = nums.length;
+      // kth largest is (N - k)th smallest
+      return quickSelect(0, size - 1, size - k);
     }
   }
 }
