@@ -226,7 +226,11 @@ public class FindKthLargest {
     }
 
     /**
-     * 快速选择
+     * 代码简洁
+     *
+     * <p>这个分区函数更加简单,更加容易理解
+     *
+     * <p>快速选择
      *
      * @param left
      * @param right
