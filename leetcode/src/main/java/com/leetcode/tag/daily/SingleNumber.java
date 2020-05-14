@@ -60,10 +60,11 @@ public class SingleNumber {
    */
   class Solution {
     public int singleNumber(int[] nums) {
-      for (int i = 1; i < nums.length; i++) {
-        nums[0] ^= nums[i];
+      int single = 0;
+      for (int num : nums) {
+        single ^= num;
       }
-      return nums[0];
+      return single;
     }
   }
 }
