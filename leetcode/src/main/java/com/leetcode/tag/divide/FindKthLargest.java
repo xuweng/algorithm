@@ -23,4 +23,42 @@ public class FindKthLargest {
     }
     return queue.peek();
   }
+
+  public int findKthLargest1(int[] nums, int k) {
+    if (nums == null || nums.length == 0 || k < 1 || k > nums.length) {
+      return 0;
+    }
+
+    return divide(nums, 0, nums.length - 1, k);
+  }
+
+  private int divide(int[] nums, int low, int high, int k) {
+    if (low > high) {
+      return 0;
+    }
+    int p = patition(nums, low, high);
+    if (nums.length - k == p) {
+      return nums[p];
+    } else if (nums.length - k < p) {
+      return divide(nums, low, p - 1, k);
+    } else {
+      return divide(nums, p + 1, high, k);
+    }
+  }
+
+  private int patition(int[] nums, int low, int high) {
+    int p = nums[low];
+    while (low < high) {
+      while (low < high && nums[high] >= p) {
+        high--;
+      }
+      nums[low] = nums[high];
+      while (low < high && nums[low] < p) {
+        low++;
+      }
+      nums[high] = nums[low];
+    }
+    nums[low] = p;
+    return low;
+  }
 }
