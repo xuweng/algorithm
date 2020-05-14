@@ -289,6 +289,7 @@ public class FindKthLargest {
       this.nums = nums;
       int size = nums.length;
       // kth largest is (N - k)th smallest
+      // 注意到第 k 个最大元素也就是第 size - k 个最小元素，因此可以用第 k 小算法来解决本问题。
       return quickSelect(0, size - 1, size - k);
     }
   }
