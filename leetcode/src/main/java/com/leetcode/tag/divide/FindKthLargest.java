@@ -1,5 +1,6 @@
 package com.leetcode.tag.divide;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
@@ -167,6 +168,40 @@ public class FindKthLargest {
       int tmp = a[n];
       a[n] = a[m];
       a[m] = tmp;
+    }
+  }
+
+  /**
+   * 作者：LeetCode
+   * 链接：https://leetcode-cn.com/problems/kth-largest-element-in-an-array/solution/shu-zu-zhong-de-di-kge-zui-da-yuan-su-by-leetcode/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution2 {
+    /**
+     * 代码巧妙
+     *
+     * <p>代码简洁
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public int findKthLargest(int[] nums, int k) {
+      // init heap 'the smallest element first'
+      PriorityQueue<Integer> heap = new PriorityQueue<>(Comparator.comparingInt(n -> n));
+
+      // keep k largest elements in the heap
+      for (int n : nums) {
+        // 先把k+1个元素入堆
+        heap.add(n);
+        if (heap.size() > k) {
+          // 第k+1个元素,也是堆顶元素,也是最小值出堆
+          heap.poll();
+        }
+      }
+
+      // output
+      return heap.poll();
     }
   }
 }
