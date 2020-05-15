@@ -81,6 +81,8 @@ public class SubarraySum {
     /**
      * pre[j−1]==pre[i]−k
      *
+     * <p>pre[j] 的下标范围是0≤j≤i
+     *
      * <p>考虑以 i 结尾的和为 k 的连续子数组个数时只要统计有多少个前缀和为 pre[i]−k即可
      *
      * @param nums
