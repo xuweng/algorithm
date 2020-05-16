@@ -5,7 +5,7 @@ package com.leetcode.tag.daily;
  */
 public class ReverseKGroup {
   /**
-   * 递归更加麻烦
+   *
    *
    * @param head
    * @param k
