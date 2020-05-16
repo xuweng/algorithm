@@ -84,7 +84,7 @@ public class ReverseKGroup {
       }
       // 记录next
       ListNode nodeNext = tail.next;
-      re(node, tail).next = null;
+      re(node, tail);
       node = nodeNext;
     }
     pre.next = node;
@@ -125,6 +125,8 @@ public class ReverseKGroup {
     }
 
     re(head.next, tail).next = head;
+    // 置为null.防止链表出现环
+    head.next = null;
     return head;
   }
 
