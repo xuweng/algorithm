@@ -82,6 +82,7 @@ public class ReverseKGroup {
         tail = tail.next;
       }
       if (tail == null) {
+        pre.next = node;
         break;
       }
       // 记录next
@@ -91,7 +92,6 @@ public class ReverseKGroup {
       pre = node;
       node = nodeNext;
     }
-    pre.next = node;
 
     return hair.next;
   }
