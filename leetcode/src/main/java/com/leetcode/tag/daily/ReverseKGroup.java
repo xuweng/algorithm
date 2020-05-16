@@ -1,10 +1,11 @@
 package com.leetcode.tag.daily;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
- * 考察代码基本功.没有复杂算法.
+ * 去掉多余循环,在原来的循环里面搞
+ *
+ * <p>去掉多余循环
+ *
+ * <p>考察代码基本功.没有复杂算法.
  *
  * <p>本题的目标非常清晰易懂，不涉及复杂的算法，但是实现过程中需要考虑的细节比较多，容易写出冗长的代码。主要考察面试者设计的能力。
  *
@@ -65,31 +66,28 @@ public class ReverseKGroup {
     }
     ListNode result = head;
     ListNode node = head;
-    List<ListNode[]> listNodeList = new ArrayList<>();
+    ListNode pre = head;
     while (node != null) {
+      // 当前结点为node
       ListNode tail = node;
       for (int i = 0; i < k - 1 && tail != null; i++) {
         tail = tail.next;
       }
-      if (node == head) {
-        result = tail;
-      }
       if (tail == null) {
         break;
       }
-      ListNode[] listNodes = new ListNode[2];
-      listNodes[0] = node;
-      listNodes[1] = tail;
-      listNodeList.add(listNodes);
+      if (node == head) {
+        result = tail;
+      } else {
+        pre.next = tail;
+        pre = node;
+      }
       // 记录next
       ListNode nodeNext = tail.next;
       re(node, tail).next = null;
       node = nodeNext;
     }
-    for (int i = 0; i < listNodeList.size() - 1; i++) {
-      listNodeList.get(i)[0].next = listNodeList.get(i + 1)[1];
-    }
-    listNodeList.get(listNodeList.size() - 1)[0].next = node;
+    pre.next = node;
 
     return result;
   }
