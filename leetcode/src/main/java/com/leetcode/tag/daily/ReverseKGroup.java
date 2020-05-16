@@ -64,9 +64,11 @@ public class ReverseKGroup {
     if (head.next == null) {
       return head;
     }
-    ListNode result = head;
     ListNode node = head;
-    ListNode pre = head;
+    // 我们新建一个结点，把它接到链表的头部，让它作为 pre 的初始值，这样 head 前面就有了一个结点，我们就可以避开链表头部的边界条件
+    ListNode hair = new ListNode(0);
+    hair.next = head;
+    ListNode pre = hair;
     while (node != null) {
       // 当前结点为node
       ListNode tail = node;
@@ -76,20 +78,16 @@ public class ReverseKGroup {
       if (tail == null) {
         break;
       }
-      if (node == head) {
-        result = tail;
-      } else {
-        pre.next = tail;
-        pre = node;
-      }
       // 记录next
       ListNode nodeNext = tail.next;
       re(node, tail);
+      pre.next = tail;
+      pre = node;
       node = nodeNext;
     }
     pre.next = node;
 
-    return result;
+    return hair.next;
   }
 
   /**
