@@ -61,13 +61,15 @@ public class DiffWaysToCompute {
       return new ArrayList<>();
     }
     // 考虑当前层
+    // 当前层:low---->high
+    // 当前层:root
     List<Integer> result = new ArrayList<>();
     if (low == high) {
       result.add(Integer.valueOf(String.valueOf(input.charAt(low))));
       return result;
     }
 
-    for (int i = 0; i < input.length(); i++) {
+    for (int i = low; i <= high; i++) {
       // 通过运算符将字符串分成两部分
       if (!isOperation(input.charAt(i))) {
         continue;
