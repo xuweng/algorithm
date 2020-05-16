@@ -68,10 +68,10 @@ public class DiffWaysToCompute {
     // 当前层:low---->high
     // 当前层:root
     List<Integer> result = new ArrayList<>();
-    if (low == high) {
-      result.add(Integer.valueOf(String.valueOf(input.charAt(low))));
-      return result;
-    }
+    //    if (low == high) {
+    //      result.add(Integer.valueOf(String.valueOf(input.charAt(low))));
+    //      return result;
+    //    }
 
     int count = 0;
     for (int i = low; i <= high; i++) {
