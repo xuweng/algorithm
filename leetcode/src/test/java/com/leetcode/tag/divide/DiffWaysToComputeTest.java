@@ -7,7 +7,7 @@ public class DiffWaysToComputeTest {
   public void test() {
     DiffWaysToCompute diffWaysToCompute = new DiffWaysToCompute();
 
-    String input = "2-1-1";
+    String input = "10+5";
     diffWaysToCompute.diffWaysToCompute(input);
   }
 }

@@ -39,7 +39,11 @@ public class DiffWaysToCompute {
   }
 
   /**
-   * 左右划分
+   * 通过下标控制.通过下标计算.通过下标计算
+   *
+   * <p>注意下标
+   *
+   * <p>左右划分
    *
    * <p>不是按照mid划分
    *
@@ -69,9 +73,12 @@ public class DiffWaysToCompute {
       return result;
     }
 
+    int count = 0;
     for (int i = low; i <= high; i++) {
       // 通过运算符将字符串分成两部分
       if (!isOperation(input.charAt(i))) {
+        // 不是运算符
+        count++;
         continue;
       }
       List<Integer> left = re(input, low, i - 1);
@@ -83,6 +90,11 @@ public class DiffWaysToCompute {
         }
       }
     }
+    // 如果给定的字符串只有数字，没有运算符，那结果就是给定的字符串转为数字。
+    if (count == high - low + 1) {
+      result.add(Integer.valueOf(input.substring(low, high + 1)));
+    }
+
     return result;
   }
 
