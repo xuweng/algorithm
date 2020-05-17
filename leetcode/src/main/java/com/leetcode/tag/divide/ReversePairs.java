@@ -91,7 +91,7 @@ public class ReversePairs {
     // 假设左右已经排序?
     // 左和右排序后影响结果?
     // 横跨左右
-    // 记录j
+    // 记录j.记录j很巧妙.减少比较次数.不用从头到尾进行多余比较
     int j = mid + 1;
     for (int i = start; i <= mid; i++) {
       while (j <= end && a[i] > (long) a[j] * 2) {
