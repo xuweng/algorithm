@@ -47,6 +47,8 @@ public class CourseSchedule {
     /**
      * 算法
      *
+     * <p>存在环.则环中每个结点的入度至少为1,不为0.环中每个结点都不会入队
+     *
      * <p>算法模板.算法模板.算法模板
      *
      * <p>颜色标记结点,容易理解
@@ -77,6 +79,7 @@ public class CourseSchedule {
       // 存储有向图.邻接矩阵
       int[][] edges = new int[numCourses][numCourses];
       // 存储每个节点的入度
+      // 引用计数法
       int[] input = new int[numCourses];
       // 存储答案
       int[] result = new int[numCourses];

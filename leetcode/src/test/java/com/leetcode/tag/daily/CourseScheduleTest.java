@@ -10,6 +10,8 @@ public class CourseScheduleTest {
     //    int[][] prerequisites = {{1, 0}, {2, 0}, {3, 1}, {3, 2}};
     int numCourses = 3;
     int[][] prerequisites = {{1, 0}, {1, 2}, {0, 1}};
+    //    int numCourses = 2;
+    //    int[][] prerequisites = {{1, 0}, {0, 1}};
 
     courseSchedule.findOrder(numCourses, prerequisites);
   }
