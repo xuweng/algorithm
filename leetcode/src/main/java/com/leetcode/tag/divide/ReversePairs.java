@@ -68,6 +68,7 @@ public class ReversePairs {
     }
     int i = 0, j = 0;
     for (int k = start; k <= end; k++) {
+      // 使用哨兵可以继续使用判断条件
       a[k] = left[i] <= right[j] ? (int) left[i++] : (int) right[j++];
     }
   }
