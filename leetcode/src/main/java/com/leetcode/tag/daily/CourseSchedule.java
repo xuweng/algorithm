@@ -53,7 +53,7 @@ public class CourseSchedule {
       edges[edge[1]][edge[0]] = 1;
     }
     // 每次挑选一个「未搜索」的节点，开始进行深度优先搜索
-    for (int i = 0; i < numCourses; i++) {
+    for (int i = 0; i < numCourses && !invalid; i++) {
       if (visited[i] == 0) {
         dfs(i, edges);
       }
@@ -89,7 +89,6 @@ public class CourseSchedule {
    *
    * @param root
    * @param edges
-   * @param level
    */
   public void dfs(int root, int[][] edges) {
     // 将节点标记为「搜索中」
