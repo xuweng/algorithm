@@ -119,10 +119,7 @@ public class CourseSchedule {
         }
       }
       // 出现环
-      if (set.size() != numCourses) {
-        return new int[]{};
-      }
-      return result;
+      return set.size() != numCourses ? new int[]{} : result;
     }
   }
 }
