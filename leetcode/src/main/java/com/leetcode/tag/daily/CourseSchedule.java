@@ -71,7 +71,11 @@ public class CourseSchedule {
   }
 
   /**
-   * 小数据规模验证
+   * 这个dfs递归有点难理解
+   *
+   * <p>dfs递归有点难理解
+   *
+   * <p>小数据规模验证
    *
    * <p>递归考虑当前层
    *
@@ -101,6 +105,8 @@ public class CourseSchedule {
         if (visited[i] == 0) {
           // 如果「未搜索」那么搜索相邻节点
           dfs(i, edges);
+          // 只要搜索到环,直接return即可
+          // 全部相邻结点return
           if (invalid) {
             return;
           }
