@@ -30,21 +30,73 @@ package com.leetcode.tag.divide;
  * <p>493. 翻转对
  */
 public class ReversePairs {
+  /**
+   * 归并两个子数组 nums[start .. mid] 和 nums[mid + 1 .. end] 时，
+   *
+   * <p>我们可以计算出对于前者中的每一个元素 nums[i]，
+   *
+   * <p>后者中满足 nums[i] > 2 * nums[j] 的 j 的数目
+   *
+   * <p>作者：LeetCode
+   * 链接：https://leetcode-cn.com/problems/reverse-pairs/solution/fan-zhuan-dui-by-leetcode/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   *
+   * @param nums
+   * @return
+   */
   public int reversePairs(int[] nums) {
-    if (nums == null || nums.length == 0) {
+    return mergesortAndCount(nums, 0, nums.length - 1);
+  }
+
+  void merge(int[] a, int start, int mid, int end) {
+    int leftLength = (mid - start + 1);
+    int rightLength = (end - mid);
+    // mid放在l
+    // mid一般放在l
+    long[] left = new long[leftLength + 1];
+    long[] right = new long[rightLength + 1];
+
+    // 哨兵
+    left[left.length - 1] = Long.MAX_VALUE;
+    right[right.length - 1] = Long.MAX_VALUE;
+    for (int j = 0; j < leftLength; j++) {
+      left[j] = a[start + j];
+    }
+    for (int j = 0; j < rightLength; j++) {
+      right[j] = a[mid + 1 + j];
+    }
+    int i = 0, j = 0;
+    for (int k = start; k <= end; k++) {
+      a[k] = left[i] <= right[j] ? (int) left[i++] : (int) right[j++];
+    }
+  }
+
+  /**
+   * 修改归并排序代码
+   *
+   * @param a
+   * @param start
+   * @param end
+   * @return
+   */
+  int mergesortAndCount(int[] a, int start, int end) {
+    // 一个数没有逆序对
+    if (start >= end) {
       return 0;
     }
-    int count = 0;
-    for (int i = 0; i < nums.length - 1; i++) {
-      for (int j = i + 1; j < nums.length; j++) {
-        long n1 = nums[i];
-        // 加和乘导致大数溢出
-        long n2 = 2 * nums[j];
-        if (n2 < Integer.MAX_VALUE && n1 > n2) {
-          count++;
-        }
+    int mid = start + (end - start) / 2;
+    int count = mergesortAndCount(a, start, mid) + mergesortAndCount(a, mid + 1, end);
+    // 假设左右已经排序?
+    // 左和右排序后影响结果?
+    // 横跨左右
+    for (int i = start; i <= mid; i++) {
+      for (int j = mid + 1; j <= end && a[i] > a[j] * 2; j++) {
+        count++;
       }
     }
+    // 最后才合并
+    merge(a, start, mid, end);
+    // a已经排序
     return count;
   }
 
