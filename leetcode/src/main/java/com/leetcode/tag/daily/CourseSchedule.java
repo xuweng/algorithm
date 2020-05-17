@@ -94,9 +94,11 @@ public class CourseSchedule {
         }
       }
       int index = 0;
+      HashSet<Integer> set = new HashSet<>();
       while (!queue.isEmpty()) {
         int node = queue.poll();
         result[index++] = node;
+        set.add(node);
         // 修改node的邻接结点入度
         int[] ints = edges[node];
         for (int i = 0; i < ints.length; i++) {
@@ -113,10 +115,6 @@ public class CourseSchedule {
             }
           }
         }
-      }
-      HashSet<Integer> set = new HashSet<>();
-      for (int r : result) {
-        set.add(r);
       }
       // 出现环
       if (set.size() != numCourses) {
