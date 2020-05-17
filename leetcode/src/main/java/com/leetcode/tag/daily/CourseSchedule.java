@@ -111,7 +111,7 @@ public class CourseSchedule {
         if (visited[i] == 0) {
           // 如果「未搜索」那么搜索相邻节点
           dfs(i, edges);
-          // 只要搜索到环,直接return即可
+          // 只要搜索到环,直接return即可,保证下面代码不会执行
           // 全部相邻结点return
           if (invalid) {
             return;
