@@ -38,7 +38,7 @@ public class CourseSchedule {
    * @return
    */
   public int[] findOrder(int numCourses, int[][] prerequisites) {
-    return null;
+    return new Solution().findOrder(numCourses, prerequisites);
   }
 
   class Solution {
@@ -103,17 +103,19 @@ public class CourseSchedule {
           // 存在环
           return new int[]{};
         }
-        // 修改邻接结点入度
-        for (int edge : edges[node]) {
-          // 找到邻接结点
-          if (edges[node][edge] == 1) {
+        // 修改node的邻接结点入度
+        int[] ints = edges[node];
+        for (int i = 0; i < ints.length; i++) {
+          // 找到node的邻接结点
+          if (ints[i] == 1) {
+            // i是node的邻接结点
             // 擦掉边
             // node---------->edge
-            edges[node][edge] = 0;
-            input[edge]--;
+            ints[i] = 0;
+            input[i]--;
             // 如果相邻节点 v 的入度为 0,v入队
-            if (input[edge] == 0) {
-              queue.offer(edge);
+            if (input[i] == 0) {
+              queue.offer(i);
             }
           }
         }
