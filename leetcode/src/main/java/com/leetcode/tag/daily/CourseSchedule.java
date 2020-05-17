@@ -1,9 +1,8 @@
 package com.leetcode.tag.daily;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * n 门课需要选，记为 0 到 n-1
@@ -40,7 +39,7 @@ public class CourseSchedule {
    * @param prerequisites
    * @return
    */
-  List<List<Integer>> list = new ArrayList<>();
+  Stack<Integer> stack = new Stack<>();
   // 标记每个节点的状态：0=未搜索，1=搜索中，2=已完成
   int[] visited;
   // 判断有向图中是否有环
@@ -56,7 +55,7 @@ public class CourseSchedule {
     // 每次挑选一个「未搜索」的节点，开始进行深度优先搜索
     for (int i = 0; i < numCourses; i++) {
       if (visited[i] == 0) {
-        dfs(i, edges, 0);
+        dfs(i, edges);
       }
     }
     if (invalid) {
@@ -64,10 +63,8 @@ public class CourseSchedule {
     }
     int[] result = new int[numCourses];
     int n = 0;
-    for (List<Integer> integers : list) {
-      for (Integer integer : integers) {
-        result[n++] = integer;
-      }
+    while (!stack.isEmpty()) {
+      result[n++] = stack.pop();
     }
 
     return result;
@@ -94,13 +91,9 @@ public class CourseSchedule {
    * @param edges
    * @param level
    */
-  public void dfs(int root, int[][] edges, int level) {
+  public void dfs(int root, int[][] edges) {
     // 将节点标记为「搜索中」
     visited[root] = 1;
-    if (level == list.size()) {
-      list.add(new ArrayList<>());
-    }
-    list.get(level).add(root);
     // root的邻接结点
     int[] ling = edges[root];
     for (int i = 0; i < ling.length; i++) {
@@ -108,7 +101,7 @@ public class CourseSchedule {
         // i是root的邻接结点
         if (visited[i] == 0) {
           // 如果「未搜索」那么搜索相邻节点
-          dfs(i, edges, level + 1);
+          dfs(i, edges);
           if (invalid) {
             return;
           }
@@ -119,8 +112,11 @@ public class CourseSchedule {
         }
       }
     }
+    // 考虑当前层.假设root是叶子结点
+    // 出来没有邻接结点的结点.处理叶子结点
     // 将节点标记为「已完成」
     visited[root] = 2;
+    stack.push(root);
   }
 
   class Solution {
