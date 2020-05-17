@@ -74,7 +74,9 @@ public class ReversePairs {
   }
 
   /**
-   * 修改归并排序代码
+   * 定义递归函数:排序且统计(排序没有返回值,加个返回值)
+   *
+   * <p>修改归并排序代码
    *
    * @param a
    * @param start
