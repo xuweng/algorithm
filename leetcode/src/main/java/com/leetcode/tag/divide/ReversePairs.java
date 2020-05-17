@@ -57,6 +57,7 @@ public class ReversePairs {
     long[] right = new long[rightLength + 1];
 
     // 哨兵
+    // a可以有Integer.MAX_VALUE.哨兵初始化最大
     left[left.length - 1] = Long.MAX_VALUE;
     right[right.length - 1] = Long.MAX_VALUE;
     for (int j = 0; j < leftLength; j++) {
