@@ -1,6 +1,5 @@
 package com.leetcode.tag.daily;
 
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -81,8 +80,6 @@ public class CourseSchedule {
       // 存储每个节点的入度
       // 引用计数法
       int[] input = new int[numCourses];
-      // 存储答案
-      int[] result = new int[numCourses];
       // 保存入度为0的结点
       Queue<Integer> queue = new LinkedList<>();
       // 统计节点的入度
@@ -99,11 +96,11 @@ public class CourseSchedule {
         }
       }
       int index = 0;
-      HashSet<Integer> set = new HashSet<>();
+      // 存储答案
+      int[] result = new int[numCourses];
       while (!queue.isEmpty()) {
         int node = queue.poll();
         result[index++] = node;
-        set.add(node);
         // 修改node的邻接结点入度
         int[] ints = edges[node];
         for (int i = 0; i < ints.length; i++) {
@@ -121,8 +118,8 @@ public class CourseSchedule {
           }
         }
       }
-      // 出现环
-      return set.size() != numCourses ? new int[]{} : result;
+      // 出现环.环中所有结点入度至少为1.环中所有结点不会进入队列
+      return index != numCourses ? new int[]{} : result;
     }
   }
 }
