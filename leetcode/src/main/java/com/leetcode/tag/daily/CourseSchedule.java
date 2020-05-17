@@ -40,50 +40,87 @@ public class CourseSchedule {
    * @param prerequisites
    * @return
    */
-  List<Integer> list = new ArrayList<>();
+  List<List<Integer>> list = new ArrayList<>();
   // 标记每个节点的状态：0=未搜索，1=搜索中，2=已完成
-  boolean[] visited;
+  int[] visited;
   // 判断有向图中是否有环
   boolean invalid;
 
   public int[] findOrder(int numCourses, int[][] prerequisites) {
-    visited = new boolean[numCourses];
+    visited = new int[numCourses];
     // 存储有向图.邻接矩阵
     int[][] edges = new int[numCourses][numCourses];
     for (int[] edge : prerequisites) {
       edges[edge[1]][edge[0]] = 1;
     }
+    // 每次挑选一个「未搜索」的节点，开始进行深度优先搜索
     for (int i = 0; i < numCourses; i++) {
-      if (!visited[i]) {
-        dfs(i, edges);
+      if (visited[i] == 0) {
+        dfs(i, edges, 0);
       }
     }
     if (invalid) {
       return new int[]{};
     }
     int[] result = new int[numCourses];
-    for (int i = 0; i < list.size(); i++) {
-      result[i] = list.get(i);
+    int n = 0;
+    for (List<Integer> integers : list) {
+      for (Integer integer : integers) {
+        result[n++] = integer;
+      }
     }
 
     return result;
   }
 
-  public void dfs(int root, int[][] edges) {
-    list.add(root);
-    visited[root] = true;
+  /**
+   * 小数据规模验证
+   *
+   * <p>递归考虑当前层
+   *
+   * <p>tree:root,left,right
+   *
+   * <p>图:root,邻接结点
+   *
+   * <p>考虑当前层
+   *
+   * <p>root是tree,left也是tree,right也是tree
+   *
+   * <p>root是图,邻接结点也是图
+   *
+   * <p>层次dfs
+   *
+   * @param root
+   * @param edges
+   * @param level
+   */
+  public void dfs(int root, int[][] edges, int level) {
+    // 将节点标记为「搜索中」
+    visited[root] = 1;
+    if (level == list.size()) {
+      list.add(new ArrayList<>());
+    }
+    list.get(level).add(root);
     // root的邻接结点
     int[] ling = edges[root];
     for (int i = 0; i < ling.length; i++) {
       if (ling[i] == 1) {
         // i是root的邻接结点
-        if (visited[i]) {
+        if (visited[i] == 0) {
+          // 如果「未搜索」那么搜索相邻节点
+          dfs(i, edges, level + 1);
+          if (invalid) {
+            return;
+          }
+        } else if (visited[i] == 1) {
+          // 如果「搜索中」说明找到了环
           invalid = true;
           return;
         }
-        dfs(i, edges);
       }
     }
+    // 将节点标记为「已完成」
+    visited[root] = 2;
   }
 
   class Solution {
@@ -165,7 +202,7 @@ public class CourseSchedule {
         }
       }
       // 出现环.环中所有结点入度至少为1.环中所有结点不会进入队列
-      return index != numCourses ? new int[]{} : result;
+      return index != numCourses ? new int[] {} : result;
     }
   }
 }
