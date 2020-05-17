@@ -1,6 +1,8 @@
 package com.leetcode.tag.daily;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -38,8 +40,50 @@ public class CourseSchedule {
    * @param prerequisites
    * @return
    */
+  List<Integer> list = new ArrayList<>();
+  // 标记每个节点的状态：0=未搜索，1=搜索中，2=已完成
+  boolean[] visited;
+  // 判断有向图中是否有环
+  boolean invalid;
+
   public int[] findOrder(int numCourses, int[][] prerequisites) {
-    return new Solution().findOrder(numCourses, prerequisites);
+    visited = new boolean[numCourses];
+    // 存储有向图.邻接矩阵
+    int[][] edges = new int[numCourses][numCourses];
+    for (int[] edge : prerequisites) {
+      edges[edge[1]][edge[0]] = 1;
+    }
+    for (int i = 0; i < numCourses; i++) {
+      if (!visited[i]) {
+        dfs(i, edges);
+      }
+    }
+    if (invalid) {
+      return new int[]{};
+    }
+    int[] result = new int[numCourses];
+    for (int i = 0; i < list.size(); i++) {
+      result[i] = list.get(i);
+    }
+
+    return result;
+  }
+
+  public void dfs(int root, int[][] edges) {
+    list.add(root);
+    visited[root] = true;
+    // root的邻接结点
+    int[] ling = edges[root];
+    for (int i = 0; i < ling.length; i++) {
+      if (ling[i] == 1) {
+        // i是root的邻接结点
+        if (visited[i]) {
+          invalid = true;
+          return;
+        }
+        dfs(i, edges);
+      }
+    }
   }
 
   class Solution {
