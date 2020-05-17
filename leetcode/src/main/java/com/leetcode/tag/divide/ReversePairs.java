@@ -90,7 +90,7 @@ public class ReversePairs {
     // 左和右排序后影响结果?
     // 横跨左右
     for (int i = start; i <= mid; i++) {
-      for (int j = mid + 1; j <= end && a[i] > a[j] * 2; j++) {
+      for (int j = mid + 1; j <= end && a[i] > (long) a[j] * 2; j++) {
         count++;
       }
     }
