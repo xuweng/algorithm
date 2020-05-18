@@ -69,6 +69,14 @@ public class MaxProduct {
     return re(nums, 0, nums.length - 1);
   }
 
+  /**
+   * 需要返回两个数:最大正数和最小负数
+   *
+   * @param nums
+   * @param low
+   * @param high
+   * @return
+   */
   public int re(int[] nums, int low, int high) {
     if (low > high) {
       return 0;
