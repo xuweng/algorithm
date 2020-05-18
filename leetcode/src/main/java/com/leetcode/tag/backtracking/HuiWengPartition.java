@@ -114,6 +114,14 @@ public class HuiWengPartition {
       }
     }
 
+    /**
+     * 是否是回文
+     *
+     * @param chars
+     * @param i
+     * @param j
+     * @return
+     */
     public boolean isPalindrome(char[] chars, int i, int j) {
       if (i == j) {
         return true;
