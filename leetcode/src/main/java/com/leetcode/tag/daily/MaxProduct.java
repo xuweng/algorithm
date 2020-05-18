@@ -1,7 +1,11 @@
 package com.leetcode.tag.daily;
 
 /**
- * “最大子数组和”是DP算法里的经典案例之一，经典到这个解法甚至有一个名称Kadane's Algorithm。
+ * 以 nums[i] 结尾，这是一个经验，可以简化讨论。
+ *
+ * <p>提示：以 nums[i] 结尾这件事情很重要，贯穿整个解题过程始终，请大家留意。
+ *
+ * <p>“最大子数组和”是DP算法里的经典案例之一，经典到这个解法甚至有一个名称Kadane's Algorithm。
  *
  * <p>本题是“最大子数组和”的变型，但Kadane's Algo依然适用。
  *
