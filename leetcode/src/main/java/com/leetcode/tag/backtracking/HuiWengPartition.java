@@ -113,8 +113,13 @@ public class HuiWengPartition {
       }
       for (int k = i; k <= j; k++) {
         if (isPalindrome(chars, i, k)) {
+          // 添加root
           temp.add(new String(chars, i, k - i + 1));
+          // 搜索一个分支
           dopart(chars, k + 1, j);
+          // 直接清空导致把root也干掉
+          // 假设2个分支,搜索完一个分支就把这个分支的结点删除,但是不要把root也删除,还要继续搜索第二个分支
+          //          temp.clear();
           temp.remove(temp.size() - 1);
         }
       }
@@ -195,9 +200,9 @@ public class HuiWengPartition {
      *
      * @param s
      * @param start 起始字符的索引
-     * @param len   字符串 s 的长度，可以设置为全局变量
-     * @param path  记录从根结点到叶子结点的路径
-     * @param res   记录所有的结果
+     * @param len 字符串 s 的长度，可以设置为全局变量
+     * @param path 记录从根结点到叶子结点的路径
+     * @param res 记录所有的结果
      */
     private void backtracking(String s, int start, int len) {
       if (start == len) {

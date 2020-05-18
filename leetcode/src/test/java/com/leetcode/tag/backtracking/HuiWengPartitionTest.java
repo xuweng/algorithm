@@ -7,7 +7,8 @@ public class HuiWengPartitionTest {
   public void replaceSpaceTest() {
     HuiWengPartition.Solution huiWengPartition = new HuiWengPartition.Solution();
 
-    String s = "aab";
+    String s = "cdd";
+    //    String s = "aab";
     huiWengPartition.partition(s);
   }
 }
