@@ -1,5 +1,6 @@
 package com.leetcode.tag.backtracking;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -31,6 +32,56 @@ import java.util.List;
  */
 public class HuiWengPartition {
   public List<List<String>> partition(String s) {
-    return null;
+    if (s == null) {
+      return new ArrayList<>();
+    }
+    return re(s, 0, s.length() - 1);
+  }
+
+  public List<List<String>> re(String s, int low, int high) {
+    if (low > high) {
+      return null;
+    }
+    List<List<String>> lists = new ArrayList<>();
+    if (low == high) {
+      List<String> list = new ArrayList<>();
+      list.add(s.substring(low, high + 1));
+      lists.add(list);
+      return lists;
+    }
+    for (int i = low; i < high; i++) {
+      if (isHui(s, low, i)) {
+        List<List<String>> right = re(s, i + 1, high);
+        for (List<String> list : right) {
+          List<String> list1 = new ArrayList<>();
+          list1.add(s.substring(low, i + 1));
+          list1.addAll(list);
+          lists.add(list1);
+        }
+      }
+    }
+    if (isHui(s, low, high)) {
+      List<String> list = new ArrayList<>();
+      list.add(s.substring(low, high + 1));
+      lists.add(list);
+    }
+
+    return lists;
+  }
+
+  public boolean isHui(String s, int low, int high) {
+    if (s == null || low > high) {
+      return false;
+    }
+    // 递归终止条件
+    if (low == high) {
+      return true;
+    }
+    boolean b = s.charAt(low) == s.charAt(high);
+    if (high - low == 1) {
+      return b;
+    }
+
+    return b && isHui(s, low + 1, high - 1);
   }
 }
