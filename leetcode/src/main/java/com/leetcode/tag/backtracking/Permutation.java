@@ -53,6 +53,7 @@ public class Permutation {
       return;
     }
     for (int i = 0; i < s.length(); i++) {
+      // 取i
       temp.add(s.charAt(i));
 
       re(delete(s, i));

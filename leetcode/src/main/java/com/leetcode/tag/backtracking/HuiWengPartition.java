@@ -118,6 +118,7 @@ public class HuiWengPartition {
           // i-------->j这个才是root
           // 添加分支上的点
           // 搜索一个分支
+          // 取i----->k
           temp.add(new String(chars, i, k - i + 1));
           dopart(chars, k + 1, j);
           // 直接清空导致把root也干掉
