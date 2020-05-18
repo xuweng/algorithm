@@ -1,6 +1,8 @@
 package com.leetcode.tag.backtracking;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -22,7 +24,7 @@ import java.util.Set;
  */
 public class Permutation {
   // 保存路径
-  private StringBuffer temp = new StringBuffer();
+  private List<Character> temp = new ArrayList<Character>();
   private Set<String> res = new HashSet<>();
 
   public String[] permutation(String S) {
@@ -44,15 +46,18 @@ public class Permutation {
     }
     if ("".equalsIgnoreCase(s)) {
       // 添加一条路径
-      res.add(temp.toString());
+      StringBuilder sb = new StringBuilder();
+      temp.forEach(sb::append);
+
+      res.add(sb.toString());
       return;
     }
     for (int i = 0; i < s.length(); i++) {
-      temp.append(s.charAt(i));
+      temp.add(s.charAt(i));
 
       re(delete(s, i));
 
-      temp.deleteCharAt(temp.length() - 1);
+      temp.remove(temp.size() - 1);
     }
   }
 
@@ -71,8 +76,9 @@ public class Permutation {
     if (index == s.length() - 1) {
       return s.substring(0, index);
     }
-    char[] chars = s.toCharArray();
-    System.arraycopy(chars, index + 1, chars, index, s.length() - 1 - index);
+    char[] chars = new char[s.length() - 1];
+    System.arraycopy(s.toCharArray(), index + 1, chars, index, s.length() - 1 - index);
+
     return new String(chars);
   }
 }
