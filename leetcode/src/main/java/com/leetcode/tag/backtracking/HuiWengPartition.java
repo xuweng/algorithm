@@ -144,7 +144,25 @@ public class HuiWengPartition {
   }
 
   /**
-   * 作者：liweiwei1419
+   * 字符串当成一个结点
+   *
+   * <p>字符串------------结点
+   *
+   * <p>数字--------------结点
+   *
+   * <p>递归树
+   *
+   * <p>递归树
+   *
+   * <p>递归树
+   *
+   * <p>搜索问题主要使用回溯法。
+   *
+   * <p>回溯法思考的步骤：
+   *
+   * <p>1、画递归树；
+   *
+   * <p>2、根据自己画的递归树编码。 作者：liweiwei1419
    * 链接：https://leetcode-cn.com/problems/palindrome-partitioning/solution/hui-su-you-hua-jia-liao-dong-tai-gui-hua-by-liweiw/
    * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
    */
@@ -167,9 +185,9 @@ public class HuiWengPartition {
     /**
      * @param s
      * @param start 起始字符的索引
-     * @param len   字符串 s 的长度，可以设置为全局变量
-     * @param path  记录从根结点到叶子结点的路径
-     * @param res   记录所有的结果
+     * @param len 字符串 s 的长度，可以设置为全局变量
+     * @param path 记录从根结点到叶子结点的路径
+     * @param res 记录所有的结果
      */
     private void backtracking(String s, int start, int len) {
       if (start == len) {
