@@ -183,11 +183,19 @@ public class HuiWengPartition {
     }
 
     /**
+     * 图遍历
+     *
+     * <p>图遍历
+     *
+     * <p>多叉树遍历
+     *
+     * <p>遍历.遍历.遍历
+     *
      * @param s
      * @param start 起始字符的索引
-     * @param len 字符串 s 的长度，可以设置为全局变量
-     * @param path 记录从根结点到叶子结点的路径
-     * @param res 记录所有的结果
+     * @param len   字符串 s 的长度，可以设置为全局变量
+     * @param path  记录从根结点到叶子结点的路径
+     * @param res   记录所有的结果
      */
     private void backtracking(String s, int start, int len) {
       if (start == len) {
