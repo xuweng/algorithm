@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 所有方案?最优解?
+ * 求最优解太舒服了
+ *
+ * <p>求所有方案太难
+ *
+ * <p>所有方案?最优解?
  *
  * <p>所有可能的分割方案?
  *
