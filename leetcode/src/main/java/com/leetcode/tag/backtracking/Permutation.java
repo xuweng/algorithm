@@ -76,9 +76,15 @@ public class Permutation {
     if (index == s.length() - 1) {
       return s.substring(0, index);
     }
-    char[] chars = new char[s.length() - 1];
-    System.arraycopy(s.toCharArray(), index + 1, chars, index, s.length() - 1 - index);
+    char[] chars = s.toCharArray();
+    if (s.length() - 1 - index >= 0) {
+      System.arraycopy(chars, index + 1, chars, index, s.length() - 1 - index);
+    }
+    char[] result = new char[s.length() - 1];
+    if (chars.length - 1 >= 0) {
+      System.arraycopy(chars, 0, result, 0, chars.length - 1);
+    }
 
-    return new String(chars);
+    return new String(result);
   }
 }
