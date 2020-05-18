@@ -5,61 +5,56 @@ package com.leetcode.tag.daily;
  */
 public class MaxProduct {
   /**
-   * 太多判断
+   * 方法一：动态规划 思路和算法
    *
-   * <p>递归函数定义错误?
+   * <p>如果我们用 f_{\max}(i)f max ​ (i) 开表示以第 ii 个元素结尾的乘积最大子数组的乘积，aa 表示输入参数 nums，那么根据「53.
+   * 最大子序和」的经验，我们很容易推导出这样的状态转移方程：
    *
-   * <p>状态定义错误?状态方程错误?
+   * <p>f_{\max}(i) = \max_{i = 1}^{n} \{ f(i - 1) \times a_i, a_i \} f max ​ (i)= i=1 max n ​
+   * {f(i−1)×a i ​ ,a i ​ }
    *
-   * <p>冗余代码太多
+   * <p>它表示以第 ii 个元素结尾的乘积最大子数组的乘积可以考虑 a_ia i ​ 加入前面的 f_{\max}(i - 1)f max ​ (i−1)
+   * 对应的一段，或者单独成为一段，这里两种情况下取最大值。求出所有的 f_{\max}(i)f max ​ (i) 之后选取最大的一个作为答案。
    *
-   * <p>冗余代码太多
+   * <p>可是在这里，这样做是错误的。为什么呢？
    *
-   * <p>找出数组中乘积最大的连续子数组
+   * <p>因为这里的定义并不满足「最优子结构」。具体地讲，如果 a = \{ 5, 6, -3, 4, -3 \}a={5,6,−3,4,−3}，那么此时 f_{\max}f max ​
+   * 对应的序列是 \{ 5, 30, -3, 4, -3 \}{5,30,−3,4,−3}，按照前面的算法我们可以得到答案为
+   * 3030，即前两个数的乘积，而实际上答案应该是全体数字的乘积。我们来想一想问题出在哪里呢？问题出在最后一个 -3−3 所对应的 f_{\max}f max ​ 的值既不是 -3−3，也不是
+   * 4 \times -34×−3，而是 5 \times 30 \times (-3) \times 4 \times
+   * (-3)5×30×(−3)×4×(−3)。所以我们得到了一个结论：当前位置的最优解未必是由前一个位置的最优解转移得到的。
    *
    * @param nums
    * @return
    */
-  public int maxProduct(int[] nums) {
-    if (nums == null || nums.length == 0) {
-      return 0;
-    }
-    int[][] dp = new int[nums.length][2];
-    dp[0][0] = nums[0];
-    dp[0][1] = nums[0];
-    int max = nums[0];
-    for (int i = 1; i < nums.length; i++) {
-      if (nums[i] == 0) {
-        dp[i][0] = 0;
-        dp[i][1] = 0;
-      } else if (nums[i] < 0) {
-        if (dp[i - 1][1] == 0) {
-          dp[i][0] = 0;
-          dp[i][1] = nums[i];
-        } else if (dp[i - 1][1] < 0) {
-          dp[i][0] = dp[i - 1][1] * nums[i];
-          dp[i][1] = nums[i];
-        } else {
-          dp[i][0] = nums[i];
-          dp[i][1] = dp[i - 1][1] * nums[i];
-        }
-      } else {
-        if (dp[i - 1][1] == 0) {
-          dp[i][0] = nums[i];
-          dp[i][1] = nums[i];
-        } else if (dp[i - 1][1] < 0) {
-          dp[i][0] = Math.max(dp[i - 1][0] * nums[i], nums[i]);
-          dp[i][1] = dp[i - 1][1] * nums[i];
-        } else {
-          dp[i][0] = Math.max(dp[i - 1][0] * nums[i], nums[i]);
-          dp[i][1] = nums[i];
-        }
+  class Solution {
+    /**
+     * 两两划分保险.两两划分只需要考虑左右
+     *
+     * <p>-1划分.可能考虑f(i-1).也可能考虑1--------->f(i-1)
+     *
+     * <p>第i-1可以推导i?
+     *
+     * <p>f(i-1)--------------------------->f(i)?
+     *
+     * <p>f(1),f(2),f(3).....f(i-1)-------->f(i)?
+     *
+     * @param nums
+     * @return
+     */
+    public int maxProduct(int[] nums) {
+      int[] maxF = new int[nums.length];
+      int[] minF = new int[nums.length];
+      maxF[0] = nums[0];
+      minF[0] = nums[0];
+      int ans = nums[0];
+      for (int i = 1; i < nums.length; ++i) {
+        maxF[i] = Math.max(maxF[i - 1] * nums[i], Math.max(nums[i], minF[i - 1] * nums[i]));
+        minF[i] = Math.min(minF[i - 1] * nums[i], Math.min(nums[i], maxF[i - 1] * nums[i]));
+        ans = Math.max(ans, maxF[i]);
       }
-
-      max = Math.max(max, dp[i][0]);
+      return ans;
     }
-
-    return max;
   }
 
   public int maxProduct1(int[] nums) {
