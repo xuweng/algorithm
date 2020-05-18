@@ -115,4 +115,29 @@ public class MaxProduct {
     }
     return Math.max(Math.max(left, right), midMax);
   }
+
+  /**
+   * 暴力法
+   *
+   * <p>枚举所有连续子数组
+   *
+   * @param nums
+   * @return
+   */
+  public int maxProduct2(int[] nums) {
+    // 思路：暴力穷举所有子数组，然后得出最大值
+    int len = nums.length;
+    if (len == 0) {
+      return 0;
+    }
+    long max = Long.MIN_VALUE;
+    for (int i = 0; i < len; i++) {
+      int numCount = 1;
+      for (int j = i; j < len; j++) {
+        numCount *= nums[j];
+        max = Math.max(numCount, max);
+      }
+    }
+    return (int) max;
+  }
 }
