@@ -120,7 +120,9 @@ public class HuiWengPartition {
           // 直接清空导致把root也干掉
           // 假设2个分支,搜索完一个分支就把这个分支的结点删除,但是不要把root也删除,还要继续搜索第二个分支
           //          temp.clear();
-          temp.remove(temp.size() - 1);
+          String root = temp.get(0);
+          temp.clear();
+          temp.add(root);
         }
       }
     }
