@@ -85,4 +85,43 @@ public class HuiWengPartition {
 
     return b && isHui(s, low + 1, high - 1);
   }
+
+  class Solution {
+    private List<String> temp = new ArrayList<>();
+    private List<List<String>> res = new ArrayList<>();
+
+    public List<List<String>> partition(String s) {
+      char[] chars = s.toCharArray();
+      dopart(chars, 0, chars.length - 1);
+      return res;
+    }
+
+    public void dopart(char[] chars, int i, int j) {
+      if (i > j) {
+        res.add(new ArrayList<>(temp));
+        return;
+      }
+      for (int k = i; k <= j; k++) {
+        if (isPalindrome(chars, i, k)) {
+          temp.add(new String(chars, i, k - i + 1));
+          dopart(chars, k + 1, j);
+          temp.remove(temp.size() - 1);
+        }
+      }
+    }
+
+    public boolean isPalindrome(char[] chars, int i, int j) {
+      if (i == j) {
+        return true;
+      }
+      while (i <= j) {
+        if (chars[i] != chars[j]) {
+          return false;
+        }
+        i++;
+        j--;
+      }
+      return true;
+    }
+  }
 }
