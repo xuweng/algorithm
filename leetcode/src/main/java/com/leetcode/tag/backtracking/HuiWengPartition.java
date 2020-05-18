@@ -184,6 +184,7 @@ public class HuiWengPartition {
           continue;
         }
 
+        // 保存截取的字符串
         stack.addLast(s.substring(start, i + 1));
         backtracking(s, i + 1, len);
         stack.removeLast();
@@ -194,7 +195,7 @@ public class HuiWengPartition {
      * 这一步的时间复杂度是 O(N)，因此，可以采用动态规划先把回文子串的结果记录在一个表格里
      *
      * @param str
-     * @param left  子串的左边界，可以取到
+     * @param left 子串的左边界，可以取到
      * @param right 子串的右边界，可以取到
      * @return
      */
