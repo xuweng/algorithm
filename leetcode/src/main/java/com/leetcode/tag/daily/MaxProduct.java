@@ -78,62 +78,63 @@ public class MaxProduct {
     if (nums == null || nums.length == 0) {
       return 0;
     }
-    return re(nums, 0, nums.length - 1);
+    return re(nums, 0, nums.length - 1)[0];
   }
 
   /**
-   * 需要返回两个数:最大正数和最小负数
+   * 两两划分太好用
+   *
+   * <p>两两划分vs-1划分
+   *
+   * <p>需要返回两个数:最大正数和最小负数
    *
    * @param nums
    * @param low
    * @param high
    * @return
    */
-  public int re(int[] nums, int low, int high) {
+  public int[] re(int[] nums, int low, int high) {
     if (low > high) {
-      return 0;
+      return null;
     }
     if (low == high) {
-      return nums[low];
+      return new int[]{nums[low], nums[low]};
     }
 
     int mid = low + (high - low) / 2;
-    int left = re(nums, low, mid);
-    int right = re(nums, mid + 1, high);
+    int[] left = re(nums, low, mid);
+    int[] right = re(nums, mid + 1, high);
 
     int leftMax = Integer.MIN_VALUE;
+    int leftMin = Integer.MAX_VALUE;
     int leftp = 1;
     for (int i = mid; i >= low; i--) {
       leftp *= nums[i];
       leftMax = Math.max(leftMax, leftp);
+      leftMin = Math.min(leftMin, leftp);
     }
     int rightMax = Integer.MIN_VALUE;
+    int rightMin = Integer.MAX_VALUE;
     int rithtP = 1;
     for (int i = mid + 1; i <= high; i++) {
       rithtP *= nums[i];
       rightMax = Math.max(rightMax, rithtP);
+      rightMin = Math.min(rightMin, rithtP);
     }
-    int midMax = 0;
-    if ((leftMax > 0 && rightMax > 0) || (leftMax < 0 && rightMax < 0)) {
-      midMax = leftMax * rightMax;
-    } else if (leftMax < 0 && rightMax > 0) {
-      midMax = rightMax;
-    } else if (leftMax > 0 && rightMax < 0) {
-      midMax = leftMax;
-    } else if (leftMax == 0) {
-      if (rightMax > 0) {
-        midMax = rightMax;
-      } else {
-        midMax = leftMax;
-      }
-    } else if (rightMax == 0) {
-      if (leftMax > 0) {
-        midMax = leftMax;
-      } else {
-        midMax = rightMax;
-      }
-    }
-    return Math.max(Math.max(left, right), midMax);
+    int l1 = leftMax * rightMax;
+    int l2 = leftMax * rightMin;
+    int l3 = leftMin * rightMax;
+    int l4 = leftMin * rightMin;
+
+    int midMin = Math.min(Math.min(l1, l2), Math.min(l3, l4));
+    int midMax = Math.max(Math.max(l1, l2), Math.max(l3, l4));
+
+    // left,mid,right已经求出来.合并
+    int[] result = new int[2];
+    result[0] = Math.max(midMax, Math.max(left[0], right[0]));
+    result[1] = Math.max(midMin, Math.max(left[1], right[1]));
+
+    return result;
   }
 
   /**
