@@ -54,10 +54,14 @@ public class Permutation {
     }
     for (int i = 0; i < s.length(); i++) {
       // 取i
+      // 当前层
       temp.add(s.charAt(i));
 
+      // 递归下一层
       re(delete(s, i));
 
+      // 递归结束后回到当前层
+      // 清除当前层之前加入的数据
       temp.remove(temp.size() - 1);
     }
   }
