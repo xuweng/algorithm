@@ -51,10 +51,11 @@ public class HuiWengPartition {
     }
     for (int i = low; i < high; i++) {
       if (isHui(s, low, i)) {
+        String left = s.substring(low, i + 1);
         List<List<String>> right = re(s, i + 1, high);
         for (List<String> list : right) {
           List<String> list1 = new ArrayList<>();
-          list1.add(s.substring(low, i + 1));
+          list1.add(left);
           list1.addAll(list);
           lists.add(list1);
         }
