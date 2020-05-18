@@ -183,7 +183,9 @@ public class HuiWengPartition {
     }
 
     /**
-     * 图遍历
+     * 从根结点到叶子结点的路径，就是结果集里的一个结果，使用深度优先遍历，记录下所有可能的结果。
+     *
+     * <p>图遍历
      *
      * <p>图遍历
      *
@@ -213,7 +215,7 @@ public class HuiWengPartition {
         // 保存截取的字符串
         stack.addLast(s.substring(start, i + 1));
         backtracking(s, i + 1, len);
-        stack.removeLast();
+        stack.clear();
       }
     }
 
