@@ -1,7 +1,13 @@
 package com.leetcode.tag.daily;
 
 /**
- * 152. 乘积最大子数组
+ * dp状态不够,添加状态
+ *
+ * <p>dp状态不够添加dp状态
+ *
+ * <p>一个数组多维状态或者多个数组
+ *
+ * <p>152. 乘积最大子数组
  */
 public class MaxProduct {
   /**
@@ -39,19 +45,30 @@ public class MaxProduct {
      *
      * <p>f(1),f(2),f(3).....f(i-1)-------->f(i)?
      *
+     * <p>fmin(i)，它表示以第i个元素结尾的乘积最小子数组的乘积
+     *
+     * <p>代表第 i 个元素结尾的乘积最大子数组的乘积 fmax(i)，
+     *
+     * <p>可以考虑把 ai ​加入第 i−1 个元素结尾的乘积最大或最小的子数组的乘积中，二者加上 ai ​ ，三者取大，就是第 i
+     *
+     * <p>个元素结尾的乘积最大子数组的乘积。第 i 个元素结尾的乘积最小子数组的乘积 fmin(i) 同理。
+     *
      * @param nums
      * @return
      */
     public int maxProduct(int[] nums) {
-      int[] maxF = new int[nums.length];
-      int[] minF = new int[nums.length];
-      maxF[0] = nums[0];
-      minF[0] = nums[0];
+      // 代表第 i 个元素结尾的乘积最大子数组的乘积
+      int[][] dp = new int[nums.length][2];
+      dp[0][0] = nums[0];
+      dp[0][1] = nums[0];
       int ans = nums[0];
       for (int i = 1; i < nums.length; ++i) {
-        maxF[i] = Math.max(maxF[i - 1] * nums[i], Math.max(nums[i], minF[i - 1] * nums[i]));
-        minF[i] = Math.min(minF[i - 1] * nums[i], Math.min(nums[i], maxF[i - 1] * nums[i]));
-        ans = Math.max(ans, maxF[i]);
+        // 相乘导致大数溢出
+        // 三者取大
+        dp[i][0] = Math.max(dp[i - 1][0] * nums[i], Math.max(nums[i], dp[i - 1][1] * nums[i]));
+        // 三者取小
+        dp[i][1] = Math.min(dp[i - 1][0] * nums[i], Math.min(nums[i], dp[i - 1][1] * nums[i]));
+        ans = Math.max(ans, dp[i][0]);
       }
       return ans;
     }
