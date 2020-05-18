@@ -61,4 +61,58 @@ public class MaxProduct {
 
     return max;
   }
+
+  public int maxProduct1(int[] nums) {
+    if (nums == null || nums.length == 0) {
+      return 0;
+    }
+    return re(nums, 0, nums.length - 1);
+  }
+
+  public int re(int[] nums, int low, int high) {
+    if (low > high) {
+      return 0;
+    }
+    if (low == high) {
+      return nums[low];
+    }
+
+    int mid = low + (high - low) / 2;
+    int left = re(nums, low, mid);
+    int right = re(nums, mid + 1, high);
+
+    int leftMax = Integer.MIN_VALUE;
+    int leftp = 1;
+    for (int i = mid; i >= low; i--) {
+      leftp *= nums[i];
+      leftMax = Math.max(leftMax, leftp);
+    }
+    int rightMax = Integer.MIN_VALUE;
+    int rithtP = 1;
+    for (int i = mid + 1; i <= high; i++) {
+      rithtP *= nums[i];
+      rightMax = Math.max(rightMax, rithtP);
+    }
+    int midMax = 0;
+    if ((leftMax > 0 && rightMax > 0) || (leftMax < 0 && rightMax < 0)) {
+      midMax = leftMax * rightMax;
+    } else if (leftMax < 0 && rightMax > 0) {
+      midMax = rightMax;
+    } else if (leftMax > 0 && rightMax < 0) {
+      midMax = leftMax;
+    } else if (leftMax == 0) {
+      if (rightMax > 0) {
+        midMax = rightMax;
+      } else {
+        midMax = leftMax;
+      }
+    } else if (rightMax == 0) {
+      if (leftMax > 0) {
+        midMax = leftMax;
+      } else {
+        midMax = rightMax;
+      }
+    }
+    return Math.max(Math.max(left, right), midMax);
+  }
 }
