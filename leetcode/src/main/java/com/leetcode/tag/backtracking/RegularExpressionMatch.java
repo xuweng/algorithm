@@ -35,6 +35,7 @@ public class RegularExpressionMatch {
       if (pattern.isEmpty()) {
         return text.isEmpty();
       }
+      // 首字符是否匹配
       boolean firstMatch =
               (!text.isEmpty() && (pattern.charAt(0) == text.charAt(0) || pattern.charAt(0) == '.'));
 
@@ -69,9 +70,7 @@ public class RegularExpressionMatch {
     return j == text.length();
   }
 
-  /**
-   * 这种匹配思路其实就是不断地减掉s或者p的可以匹配首部，直至一个或两个字符串被减为空的时候，根据最终情况来得出结论。
-   */
+  /** 这种匹配思路其实就是不断地减掉s或者p的可以匹配首部，直至一个或两个字符串被减为空的时候，根据最终情况来得出结论。 */
   class s {
     public boolean isMatch(String s, String p) {
       // 如果正则串p为空字符串s也为空这匹配成功，如果正则串p为空但是s不是空则说明匹配失败
