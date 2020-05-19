@@ -4,15 +4,20 @@ package com.leetcode.tag.daily;
  * 680. 验证回文字符串 Ⅱ
  */
 public class ValidPalindrome {
+  /**
+   * 超出时间限制
+   *
+   * @param s
+   * @return
+   */
   public boolean validPalindrome(String s) {
     if (s == null || s.length() == 0) {
       return false;
     }
-    boolean valid = false;
-    String s1 = s;
+    boolean valid = isHui(s, 0, s.length() - 1);
     for (int i = 0; i < s.length() && !valid; i++) {
+      String s1 = delete(s, i);
       valid = valid || isHui(s1, 0, s1.length() - 1);
-      s1 = delete(s, i);
     }
 
     return valid;
