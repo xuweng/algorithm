@@ -92,9 +92,7 @@ public class ValidPalindrome {
     return new String(result);
   }
 
-  /**
-   * 使用双指针，通过贪心算法实现
-   */
+  /** 使用双指针，通过贪心算法实现 */
   class Solution {
     public boolean validPalindrome(String s) {
       int low = 0, high = s.length() - 1;
@@ -120,6 +118,27 @@ public class ValidPalindrome {
             }
           }
           return flag1 || flag2;
+        }
+      }
+      return true;
+    }
+  }
+
+  class Solution1 {
+    public boolean checkPalindrome(String s, int low, int high) {
+      for (int i = low, j = high; i < j; ++i, --j) {
+        if (s.charAt(i) != s.charAt(j)) {
+          return false;
+        }
+      }
+      return true;
+    }
+
+    public boolean validPalindrome(String s) {
+      for (int low = 0, high = s.length() - 1; low < high; ++low, --high) {
+        char c1 = s.charAt(low), c2 = s.charAt(high);
+        if (c1 != c2) {
+          return checkPalindrome(s, low, high - 1) || checkPalindrome(s, low + 1, high);
         }
       }
       return true;
