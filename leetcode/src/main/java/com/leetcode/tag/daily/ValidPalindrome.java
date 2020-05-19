@@ -23,6 +23,25 @@ public class ValidPalindrome {
     return valid;
   }
 
+  public boolean validPalindrome1(String s) {
+    if (s == null || s.length() == 0) {
+      return false;
+    }
+
+    int low = 0;
+    int high = s.length() - 1;
+    while (low < high) {
+      if (s.charAt(low) == s.charAt(high)) {
+
+        low++;
+        high--;
+      } else {
+        return high - low <= 1;
+      }
+    }
+    return true;
+  }
+
   public boolean isHui(String s, int low, int high) {
     if (s == null || low > high) {
       return false;
