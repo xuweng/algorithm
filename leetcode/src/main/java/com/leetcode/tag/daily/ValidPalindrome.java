@@ -23,6 +23,12 @@ public class ValidPalindrome {
     return valid;
   }
 
+  /**
+   * 算法错误
+   *
+   * @param s
+   * @return
+   */
   public boolean validPalindrome1(String s) {
     if (s == null || s.length() == 0) {
       return false;
