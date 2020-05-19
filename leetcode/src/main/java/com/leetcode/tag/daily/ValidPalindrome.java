@@ -30,16 +30,24 @@ public class ValidPalindrome {
 
     int low = 0;
     int high = s.length() - 1;
-    while (low < high) {
+    // 统计不相等次数
+    int count = 0;
+    while (low < high && count <= 1) {
       if (s.charAt(low) == s.charAt(high)) {
-
         low++;
         high--;
       } else {
-        return high - low <= 1;
+        if (low + 1 < high && s.charAt(low + 1) == s.charAt(high)) {
+          low++;
+        } else if (high - 1 > low && s.charAt(low) == s.charAt(high - 1)) {
+          high--;
+        } else {
+          return false;
+        }
+        count++;
       }
     }
-    return true;
+    return low >= high && count <= 1;
   }
 
   public boolean isHui(String s, int low, int high) {
