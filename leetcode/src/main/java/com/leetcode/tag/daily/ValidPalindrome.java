@@ -172,6 +172,9 @@ public class ValidPalindrome {
       return re(s, 0, s.length() - 1);
     }
 
+    // 递归方程错误
+    // 2个数return false还是true?.按理说应该return true
+    // 2-------->3时,return?
     public boolean re(String s, int low, int high) {
       if (s.length() <= 2) {
         return true;
@@ -179,6 +182,7 @@ public class ValidPalindrome {
       if (low > high) {
         return false;
       }
+      // 终止条件
       boolean b = s.charAt(low) == s.charAt(high);
       if (high - low <= 1) {
         return b;
