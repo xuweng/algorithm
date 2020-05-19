@@ -42,7 +42,7 @@ public class ValidPalindrome {
         } else if (high - 1 > low && s.charAt(low) == s.charAt(high - 1)) {
           high--;
         } else {
-          return false;
+          return high - low <= 1;
         }
         count++;
       }
