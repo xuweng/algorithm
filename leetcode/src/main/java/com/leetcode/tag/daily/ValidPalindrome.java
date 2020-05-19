@@ -144,4 +144,23 @@ public class ValidPalindrome {
       return true;
     }
   }
+
+  class Solution2 {
+    public boolean palindrome(String s, int i, int j) {
+      while (i < j && s.charAt(i) == s.charAt(j)) {
+        ++i;
+        --j;
+      }
+      return i >= j;
+    }
+
+    boolean validPalindrome(String s) {
+      int i = 0, j = s.length() - 1;
+      while (i < j && s.charAt(i) == s.charAt(j)) {
+        ++i;
+        --j;
+      }
+      return palindrome(s, i, j - 1) || palindrome(s, i + 1, j);
+    }
+  }
 }
