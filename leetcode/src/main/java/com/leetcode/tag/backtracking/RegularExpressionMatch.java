@@ -110,7 +110,9 @@ public class RegularExpressionMatch {
   }
 
   /**
-   * 作者：LeetCode
+   * 自顶向下的方法
+   *
+   * <p>作者：LeetCode
    * 链接：https://leetcode-cn.com/problems/regular-expression-matching/solution/zheng-ze-biao-da-shi-pi-pei-by-leetcode/
    * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
    */
@@ -150,6 +152,30 @@ public class RegularExpressionMatch {
       }
       memo[i][j] = ans;
       return ans;
+    }
+  }
+
+  /**
+   * 自底向上的方法
+   */
+  class Solution2 {
+    public boolean isMatch(String text, String pattern) {
+      boolean[][] dp = new boolean[text.length() + 1][pattern.length() + 1];
+      dp[text.length()][pattern.length()] = true;
+
+      for (int i = text.length(); i >= 0; i--) {
+        for (int j = pattern.length() - 1; j >= 0; j--) {
+          boolean firstMatch =
+                  (i < text.length()
+                          && (pattern.charAt(j) == text.charAt(i) || pattern.charAt(j) == '.'));
+          if (j + 1 < pattern.length() && pattern.charAt(j + 1) == '*') {
+            dp[i][j] = dp[i][j + 2] || firstMatch && dp[i + 1][j];
+          } else {
+            dp[i][j] = firstMatch && dp[i + 1][j + 1];
+          }
+        }
+      }
+      return dp[0][0];
     }
   }
 
