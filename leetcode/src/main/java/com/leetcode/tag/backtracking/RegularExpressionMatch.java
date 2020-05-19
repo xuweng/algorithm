@@ -54,8 +54,11 @@ public class RegularExpressionMatch {
         // 直接忽略模式串中这一部分，或者删除匹配串的第一个字符，前提是它能够匹配模式串当前位置字符
         // 难点.干掉text字符或者干掉pattern字符?
         // 保持text不变，将pattern的减掉两个元素;相等则保持pattern不变，text减掉首元素
-        return (isMatch(text, pattern.substring(2))
-                || (firstMatch && isMatch(text.substring(1), pattern)));
+        return firstMatch
+                ? isMatch(text.substring(1), pattern)
+                : isMatch(text, pattern.substring(2));
+        //        return (isMatch(text, pattern.substring(2))
+        //                || (firstMatch && isMatch(text.substring(1), pattern)));
       } else {
         // pattern的第1个元素不是*
         // 常规比较
