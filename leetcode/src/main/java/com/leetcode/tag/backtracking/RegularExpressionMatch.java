@@ -42,6 +42,7 @@ public class RegularExpressionMatch {
       if (pattern.length() >= 2 && pattern.charAt(1) == '*') {
         // pattern的第1个元素是*
         // 直接忽略模式串中这一部分，或者删除匹配串的第一个字符，前提是它能够匹配模式串当前位置字符
+        // 难点.干掉text字符或者干掉pattern字符?
         return (isMatch(text, pattern.substring(2))
                 || (firstMatch && isMatch(text.substring(1), pattern)));
       } else {
