@@ -39,10 +39,14 @@ public class RegularExpressionMatch {
       boolean firstMatch =
               (!text.isEmpty() && (pattern.charAt(0) == text.charAt(0) || pattern.charAt(0) == '.'));
 
+      // pattern的第1个元素是*
       if (pattern.length() >= 2 && pattern.charAt(1) == '*') {
+        // 直接忽略模式串中这一部分，或者删除匹配串的第一个字符，前提是它能够匹配模式串当前位置字符
         return (isMatch(text, pattern.substring(2))
                 || (firstMatch && isMatch(text.substring(1), pattern)));
       } else {
+        // pattern的第1个元素不是*
+        // 常规比较
         return firstMatch && isMatch(text.substring(1), pattern.substring(1));
       }
     }
