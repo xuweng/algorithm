@@ -47,6 +47,9 @@ public class WordBreak {
 
     List<String> list = map.get(s.charAt(low));
     for (String s1 : list) {
+      if (low + s1.length() - 1 > high) {
+        continue;
+      }
       String s2 = s.substring(low, low + s1.length());
       if (s1.equals(s2)) {
         temp.add(s2);

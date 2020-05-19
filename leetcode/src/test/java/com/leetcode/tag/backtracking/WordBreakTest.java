@@ -10,13 +10,21 @@ public class WordBreakTest {
   public void replaceSpaceTest() {
     WordBreak wordBreak = new WordBreak();
 
-    String s = "catsanddog";
+    //    String s = "catsanddog";
+    //    List<String> wordDict = new ArrayList<>();
+    //    wordDict.add("cat");
+    //    wordDict.add("cats");
+    //    wordDict.add("and");
+    //    wordDict.add("sand");
+    //    wordDict.add("dog");
+
+    String s = "pineapplepenapple";
     List<String> wordDict = new ArrayList<>();
-    wordDict.add("cat");
-    wordDict.add("cats");
-    wordDict.add("and");
-    wordDict.add("sand");
-    wordDict.add("dog");
+    wordDict.add("apple");
+    wordDict.add("pen");
+    wordDict.add("applepen");
+    wordDict.add("pine");
+    wordDict.add("pineapple");
 
     wordBreak.wordBreak(s, wordDict);
   }
