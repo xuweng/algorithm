@@ -163,4 +163,36 @@ public class ValidPalindrome {
       return palindrome(s, i, j - 1) || palindrome(s, i + 1, j);
     }
   }
+
+  class Solution3 {
+    public boolean validPalindrome(String s) {
+      if (s == null || s.length() == 0) {
+        return false;
+      }
+      return re(s, 0, s.length() - 1);
+    }
+
+    public boolean re(String s, int low, int high) {
+      if (s.length() <= 2) {
+        return true;
+      }
+      if (low > high) {
+        return false;
+      }
+      boolean b = s.charAt(low) == s.charAt(high);
+      if (high - low <= 1) {
+        return b;
+      }
+
+      return b ? re(s, low + 1, high - 1) : re(s, low, high - 1) || re(s, low + 1, high);
+    }
+
+    public boolean palindrome(String s, int i, int j) {
+      while (i < j && s.charAt(i) == s.charAt(j)) {
+        ++i;
+        --j;
+      }
+      return i >= j;
+    }
+  }
 }
