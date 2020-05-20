@@ -21,7 +21,7 @@ public class BinaryIndexedTree3Test {
     //    Integer.valueOf("0101",2).toString()
     BinaryIndexedTree3 binaryIndexedTree3 = new BinaryIndexedTree3();
 
-    for (int i = 0; i <= 100; i++) {
+    for (int i = 0; i <= 10; i++) {
       System.out.println(Integer.toBinaryString(i) + "," + binaryIndexedTree3.lowbit(i));
     }
   }
