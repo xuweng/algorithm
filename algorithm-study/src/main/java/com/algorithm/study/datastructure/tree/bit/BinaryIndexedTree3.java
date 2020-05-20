@@ -1,7 +1,9 @@
 package com.algorithm.study.datastructure.tree.bit;
 
 /**
- * C[i] = A[i - lowbit(i)+1] + A[i - lowbit(i)+2] + ... + A[i]; //k为i的二进制中从最低位到高位连续零的长度
+ * https://blog.csdn.net/qq_23968185/article/details/51171926
+ *
+ * <p>C[i] = A[i - lowbit(i)+1] + A[i - lowbit(i)+2] + ... + A[i]; //k为i的二进制中从最低位到高位连续零的长度
  *
  * <p>例如i = 8(1000)时候，k = 3，可自行验证。
  */
@@ -58,8 +60,19 @@ public class BinaryIndexedTree3 {
     }
   }
 
+  int sum(int k) {
+    int ans = 0;
+    // 跳跃式i
+    for (int i = k; i > 0; i -= lowbit(i)) {
+      ans += bIT[i];
+    }
+    return ans;
+  }
+
   /**
    * x这个节点所含区间元素个数
+   *
+   * <p>区间个数
    *
    * <p>定义一个Lowbit函数，返回参数转为二进制后,最后一个1的位置所代表的数值.
    *
