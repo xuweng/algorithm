@@ -1,7 +1,9 @@
 package com.algorithm.study.datastructure.tree.bit;
 
 /**
- * 求区间
+ * 能做什么?
+ *
+ * <p>数据结构能做什么?
  */
 public class BinaryIndexedTree2 {
   private int[] bitArr;
@@ -54,7 +56,7 @@ public class BinaryIndexedTree2 {
    * Get the range sum of elements from original array from index `fromIdx` to `toIdx`
    *
    * @param fromIdx start index of element in original array
-   * @param toIdx   end index of element in original array
+   * @param toIdx end index of element in original array
    * @return range sum of elements from index `fromIdx` to `toIdx`
    */
   public int rangeSum(int fromIdx, int toIdx) {
