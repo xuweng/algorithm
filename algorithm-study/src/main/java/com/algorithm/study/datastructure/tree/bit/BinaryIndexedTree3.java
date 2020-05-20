@@ -33,7 +33,9 @@ public class BinaryIndexedTree3 {
   }
 
   /**
-   * 定义一个Lowbit函数，返回参数转为二进制后,最后一个1的位置所代表的数值.
+   * x这个节点所含区间元素个数
+   *
+   * <p>定义一个Lowbit函数，返回参数转为二进制后,最后一个1的位置所代表的数值.
    *
    * @param x
    * @return
