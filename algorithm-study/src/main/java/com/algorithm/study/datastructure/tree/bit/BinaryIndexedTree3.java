@@ -1,7 +1,7 @@
 package com.algorithm.study.datastructure.tree.bit;
 
 /**
- * C[i] = A[i - 2k+1] + A[i - 2k+2] + ... + A[i]; //k为i的二进制中从最低位到高位连续零的长度
+ * C[i] = A[i - lowbit(i)+1] + A[i - lowbit(i)+2] + ... + A[i]; //k为i的二进制中从最低位到高位连续零的长度
  *
  * <p>例如i = 8(1000)时候，k = 3，可自行验证。
  */
