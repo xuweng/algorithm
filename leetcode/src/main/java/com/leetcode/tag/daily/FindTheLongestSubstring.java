@@ -80,7 +80,9 @@ public class FindTheLongestSubstring {
   }
 
   /**
-   * 方法一：前缀和 + 状态压缩
+   * 这道题变相的考了用位运算解决了奇偶性以及前缀法，很新颖
+   *
+   * <p>方法一：前缀和 + 状态压缩
    */
   class Solution {
     /**
