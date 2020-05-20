@@ -6,7 +6,11 @@ import java.util.TreeMap;
 import java.util.stream.IntStream;
 
 /**
- * 这类题本质:满足条件的子串、子序列
+ * 没学过就是不会
+ *
+ * <p>没学过就是不会
+ *
+ * <p>这类题本质:满足条件的子串、子序列
  *
  * <p>子串、子序列
  *
