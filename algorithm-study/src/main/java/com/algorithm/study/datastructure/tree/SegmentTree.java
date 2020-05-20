@@ -162,7 +162,11 @@ public class SegmentTree {
     }
   }
 
-  //    线段树的树节点
+  /**
+   * 线段树的树节点
+   *
+   * <p>一个结点表示一个区间
+   */
   class Node {
     int left, right; // 左右区间的值
     boolean cover; // 表示是否被覆盖
