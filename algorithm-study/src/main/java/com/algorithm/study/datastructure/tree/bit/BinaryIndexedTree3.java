@@ -30,7 +30,10 @@ public class BinaryIndexedTree3 {
   void build(int[] a) {
     for (int i = 1; i <= MAX_N; i++) {
       bIT[i] = a[i];
-      for (int j = i - 1; j > i - lowbit(i); j--) {
+      // 从后往前计算
+      int start = i - lowbit(i) + 1;
+      int end = i - 1;
+      for (int j = end; j >= start; j--) {
         bIT[i] += a[j];
       }
     }
