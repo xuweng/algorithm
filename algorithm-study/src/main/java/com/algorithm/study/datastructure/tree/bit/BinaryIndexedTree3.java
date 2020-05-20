@@ -23,6 +23,8 @@ public class BinaryIndexedTree3 {
    * <p>初始化长度为n + 1的Binary Indexed Tree数组bit，并将list中的数字对应地放在bit[1]到bit[n]的各个位置。 对于1到n的每一个i，进行如下操作：
    * 令j = i + (i & -i)，若j < n + 1，则bit[j] = bit[j] + bit[i]
    *
+   * <p>https://zh.wikipedia.org/wiki/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84
+   *
    * @param a
    */
   void build(int[] a) {
