@@ -13,6 +13,8 @@ import java.util.stream.IntStream;
  *
  * <p>第一个:f(0)=0,f(1)=0,f(2)=2;f(1)与f(2)能推导f(3)?
  *
+ * <p>还需要哪些信息?
+ *
  * <p>1371. 每个元音包含偶数次的最长子字符串
  */
 public class FindTheLongestSubstring {
