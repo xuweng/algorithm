@@ -60,10 +60,20 @@ public class BinaryIndexedTree2 {
    * Get the range sum of elements from original array from index `fromIdx` to `toIdx`
    *
    * @param fromIdx start index of element in original array
-   * @param toIdx end index of element in original array
+   * @param toIdx   end index of element in original array
    * @return range sum of elements from index `fromIdx` to `toIdx`
    */
   public int rangeSum(int fromIdx, int toIdx) {
     return prefixSum(toIdx) - prefixSum(fromIdx - 1);
+  }
+
+  /**
+   * 定义一个Lowbit函数，返回参数转为二进制后,最后一个1的位置所代表的数值.
+   *
+   * @param x
+   * @return
+   */
+  private int lowbit(int x) {
+    return x & (-x);
   }
 }
