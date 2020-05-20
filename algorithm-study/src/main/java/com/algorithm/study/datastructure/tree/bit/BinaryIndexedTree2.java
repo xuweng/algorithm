@@ -1,12 +1,16 @@
 package com.algorithm.study.datastructure.tree.bit;
 
 /**
- * 能做什么?
+ * 现多用于高效计算数列的前缀和， 区间和。它可以以O(log n)的时间得到任意前缀和
+ *
+ * <p>并同时支持在O(log n)时间内支持动态单点值的修改。空间复杂度O(n)
+ *
+ * <p>能做什么?
  *
  * <p>数据结构能做什么?
  */
 public class BinaryIndexedTree2 {
-  private int[] bitArr;
+  private final int[] bitArr;
 
   public BinaryIndexedTree2(int[] list) {
     // O(n) initialization
