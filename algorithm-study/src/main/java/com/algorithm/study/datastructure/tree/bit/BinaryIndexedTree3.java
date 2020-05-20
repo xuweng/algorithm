@@ -84,7 +84,9 @@ public class BinaryIndexedTree3 {
   }
 
   /**
-   * 树状数组求逆序数 逆序数
+   * https://www.jianshu.com/p/8a4081f0ec20
+   *
+   * <p>树状数组求逆序数 逆序数
    *
    * <p>一个排列中，对于顺序排列的两个数，若前面的数大于后面的数，那么它们就称为一个逆序。
    *
