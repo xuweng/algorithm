@@ -5,7 +5,9 @@ import java.util.TreeMap;
 import java.util.stream.IntStream;
 
 /**
- * 定义状态.
+ * 这类题本质:满足条件的子串、子序列
+ *
+ * <p>定义状态.
  *
  * <p>前i个?以第i个结尾?两个定义都试一下
  *
