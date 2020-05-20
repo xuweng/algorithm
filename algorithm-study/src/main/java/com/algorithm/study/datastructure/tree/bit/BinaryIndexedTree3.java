@@ -38,7 +38,7 @@ public class BinaryIndexedTree3 {
    * @param x
    * @return
    */
-  private int lowbit(int x) {
+  public int lowbit(int x) {
     return x & (-x);
   }
 }
