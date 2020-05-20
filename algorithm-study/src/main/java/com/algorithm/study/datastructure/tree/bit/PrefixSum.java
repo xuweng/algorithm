@@ -25,4 +25,19 @@ public class PrefixSum {
       preSum[i] = preSum[i - 1] + array[i];
     }
   }
+
+  /**
+   * 包含from和包含to
+   *
+   * @param from
+   * @param to
+   * @return
+   */
+  public int quJian(int from, int to) {
+    check(from, to);
+
+    return preSum[to] - preSum[from - 1];
+  }
+
+  private void check(int from, int to) {}
 }
