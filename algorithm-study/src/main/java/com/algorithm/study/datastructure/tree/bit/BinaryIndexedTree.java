@@ -1,4 +1,4 @@
-package com.algorithm.study.datastructure.tree;
+package com.algorithm.study.datastructure.tree.bit;
 
 /**
  * C[1] = C[0001] = A[1];
