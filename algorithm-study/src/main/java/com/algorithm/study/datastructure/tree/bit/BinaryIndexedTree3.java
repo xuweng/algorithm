@@ -40,6 +40,24 @@ public class BinaryIndexedTree3 {
   }
 
   /**
+   * 修改 假设现在要将A[i]的值增加delta，
+   *
+   * <p>那么，需要将BIT[i]覆盖的区间包含A[i]的值都加上delta，
+   *
+   * <p>这个过程可以写成递归，或者普通的循环。
+   *
+   * <p>需要计算的次数与数据规模N的二进制位数有关，即这部分的时间复杂度是O(LogN)
+   *
+   * @param i
+   * @param delta
+   */
+  void edit(int i, int delta) {
+    for (int j = i; j <= MAX_N; j += lowbit(j)) {
+      bIT[j] += delta;
+    }
+  }
+
+  /**
    * x这个节点所含区间元素个数
    *
    * <p>定义一个Lowbit函数，返回参数转为二进制后,最后一个1的位置所代表的数值.
