@@ -22,11 +22,13 @@ public class BinaryIndexedTree3 {
    *
    * <p>初始化长度为n + 1的Binary Indexed Tree数组bit，并将list中的数字对应地放在bit[1]到bit[n]的各个位置。 对于1到n的每一个i，进行如下操作：
    * 令j = i + (i & -i)，若j < n + 1，则bit[j] = bit[j] + bit[i]
+   *
+   * @param a
    */
   void build(int[] a) {
     for (int i = 1; i <= MAX_N; i++) {
-      bIT[i] = a[i - 1];
-      for (int j = i - 2; j >= i - lowbit(i); j--) {
+      bIT[i] = a[i];
+      for (int j = i - 1; j > i - lowbit(i); j--) {
         bIT[i] += a[j];
       }
     }
