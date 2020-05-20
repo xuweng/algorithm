@@ -52,6 +52,7 @@ public class BinaryIndexedTree3 {
    * @param delta
    */
   void edit(int i, int delta) {
+    // 跳跃式j.不是常见的累加
     for (int j = i; j <= MAX_N; j += lowbit(j)) {
       bIT[j] += delta;
     }
