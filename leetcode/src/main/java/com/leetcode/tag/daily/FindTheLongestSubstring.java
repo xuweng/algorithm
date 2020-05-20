@@ -102,11 +102,12 @@ public class FindTheLongestSubstring {
      * @return
      */
     public int findTheLongestSubstring(String s) {
-      int n = s.length();
       int[] pos = new int[1 << 5];
       Arrays.fill(pos, -1);
-      int ans = 0, status = 0;
       pos[0] = 0;
+
+      int n = s.length();
+      int ans = 0, status = 0;
       for (int i = 0; i < n; i++) {
         char ch = s.charAt(i);
         if (ch == 'a') {
