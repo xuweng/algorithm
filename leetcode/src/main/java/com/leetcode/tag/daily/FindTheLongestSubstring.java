@@ -8,6 +8,18 @@ import java.util.stream.IntStream;
  * 1371. 每个元音包含偶数次的最长子字符串
  */
 public class FindTheLongestSubstring {
+  /**
+   * 暴力法
+   *
+   * <p>超出时间限制
+   *
+   * <p>优化暴力法
+   *
+   * <p>时间复杂度
+   *
+   * @param s
+   * @return
+   */
   public int findTheLongestSubstring(String s) {
     char[] yuan = {'a', 'e', 'i', 'o', 'u'};
     int count = 0;
