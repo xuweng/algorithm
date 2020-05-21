@@ -146,6 +146,18 @@ public class LongestPalindrome {
     return true;
   }
 
+  /**
+   * 原问题:最长的回文子串
+   *
+   * <p>我们用 P(i,j) 表示字符串 s 的第 i 到 j 个字母组成的串（下文表示成 s[i:j]）是否为回文串：
+   *
+   * <p>状态定义不是根据原问题
+   *
+   * <p>dp状态定义
+   *
+   * @param s
+   * @return
+   */
   public String dp(String s) {
     if (s == null || s.isEmpty()) {
       return s;
