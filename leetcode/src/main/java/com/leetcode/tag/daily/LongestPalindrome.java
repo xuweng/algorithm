@@ -145,4 +145,32 @@ public class LongestPalindrome {
 
     return true;
   }
+
+  public String dp(String s) {
+    boolean[][] dp = new boolean[s.length()][s.length()];
+    // 初始化对角线
+    for (int i = 0; i < dp.length; i++) {
+      dp[i][i] = true;
+    }
+    int max = 0;
+    int low = 0, high = 0;
+    // 按行计算--------固定行
+    // 按列计算--------固定列
+    for (int right = 1; right < dp.length; right++) {
+      for (int left = 0; left < right; left++) {
+        boolean b = s.charAt(left) == s.charAt(right);
+        dp[left][right] = right - left == 1 ? b : b && dp[left + 1][right - 1];
+        if (dp[left][right]) {
+          int length = right - left - 1;
+          if (length > max) {
+            max = length;
+            low = left;
+            high = right;
+          }
+        }
+      }
+    }
+
+    return s.substring(low, high + 1);
+  }
 }
