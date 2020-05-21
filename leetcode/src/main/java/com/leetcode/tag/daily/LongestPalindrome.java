@@ -41,7 +41,27 @@ package com.leetcode.tag.daily;
  */
 public class LongestPalindrome {
   /**
-   * 枚举每个子串
+   * 找规律
+   *
+   * <p>找规律
+   *
+   * <p>找规律
+   *
+   * <p>找规律
+   *
+   * <p>找规律
+   *
+   * <p>找规律
+   *
+   * <p>找规律
+   *
+   * <p>找规律
+   *
+   * <p>找规律
+   *
+   * <p>找规律
+   *
+   * <p>枚举每个子串
    *
    * <p>子串和子序列
    *
