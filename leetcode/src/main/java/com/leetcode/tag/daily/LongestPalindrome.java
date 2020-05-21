@@ -147,6 +147,10 @@ public class LongestPalindrome {
   }
 
   public String dp(String s) {
+    if (s == null || s.isEmpty()) {
+      return s;
+    }
+
     boolean[][] dp = new boolean[s.length()][s.length()];
     // 初始化对角线
     for (int i = 0; i < dp.length; i++) {
@@ -161,7 +165,7 @@ public class LongestPalindrome {
         boolean b = s.charAt(left) == s.charAt(right);
         dp[left][right] = right - left == 1 ? b : b && dp[left + 1][right - 1];
         if (dp[left][right]) {
-          int length = right - left - 1;
+          int length = right - left + 1;
           if (length > max) {
             max = length;
             low = left;
