@@ -4,7 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 784. 字母大小写全排列
+ * 代码模板
+ *
+ * <p>代码模板
+ *
+ * <p>代码模板
+ *
+ * <p>代码模板
+ *
+ * <p>代码模板
+ *
+ * <p>找到所有分支
+ *
+ * <p>找到所有分支
+ *
+ * <p>784. 字母大小写全排列
  */
 public class LetterCasePermutation {
   List<String> list = new ArrayList<>();
