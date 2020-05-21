@@ -35,6 +35,14 @@ public class RegularExpressionMatch {
     // p第1个字符是否是*
     boolean pNext = p.length() >= 2 && p.charAt(1) == '*';
     if (pNext) {
+      // # 解释：如果发现p前一个字符和 '*' 结合，
+      // # 或者匹配该字符 0 次，然后跳过该字符和 '*'
+      // # 或者当 pattern[0] 和 text[0] 匹配后，移动 text
+      //
+      // 作者：labuladong
+      // 链接：https://leetcode-cn.com/problems/regular-expression-matching/solution/ji-yu-guan-fang-ti-jie-gen-xiang-xi-de-jiang-jie-b/
+      // 来源：力扣（LeetCode）
+      // 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
       return isMatch(s, p.substring(2)) || (firstMatch && isMatch(s.substring(1), p));
     } else {
       return firstMatch && isMatch(s.substring(1), p.substring(1));
