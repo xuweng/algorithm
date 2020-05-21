@@ -30,11 +30,9 @@ public class RegularExpressionMatch {
     // p第1个字符是否是*
     boolean pNext = p.length() >= 2 && p.charAt(1) == '*';
     if (pNext) {
-      if (p.charAt(0) == '.') {
-        return s.length() == p.length();
-      } else if (firstMatch) {
+      if (firstMatch) {
         int i = 0;
-        while (i < s.length() && (s.charAt(0) == s.charAt(i))) {
+        while (i < s.length() && ((s.charAt(0) == s.charAt(i)) || p.charAt(0) == '.')) {
           i++;
         }
         if (i == s.length()) {
