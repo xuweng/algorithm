@@ -21,6 +21,9 @@ public class RegularExpressionMatch {
     if (p.isEmpty()) {
       return s.isEmpty();
     }
+    if (s.isEmpty()) {
+      return p.isEmpty();
+    }
 
     boolean firstMatch = s.charAt(0) == p.charAt(0);
 
