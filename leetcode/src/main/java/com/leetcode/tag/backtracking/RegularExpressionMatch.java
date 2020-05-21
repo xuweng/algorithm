@@ -30,26 +30,12 @@ public class RegularExpressionMatch {
       return s.isEmpty();
     }
 
-    boolean firstMatch = s.length() >= 1 && s.charAt(0) == p.charAt(0) || p.charAt(0) == '.';
+    boolean firstMatch = !s.isEmpty() && (s.charAt(0) == p.charAt(0) || p.charAt(0) == '.');
 
     // p第1个字符是否是*
     boolean pNext = p.length() >= 2 && p.charAt(1) == '*';
     if (pNext) {
-      if (firstMatch) {
-        // 前面的那一个元素重复多少次?
-        int i = 1;
-        while (i < (s.length() - (p.length() - 2))
-                && ((s.charAt(0) == s.charAt(i)) || p.charAt(0) == '.')) {
-          i++;
-        }
-        if (i == s.length()) {
-          return p.length() == 2;
-        }
-        return isMatch(s.substring(i), p.substring(2));
-
-      } else {
-        return isMatch(s, p.substring(2));
-      }
+      return isMatch(s, p.substring(2)) || (firstMatch && isMatch(s.substring(1), p));
     } else {
       return firstMatch && isMatch(s.substring(1), p.substring(1));
     }
