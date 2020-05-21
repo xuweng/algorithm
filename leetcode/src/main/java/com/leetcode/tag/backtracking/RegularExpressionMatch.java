@@ -30,7 +30,7 @@ public class RegularExpressionMatch {
       return s.isEmpty();
     }
 
-    boolean firstMatch = s.charAt(0) == p.charAt(0) || p.charAt(0) == '.';
+    boolean firstMatch = s.length() >= 1 && s.charAt(0) == p.charAt(0) || p.charAt(0) == '.';
 
     // p第1个字符是否是*
     boolean pNext = p.length() >= 2 && p.charAt(1) == '*';
