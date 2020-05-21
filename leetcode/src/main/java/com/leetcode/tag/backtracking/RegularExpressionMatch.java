@@ -22,6 +22,25 @@ package com.leetcode.tag.backtracking;
  * <p>所谓匹配，是要涵盖 整个 字符串 s的，而不是部分字符串。
  */
 public class RegularExpressionMatch {
+  /**
+   * 递归树
+   *
+   * <p>递归树
+   *
+   * <p>递归树
+   *
+   * <p>递归树
+   *
+   * <p>递归树
+   *
+   * <p>递归树
+   *
+   * <p>递归树
+   *
+   * @param s
+   * @param p
+   * @return
+   */
   public boolean isMatch(String s, String p) {
     if (p == null) {
       return s == null;
@@ -186,9 +205,7 @@ public class RegularExpressionMatch {
     }
   }
 
-  /**
-   * 自底向上的方法
-   */
+  /** 自底向上的方法 */
   class Solution2 {
     public boolean isMatch(String text, String pattern) {
       boolean[][] dp = new boolean[text.length() + 1][pattern.length() + 1];
