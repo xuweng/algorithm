@@ -33,18 +33,19 @@ public class RegularExpressionMatch {
       return p.isEmpty();
     }
 
-    boolean firstMatch = s.charAt(0) == p.charAt(0);
+    boolean firstMatch = s.charAt(0) == p.charAt(0) || p.charAt(0) == '.';
 
     // p第1个字符是否是*
     boolean pNext = p.length() >= 2 && p.charAt(1) == '*';
     if (pNext) {
       if (firstMatch) {
+        // 前面的那一个元素重复多少次?
         int i = 0;
         while (i < s.length() && ((s.charAt(0) == s.charAt(i)) || p.charAt(0) == '.')) {
           i++;
         }
         if (i == s.length()) {
-          return true;
+          return p.length() == 2;
         }
         return isMatch(s.substring(i), p.substring(2));
 
@@ -52,7 +53,7 @@ public class RegularExpressionMatch {
         return isMatch(s, p.substring(2));
       }
     } else {
-      return (firstMatch || p.charAt(0) == '.') && isMatch(s.substring(1), p.substring(1));
+      return firstMatch && isMatch(s.substring(1), p.substring(1));
     }
   }
 
