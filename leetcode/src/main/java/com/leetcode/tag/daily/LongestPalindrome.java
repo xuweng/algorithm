@@ -109,6 +109,6 @@ public class LongestPalindrome {
       high--;
     }
 
-    return low >= high;
+    return true;
   }
 }
