@@ -15,7 +15,36 @@ package com.leetcode.tag.backtracking;
  */
 public class RegularExpressionMatch {
   public boolean isMatch(String s, String p) {
-    return s.matches(p);
+    if (p == null) {
+      return s == null;
+    }
+    if (p.isEmpty()) {
+      return s.isEmpty();
+    }
+
+    boolean firstMatch = s.charAt(0) == p.charAt(0);
+
+    // p第1个字符是否是*
+    boolean pNext = p.length() >= 2 && p.charAt(1) == '*';
+    if (pNext) {
+      if (p.charAt(0) == '.') {
+        return s.length() == p.length();
+      } else if (firstMatch) {
+        int i = 0;
+        while (i < s.length() && (s.charAt(0) == s.charAt(i))) {
+          i++;
+        }
+        if (i == s.length()) {
+          return true;
+        }
+        return isMatch(s.substring(i), p.substring(2));
+
+      } else {
+        return isMatch(s, p.substring(2));
+      }
+    } else {
+      return (firstMatch || p.charAt(0) == '.') && isMatch(s.substring(1), p.substring(1));
+    }
   }
 
   /**
