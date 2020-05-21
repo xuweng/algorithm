@@ -72,13 +72,7 @@ public class ReadBinaryWatch {
    * @param list
    * @return
    */
-  public List<Integer> re(int num, List<Integer> list) {
-    for (int i = 0; i < list.size(); i++) {
-      List<Integer> list1 = new ArrayList<>(list);
-      list1.remove(i);
-      List<Integer> list2 = re(num - 1, list1);
-    }
-
+  public List<Integer> re(int i, int j) {
     return null;
   }
 
