@@ -29,9 +29,6 @@ public class RegularExpressionMatch {
     if (p.isEmpty()) {
       return s.isEmpty();
     }
-    if (s.isEmpty()) {
-      return p.isEmpty();
-    }
 
     boolean firstMatch = s.charAt(0) == p.charAt(0) || p.charAt(0) == '.';
 
@@ -40,8 +37,9 @@ public class RegularExpressionMatch {
     if (pNext) {
       if (firstMatch) {
         // 前面的那一个元素重复多少次?
-        int i = 0;
-        while (i < s.length() && ((s.charAt(0) == s.charAt(i)) || p.charAt(0) == '.')) {
+        int i = 1;
+        while (i < (s.length() - (p.length() - 2))
+                && ((s.charAt(0) == s.charAt(i)) || p.charAt(0) == '.')) {
           i++;
         }
         if (i == s.length()) {
