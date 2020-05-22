@@ -25,9 +25,10 @@ public class GenerateParenthesis {
    * @param temp
    * @param n
    */
-  public void generateParenthesis1(String temp, int n) {
+  public void generateParenthesis1(List<String> list, int n) {
     for (int i = 0; i <= n; i++) {
-      generateParenthesis1("()" + temp, n - 1);
+      list.set(i, "()");
+      generateParenthesis1(list, n - 1);
     }
   }
 
@@ -74,5 +75,54 @@ public class GenerateParenthesis {
     }
 
     return result;
+  }
+
+  /**
+   * 我们可以生成所有 2^2n 个 '(' 和 ')' 字符构成的序列，然后我们检查每一个是否有效即可。
+   */
+  class Solution {
+    public List<String> generateParenthesis(int n) {
+      List<String> combinations = new ArrayList<>();
+      generateAll(new char[2 * n], 0, combinations);
+      return combinations;
+    }
+
+    /**
+     * 每一位有两个选择
+     *
+     * <p>每一位是'('或者是')'
+     *
+     * @param current
+     * @param pos
+     * @param result
+     */
+    public void generateAll(char[] current, int pos, List<String> result) {
+      if (pos == current.length) {
+        if (valid(current)) {
+          result.add(new String(current));
+        }
+      } else {
+        // current[pos]有两个选择
+        current[pos] = '(';
+        generateAll(current, pos + 1, result);
+        current[pos] = ')';
+        generateAll(current, pos + 1, result);
+      }
+    }
+
+    public boolean valid(char[] current) {
+      int balance = 0;
+      for (char c : current) {
+        if (c == '(') {
+          balance++;
+        } else {
+          balance--;
+        }
+        if (balance < 0) {
+          return false;
+        }
+      }
+      return (balance == 0);
+    }
   }
 }
