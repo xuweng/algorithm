@@ -111,7 +111,7 @@ public class LetterCombinations {
      *
      * <p>递归解决所有分支
      *
-     * @param combination
+     * @param combination 每层的combination都是一个新对象
      * @param nextDigits
      */
     public void backtrack(String combination, String nextDigits) {
@@ -140,6 +140,56 @@ public class LetterCombinations {
         backtrack("", digits);
       }
       return output;
+    }
+  }
+
+  class Solution2 {
+    private String letterMap[] = {
+            "", // 0
+            "", // 1
+            "abc", // 2
+            "def", // 3
+            "ghi", // 4
+            "jkl", // 5
+            "mno", // 6
+            "pqrs", // 7
+            "tuv", // 8
+            "wxyz" // 9
+    };
+    private List<String> ans = new ArrayList<>();
+
+    public List<String> letterCombinations(String digits) {
+      if (digits.length() == 0) {
+        return new ArrayList<>();
+      }
+      dfs(digits, 0, new StringBuilder());
+      return ans;
+    }
+
+    /**
+     * 因为StringBuilder传入的都是同一个对象，所以在递归完成之后必须撤回上一次的操作，
+     *
+     * <p>需要删除上一次添加的字符。而String每次改变之后传入的都是不同的对象。故无需撤销操作。
+     *
+     * @param digits
+     * @param start
+     * @param path
+     */
+    private void dfs(String digits, int start, StringBuilder path) {
+      if (start == digits.length()) {
+        ans.add(path.toString());
+        return;
+      }
+      char c = digits.charAt(start);
+      String letter = letterMap[c - '0'];
+      for (int i = 0; i < letter.length(); i++) {
+        // 保存递归前的长度
+        int len = path.length();
+        // 递归一个分支
+        dfs(digits, start + 1, path.append(letter.charAt(i)));
+        // 递归分支结束后的长度.从root到叶子结点
+        path.delete(len, path.length());
+      }
     }
   }
 }
