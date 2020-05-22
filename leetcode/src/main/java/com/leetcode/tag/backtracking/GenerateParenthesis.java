@@ -14,6 +14,24 @@ public class GenerateParenthesis {
   }
 
   /**
+   * 所有分支
+   *
+   * <p>所有子问题
+   *
+   * <p>分支好难想
+   *
+   * <p>子问题好难想
+   *
+   * @param temp
+   * @param n
+   */
+  public void generateParenthesis1(String temp, int n) {
+    for (int i = 0; i <= n; i++) {
+      generateParenthesis1("()" + temp, n - 1);
+    }
+  }
+
+  /**
    * 空间复杂度高
    *
    * <p>思路简单
