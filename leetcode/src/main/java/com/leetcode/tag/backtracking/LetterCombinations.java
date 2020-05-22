@@ -184,6 +184,7 @@ public class LetterCombinations {
       String letter = letterMap[c - '0'];
       for (int i = 0; i < letter.length(); i++) {
         // 保存递归前的长度
+        // 保存root
         int len = path.length();
         // 递归一个分支
         dfs(digits, start + 1, path.append(letter.charAt(i)));
