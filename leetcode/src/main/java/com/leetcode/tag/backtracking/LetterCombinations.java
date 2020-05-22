@@ -91,7 +91,11 @@ public class LetterCombinations {
     List<String> output = new ArrayList<>();
 
     /**
-     * 用参数保存结果
+     * 从root到叶子结点的每条路径都用一个string保存
+     *
+     * <p>不能用一个string保存所有路径
+     *
+     * <p>用参数保存结果
      *
      * <p>用参数保存结果
      *
