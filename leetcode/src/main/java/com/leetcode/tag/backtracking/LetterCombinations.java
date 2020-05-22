@@ -188,6 +188,7 @@ public class LetterCombinations {
         // 递归一个分支
         dfs(digits, start + 1, path.append(letter.charAt(i)));
         // 递归分支结束后的长度.从root到叶子结点
+        // 删除递归这条分支保存的结果,然后开始递归下一个分支
         path.delete(len, path.length());
       }
     }
