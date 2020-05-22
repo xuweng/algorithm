@@ -32,7 +32,13 @@ public class GenerateParenthesis {
   }
 
   /**
-   * 空间复杂度高
+   * 就一个分支
+   *
+   * <p>就一个分支
+   *
+   * <p>就一个子问题
+   *
+   * <p>空间复杂度高
    *
    * <p>思路简单
    *
@@ -51,6 +57,8 @@ public class GenerateParenthesis {
       return result;
     }
 
+    // 就一个分支
+    // 就一个子问题
     Set<String> set = re(n - 1);
     Set<String> result = new HashSet<>();
     if (set == null || set.isEmpty()) {
