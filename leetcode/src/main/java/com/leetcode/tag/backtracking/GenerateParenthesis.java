@@ -175,4 +175,49 @@ public class GenerateParenthesis {
       }
     }
   }
+
+  /**
+   * 作者：liweiwei1419
+   * 链接：https://leetcode-cn.com/problems/generate-parentheses/solution/hui-su-suan-fa-by-liweiwei1419/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  public class Solution2 {
+    // 做加法
+    public List<String> generateParenthesis(int n) {
+      List<String> res = new ArrayList<>();
+      // 特判
+      if (n == 0) {
+        return res;
+      }
+
+      dfs("", 0, 0, n, res);
+      return res;
+    }
+
+    /**
+     * @param curStr 当前递归得到的结果
+     * @param left 左括号已经用了几个
+     * @param right 右括号已经用了几个
+     * @param n 左括号、右括号一共得用几个
+     * @param res 结果集
+     */
+    private void dfs(String curStr, int left, int right, int n, List<String> res) {
+      if (left == n && right == n) {
+        res.add(curStr);
+        return;
+      }
+
+      // 剪枝
+      if (left < right) {
+        return;
+      }
+
+      if (left < n) {
+        dfs(curStr + "(", left + 1, right, n, res);
+      }
+      if (right < n) {
+        dfs(curStr + ")", left, right + 1, n, res);
+      }
+    }
+  }
 }
