@@ -193,5 +193,22 @@ public class LetterCombinations {
         path.delete(len, path.length());
       }
     }
+
+    private void findCombination(String digits, int index, StringBuilder sb) {
+      if (index == digits.length()) {
+        ans.add(sb.toString());
+        return;
+      }
+
+      char c = digits.charAt(index);
+      String letters = letterMap[c - '0'];
+      for (int i = 0; i < letters.length(); i++) {
+        findCombination(digits, index + 1, sb.append(letters.charAt(i)));
+        // 从最后一个元素开始删除
+        // 这样删除很巧妙
+        // 熟悉递归本质
+        sb.deleteCharAt(sb.length() - 1);
+      }
+    }
   }
 }
