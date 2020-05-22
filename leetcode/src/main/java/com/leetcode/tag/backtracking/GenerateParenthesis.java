@@ -6,7 +6,17 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * 22. 括号生成
+ * 递归树
+ *
+ * <p>递归树
+ *
+ * <p>递归树
+ *
+ * <p>递归树
+ *
+ * <p>递归树
+ *
+ * <p>22. 括号生成
  */
 public class GenerateParenthesis {
   public List<String> generateParenthesis(int n) {
