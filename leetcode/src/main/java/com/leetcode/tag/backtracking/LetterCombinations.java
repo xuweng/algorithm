@@ -91,7 +91,13 @@ public class LetterCombinations {
     List<String> output = new ArrayList<>();
 
     /**
-     * 只需要一个list保存结果.空间复杂度低
+     * 用参数保存结果
+     *
+     * <p>用参数保存结果
+     *
+     * <p>从nextDigits挑选,保存到combination
+     *
+     * <p>只需要一个list保存结果.空间复杂度低
      *
      * <p>寻找所有分支
      *
