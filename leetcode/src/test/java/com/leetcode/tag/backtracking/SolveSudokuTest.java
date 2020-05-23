@@ -20,5 +20,7 @@ public class SolveSudokuTest {
             };
 
     solveSudoku.solveSudoku(board);
+
+    System.out.println();
   }
 }

@@ -22,7 +22,7 @@ public class SolveSudoku {
    * @param cow
    */
   public boolean re(char[][] board, int cow, int colum) {
-    if (cow > board.length) {
+    if (cow > board.length || colum > board[0].length) {
       return true;
     }
     List<Character> list = getUserd(board[cow]);
@@ -32,17 +32,26 @@ public class SolveSudoku {
           board[cow][i] = character;
           if (!check(board, cow, i)) {
             board[cow][i] = '.';
+            return false;
           } else {
-            if (re(board, cow, i + 1)) {
-              return true;
-            } else {
+            if (!re(board, cow, i + 1)) {
               board[cow][i] = '.';
+              return false;
             }
           }
         }
       }
     }
     return re(board, cow + 1, 0);
+  }
+
+  public boolean isFull(char[] chars) {
+    for (char c : chars) {
+      if ('.' == c) {
+        return false;
+      }
+    }
+    return true;
   }
 
   /**
