@@ -47,4 +47,44 @@ public class Subsets {
 
     return result;
   }
+
+  /**
+   * 作者：ctrl-cv
+   * 链接：https://leetcode-cn.com/problems/power-set-lcci/solution/javahui-su-jie-jue-zi-ji-wen-ti-by-ctrl-cv/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+      // 结果集合
+      List<List<Integer>> list = new ArrayList<>();
+      // 回溯方法
+      backtrack(list, new ArrayList<>(), nums, 0);
+      return list;
+    }
+
+    /**
+     * 递归树
+     *
+     * <p>递归树
+     *
+     * <p>递归树
+     *
+     * <p>常规:root到叶子结点就是一个结果
+     *
+     * <p>选择一个就是结果.结果累加.
+     *
+     * @param list
+     * @param tempList
+     * @param nums
+     * @param start
+     */
+    public void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int start) {
+      list.add(new ArrayList<>(tempList));
+      for (int i = start; i < nums.length; i++) {
+        tempList.add(nums[i]);
+        backtrack(list, tempList, nums, i + 1);
+        tempList.remove(tempList.size() - 1);
+      }
+    }
+  }
 }
