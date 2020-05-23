@@ -38,13 +38,12 @@ public class SolveSudoku {
           } else {
             if (!re(board, cow, i + 1)) {
               board[cow][i] = '.';
-              return false;
             }
           }
         }
       }
     }
-    return re(board, cow + 1, 0);
+    return !isFull(board[cow]) || re(board, cow + 1, 0);
   }
 
   public boolean isFull(char[] chars) {
