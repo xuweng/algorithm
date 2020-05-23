@@ -77,8 +77,8 @@ public class SolveSudoku {
   public boolean check(char[][] board, int cow, int colum) {
     // 检查第colum列
     HashSet<Character> hashSet = new HashSet<>();
-    for (int i = 0; i < board.length; i++) {
-      if ('.' != board[i][colum] && !hashSet.add(board[i][colum])) {
+    for (char[] chars : board) {
+      if ('.' != chars[colum] && !hashSet.add(chars[colum])) {
         return false;
       }
     }
@@ -87,7 +87,7 @@ public class SolveSudoku {
     HashSet<Character> hashSet1 = new HashSet<>();
     for (int i = index[0]; i < index[0] + 3; i++) {
       for (int j = index[1]; j < index[1] + 3; j++) {
-        if (!hashSet1.add(board[i][j])) {
+        if ('.' != board[i][j] && !hashSet1.add(board[i][j])) {
           return false;
         }
       }
