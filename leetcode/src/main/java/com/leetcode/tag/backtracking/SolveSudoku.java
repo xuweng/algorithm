@@ -6,10 +6,8 @@ import java.util.HashSet;
  * 37. 解数独
  */
 public class SolveSudoku {
-  String shu = "123456789";
 
-  public void solveSudoku(char[][] board) {
-  }
+  public void solveSudoku(char[][] board) {}
 
   /**
    * 返回还没使用过的数字
@@ -18,9 +16,11 @@ public class SolveSudoku {
    * @return
    */
   public char[] getUserd(char[] chars) {
+    String shu = "123456789";
+
     for (char c : chars) {
       if (Character.isDigit(c)) {
-        shu.replace(String.valueOf(c), "");
+        shu = shu.replace(String.valueOf(c), "");
       }
     }
     return shu.toCharArray();
