@@ -32,6 +32,9 @@ public class SolveSudoku {
           board[cow][i] = character;
           if (!check(board, cow, i)) {
             board[cow][i] = '.';
+            if (colum == board[0].length - 1) {
+              return false;
+            }
           } else {
             if (!re(board, cow, i + 1)) {
               board[cow][i] = '.';
