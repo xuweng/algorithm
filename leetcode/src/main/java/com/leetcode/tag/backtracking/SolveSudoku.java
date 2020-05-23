@@ -8,8 +8,7 @@ import java.util.HashSet;
 public class SolveSudoku {
   String shu = "123456789";
 
-  public void solveSudoku(char[][] board) {
-  }
+  public void solveSudoku(char[][] board) {}
 
   public char[] used(char[] chars) {
     for (char c : chars) {
@@ -29,10 +28,17 @@ public class SolveSudoku {
       }
     }
     // 检查3*3
-    int cowFalg = getFlag(cow);
-    int columFalg = getFlag(colum);
+    int[] index = getIndex(getFlag(cow), getFlag(colum));
+    HashSet<Character> hashSet1 = new HashSet<>();
+    for (int i = index[0]; i < index[0] + 3; i++) {
+      for (int j = index[1]; j < index[1] + 3; j++) {
+        if (!hashSet1.add(board[i][j])) {
+          return false;
+        }
+      }
+    }
 
-    return false;
+    return true;
   }
 
   /**
@@ -65,35 +71,20 @@ public class SolveSudoku {
    * @return
    */
   public int[] getIndex(int cowFalg, int columFalg) {
-    int[] result = null;
-    if (cowFalg == 1 && columFalg == 1) {
-      result = new int[]{0, 0};
-    }
-    if (cowFalg == 1 && columFalg == 2) {
-      result = new int[]{0, 3};
-    }
-    if (cowFalg == 1 && columFalg == 3) {
-      result = new int[]{0, 6};
-    }
-    if (cowFalg == 2 && columFalg == 1) {
-      result = new int[]{3, 0};
-    }
-    if (cowFalg == 2 && columFalg == 2) {
-      result = new int[]{3, 3};
-    }
-    if (cowFalg == 2 && columFalg == 1) {
-      result = new int[]{3, 6};
-    }
-    if (cowFalg == 3 && columFalg == 1) {
-      result = new int[]{6, 0};
-    }
-    if (cowFalg == 3 && columFalg == 1) {
-      result = new int[]{6, 3};
-    }
-    if (cowFalg == 3 && columFalg == 1) {
-      result = new int[]{6, 6};
+    int cow = 0;
+    int colum = 0;
+    if (cowFalg == 2) {
+      cow = 3;
+    } else if (cowFalg == 3) {
+      cow = 6;
     }
 
-    return result;
+    if (columFalg == 2) {
+      colum = 3;
+    } else if (columFalg == 3) {
+      colum = 6;
+    }
+
+    return new int[]{cow, colum};
   }
 }
