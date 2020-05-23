@@ -10,7 +10,7 @@ import java.util.List;
 public class SolveSudoku {
 
   public void solveSudoku(char[][] board) {
-    re(board, 0);
+    re(board, 0, 0);
   }
 
   /**
@@ -21,26 +21,28 @@ public class SolveSudoku {
    * @param board
    * @param cow
    */
-  public void re(char[][] board, int cow) {
+  public boolean re(char[][] board, int cow, int colum) {
     if (cow > board.length) {
-      return;
+      return true;
     }
     List<Character> list = getUserd(board[cow]);
-    for (int i = 0; i < board[0].length; i++) {
-      if (!Character.isDigit(board[cow][i]) && list != null) {
-        for (int j = 0; j < list.size(); j++) {
-          char temp = board[cow][i];
-          board[cow][i] = list.get(j);
-          if (check(board, cow, i)) {
-            list.remove(j);
-            break;
+    for (int i = colum; i < board[0].length; i++) {
+      if ('.' == board[cow][i] && list != null) {
+        for (Character character : list) {
+          board[cow][i] = character;
+          if (!check(board, cow, i)) {
+            board[cow][i] = '.';
           } else {
-            board[cow][i] = temp;
+            if (re(board, cow, i + 1)) {
+              return true;
+            } else {
+              board[cow][i] = '.';
+            }
           }
         }
       }
     }
-    re(board, cow + 1);
+    return re(board, cow + 1, 0);
   }
 
   /**
@@ -75,8 +77,8 @@ public class SolveSudoku {
   public boolean check(char[][] board, int cow, int colum) {
     // 检查第colum列
     HashSet<Character> hashSet = new HashSet<>();
-    for (int i = 0; i < 9; i++) {
-      if (!hashSet.add(board[i][colum])) {
+    for (int i = 0; i < board.length; i++) {
+      if ('.' != board[i][colum] && !hashSet.add(board[i][colum])) {
         return false;
       }
     }
@@ -138,6 +140,6 @@ public class SolveSudoku {
       colum = 6;
     }
 
-    return new int[]{cow, colum};
+    return new int[] {cow, colum};
   }
 }
