@@ -8,9 +8,16 @@ import java.util.HashSet;
 public class SolveSudoku {
   String shu = "123456789";
 
-  public void solveSudoku(char[][] board) {}
+  public void solveSudoku(char[][] board) {
+  }
 
-  public char[] used(char[] chars) {
+  /**
+   * 返回还没使用过的数字
+   *
+   * @param chars
+   * @return
+   */
+  public char[] getUserd(char[] chars) {
     for (char c : chars) {
       if (Character.isDigit(c)) {
         shu.replace(String.valueOf(c), "");
@@ -19,6 +26,14 @@ public class SolveSudoku {
     return shu.toCharArray();
   }
 
+  /**
+   * 检查board[cow][colum]是否合法
+   *
+   * @param board
+   * @param cow
+   * @param colum
+   * @return
+   */
   public boolean check(char[][] board, int cow, int colum) {
     // 检查第colum列
     HashSet<Character> hashSet = new HashSet<>();
