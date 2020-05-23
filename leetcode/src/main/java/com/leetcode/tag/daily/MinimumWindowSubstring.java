@@ -5,25 +5,34 @@ package com.leetcode.tag.daily;
  */
 public class MinimumWindowSubstring {
   public String minWindow(String s, String t) {
-    int min = 0;
+    int min = Integer.MAX_VALUE;
+    int low = -1, high = -1;
     for (int i = 0; i < s.length(); i++) {
-      for (int j = 0; j < s.length(); j++) {
+      for (int j = i + t.length() - 1; j < s.length(); j++) {
+        if (contain(s.substring(i, j + 1), t)) {
+          int length = j - i + 1;
+          if (length < min) {
+            min = length;
+            low = i;
+            high = j;
+          }
+        }
       }
     }
 
-    return null;
+    return (low == -1) ? "" : s.substring(low, high + 1);
   }
 
-  public boolean contain(String s, int i, String t, int j) {
-    // s到尽头
-    if (i >= s.length()) {
-      return j >= t.length();
+  public boolean contain(String s, String t) {
+    if (s.length() < t.length()) {
+      return false;
     }
-    // t到尽头
-    if (j >= t.length()) {
-      return true;
+    for (int i = 0; i < t.length(); i++) {
+      if (!s.contains(String.valueOf(t.charAt(i)))) {
+        return false;
+      }
     }
 
-    return s.charAt(i) == t.charAt(j) ? contain(s, i + 1, t, j + 1) : contain(s, i + 1, t, j);
+    return true;
   }
 }
