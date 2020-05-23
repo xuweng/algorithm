@@ -9,6 +9,13 @@ import java.util.Map;
 public class MinimumWindowSubstring {
   Map<Character, Integer> tMap;
 
+  /**
+   * 枚举所有子串
+   *
+   * @param s
+   * @param t
+   * @return
+   */
   public String minWindow(String s, String t) {
     initTMap(t);
     int min = Integer.MAX_VALUE;
@@ -63,7 +70,11 @@ public class MinimumWindowSubstring {
     Map<Character, Integer> cnt = new HashMap<>();
 
     /**
-     * 滑动窗口
+     * 漏掉子串?
+     *
+     * <p>滑动窗口会不会漏掉子串?
+     *
+     * <p>滑动窗口
      *
      * <p>本问题要求我们返回字符串 s 中包含字符串 t 的全部字符的最小窗口。我们称包含 t 的全部字母的窗口为「可行」窗口。
      *
