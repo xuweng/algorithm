@@ -1,13 +1,47 @@
 package com.leetcode.tag.backtracking;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 
 /**
  * 37. 解数独
  */
 public class SolveSudoku {
 
-  public void solveSudoku(char[][] board) {}
+  public void solveSudoku(char[][] board) {
+    re(board, 0);
+  }
+
+  /**
+   * 按行填
+   *
+   * <p>先填满第一层,再填第二层......
+   *
+   * @param board
+   * @param cow
+   */
+  public void re(char[][] board, int cow) {
+    if (cow > board.length) {
+      return;
+    }
+    List<Character> list = getUserd(board[cow]);
+    for (int i = 0; i < board[0].length; i++) {
+      if (!Character.isDigit(board[cow][i]) && list != null) {
+        for (int j = 0; j < list.size(); j++) {
+          char temp = board[cow][i];
+          board[cow][i] = list.get(j);
+          if (check(board, cow, i)) {
+            list.remove(j);
+            break;
+          } else {
+            board[cow][i] = temp;
+          }
+        }
+      }
+    }
+    re(board, cow + 1);
+  }
 
   /**
    * 返回还没使用过的数字
@@ -15,7 +49,7 @@ public class SolveSudoku {
    * @param chars
    * @return
    */
-  public char[] getUserd(char[] chars) {
+  public List<Character> getUserd(char[] chars) {
     String shu = "123456789";
 
     for (char c : chars) {
@@ -23,7 +57,11 @@ public class SolveSudoku {
         shu = shu.replace(String.valueOf(c), "");
       }
     }
-    return shu.toCharArray();
+    List<Character> list = new ArrayList<>();
+    for (int i = 0; i < shu.length(); i++) {
+      list.add(shu.charAt(i));
+    }
+    return list;
   }
 
   /**
