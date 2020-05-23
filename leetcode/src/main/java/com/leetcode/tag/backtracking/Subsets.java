@@ -57,8 +57,10 @@ public class Subsets {
     public List<List<Integer>> subsets(int[] nums) {
       // 结果集合
       List<List<Integer>> list = new ArrayList<>();
+      list.add(new ArrayList<>());
       // 回溯方法
       backtrack(list, new ArrayList<>(), nums, 0);
+
       return list;
     }
 
@@ -79,9 +81,10 @@ public class Subsets {
      * @param start
      */
     public void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int start) {
-      list.add(new ArrayList<>(tempList));
       for (int i = start; i < nums.length; i++) {
+        // 选择nums[i]
         tempList.add(nums[i]);
+        list.add(new ArrayList<>(tempList));
         backtrack(list, tempList, nums, i + 1);
         tempList.remove(tempList.size() - 1);
       }
