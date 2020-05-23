@@ -15,6 +15,14 @@ public class GenerateParenthesis2 {
     return result;
   }
 
+  /**
+   * 递归树
+   *
+   * @param temp
+   * @param left
+   * @param right
+   * @param n
+   */
   public void re(String temp, int left, int right, int n) {
     if (left == n && right == n) {
       result.add(temp);
