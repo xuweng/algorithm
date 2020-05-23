@@ -56,7 +56,11 @@ public class SolveSudoku {
   }
 
   /**
-   * 返回还没使用过的数字
+   * 函数功能错误
+   *
+   * <p>行和列不能使用重复字符
+   *
+   * <p>返回还没使用过的数字
    *
    * @param chars
    * @return
