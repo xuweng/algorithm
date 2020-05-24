@@ -38,10 +38,13 @@ public class FindMedianSortedArrays {
       int totalLength = nums1.length + nums2.length;
       int mid = totalLength >> 1;
 
+      int nums1Max, nums2Max;
       for (int i = 0; (i < totalLength) && (nums1Index + nums2Index < mid); i++) {
-        if (nums1Index < nums1.length && nums1[nums1Index] <= nums2[nums2Index]) {
+        nums1Max = nums1Index == nums1.length ? Integer.MAX_VALUE : nums1[nums1Index];
+        nums2Max = nums2Index == nums2.length ? Integer.MAX_VALUE : nums2[nums1Index];
+        if (nums1Index < nums1.length && nums1Max <= nums2Max) {
           nums1Index++;
-        } else if (nums2Index < nums2.length && nums1[nums1Index] > nums2[nums2Index]) {
+        } else if (nums2Index < nums2.length && nums1Max > nums2Max) {
           nums2Index++;
         }
       }
