@@ -262,7 +262,13 @@ public class SolveSudoku {
     }
 
     /**
-     * 从1 到 9 迭代循环数组，尝试放置数字 d 进入 (row, col) 的格子。
+     * 回溯算法模板:
+     *
+     * <p>当前能放?---->放----->回溯----->有解?---->有---->结束
+     *
+     * <p>当前能放?---->放----->回溯----->有解?---->无---->删除当前已放----->下一个分支
+     *
+     * <p>从1 到 9 迭代循环数组，尝试放置数字 d 进入 (row, col) 的格子。
      *
      * <p>如果数字 d 还没有出现在当前行，列和子方块中：
      *
@@ -293,6 +299,8 @@ public class SolveSudoku {
             // if sudoku is solved, there is no need to backtrack
             // since the single unique solution is promised
             if (!sudokuSolved) {
+              // 用变量来记录是否有解
+              // 如果没有解就删除已经放的数字
               removeNumber(d, row, col);
             }
           }
