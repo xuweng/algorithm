@@ -6,6 +6,7 @@ import java.util.Arrays;
  * 4. 寻找两个正序数组的中位数
  */
 public class FindMedianSortedArrays {
+  /** 暴力法 */
   class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
       int[] nums3 = concat(nums1, nums2);
@@ -27,6 +28,28 @@ public class FindMedianSortedArrays {
       System.arraycopy(a, 0, c, 0, a.length);
       System.arraycopy(b, 0, c, a.length, b.length);
       return c;
+    }
+  }
+
+  /**
+   * 归并排序
+   */
+  class Solution1 {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+      int aIndex = 0, bIndex = 0;
+      int totalLength = nums1.length + nums2.length;
+      int mid = totalLength >> 1;
+
+      for (int i = 0; (i < totalLength) && (aIndex + bIndex < mid); i++) {
+        if (nums1[aIndex] <= nums2[bIndex]) {
+          aIndex++;
+        } else {
+          bIndex++;
+        }
+      }
+      return totalLength % 2 == 0
+              ? (nums1[aIndex] + nums2[bIndex]) / 2.0
+              : Math.max(nums1[aIndex], nums2[bIndex]);
     }
   }
 }
