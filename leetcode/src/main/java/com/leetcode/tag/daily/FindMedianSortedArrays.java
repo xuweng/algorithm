@@ -31,8 +31,10 @@ public class FindMedianSortedArrays {
     }
   }
 
-  /** 归并排序 */
-  class Solution1 {
+  /**
+   * 归并排序
+   */
+  static class Solution1 {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
       int nums1Index = 0, nums2Index = 0;
       int totalLength = nums1.length + nums2.length;
@@ -41,7 +43,7 @@ public class FindMedianSortedArrays {
       int nums1Max, nums2Max;
       for (int i = 0; (i < totalLength) && (nums1Index + nums2Index < mid); i++) {
         nums1Max = nums1Index == nums1.length ? Integer.MAX_VALUE : nums1[nums1Index];
-        nums2Max = nums2Index == nums2.length ? Integer.MAX_VALUE : nums2[nums1Index];
+        nums2Max = nums2Index == nums2.length ? Integer.MAX_VALUE : nums2[nums2Index];
         if (nums1Index < nums1.length && nums1Max <= nums2Max) {
           nums1Index++;
         } else if (nums2Index < nums2.length && nums1Max > nums2Max) {
@@ -49,10 +51,14 @@ public class FindMedianSortedArrays {
         }
       }
       if (nums1Index == nums1.length) {
-        return nums2[nums2Index];
+        return totalLength % 2 == 0
+                ? (nums2[nums2Index - 1] + nums2[nums2Index]) / 2.0
+                : nums2[nums2Index];
       }
       if (nums2Index == nums2.length) {
-        return nums1[nums1Index];
+        return totalLength % 2 == 0
+                ? (nums1[nums1Index - 1] + nums1[nums1Index]) / 2.0
+                : nums1[nums1Index];
       }
       return totalLength % 2 == 0
               ? (nums1[nums1Index] + nums2[nums2Index]) / 2.0
