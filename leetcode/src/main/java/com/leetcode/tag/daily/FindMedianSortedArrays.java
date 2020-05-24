@@ -86,6 +86,14 @@ public class FindMedianSortedArrays {
   /**
    * 这道题可以转化成寻找两个有序数组中的第 k 小的数，其中 k 为 (m+n)/2 或 (m+n)/2+1。
    *
+   * <p>二分查找:每次排除一半
+   *
+   * <p>每次排除一半
+   *
+   * <p>要找第 k 小数，我们可以每次循环排除掉 k/2 个数
+   *
+   * <p>https://leetcode-cn.com/problems/median-of-two-sorted-arrays/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-w-2/
+   *
    * <p>作者：LeetCode-Solution
    * 链接：https://leetcode-cn.com/problems/median-of-two-sorted-arrays/solution/xun-zhao-liang-ge-you-xu-shu-zu-de-zhong-wei-s-114/
    * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
@@ -101,7 +109,7 @@ public class FindMedianSortedArrays {
         int midIndex1 = totalLength / 2 - 1, midIndex2 = totalLength / 2;
         return (getKthElement(nums1, nums2, midIndex1 + 1)
                 + getKthElement(nums1, nums2, midIndex2 + 1))
-                / 2.0;
+            / 2.0;
       }
     }
 
