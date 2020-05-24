@@ -15,6 +15,7 @@ public class AllBackTrack {
    */
   class S {
     List<List<Integer>> res = new ArrayList<>();
+    // 用栈更加合适
     Stack<Integer> path = new Stack<>();
 
     void backtrack(int[] nums, int start) {
