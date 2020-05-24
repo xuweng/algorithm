@@ -337,7 +337,9 @@ public class SolveSudoku {
      */
     public void solution(char[][] board) {
       // 非法数独
-      if (board == null || board.length != 9 || board[0] == null || board[0].length != 9) return;
+      if (board == null || board.length != 9 || board[0] == null || board[0].length != 9) {
+        return;
+      }
       // 回溯法解决
       backTrace(board, 0, 0);
     }
