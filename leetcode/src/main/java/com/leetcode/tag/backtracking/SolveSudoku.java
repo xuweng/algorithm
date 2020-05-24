@@ -327,6 +327,11 @@ public class SolveSudoku {
     }
   }
 
+  /**
+   * 这个算法更加容易理解
+   *
+   * <p>回溯算法模板
+   */
   class S {
     /**
      * 回溯
