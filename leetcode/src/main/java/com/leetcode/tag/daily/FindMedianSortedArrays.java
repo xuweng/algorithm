@@ -31,38 +31,35 @@ public class FindMedianSortedArrays {
     }
   }
 
-  /**
-   * 归并排序
-   */
+  /** 归并排序 */
   static class Solution1 {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-      int nums1Index = 0, nums2Index = 0;
-      int totalLength = nums1.length + nums2.length;
-      int mid = totalLength >> 1;
+      int[] left = new int[nums1.length + 1];
+      int[] right = new int[nums2.length + 1];
 
-      int nums1Max, nums2Max;
-      for (int i = 0; (i < totalLength) && (nums1Index + nums2Index < mid); i++) {
-        nums1Max = nums1Index == nums1.length ? Integer.MAX_VALUE : nums1[nums1Index];
-        nums2Max = nums2Index == nums2.length ? Integer.MAX_VALUE : nums2[nums2Index];
-        if (nums1Index < nums1.length && nums1Max <= nums2Max) {
-          nums1Index++;
-        } else if (nums2Index < nums2.length && nums1Max > nums2Max) {
-          nums2Index++;
+      left[left.length - 1] = Integer.MAX_VALUE;
+      right[right.length - 1] = Integer.MAX_VALUE;
+
+      System.arraycopy(nums1, 0, left, 0, nums1.length);
+      System.arraycopy(nums2, 0, right, 0, nums2.length);
+
+      int length = nums1.length + nums2.length;
+      int[] result = new int[length];
+      int leftIndex = 0, rightIndex = 0;
+      for (int i = 0; i <= length / 2; i++) {
+        if (left[leftIndex] < right[rightIndex]) {
+          result[i] = left[leftIndex];
+          leftIndex++;
+        } else {
+          result[i] = right[rightIndex];
+          rightIndex++;
         }
       }
-      if (nums1Index == nums1.length) {
-        return totalLength % 2 == 0
-                ? (nums2[nums2Index - 1] + nums2[nums2Index]) / 2.0
-                : nums2[nums2Index];
+      if (length % 2 == 0) {
+        return (result[length / 2 - 1] + result[length / 2]) / 2.0;
+      } else {
+        return result[length / 2];
       }
-      if (nums2Index == nums2.length) {
-        return totalLength % 2 == 0
-                ? (nums1[nums1Index - 1] + nums1[nums1Index]) / 2.0
-                : nums1[nums1Index];
-      }
-      return totalLength % 2 == 0
-              ? (nums1[nums1Index] + nums2[nums2Index]) / 2.0
-              : Math.min(nums1[nums1Index], nums2[nums2Index]);
     }
   }
 }
