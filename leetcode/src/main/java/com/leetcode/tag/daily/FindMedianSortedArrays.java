@@ -31,25 +31,29 @@ public class FindMedianSortedArrays {
     }
   }
 
-  /**
-   * 归并排序
-   */
+  /** 归并排序 */
   class Solution1 {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-      int aIndex = 0, bIndex = 0;
+      int nums1Index = 0, nums2Index = 0;
       int totalLength = nums1.length + nums2.length;
       int mid = totalLength >> 1;
 
-      for (int i = 0; (i < totalLength) && (aIndex + bIndex < mid); i++) {
-        if (nums1[aIndex] <= nums2[bIndex]) {
-          aIndex++;
-        } else {
-          bIndex++;
+      for (int i = 0; (i < totalLength) && (nums1Index + nums2Index < mid); i++) {
+        if (nums1Index < nums1.length && nums1[nums1Index] <= nums2[nums2Index]) {
+          nums1Index++;
+        } else if (nums2Index < nums2.length && nums1[nums1Index] > nums2[nums2Index]) {
+          nums2Index++;
         }
       }
+      if (nums1Index == nums1.length) {
+        return nums2[nums2Index];
+      }
+      if (nums2Index == nums2.length) {
+        return nums1[nums1Index];
+      }
       return totalLength % 2 == 0
-              ? (nums1[aIndex] + nums2[bIndex]) / 2.0
-              : Math.max(nums1[aIndex], nums2[bIndex]);
+              ? (nums1[nums1Index] + nums2[nums2Index]) / 2.0
+              : Math.min(nums1[nums1Index], nums2[nums2Index]);
     }
   }
 }
