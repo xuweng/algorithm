@@ -340,7 +340,7 @@ public class SolveSudoku {
      *
      * @param board
      */
-    public void solution(char[][] board) {
+    public void solveSudoku(char[][] board) {
       // 非法数独
       if (board == null || board.length != 9 || board[0] == null || board[0].length != 9) {
         return;
