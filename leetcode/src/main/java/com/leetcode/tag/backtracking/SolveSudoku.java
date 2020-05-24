@@ -154,6 +154,168 @@ public class SolveSudoku {
       colum = 6;
     }
 
-    return new int[] {cow, colum};
+    return new int[]{cow, colum};
+  }
+
+  /**
+   * 作者：LeetCode 链接：https://leetcode-cn.com/problems/sudoku-solver/solution/jie-shu-du-by-leetcode/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution {
+    // box size
+    int n = 3;
+    // row size
+    int N = n * n;
+
+    int[][] rows = new int[N][N + 1];
+    int[][] columns = new int[N][N + 1];
+    int[][] boxes = new int[N][N + 1];
+
+    char[][] board;
+
+    boolean sudokuSolved = false;
+
+    /**
+     * 检查(row,col)能不能放
+     *
+     * @param d
+     * @param row
+     * @param col
+     * @return
+     */
+    public boolean couldPlace(int d, int row, int col) {
+      /*
+      Check if one could place a number d in (row, col) cell
+      */
+      int idx = (row / n) * n + col / n;
+      return rows[row][d] + columns[col][d] + boxes[idx][d] == 0;
+    }
+
+    /**
+     * 将 d 放入 (row, col) 格子中。 记录下 d 已经出现在当前行，列和子方块中。
+     *
+     * @param d
+     * @param row
+     * @param col
+     */
+    public void placeNumber(int d, int row, int col) {
+      /*
+      Place a number d in (row, col) cell
+      */
+      int idx = (row / n) * n + col / n;
+
+      rows[row][d]++;
+      columns[col][d]++;
+      boxes[idx][d]++;
+      board[row][col] = (char) (d + '0');
+    }
+
+    /**
+     * 将d从 (row, col) 移除。
+     *
+     * @param d
+     * @param row
+     * @param col
+     */
+    public void removeNumber(int d, int row, int col) {
+      /*
+      Remove a number which didn't lead to a solution
+      */
+      int idx = (row / n) * n + col / n;
+      rows[row][d]--;
+      columns[col][d]--;
+      boxes[idx][d]--;
+      board[row][col] = '.';
+    }
+
+    /**
+     * 放置接下来的数字
+     *
+     * @param row
+     * @param col
+     */
+    public void placeNextNumbers(int row, int col) {
+      /*
+      Call backtrack function in recursion
+      to continue to place numbers
+      till the moment we have a solution
+      */
+      // if we're in the last cell
+      // that means we have the solution
+      // 如果这是最后一个格子row == 8, col == 8 ：
+      // 意味着已经找出了数独的解。
+      if ((col == N - 1) && (row == N - 1)) {
+        sudokuSolved = true;
+      } else {
+        // if we're in the end of the row
+        // go to the next row
+        if (col == N - 1) {
+          // 下一行
+          backtrack(row + 1, 0);
+        }
+        // go to the next column
+        else {
+          // 下一列
+          backtrack(row, col + 1);
+        }
+      }
+    }
+
+    /**
+     * 从1 到 9 迭代循环数组，尝试放置数字 d 进入 (row, col) 的格子。
+     *
+     * <p>如果数字 d 还没有出现在当前行，列和子方块中：
+     *
+     * <p>将 d 放入 (row, col) 格子中。 记录下 d 已经出现在当前行，列和子方块中。
+     *
+     * <p>如果这是最后一个格子row == 8, col == 8 ： 意味着已经找出了数独的解。 否则 放置接下来的数字。
+     *
+     * <p>如果数独的解还没找到： 将最后的数从 (row, col) 移除。
+     *
+     * @param row
+     * @param col
+     */
+    public void backtrack(int row, int col) {
+      /*
+      Backtracking
+      */
+      // if the cell is empty
+      if (board[row][col] == '.') {
+        // iterate over all numbers from 1 to 9
+        // 尝试放1到9
+        for (int d = 1; d < 10; d++) {
+          // 检查
+          if (couldPlace(d, row, col)) {
+            // 放(row,col)
+            placeNumber(d, row, col);
+            // 放下一个
+            placeNextNumbers(row, col);
+            // if sudoku is solved, there is no need to backtrack
+            // since the single unique solution is promised
+            if (!sudokuSolved) {
+              removeNumber(d, row, col);
+            }
+          }
+        }
+      } else {
+        placeNextNumbers(row, col);
+      }
+    }
+
+    public void solveSudoku(char[][] board) {
+      this.board = board;
+
+      // init rows, columns and boxes
+      for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+          char num = board[i][j];
+          if (num != '.') {
+            int d = Character.getNumericValue(num);
+            placeNumber(d, i, j);
+          }
+        }
+      }
+      backtrack(0, 0);
+    }
   }
 }
