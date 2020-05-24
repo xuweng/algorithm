@@ -5,7 +5,7 @@ import org.junit.Test;
 public class SolveSudokuTest {
   @Test
   public void replaceSpaceTest() {
-    SolveSudoku solveSudoku = new SolveSudoku();
+    SolveSudoku.Solution solveSudoku = new SolveSudoku.Solution();
     char[][] board =
             new char[][]{
                     {'5', '3', '.', '.', '7', '.', '.', '.', '.'},
