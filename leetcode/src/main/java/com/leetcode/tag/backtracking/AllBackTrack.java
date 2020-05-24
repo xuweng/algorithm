@@ -28,8 +28,14 @@ public class AllBackTrack {
         path.pop(); // 撤销选择
       }
     }
+  }
 
-    void backtrack1(int[] nums, int start) {
+  class S1 {
+    List<List<Integer>> res = new ArrayList<>();
+    // 用栈更加合适
+    Stack<Integer> path = new Stack<>();
+
+    void backtrack(int[] nums, int start) {
       res.add(path);
       for (int i = start; i < nums.length; i++) {
         // 剪枝去重
@@ -41,6 +47,12 @@ public class AllBackTrack {
         path.pop();
       }
     }
+  }
+
+  class S2 {
+    List<List<Integer>> res = new ArrayList<>();
+    // 用栈更加合适
+    Stack<Integer> path = new Stack<>();
 
     void backtrack(int[] nums, int start, int sum, int target) {
       for (int i = start; i < nums.length; i++) {
