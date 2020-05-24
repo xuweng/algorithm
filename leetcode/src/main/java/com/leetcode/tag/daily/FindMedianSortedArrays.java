@@ -3,7 +3,13 @@ package com.leetcode.tag.daily;
 import java.util.Arrays;
 
 /**
- * 4. 寻找两个正序数组的中位数
+ * 推导过程
+ *
+ * <p>推导过程
+ *
+ * <p>算法证明过程
+ *
+ * <p>4. 寻找两个正序数组的中位数
  *
  * <p>有序数组
  *
