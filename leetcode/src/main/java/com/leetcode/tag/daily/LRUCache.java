@@ -24,15 +24,7 @@ public class LRUCache {
     if (node == head) {
       return node.value;
     }
-    if (node == tail) {
-      tail = tail.next;
-    }
-    if (node.next != null) {
-      node.next.pre = node.pre;
-    }
-    if (node.pre != null) {
-      node.pre.next = node.next;
-    }
+    delete(node);
 
     head.next = node;
     node.pre = head;
@@ -44,8 +36,18 @@ public class LRUCache {
 
   public void put(int key, int value) {
     if (capacity == map.size()) {
-      map.remove(tail.key);
-      tail = tail.next;
+      Node node = map.get(key);
+      if (node != null) {
+        if (node == head) {
+          node.value = value;
+          return;
+        }
+        delete(node);
+        map.remove(node.key);
+      } else {
+        map.remove(tail.key);
+        tail = tail.next;
+      }
     }
     if (head == null) {
       head = new Node(key, value, null, null);
@@ -57,6 +59,18 @@ public class LRUCache {
     }
 
     map.put(key, head);
+  }
+
+  public void delete(Node node) {
+    if (node.next != null) {
+      node.next.pre = node.pre;
+    }
+    if (node.pre != null) {
+      node.pre.next = node.next;
+    }
+    if (node == tail) {
+      tail = tail.next;
+    }
   }
 
   class Node {
