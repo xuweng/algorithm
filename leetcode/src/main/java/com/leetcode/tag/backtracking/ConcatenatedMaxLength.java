@@ -1,6 +1,7 @@
 package com.leetcode.tag.backtracking;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -31,6 +32,12 @@ public class ConcatenatedMaxLength {
   }
 
   private boolean contains(String s, String s1) {
+    HashSet<Character> hashSet = new HashSet<>();
+    for (int i = 0; i < s1.length(); i++) {
+      if (!hashSet.add(s1.charAt(i))) {
+        return true;
+      }
+    }
     for (int i = 0; i < s.length(); i++) {
       if (s1.contains(String.valueOf(s.charAt(i)))) {
         return true;
