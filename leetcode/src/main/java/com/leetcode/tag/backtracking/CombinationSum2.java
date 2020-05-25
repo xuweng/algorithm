@@ -32,6 +32,7 @@ public class CombinationSum2 {
     }
     for (int i = select; i < candidates.length; i++) {
       stack.push(candidates[i]);
+      // 需要一些剪枝
       backTrack(candidates, i + 1, candidates[i] + sum, target);
       stack.pop();
     }
