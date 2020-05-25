@@ -32,6 +32,7 @@ public class LRUCache {
 
     head.next = node;
     node.pre = head;
+    node.next = null;
 
     head = node;
 
