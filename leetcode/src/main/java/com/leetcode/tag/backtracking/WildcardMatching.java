@@ -14,10 +14,10 @@ public class WildcardMatching {
     boolean headMatch = !s.isEmpty() && (s.charAt(0) == p.charAt(0) || p.charAt(0) == '?');
 
     if (p.charAt(0) == '*') {
-      if (s.length() >= 2 && p.length() >= 2 && s.charAt(1) == p.charAt(1)) {
-        return isMatch(s.substring(2), p.substring(2)) || isMatch(s.substring(1), p);
-      }
-      return isMatch(s, p.substring(1)) || s.length() >= 1 && isMatch(s.substring(1), p);
+      boolean flag = s.length() >= 2 && p.length() >= 2 && s.charAt(1) == p.charAt(1);
+      return isMatch(s, p.substring(1))
+              || (s.length() >= 1 && isMatch(s.substring(1), p))
+              || (flag && isMatch(s.substring(2), p.substring(2)));
     } else {
       return headMatch && isMatch(s.substring(1), p.substring(1));
     }
