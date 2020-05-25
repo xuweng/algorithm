@@ -1,6 +1,7 @@
 package com.leetcode.tag.backtracking;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
@@ -35,6 +36,8 @@ public class CombinationSum2 {
     if (candidates == null || candidates.length == 0) {
       return result;
     }
+    Arrays.sort(candidates);
+
     backTrack(candidates, 0, 0, target);
 
     return result;
@@ -48,11 +51,21 @@ public class CombinationSum2 {
       result.add(new ArrayList<>(stack));
       return;
     }
-    for (int i = select; i < candidates.length; i++) {
+    int i = select;
+    while (i < candidates.length) {
       stack.push(candidates[i]);
       // 需要一些剪枝
       backTrack(candidates, i + 1, candidates[i] + sum, target);
       stack.pop();
+      // 挑选下一个分支
+      int j = i + 1;
+      while (j < candidates.length && candidates[i] == candidates[j]) {
+        j++;
+      }
+      if (j >= candidates.length) {
+        return;
+      }
+      i = j;
     }
   }
 }
