@@ -3,7 +3,11 @@ package com.leetcode.tag.daily;
 import java.util.HashMap;
 
 /**
- * 146. LRU缓存机制
+ * 好多细节处理
+ *
+ * <p>头结点和尾结点
+ *
+ * <p>146. LRU缓存机制
  */
 public class LRUCache {
   HashMap<Integer, Node> map;
