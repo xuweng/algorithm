@@ -47,7 +47,7 @@ public class LRUCache {
           return;
         }
         delete(node);
-        map.remove(node.key);
+        map.remove(key);
       } else {
         map.remove(tail.key);
         tail = tail.next;
