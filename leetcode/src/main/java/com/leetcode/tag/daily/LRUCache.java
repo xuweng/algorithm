@@ -155,7 +155,7 @@ public class LRUCache {
       this.size = 0;
       this.capacity = capacity;
       // 使用伪头部和伪尾部节点
-      // 创建两个
+      // 创建两个.两个可以处理好多细节
       head = new DLinkedNode();
       tail = new DLinkedNode();
       head.next = tail;
@@ -196,6 +196,11 @@ public class LRUCache {
       }
     }
 
+    /**
+     * 新结点插入到头结点
+     *
+     * @param node
+     */
     private void addToHead(DLinkedNode node) {
       node.prev = head;
       node.next = head.next;
