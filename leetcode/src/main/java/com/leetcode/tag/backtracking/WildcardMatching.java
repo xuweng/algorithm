@@ -31,7 +31,7 @@ public class WildcardMatching {
     if (p == null) {
       return s == null;
     }
-    if (p.equals(s)) {
+    if (p.equals(s) || "*".equals(p)) {
       return true;
     }
     if (s == null || s.isEmpty() || p.isEmpty()) {
