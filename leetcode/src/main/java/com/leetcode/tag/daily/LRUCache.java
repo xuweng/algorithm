@@ -21,6 +21,9 @@ public class LRUCache {
     if (node == null) {
       return -1;
     }
+    if (node == head) {
+      return node.value;
+    }
     if (node == tail) {
       tail = tail.next;
     }
