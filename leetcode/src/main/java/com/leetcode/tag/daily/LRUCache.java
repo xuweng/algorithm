@@ -55,6 +55,12 @@ public class LRUCache {
         delete(tail);
       }
     }
+    insert(key, value);
+
+    map.put(key, head);
+  }
+
+  public void insert(int key, int value) {
     if (head == null) {
       head = new Node(key, value, null, null);
       tail = head;
@@ -63,8 +69,6 @@ public class LRUCache {
       head.next = node;
       head = node;
     }
-
-    map.put(key, head);
   }
 
   public void delete(Node node) {
