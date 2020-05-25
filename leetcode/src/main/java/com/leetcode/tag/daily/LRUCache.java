@@ -52,7 +52,9 @@ public class LRUCache {
         node = null;
       } else {
         map.remove(tail.key);
+        node = tail;
         delete(tail);
+        node = null;
       }
     }
     insert(key, value);
