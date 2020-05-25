@@ -75,7 +75,6 @@ public class LRUCache {
     if (node == tail) {
       tail = tail.next;
     }
-    node = null;
   }
 
   class Node {
