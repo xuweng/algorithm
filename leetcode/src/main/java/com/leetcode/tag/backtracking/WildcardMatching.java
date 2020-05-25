@@ -15,7 +15,7 @@ public class WildcardMatching {
 
     if (p.charAt(0) == '*') {
       if (s.length() >= 2 && p.length() >= 2 && s.charAt(1) == p.charAt(1)) {
-        return isMatch(s.substring(2), p.substring(2));
+        return isMatch(s.substring(2), p.substring(2)) || isMatch(s.substring(1), p);
       }
       return isMatch(s, p.substring(1)) || s.length() >= 1 && isMatch(s.substring(1), p);
     } else {
