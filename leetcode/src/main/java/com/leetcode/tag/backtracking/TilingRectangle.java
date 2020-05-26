@@ -2,6 +2,16 @@ package com.leetcode.tag.backtracking;
 
 /**
  * 1240. 铺瓷砖
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
  */
 public class TilingRectangle {
   public int tilingRectangle(int n, int m) {
