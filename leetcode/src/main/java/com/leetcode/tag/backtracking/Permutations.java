@@ -140,7 +140,9 @@ public class Permutations {
         return result;
       }
       // java stack推荐使用这个
+      // 全局path
       Deque<Integer> path = new ArrayDeque<Integer>();
+      // 全局used
       boolean[] used = new boolean[nums.length];
       dfs(nums, 0, path, used, result);
       return result;
