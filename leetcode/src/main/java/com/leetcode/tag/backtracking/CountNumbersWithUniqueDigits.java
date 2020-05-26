@@ -14,6 +14,14 @@ public class CountNumbersWithUniqueDigits {
     return (int) Math.pow(10, n) - re(n).size();
   }
 
+  /**
+   * 算法错误
+   *
+   * <p>漏掉某些子问题
+   *
+   * @param n
+   * @return
+   */
   public List<String> re(int n) {
     if (n == 2) {
       List<String> result = new ArrayList<>();
