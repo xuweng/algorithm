@@ -13,4 +13,12 @@ public class CountNumbersWithUniqueDigitsTest {
     List<String> list = countNumbersWithUniqueDigits.re(n);
     countNumbersWithUniqueDigits.countNumbersWithUniqueDigits(n);
   }
+
+  @Test
+  public void test2() {
+    CountNumbersWithUniqueDigits.S s = new CountNumbersWithUniqueDigits.S();
+    int n = 3;
+
+    s.countNumbersWithUniqueDigits(n);
+  }
 }

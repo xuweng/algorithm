@@ -43,4 +43,34 @@ public class CountNumbersWithUniqueDigits {
     }
     return result;
   }
+
+  static class S {
+    public int countNumbersWithUniqueDigits(int n) {
+      if (n == 1) {
+        return 10;
+      }
+      List<String> result = new ArrayList<>();
+      boolean[] used = new boolean[10];
+
+      backTrack(n, 1, used, "", result);
+
+      return result.size() + 1;
+    }
+
+    private void backTrack(int n, int select, boolean[] used, String temp, List<String> result) {
+      if (select == n + 1) {
+        return;
+      }
+      // 候选集
+      for (int i = 0; i <= 9; i++) {
+        if (used[i] || (select == 1 && i == 0)) {
+          continue;
+        }
+        used[i] = true;
+        result.add(temp + i);
+        backTrack(n, select + 1, used, temp + i, result);
+        used[i] = false;
+      }
+    }
+  }
 }
