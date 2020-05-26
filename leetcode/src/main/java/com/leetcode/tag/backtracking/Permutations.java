@@ -167,4 +167,73 @@ public class Permutations {
       }
     }
   }
+
+  /**
+   * 使用标记数组来处理填过的数是一个很直观的思路，但是可不可以去掉这个标记数组呢？毕竟标记数组也增加了我们算法的空间复杂度。
+   *
+   * <p>答案是可以的，我们可以将题目给定的 n 个数的数组nums[]
+   *
+   * <p>划分成左右两个部分，左边的表示已经填过的数，右边表示待填的数，我们在递归搜索的时候只要动态维护这个数组即可。
+   *
+   * <p>作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/permutations/solution/quan-pai-lie-by-leetcode-solution-2/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class S1 {
+    public List<List<Integer>> permute(int[] nums) {
+      List<List<Integer>> result = new ArrayList<>();
+      if (nums.length == 0) {
+        return result;
+      }
+      backTrack(nums, 0, result);
+
+      return result;
+    }
+
+    /**
+     * 假设我们已经填到第 \textit{first}first 个位置，那么 \textit{nums}[]nums[] 数组中
+     * [0,\textit{first}-1][0,first−1] 是已填过的数的集合，[\textit{first},n-1][first,n−1] 是待填的数的集合。我们肯定是尝试用
+     * [\textit{first},n-1][first,n−1] 里的数去填第 \textit{first}first 个数
+     *
+     * <p>作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/permutations/solution/quan-pai-lie-by-leetcode-solution-2/
+     * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     *
+     * @param nums
+     * @param first
+     * @param result
+     */
+    private void backTrack(int[] nums, int first, List<List<Integer>> result) {
+      if (first == nums.length - 1) {
+        result.add(get(nums));
+        return;
+      }
+      // 候选集是first--------->nums.length
+      // 尝试用[first,n−1] 里的数去填第 first 个数
+      for (int i = first; i < nums.length; i++) {
+        // 假设我们已经填到第first 个位置
+        // 选择i填到第first 个位置
+        swap(nums, first, i);
+        // 填下一个
+        backTrack(nums, first + 1, result);
+        // 状态重置
+        // 下一个分支
+        swap(nums, first, i);
+      }
+    }
+
+    private List<Integer> get(int[] nums) {
+      List<Integer> list = new ArrayList<>();
+      for (int i : nums) {
+        list.add(i);
+      }
+      return list;
+    }
+
+    private void swap(int[] nums, int i, int j) {
+      int temp = nums[i];
+      nums[i] = nums[j];
+      nums[j] = temp;
+    }
+  }
 }
