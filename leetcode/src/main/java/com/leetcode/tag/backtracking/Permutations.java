@@ -125,4 +125,44 @@ public class Permutations {
       return res;
     }
   }
+
+  /**
+   * 跟着大佬写代码
+   *
+   * <p>学习优秀代码
+   *
+   * <p>快捷键用得很厉害
+   */
+  class S {
+    public List<List<Integer>> permute(int[] nums) {
+      List<List<Integer>> result = new ArrayList<>();
+      if (nums.length == 0) {
+        return result;
+      }
+      // java stack推荐使用这个
+      Deque<Integer> path = new ArrayDeque<Integer>();
+      boolean[] used = new boolean[nums.length];
+      dfs(nums, 0, path, used, result);
+      return result;
+    }
+
+    private void dfs(
+            int[] nums, int depth, Deque<Integer> path, boolean[] used, List<List<Integer>> result) {
+      if (depth == nums.length) {
+        result.add(new ArrayList<>(path));
+        return;
+      }
+      // 候选集都是全部nums
+      for (int i = 0; i < nums.length; i++) {
+        if (used[i]) {
+          continue;
+        }
+        path.push(nums[i]);
+        used[i] = true;
+        dfs(nums, depth + 1, path, used, result);
+        path.pop();
+        used[i] = false;
+      }
+    }
+  }
 }
