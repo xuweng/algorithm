@@ -23,9 +23,8 @@ public class CombinationSum3 {
    *
    * @param K
    * @param n
-   * @param count
+   * @param begin
    * @param sum
-   * @param used
    * @param result
    * @param deque
    */
@@ -42,12 +41,43 @@ public class CombinationSum3 {
     }
     for (int i = begin; i <= 9; i++) {
       if (i > n) {
-        continue;
+        break;
       }
       // 选择i
       deque.push(i);
       backTrack(K, n, i + 1, sum + i, result, deque);
       deque.pop();
+    }
+  }
+
+  class Solution {
+    List<List<Integer>> ans = new ArrayList<>();
+    int k = 0, n = 0;
+
+    public List<List<Integer>> combinationSum3(int k, int n) {
+      if (k == 0 || n == 0) {
+        ans.add(new ArrayList<>());
+        return ans;
+      }
+      this.k = k;
+      this.n = n;
+      backtrace(new ArrayList<>(), 0, n, 1);
+      return ans;
+    }
+
+    public void backtrace(List<Integer> list, int cnt, int target, int start) {
+      if (cnt == k && target == 0) {
+        ans.add(new ArrayList<>(list));
+        return;
+      }
+      for (int i = start; i <= 9; i++) {
+        if (i > target) {
+          break;
+        }
+        list.add(i);
+        backtrace(list, cnt + 1, target - i, i + 1);
+        list.remove(list.size() - 1);
+      }
     }
   }
 }
