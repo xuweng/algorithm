@@ -1,7 +1,5 @@
 package com.leetcode.tag.daily;
 
-import java.util.stream.IntStream;
-
 /**
  * 滑动窗口?
  *
@@ -28,9 +26,16 @@ public class SubarraysDivByK {
   }
 
   static class S {
+    int[] preSum;
+
     public int subarraysDivByK(int[] A, int K) {
       if (A == null || A.length == 0) {
         return 0;
+      }
+      preSum = new int[A.length];
+      preSum[0] = A[0];
+      for (int i = 1; i < A.length; i++) {
+        preSum[i] = preSum[i - 1] + A[i];
       }
       return divide(A, K, 0, A.length - 1);
     }
@@ -60,7 +65,14 @@ public class SubarraysDivByK {
     }
 
     public int sum(int[] a, int i, int j) {
-      return IntStream.rangeClosed(i, j).map(k -> a[k]).sum();
+      //      return IntStream.rangeClosed(i, j).map(k -> a[k]).sum();
+      if (i == j) {
+        return a[i];
+      }
+      if (i == 0) {
+        return preSum[j];
+      }
+      return preSum[j] - preSum[i - 1];
     }
   }
 }
