@@ -47,6 +47,7 @@ public class SubarraysDivByK {
       // mid在横跨这部分.与左边的mid重复
       // left:low---->mid
       // 横跨mid计算错误.横跨必须left+mid+right
+      // 计算横跨mid:O(n3)
       int midCunt = 0;
       for (int i = mid + 1; i <= high; i++) {
         for (int j = mid; j >= low; j--) {
