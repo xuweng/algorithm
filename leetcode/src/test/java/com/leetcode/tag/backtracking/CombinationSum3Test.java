@@ -8,7 +8,7 @@ public class CombinationSum3Test {
     CombinationSum3 combinationSum3 = new CombinationSum3();
 
     int k = 3;
-    int n = 7;
+    int n = 9;
     combinationSum3.combinationSum3(k, n);
   }
 }
