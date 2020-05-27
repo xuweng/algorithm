@@ -23,7 +23,7 @@ public class CombinationSum3 {
    *
    * @param K
    * @param n
-   * @param begin
+   * @param begin  从第一个位置开始选择
    * @param sum
    * @param result
    * @param deque
