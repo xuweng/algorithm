@@ -22,8 +22,8 @@ public class GetHappyString {
       if (select == c) {
         continue;
       }
-      backTrack(chars, n - 1, K, c, temp + c);
+      return backTrack(chars, n - 1, K, c, temp + c);
     }
-    return temp;
+    return "";
   }
 }
