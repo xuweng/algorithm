@@ -12,13 +12,24 @@ public class CombinationSum3 {
   public List<List<Integer>> combinationSum3(int k, int n) {
     boolean[] used = new boolean[10];
     List<List<Integer>> result = new ArrayList<>();
-    Deque<Integer> deque = new ArrayDeque<Integer>();
+    Deque<Integer> deque = new ArrayDeque<>();
 
     backTrack(k, n, 0, 0, used, result, deque);
 
     return result;
   }
 
+  /**
+   * 参数太多.不要搞错参数
+   *
+   * @param K
+   * @param n
+   * @param count
+   * @param sum
+   * @param used
+   * @param result
+   * @param deque
+   */
   public void backTrack(
           int K,
           int n,
@@ -37,7 +48,7 @@ public class CombinationSum3 {
       return;
     }
     for (int i = 1; i <= 9; i++) {
-      if (used[i] || i > sum) {
+      if (used[i] || i > n) {
         continue;
       }
       deque.push(i);
