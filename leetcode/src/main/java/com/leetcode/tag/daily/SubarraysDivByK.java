@@ -27,7 +27,7 @@ public class SubarraysDivByK {
     return count;
   }
 
-  class S {
+  static class S {
     public int subarraysDivByK(int[] A, int K) {
       if (A == null || A.length == 0) {
         return 0;
