@@ -39,13 +39,14 @@ public class SubarraysDivByK {
       }
       int mid = low + (high - low) / 2;
       // mid放在左边
-      int left = divide(A, K, low, mid - 1);
+      int left = divide(A, K, low, mid);
       int right = divide(A, K, mid + 1, high);
       int leftSum = 0;
       int leftCount = 0;
       // 连续子数组
       // mid在横跨这部分.与左边的mid重复
-      for (int i = mid; i >= low; i--) {
+      // left:low---->mid
+      for (int i = mid; i > low; i--) {
         leftSum += A[i];
         if (leftSum % K == 0) {
           leftCount++;
