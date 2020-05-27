@@ -1,5 +1,7 @@
 package com.leetcode.tag.daily;
 
+import java.util.stream.IntStream;
+
 /**
  * 滑动窗口?
  *
@@ -41,27 +43,23 @@ public class SubarraysDivByK {
       // mid放在左边
       int left = divide(A, K, low, mid);
       int right = divide(A, K, mid + 1, high);
-      int leftSum = 0;
-      int leftCount = 0;
       // 连续子数组
       // mid在横跨这部分.与左边的mid重复
       // left:low---->mid
       // 横跨mid计算错误.横跨必须left+mid+right
-      for (int i = mid; i > low; i--) {
-        leftSum += A[i];
-        if (leftSum % K == 0) {
-          leftCount++;
+      int midCunt = 0;
+      for (int i = mid + 1; i <= high; i++) {
+        for (int j = mid; j >= low; j--) {
+          if (sum(A, i, j) % K == 0) {
+            midCunt++;
+          }
         }
       }
-      int rightSum = 0;
-      int rightCount = 0;
-      for (int i = mid + 1; i < high; i++) {
-        rightSum += A[i];
-        if (rightSum % K == 0) {
-          rightCount++;
-        }
-      }
-      return left + right + leftCount + rightCount;
+      return left + right + midCunt;
+    }
+
+    public int sum(int[] a, int i, int j) {
+      return IntStream.rangeClosed(i, j).map(k -> a[k]).sum();
     }
   }
 }
