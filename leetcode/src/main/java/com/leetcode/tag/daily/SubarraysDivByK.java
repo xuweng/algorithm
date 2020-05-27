@@ -50,7 +50,7 @@ public class SubarraysDivByK {
       int midCunt = 0;
       for (int i = mid + 1; i <= high; i++) {
         for (int j = mid; j >= low; j--) {
-          if (sum(A, i, j) % K == 0) {
+          if (sum(A, j, i) % K == 0) {
             midCunt++;
           }
         }
