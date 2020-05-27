@@ -1,29 +1,34 @@
 package com.leetcode.tag.backtracking;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 1415. 长度为 n 的开心字符串中字典序第 k 小的字符串
  */
 public class GetHappyString {
-  int count;
-
   public String getHappyString(int n, int k) {
     char[] chars = {'a', 'b', 'c'};
 
-    return backTrack(chars, n, k, ' ', "");
+    // 使用result保存结果集
+    List<String> result = new ArrayList<>();
+
+    backTrack(chars, n, k, ' ', "", result);
+
+    return result.size() >= k ? result.get(k - 1) : "";
   }
 
-  public String backTrack(char[] chars, int n, int K, char select, String temp) {
+  public void backTrack(char[] chars, int n, int K, char select, String temp, List<String> result) {
     if (n == 0) {
-      count++;
-      return count == K ? temp : "";
+      result.add(temp);
+      return;
     }
 
     for (char c : chars) {
       if (select == c) {
         continue;
       }
-      return backTrack(chars, n - 1, K, c, temp + c);
+      backTrack(chars, n - 1, K, c, temp + c, result);
     }
-    return "";
   }
 }
