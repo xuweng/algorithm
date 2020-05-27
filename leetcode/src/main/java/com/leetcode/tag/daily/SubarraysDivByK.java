@@ -46,6 +46,7 @@ public class SubarraysDivByK {
       // 连续子数组
       // mid在横跨这部分.与左边的mid重复
       // left:low---->mid
+      // 横跨mid计算错误.横跨必须left+mid+right
       for (int i = mid; i > low; i--) {
         leftSum += A[i];
         if (leftSum % K == 0) {
