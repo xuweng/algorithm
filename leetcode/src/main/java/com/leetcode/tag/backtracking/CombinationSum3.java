@@ -13,7 +13,7 @@ public class CombinationSum3 {
     List<List<Integer>> result = new ArrayList<>();
     Deque<Integer> deque = new ArrayDeque<>();
 
-    backTrack(k, n, 1, 0, result, deque);
+    backTrack(k, n, 0, 1, 0, result, deque);
 
     return result;
   }
@@ -29,14 +29,18 @@ public class CombinationSum3 {
    * @param deque
    */
   public void backTrack(
-          int K, int n, int begin, int sum, List<List<Integer>> result, Deque<Integer> deque) {
+          int K,
+          int n,
+          int count,
+          int begin,
+          int sum,
+          List<List<Integer>> result,
+          Deque<Integer> deque) {
     if (sum > n) {
       return;
     }
-    if (deque.size() == K) {
-      if (sum == n) {
-        result.add(new ArrayList<>(deque));
-      }
+    if (count == K && sum == n) {
+      result.add(new ArrayList<>(deque));
       return;
     }
     for (int i = begin; i <= 9; i++) {
@@ -45,7 +49,7 @@ public class CombinationSum3 {
       }
       // 选择i
       deque.push(i);
-      backTrack(K, n, i + 1, sum + i, result, deque);
+      backTrack(K, n, count + 1, i + 1, sum + i, result, deque);
       deque.pop();
     }
   }
