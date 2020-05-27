@@ -9,6 +9,9 @@ import java.util.List;
  * 216. 组合总和 III
  */
 public class CombinationSum3 {
+  // 递归调用次数
+  public static int reCount;
+
   public List<List<Integer>> combinationSum3(int k, int n) {
     List<List<Integer>> result = new ArrayList<>();
     Deque<Integer> deque = new ArrayDeque<>();
@@ -30,6 +33,8 @@ public class CombinationSum3 {
    */
   public void backTrack(
           int K, int n, int begin, int sum, List<List<Integer>> result, Deque<Integer> deque) {
+    reCount++;
+
     if (sum > n) {
       return;
     }
@@ -53,7 +58,7 @@ public class CombinationSum3 {
     }
   }
 
-  class Solution {
+  static class Solution {
     List<List<Integer>> ans = new ArrayList<>();
     int k = 0, n = 0;
 
@@ -65,10 +70,13 @@ public class CombinationSum3 {
       this.k = k;
       this.n = n;
       backtrace(new ArrayList<>(), 0, n, 1);
+
       return ans;
     }
 
     public void backtrace(List<Integer> list, int cnt, int target, int start) {
+      reCount++;
+
       if (cnt == k && target == 0) {
         ans.add(new ArrayList<>(list));
         return;
