@@ -3,8 +3,7 @@ package com.leetcode.tag.backtracking;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
-import static java.util.stream.Collectors.toList;
+import java.util.stream.Collectors;
 
 /**
  * 面试题 08.12. 八皇后
@@ -126,7 +125,7 @@ public class SolveNQueens {
     private void backtrack(char[][] nums, int currRow, List<List<String>> ans) {
       int len = nums.length;
       if (currRow == len) {
-        ans.add(Arrays.stream(nums).map(String::valueOf).collect(toList()));
+        ans.add(Arrays.stream(nums).map(String::valueOf).collect(Collectors.toList()));
         return;
       }
 
