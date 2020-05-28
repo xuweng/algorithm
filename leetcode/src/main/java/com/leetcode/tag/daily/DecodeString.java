@@ -50,6 +50,7 @@ public class DecodeString {
           ++ptr;
           LinkedList<String> sub = new LinkedList<>();
           while (!"[".equals(stk.peekLast())) {
+            // 添加到尾部
             sub.addLast(stk.removeLast());
           }
           // 反转数据
