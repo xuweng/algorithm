@@ -77,4 +77,50 @@ public class GetMaximumGold {
     deque.pop();
     used[row][col] = false;
   }
+
+  class Solution {
+    int max = 0;
+
+    public int getMaximumGold(int[][] grid) {
+
+      for (int i = 0; i < grid.length; i++) {
+        for (int j = 0; j < grid[i].length; j++) {
+          if (grid[i][j] != 0) {
+            bt(grid, i, j, 0);
+          }
+        }
+      }
+      return max;
+    }
+
+    private void bt(int[][] grid, int row, int col, int sum) {
+      sum += grid[row][col];
+      int tmp = grid[row][col];
+      // 有上一行搜索上一行
+      if (row - 1 >= 0 && grid[row - 1][col] != 0) {
+        grid[row][col] = 0;
+        bt(grid, row - 1, col, sum);
+        grid[row][col] = tmp;
+      }
+      // 有下一行搜索下一行
+      if (row + 1 < grid.length && grid[row + 1][col] != 0) {
+        grid[row][col] = 0;
+        bt(grid, row + 1, col, sum);
+        grid[row][col] = tmp;
+      }
+      // 有左一列搜索左一列
+      if (col - 1 >= 0 && grid[row][col - 1] != 0) {
+        grid[row][col] = 0;
+        bt(grid, row, col - 1, sum);
+        grid[row][col] = tmp;
+      }
+      // 有右一列搜索右一列
+      if (col + 1 < grid[row].length && grid[row][col + 1] != 0) {
+        grid[row][col] = 0;
+        bt(grid, row, col + 1, sum);
+        grid[row][col] = tmp;
+      }
+      max = Math.max(max, sum);
+    }
+  }
 }
