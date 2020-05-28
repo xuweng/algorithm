@@ -151,7 +151,7 @@ public class DecodeString {
         repTime = getDigits();
         // 过滤左括号
         ++ptr;
-        // 解析 String
+        // 解析 String.递归求解[]里面的String
         String str = getString();
         // 过滤右括号
         ++ptr;
