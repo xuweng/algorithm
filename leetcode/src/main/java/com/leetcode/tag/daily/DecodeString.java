@@ -151,6 +151,7 @@ public class DecodeString {
 
       char cur = src.charAt(ptr);
       int repTime = 1;
+      // 计算当前字符
       String ret = "";
 
       if (Character.isDigit(cur)) {
@@ -173,6 +174,7 @@ public class DecodeString {
         ret = String.valueOf(src.charAt(ptr++));
       }
 
+      // 当前字符计算完后拼上最后那个String
       return ret + getString();
     }
 
