@@ -91,4 +91,97 @@ public class DecodeString {
       return ret.toString();
     }
   }
+
+  /**
+   * 方法二：递归
+   *
+   * <p>作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/decode-string/solution/zi-fu-chuan-jie-ma-by-leetcode-solution/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution1 {
+    String src;
+    int ptr;
+
+    public String decodeString(String s) {
+      src = s;
+      ptr = 0;
+      return getString();
+    }
+
+    /**
+     * 下面我们可以来讲讲这样做的依据，涉及到《编译原理》相关内容，感兴趣的同学可以参考阅读。
+     *
+     * <p>根据题目的定义，我们可以推导出这样的巴科斯范式（BNF）：
+     *
+     * <p>\begin{aligned} {\rm String} &\rightarrow { \rm Digits \, [String] \, String \, | \, Alpha
+     * \, String \, | \, \epsilon } \\ {\rm Digits} &\rightarrow { \rm Digit \, Digits \, | \, Digit
+     * } \\ {\rm Alpha} &\rightarrow { a | \cdots | z | A | \cdots | Z } \\ {\rm Digit} &\rightarrow
+     * { 0 | \cdots | 9 } \\ \end{aligned} String Digits Alpha Digit ​
+     *
+     * <p>→Digits[String]String∣AlphaString∣ϵ →DigitDigits∣Digit →a∣⋯∣z∣A∣⋯∣Z →0∣⋯∣9 ​
+     *
+     * <p>DigitDigit 表示十进制数位，可能的取值是 0 到 9 之间的整数
+     *
+     * <p>AlphaAlpha 表示字母，可能的取值是大小写字母的集合，共 52 个
+     *
+     * <p>DigitDigit 表示一个整数，它的组成是
+     *
+     * <p>DigitDigit 出现一次或多次
+     *
+     * <p>StringString 代表一个代解析的字符串，它可能有三种构成，如
+     *
+     * <p>ϵ 表示空串，即没有任何子字符
+     *
+     * @return
+     */
+    public String getString() {
+      if (ptr == src.length() || src.charAt(ptr) == ']') {
+        // String -> EPS
+        return "";
+      }
+
+      char cur = src.charAt(ptr);
+      int repTime = 1;
+      String ret = "";
+
+      if (Character.isDigit(cur)) {
+        // String -> Digits [ String ] String
+        // 解析 Digits
+        repTime = getDigits();
+        // 过滤左括号
+        ++ptr;
+        // 解析 String
+        String str = getString();
+        // 过滤右括号
+        ++ptr;
+        // 构造字符串
+        while (repTime-- > 0) {
+          ret += str;
+        }
+      } else if (Character.isLetter(cur)) {
+        // String -> Char String
+        // 解析 Char
+        ret = String.valueOf(src.charAt(ptr++));
+      }
+
+      return ret + getString();
+    }
+
+    /**
+     * 数字可以不止一个字符
+     *
+     * <p>3333[a]2[bc]
+     *
+     * @return
+     */
+    public int getDigits() {
+      int ret = 0;
+      while (ptr < src.length() && Character.isDigit(src.charAt(ptr))) {
+        // 移动ptr
+        ret = ret * 10 + src.charAt(ptr++) - '0';
+      }
+      return ret;
+    }
+  }
 }
