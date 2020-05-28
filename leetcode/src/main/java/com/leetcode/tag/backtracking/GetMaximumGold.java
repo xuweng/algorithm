@@ -33,14 +33,7 @@ public class GetMaximumGold {
   }
 
   public void backTrack(int[][] grid, int row, int col) {
-    if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length) {
-      return;
-    }
-    if (grid[row][col] == 0) {
-      return;
-    }
-    // 错误。等于边界还需要继续计算。
-    if (row == 0 || row == grid.length - 1 || col == 0 || col == grid[0].length - 1) {
+    if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length || grid[row][col] == 0) {
       result.add(new ArrayList<>(deque));
       return;
     }
