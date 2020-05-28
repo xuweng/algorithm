@@ -115,7 +115,9 @@ public class SolveNQueens {
     }
 
     /**
-     * 所有结果。所有解法.
+     * 思路越来越清晰
+     *
+     * <p>所有结果。所有解法.
      *
      * @param nums
      * @param currRow
@@ -143,7 +145,9 @@ public class SolveNQueens {
     }
 
     /**
-     * 检查currRow上的所有行
+     * 检查之前填过的行
+     *
+     * <p>检查currRow上的所有行
      *
      * @param nums
      * @param currRow
