@@ -4,7 +4,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 
 /**
- * 394. 字符串解码
+ * 十分钟直接看答案
+ *
+ * <p>394. 字符串解码
  */
 public class DecodeString {
   public String decodeString(String s) {
@@ -75,6 +77,12 @@ public class DecodeString {
       return getString(stk);
     }
 
+    /**
+     * 数字可以多个字符
+     *
+     * @param s
+     * @return
+     */
     public String getDigits(String s) {
       StringBuilder ret = new StringBuilder();
       while (Character.isDigit(s.charAt(ptr))) {
