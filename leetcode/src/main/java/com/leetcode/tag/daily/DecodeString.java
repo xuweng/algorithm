@@ -28,7 +28,9 @@ public class DecodeString {
     int ptr;
 
     /**
-     * 当前字符为右括号就出栈
+     * 字母、数字和括号看成是独立的 TOKEN，并用栈来维护这些 TOKEN
+     *
+     * <p>当前字符为右括号就出栈
      *
      * @param s
      * @return
