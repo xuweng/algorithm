@@ -172,8 +172,11 @@ public class SolveNQueens {
   }
 
   class Solution2 {
+    // 标记列。容易标记。
     private boolean[] col;
+    // 标记左对角线。对角线怎么标记?
     private boolean[] left;
+    // 标记右对角线。标记对角线。
     private boolean[] right;
 
     private List<List<String>> ret = new ArrayList<>();
@@ -205,10 +208,14 @@ public class SolveNQueens {
       }
       Arrays.fill(board[row], '.');
       for (int i = 0; i < n; i++) {
+        // 第i列是否填。左对角线是否填。右对角线是否填。
         if (col[i] || left[row + i] || right[row - i + n - 1]) {
           continue;
         }
+        // 标记第i列已填
         col[i] = true;
+        // 通过坐标计算左右对角线
+        // 标记左对角线已填。行+列=左对角线。厉害。
         left[row + i] = true;
         right[row - i + n - 1] = true;
         board[row][i] = 'Q';
