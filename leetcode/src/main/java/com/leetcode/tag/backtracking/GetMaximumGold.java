@@ -43,9 +43,9 @@ public class GetMaximumGold {
       return;
     }
 
+    // 每个格子上下左右4个选择
     used[row][col] = true;
     deque.push(grid[row][col]);
-    // 每个格子上下左右4个选择
     backTrack(grid, row - 1, col, used);
     used[row][col] = false;
     deque.pop();
