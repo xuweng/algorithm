@@ -128,6 +128,7 @@ public class SolveNQueens {
         return;
       }
 
+      // 候选集
       for (int col = 0; col < nums[0].length; col++) {
         if (!isValid(nums, currRow, col)) {
           continue;
