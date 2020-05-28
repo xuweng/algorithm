@@ -1,6 +1,9 @@
 package com.leetcode.tag.backtracking;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.List;
 
 /**
  * 1219. 黄金矿工
@@ -13,14 +16,12 @@ public class GetMaximumGold {
     result = new ArrayList<>();
     deque = new ArrayDeque<>();
 
-    boolean[][] used = new boolean[grid.length][grid.length];
-    for (int i = 0; i < grid.length; i++) {
-      Arrays.fill(used[i], false);
-    }
-
     for (int i = 0; i < grid.length; i++) {
       for (int j = 0; j < grid[0].length; j++) {
-        backTrack(grid, i, j, used);
+        if (grid[i][j] == 0) {
+          continue;
+        }
+        backTrack(grid, i, j);
       }
     }
 
@@ -31,41 +32,34 @@ public class GetMaximumGold {
     return max;
   }
 
-  public void backTrack(int[][] grid, int row, int col, boolean[][] used) {
+  public void backTrack(int[][] grid, int row, int col) {
     if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length) {
       return;
     }
-    if (grid[row][col] == 0 || used[row][col]) {
+    if (grid[row][col] == 0) {
       return;
     }
+    // 错误。等于边界还需要继续计算。
     if (row == 0 || row == grid.length - 1 || col == 0 || col == grid[0].length - 1) {
       result.add(new ArrayList<>(deque));
       return;
     }
 
     // 每个格子上下左右4个选择
-    used[row][col] = true;
     deque.push(grid[row][col]);
-    backTrack(grid, row - 1, col, used);
-    used[row][col] = false;
+    backTrack(grid, row - 1, col);
     deque.pop();
 
-    used[row][col] = true;
     deque.push(grid[row][col]);
-    backTrack(grid, row + 1, col, used);
-    used[row][col] = false;
+    backTrack(grid, row + 1, col);
     deque.pop();
 
-    used[row][col] = true;
     deque.push(grid[row][col]);
-    backTrack(grid, row, col - 1, used);
-    used[row][col] = false;
+    backTrack(grid, row, col - 1);
     deque.pop();
 
-    used[row][col] = true;
     deque.push(grid[row][col]);
-    backTrack(grid, row, col + 1, used);
-    used[row][col] = false;
+    backTrack(grid, row, col + 1);
     deque.pop();
   }
 }
