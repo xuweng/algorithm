@@ -122,31 +122,14 @@ public class SolveNQueens {
       }
 
       for (int col = 0; col < nums[0].length; col++) {
-        // 判断这个位置是否合适
-        boolean isok = true;
-        // 检查currRow上的所有行
-        for (int row = 0; row < currRow; row++) {
-          // 列有Q
-          if (nums[row][col] == 'Q') {
-            isok = false;
-            break;
-          }
-          // 判断对角线
-          if (col + (currRow - row) < len && nums[row][col + (currRow - row)] == 'Q') {
-            isok = false;
-            break;
-          }
-          if (col - (currRow - row) >= 0 && nums[row][col - (currRow - row)] == 'Q') {
-            isok = false;
-            break;
-          }
-        }
-        if (!isok) {
+        if (!isValid(nums, currRow, col)) {
           continue;
         }
         // 满足条件
+        // 当前位置填Q
         nums[currRow][col] = 'Q';
         backtrack(nums, currRow + 1, ans);
+        // 撤销状态
         nums[currRow][col] = '.';
       }
     }
