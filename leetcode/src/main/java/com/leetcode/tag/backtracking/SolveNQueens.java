@@ -205,17 +205,18 @@ public class SolveNQueens {
       }
       Arrays.fill(board[row], '.');
       for (int i = 0; i < n; i++) {
-        if (!col[i] && !left[row + i] && !right[row - i + n - 1]) {
-          col[i] = true;
-          left[row + i] = true;
-          right[row - i + n - 1] = true;
-          board[row][i] = 'Q';
-          backTrack(board, row + 1, n);
-          col[i] = false;
-          board[row][i] = '.';
-          left[row + i] = false;
-          right[row - i + n - 1] = false;
+        if (col[i] || left[row + i] || right[row - i + n - 1]) {
+          continue;
         }
+        col[i] = true;
+        left[row + i] = true;
+        right[row - i + n - 1] = true;
+        board[row][i] = 'Q';
+        backTrack(board, row + 1, n);
+        col[i] = false;
+        board[row][i] = '.';
+        left[row + i] = false;
+        right[row - i + n - 1] = false;
       }
     }
   }
