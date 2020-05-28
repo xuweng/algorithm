@@ -50,14 +50,20 @@ public class GetMaximumGold {
     used[row][col] = false;
     deque.pop();
 
+    used[row][col] = true;
+    deque.push(grid[row][col]);
     backTrack(grid, row + 1, col, used);
     used[row][col] = false;
     deque.pop();
 
+    used[row][col] = true;
+    deque.push(grid[row][col]);
     backTrack(grid, row, col - 1, used);
     used[row][col] = false;
     deque.pop();
 
+    used[row][col] = true;
+    deque.push(grid[row][col]);
     backTrack(grid, row, col + 1, used);
     used[row][col] = false;
     deque.pop();
