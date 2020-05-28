@@ -170,4 +170,53 @@ public class SolveNQueens {
       return true;
     }
   }
+
+  class Solution2 {
+    private boolean[] col;
+    private boolean[] left;
+    private boolean[] right;
+
+    private List<List<String>> ret = new ArrayList<>();
+
+    public List<List<String>> solveNQueens(int n) {
+      col = new boolean[n];
+      left = new boolean[2 * n - 1];
+      right = new boolean[2 * n - 1];
+      char[][] board = new char[n][n];
+      backTrack(board, 0, n);
+      return ret;
+    }
+
+    /**
+     * 回溯算法模板
+     *
+     * @param board
+     * @param row
+     * @param n
+     */
+    private void backTrack(char[][] board, int row, int n) {
+      if (row >= n) {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+          list.add(new String(board[i]));
+        }
+        ret.add(list);
+        return;
+      }
+      Arrays.fill(board[row], '.');
+      for (int i = 0; i < n; i++) {
+        if (!col[i] && !left[row + i] && !right[row - i + n - 1]) {
+          col[i] = true;
+          left[row + i] = true;
+          right[row - i + n - 1] = true;
+          board[row][i] = 'Q';
+          backTrack(board, row + 1, n);
+          col[i] = false;
+          board[row][i] = '.';
+          left[row + i] = false;
+          right[row - i + n - 1] = false;
+        }
+      }
+    }
+  }
 }
