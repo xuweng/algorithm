@@ -28,9 +28,9 @@ public class SolveNQueens {
     /**
      * record数组记录每一行哪个位置插入皇后
      *
-     * @param cow    行
+     * @param cow 行
      * @param lists
-     * @param n      最后一行+1
+     * @param n 最后一行+1
      * @param record
      */
     public void back(int cow, List<List<String>> lists, int n, int[] record) { // record也可以是二维数组记录位置
@@ -124,6 +124,7 @@ public class SolveNQueens {
       for (int col = 0; col < nums[0].length; col++) {
         // 判断这个位置是否合适
         boolean isok = true;
+        // 检查currRow上的所有行
         for (int row = 0; row < currRow; row++) {
           // 列有Q
           if (nums[row][col] == 'Q') {
@@ -148,6 +149,31 @@ public class SolveNQueens {
         backtrack(nums, currRow + 1, ans);
         nums[currRow][col] = '.';
       }
+    }
+
+    /**
+     * 检查currRow上的所有行
+     *
+     * @param nums
+     * @param currRow
+     * @param col
+     * @return
+     */
+    public boolean isValid(char[][] nums, int currRow, int col) {
+      for (int row = 0; row < currRow; row++) {
+        // 列有Q
+        if (nums[row][col] == 'Q') {
+          return false;
+        }
+        // 判断对角线
+        if (col + (currRow - row) < nums.length && nums[row][col + (currRow - row)] == 'Q') {
+          return false;
+        }
+        if (col - (currRow - row) >= 0 && nums[row][col - (currRow - row)] == 'Q') {
+          return false;
+        }
+      }
+      return true;
     }
   }
 }
