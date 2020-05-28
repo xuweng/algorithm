@@ -121,7 +121,7 @@ public class SolveNQueens {
         return;
       }
 
-      for (int col = 0; col < nums[0].length; col++) {
+      for (int col = 0; (currRow < len) && (col < nums[0].length); col++) {
         if (!isValid(nums, currRow, col)) {
           continue;
         }
