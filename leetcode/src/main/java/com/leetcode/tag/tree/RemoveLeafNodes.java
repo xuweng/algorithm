@@ -31,18 +31,16 @@ public class RemoveLeafNodes {
     hou(root.left, target);
     hou(root.right, target);
 
-    if ((root.left == null || root.left.val == -1)
-            && (root.right == null || root.right.val == -1)
-            && root.val == target) {
+    if (root.left != null && root.left.val == -1) {
+      root.left = null;
+    }
+    if (root.right != null && root.right.val == -1) {
+      root.right = null;
+    }
+    if (root.left == null && root.right == null && root.val == target) {
       // 只把引用改为null.引用的对象依然存在.我要把引用的对象删除。
       // 只能把引用改为null。不能直接删除引用的对象。
       root.val = -1;
-      if (root.left != null && root.left.val == -1) {
-        root.left = null;
-      }
-      if (root.right != null && root.right.val == -1) {
-        root.right = null;
-      }
     }
   }
 
