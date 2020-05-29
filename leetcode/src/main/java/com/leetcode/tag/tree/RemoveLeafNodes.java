@@ -10,30 +10,28 @@ package com.leetcode.tag.tree;
 public class RemoveLeafNodes {
   public TreeNode removeLeafNodes(TreeNode root, int target) {
 
-    re(null, root, target);
+    hou(root, target);
 
     return root;
   }
 
-  public void re(TreeNode parent, TreeNode root, int target) {
+  /**
+   * 这里要使用后序遍历。去掉parent参数。
+   *
+   * @param root
+   * @param target
+   */
+  public void hou(TreeNode root, int target) {
     if (root == null) {
       return;
     }
-    if (root.left == null && root.right == null) {
-      if (root.val != target) {
-        return;
-      }
-      if (parent.left == root) {
-        parent.left = null;
-        root = parent;
-      } else if (parent.right == root) {
-        parent.right = null;
-        root = parent;
-      }
-    }
 
-    re(root, root.left, target);
-    re(root, root.right, target);
+    hou(root.left, target);
+    hou(root.right, target);
+
+    if (root.left == null && root.right == null && root.val == target) {
+      root = null;
+    }
   }
 
   class TreeNode {
