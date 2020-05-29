@@ -12,7 +12,7 @@ public class HouseRobber3 {
       return 0;
     }
     List<Integer> result = new ArrayList<>();
-    pre(root, result);
+    bianLi(root, result);
 
     if (result.size() == 1) {
       return result.get(0);
@@ -29,13 +29,13 @@ public class HouseRobber3 {
     return dp[dp.length - 1];
   }
 
-  public void pre(TreeNode root, List<Integer> result) {
+  public void bianLi(TreeNode root, List<Integer> result) {
     if (root == null) {
       return;
     }
+    bianLi(root.left, result);
     result.add(root.val);
-    pre(root.left, result);
-    pre(root.right, result);
+    bianLi(root.right, result);
   }
 
   public class TreeNode {
