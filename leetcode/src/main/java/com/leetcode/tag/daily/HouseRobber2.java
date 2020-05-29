@@ -26,9 +26,18 @@ public class HouseRobber2 {
     dp[0] = nums[0];
     dp[1] = Math.max(nums[0], nums[1]);
 
-    for (int i = 2; i < nums.length; i++) {
+    for (int i = 2; i < nums.length - 1; i++) {
       dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
     }
-    return dp[nums.length - 1];
+    int max1 = dp[nums.length - 2];
+
+    dp[nums.length - 1] = nums[nums.length - 1];
+    dp[nums.length - 2] = Math.max(nums[nums.length - 1], nums[nums.length - 2]);
+    for (int i = nums.length - 3; i >= 0; i--) {
+      dp[i] = Math.max(dp[i + 1], dp[i + 2] + nums[i]);
+    }
+    int max2 = dp[1];
+
+    return Math.max(max1, max2);
   }
 }
