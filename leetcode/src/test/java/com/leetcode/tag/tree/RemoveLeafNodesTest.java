@@ -1,5 +1,6 @@
 package com.leetcode.tag.tree;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class RemoveLeafNodesTest {
@@ -17,6 +18,6 @@ public class RemoveLeafNodesTest {
 
     int target = 1;
 
-    removeLeafNodes.removeLeafNodes(root, target);
+    Assert.assertNull(removeLeafNodes.removeLeafNodes(root, target));
   }
 }
