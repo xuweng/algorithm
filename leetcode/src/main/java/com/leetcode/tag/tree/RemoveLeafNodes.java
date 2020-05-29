@@ -30,6 +30,7 @@ public class RemoveLeafNodes {
     hou(root.right, target);
 
     if (root.left == null && root.right == null && root.val == target) {
+      // 只把引用改为null.引用的对象依然存在.我要把引用的对象删除。
       root = null;
     }
   }
