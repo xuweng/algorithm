@@ -42,4 +42,31 @@ public class HouseRobber2 {
 
     return Math.max(max1, max2);
   }
+
+  /**
+   * 作者：mu-tu-ze-shuai
+   * 链接：https://leetcode-cn.com/problems/house-robber-ii/solution/yi-ge-forxun-huan-jie-jue-wen-ti-by-mu-tu-ze-shuai/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution {
+    /**
+     * 不容易读
+     *
+     * @param nums
+     * @return
+     */
+    public int rob(int[] nums) {
+      if (nums.length == 1) {
+        return nums[0];
+      }
+      int n = nums.length;
+      int[] a = new int[n + 1];
+      int[] b = new int[n + 1];
+      for (int i = 2; i < n + 1; i++) {
+        a[i] = Math.max(a[i - 1], a[i - 2] + nums[i - 2]);
+        b[i] = Math.max(b[i - 1], b[i - 2] + nums[i - 1]);
+      }
+      return Math.max(a[n], b[n]);
+    }
+  }
 }
