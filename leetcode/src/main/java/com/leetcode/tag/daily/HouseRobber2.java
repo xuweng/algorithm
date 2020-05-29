@@ -5,7 +5,9 @@ package com.leetcode.tag.daily;
  */
 public class HouseRobber2 {
   /**
-   * 这意味着第一个房屋和最后一个房屋是紧挨着的
+   * 数组是个环，也就是说偷第一家，最后一家就不能偷；偷最后一家，第一家就不能偷。
+   *
+   * <p>所以，我们问题分成求 nums[0:n - 1]或者 nums[1:n] 这意味着第一个房屋和最后一个房屋是紧挨着的
    *
    * <p>第一个和最后一个不能共存，只能取一个
    *
@@ -33,7 +35,7 @@ public class HouseRobber2 {
 
     dp[nums.length - 1] = nums[nums.length - 1];
     dp[nums.length - 2] = Math.max(nums[nums.length - 1], nums[nums.length - 2]);
-    for (int i = nums.length - 3; i >= 0; i--) {
+    for (int i = nums.length - 3; i >= 1; i--) {
       dp[i] = Math.max(dp[i + 1], dp[i + 2] + nums[i]);
     }
     int max2 = dp[1];
