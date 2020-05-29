@@ -8,11 +8,31 @@ package com.leetcode.tag.tree;
  * <p>1325. 删除给定值的叶子节点
  */
 public class RemoveLeafNodes {
+  /**
+   * 后序遍历添加返回值
+   *
+   * @param root
+   * @param target
+   * @return
+   */
   public TreeNode removeLeafNodes(TreeNode root, int target) {
+    if (root == null) {
+      return null;
+    }
+    TreeNode left = removeLeafNodes(root.left, target);
+    TreeNode right = removeLeafNodes(root.right, target);
 
-    hou(root, target);
+    if (root.left == null && root.right == null && root.val == target) {
+      return null;
+    }
+    root.left = left;
+    root.right = right;
 
-    return (root != null && root.val == -1) ? null : root;
+    if (root.left == null && root.right == null && root.val == target) {
+      return null;
+    }
+
+    return root;
   }
 
   /**
