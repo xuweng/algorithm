@@ -31,6 +31,7 @@ public class RemoveLeafNodes {
 
     if (root.left == null && root.right == null && root.val == target) {
       // 只把引用改为null.引用的对象依然存在.我要把引用的对象删除。
+      // 只能把引用改为null。不能直接删除引用的对象。
       root = null;
     }
   }
