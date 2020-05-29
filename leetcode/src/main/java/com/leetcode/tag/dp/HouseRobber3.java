@@ -87,4 +87,41 @@ public class HouseRobber3 {
       deque.pop();
     }
   }
+
+  /**
+   * 首先要明确相邻的节点不能偷，也就是爷爷选择偷，儿子就不能偷了，
+   *
+   * <p>但是孙子可以偷 二叉树只有左右两个孩子，一个爷爷最多 2 个儿子，4 个孙子
+   */
+  class S1 {
+    /**
+     * 递归思路清晰。选择root。不选择root。
+     *
+     * <p>max(选择root,不选择root)
+     *
+     * <p>作者：reals
+     * 链接：https://leetcode-cn.com/problems/house-robber-iii/solution/san-chong-fang-fa-jie-jue-shu-xing-dong-tai-gui-hu/
+     * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     *
+     * @param root
+     * @return
+     */
+    public int rob(TreeNode root) {
+      if (root == null) {
+        return 0;
+      }
+
+      // max(选择root,不选择root)
+      int money = root.val;
+      if (root.left != null) {
+        money += (rob(root.left.left) + rob(root.left.right));
+      }
+
+      if (root.right != null) {
+        money += (rob(root.right.left) + rob(root.right.right));
+      }
+
+      return Math.max(money, rob(root.left) + rob(root.right));
+    }
+  }
 }
