@@ -1,6 +1,8 @@
 package com.leetcode.tag.dp;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 
 /**
@@ -45,6 +47,38 @@ public class HouseRobber3 {
 
     TreeNode(int x) {
       val = x;
+    }
+  }
+
+  class S {
+    public int rob(TreeNode root) {
+      List<List<Integer>> result = new ArrayList<>();
+      Deque<Integer> deque = new ArrayDeque<>();
+
+      backTrack(root, result, deque);
+
+      return 0;
+    }
+
+    /**
+     * 保存从root到叶子结点的所有路径
+     *
+     * @param root
+     * @param result
+     * @param deque
+     */
+    public void backTrack(TreeNode root, List<List<Integer>> result, Deque<Integer> deque) {
+      if (root == null) {
+        result.add(new ArrayList<>(deque));
+        return;
+      }
+      deque.push(root.val);
+      backTrack(root.left, result, deque);
+      deque.pop();
+
+      deque.push(root.val);
+      backTrack(root.right, result, deque);
+      deque.pop();
     }
   }
 }
