@@ -6,7 +6,11 @@ import java.util.Deque;
 import java.util.List;
 
 /**
- * 337. 打家劫舍 III
+ * 线性结构.用线性dp。
+ *
+ * <p>树状dp。树状dp。树状dp。树状dp。树状dp。
+ *
+ * <p>337. 打家劫舍 III
  */
 public class HouseRobber3 {
   public int rob(TreeNode root) {
