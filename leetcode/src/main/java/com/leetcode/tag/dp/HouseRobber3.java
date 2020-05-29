@@ -193,6 +193,12 @@ public class HouseRobber3 {
       return Math.max(result[0], result[1]);
     }
 
+    /**
+     * 逻辑清晰
+     *
+     * @param root
+     * @return
+     */
     public int[] robInternal(TreeNode root) {
       if (root == null) {
         return new int[2];
@@ -202,7 +208,9 @@ public class HouseRobber3 {
       int[] left = robInternal(root.left);
       int[] right = robInternal(root.right);
 
+      // 当前root不偷,左子树可偷可不偷，右子树可偷可不偷
       result[0] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
+      // 当前root偷，左子树肯定不偷，右子树肯定不偷。
       result[1] = left[0] + right[0] + root.val;
 
       return result;
