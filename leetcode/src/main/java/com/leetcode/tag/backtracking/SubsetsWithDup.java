@@ -33,7 +33,9 @@ public class SubsetsWithDup {
   public void backTrack(
           int[] nums, int begin, Deque<Integer> deque, Set<Integer> set, List<List<Integer>> result) {
 
+    // 越界也要计算一个结果
     result.add(new ArrayList<>(deque));
+    // 越界不用进入循环
     for (int i = begin; i < nums.length; i++) {
       if (set.contains(nums[i])) {
         continue;
