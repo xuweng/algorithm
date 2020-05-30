@@ -42,6 +42,7 @@ public class SubsetsWithDup {
       }
       deque.push(nums[i]);
       backTrack(nums, i + 1, deque, set, result);
+      // 以下部分都属于回溯
       deque.pop();
 
       set.add(nums[begin]);
