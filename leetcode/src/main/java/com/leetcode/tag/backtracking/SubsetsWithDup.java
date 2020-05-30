@@ -17,7 +17,7 @@ public class SubsetsWithDup {
     Deque<Integer> deque2 = new ArrayDeque<>();
     List<List<Integer>> result = new ArrayList<>();
 
-    backTrack(nums, 0, deque, deque2, result);
+    backTrack(nums, 0, 0, deque, deque2, result);
 
     return result;
   }
@@ -34,6 +34,7 @@ public class SubsetsWithDup {
    */
   public void backTrack(
           int[] nums,
+          int count,
           int begin,
           Deque<Integer> deque,
           Deque<Integer> deque2,
@@ -44,9 +45,12 @@ public class SubsetsWithDup {
     // 越界不用进入循环
     for (int i = begin; i < nums.length; i++) {
       // 如何剪枝?如何剪枝?如何剪枝?如何剪枝?
+      if (deque2.size() != count && deque2.contains(i)) {
+        continue;
+      }
       deque.push(nums[i]);
       deque2.push(nums[i]);
-      backTrack(nums, i + 1, deque, deque2, result);
+      backTrack(nums, count + 1, i + 1, deque, deque2, result);
       // 以下部分都属于回溯
       deque.pop();
       if (deque2.size() != 1) {
