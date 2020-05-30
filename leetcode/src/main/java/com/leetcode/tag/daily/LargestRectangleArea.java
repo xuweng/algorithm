@@ -1,5 +1,7 @@
 package com.leetcode.tag.daily;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 /**
@@ -74,6 +76,74 @@ public class LargestRectangleArea {
         ans = Math.max(ans, (right[i] - left[i] - 1) * heights[i]);
       }
       return ans;
+    }
+  }
+
+  /**
+   * 作者：powcai
+   * 链接：https://leetcode-cn.com/problems/largest-rectangle-in-histogram/solution/zhao-liang-bian-di-yi-ge-xiao-yu-ta-de-zhi-by-powc/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution1 {
+    /**
+     * 是以i 为中心，向左找第一个小于 heights[i] 的位置 left_i；
+     *
+     * <p>向右找第一个小于于 heights[i] 的位置 right_i，即最大面积为 heights[i] * (right_i - left_i -1)
+     *
+     * @param heights
+     * @return
+     */
+    public int largestRectangleArea(int[] heights) {
+      if (heights == null || heights.length == 0) {
+        return 0;
+      }
+      int n = heights.length;
+      int[] leftI = new int[n];
+      int[] rightI = new int[n];
+      leftI[0] = -1;
+      rightI[n - 1] = n;
+      int res = 0;
+      for (int i = 1; i < n; i++) {
+        int tmp = i - 1;
+        while (tmp >= 0 && heights[tmp] >= heights[i]) {
+          tmp = leftI[tmp];
+        }
+        leftI[i] = tmp;
+      }
+      for (int i = n - 2; i >= 0; i--) {
+        int tmp = i + 1;
+        while (tmp < n && heights[tmp] >= heights[i]) {
+          tmp = rightI[tmp];
+        }
+        rightI[i] = tmp;
+      }
+      for (int i = 0; i < n; i++) {
+        res = Math.max(res, (rightI[i] - leftI[i] - 1) * heights[i]);
+      }
+      return res;
+    }
+  }
+
+  /**
+   * 单调递增的栈
+   */
+  class Solution2 {
+    public int largestRectangleArea(int[] heights) {
+      int res = 0;
+      Deque<Integer> stack = new ArrayDeque<>();
+      int[] newHeights = new int[heights.length + 2];
+      System.arraycopy(heights, 0, newHeights, 1, heights.length + 1 - 1);
+      // System.out.println(Arrays.toString(newHeights));
+      for (int i = 0; i < newHeights.length; i++) {
+        // System.out.println(stack.toString());
+        while (!stack.isEmpty() && newHeights[stack.peek()] > newHeights[i]) {
+          int cur = stack.pop();
+          // 出栈时计算:栈顶下标------->i
+          res = Math.max(res, (i - stack.peek() - 1) * newHeights[cur]);
+        }
+        stack.push(i);
+      }
+      return res;
     }
   }
 }
