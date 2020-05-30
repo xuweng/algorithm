@@ -190,6 +190,7 @@ public class LargestRectangleArea {
           shortestIndex = i;
         }
       }
+      // 如果[left,right]已经排序,已经不需要继续划分,可以直接计算
       if (sorted) {
         int max = 0;
         for (int i = left; i < right; i++) {
