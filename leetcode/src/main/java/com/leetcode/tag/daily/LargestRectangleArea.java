@@ -124,14 +124,16 @@ public class LargestRectangleArea {
     }
   }
 
-  /**
-   * 单调递增的栈
-   */
+  /** 单调递增的栈 */
   class Solution2 {
     public int largestRectangleArea(int[] heights) {
       int res = 0;
       Deque<Integer> stack = new ArrayDeque<>();
       int[] newHeights = new int[heights.length + 2];
+      // 哨兵
+      newHeights[0] = 0;
+      newHeights[newHeights.length - 1] = 0;
+
       System.arraycopy(heights, 0, newHeights, 1, heights.length + 1 - 1);
       // System.out.println(Arrays.toString(newHeights));
       for (int i = 0; i < newHeights.length; i++) {
@@ -144,6 +146,61 @@ public class LargestRectangleArea {
         stack.push(i);
       }
       return res;
+    }
+  }
+
+  class Solution3 {
+    public int largestRectangleArea(int[] heights) {
+      if (heights.length == 0) {
+        return 0;
+      }
+      return getLargestRectangleArea(heights, 0, heights.length);
+    }
+
+    /**
+     * 分治算法
+     *
+     * <p>类似快排。
+     *
+     * <p>左右两两划分。
+     *
+     * <p>如果排序,类似快排,point总是划分在第一个位置。是O(n2)复杂度。这里可以直接计算，不用继续划分。
+     *
+     * @param heights
+     * @param left
+     * @param right
+     * @return
+     */
+    public int getLargestRectangleArea(int[] heights, int left, int right) {
+      if (left == right) {
+        return 0;
+      }
+      if (left == right - 1) {
+        return heights[left];
+      }
+      // 最小高度索引
+      int shortestIndex = left;
+      // 是否排序
+      boolean sorted = true;
+      for (int i = left + 1; i < right; ++i) {
+        if (heights[i] < heights[i - 1]) {
+          sorted = false;
+        }
+        if (heights[shortestIndex] > heights[i]) {
+          shortestIndex = i;
+        }
+      }
+      if (sorted) {
+        int max = 0;
+        for (int i = left; i < right; i++) {
+          int now = heights[i] * (right - i);
+          max = Math.max(now, max);
+        }
+        return max;
+      }
+      int leftArea = getLargestRectangleArea(heights, left, shortestIndex);
+      int rightArea = getLargestRectangleArea(heights, shortestIndex + 1, right);
+      return Math.max(Math.max(leftArea, rightArea), (right - left) * heights[shortestIndex]);
     }
   }
 }
