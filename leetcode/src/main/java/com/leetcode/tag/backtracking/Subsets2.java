@@ -18,6 +18,14 @@ public class Subsets2 {
     return result;
   }
 
+  /**
+   * 越界时计算出一个结果
+   *
+   * @param nums
+   * @param begin
+   * @param deque
+   * @param result
+   */
   public void backTrack(int[] nums, int begin, Deque<Integer> deque, List<List<Integer>> result) {
     result.add(new ArrayList<>(deque));
 
