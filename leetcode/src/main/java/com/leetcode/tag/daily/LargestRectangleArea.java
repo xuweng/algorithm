@@ -158,7 +158,11 @@ public class LargestRectangleArea {
     }
 
     /**
-     * 分治算法
+     * 重复子问题?
+     *
+     * <p>遗漏子问题?
+     *
+     * <p>分治算法
      *
      * <p>类似快排。
      *
