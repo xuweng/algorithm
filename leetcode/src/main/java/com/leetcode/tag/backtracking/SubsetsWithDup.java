@@ -43,9 +43,6 @@ public class SubsetsWithDup {
     result.add(new ArrayList<>(deque));
     // 越界不用进入循环
     for (int i = begin; i < nums.length; i++) {
-      if (deque2.contains(nums[begin])) {
-        continue;
-      }
       deque.push(nums[i]);
       deque2.push(nums[i]);
       backTrack(nums, i + 1, deque, deque2, result);
