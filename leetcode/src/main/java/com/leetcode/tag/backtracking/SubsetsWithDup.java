@@ -37,7 +37,7 @@ public class SubsetsWithDup {
     result.add(new ArrayList<>(deque));
     // 越界不用进入循环
     for (int i = begin; i < nums.length; i++) {
-      if (set.contains(nums[i])) {
+      if (set.contains(nums[begin])) {
         continue;
       }
       deque.push(nums[i]);
