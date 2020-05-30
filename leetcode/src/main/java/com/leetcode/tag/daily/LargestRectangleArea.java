@@ -178,7 +178,8 @@ public class LargestRectangleArea {
       if (left == right - 1) {
         return heights[left];
       }
-      // 最小高度索引
+      // 最小高度索引。类似快排的point。
+      // 先寻找point
       int shortestIndex = left;
       // 是否排序
       boolean sorted = true;
