@@ -27,6 +27,8 @@ public class SubsetsWithDup {
    *
    * <p>分支不能有重复。每层不能有重复。
    *
+   * <p>不是每层不能有重复。是每个结点的分支不能有重复。
+   *
    * @param nums
    * @param begin
    * @param deque
@@ -49,7 +51,7 @@ public class SubsetsWithDup {
     // 越界不用进入循环
     for (int i = begin; i < nums.length; i++) {
       // 如何剪枝?如何剪枝?如何剪枝?如何剪枝?
-      if (levels.get(count).contains(nums[i])) {
+      if (count != 0 && levels.get(count).contains(nums[i])) {
         continue;
       }
       deque.push(nums[i]);
