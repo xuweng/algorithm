@@ -87,6 +87,7 @@ public class SubsetsWithDup {
       // 分支
       for (int i = start; i < nums.length; i++) {
         // 和上个数字相等就跳过
+        // 跳过i这个分支
         if (i > start && nums[i] == nums[i - 1]) {
           continue;
         }
