@@ -16,19 +16,22 @@ public class SymmetricTree {
    */
   public boolean isSymmetric(TreeNode root) {
     if (root == null) {
-      return false;
+      return true;
     }
 
-    List<Integer> result = new ArrayList<>();
-    zhong(root, result);
+    List<List<Integer>> result = new ArrayList<>();
 
-    int low = 0, high = result.size() - 1;
-    while (low < high) {
-      if (result.get(low) != (result.get(high))) {
-        return false;
+    levels(0, root, result);
+
+    for (List<Integer> list : result) {
+      int low = 0, high = list.size() - 1;
+      while (low < high) {
+        if (list.get(low) != (list.get(high))) {
+          return false;
+        }
+        low++;
+        high--;
       }
-      low++;
-      high--;
     }
 
     return true;
@@ -40,18 +43,21 @@ public class SymmetricTree {
    * @param root
    * @param result
    */
-  public void zhong(TreeNode root, List<Integer> result) {
+  public void levels(int level, TreeNode root, List<List<Integer>> result) {
+    if (level == result.size()) {
+      result.add(new ArrayList<>());
+    }
+    if (root == null) {
+      result.get(level).add(null);
+      return;
+    }
     if (root.left == null && root.right == null) {
-      result.add(root.val);
+      result.get(level).add(root.val);
       return;
     }
-    if (root.left == null || root.right == null) {
-      result.add(null);
-      return;
-    }
-    zhong(root.left, result);
-    result.add(root.val);
-    zhong(root.right, result);
+    result.get(level).add(root.val);
+    levels(level + 1, root.left, result);
+    levels(level + 1, root.right, result);
   }
 
   public class TreeNode {
