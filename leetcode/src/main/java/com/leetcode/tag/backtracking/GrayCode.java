@@ -6,7 +6,25 @@ import java.util.Deque;
 import java.util.List;
 
 /**
- * 89. 格雷编码
+ * 十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>89. 格雷编码
  */
 public class GrayCode {
   public List<Integer> grayCode(int n) {
