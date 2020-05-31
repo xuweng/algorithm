@@ -56,6 +56,46 @@ public class SymmetricTree {
     levels(level + 1, root.right, result);
   }
 
+  /**
+   * 作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/symmetric-tree/solution/dui-cheng-er-cha-shu-by-leetcode-solution/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution {
+    public boolean isSymmetric(TreeNode root) {
+      return check(root, root);
+    }
+
+    /**
+     * 递归思路清晰
+     *
+     * <p>如果同时满足下面的条件，两个树互为镜像：
+     *
+     * <p>它们的两个根结点具有相同的值
+     *
+     * <p>想到以下两点。没想到用两个参数。
+     *
+     * <p>每个树的右子树都与另一个树的左子树镜像对称
+     *
+     * <p>每个树的左子树都与另一个树的右子树镜像对称
+     *
+     * @param p
+     * @param q
+     * @return
+     */
+    public boolean check(TreeNode p, TreeNode q) {
+      // p q同时为null
+      if (p == null && q == null) {
+        return true;
+      }
+      // p q一个为null，一个不为null
+      if (p == null || q == null) {
+        return false;
+      }
+      return p.val == q.val && check(p.left, q.right) && check(p.right, q.left);
+    }
+  }
+
   public class TreeNode {
     int val;
     TreeNode left;
