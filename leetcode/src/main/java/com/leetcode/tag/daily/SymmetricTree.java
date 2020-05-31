@@ -34,6 +34,12 @@ public class SymmetricTree {
     return true;
   }
 
+  /**
+   * 中序遍历不对
+   *
+   * @param root
+   * @param result
+   */
   public void zhong(TreeNode root, List<Integer> result) {
     if (root.left == null && root.right == null) {
       result.add(root.val);
