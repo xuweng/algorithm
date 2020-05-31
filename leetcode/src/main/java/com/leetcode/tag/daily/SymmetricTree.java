@@ -51,10 +51,6 @@ public class SymmetricTree {
       result.get(level).add(null);
       return;
     }
-    if (root.left == null && root.right == null) {
-      result.get(level).add(root.val);
-      return;
-    }
     result.get(level).add(root.val);
     levels(level + 1, root.left, result);
     levels(level + 1, root.right, result);
