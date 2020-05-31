@@ -1,12 +1,17 @@
 package com.leetcode.tag.backtracking;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 /**
- * 90. 子集 II
+ * 十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>90. 子集 II
  *
  * <p>说明：解集不能包含重复的子集。
  */
@@ -59,6 +64,36 @@ public class SubsetsWithDup {
       backTrack(nums, count + 1, i + 1, deque, levels, result);
       // 以下部分都属于回溯
       deque.pop();
+    }
+  }
+
+  /**
+   * 作者：windliang
+   * 链接：https://leetcode-cn.com/problems/subsets-ii/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by-19/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class S {
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+      List<List<Integer>> ans = new ArrayList<>();
+      // 排序
+      Arrays.sort(nums);
+      getAns(nums, 0, new ArrayList<>(), ans);
+      return ans;
+    }
+
+    private void getAns(int[] nums, int start, ArrayList<Integer> temp, List<List<Integer>> ans) {
+      ans.add(new ArrayList<>(temp));
+      // 候选集
+      // 分支
+      for (int i = start; i < nums.length; i++) {
+        // 和上个数字相等就跳过
+        if (i > start && nums[i] == nums[i - 1]) {
+          continue;
+        }
+        temp.add(nums[i]);
+        getAns(nums, i + 1, temp, ans);
+        temp.remove(temp.size() - 1);
+      }
     }
   }
 }
