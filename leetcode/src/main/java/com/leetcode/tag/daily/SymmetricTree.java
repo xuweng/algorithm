@@ -24,7 +24,7 @@ public class SymmetricTree {
 
     int low = 0, high = result.size() - 1;
     while (low < high) {
-      if (!result.get(low).equals(result.get(high))) {
+      if (result.get(low) == (result.get(high))) {
         return false;
       }
       low++;
@@ -35,7 +35,12 @@ public class SymmetricTree {
   }
 
   public void zhong(TreeNode root, List<Integer> result) {
-    if (root == null) {
+    if (root.left == null && root.right == null) {
+      result.add(root.val);
+      return;
+    }
+    if (root.left == null || root.right == null) {
+      result.add(null);
       return;
     }
     zhong(root.left, result);
