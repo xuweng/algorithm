@@ -69,6 +69,7 @@ public class PermuteUnique {
       // 排序（升序或者降序都可以），排序是剪枝的前提
       Arrays.sort(nums);
 
+      // 标记每条路径的选择
       boolean[] used = new boolean[len];
       // 使用 Deque 是 Java 官方 Stack 类的建议
       Deque<Integer> path = new ArrayDeque<>(len);
