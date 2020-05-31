@@ -24,7 +24,7 @@ public class SymmetricTree {
 
     int low = 0, high = result.size() - 1;
     while (low < high) {
-      if (result.get(low) == (result.get(high))) {
+      if (result.get(low) != (result.get(high))) {
         return false;
       }
       low++;
