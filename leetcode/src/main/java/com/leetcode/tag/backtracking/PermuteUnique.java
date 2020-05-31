@@ -89,6 +89,7 @@ public class PermuteUnique {
         return;
       }
 
+      // 计算顺序.所有分支从左到右计算。全部计算完一个分支，再继续计算另外一个分支
       for (int i = 0; i < len; ++i) {
         if (used[i]) {
           continue;
