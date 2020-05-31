@@ -1,7 +1,9 @@
 package com.leetcode.tag.daily;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class SymmetricTree {
   /**
@@ -93,6 +95,41 @@ public class SymmetricTree {
         return false;
       }
       return p.val == q.val && check(p.left, q.right) && check(p.right, q.left);
+    }
+  }
+
+  /**
+   * 作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/symmetric-tree/solution/dui-cheng-er-cha-shu-by-leetcode-solution/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution1 {
+    public boolean isSymmetric(TreeNode root) {
+      return check(root, root);
+    }
+
+    public boolean check(TreeNode u, TreeNode v) {
+      Queue<TreeNode> q = new LinkedList<TreeNode>();
+      q.offer(u);
+      q.offer(v);
+      while (!q.isEmpty()) {
+        u = q.poll();
+        v = q.poll();
+        if (u == null && v == null) {
+          continue;
+        }
+        if ((u == null || v == null) || (u.val != v.val)) {
+          return false;
+        }
+
+        // 入队顺序
+        q.offer(u.left);
+        q.offer(v.right);
+
+        q.offer(u.right);
+        q.offer(v.left);
+      }
+      return true;
     }
   }
 
