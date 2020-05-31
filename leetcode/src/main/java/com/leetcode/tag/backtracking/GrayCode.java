@@ -87,6 +87,14 @@ public class GrayCode {
    * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
    */
   class S {
+    /**
+     * 解法一 动态规划
+     *
+     * <p>f(n-1)---------->f(n)
+     *
+     * @param n
+     * @return
+     */
     public List<Integer> grayCode(int n) {
       List<Integer> gray = new ArrayList<>();
       gray.add(0); // 初始化 n = 0 的解
