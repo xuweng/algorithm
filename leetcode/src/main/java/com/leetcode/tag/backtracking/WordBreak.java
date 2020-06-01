@@ -1,9 +1,6 @@
 package com.leetcode.tag.backtracking;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 代码模板
@@ -95,5 +92,32 @@ public class WordBreak {
               list.add(s);
               map.put(s.charAt(0), list);
             });
+  }
+
+  /**
+   * 作者：LeetCode
+   * 链接：https://leetcode-cn.com/problems/word-break-ii/solution/dan-ci-chai-fen-ii-by-leetcode/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution {
+    public List<String> wordBreak(String s, Set<String> wordDict) {
+      return wordBreak(s, wordDict, 0);
+    }
+
+    public List<String> wordBreak(String s, Set<String> wordDict, int start) {
+      LinkedList<String> res = new LinkedList<>();
+      if (start == s.length()) {
+        res.add("");
+      }
+      for (int end = start + 1; end <= s.length(); end++) {
+        if (wordDict.contains(s.substring(start, end))) {
+          List<String> list = wordBreak(s, wordDict, end);
+          for (String l : list) {
+            res.add(s.substring(start, end) + ("".equals(l) ? "" : " ") + l);
+          }
+        }
+      }
+      return res;
+    }
   }
 }
