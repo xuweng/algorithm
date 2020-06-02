@@ -7,7 +7,7 @@ public class NumTilePossibilitiesTest {
   public void test() {
     NumTilePossibilities numTilePossibilities = new NumTilePossibilities();
 
-    String tiles = "AAABBC";
+    String tiles = "AAABB";
 
     numTilePossibilities.numTilePossibilities(tiles);
   }
