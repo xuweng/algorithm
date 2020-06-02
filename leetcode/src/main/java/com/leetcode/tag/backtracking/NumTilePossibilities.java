@@ -20,6 +20,9 @@ public class NumTilePossibilities {
 
   public void backTrack(String titles, String temp, List<String> result) {
     result.add(temp);
+    if (titles.isEmpty()) {
+      return;
+    }
     for (int i = 0; i < titles.length(); i++) {
       if (i >= 1 && titles.charAt(i) == titles.charAt(i - 1)) {
         continue;
