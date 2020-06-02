@@ -1,7 +1,7 @@
 package com.leetcode.tag.backtracking;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 1079. 活字印刷
@@ -11,14 +11,14 @@ public class NumTilePossibilities {
     if (tiles == null || tiles.length() == 0) {
       return 0;
     }
-    List<String> result = new ArrayList<>();
+    Set<String> result = new HashSet<>();
 
     backTrack(tiles, tiles.length(), "", result);
 
     return result.size() - 1;
   }
 
-  public void backTrack(String titles, int length, String temp, List<String> result) {
+  public void backTrack(String titles, int length, String temp, Set<String> result) {
     result.add(temp);
     if (titles.isEmpty() || temp.length() >= length) {
       return;
