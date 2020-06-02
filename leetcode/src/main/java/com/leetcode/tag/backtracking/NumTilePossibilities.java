@@ -13,21 +13,21 @@ public class NumTilePossibilities {
     }
     List<String> result = new ArrayList<>();
 
-    backTrack(tiles, "", result);
+    backTrack(tiles, tiles.length(), "", result);
 
     return result.size() - 1;
   }
 
-  public void backTrack(String titles, String temp, List<String> result) {
+  public void backTrack(String titles, int length, String temp, List<String> result) {
     result.add(temp);
-    if (titles.isEmpty()) {
+    if (titles.isEmpty() || temp.length() >= length) {
       return;
     }
     for (int i = 0; i < titles.length(); i++) {
       if (i >= 1 && titles.charAt(i) == titles.charAt(i - 1)) {
         continue;
       }
-      backTrack(getString(titles, i), temp + titles.charAt(i), result);
+      backTrack(getString(titles, i), length, temp + titles.charAt(i), result);
     }
   }
 
