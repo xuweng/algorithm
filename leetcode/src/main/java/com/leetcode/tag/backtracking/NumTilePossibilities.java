@@ -69,6 +69,15 @@ public class NumTilePossibilities {
       return result;
     }
 
+    /**
+     * 递归树
+     *
+     * <p>一条路径走到底(最左分支),开始从底回溯
+     *
+     * @param curIdx
+     * @param lenLeft
+     * @return
+     */
     int possibilitiesWithLen(int curIdx, int lenLeft) {
       // 当前字符个数
       int charNumb = charCounts[charIdx[curIdx]];
