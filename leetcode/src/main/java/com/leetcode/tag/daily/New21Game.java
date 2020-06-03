@@ -1,7 +1,11 @@
 package com.leetcode.tag.daily;
 
 /**
- * 837. 新21点
+ * 方法一：动态规划
+ *
+ * <p>有模板。有模板。有模板。有模板
+ *
+ * <p>837. 新21点
  */
 public class New21Game {
   public double new21Game(int N, int K, int W) {
