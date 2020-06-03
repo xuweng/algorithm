@@ -4,7 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 1079. 活字印刷
+ * 画递归树
+ *
+ * <p>一条路径到底。最左分支。回溯。
+ *
+ * <p>1079. 活字印刷
  */
 public class NumTilePossibilities {
   public int numTilePossibilities(String tiles) {
