@@ -43,4 +43,62 @@ public class NumTilePossibilities {
     }
     return titles.substring(0, index) + titles.substring(index + 1);
   }
+
+  class Solution {
+    int lastIdx = 0;
+    int[] charIdx = new int[26];
+    // 统计字符个数
+    int[] charCounts;
+
+    public int numTilePossibilities(String tiles) {
+      charCounts = new int[26];
+      int charCount = 0;
+      for (int i = 0; i < tiles.length(); i++) {
+        int idx = tiles.charAt(i) - 'A';
+        if (charCounts[idx] == 0) {
+          charIdx[charCount] = idx;
+          charCount++;
+        }
+        charCounts[idx]++;
+      }
+      lastIdx = charCount - 1;
+      int result = 0;
+      for (int len = 1; len <= tiles.length(); len++) {
+        result += possibilitiesWithLen(0, len);
+      }
+      return result;
+    }
+
+    int possibilitiesWithLen(int curIdx, int lenLeft) {
+      int charNumb = charCounts[charIdx[curIdx]];
+      if (curIdx == lastIdx) {
+        return (charNumb >= lenLeft) ? 1 : 0;
+      }
+      if (charNumb > lenLeft) {
+        charNumb = lenLeft;
+      }
+      int result = 0;
+      for (int i = 0; i <= charNumb; i++) {
+        result += (kOutOfN(i, lenLeft) * possibilitiesWithLen(curIdx + 1, lenLeft - i));
+      }
+      return result;
+    }
+
+    private int kOutOfN(int k, int n) {
+      if (k == 0) {
+        return 1;
+      }
+      int m = n - k;
+      if (k > m) {
+        k = m;
+      }
+      int p1 = 1;
+      int p2 = 1;
+      for (; k > 0; k--, n--) {
+        p1 *= n;
+        p2 *= k;
+      }
+      return p1 / p2;
+    }
+  }
 }
