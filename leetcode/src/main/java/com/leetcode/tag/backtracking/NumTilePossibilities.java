@@ -41,6 +41,6 @@ public class NumTilePossibilities {
     if (index == titles.length() - 1) {
       return titles.substring(0, titles.length() - 1);
     }
-    return titles.substring(0, index) + titles.substring(index);
+    return titles.substring(0, index) + titles.substring(index + 1);
   }
 }
