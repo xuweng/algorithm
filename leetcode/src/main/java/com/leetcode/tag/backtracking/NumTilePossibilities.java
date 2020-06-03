@@ -70,6 +70,7 @@ public class NumTilePossibilities {
     }
 
     int possibilitiesWithLen(int curIdx, int lenLeft) {
+      // 当前字符个数
       int charNumb = charCounts[charIdx[curIdx]];
       if (curIdx == lastIdx) {
         return (charNumb >= lenLeft) ? 1 : 0;
@@ -79,6 +80,7 @@ public class NumTilePossibilities {
       }
       int result = 0;
       for (int i = 0; i <= charNumb; i++) {
+        // 当前字符选择完后到下一个分支
         result += (kOutOfN(i, lenLeft) * possibilitiesWithLen(curIdx + 1, lenLeft - i));
       }
       return result;
