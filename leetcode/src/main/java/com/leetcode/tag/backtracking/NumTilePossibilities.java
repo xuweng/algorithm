@@ -4,7 +4,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 画递归树
+ * 学习回溯算法模板
+ *
+ * <p>模板题
+ *
+ * <p>画递归树
  *
  * <p>一条路径到底。最左分支。回溯。
  *
