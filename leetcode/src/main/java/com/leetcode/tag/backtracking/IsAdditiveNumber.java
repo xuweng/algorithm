@@ -1,7 +1,5 @@
 package com.leetcode.tag.backtracking;
 
-import java.util.Arrays;
-
 /**
  * 写算法
  *
@@ -20,7 +18,8 @@ public class IsAdditiveNumber {
     }
     for (int i = start; i < num.length() - 2; i++) {
       int sum = Integer.parseInt(String.valueOf(num.charAt(i))) + get(num, i, count);
-      if (isMatch(num, sum, i, count)) {
+      int[] index = getIndex(num, sum, i, count);
+      if (index[0] == -1) {
         continue;
       }
       return backTrack(num, i, count + 1);
@@ -32,8 +31,18 @@ public class IsAdditiveNumber {
     return Integer.parseInt(num.substring(start + 1, start + count + 1));
   }
 
-  public boolean isMatch(String num, int sum, int start, int count) {
-    return Arrays.stream(getNum(num, start + count + 1)).anyMatch(i -> sum == i);
+  public int[] getIndex(String num, int sum, int start, int count) {
+    int index = -1;
+    int value = -1;
+    for (int i = start + count + 1; i < num.length(); i++) {
+      int i1 = Integer.parseInt(num.substring(start + count + 1, i + 1));
+      if (sum == i1) {
+        index = i;
+        value = i1;
+      }
+    }
+
+    return new int[]{index, value};
   }
 
   public int[] getNum(String num, int start) {
