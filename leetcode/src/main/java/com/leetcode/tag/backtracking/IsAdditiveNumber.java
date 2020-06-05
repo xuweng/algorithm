@@ -11,7 +11,7 @@ import java.util.Arrays;
  */
 public class IsAdditiveNumber {
   public boolean isAdditiveNumber(String num) {
-    return backTrack(num, 0, 0);
+    return backTrack(num, 0, 1);
   }
 
   public boolean backTrack(String num, int start, int count) {
@@ -20,7 +20,7 @@ public class IsAdditiveNumber {
     }
     for (int i = start; i < num.length() - 2; i++) {
       int sum = Integer.parseInt(String.valueOf(num.charAt(i))) + get(num, i, count);
-      if (isMatch(num, sum, start, count)) {
+      if (isMatch(num, sum, i, count)) {
         continue;
       }
       return backTrack(num, i, count + 1);
@@ -29,9 +29,6 @@ public class IsAdditiveNumber {
   }
 
   public int get(String num, int start, int count) {
-    if (count == 0) {
-      return Integer.parseInt(num.substring(start + 1, start + 2));
-    }
     return Integer.parseInt(num.substring(start + 1, start + count + 1));
   }
 
