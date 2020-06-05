@@ -1,7 +1,17 @@
 package com.leetcode.tag.daily;
 
 /**
- * 面试题29. 顺时针打印矩阵
+ * 技巧性题目
+ *
+ * <p>技巧性题目
+ *
+ * <p>技巧性题目
+ *
+ * <p>技巧性题目
+ *
+ * <p>技巧性题目。看答案。看图解。看懂思路就可以。
+ *
+ * <p>面试题29. 顺时针打印矩阵
  */
 public class SpiralOrder {
   public int[] spiralOrder(int[][] matrix) {
@@ -47,6 +57,46 @@ public class SpiralOrder {
         column += directions[directionIndex][1];
       }
       return result;
+    }
+  }
+
+  /**
+   * 方法二：按层模拟
+   *
+   * <p>作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/shun-shi-zhen-da-yin-ju-zhen-lcof/solution/shun-shi-zhen-da-yin-ju-zhen-by-leetcode-solution/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution1 {
+    public int[] spiralOrder(int[][] matrix) {
+      if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+        return new int[0];
+      }
+      int rows = matrix.length, columns = matrix[0].length;
+      int[] order = new int[rows * columns];
+      int index = 0;
+      int left = 0, right = columns - 1, top = 0, bottom = rows - 1;
+      while (left <= right && top <= bottom) {
+        for (int column = left; column <= right; column++) {
+          order[index++] = matrix[top][column];
+        }
+        for (int row = top + 1; row <= bottom; row++) {
+          order[index++] = matrix[row][right];
+        }
+        if (left < right && top < bottom) {
+          for (int column = right - 1; column > left; column--) {
+            order[index++] = matrix[bottom][column];
+          }
+          for (int row = bottom; row > top; row--) {
+            order[index++] = matrix[row][left];
+          }
+        }
+        left++;
+        right--;
+        top++;
+        bottom--;
+      }
+      return order;
     }
   }
 }
