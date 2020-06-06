@@ -121,13 +121,13 @@ public class IsAdditiveNumber {
         if (dfs(num, len, i + 1, pre + cur, cur, k + 1)) {
           return true;
         }
+        // 如果这样。直接return。就会解答错误。
+        // return dfs(num, len, i + 1, pre + cur, cur, k + 1);
       }
       return false;
     }
 
-    /**
-     * 获取 l ~ r 组成的有效数字
-     */
+    /** 获取 l ~ r 组成的有效数字 */
     private long fetchCurValue(String num, int l, int r) {
       if (l < r && num.charAt(l) == '0') {
         return -1;
