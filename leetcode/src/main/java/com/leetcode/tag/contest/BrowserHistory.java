@@ -59,15 +59,15 @@ public class BrowserHistory {
   }
 
   public String back(int steps) {
-    backCount++;
-
     if (steps < visitDeque.size()) {
       for (int i = 0; i < steps; i++) {
         forwardDeque.push(visitDeque.pop());
+        backCount++;
       }
     } else {
       while (visitDeque.size() != 1) {
         forwardDeque.push(visitDeque.pop());
+        backCount++;
       }
     }
 
