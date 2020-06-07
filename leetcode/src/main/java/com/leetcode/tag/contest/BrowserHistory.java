@@ -70,8 +70,10 @@ public class BrowserHistory {
   }
 
   public String forward(int steps) {
-    for (int i = 0; i < steps && steps <= forwardDeque.size(); i++) {
-      visitDeque.push(forwardDeque.pop());
+    if (steps <= forwardDeque.size()) {
+      for (int i = 0; i < steps; i++) {
+        visitDeque.push(forwardDeque.pop());
+      }
     }
 
     return visitDeque.peek();
