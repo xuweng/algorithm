@@ -1,7 +1,9 @@
 package com.leetcode.tag.contest;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
+import java.util.List;
 
 /**
  * 一定要先看懂题目
@@ -85,6 +87,48 @@ public class BrowserHistory {
 
     return visitDeque.peek();
   }
+
+  /**
+   * 作者：miaomiao-2
+   * 链接：https://leetcode-cn.com/problems/design-browser-history/solution/java-yi-ge-lie-biao-suo-you-cao-zuo-o1-by-miaomiao/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class BrowserHistory1 {
+    List<String> list;
+    int cur = -1;
+    int end = -1; // 有效地址的最后一个
+
+    public BrowserHistory1(String homepage) {
+      list = new ArrayList<>();
+      visit(homepage);
+    }
+
+    public void visit(String url) {
+      cur++;
+      if (list.size() <= cur) {
+        list.add(url);
+      } else {
+        list.set(cur, url);
+      }
+      end = cur;
+    }
+
+    public String back(int steps) {
+      cur = Math.max(cur - steps, 0);
+      return list.get(cur);
+    }
+
+    public String forward(int steps) {
+      cur = Math.min(cur + steps, end);
+      return list.get(cur);
+    }
+  }
+
+  /**
+   * Your BrowserHistory object will be instantiated and called as such: BrowserHistory obj = new
+   * BrowserHistory(homepage); obj.visit(url); String param_2 = obj.back(steps); String param_3 =
+   * obj.forward(steps);
+   */
 
   /**
    * Your BrowserHistory object will be instantiated and called as such: BrowserHistory obj = new
