@@ -41,6 +41,7 @@ import java.util.Deque;
  * browserHistory.back(7); // 你原本在浏览 "google.com"， 你只能后退一步到 "leetcode.com" ，并返回 "leetcode.com"
  */
 public class BrowserHistory {
+  int backCount;
   Deque<String> visitDeque;
   Deque<String> forwardDeque;
 
@@ -52,11 +53,15 @@ public class BrowserHistory {
   }
 
   public void visit(String url) {
+    backCount = 0;
+
     visitDeque.push(url);
   }
 
   public String back(int steps) {
-    if (steps <= visitDeque.size()) {
+    backCount++;
+
+    if (steps < visitDeque.size()) {
       for (int i = 0; i < steps; i++) {
         forwardDeque.push(visitDeque.pop());
       }
@@ -70,10 +75,12 @@ public class BrowserHistory {
   }
 
   public String forward(int steps) {
-    if (steps <= forwardDeque.size()) {
-      for (int i = 0; i < steps; i++) {
-        visitDeque.push(forwardDeque.pop());
-      }
+    if (backCount == 0) {
+      return visitDeque.peek();
+    }
+    int size = Math.min(steps, backCount);
+    for (int i = 0; i < size && !forwardDeque.isEmpty(); i++) {
+      visitDeque.push(forwardDeque.pop());
     }
 
     return visitDeque.peek();
