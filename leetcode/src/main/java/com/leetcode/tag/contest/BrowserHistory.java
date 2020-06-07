@@ -95,6 +95,7 @@ public class BrowserHistory {
    */
   class BrowserHistory1 {
     List<String> list;
+    // 好讨厌下标
     int cur = -1;
     int end = -1; // 有效地址的最后一个
 
