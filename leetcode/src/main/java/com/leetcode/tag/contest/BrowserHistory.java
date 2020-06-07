@@ -1,5 +1,8 @@
 package com.leetcode.tag.contest;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  * 一定要先看懂题目
  *
@@ -38,19 +41,40 @@ package com.leetcode.tag.contest;
  * browserHistory.back(7); // 你原本在浏览 "google.com"， 你只能后退一步到 "leetcode.com" ，并返回 "leetcode.com"
  */
 public class BrowserHistory {
+  Deque<String> visitDeque;
+  Deque<String> forwardDeque;
 
   public BrowserHistory(String homepage) {
+    visitDeque = new ArrayDeque<>();
+    forwardDeque = new ArrayDeque<>();
+
+    visitDeque.push(homepage);
   }
 
   public void visit(String url) {
+    visitDeque.push(url);
   }
 
   public String back(int steps) {
-    return "";
+    if (steps <= visitDeque.size()) {
+      for (int i = 0; i < steps; i++) {
+        forwardDeque.push(visitDeque.pop());
+      }
+    } else {
+      while (visitDeque.size() != 1) {
+        forwardDeque.push(visitDeque.pop());
+      }
+    }
+
+    return visitDeque.peek();
   }
 
   public String forward(int steps) {
-    return "";
+    while (steps <= forwardDeque.size()) {
+      visitDeque.push(forwardDeque.pop());
+    }
+
+    return visitDeque.peek();
   }
 
   /**
