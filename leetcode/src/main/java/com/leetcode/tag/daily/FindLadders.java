@@ -35,6 +35,18 @@ public class FindLadders {
       idWord = new ArrayList<>();
     }
 
+    /**
+     * 建图+bfs
+     *
+     * <p>建图+bfs
+     *
+     * <p>建图+bfs
+     *
+     * @param beginWord
+     * @param endWord
+     * @param wordList
+     * @return
+     */
     public List<List<String>> findLadders(String beginWord, String endWord, List<String> wordList) {
       int id = 0;
       // 将wordList所有单词加入wordId中 相同的只保留一个 // 并为每一个单词分配一个id
