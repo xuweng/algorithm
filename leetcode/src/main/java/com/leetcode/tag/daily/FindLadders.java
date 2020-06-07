@@ -3,7 +3,13 @@ package com.leetcode.tag.daily;
 import java.util.*;
 
 /**
- * 126. 单词接龙 II
+ * 考查数据结构
+ *
+ * <p>考查数据结构图
+ *
+ * <p>考查数据结构哈希表
+ *
+ * <p>126. 单词接龙 II
  *
  * @author z
  */
