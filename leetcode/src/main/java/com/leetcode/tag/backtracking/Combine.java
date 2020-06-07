@@ -1,9 +1,6 @@
 package com.leetcode.tag.backtracking;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+import java.util.*;
 
 /**
  * 算法模板
@@ -72,6 +69,76 @@ public class Combine {
       // 回溯。从i+1开始选择。
       backTrack(n, count + 1, k, i + 1, deque, result);
       deque.pop();
+    }
+  }
+
+  /**
+   * 方法一 : 回溯法
+   *
+   * <p>作者：LeetCode 链接：https://leetcode-cn.com/problems/combinations/solution/zu-he-by-leetcode/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution {
+    List<List<Integer>> output = new LinkedList();
+    int n;
+    int k;
+
+    public void backtrack(int first, LinkedList<Integer> curr) {
+      // if the combination is done
+      if (curr.size() == k) {
+        output.add(new LinkedList(curr));
+      }
+
+      for (int i = first; i < n + 1; ++i) {
+        // add i into the current combination
+        curr.add(i);
+        // use next integers to complete the combination
+        backtrack(i + 1, curr);
+        // backtrack
+        curr.removeLast();
+      }
+    }
+
+    public List<List<Integer>> combine(int n, int k) {
+      this.n = n;
+      this.k = k;
+      backtrack(1, new LinkedList<>());
+      return output;
+    }
+  }
+
+  /**
+   * 方法二: 字典序 (二进制排序) 组合
+   *
+   * <p>主要思路是以字典序的顺序获得全部组合。
+   *
+   * <p>作者：LeetCode 链接：https://leetcode-cn.com/problems/combinations/solution/zu-he-by-leetcode/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution1 {
+    public List<List<Integer>> combine(int n, int k) {
+      // init first combination
+      LinkedList<Integer> nums = new LinkedList<>();
+      for (int i = 1; i < k + 1; ++i) {
+        nums.add(i);
+      }
+      // 将 n + 1添加为末尾元素，起到“哨兵”的作用
+      nums.add(n + 1);
+
+      List<List<Integer>> output = new ArrayList<>();
+      int j = 0;
+      while (j < k) {
+        // add current combination
+        output.add(new LinkedList(nums.subList(0, k)));
+        // increase first nums[j] by one
+        // if nums[j] + 1 != nums[j + 1]
+        j = 0;
+        while ((j < k) && (nums.get(j + 1) == nums.get(j) + 1)) {
+          nums.set(j, j++ + 1);
+        }
+        nums.set(j, nums.get(j) + 1);
+      }
+      return output;
     }
   }
 }
