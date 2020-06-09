@@ -1,4 +1,4 @@
-package com.leetcode.tag;
+package com.leetcode.tag.util;
 
 public class Utils {
   /**
@@ -41,5 +41,19 @@ public class Utils {
       number += num;
     }
     return number;
+  }
+
+  /**
+   * 数字转字母
+   *
+   * <p>如果把数字直接强制转为字符的时候，jvm会把数字当成字符的ASCII编码来处理。
+   *
+   * <p>另一种是强制类型转换，如int i = 97,char c = (char)i ,这样做了之后，char的值也是‘a’
+   *
+   * @param num
+   * @return
+   */
+  public static char getChar(int num) {
+    return ((char) (num + 97));
   }
 }
