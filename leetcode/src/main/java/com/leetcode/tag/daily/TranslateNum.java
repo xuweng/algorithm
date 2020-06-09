@@ -19,6 +19,7 @@ public class TranslateNum {
 
   public void backTrack(String num, int begin, String temp, List<String> result) {
     // 越界统计
+    // 一定是越界统计
     if (begin >= num.length()) {
       result.add(temp);
       return;
