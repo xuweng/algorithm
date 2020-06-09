@@ -26,7 +26,7 @@ public class TranslateNum {
     }
     int n = Integer.parseInt(String.valueOf(num.charAt(begin)));
     backTrack(num, begin + 1, temp + Utils.getChar(n), result);
-    if (begin < num.length() - 1) {
+    if (num.charAt(begin) != '0' && begin < num.length() - 1) {
       String str = num.substring(begin, begin + 2);
       if (Integer.parseInt(str) <= 25) {
         int i = Integer.parseInt(str);
