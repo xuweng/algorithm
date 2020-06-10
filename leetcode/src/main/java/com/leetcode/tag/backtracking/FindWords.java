@@ -43,7 +43,9 @@ public class FindWords {
           if (board[i][j] != s.charAt(0)) {
             continue;
           }
-          backTrack(board, s, i, j, 0, visited, result);
+          if (backTrack(board, "", s, i, j, visited)) {
+            result.add(s);
+          }
         }
       }
     }
@@ -51,14 +53,43 @@ public class FindWords {
     return result;
   }
 
-  public void backTrack(
-          char[][] board,
-          String word,
-          int row,
-          int col,
-          int index,
-          boolean[][] visited,
-          List<String> result) {
-    visited[row][col] = true;
+  public boolean backTrack(
+          char[][] board, String temp, String word, int row, int col, boolean[][] visited) {
+    if (temp.length() > 1 && !word.contains(temp)) {
+      return false;
+    }
+    // 越界统计
+    if (row < 0 || row >= board.length || col < 0 || col >= board[0].length) {
+      return word.equals(temp);
+    }
+    if (!visited[row][col]) {
+      visited[row][col] = true;
+      if (backTrack(board, temp + board[row][col], word, row - 1, col, visited)) {
+        return true;
+      }
+      visited[row][col] = false;
+    }
+    if (!visited[row][col]) {
+      visited[row][col] = true;
+      if (backTrack(board, temp + board[row][col], word, row + 1, col, visited)) {
+        return true;
+      }
+      visited[row][col] = false;
+    }
+    if (!visited[row][col]) {
+      visited[row][col] = true;
+      if (backTrack(board, temp + board[row][col], word, row, col - 1, visited)) {
+        return true;
+      }
+      visited[row][col] = false;
+    }
+    if (!visited[row][col]) {
+      visited[row][col] = true;
+      if (backTrack(board, temp + board[row][col], word, row, col + 1, visited)) {
+        return true;
+      }
+      visited[row][col] = false;
+    }
+    return false;
   }
 }
