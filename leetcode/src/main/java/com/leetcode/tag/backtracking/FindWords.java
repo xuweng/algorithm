@@ -35,7 +35,6 @@ public class FindWords {
     if (board == null || board.length == 0) {
       return result;
     }
-    boolean[][] visited = new boolean[board.length][board[0].length];
 
     for (String s : words) {
       if (findWords(board, s)) {
