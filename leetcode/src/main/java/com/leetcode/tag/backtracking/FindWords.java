@@ -59,7 +59,11 @@ public class FindWords {
       return false;
     }
     // 越界统计
-    if (row < 0 || row >= board.length || col < 0 || col >= board[0].length) {
+    if (row < 0
+            || row >= board.length
+            || col < 0
+            || col >= board[0].length
+            || temp.length() == word.length()) {
       return word.equals(temp);
     }
     if (!visited[row][col]) {
