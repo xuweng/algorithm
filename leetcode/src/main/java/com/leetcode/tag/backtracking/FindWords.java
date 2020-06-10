@@ -60,6 +60,7 @@ public class FindWords {
   }
 
   public boolean findWords(char[][] board, String word) {
+    // 一条路径不能重复访问
     boolean[][] visited = new boolean[board.length][board[0].length];
 
     for (int i = 0; i < board.length; i++) {
