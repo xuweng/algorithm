@@ -92,6 +92,7 @@ public class FindWords {
     }
     if (!visited[row][col]) {
       visited[row][col] = true;
+      // 一定是这样return
       if (backTrack(board, temp + board[row][col], word, row - 1, col, visited)) {
         return true;
       }
