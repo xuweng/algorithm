@@ -30,6 +30,8 @@ public class DailyTemperatures {
   /**
    * 方法二：单调栈
    *
+   * <p>当前元素入栈。维护单调性。
+   *
    * <p>单调递减栈
    *
    * <p>单调递减栈
@@ -45,8 +47,9 @@ public class DailyTemperatures {
       // 单调递减栈保存下标
       Deque<Integer> stack = new LinkedList<>();
       for (int i = 0; i < length; i++) {
-        int temperature = T[i];
-        while (!stack.isEmpty() && temperature > T[stack.peek()]) {
+        int cur = T[i];
+        // 小于当前元素的直接出栈。我要把当前元素入栈。我要维护单调递减。
+        while (!stack.isEmpty() && cur > T[stack.peek()]) {
           int prevIndex = stack.pop();
           ans[prevIndex] = i - prevIndex;
         }
