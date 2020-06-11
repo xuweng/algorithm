@@ -42,6 +42,7 @@ public class DailyTemperatures {
     public int[] dailyTemperatures(int[] T) {
       int length = T.length;
       int[] ans = new int[length];
+      // 单调递减栈保存下标
       Deque<Integer> stack = new LinkedList<>();
       for (int i = 0; i < length; i++) {
         int temperature = T[i];
