@@ -159,6 +159,7 @@ public class FindWords {
     public List<String> findWords(char[][] board, String[] words) {
 
       // Step 1). Construct the Trie
+      // 用words来构造trie树
       TrieNode root = new TrieNode();
       for (String word : words) {
         TrieNode node = root;
