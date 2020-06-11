@@ -124,7 +124,15 @@ public class FindWords {
   }
 
   /**
-   * 方法一：使用前缀树的回溯
+   * 灵活使用数据结构
+   *
+   * <p>灵活使用数据结构
+   *
+   * <p>灵活使用数据结构
+   *
+   * <p>灵活使用数据结构
+   *
+   * <p>方法一：使用前缀树的回溯
    *
    * <p>十分钟看题解
    *
@@ -146,7 +154,7 @@ public class FindWords {
 
   class Solution {
     char[][] _board = null;
-    ArrayList<String> _result = new ArrayList<String>();
+    ArrayList<String> _result = new ArrayList<>();
 
     public List<String> findWords(char[][] board, String[] words) {
 
