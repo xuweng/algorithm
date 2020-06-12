@@ -49,13 +49,32 @@ public class ThreeSum {
   }
 
   /**
-   * 方法一：排序 + 双指针
+   * 理解重复。理解重复。理解重复。理解重复。理解重复。理解重复。理解重复。理解重复。
+   *
+   * <p>多个测试用例。多个测试用例。重复数据。重复数据。
+   *
+   * <p>排序是关键。跳过重复数据。
+   *
+   * <p>排序：每个元素只会枚举一次
+   *
+   * <p>重复数据只会枚举一次
+   *
+   * <p>方法一：排序 + 双指针
    *
    * <p>作者：LeetCode-Solution
    * 链接：https://leetcode-cn.com/problems/3sum/solution/san-shu-zhi-he-by-leetcode-solution/
    * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
    */
   class Solution {
+    /**
+     * 「不重复」的本质是什么？我们保持三重循环的大框架不变，只需要保证：
+     *
+     * <p>也就是说，我们枚举的三元组 (a, b, c)满足 a \leq b \leq ca≤b≤c，保证了只有 (a,b,c) 这个顺序会被枚举到，而 (b,a,c)、(c, b, a)
+     * 等等这些不会，这样就减少了重复。要实现这一点，我们可以将数组中的元素从小到大进行排序，随后使用普通的三重循环就可以满足上面的要求。
+     *
+     * @param nums
+     * @return
+     */
     public List<List<Integer>> threeSum(int[] nums) {
       int n = nums.length;
       Arrays.sort(nums);
