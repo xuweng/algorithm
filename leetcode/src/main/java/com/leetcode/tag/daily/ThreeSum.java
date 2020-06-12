@@ -18,13 +18,20 @@ public class ThreeSum {
     for (int i : nums) {
       set.add(i);
     }
+    Set<Integer> maxSet = new HashSet<>();
     for (int i = 0; i < nums.length - 1; i++) {
       for (int j = i + 1; j < nums.length; j++) {
-        if (set.contains(-nums[i] - nums[j])) {
+        int third = -nums[i] - nums[j];
+        int max = Math.max(third, Math.max(nums[i], nums[j]));
+        if (maxSet.contains(max)) {
+          continue;
+        }
+        if (set.contains(third)) {
+          maxSet.add(max);
           List<Integer> list = new ArrayList<>();
           list.add(nums[i]);
           list.add(nums[j]);
-          list.add(-nums[i] - nums[j]);
+          list.add(third);
           result.add(list);
           break;
         }
