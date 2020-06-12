@@ -11,7 +11,7 @@ import java.util.Set;
 public class ThreeSum {
   public List<List<Integer>> threeSum(int[] nums) {
     List<List<Integer>> result = new ArrayList<>();
-    if (nums == null || nums.length == 0) {
+    if (nums == null || nums.length < 3) {
       return result;
     }
     Set<Integer> set = new HashSet<>();
