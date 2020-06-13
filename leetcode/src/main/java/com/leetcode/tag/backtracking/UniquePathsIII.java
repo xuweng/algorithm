@@ -5,6 +5,7 @@ package com.leetcode.tag.backtracking;
  */
 public class UniquePathsIII {
   private int count;
+  private int zeroCount;
   private int endRow;
   private int endCol;
 
@@ -14,6 +15,10 @@ public class UniquePathsIII {
     int col = 0;
     for (int i = 0; i < grid.length; i++) {
       for (int j = 0; j < grid[0].length; j++) {
+        if (grid[i][j] == 0) {
+          zeroCount++;
+        }
+
         if (grid[i][j] == 1) {
           row = i;
           col = j;
@@ -25,13 +30,15 @@ public class UniquePathsIII {
       }
     }
 
-    backTrack(grid, used, row, col);
+    backTrack(grid, 0, used, row, col);
 
     return count;
   }
 
   /**
-   * 算法框架
+   * 每一个无障碍方格都要通过一次
+   *
+   * <p>算法框架
    *
    * <p>算法框架
    *
@@ -47,32 +54,32 @@ public class UniquePathsIII {
    * @param col
    * @return
    */
-  public void backTrack(int[][] grid, boolean[][] used, int row, int col) {
+  public void backTrack(int[][] grid, int backCount, boolean[][] used, int row, int col) {
     if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length) {
       return;
     }
-    if (row == endRow && col == endCol) {
+    if (row == endRow && col == endCol && zeroCount == backCount - 1) {
       count++;
       return;
     }
     if (row >= 1 && !used[row][col] && grid[row - 1][col] != -1) {
       used[row][col] = true;
-      backTrack(grid, used, row - 1, col);
+      backTrack(grid, backCount + 1, used, row - 1, col);
       used[row][col] = false;
     }
     if (row < grid.length - 1 && !used[row][col] && grid[row + 1][col] != -1) {
       used[row][col] = true;
-      backTrack(grid, used, row + 1, col);
+      backTrack(grid, backCount + 1, used, row + 1, col);
       used[row][col] = false;
     }
     if (col >= 1 && !used[row][col] && grid[row][col - 1] != -1) {
       used[row][col] = true;
-      backTrack(grid, used, row, col - 1);
+      backTrack(grid, backCount + 1, used, row, col - 1);
       used[row][col] = false;
     }
     if (col < grid[0].length - 1 && !used[row][col] && grid[row][col + 1] != -1) {
       used[row][col] = true;
-      backTrack(grid, used, row, col + 1);
+      backTrack(grid, backCount + 1, used, row, col + 1);
       used[row][col] = false;
     }
   }
