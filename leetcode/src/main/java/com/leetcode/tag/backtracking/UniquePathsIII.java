@@ -4,9 +4,9 @@ package com.leetcode.tag.backtracking;
  * 980. 不同路径 III
  */
 public class UniquePathsIII {
-  int count;
-  int endRow;
-  int endCol;
+  private int count;
+  private int endRow;
+  private int endCol;
 
   public int uniquePathsIII(int[][] grid) {
     boolean[][] used = new boolean[grid.length][grid[0].length];
