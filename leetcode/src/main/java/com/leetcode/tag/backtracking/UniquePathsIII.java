@@ -55,22 +55,22 @@ public class UniquePathsIII {
       count++;
       return;
     }
-    if (row >= 1 && !used[row][col] && grid[row - 1][col] == 0) {
+    if (row >= 1 && !used[row][col] && grid[row - 1][col] != -1) {
       used[row][col] = true;
       backTrack(grid, used, row - 1, col);
       used[row][col] = false;
     }
-    if (row < grid.length - 1 && !used[row][col] && grid[row + 1][col] == 0) {
+    if (row < grid.length - 1 && !used[row][col] && grid[row + 1][col] != -1) {
       used[row][col] = true;
       backTrack(grid, used, row + 1, col);
       used[row][col] = false;
     }
-    if (col >= 1 && !used[row][col] && grid[row][col - 1] == 0) {
+    if (col >= 1 && !used[row][col] && grid[row][col - 1] != -1) {
       used[row][col] = true;
       backTrack(grid, used, row, col - 1);
       used[row][col] = false;
     }
-    if (col < grid[0].length - 1 && !used[row][col] && grid[row][col + 1] == 0) {
+    if (col < grid[0].length - 1 && !used[row][col] && grid[row][col + 1] != -1) {
       used[row][col] = true;
       backTrack(grid, used, row, col + 1);
       used[row][col] = false;
