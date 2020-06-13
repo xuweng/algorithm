@@ -15,6 +15,7 @@ public class ClimbStairs {
     if (meno[n] != 0) {
       return meno[n];
     }
+    // 终止条件
     if (n == 1 || n == 0) {
       return 1;
     }
