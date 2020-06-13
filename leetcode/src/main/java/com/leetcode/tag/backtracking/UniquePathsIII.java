@@ -26,7 +26,8 @@ public class UniquePathsIII {
     }
 
     backTrack(grid, used, row, col);
-    return 0;
+
+    return count;
   }
 
   /**
