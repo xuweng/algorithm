@@ -1,5 +1,8 @@
 package com.leetcode.tag.backtracking;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  * 980. 不同路径 III
  */
@@ -9,8 +12,9 @@ public class UniquePathsIII {
   private int endRow;
   private int endCol;
 
+  private Deque<Integer[]> deque;
+
   public int uniquePathsIII(int[][] grid) {
-    boolean[][] used = new boolean[grid.length][grid[0].length];
     int row = 0;
     int col = 0;
     for (int i = 0; i < grid.length; i++) {
@@ -29,6 +33,9 @@ public class UniquePathsIII {
         }
       }
     }
+    boolean[][] used = new boolean[grid.length][grid[0].length];
+
+    deque = new ArrayDeque<>();
 
     backTrack(grid, 0, used, row, col);
 
@@ -64,23 +71,39 @@ public class UniquePathsIII {
     }
     if (row >= 1 && !used[row][col] && grid[row - 1][col] != -1) {
       used[row][col] = true;
+      deque.push(new Integer[]{row, col});
+
       backTrack(grid, backCount + 1, used, row - 1, col);
+
       used[row][col] = false;
+      deque.pop();
     }
     if (row < grid.length - 1 && !used[row][col] && grid[row + 1][col] != -1) {
       used[row][col] = true;
+      deque.push(new Integer[]{row, col});
+
       backTrack(grid, backCount + 1, used, row + 1, col);
+
       used[row][col] = false;
+      deque.pop();
     }
     if (col >= 1 && !used[row][col] && grid[row][col - 1] != -1) {
       used[row][col] = true;
+      deque.push(new Integer[]{row, col});
+
       backTrack(grid, backCount + 1, used, row, col - 1);
+
       used[row][col] = false;
+      deque.pop();
     }
     if (col < grid[0].length - 1 && !used[row][col] && grid[row][col + 1] != -1) {
       used[row][col] = true;
+      deque.push(new Integer[]{row, col});
+
       backTrack(grid, backCount + 1, used, row, col + 1);
+
       used[row][col] = false;
+      deque.pop();
     }
   }
 }
