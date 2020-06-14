@@ -22,13 +22,11 @@ public class GetPermutation {
   }
 
   public void backTrack(int n, int k, boolean[] used, String temp) {
-    if (count == k) {
-      result = temp;
-      return;
-    }
-
     if (temp.length() >= n) {
       count++;
+      if (count == k) {
+        result = temp;
+      }
       return;
     }
     for (int i = 1; i <= n; i++) {
