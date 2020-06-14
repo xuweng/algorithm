@@ -29,19 +29,19 @@ import java.util.List;
  * <p>842. 将数组拆分成斐波那契序列
  */
 public class SplitIntoFibonacci {
-  public List<Integer> splitIntoFibonacci(String S) {
+  public List<Long> splitIntoFibonacci(String S) {
     if (S == null || S.length() == 0) {
       return new ArrayList<>();
     }
-    List<List<Integer>> result = new ArrayList<>();
-    List<Integer> stack = new ArrayList<>();
+    List<List<Long>> result = new ArrayList<>();
+    List<Long> stack = new ArrayList<>();
 
     backTrack(S, 0, stack, result);
 
     return (result.size() > 0) ? result.get(0) : new ArrayList<>();
   }
 
-  public void backTrack(String S, int start, List<Integer> stack, List<List<Integer>> result) {
+  public void backTrack(String S, int start, List<Long> stack, List<List<Long>> result) {
     // 越界统计
     if (start >= S.length() && stack.size() >= 3 && isFibonacci(stack)) {
       result.add(new ArrayList<>(stack));
@@ -51,15 +51,15 @@ public class SplitIntoFibonacci {
       if (s.length() > 1 && s.charAt(0) == '0') {
         continue;
       }
-      stack.add(Integer.parseInt(s));
+      stack.add(Long.parseLong(s));
       backTrack(S, i + 1, stack, result);
       stack.remove(stack.size() - 1);
     }
   }
 
-  private boolean isFibonacci(List<Integer> result) {
-    int pre1 = result.get(0);
-    int pre2 = result.get(1);
+  private boolean isFibonacci(List<Long> result) {
+    long pre1 = result.get(0);
+    long pre2 = result.get(1);
 
     for (int i = 2; i < result.size(); i++) {
       if (pre1 + pre2 != result.get(i)) {
