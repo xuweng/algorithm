@@ -56,7 +56,11 @@ public class SplitIntoFibonacci {
       if (s.length() > 1 && s.charAt(0) == '0') {
         continue;
       }
-      stack.add(Long.parseLong(s));
+      try {
+        stack.add(Long.parseLong(s));
+      } catch (NumberFormatException e) {
+        return;
+      }
       backTrack(S, i + 1, stack, result);
       stack.remove(stack.size() - 1);
     }
