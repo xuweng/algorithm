@@ -7,7 +7,7 @@ public class SplitIntoFibonacciTest {
   public void test() {
     SplitIntoFibonacci splitIntoFibonacci = new SplitIntoFibonacci();
 
-    String s = "123456579";
+    String s = "5511816597";
     splitIntoFibonacci.splitIntoFibonacci(s);
   }
 
@@ -16,5 +16,6 @@ public class SplitIntoFibonacciTest {
     System.out.println(Integer.parseInt("0000"));
     System.out.println(Integer.parseInt("0001"));
     System.out.println(Integer.parseInt("0002"));
+    System.out.println(Integer.parseInt("5511816597"));
   }
 }
