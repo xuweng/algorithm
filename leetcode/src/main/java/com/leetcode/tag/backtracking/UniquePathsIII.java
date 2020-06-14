@@ -12,6 +12,7 @@ public class UniquePathsIII {
   private int endRow;
   private int endCol;
 
+  // 保存路径,便于分析
   private Deque<Integer[]> deque;
 
   public int uniquePathsIII(int[][] grid) {
@@ -65,8 +66,10 @@ public class UniquePathsIII {
     if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length) {
       return;
     }
-    if (row == endRow && col == endCol && zeroCount == backCount - 1) {
-      count++;
+    if (row == endRow && col == endCol) {
+      if (zeroCount == backCount - 1) {
+        count++;
+      }
       return;
     }
     if (row >= 1 && !used[row][col] && grid[row - 1][col] != -1) {
