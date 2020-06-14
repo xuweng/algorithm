@@ -40,7 +40,7 @@ public class SplitIntoFibonacci {
 
   public void backTrack(String S, int start, List<Integer> stack, List<Integer> result) {
     // 越界统计
-    if (start >= S.length() && isFibonacci(stack)) {
+    if (start >= S.length() && stack.size() >= 3 && isFibonacci(stack)) {
       result.addAll(new ArrayList<>(stack));
     }
     for (int i = start; i < S.length(); i++) {
