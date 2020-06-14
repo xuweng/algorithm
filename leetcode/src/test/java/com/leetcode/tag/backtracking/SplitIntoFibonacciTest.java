@@ -10,4 +10,11 @@ public class SplitIntoFibonacciTest {
     String s = "123456579";
     splitIntoFibonacci.splitIntoFibonacci(s);
   }
+
+  @Test
+  public void test1() {
+    System.out.println(Integer.parseInt("0000"));
+    System.out.println(Integer.parseInt("0001"));
+    System.out.println(Integer.parseInt("0002"));
+  }
 }
