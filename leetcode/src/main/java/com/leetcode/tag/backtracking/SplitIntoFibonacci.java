@@ -39,11 +39,8 @@ public class SplitIntoFibonacci {
   }
 
   public void backTrack(String S, int start, List<Integer> stack, List<Integer> result) {
-    if (stack.size() >= 3) {
-      if (isFibonacci(stack)) {
-        result.addAll(new ArrayList<>(stack));
-      }
-      return;
+    if (start >= S.length() && isFibonacci(stack)) {
+      result.addAll(new ArrayList<>(stack));
     }
     for (int i = start; i < S.length(); i++) {
       stack.add(Integer.valueOf(S.substring(start, i + 1)));
