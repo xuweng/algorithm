@@ -245,4 +245,66 @@ public class UniquePathsIII {
       return ans;
     }
   }
+
+  class Solution2 {
+    int finishStep;
+    int result;
+    int moveCount;
+    int[][] mGrid;
+
+    public int uniquePathsIII(int[][] grid) {
+      int row = -1;
+      int col = -1;
+      finishStep = 1;
+      for (int i = 0; i < grid.length; i++) {
+        for (int j = 0; j < grid[i].length; j++) {
+          if (grid[i][j] == 0) {
+            finishStep++;
+          } else if (grid[i][j] == 1) {
+            row = i;
+            col = j;
+          }
+        }
+      }
+      mGrid = grid;
+      moveCount = 0;
+      result = 0;
+      grid[row][col] = 0;
+      forEachOne(row, col);
+      grid[row][col] = 1;
+      return result;
+    }
+
+    public void forEachOne(int row, int col) {
+      if (moveCount == finishStep && mGrid[row][col] == 2) {
+        result++;
+        return;
+      }
+      if (mGrid[row][col] != 0) {
+        return;
+      }
+      moveCount++;
+      mGrid[row][col] = -1; // 走过
+      // 向上
+      if (row - 1 >= 0) {
+        forEachOne(row - 1, col);
+      }
+      // 向下
+      if (row + 1 < mGrid.length) {
+        forEachOne(row + 1, col);
+      }
+
+      // 向左
+      if (col - 1 >= 0) {
+        forEachOne(row, col - 1);
+      }
+      // 向右
+      if (col + 1 < mGrid[row].length) {
+        forEachOne(row, col + 1);
+      }
+      // 回溯
+      mGrid[row][col] = 0;
+      moveCount--;
+    }
+  }
 }
