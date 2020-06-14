@@ -53,15 +53,20 @@ public class FindBestValue {
    */
   class Solution {
     public int findBestValue(int[] arr, int target) {
+      // 排序
       Arrays.sort(arr);
       int n = arr.length;
+      // 为了加速求和操作，我们可以预处理出数组 arr 的前缀和，这样数组求和的时间复杂度即能降为 O(1)
       int[] prefix = new int[n + 1];
       for (int i = 1; i <= n; ++i) {
         prefix[i] = prefix[i - 1] + arr[i - 1];
       }
+      // 最大值
       int r = arr[n - 1];
       int ans = 0, diff = target;
+      // 枚举范围内所有可能的数字
       for (int i = 1; i <= r; ++i) {
+        // 二分查找
         int index = Arrays.binarySearch(arr, i);
         if (index < 0) {
           index = -index - 1;
