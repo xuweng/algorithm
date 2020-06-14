@@ -2,7 +2,6 @@ package com.leetcode.tag.backtracking;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * 枚举所有的可能，不满足条件的就干掉
@@ -34,19 +33,15 @@ public class SplitIntoFibonacci {
     if (S == null || S.length() == 0) {
       return new ArrayList<>();
     }
-    List<List<Long>> result = new ArrayList<>();
-    List<Long> stack = new ArrayList<>();
+    List<List<Integer>> result = new ArrayList<>();
+    List<Integer> stack = new ArrayList<>();
 
     backTrack(S, 0, stack, result);
 
-    return (result.size() > 0)
-            ? result.get(0).stream()
-            .map(l -> Integer.parseInt(String.valueOf(l)))
-            .collect(Collectors.toList())
-            : new ArrayList<>();
+    return (result.size() > 0) ? result.get(0) : new ArrayList<>();
   }
 
-  public void backTrack(String S, int start, List<Long> stack, List<List<Long>> result) {
+  public void backTrack(String S, int start, List<Integer> stack, List<List<Integer>> result) {
     // 越界统计
     if (start >= S.length() && stack.size() >= 3 && isFibonacci(stack)) {
       result.add(new ArrayList<>(stack));
@@ -57,7 +52,7 @@ public class SplitIntoFibonacci {
         continue;
       }
       try {
-        stack.add(Long.parseLong(s));
+        stack.add(Integer.parseInt(s));
       } catch (NumberFormatException e) {
         return;
       }
@@ -66,9 +61,9 @@ public class SplitIntoFibonacci {
     }
   }
 
-  private boolean isFibonacci(List<Long> result) {
-    long pre1 = result.get(0);
-    long pre2 = result.get(1);
+  private boolean isFibonacci(List<Integer> result) {
+    int pre1 = result.get(0);
+    int pre2 = result.get(1);
 
     for (int i = 2; i < result.size(); i++) {
       if (pre1 + pre2 != result.get(i)) {
