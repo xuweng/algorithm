@@ -193,4 +193,58 @@ public class SplitIntoFibonacci {
       return false;
     }
   }
+
+  /**
+   * 算法模板
+   *
+   * <p>优秀代码
+   */
+  class Solution2 {
+    public List<Integer> splitIntoFibonacci(String S) {
+      List<Integer> res = new ArrayList<>();
+      if (S == null || S.length() == 0) {
+        return res;
+      }
+      helper(res, S, 0);
+      return res;
+    }
+
+    /**
+     * 算法模板
+     *
+     * <p>参数计算
+     *
+     * <p>已经保存的结果来计算
+     *
+     * @param res
+     * @param s
+     * @param index
+     * @return
+     */
+    private boolean helper(List<Integer> res, String s, int index) {
+      if (index == s.length()) {
+        return res.size() > 2;
+      }
+      int num = 0;
+      for (int i = index; i < s.length(); i++) {
+        num = num * 10 + (s.charAt(i) - '0');
+        if (num < 0) {
+          return false;
+        }
+        if (res.size() < 2 || res.get(res.size() - 2) + res.get(res.size() - 1) == num) {
+          res.add(num);
+          // 算法模板
+          if (helper(res, s, i + 1)) {
+            return true;
+          }
+          // 算法模板
+          res.remove(res.size() - 1);
+        }
+        if (index == i && s.charAt(i) == '0') {
+          return false;
+        }
+      }
+      return false;
+    }
+  }
 }
