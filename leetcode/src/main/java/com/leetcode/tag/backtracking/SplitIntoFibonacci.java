@@ -30,21 +30,21 @@ import java.util.List;
  */
 public class SplitIntoFibonacci {
   public List<Integer> splitIntoFibonacci(String S) {
-    List<Integer> result = new ArrayList<>();
     if (S == null || S.length() == 0 || S.charAt(0) == '0') {
-      return result;
+      return new ArrayList<>();
     }
+    List<List<Integer>> result = new ArrayList<>();
     List<Integer> stack = new ArrayList<>();
 
     backTrack(S, 0, stack, result);
 
-    return result;
+    return (result.size() > 0) ? result.get(0) : new ArrayList<>();
   }
 
-  public void backTrack(String S, int start, List<Integer> stack, List<Integer> result) {
+  public void backTrack(String S, int start, List<Integer> stack, List<List<Integer>> result) {
     // 越界统计
     if (start >= S.length() && stack.size() >= 3 && isFibonacci(stack)) {
-      result.addAll(new ArrayList<>(stack));
+      result.add(new ArrayList<>(stack));
     }
     for (int i = start; i < S.length(); i++) {
       stack.add(Integer.valueOf(S.substring(start, i + 1)));
