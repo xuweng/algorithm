@@ -185,6 +185,8 @@ public class SplitIntoFibonacci {
           if (dfs(p + i, s, pre2, num, deep + 1)) {
             return true;
           }
+          // 这样remove也可以
+          // 增加什么就删除什么
           ans.remove(num);
         }
       }
