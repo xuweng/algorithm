@@ -47,7 +47,11 @@ public class SplitIntoFibonacci {
       result.add(new ArrayList<>(stack));
     }
     for (int i = start; i < S.length(); i++) {
-      stack.add(Integer.valueOf(S.substring(start, i + 1)));
+      String s = S.substring(start, i + 1);
+      if (s.length() > 1 && s.charAt(0) == '0') {
+        continue;
+      }
+      stack.add(Integer.parseInt(s));
       backTrack(S, i + 1, stack, result);
       stack.remove(stack.size() - 1);
     }
