@@ -2,6 +2,7 @@ package com.leetcode.tag.backtracking;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 枚举所有的可能，不满足条件的就干掉
@@ -29,7 +30,7 @@ import java.util.List;
  * <p>842. 将数组拆分成斐波那契序列
  */
 public class SplitIntoFibonacci {
-  public List<Long> splitIntoFibonacci(String S) {
+  public List<Integer> splitIntoFibonacci(String S) {
     if (S == null || S.length() == 0) {
       return new ArrayList<>();
     }
@@ -38,7 +39,11 @@ public class SplitIntoFibonacci {
 
     backTrack(S, 0, stack, result);
 
-    return (result.size() > 0) ? result.get(0) : new ArrayList<>();
+    return (result.size() > 0)
+            ? result.get(0).stream()
+            .map(l -> Integer.parseInt(String.valueOf(l)))
+            .collect(Collectors.toList())
+            : new ArrayList<>();
   }
 
   public void backTrack(String S, int start, List<Long> stack, List<List<Long>> result) {
