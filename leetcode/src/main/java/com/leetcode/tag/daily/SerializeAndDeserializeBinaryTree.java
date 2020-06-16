@@ -234,9 +234,9 @@ public class SerializeAndDeserializeBinaryTree {
         index += 2; // 跳过‘#’，和‘，’
         return null;
       }
-      boolean is_minus = false;
+      boolean isMinus = false;
       if (data.charAt(index) == '-') {
-        is_minus = true;
+        isMinus = true;
         index++; // 跳过减号
       }
       int t = 0;
@@ -245,7 +245,9 @@ public class SerializeAndDeserializeBinaryTree {
         index++; // 算好一个数的每位数
       }
       index++; // 跳过逗号
-      if (is_minus) t = -t;
+      if (isMinus) {
+        t = -t;
+      }
       TreeNode root = new TreeNode(t);
       root.left = dfs2(data);
       root.right = dfs2(data);
