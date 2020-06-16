@@ -126,8 +126,6 @@ public class SerializeAndDeserializeBinaryTree {
     }
   }
 
-  ;
-
   class TreeNode {
     int val;
     TreeNode left;
