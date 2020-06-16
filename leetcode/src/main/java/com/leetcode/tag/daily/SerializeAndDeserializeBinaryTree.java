@@ -1,10 +1,22 @@
 package com.leetcode.tag.daily;
 
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
- * 297. 二叉树的序列化与反序列化
+ * 十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>297. 二叉树的序列化与反序列化
  */
 public class SerializeAndDeserializeBinaryTree {
   class Codec {
@@ -53,6 +65,66 @@ public class SerializeAndDeserializeBinaryTree {
       return null;
     }
   }
+
+  /**
+   * 十分钟看答案 作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/solution/er-cha-shu-de-xu-lie-hua-yu-fan-xu-lie-hua-by-le-2/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Codec1 {
+    /**
+     * 使用参数计算
+     *
+     * <p>使用参数拼接
+     *
+     * @param root
+     * @param str
+     * @return
+     */
+    public String rserialize(TreeNode root, String str) {
+      if (root == null) {
+        str += "None,";
+      } else {
+        str += root.val + ",";
+        str = rserialize(root.left, str);
+        // 左子树拼接完的结果再拼接右子树
+        str = rserialize(root.right, str);
+      }
+      return str;
+    }
+
+    public String serialize(TreeNode root) {
+      return rserialize(root, "");
+    }
+
+    /**
+     * 先序遍历
+     *
+     * @param l
+     * @return
+     */
+    public TreeNode rdeserialize(List<String> l) {
+      if ("None".equals(l.get(0))) {
+        l.remove(0);
+        return null;
+      }
+
+      TreeNode root = new TreeNode(Integer.parseInt(l.get(0)));
+      l.remove(0);
+      root.left = rdeserialize(l);
+      root.right = rdeserialize(l);
+
+      return root;
+    }
+
+    public TreeNode deserialize(String data) {
+      String[] dataArray = data.split(",");
+      List<String> dataList = new LinkedList<>(Arrays.asList(dataArray));
+      return rdeserialize(dataList);
+    }
+  }
+
+  ;
 
   class TreeNode {
     int val;
