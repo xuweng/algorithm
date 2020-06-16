@@ -73,7 +73,9 @@ public class SerializeAndDeserializeBinaryTree {
    */
   class Codec1 {
     /**
-     * 使用参数计算
+     * 先序遍历
+     *
+     * <p>使用参数计算
      *
      * <p>使用参数拼接
      *
@@ -98,7 +100,7 @@ public class SerializeAndDeserializeBinaryTree {
     }
 
     /**
-     * 先序遍历
+     * 反序列化
      *
      * @param l
      * @return
