@@ -1,9 +1,6 @@
 package com.leetcode.tag.daily;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * 十分钟看答案
@@ -123,6 +120,70 @@ public class SerializeAndDeserializeBinaryTree {
       String[] dataArray = data.split(",");
       List<String> dataList = new LinkedList<>(Arrays.asList(dataArray));
       return rdeserialize(dataList);
+    }
+  }
+
+  /**
+   * 优秀代码
+   *
+   * <p>优秀代码
+   *
+   * <p>优秀代码
+   *
+   * <p>优秀代码
+   *
+   * <p>优秀代码
+   */
+  class Codec2 {
+    TreeNode tmp = null;
+    List<Integer> pre = new ArrayList<>();
+    List<Integer> in = new ArrayList<>();
+
+    public String serialize(TreeNode root) {
+      StringBuilder ans = new StringBuilder();
+      if (root == null) {
+        return "";
+      }
+      preOrder(root);
+      inOrder(root);
+      tmp = root;
+      return ans.toString();
+    }
+
+    // 先序遍历
+    void preOrder(TreeNode root) {
+      if (root == null) {
+        return;
+      }
+      pre.add(root.val);
+      preOrder(root.left);
+      preOrder(root.right);
+    }
+
+    // 中序遍历
+    void inOrder(TreeNode root) {
+      if (root == null) {
+        return;
+      }
+      inOrder(root.left);
+      in.add(root.val);
+      inOrder(root.right);
+    }
+
+    public TreeNode deserialize(String data) {
+      return tmp;
+    }
+
+    TreeNode buildTree(
+            int[] p, int[] i, int pstart, int pend, int istart, int iend, Map<Integer, Integer> map) {
+      if (pstart > pend || istart > iend) {
+        return null;
+      }
+      TreeNode root = new TreeNode(p[pstart]);
+      int index = map.get(p[pstart]);
+      root.left = buildTree(p, i, pstart + 1, pstart + index - istart, istart, index - 1, map);
+      root.right = buildTree(p, i, pstart + index - istart + 1, pend, index + 1, iend, map);
+      return root;
     }
   }
 
