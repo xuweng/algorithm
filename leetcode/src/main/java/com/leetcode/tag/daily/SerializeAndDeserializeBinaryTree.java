@@ -87,7 +87,7 @@ public class SerializeAndDeserializeBinaryTree {
       } else {
         str += root.val + ",";
         str = rserialize(root.left, str);
-        // 左子树拼接完的结果再拼接右子树
+        // 用左子树拼接完的结果再拼接右子树。厉害。
         str = rserialize(root.right, str);
       }
       return str;
