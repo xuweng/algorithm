@@ -84,7 +84,9 @@ public class SequentialDigits {
     public List<Integer> sequentialDigits(int low, int high) {
       result = new ArrayList<>();
 
-      backTrack(low, high, 0, 1, "");
+      for (int i = 1; i <= 9; i++) {
+        backTrack(low, high, i - 1, i, "");
+      }
 
       result = result.stream().sorted().collect(Collectors.toList());
 
