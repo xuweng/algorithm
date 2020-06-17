@@ -2,6 +2,7 @@ package com.leetcode.tag.backtracking;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 1291. 顺次数
@@ -26,11 +27,15 @@ public class SequentialDigits {
 
     backTrack(low, high, 1, "");
 
+    result = result.stream().sorted().collect(Collectors.toList());
+
     return result;
   }
 
   /**
-   * 用参数来计算
+   * 枚举所有---->选择符合条件
+   *
+   * <p>用参数来计算
    *
    * @param low
    * @param high
@@ -59,10 +64,11 @@ public class SequentialDigits {
       char[] chars = temp.toCharArray();
       int value = Integer.parseInt(String.valueOf(chars[0]));
       for (int j = 1; j < chars.length; j++) {
-        if (value + 1 != Integer.parseInt(String.valueOf(chars[j]))) {
+        int v = Integer.parseInt(String.valueOf(chars[j]));
+        if (value + 1 != v) {
           return false;
         }
-        value = chars[j];
+        value = v;
       }
       return true;
     }
