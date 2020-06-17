@@ -40,7 +40,7 @@ public class SequentialDigits {
   public void backTrack(int low, int high, int start, String temp) {
     if (temp.length() > 0) {
       int i = Integer.parseInt(temp);
-      if (i >= low && i <= high) {
+      if (check(low, high, temp)) {
         result.add(i);
       }
       if (i > high) {
@@ -51,5 +51,21 @@ public class SequentialDigits {
     for (int i = start; i <= 9; i++) {
       backTrack(low, high, i + 1, temp + i);
     }
+  }
+
+  private boolean check(int low, int high, String temp) {
+    int i = Integer.parseInt(temp);
+    if (i >= low && i <= high) {
+      char[] chars = temp.toCharArray();
+      int value = Integer.parseInt(String.valueOf(chars[0]));
+      for (int j = 1; j < chars.length; j++) {
+        if (value + 1 != Integer.parseInt(String.valueOf(chars[j]))) {
+          return false;
+        }
+        value = chars[j];
+      }
+      return true;
+    }
+    return false;
   }
 }
