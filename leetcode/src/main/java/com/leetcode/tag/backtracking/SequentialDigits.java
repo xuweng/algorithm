@@ -93,6 +93,15 @@ public class SequentialDigits {
       return result;
     }
 
+    /**
+     * 从start开始选择
+     *
+     * @param low
+     * @param high
+     * @param pre
+     * @param start
+     * @param temp
+     */
     private void backTrack(int low, int high, int pre, int start, String temp) {
       if (temp.length() > 0) {
         int i = Integer.parseInt(temp);
@@ -104,6 +113,8 @@ public class SequentialDigits {
         }
       }
 
+      // 从start开始选择
+      // 候选集是i
       for (int i = start; i <= 9; i++) {
         // 知道哪里错
         if (pre + 1 != i) {
