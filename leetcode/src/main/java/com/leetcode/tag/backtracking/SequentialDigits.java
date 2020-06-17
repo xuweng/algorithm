@@ -103,7 +103,8 @@ public class SequentialDigits {
       }
 
       for (int i = start; i <= 9; i++) {
-        if (pre + 1 != i) {
+        //知道哪里错
+        if (pre + i != i) {
           continue;
         }
         backTrack(low, high, start, i + 1, temp + i);
