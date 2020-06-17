@@ -74,4 +74,40 @@ public class SequentialDigits {
     }
     return false;
   }
+
+  /**
+   * 用参数来计算
+   */
+  class Solution {
+    private List<Integer> result;
+
+    public List<Integer> sequentialDigits(int low, int high) {
+      result = new ArrayList<>();
+
+      backTrack(low, high, 0, 1, "");
+
+      result = result.stream().sorted().collect(Collectors.toList());
+
+      return result;
+    }
+
+    private void backTrack(int low, int high, int pre, int start, String temp) {
+      if (temp.length() > 0) {
+        int i = Integer.parseInt(temp);
+        if (i >= low && i <= high) {
+          result.add(i);
+        }
+        if (i > high) {
+          return;
+        }
+      }
+
+      for (int i = start; i <= 9; i++) {
+        if (pre + 1 != i) {
+          continue;
+        }
+        backTrack(low, high, start, i + 1, temp + i);
+      }
+    }
+  }
 }
