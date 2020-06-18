@@ -24,6 +24,20 @@ public class RecoverFromPreorder {
     }
   }
 
+  private int[] getIndex(String s, String token) {
+    char[] chars = s.toCharArray();
+    int preIndex = chars.length - 1;
+    for (int i = chars.length - 2; i >= 0; i--) {
+      if (Character.isDigit(chars[i])) {
+        if (token.equals(s.substring(i + 1, preIndex))) {
+          return new int[]{i, preIndex};
+        }
+        preIndex = i;
+      }
+    }
+    return null;
+  }
+
   public class TreeNode {
     int val;
     TreeNode left;
