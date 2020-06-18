@@ -9,7 +9,7 @@ public class StringTest {
   public void test() {
     String str = "1-2--3--4-5--6--7";
 
-    String token = "-";
+    String token = "--";
 
     System.out.println(Arrays.toString(getIndex(str, token)));
 
