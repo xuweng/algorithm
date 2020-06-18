@@ -11,7 +11,7 @@ public class StringTest {
 
     String token = "-";
 
-    System.out.println(Arrays.toString(getIndex(str.substring(token.length() + 1), token)));
+    System.out.println(Arrays.toString(getIndex(str, token)));
 
     System.out.println(str.indexOf("-"));
     System.out.println(str.indexOf("--"));
@@ -21,11 +21,11 @@ public class StringTest {
 
   private int[] getIndex(String s, String token) {
     char[] chars = s.toCharArray();
-    int preIndex = 0;
-    for (int i = 1; i < chars.length; i++) {
+    int preIndex = chars.length - 1;
+    for (int i = chars.length - 2; i >= 0; i--) {
       if (Character.isDigit(chars[i])) {
-        if (token.equals(s.substring(preIndex + 1, i))) {
-          return new int[]{preIndex, i};
+        if (token.equals(s.substring(i + 1, preIndex))) {
+          return new int[]{i, preIndex};
         }
         preIndex = i;
       }
