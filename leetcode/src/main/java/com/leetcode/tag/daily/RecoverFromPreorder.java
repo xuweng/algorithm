@@ -10,14 +10,17 @@ public class RecoverFromPreorder {
     }
 
     public TreeNode re(String S, String token) {
-      if (S.length() <= 1) {
+      if (S.isEmpty()) {
         // 叶子结点
         return null;
       }
       int root = Integer.parseInt(String.valueOf(S.charAt(0)));
       int[] indexes = getIndex(S, token);
       TreeNode treeNode = new TreeNode(root);
-      if (indexes != null) {
+      if (indexes == null) {
+        treeNode.left = null;
+        treeNode.right = null;
+      } else {
         treeNode.left = re(S.substring(1 + token.length(), indexes[0] + 1), token + "-");
         treeNode.right = re(S.substring(indexes[1]), token + "-");
       }
