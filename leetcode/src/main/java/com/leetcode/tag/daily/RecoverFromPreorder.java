@@ -10,10 +10,10 @@ public class RecoverFromPreorder {
     }
 
     public TreeNode re(String S, String token) {
-      int root = Integer.parseInt(String.valueOf(S.charAt(0)));
       if (S.isEmpty()) {
         return null;
       }
+      int root = Integer.parseInt(String.valueOf(S.charAt(0)));
       int[] indexes = getIndex(S, token);
       TreeNode treeNode = new TreeNode(root);
       if (indexes == null) {
