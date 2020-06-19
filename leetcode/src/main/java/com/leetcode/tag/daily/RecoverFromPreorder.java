@@ -17,10 +17,7 @@ public class RecoverFromPreorder {
       int root = Integer.parseInt(String.valueOf(S.charAt(0)));
       int[] indexes = getIndex(S, token);
       TreeNode treeNode = new TreeNode(root);
-      if (indexes == null) {
-        treeNode.left = null;
-        treeNode.right = null;
-      } else {
+      if (indexes != null) {
         treeNode.left = re(S.substring(1 + token.length(), indexes[0] + 1), token + "-");
         treeNode.right = re(S.substring(indexes[1]), token + "-");
       }
