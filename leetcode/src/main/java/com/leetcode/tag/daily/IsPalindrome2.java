@@ -62,4 +62,32 @@ public class IsPalindrome2 {
       return sgood.toString().equals(sgoodRev.toString());
     }
   }
+
+  /**
+   * 使用双指针
+   */
+  class Solution1 {
+    public boolean isPalindrome(String s) {
+      StringBuilder sgood = new StringBuilder();
+      int length = s.length();
+      for (int i = 0; i < length; i++) {
+        char ch = s.charAt(i);
+        if (Character.isLetterOrDigit(ch)) {
+          sgood.append(Character.toLowerCase(ch));
+        }
+      }
+      // 使用双指针
+      int n = sgood.length();
+      int left = 0, right = n - 1;
+      while (left < right) {
+        if (Character.toLowerCase(sgood.charAt(left))
+                != Character.toLowerCase(sgood.charAt(right))) {
+          return false;
+        }
+        ++left;
+        --right;
+      }
+      return true;
+    }
+  }
 }
