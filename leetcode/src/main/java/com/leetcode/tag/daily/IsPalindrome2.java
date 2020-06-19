@@ -90,4 +90,32 @@ public class IsPalindrome2 {
       return true;
     }
   }
+
+  /**
+   * 方法二：在原字符串上直接判断
+   */
+  class Solution3 {
+    public boolean isPalindrome(String s) {
+      int n = s.length();
+      int left = 0, right = n - 1;
+      while (left < right) {
+        // 防止越界
+        // 跳过非法字符
+        while (left < right && !Character.isLetterOrDigit(s.charAt(left))) {
+          ++left;
+        }
+        while (left < right && !Character.isLetterOrDigit(s.charAt(right))) {
+          --right;
+        }
+        if (left < right) {
+          if (Character.toLowerCase(s.charAt(left)) != Character.toLowerCase(s.charAt(right))) {
+            return false;
+          }
+          ++left;
+          --right;
+        }
+      }
+      return true;
+    }
+  }
 }
