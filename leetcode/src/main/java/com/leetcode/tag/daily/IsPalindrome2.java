@@ -91,9 +91,7 @@ public class IsPalindrome2 {
     }
   }
 
-  /**
-   * 方法二：在原字符串上直接判断
-   */
+  /** 方法二：在原字符串上直接判断 */
   class Solution3 {
     public boolean isPalindrome(String s) {
       int n = s.length();
@@ -107,6 +105,7 @@ public class IsPalindrome2 {
         while (left < right && !Character.isLetterOrDigit(s.charAt(right))) {
           --right;
         }
+        // 到这里两个指针都指向合法字符
         if (left < right) {
           if (Character.toLowerCase(s.charAt(left)) != Character.toLowerCase(s.charAt(right))) {
             return false;
