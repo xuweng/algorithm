@@ -11,13 +11,17 @@ public class RecoverFromPreorder {
 
     public TreeNode re(String S, String token) {
       int root = Integer.parseInt(String.valueOf(S.charAt(0)));
-      int[] indexes = getIndex(S, token);
-      if (indexes == null) {
+      if (S.isEmpty()) {
         return null;
       }
+      int[] indexes = getIndex(S, token);
       TreeNode treeNode = new TreeNode(root);
-      treeNode.left = re(S.substring(1 + token.length(), indexes[0]), token + "-");
-      treeNode.right = re(S.substring(indexes[1]), token + "-");
+      if (indexes == null) {
+        treeNode.left = re(S.substring(1 + token.length()), token + "-");
+      } else {
+        treeNode.left = re(S.substring(1 + token.length(), indexes[0]), token + "-");
+        treeNode.right = re(S.substring(indexes[1]), token + "-");
+      }
 
       return treeNode;
     }
