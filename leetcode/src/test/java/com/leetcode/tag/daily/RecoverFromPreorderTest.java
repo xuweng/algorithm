@@ -8,7 +8,8 @@ public class RecoverFromPreorderTest {
     RecoverFromPreorder.Solution recoverFromPreorder = new RecoverFromPreorder.Solution();
 
     //    String S = "1-2--3--4-5--6--7";
-    String S = "1-2--3---4-5--6---7";
+    //    String S = "1-2--3---4-5--6---7";
+    String S = "1-401--349---90--88";
     RecoverFromPreorder.TreeNode treeNode = recoverFromPreorder.recoverFromPreorder(S);
 
     System.out.println();
