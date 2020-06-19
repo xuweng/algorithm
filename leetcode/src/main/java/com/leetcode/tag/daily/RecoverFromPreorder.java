@@ -4,7 +4,7 @@ package com.leetcode.tag.daily;
  * 1028. 从先序遍历还原二叉树
  */
 public class RecoverFromPreorder {
-  class Solution {
+  static class Solution {
     public TreeNode recoverFromPreorder(String S) {
       return re(S, "-");
     }
@@ -41,7 +41,7 @@ public class RecoverFromPreorder {
     }
   }
 
-  public class TreeNode {
+  public static class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
