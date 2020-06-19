@@ -30,11 +30,11 @@ public class RecoverFromPreorder {
 
     private int[] getIndex(String s, String token) {
       char[] chars = s.toCharArray();
-      int preIndex = chars.length - 1;
-      for (int i = chars.length - 2; i >= 0; i--) {
+      int preIndex = 1 + token.length();
+      for (int i = 1 + preIndex; i < s.length(); i++) {
         if (Character.isDigit(chars[i])) {
-          if (token.equals(s.substring(i + 1, preIndex))) {
-            return new int[]{i, preIndex};
+          if (token.equals(s.substring(preIndex, i + 1))) {
+            return new int[]{preIndex, i};
           }
           preIndex = i;
         }
