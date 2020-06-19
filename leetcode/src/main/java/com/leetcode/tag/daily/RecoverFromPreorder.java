@@ -29,11 +29,6 @@ public class RecoverFromPreorder {
       if (indexes == null) {
         return null;
       }
-      int index = S.indexOf(token);
-      int lastIndex = S.lastIndexOf(token);
-      if (index == -1 || lastIndex == -1) {
-        return null;
-      }
       TreeNode treeNode = new TreeNode(root);
       treeNode.left = re(S.substring(1 + token.length(), indexes[0]), token + "-");
       treeNode.right = re(S.substring(indexes[1]), token + "-");
