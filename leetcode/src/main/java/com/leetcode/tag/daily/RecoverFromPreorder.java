@@ -10,12 +10,12 @@ public class RecoverFromPreorder {
     }
 
     public TreeNode re(String S, String token) {
-      if (S.length() <= 1) {
+      if (!S.contains("-")) {
         // 叶子结点
         return new TreeNode(Integer.parseInt(S));
       }
       int index = getDigitIndex(S);
-      int root = Integer.parseInt(S.substring(0, index + 1));
+      int root = Integer.parseInt(S.substring(0, index));
       int[] indexes = getIndex(S, token);
       TreeNode treeNode = new TreeNode(root);
       if (indexes == null) {
