@@ -27,7 +27,7 @@ public class Permutation2 {
       return;
     }
     for (int i = 0; i < s.length(); i++) {
-      if (used[i]) {
+      if (used[i] || (i > 0 && s.charAt(i) == s.charAt(i - 1))) {
         continue;
       }
       used[i] = true;
