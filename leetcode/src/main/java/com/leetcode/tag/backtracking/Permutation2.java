@@ -20,11 +20,18 @@ public class Permutation2 {
     return result.toArray(new String[0]);
   }
 
+  /**
+   * @param s
+   * @param start  开始选择的下标
+   * @param temp
+   * @param result
+   */
   private void backTrack(String s, int start, String temp, List<String> result) {
     if (temp.length() == s.length()) {
       result.add(temp);
       return;
     }
+    // 候选集
     for (int i = start; i < s.length(); i++) {
       if (i > 0 && s.charAt(i) == s.charAt(i - 1)) {
         continue;
