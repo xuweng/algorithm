@@ -13,26 +13,23 @@ import java.util.List;
 public class Permutation2 {
   public String[] permutation(String s) {
 
-    boolean[] used = new boolean[s.length()];
     List<String> result = new ArrayList<>();
 
-    backTrack(s, used, "", result);
+    backTrack(s, 0, "", result);
 
     return result.toArray(new String[0]);
   }
 
-  private void backTrack(String s, boolean[] used, String temp, List<String> result) {
+  private void backTrack(String s, int start, String temp, List<String> result) {
     if (temp.length() == s.length()) {
       result.add(temp);
       return;
     }
-    for (int i = 0; i < s.length(); i++) {
-      if (used[i] || (i > 0 && s.charAt(i) == s.charAt(i - 1))) {
+    for (int i = start; i < s.length(); i++) {
+      if (i > 0 && s.charAt(i) == s.charAt(i - 1)) {
         continue;
       }
-      used[i] = true;
-      backTrack(s, used, temp + s.charAt(i), result);
-      used[i] = false;
+      backTrack(s, i + 1, temp + s.charAt(i), result);
     }
   }
 }
