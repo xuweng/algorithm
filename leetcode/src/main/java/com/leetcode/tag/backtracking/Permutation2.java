@@ -7,10 +7,8 @@ import java.util.List;
  * 递归深度
  *
  * <p>重复计算
- * <p>
- * 重复字符
  *
- *
+ * <p>重复字符
  *
  * <p>剑指 Offer 38. 字符串的排列
  */
@@ -31,7 +29,7 @@ public class Permutation2 {
       return;
     }
     for (int i = 0; i < s.length(); i++) {
-      if (used[i]) {
+      if (used[i] || (temp.length() == 0 && i > 0 && s.charAt(i - 1) == s.charAt(i))) {
         continue;
       }
       used[i] = true;
