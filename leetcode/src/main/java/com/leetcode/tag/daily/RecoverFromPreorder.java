@@ -29,18 +29,23 @@ public class RecoverFromPreorder {
 
     private int[] getIndex(String s, String token) {
       char[] chars = s.toCharArray();
-      int preIndex = 1 + token.length();
+      String digit = "";
+      for (int i = 0; i < s.length() && Character.isDigit(chars[i]); i++) {
+        digit += chars[i];
+      }
+      int preIndex = digit.length() + token.length();
       String str = "";
-      for (int i = 1 + preIndex; i < s.length(); i++) {
+      for (int i = preIndex; i < s.length(); i++) {
         if (!Character.isDigit(chars[i])) {
           str += chars[i];
         } else {
-          preIndex = i;
-          if (token.equals(str)) {
-            return new int[]{preIndex, i};
+          if (str.equals(token)) {
+            return new int[]{i - token.length() - 1, i};
           }
+          str = "";
         }
       }
+
       return null;
     }
   }
