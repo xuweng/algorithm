@@ -29,6 +29,7 @@ public class Permutation2 {
       return;
     }
     for (int i = 0; i < s.length(); i++) {
+      // 过滤已经使用过和相邻重复字符
       if (used[i] || (temp.length() == 0 && i > 0 && s.charAt(i - 1) == s.charAt(i))) {
         continue;
       }
