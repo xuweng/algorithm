@@ -18,9 +18,9 @@ public class RecoverFromPreorder {
       int[] indexes = getIndex(S, token);
       TreeNode treeNode = new TreeNode(root);
       if (indexes == null) {
-        treeNode.left = re(S.substring(1 + token.length()), token + "-");
+        treeNode.left = re(S.substring(getDigitIndex(S, token)), token + "-");
       } else {
-        treeNode.left = re(S.substring(1 + token.length(), indexes[0] + 1), token + "-");
+        treeNode.left = re(S.substring(getDigitIndex(S, token), indexes[0] + 1), token + "-");
         treeNode.right = re(S.substring(indexes[1]), token + "-");
       }
 
@@ -29,13 +29,8 @@ public class RecoverFromPreorder {
 
     private int[] getIndex(String s, String token) {
       char[] chars = s.toCharArray();
-      String digit = "";
-      for (int i = 0; i < s.length() && Character.isDigit(chars[i]); i++) {
-        digit += chars[i];
-      }
-      int preIndex = digit.length() + token.length();
       String str = "";
-      for (int i = preIndex; i < s.length(); i++) {
+      for (int i = getDigitIndex(s, token); i < s.length(); i++) {
         if (!Character.isDigit(chars[i])) {
           str += chars[i];
         } else {
@@ -47,6 +42,16 @@ public class RecoverFromPreorder {
       }
 
       return null;
+    }
+
+    private int getDigitIndex(String s, String token) {
+      char[] chars = s.toCharArray();
+      String digit = "";
+      for (int i = 0; i < s.length() && Character.isDigit(chars[i]); i++) {
+        digit += chars[i];
+      }
+
+      return digit.length() + token.length();
     }
   }
 
