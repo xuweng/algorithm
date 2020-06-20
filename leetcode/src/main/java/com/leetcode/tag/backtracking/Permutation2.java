@@ -1,7 +1,7 @@
 package com.leetcode.tag.backtracking;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 递归深度
@@ -16,14 +16,14 @@ public class Permutation2 {
   public String[] permutation(String s) {
 
     boolean[] used = new boolean[s.length()];
-    List<String> result = new ArrayList<>();
+    Set<String> result = new HashSet<>();
 
     backTrack(s, used, "", result);
 
     return result.toArray(new String[0]);
   }
 
-  private void backTrack(String s, boolean[] used, String temp, List<String> result) {
+  private void backTrack(String s, boolean[] used, String temp, Set<String> result) {
     if (temp.length() == s.length()) {
       result.add(temp);
       return;
