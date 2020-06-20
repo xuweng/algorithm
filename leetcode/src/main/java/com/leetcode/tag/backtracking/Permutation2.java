@@ -13,30 +13,26 @@ import java.util.List;
 public class Permutation2 {
   public String[] permutation(String s) {
 
+    boolean[] used = new boolean[s.length()];
     List<String> result = new ArrayList<>();
 
-    backTrack(s, 0, "", result);
+    backTrack(s, used, "", result);
 
     return result.toArray(new String[0]);
   }
 
-  /**
-   * @param s
-   * @param start  开始选择的下标
-   * @param temp
-   * @param result
-   */
-  private void backTrack(String s, int start, String temp, List<String> result) {
+  private void backTrack(String s, boolean[] used, String temp, List<String> result) {
     if (temp.length() == s.length()) {
       result.add(temp);
       return;
     }
-    // 候选集
-    for (int i = start; i < s.length(); i++) {
-      if (i > 0 && s.charAt(i) == s.charAt(i - 1)) {
+    for (int i = 0; i < s.length(); i++) {
+      if (used[i]) {
         continue;
       }
-      backTrack(s, i + 1, temp + s.charAt(i), result);
+      used[i] = true;
+      backTrack(s, used, temp + s.charAt(i), result);
+      used[i] = false;
     }
   }
 }
