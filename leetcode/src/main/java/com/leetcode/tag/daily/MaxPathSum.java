@@ -84,7 +84,7 @@ public class MaxPathSum {
    */
   private void preMax(TreeNode treeNode, int sum) {
     if (treeNode == null) {
-      // 越界统计
+      // 入参为0，越界一定要统计
       // 这里也要统计一次
       max = Math.max(max, sum);
       return;
