@@ -141,10 +141,14 @@ public class MaxPathSum {
 
       // 递归计算左右子节点的最大贡献值
       // 只有在最大贡献值大于 0 时，才会选取对应子节点
+      // 最大贡献值>=0
       int leftGain = Math.max(maxGain(node.left), 0);
       int rightGain = Math.max(maxGain(node.right), 0);
 
       // 节点的最大路径和取决于该节点的值与该节点的左右子节点的最大贡献值
+      // 4个子问题:root,left+root,right+root,left+root+right
+      // 这里是:left+root+right
+      // 4个子问题变成一个子问题
       int priceNewpath = node.val + leftGain + rightGain;
 
       // 更新答案
