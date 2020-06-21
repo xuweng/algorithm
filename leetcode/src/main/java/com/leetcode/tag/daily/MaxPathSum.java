@@ -16,11 +16,12 @@ package com.leetcode.tag.daily;
 public class MaxPathSum {
   private int result = Integer.MIN_VALUE;
   private int max = Integer.MIN_VALUE;
+  private int sum1;
 
   public int maxPathSum(TreeNode root) {
     pre(root);
 
-    return (int) result;
+    return result;
   }
 
   public void pre(TreeNode root) {
@@ -36,7 +37,13 @@ public class MaxPathSum {
   }
 
   /**
-   * 累加错误
+   * 先序遍历
+   *
+   * <p>先序遍历
+   *
+   * <p>先序遍历
+   *
+   * <p>累加错误
    *
    * <p>累加错误
    *
@@ -72,13 +79,16 @@ public class MaxPathSum {
       // 越界统计
       // 这里也要统计一次
       max = Math.max(max, sum);
+      sum1 = Math.max(sum1, sum);
       return;
     }
+    // 当前是root
+    // 这里加上root
     max = Math.max(max, sum + root.val);
     preMax(root.left, sum + root.val);
     // 回溯
     // 左子树的结果+右子树的结果
-    preMax(root.right, max);
+    preMax(root.right, sum);
   }
 
   static class TreeNode {
