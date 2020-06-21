@@ -32,7 +32,9 @@ public class MaxPathSum {
   }
 
   /**
-   * 经过root结点
+   * 子问题不能简单推导原问题
+   *
+   * <p>经过root结点
    *
    * <p>4个子问题?
    *
