@@ -74,7 +74,7 @@ public class MaxPathSum {
       max = Math.max(max, sum);
       return;
     }
-    max = Math.max(max, sum);
+    max = Math.max(max, sum + root.val);
     preMax(root.left, sum + root.val);
     // 回溯
     // 左子树的结果+右子树的结果
