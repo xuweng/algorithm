@@ -16,7 +16,7 @@ package com.leetcode.tag.daily;
 public class MaxPathSum {
   private int result = Integer.MIN_VALUE;
   private int max = Integer.MIN_VALUE;
-  private int sum1;
+  TreeNode root;
 
   public int maxPathSum(TreeNode root) {
     pre(root);
@@ -24,16 +24,17 @@ public class MaxPathSum {
     return result;
   }
 
-  public void pre(TreeNode root) {
-    if (root == null) {
+  public void pre(TreeNode treeNode) {
+    if (treeNode == null) {
       return;
     }
     // 入参为0才是正确的
-    preMax(root, 0);
+    root = treeNode;
+    preMax(treeNode, 0);
     result = Math.max(result, max);
     max = Integer.MIN_VALUE;
-    maxPathSum(root.left);
-    maxPathSum(root.right);
+    pre(treeNode.left);
+    pre(treeNode.right);
   }
 
   /**
@@ -65,30 +66,32 @@ public class MaxPathSum {
    *
    * <p>单个root
    *
-   * <p>左+root
+   * <p>左+treeNode
    *
-   * <p>右+root
+   * <p>右+treeNode
    *
-   * <p>左+root+右
+   * <p>左+treeNode+右
    *
-   * @param root
+   * @param treeNode
    * @return
    */
-  private void preMax(TreeNode root, int sum) {
-    if (root == null) {
+  private void preMax(TreeNode treeNode, int sum) {
+    if (treeNode == null) {
       // 越界统计
       // 这里也要统计一次
       max = Math.max(max, sum);
-      sum1 = Math.max(sum1, sum);
       return;
     }
     // 当前是root
     // 这里加上root
-    max = Math.max(max, sum + root.val);
-    preMax(root.left, sum + root.val);
-    // 回溯
-    // 左子树的结果+右子树的结果
-    preMax(root.right, sum + root.val);
+    max = Math.max(max, sum + treeNode.val);
+    preMax(treeNode.left, sum + treeNode.val);
+    if (treeNode == root) {
+      // 左子树的结果+右子树的结果
+      preMax(treeNode.right, max);
+    } else {
+      preMax(treeNode.right, sum + treeNode.val);
+    }
   }
 
   static class TreeNode {
