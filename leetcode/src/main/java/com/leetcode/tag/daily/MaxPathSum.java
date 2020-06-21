@@ -28,7 +28,7 @@ public class MaxPathSum {
       return;
     }
     // 入参为0才是正确的
-    preMax(root, 0, max);
+    preMax(root, 0);
     result = Math.max(result, max);
     max = Integer.MIN_VALUE;
     maxPathSum(root.left);
@@ -67,15 +67,16 @@ public class MaxPathSum {
    * @param root
    * @return
    */
-  private void preMax(TreeNode root, int sum, int max1) {
+  private void preMax(TreeNode root, int sum) {
     if (root == null) {
+      max = Math.max(max, sum);
       return;
     }
-    max = Math.max(max1, sum);
-    preMax(root.left, sum + root.val, max);
+    max = Math.max(max, sum);
+    preMax(root.left, sum + root.val);
     // 回溯
     // 左子树的结果+右子树的结果
-    preMax(root.right, sum, max);
+    preMax(root.right, sum);
   }
 
   static class TreeNode {
