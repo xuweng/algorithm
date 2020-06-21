@@ -31,13 +31,19 @@ public class MaxPathSum {
     maxPathSum(root.right);
   }
 
+  /**
+   * 经过root结点
+   *
+   * @param root
+   * @return
+   */
   private long max(TreeNode root) {
     if (root == null) {
       return Integer.MIN_VALUE;
     }
     long left = max(root.left);
     long right = max(root.right);
-    long max = Math.max(root.val, Math.max(left, right));
+    long max = root.val;
     max = Math.max(max, left + root.val);
     max = Math.max(max, right + root.val);
     max = Math.max(max, left + root.val + right);
@@ -45,7 +51,7 @@ public class MaxPathSum {
     return max;
   }
 
-  public class TreeNode {
+  static class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
