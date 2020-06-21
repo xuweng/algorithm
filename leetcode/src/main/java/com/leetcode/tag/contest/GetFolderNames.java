@@ -48,7 +48,7 @@ public class GetFolderNames {
         } else {
           int size = map.size();
           for (int j = 1; j <= size; j++) {
-            String s2 = s + "(" + (map.get(s1) + j) + ")";
+            String s2 = s + "(" + (map.get(s) + j) + ")";
             if (!map.containsKey(s2)) {
               map.put(s2, 1);
               result[i] = s2;
