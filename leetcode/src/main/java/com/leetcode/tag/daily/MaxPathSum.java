@@ -24,6 +24,13 @@ public class MaxPathSum {
     return result;
   }
 
+  /**
+   * 先序遍历
+   *
+   * <p>枚举所有结点，计算每个结点的最大路径
+   *
+   * @param treeNode
+   */
   public void pre(TreeNode treeNode) {
     if (treeNode == null) {
       return;
