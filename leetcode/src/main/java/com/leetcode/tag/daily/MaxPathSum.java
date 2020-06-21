@@ -60,11 +60,10 @@ public class MaxPathSum {
     if (root == null) {
       return;
     }
-    int sum1 = sum + root.val;
-    max = Math.max(max, sum1);
-    preMax(root.left, sum1);
+    max = Math.max(max, sum);
+    preMax(root.left, sum + root.val);
     // 左子树的结果+右子树的结果
-    preMax(root.right, max);
+    preMax(root.right, sum);
   }
 
   static class TreeNode {
