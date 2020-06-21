@@ -14,12 +14,12 @@ package com.leetcode.tag.daily;
  * <p>124. 二叉树中的最大路径和
  */
 public class MaxPathSum {
-  private int max = Integer.MIN_VALUE;
+  private long max = Integer.MIN_VALUE;
 
   public int maxPathSum(TreeNode root) {
     pre(root);
 
-    return max;
+    return (int) max;
   }
 
   public void pre(TreeNode root) {
@@ -31,17 +31,13 @@ public class MaxPathSum {
     maxPathSum(root.right);
   }
 
-  private int max(TreeNode root) {
+  private long max(TreeNode root) {
     if (root == null) {
-      return 0;
+      return Integer.MIN_VALUE;
     }
-    // 叶子结点
-    if (root.left == null && root.right == null) {
-      return root.val;
-    }
-    int left = max(root.left);
-    int right = max(root.right);
-    int max = Math.max(left, right);
+    long left = max(root.left);
+    long right = max(root.right);
+    long max = Math.max(root.val, Math.max(left, right));
     max = Math.max(max, left + root.val);
     max = Math.max(max, right + root.val);
     max = Math.max(max, left + root.val + right);
