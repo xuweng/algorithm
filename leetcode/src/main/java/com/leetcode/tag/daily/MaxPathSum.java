@@ -46,6 +46,7 @@ public class MaxPathSum {
     long max = root.val;
     max = Math.max(max, left + root.val);
     max = Math.max(max, right + root.val);
+    // 这个计算有问题
     max = Math.max(max, left + root.val + right);
 
     return max;
