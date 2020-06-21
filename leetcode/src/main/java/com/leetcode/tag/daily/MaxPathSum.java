@@ -102,6 +102,58 @@ public class MaxPathSum {
     }
   }
 
+  /**
+   * 作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/solution/er-cha-shu-zhong-de-zui-da-lu-jing-he-by-leetcode-/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution {
+    int maxSum = Integer.MIN_VALUE;
+
+    public int maxPathSum(TreeNode root) {
+      maxGain(root);
+      return maxSum;
+    }
+
+    /**
+     * 寻找路径。
+     *
+     * <p>路径。路径。路径。路径。路径。路径。
+     *
+     * <p>首先，考虑实现一个简化的函数 maxGain(node)，该函数计算二叉树中的一个节点的最大贡献值，具体而言，
+     *
+     * <p>就是在以该节点为根节点的子树中寻找以该节点为起点的一条路径，使得该路径上的节点值之和最大。
+     *
+     * <p>作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/binary-tree-maximum-path-sum/solution/er-cha-shu-zhong-de-zui-da-lu-jing-he-by-leetcode-/
+     * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     *
+     * @param node 以该节点为起点的一条路径
+     * @return
+     */
+    public int maxGain(TreeNode node) {
+      // 空节点的最大贡献值等于 0。
+      if (node == null) {
+        return 0;
+      }
+
+      // 递归计算左右子节点的最大贡献值
+      // 只有在最大贡献值大于 0 时，才会选取对应子节点
+      int leftGain = Math.max(maxGain(node.left), 0);
+      int rightGain = Math.max(maxGain(node.right), 0);
+
+      // 节点的最大路径和取决于该节点的值与该节点的左右子节点的最大贡献值
+      int priceNewpath = node.val + leftGain + rightGain;
+
+      // 更新答案
+      maxSum = Math.max(maxSum, priceNewpath);
+
+      // 非空节点的最大贡献值等于节点值与其子节点中的最大贡献值之和（对于叶节点而言，最大贡献值等于节点值）。
+      // 返回节点的最大贡献值
+      return node.val + Math.max(leftGain, rightGain);
+    }
+  }
+
   static class TreeNode {
     int val;
     TreeNode left;
