@@ -34,6 +34,16 @@ public class MaxPathSum {
   /**
    * 经过root结点
    *
+   * <p>4个子问题?
+   *
+   * <p>单个root
+   *
+   * <p>左+root
+   *
+   * <p>右+root
+   *
+   * <p>左+root+右
+   *
    * @param root
    * @return
    */
