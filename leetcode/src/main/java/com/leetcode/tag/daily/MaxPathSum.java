@@ -63,9 +63,8 @@ public class MaxPathSum {
     max = Math.max(max, sum + root.val);
     preMax(root.left, sum + root.val);
     // 回溯
-    max = max - root.val;
     // 左子树的结果+右子树的结果
-    preMax(root.right, max);
+    preMax(root.right, max - root.val);
   }
 
   static class TreeNode {
