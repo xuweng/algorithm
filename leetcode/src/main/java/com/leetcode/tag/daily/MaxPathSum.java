@@ -118,6 +118,8 @@ public class MaxPathSum {
     /**
      * 二叉树路径问题
      *
+     * <p>root的最大路径:3个子问题:root、root+left、root+right。三者取最大。max(root,root+left,root+right)
+     *
      * <p>一开始:子问题直接推导原问题(原问题的路径没有包含子问题的路径)
      *
      * <p>搞错概念。搞错概念。搞错概念。搞错概念。搞错概念。搞错概念。搞错概念。搞错概念。搞错概念
