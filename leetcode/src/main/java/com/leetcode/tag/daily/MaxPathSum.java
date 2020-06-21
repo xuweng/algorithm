@@ -94,6 +94,7 @@ public class MaxPathSum {
     max = Math.max(max, sum + treeNode.val);
     preMax(treeNode.left, sum + treeNode.val);
     if (treeNode == root) {
+      // 当前结点是root
       // 左子树的结果+右子树的结果
       preMax(treeNode.right, max);
     } else {
