@@ -11,6 +11,13 @@ public class PatternMatching {
   private boolean result;
 
   public boolean patternMatching(String pattern, String value) {
+    if (pattern == null) {
+      return value == null;
+    }
+    if (pattern.isEmpty()) {
+      return value.isEmpty();
+    }
+
     map = new HashMap<>();
 
     backTrack(pattern, value, 0);
