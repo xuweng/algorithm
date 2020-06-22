@@ -7,12 +7,21 @@ import java.util.Map;
  */
 public class PatternMatching {
   private Map<Character, String> map;
+  private boolean result;
 
   public boolean patternMatching(String pattern, String value) {
-    return true;
+    backTrack(pattern, value, 0);
+
+    return result;
   }
 
   private void backTrack(String pattern, String value, int patternIndex) {
+    if (patternIndex == pattern.length()) {
+      result = true;
+
+      return;
+    }
+
     for (int i = 0; i < value.length(); i++) {
       String str = value.substring(0, i + 1);
       if (map.containsKey(pattern.charAt(patternIndex))
