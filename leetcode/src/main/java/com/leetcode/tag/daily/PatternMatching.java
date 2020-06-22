@@ -1,5 +1,6 @@
 package com.leetcode.tag.daily;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -10,6 +11,8 @@ public class PatternMatching {
   private boolean result;
 
   public boolean patternMatching(String pattern, String value) {
+    map = new HashMap<>();
+
     backTrack(pattern, value, 0);
 
     return result;
