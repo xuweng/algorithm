@@ -10,8 +10,11 @@ public class PatternMatchingTest {
     //    String pattern = "abba";
     //    String value = "dogcatcatdog";
 
-    String pattern = "abba";
-    String value = "dogcatcatfish";
+    //    String pattern = "abba";
+    //    String value = "dogcatcatfish";
+
+    String pattern = "bbbaa";
+    String value = "xxxxxxy";
     patternMatching.patternMatching(pattern, value);
   }
 }
