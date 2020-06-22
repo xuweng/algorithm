@@ -43,9 +43,14 @@ public class PatternMatching {
 
     for (int i = 0; i < value.length(); i++) {
       String str = value.substring(0, i + 1);
-      if (map.containsKey(pattern.charAt(patternIndex))
-              && !map.get(pattern.charAt(patternIndex)).equals(str)) {
-        continue;
+      if (map.containsKey(pattern.charAt(patternIndex))) {
+        if (!map.get(pattern.charAt(patternIndex)).equals(str)) {
+          continue;
+        }
+      } else {
+        if (map.containsValue(str)) {
+          continue;
+        }
       }
 
       map.putIfAbsent(pattern.charAt(patternIndex), str);
