@@ -17,6 +17,12 @@ public class PatternMatching {
     if (pattern.isEmpty()) {
       return value.isEmpty();
     }
+    if (value.isEmpty()) {
+      if (pattern.contains("a") && pattern.contains("b")) {
+        return false;
+      }
+      return true;
+    }
     map = new HashMap<>();
 
     backTrack(pattern, value, 0);
