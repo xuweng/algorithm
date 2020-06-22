@@ -33,7 +33,7 @@ public class PatternMatching {
       }
 
       map.putIfAbsent(pattern.charAt(patternIndex), str);
-      backTrack(pattern, value.substring(i + 1), i + 1);
+      backTrack(pattern, value.substring(i + 1), patternIndex + 1);
       map.remove(pattern.charAt(patternIndex));
     }
   }
