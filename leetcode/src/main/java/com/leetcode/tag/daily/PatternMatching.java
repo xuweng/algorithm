@@ -18,10 +18,7 @@ public class PatternMatching {
       return value.isEmpty();
     }
     if (value.isEmpty()) {
-      if (pattern.contains("a") && pattern.contains("b")) {
-        return false;
-      }
-      return true;
+      return !pattern.contains("a") || !pattern.contains("b");
     }
     map = new HashMap<>();
 
@@ -30,8 +27,15 @@ public class PatternMatching {
     return result;
   }
 
+  /**
+   * 但需注意"a"和"b"不能同时表示相同的字符串
+   *
+   * @param pattern
+   * @param value
+   * @param patternIndex
+   */
   private void backTrack(String pattern, String value, int patternIndex) {
-    if (patternIndex == pattern.length() && value.isEmpty()) {
+    if (patternIndex == pattern.length()) {
       result = true;
 
       return;
