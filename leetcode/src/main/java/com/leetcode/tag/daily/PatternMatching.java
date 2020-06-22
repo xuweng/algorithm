@@ -12,7 +12,7 @@ public class PatternMatching {
     return true;
   }
 
-  private void backTrack(String pattern, String value, int patternIndex, int valueIndex) {
+  private void backTrack(String pattern, String value, int patternIndex) {
     for (int i = 0; i < value.length(); i++) {
       String str = value.substring(0, i + 1);
       if (map.containsKey(pattern.charAt(patternIndex))
@@ -21,7 +21,8 @@ public class PatternMatching {
       }
 
       map.putIfAbsent(pattern.charAt(patternIndex), str);
-      backTrack(pattern, value.substring(i + 1), i, valueIndex);
+      backTrack(pattern, value.substring(i + 1), i + 1);
+      map.remove(pattern.charAt(patternIndex));
     }
   }
 }
