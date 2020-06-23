@@ -8,7 +8,6 @@ import java.util.Map;
  */
 public class PatternMatching {
   private Map<Character, String> map;
-  private boolean result;
 
   public boolean patternMatching(String pattern, String value) {
     if (pattern == null || value == null) {
@@ -22,9 +21,7 @@ public class PatternMatching {
     }
     map = new HashMap<>();
 
-    backTrack(pattern, value, 0);
-
-    return result;
+    return backTrack(pattern, value, 0);
   }
 
   /**
@@ -34,20 +31,9 @@ public class PatternMatching {
    * @param value
    * @param patternIndex
    */
-  private void backTrack(String pattern, String value, int patternIndex) {
-    if (value.isEmpty()) {
-      if (patternIndex == pattern.length()) {
-        result = true;
-      }
-
-      return;
-    }
-    if (patternIndex == pattern.length()) {
-      if (value.isEmpty()) {
-        result = true;
-      }
-
-      return;
+  private boolean backTrack(String pattern, String value, int patternIndex) {
+    if (patternIndex == pattern.length() && value.isEmpty()) {
+      return true;
     }
 
     for (int i = 0; i < value.length(); i++) {
@@ -63,8 +49,12 @@ public class PatternMatching {
       }
 
       map.putIfAbsent(pattern.charAt(patternIndex), str);
-      backTrack(pattern, value.substring(i + 1), patternIndex + 1);
+      if (backTrack(pattern, value.substring(i + 1), patternIndex + 1)) {
+        return true;
+      }
       map.remove(pattern.charAt(patternIndex));
     }
+
+    return false;
   }
 }
