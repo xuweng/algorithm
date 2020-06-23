@@ -35,6 +35,13 @@ public class PatternMatching {
    * @param patternIndex
    */
   private void backTrack(String pattern, String value, int patternIndex) {
+    if (value.isEmpty()) {
+      if (patternIndex == pattern.length()) {
+        result = true;
+      }
+
+      return;
+    }
     if (patternIndex == pattern.length()) {
       if (value.isEmpty()) {
         result = true;
