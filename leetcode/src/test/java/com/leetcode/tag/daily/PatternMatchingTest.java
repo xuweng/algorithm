@@ -16,6 +16,8 @@ public class PatternMatchingTest {
     String pattern = "bbbaa";
     // 重复字符不通过
     String value = "xxxxxxy";
-    patternMatching.patternMatching(pattern, value);
+    boolean result = patternMatching.patternMatching(pattern, value);
+
+    System.out.println();
   }
 }
