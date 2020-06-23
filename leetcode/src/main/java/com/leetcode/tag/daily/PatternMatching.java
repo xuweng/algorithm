@@ -2,7 +2,6 @@ package com.leetcode.tag.daily;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * 面试题 16.18. 模式匹配
@@ -42,12 +41,6 @@ public class PatternMatching {
       }
 
       return;
-    }
-    if (map.containsKey(pattern.charAt(patternIndex))) {
-      String string = map.get(pattern.charAt(patternIndex));
-      if (Objects.equals(string, value.substring(0, string.length()))) {
-        backTrack(pattern, value.substring(string.length()), patternIndex + 1);
-      }
     }
 
     for (int i = 0; i < value.length(); i++) {
