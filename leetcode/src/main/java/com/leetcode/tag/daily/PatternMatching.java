@@ -4,7 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 面试题 16.18. 模式匹配
+ * 熟练回溯
+ *
+ * <p>回溯不够熟练
+ *
+ * <p>面试题 16.18. 模式匹配
  */
 public class PatternMatching {
   private Map<Character, String> map;
