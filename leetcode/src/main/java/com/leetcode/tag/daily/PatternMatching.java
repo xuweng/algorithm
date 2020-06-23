@@ -35,6 +35,9 @@ public class PatternMatching {
     if (patternIndex == pattern.length()) {
       return value.isEmpty();
     }
+    if (value.isEmpty()) {
+      return false;
+    }
 
     for (int i = 0; i < value.length(); i++) {
       String str = value.substring(0, i + 1);
