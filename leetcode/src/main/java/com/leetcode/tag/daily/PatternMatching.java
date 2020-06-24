@@ -12,6 +12,7 @@ import java.util.Map;
  */
 public class PatternMatching {
   private Map<Character, String> map;
+  private Map<Character, Integer> countMap;
 
   public boolean patternMatching(String pattern, String value) {
     if (pattern == null || value == null) {
@@ -24,6 +25,7 @@ public class PatternMatching {
       return !pattern.contains("a") || !pattern.contains("b");
     }
     map = new HashMap<>();
+    countMap = new HashMap<>();
 
     return backTrack(pattern, value, 0);
   }
@@ -58,12 +60,16 @@ public class PatternMatching {
       }
 
       map.putIfAbsent(pattern.charAt(patternIndex), str);
+      countMap.put(
+              pattern.charAt(patternIndex), countMap.getOrDefault(pattern.charAt(patternIndex), 0) + 1);
       if (backTrack(pattern, value.substring(i + 1), patternIndex + 1)) {
         return true;
       }
       // 回溯会删掉以前的记录(不能删掉以前的记录)
       // 如果以前有记录就不能删除
-      map.remove(pattern.charAt(patternIndex));
+      if (countMap.get(pattern.charAt(patternIndex)) <= 1) {
+        map.remove(pattern.charAt(patternIndex));
+      }
     }
 
     return false;
