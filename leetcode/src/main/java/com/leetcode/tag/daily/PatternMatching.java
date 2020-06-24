@@ -62,6 +62,7 @@ public class PatternMatching {
         return true;
       }
       // 回溯会删掉以前的记录(不能删掉以前的记录)
+      // 如果以前有记录就不能删除
       map.remove(pattern.charAt(patternIndex));
     }
 
