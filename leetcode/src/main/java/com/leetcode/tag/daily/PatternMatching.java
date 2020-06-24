@@ -61,6 +61,7 @@ public class PatternMatching {
       if (backTrack(pattern, value.substring(i + 1), patternIndex + 1)) {
         return true;
       }
+      // 回溯会删掉以前的记录(不能删掉以前的记录)
       map.remove(pattern.charAt(patternIndex));
     }
 
