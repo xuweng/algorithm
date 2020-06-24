@@ -57,12 +57,13 @@ public class PatternMatching {
         }
       }
 
-      map.putIfAbsent(pattern.charAt(patternIndex), str);
+      //      map.putIfAbsent(pattern.charAt(patternIndex), str);
+      map.put(pattern.charAt(patternIndex), str);
       if (backTrack(pattern, value.substring(i + 1), patternIndex + 1)) {
         return true;
       }
       // 回溯删掉以前的记录(不能删掉以前的记录)
-      map.remove(pattern.charAt(patternIndex));
+      //      map.remove(pattern.charAt(patternIndex));
     }
 
     return false;
