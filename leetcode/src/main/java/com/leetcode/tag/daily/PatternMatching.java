@@ -2,6 +2,7 @@ package com.leetcode.tag.daily;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 /**
  * 熟练回溯
@@ -77,11 +78,7 @@ public class PatternMatching {
   }
 
   private boolean pre(String pattern, int patternIndex) {
-    for (int i = 0; i < patternIndex; i++) {
-      if (pattern.charAt(i) == pattern.charAt(patternIndex)) {
-        return false;
-      }
-    }
-    return true;
+    return IntStream.range(0, patternIndex)
+            .noneMatch(i -> pattern.charAt(i) == pattern.charAt(patternIndex));
   }
 }
