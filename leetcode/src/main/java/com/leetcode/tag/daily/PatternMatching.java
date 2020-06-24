@@ -29,7 +29,9 @@ public class PatternMatching {
   }
 
   /**
-   * 但需注意"a"和"b"不能同时表示相同的字符串
+   * 终于知道哪里错误了
+   *
+   * <p>但需注意"a"和"b"不能同时表示相同的字符串
    *
    * @param pattern
    * @param value
@@ -59,6 +61,7 @@ public class PatternMatching {
       if (backTrack(pattern, value.substring(i + 1), patternIndex + 1)) {
         return true;
       }
+      // 回溯删掉以前的记录(不能删掉以前的记录)
       map.remove(pattern.charAt(patternIndex));
     }
 
