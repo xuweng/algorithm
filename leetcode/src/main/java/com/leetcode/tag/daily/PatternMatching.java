@@ -37,6 +37,8 @@ public class PatternMatching {
    *
    * <p>但需注意"a"和"b"不能同时表示相同的字符串
    *
+   * <p>a或者b都可以匹配空
+   *
    * @param pattern
    * @param value
    * @param patternIndex
