@@ -12,6 +12,7 @@ import java.util.Map;
  */
 public class PatternMatching {
   private Map<Character, String> map;
+  // 字母匹配成功次数
   private Map<Character, Integer> countMap;
 
   public boolean patternMatching(String pattern, String value) {
