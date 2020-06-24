@@ -39,7 +39,7 @@ public class ThreeSumClosest {
 
       // 枚举 a
       for (int i = 0; i < n; ++i) {
-        // 保证和上一次枚举的元素不相等
+        // 保证和上一次枚举的元素不相等(?)
         if (i > 0 && nums[i] == nums[i - 1]) {
           continue;
         }
