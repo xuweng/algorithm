@@ -52,6 +52,7 @@ public class PatternMatching {
     }
 
     for (int i = 0; i < value.length(); i++) {
+      //a或者b都可以匹配空
       String str = value.substring(0, i + 1);
       if (map.containsKey(pattern.charAt(patternIndex))) {
         if (!map.get(pattern.charAt(patternIndex)).equals(str)) {
