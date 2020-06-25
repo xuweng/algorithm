@@ -119,6 +119,7 @@ public class WordBreak {
           // 这里是s.substring(j, i),不是s.substring(j+1, i)
           if (dp[j] && wordDictSet.contains(s.substring(j, i))) {
             dp[i] = true;
+            // 只要找到一个满足条件就可以
             break;
           }
         }
