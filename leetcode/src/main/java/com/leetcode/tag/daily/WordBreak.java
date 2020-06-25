@@ -31,6 +31,11 @@ public class WordBreak {
       list.add(str);
       map.put(key, list);
     }
+    for (char c : s.toCharArray()) {
+      if (!map.containsKey(c)) {
+        return false;
+      }
+    }
 
     return backTrack(s);
   }
