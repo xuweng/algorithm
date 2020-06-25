@@ -66,9 +66,15 @@ public class WordBreak {
   /**
    * 方法一：动态规划
    *
+   * <p>dp状态定义:能否计算最终答案?能否计算原问题答案?
+   *
    * <p>我们定义dp[i] 表示字符串 s 前 i 个字符组成的字符串s[0..i−1] 是否能被空格拆分成若干个字典中出现的单词
    *
    * <p>最终答案:dp[s.length]
+   *
+   * <p>最优子结构
+   *
+   * <p>这样定义可以用子问题推导原问题
    *
    * <p>作者：LeetCode-Solution
    * 链接：https://leetcode-cn.com/problems/word-break/solution/dan-ci-chai-fen-by-leetcode-solution/
