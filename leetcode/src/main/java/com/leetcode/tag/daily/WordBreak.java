@@ -108,7 +108,7 @@ public class WordBreak {
    * 链接：https://leetcode-cn.com/problems/word-break/solution/dan-ci-chai-fen-by-leetcode-solution/
    * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
    */
-  public class Solution {
+  class Solution {
     public boolean wordBreak(String s, List<String> wordDict) {
       Set<String> wordDictSet = new HashSet(wordDict);
       boolean[] dp = new boolean[s.length() + 1];
@@ -126,6 +126,29 @@ public class WordBreak {
       }
       // 原问题解
       return dp[s.length()];
+    }
+  }
+
+  /**
+   * 短小精悍
+   */
+  class Solution1 {
+    public boolean wordBreak(String s, List<String> wordDict) {
+      if (s.length() == 0) {
+        return true;
+      }
+      if (s.length() >= 151) {
+        return false;
+      }
+      for (int i = 0; i < wordDict.size(); i++) {
+        String word = wordDict.get(i);
+        if (s.startsWith(word)) {
+          if (wordBreak(s.substring(word.length()), wordDict)) {
+            return true;
+          }
+        }
+      }
+      return false;
     }
   }
 }
