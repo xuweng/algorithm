@@ -17,6 +17,7 @@ import java.util.*;
  */
 public class WordBreak {
   Map<Character, List<String>> map;
+  Map<String, Boolean> memo;
   // 递归深度
   int reCount;
 
@@ -25,6 +26,8 @@ public class WordBreak {
       return s.isEmpty();
     }
     map = new HashMap<>();
+    memo = new HashMap<>();
+
     for (String str : wordDict) {
       char key = str.charAt(0);
       List<String> list = map.getOrDefault(key, new ArrayList<>());
@@ -50,10 +53,12 @@ public class WordBreak {
    * @return
    */
   public boolean backTrack(String s) {
-    System.out.println(++reCount);
-
+    if (memo.containsKey(s)) {
+      return memo.get(s);
+    }
     char key = s.charAt(0);
     if (!map.containsKey(key)) {
+      memo.put(s, false);
       return false;
     }
     List<String> list = map.get(key);
@@ -71,9 +76,11 @@ public class WordBreak {
         return true;
       }
       if (backTrack(s.substring(str.length()))) {
+        memo.put(s, true);
         return true;
       }
     }
+    memo.put(s, false);
     return false;
   }
 
