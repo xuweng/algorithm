@@ -37,4 +37,45 @@ public class CountArrangement {
       stack.pop();
     }
   }
+
+  /**
+   * 我们找到使用数字 1 到 N 的所有排列。然后我们逐一遍历每个数字并检查是否满足两个条件中的一个。
+   *
+   * <p>作者：LeetCode
+   * 链接：https://leetcode-cn.com/problems/beautiful-arrangement/solution/you-mei-de-pai-lie-by-leetcode/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution {
+    int count = 0;
+
+    public int countArrangement(int N) {
+      int[] nums = new int[N];
+      for (int i = 1; i <= N; i++) nums[i - 1] = i;
+      permute(nums, 0);
+      return count;
+    }
+
+    public void permute(int[] nums, int l) {
+      if (l == nums.length - 1) {
+        int i;
+        for (i = 1; i <= nums.length; i++) {
+          if (nums[i - 1] % i != 0 && i % nums[i - 1] != 0) break;
+        }
+        if (i > nums.length) {
+          count++;
+        }
+      }
+      for (int i = l; i < nums.length; i++) {
+        swap(nums, i, l);
+        permute(nums, l + 1);
+        swap(nums, i, l);
+      }
+    }
+
+    public void swap(int[] nums, int x, int y) {
+      int temp = nums[x];
+      nums[x] = nums[y];
+      nums[y] = temp;
+    }
+  }
 }
