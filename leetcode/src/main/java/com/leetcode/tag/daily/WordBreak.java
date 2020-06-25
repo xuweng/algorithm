@@ -119,6 +119,7 @@ public class WordBreak {
         for (int j = 0; j < i; j++) {
           // 前 j 个字符(数组下标0到j-1),这里的j不是数组下标
           // 这里是s.substring(j, i),不是s.substring(j+1, i)
+          // 同时满足两个条件
           if (dp[j] && wordDictSet.contains(s.substring(j, i))) {
             dp[i] = true;
             // 只要找到一个满足条件就可以
