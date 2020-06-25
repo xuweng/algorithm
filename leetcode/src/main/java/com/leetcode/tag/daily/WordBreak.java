@@ -39,7 +39,9 @@ public class WordBreak {
   }
 
   /**
-   * 我们这个递归是前序遍历的，遍历到右侧子树时发现前面都已经计算过了 用一个备忘录 memo 数组，
+   * 在所有return的地方加上memo
+   *
+   * <p>我们这个递归是前序遍历的，遍历到右侧子树时发现前面都已经计算过了 用一个备忘录 memo 数组，
    *
    * <p>去存之前计算的结果，index 对应指针 start，值对应子调用的结果，即子树的返回结果
    *
@@ -73,6 +75,7 @@ public class WordBreak {
         continue;
       }
       if (str.length() == s.length()) {
+        memo.put(s, true);
         return true;
       }
       if (backTrack(s.substring(str.length()))) {
