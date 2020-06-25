@@ -89,6 +89,8 @@ public class WordBreak {
       dp[0] = true;
       for (int i = 1; i <= s.length(); i++) {
         for (int j = 0; j < i; j++) {
+          // 前 j 个字符(数组下标0到j-1),这里的j不是数组下标
+          // 这里是s.substring(j, i),不是s.substring(j+1, i)
           if (dp[j] && wordDictSet.contains(s.substring(j, i))) {
             dp[i] = true;
             break;
