@@ -25,4 +25,22 @@ public class WordBreakTest {
 
     System.out.println(wordBreak.wordBreak(s, wordDict));
   }
+
+  @Test
+  public void test2() {
+
+    String s = "applepenapple";
+    List<String> wordDict = Arrays.asList("apple", "pen");
+
+    System.out.println(wordBreak.wordBreak(s, wordDict));
+  }
+
+  @Test
+  public void test3() {
+
+    String s = "catsandog";
+    List<String> wordDict = Arrays.asList("cats", "dog", "sand", "and", "cat");
+
+    System.out.println(wordBreak.wordBreak(s, wordDict));
+  }
 }
