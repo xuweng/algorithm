@@ -17,6 +17,8 @@ import java.util.*;
  */
 public class WordBreak {
   Map<Character, List<String>> map;
+  // 递归深度
+  int reCount;
 
   public boolean wordBreak(String s, List<String> wordDict) {
     if (wordDict == null || wordDict.isEmpty()) {
@@ -34,6 +36,8 @@ public class WordBreak {
   }
 
   public boolean backTrack(String s) {
+    System.out.println(++reCount);
+
     char key = s.charAt(0);
     if (!map.containsKey(key)) {
       return false;
