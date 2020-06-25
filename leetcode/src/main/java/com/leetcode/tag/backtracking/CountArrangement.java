@@ -21,6 +21,7 @@ public class CountArrangement {
 
   private void backTrack(
           int N, int start, boolean[] used, List<List<Integer>> result, Deque<Integer> stack) {
+    // 越界统计
     if (start > N) {
       result.add(new ArrayList<>(stack));
       return;
