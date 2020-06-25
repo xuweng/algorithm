@@ -15,6 +15,10 @@ import java.util.*;
  */
 public class WordBreak {
   public boolean wordBreak(String s, List<String> wordDict) {
+    if (wordDict == null || wordDict.isEmpty()) {
+      return s.isEmpty();
+    }
+
     Map<Character, List<String>> map = new HashMap<>();
 
     for (String str : wordDict) {
