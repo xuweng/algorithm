@@ -16,13 +16,13 @@ import java.util.*;
  * <p>139. 单词拆分
  */
 public class WordBreak {
+  Map<Character, List<String>> map;
+
   public boolean wordBreak(String s, List<String> wordDict) {
     if (wordDict == null || wordDict.isEmpty()) {
       return s.isEmpty();
     }
-
-    Map<Character, List<String>> map = new HashMap<>();
-
+    map = new HashMap<>();
     for (String str : wordDict) {
       char key = str.charAt(0);
       List<String> list = map.getOrDefault(key, new ArrayList<>());
@@ -30,29 +30,32 @@ public class WordBreak {
       map.put(key, list);
     }
 
-    int i = 0;
-    while (i < s.length()) {
-      char key = s.charAt(i);
-      if (!map.containsKey(key)) {
-        return false;
-      }
-      List<String> list = map.get(key);
-      int length = -1;
-      for (String str : list) {
-        if (i + str.length() > s.length()) {
-          continue;
-        }
-        String s1 = s.substring(i, i + str.length());
-        if (Objects.equals(s1, str)) {
-          length = str.length();
-          break;
-        }
-      }
-      if (length == -1) {
-        return false;
-      }
-      i += length;
+    return backTrack(s);
+  }
+
+  public boolean backTrack(String s) {
+    char key = s.charAt(0);
+    if (!map.containsKey(key)) {
+      return false;
     }
-    return true;
+    List<String> list = map.get(key);
+
+    // 候选集
+    for (String str : list) {
+      if (str.length() > s.length()) {
+        continue;
+      }
+      String s1 = s.substring(0, str.length());
+      if (!Objects.equals(s1, str)) {
+        continue;
+      }
+      if (str.length() == s.length()) {
+        return true;
+      }
+      if (backTrack(s.substring(str.length()))) {
+        return true;
+      }
+    }
+    return false;
   }
 }
