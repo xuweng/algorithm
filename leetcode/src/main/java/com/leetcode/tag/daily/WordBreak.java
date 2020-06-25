@@ -62,4 +62,34 @@ public class WordBreak {
     }
     return false;
   }
+
+  /**
+   * 方法一：动态规划
+   *
+   * <p>我们定义dp[i] 表示字符串 s 前 i 个字符组成的字符串s[0..i−1] 是否能被空格拆分成若干个字典中出现的单词
+   *
+   * <p>最终答案:dp[s.length]
+   *
+   * <p>作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/word-break/solution/dan-ci-chai-fen-by-leetcode-solution/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/word-break/solution/dan-ci-chai-fen-by-leetcode-solution/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  public class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+      Set<String> wordDictSet = new HashSet(wordDict);
+      boolean[] dp = new boolean[s.length() + 1];
+      dp[0] = true;
+      for (int i = 1; i <= s.length(); i++) {
+        for (int j = 0; j < i; j++) {
+          if (dp[j] && wordDictSet.contains(s.substring(j, i))) {
+            dp[i] = true;
+            break;
+          }
+        }
+      }
+      return dp[s.length()];
+    }
+  }
 }
