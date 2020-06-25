@@ -35,6 +35,20 @@ public class WordBreak {
     return backTrack(s);
   }
 
+  /**
+   * 我们这个递归是前序遍历的，遍历到右侧子树时发现前面都已经计算过了 用一个备忘录 memo 数组，
+   *
+   * <p>去存之前计算的结果，index 对应指针 start，值对应子调用的结果，即子树的返回结果
+   *
+   * <p>下次遇到相同的子调用，即遇到相同的子树，就直接返回 memo 中的缓存结果
+   *
+   * <p>作者：hyj8
+   * 链接：https://leetcode-cn.com/problems/word-break/solution/shou-hui-tu-jie-san-chong-fang-fa-dfs-bfs-dong-tai/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   *
+   * @param s
+   * @return
+   */
   public boolean backTrack(String s) {
     System.out.println(++reCount);
 
