@@ -43,4 +43,30 @@ public class WordBreakTest {
 
     System.out.println(wordBreak.wordBreak(s, wordDict));
   }
+
+  /**
+   * s重复字符太多.每个字符候选集都太多
+   */
+  @Test
+  public void test4() {
+
+    String s =
+            "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                    + "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab";
+    List<String> wordDict =
+            Arrays.asList(
+                    "a",
+                    "aa",
+                    "aaa",
+                    "aaaa",
+                    "aaaaa",
+                    "aaaaaa",
+                    "aaaaaaa",
+                    "aaaaaaaa",
+                    "aaaaaaaaa",
+                    "aaaaaaaaaa");
+
+    System.out.println(wordBreak.wordBreak(s, wordDict));
+  }
 }
