@@ -13,6 +13,6 @@ public class WordBreakTest {
     String s = "leetcode";
     List<String> wordDict = Arrays.asList("leet", "code");
 
-    wordBreak.wordBreak(s, wordDict);
+    System.out.println(wordBreak.wordBreak(s, wordDict));
   }
 }
