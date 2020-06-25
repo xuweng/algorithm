@@ -25,6 +25,7 @@ public class CountArrangement {
       result.add(new ArrayList<>(stack));
       return;
     }
+    // 第start个位置有N种选择，且不能重复选择
     for (int i = 1; i <= N; i++) {
       if (used[i] || (i % start != 0 && start % i != 0)) {
         continue;
