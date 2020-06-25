@@ -26,16 +26,14 @@ public class CountArrangement {
       return;
     }
     for (int i = 1; i <= N; i++) {
-      if (used[i]) {
+      if (used[i] || (i % start != 0 && start % i != 0)) {
         continue;
       }
-      if (i % start == 0 || start % i == 0) {
-        used[i] = true;
-        stack.push(i);
-        backTrack(N, start + 1, used, result, stack);
-        used[i] = false;
-        stack.pop();
-      }
+      used[i] = true;
+      stack.push(i);
+      backTrack(N, start + 1, used, result, stack);
+      used[i] = false;
+      stack.pop();
     }
   }
 }

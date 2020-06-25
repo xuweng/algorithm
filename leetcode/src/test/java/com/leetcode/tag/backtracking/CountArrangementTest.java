@@ -10,4 +10,10 @@ public class CountArrangementTest {
     int N = 2;
     countArrangement.countArrangement(N);
   }
+
+  @Test
+  public void test1() {
+    int N = 3;
+    countArrangement.countArrangement(N);
+  }
 }
