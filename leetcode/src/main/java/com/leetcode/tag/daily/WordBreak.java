@@ -133,10 +133,18 @@ public class WordBreak {
    * 短小精悍
    */
   class Solution1 {
+    /**
+     * 有大量重复计算
+     *
+     * @param s
+     * @param wordDict
+     * @return
+     */
     public boolean wordBreak(String s, List<String> wordDict) {
-      if (s.length() == 0) {
+      if (s.isEmpty()) {
         return true;
       }
+      // 还可以这样。直接限制字符串长度。厉害。
       if (s.length() >= 151) {
         return false;
       }
