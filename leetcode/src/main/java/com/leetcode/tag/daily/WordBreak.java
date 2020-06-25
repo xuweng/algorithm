@@ -140,12 +140,16 @@ public class WordBreak {
       if (s.length() >= 151) {
         return false;
       }
+      // 重复使用wordDict
       for (int i = 0; i < wordDict.size(); i++) {
         String word = wordDict.get(i);
-        if (s.startsWith(word)) {
-          if (wordBreak(s.substring(word.length()), wordDict)) {
-            return true;
-          }
+        // 剪枝
+        // startsWith这个函数好用
+        if (!s.startsWith(word)) {
+          continue;
+        }
+        if (wordBreak(s.substring(word.length()), wordDict)) {
+          return true;
         }
       }
       return false;
