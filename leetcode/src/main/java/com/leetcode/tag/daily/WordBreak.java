@@ -22,7 +22,7 @@ public class WordBreak {
     Map<Character, List<String>> map = new HashMap<>();
 
     for (String str : wordDict) {
-      char key = s.charAt(0);
+      char key = str.charAt(0);
       List<String> list = map.getOrDefault(key, new ArrayList<>());
       list.add(str);
       map.put(key, list);
@@ -37,7 +37,10 @@ public class WordBreak {
       List<String> list = map.get(key);
       int length = -1;
       for (String str : list) {
-        String s1 = s.substring(i, str.length());
+        if (i + str.length() > s.length()) {
+          continue;
+        }
+        String s1 = s.substring(i, i + str.length());
         if (Objects.equals(s1, str)) {
           length = str.length();
           break;
@@ -46,7 +49,7 @@ public class WordBreak {
       if (length == -1) {
         return false;
       }
-      i = length;
+      i += length;
     }
     return true;
   }
