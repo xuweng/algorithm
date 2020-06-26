@@ -47,6 +47,7 @@ public class RemoveDuplicateNodes {
       occurred.add(head.val);
       ListNode pos = head;
       // 枚举前驱节点
+      // 一次循环就可以.循环时删除重复结点
       while (pos.next != null) {
         // 当前待删除节点
         ListNode next = pos.next;
