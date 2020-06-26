@@ -41,8 +41,8 @@ public class TotalNQueens {
     this.n = n;
     result = new ArrayList<>();
 
-    Character[][] chars = new Character[n][n];
-    for (Character[] c : chars) {
+    char[][] chars = new char[n][n];
+    for (char[] c : chars) {
       Arrays.fill(c, '.');
     }
 
@@ -51,10 +51,16 @@ public class TotalNQueens {
     return result.size();
   }
 
-  public void backTrack(Character[][] chars, int row) {
+  public void backTrack(char[][] chars, int row) {
     if (row >= chars.length) {
       // 结果要使用新的数组，因为回溯会还原原来的数组。
-      result.add(chars);
+      Character[][] newChars = new Character[chars.length][chars[0].length];
+      for (int i = 0; i < chars.length; i++) {
+        for (int j = 0; j < chars[0].length; j++) {
+          newChars[i][i] = chars[i][j];
+        }
+      }
+      result.add(newChars);
       return;
     }
     for (int i = 0; i < chars[0].length; i++) {
