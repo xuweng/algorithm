@@ -10,6 +10,14 @@ import java.util.stream.Collectors;
  */
 public class NumSquarefulPerms {
   public int numSquarefulPerms(int[] A) {
+    Set<Integer> hashSet = new HashSet<>();
+    for (int i : A) {
+      hashSet.add(i);
+    }
+    if (A.length == hashSet.size()) {
+      return isSquare(new ArrayList<>(hashSet)) ? 1 : 0;
+    }
+
     Arrays.sort(A);
 
     boolean[] used = new boolean[A.length];
