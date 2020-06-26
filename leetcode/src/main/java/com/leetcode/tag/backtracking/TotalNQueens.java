@@ -53,6 +53,7 @@ public class TotalNQueens {
 
   public void backTrack(Character[][] chars, int row) {
     if (row >= chars.length) {
+      // 结果要使用新的数组，因为回溯会还原原来的数组。
       result.add(chars);
       return;
     }
