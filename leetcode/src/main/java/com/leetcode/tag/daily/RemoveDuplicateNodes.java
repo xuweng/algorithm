@@ -33,6 +33,35 @@ public class RemoveDuplicateNodes {
     return newHead;
   }
 
+  /**
+   * 作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/remove-duplicate-node-lcci/solution/yi-chu-zhong-fu-jie-dian-by-leetcode-solution/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution {
+    public ListNode removeDuplicateNodes(ListNode head) {
+      if (head == null) {
+        return head;
+      }
+      Set<Integer> occurred = new HashSet<>();
+      occurred.add(head.val);
+      ListNode pos = head;
+      // 枚举前驱节点
+      while (pos.next != null) {
+        // 当前待删除节点
+        ListNode next = pos.next;
+        if (occurred.add(next.val)) {
+          pos = pos.next;
+        } else {
+          // 删除
+          pos.next = pos.next.next;
+        }
+      }
+      pos.next = null;
+      return head;
+    }
+  }
+
   class ListNode {
     int val;
     ListNode next;
