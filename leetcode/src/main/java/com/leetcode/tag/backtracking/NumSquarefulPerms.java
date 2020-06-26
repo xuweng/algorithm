@@ -27,7 +27,7 @@ public class NumSquarefulPerms {
       return;
     }
     for (int i = 0; i < array.length; i++) {
-      if (used[i] || (i > 0 && array[i] == array[i - 1])) {
+      if (used[i] || (stack.isEmpty() && i > 0 && array[i] == array[i - 1])) {
         continue;
       }
       used[i] = true;
