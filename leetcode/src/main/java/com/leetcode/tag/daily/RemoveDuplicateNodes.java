@@ -14,6 +14,7 @@ public class RemoveDuplicateNodes {
       return null;
     }
     ListNode p = head;
+    // 使用TreeSet会升序
     Set<Integer> set = new TreeSet<>();
     while (p != null) {
       set.add(p.val);
