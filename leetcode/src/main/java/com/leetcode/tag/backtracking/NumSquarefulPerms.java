@@ -27,9 +27,12 @@ public class NumSquarefulPerms {
       return;
     }
     for (int i = 0; i < array.length; i++) {
-      if (used[i] || (stack.isEmpty() && i > 0 && array[i] == array[i - 1])) {
+      // 是否重复分支
+      boolean fen = (stack.isEmpty() && i > 0 && array[i] == array[i - 1]);
+      if (used[i] || fen) {
         continue;
       }
+      // 不会选择重复分支，但是第一个分支会选择重复数据
       used[i] = true;
       stack.push(array[i]);
       backTrack(array, used, result, stack);
