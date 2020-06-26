@@ -99,4 +99,32 @@ public class TotalNQueens {
   private boolean check(int row, int col) {
     return !horizontal[row] && !vertical[col] && !left[row + col] && !right[n - row + col];
   }
+
+  /**
+   * 短小精悍
+   */
+  class Solution {
+    private int size;
+    private int count;
+
+    private void solve(int row, int ld, int rd) {
+      if (row == size) {
+        count++;
+        return;
+      }
+      int pos = size & (~(row | ld | rd)); // 当前层能放皇后的所有位置
+      while (pos != 0) {
+        int p = pos & (-pos); // 得到最低位的1
+        pos -= p; // pos &= pos - 1; 将当前pos里面的p放上皇后
+        solve(row | p, (ld | p) << 1, (rd | p) >> 1);
+      }
+    }
+
+    public int totalNQueens(int n) {
+      count = 0;
+      size = (1 << n) - 1; // 可以填皇后的位置（1左移n位再减1）
+      solve(0, 0, 0);
+      return count;
+    }
+  }
 }
