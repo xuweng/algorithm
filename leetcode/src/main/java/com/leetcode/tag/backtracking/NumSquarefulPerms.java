@@ -49,7 +49,7 @@ public class NumSquarefulPerms {
       return;
     }
     for (int i = 0; i < array.length; i++) {
-      // 是否重复分支
+      // 是否重复分支。分支是对root来说。一定要加上stack.isEmpty()这个条件。
       boolean fen = (stack.isEmpty() && i > 0 && array[i] == array[i - 1]);
       if (used[i] || fen) {
         continue;
