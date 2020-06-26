@@ -101,7 +101,9 @@ public class TotalNQueens {
   }
 
   /**
-   * 短小精悍
+   * 位运算
+   *
+   * <p>短小精悍
    */
   class Solution {
     private int size;
