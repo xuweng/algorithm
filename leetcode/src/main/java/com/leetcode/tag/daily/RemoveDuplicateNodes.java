@@ -1,9 +1,9 @@
 package com.leetcode.tag.daily;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * 面试题 02.01. 移除重复节点
@@ -14,17 +14,14 @@ public class RemoveDuplicateNodes {
       return null;
     }
     ListNode p = head;
-    Set<Integer> set = new TreeSet<>();
+    Set<Integer> set = new HashSet<>();
+    List<Integer> list = new ArrayList<>();
     while (p != null) {
-      set.add(p.val);
+      if (set.add(p.val)) {
+        list.add(p.val);
+      }
       p = p.next;
     }
-    // 这里会升序,手动添加
-    List<Integer> list = new ArrayList<>();
-    set.forEach(
-            i -> {
-              list.add(i);
-            });
 
     ListNode newHead = new ListNode(list.get(0));
     ListNode tail = newHead;
