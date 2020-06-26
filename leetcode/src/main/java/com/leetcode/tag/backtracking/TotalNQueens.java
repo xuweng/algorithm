@@ -29,6 +29,8 @@ public class TotalNQueens {
   // 竖
   private boolean[] vertical;
 
+  private char[][] chars;
+
   private List<Character[][]> result;
   private int n;
 
@@ -41,17 +43,22 @@ public class TotalNQueens {
     this.n = n;
     result = new ArrayList<>();
 
-    char[][] chars = new char[n][n];
+    chars = new char[n][n];
     for (char[] c : chars) {
       Arrays.fill(c, '.');
     }
 
-    backTrack(chars, 0);
+    backTrack(0);
 
     return result.size();
   }
 
-  public void backTrack(char[][] chars, int row) {
+  /**
+   * 使用成员变量减少函数参数
+   *
+   * @param row
+   */
+  public void backTrack(int row) {
     if (row >= chars.length) {
       // 结果要使用新的数组，因为回溯会还原原来的数组。
       Character[][] newChars = new Character[chars.length][chars[0].length];
@@ -71,7 +78,7 @@ public class TotalNQueens {
       chars[row][i] = 'Q';
       set(row, i, true);
       // 搜索所有答案.不是搜索到一个答案就返回。
-      backTrack(chars, row + 1);
+      backTrack(row + 1);
       // 回溯。和上面一一对应。
       chars[row][i] = '.';
       set(row, i, false);
