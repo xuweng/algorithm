@@ -14,13 +14,17 @@ public class RemoveDuplicateNodes {
       return null;
     }
     ListNode p = head;
-    // 使用TreeSet会升序
     Set<Integer> set = new TreeSet<>();
     while (p != null) {
       set.add(p.val);
       p = p.next;
     }
-    List<Integer> list = new ArrayList<>(set);
+    // 这里会升序,手动添加
+    List<Integer> list = new ArrayList<>();
+    set.forEach(
+            i -> {
+              list.add(i);
+            });
 
     ListNode newHead = new ListNode(list.get(0));
     ListNode tail = newHead;
