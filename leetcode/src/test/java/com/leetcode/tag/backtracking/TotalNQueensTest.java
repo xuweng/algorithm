@@ -2,6 +2,9 @@ package com.leetcode.tag.backtracking;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class TotalNQueensTest {
   TotalNQueens totalNQueens = new TotalNQueens();
 
@@ -9,6 +12,13 @@ public class TotalNQueensTest {
   public void test() {
     int n = 4;
     totalNQueens.totalNQueens(n);
-    System.out.println(totalNQueens.getResult());
+
+    List<Character[][]> list = totalNQueens.getResult();
+    for (Character[][] characters : list) {
+      for (Character[] character : characters) {
+        System.out.println(Arrays.toString(character));
+      }
+      System.out.println();
+    }
   }
 }
