@@ -1,5 +1,9 @@
 package com.leetcode.tag.backtracking;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * 不要纠结。没时间纠结。没时间纠结。没时间纠结
  *
@@ -24,13 +28,34 @@ public class TotalNQueens {
   private boolean[] horizontal;
   // 竖
   private boolean[] vertical;
+
+  private List<Character[][]> result;
   private int n;
 
   public int totalNQueens(int n) {
-    return 0;
+    // 初始化
+    left = new boolean[n + n];
+    right = new boolean[n + n];
+    horizontal = new boolean[n];
+    vertical = new boolean[n];
+    this.n = n;
+    result = new ArrayList<>();
+
+    Character[][] chars = new Character[n][n];
+    for (Character[] c : chars) {
+      Arrays.fill(c, '.');
+    }
+
+    backTrack(chars, 0);
+
+    return result.size();
   }
 
-  public void backTrack(char[][] chars, int row) {
+  public boolean backTrack(Character[][] chars, int row) {
+    if (row >= chars.length) {
+      result.add(chars);
+      return true;
+    }
     for (int i = 0; i < chars[0].length; i++) {
       if (!check(row, i)) {
         continue;
@@ -38,11 +63,15 @@ public class TotalNQueens {
       // 一一对应
       chars[row][i] = 'Q';
       set(row, i, true);
-      backTrack(chars, row + 1);
+      if (backTrack(chars, row + 1)) {
+        return true;
+      }
       // 回溯。和上面一一对应。
       chars[row][i] = '.';
       set(row, i, false);
     }
+
+    return false;
   }
 
   private void set(int row, int col, boolean value) {
