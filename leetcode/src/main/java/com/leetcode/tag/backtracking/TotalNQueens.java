@@ -53,6 +53,10 @@ public class TotalNQueens {
     return result.size();
   }
 
+  public List<Character[][]> getResult() {
+    return result;
+  }
+
   /**
    * 使用成员变量减少函数参数
    *

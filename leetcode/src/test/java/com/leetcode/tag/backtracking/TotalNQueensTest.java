@@ -9,5 +9,6 @@ public class TotalNQueensTest {
   public void test() {
     int n = 4;
     totalNQueens.totalNQueens(n);
+    System.out.println(totalNQueens.getResult());
   }
 }
