@@ -40,8 +40,10 @@ public class NumSquarefulPerms {
           Set<String> set,
           Deque<Integer> stack) {
     if (stack.size() == array.length) {
+      // stack转为字符串
       String s = stack.stream().map(String::valueOf).collect(Collectors.joining(","));
       if (set.add(s)) {
+        // 去重
         result.add(new ArrayList<>(stack));
       }
       return;
