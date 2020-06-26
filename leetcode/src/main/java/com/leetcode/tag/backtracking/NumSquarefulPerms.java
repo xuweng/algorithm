@@ -32,7 +32,7 @@ public class NumSquarefulPerms {
       if (used[i] || fen) {
         continue;
       }
-      // 不会选择重复分支，但是第一个分支会选择重复数据
+      // 不会选择重复分支，但是第一个分支会选择重复数据,需要处理第一个分支
       used[i] = true;
       stack.push(array[i]);
       backTrack(array, used, result, stack);
