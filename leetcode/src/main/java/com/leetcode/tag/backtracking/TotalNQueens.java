@@ -64,7 +64,7 @@ public class TotalNQueens {
    */
   public void backTrack(int row) {
     if (row >= chars.length) {
-      // 结果要使用新的数组，因为回溯会还原原来的数组。
+      // 结果要使用新的数组，因为回溯会还原原来的数组。result只保存原来数组的引用，不保存值。
       Character[][] newChars = new Character[chars.length][chars[0].length];
       for (int i = 0; i < chars.length; i++) {
         for (int j = 0; j < chars[0].length; j++) {
