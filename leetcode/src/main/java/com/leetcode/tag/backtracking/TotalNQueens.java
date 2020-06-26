@@ -68,7 +68,7 @@ public class TotalNQueens {
       Character[][] newChars = new Character[chars.length][chars[0].length];
       for (int i = 0; i < chars.length; i++) {
         for (int j = 0; j < chars[0].length; j++) {
-          newChars[i][i] = chars[i][j];
+          newChars[i][j] = chars[i][j];
         }
       }
       result.add(newChars);
