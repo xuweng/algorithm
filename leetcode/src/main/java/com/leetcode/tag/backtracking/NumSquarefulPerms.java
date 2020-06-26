@@ -16,6 +16,7 @@ public class NumSquarefulPerms {
       hashSet.add(i);
       list.add(i);
     }
+    // 只有一个重复数字.只有一个排列
     if (hashSet.size() == 1) {
       return isSquare(list) ? 1 : 0;
     }
