@@ -2,9 +2,8 @@ package com.leetcode.tag.backtracking;
 
 import com.leetcode.tag.util.Square;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 996. 正方形数组的数目
@@ -14,37 +13,47 @@ public class NumSquarefulPerms {
     Arrays.sort(A);
 
     boolean[] used = new boolean[A.length];
-    Set<String> result = new HashSet<>();
+    Set<String> set = new HashSet<>();
+    List<List<Integer>> result = new ArrayList<>();
+    Deque<Integer> stack = new LinkedList<>();
 
-    backTrack(A, used, result, "");
+    backTrack(A, used, result, set, stack);
 
     return (int) result.stream().filter(this::isSquare).count();
   }
 
-  private void backTrack(int[] array, boolean[] used, Set<String> result, String temp) {
-    if (temp.length() == array.length) {
-      result.add(temp);
+  private void backTrack(
+          int[] array,
+          boolean[] used,
+          List<List<Integer>> result,
+          Set<String> set,
+          Deque<Integer> stack) {
+    if (stack.size() == array.length) {
+      String s = stack.stream().map(String::valueOf).collect(Collectors.joining(","));
+      if (set.add(s)) {
+        result.add(new ArrayList<>(stack));
+      }
       return;
     }
     for (int i = 0; i < array.length; i++) {
       // 是否重复分支
-      boolean fen = (temp.isEmpty() && i > 0 && array[i] == array[i - 1]);
+      boolean fen = (stack.isEmpty() && i > 0 && array[i] == array[i - 1]);
       if (used[i] || fen) {
         continue;
       }
       // 不会选择重复分支，但是第一个分支会选择重复数据,需要处理第一个分支
       used[i] = true;
-      backTrack(array, used, result, temp + array[i]);
+      stack.push(array[i]);
+      backTrack(array, used, result, set, stack);
       used[i] = false;
+      stack.pop();
     }
   }
 
-  private boolean isSquare(String str) {
+  private boolean isSquare(List<Integer> list) {
     int pre = 0;
-    for (int i = 1; i < str.length(); i++) {
-      if (!Square.isPerfectSquare(
-              Integer.parseInt(String.valueOf(str.charAt(pre)))
-                      + Integer.parseInt(String.valueOf(str.charAt(i))))) {
+    for (int i = 1; i < list.size(); i++) {
+      if (!Square.isPerfectSquare(list.get(pre) + list.get(i))) {
         return false;
       }
       pre = i;

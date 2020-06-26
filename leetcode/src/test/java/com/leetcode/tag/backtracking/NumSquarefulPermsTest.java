@@ -13,5 +13,7 @@ public class NumSquarefulPermsTest {
 
   @Test
   public void test1() {
+    int[] A = {1, 17, 8};
+    numSquarefulPerms.numSquarefulPerms(A);
   }
 }
