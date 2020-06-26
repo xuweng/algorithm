@@ -51,10 +51,10 @@ public class TotalNQueens {
     return result.size();
   }
 
-  public boolean backTrack(Character[][] chars, int row) {
+  public void backTrack(Character[][] chars, int row) {
     if (row >= chars.length) {
       result.add(chars);
-      return true;
+      return;
     }
     for (int i = 0; i < chars[0].length; i++) {
       if (!check(row, i)) {
@@ -63,15 +63,12 @@ public class TotalNQueens {
       // 一一对应
       chars[row][i] = 'Q';
       set(row, i, true);
-      if (backTrack(chars, row + 1)) {
-        return true;
-      }
+      // 搜索所有答案.不是搜索到一个答案就返回。
+      backTrack(chars, row + 1);
       // 回溯。和上面一一对应。
       chars[row][i] = '.';
       set(row, i, false);
     }
-
-    return false;
   }
 
   private void set(int row, int col, boolean value) {
