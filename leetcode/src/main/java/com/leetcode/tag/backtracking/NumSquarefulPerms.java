@@ -88,8 +88,8 @@ public class NumSquarefulPerms {
 
     public int numSquarefulPerms(int[] A) {
       int N = A.length;
-      count = new HashMap();
-      graph = new HashMap();
+      count = new HashMap<>();
+      graph = new HashMap<>();
 
       // count.get(v) : 数组 A 中值为 v 的节点数量
       for (int x : A) {
@@ -99,9 +99,10 @@ public class NumSquarefulPerms {
       // graph.get(v) : 在 A 中的值 w 满足 v + w 是完全平方数
       //                (ie., "vw" is an edge)
       for (int x : count.keySet()) {
-        graph.put(x, new ArrayList());
+        graph.put(x, new ArrayList<>());
       }
 
+      // 构造图
       for (int x : count.keySet()) {
         for (int y : count.keySet()) {
           int r = (int) (Math.sqrt(x + y) + 0.5);
