@@ -20,4 +20,20 @@ public class VerbalArithmeticPuzzleTest {
 
     System.out.println(verbalArithmeticPuzzle.isSolvable(words, result));
   }
+
+  @Test
+  public void test2() {
+    String[] words = {"THIS", "IS", "TOO"};
+    String result = "FUNNY";
+
+    System.out.println(verbalArithmeticPuzzle.isSolvable(words, result));
+  }
+
+  @Test
+  public void test3() {
+    String[] words = {"LEET", "CODE"};
+    String result = "POINT";
+
+    System.out.println(verbalArithmeticPuzzle.isSolvable(words, result));
+  }
 }
