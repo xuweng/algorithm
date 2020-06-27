@@ -72,9 +72,9 @@ public class VerbalArithmeticPuzzle {
       String[] newWords = new String[words.length];
       for (int i1 = 0; i1 < words.length; i1++) {
         String w = words[i1];
-        newWords[i1] = w.replaceAll(String.valueOf(c), String.valueOf(i));
+        newWords[i1] = w.replace(String.valueOf(c), String.valueOf(i));
       }
-      String newResult = result.replaceAll(String.valueOf(c), String.valueOf(i));
+      String newResult = result.replace(String.valueOf(c), String.valueOf(i));
       if (backTrack(word, start + 1, newWords, newResult, map)) {
         return true;
       }
