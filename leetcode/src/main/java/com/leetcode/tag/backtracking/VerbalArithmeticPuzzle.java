@@ -1,5 +1,7 @@
 package com.leetcode.tag.backtracking;
 
+import com.leetcode.tag.util.StringUtils;
+
 import java.util.*;
 
 /**
@@ -74,6 +76,20 @@ public class VerbalArithmeticPuzzle {
       char c = word.charAt(start);
       if (map.containsKey(c) || map.containsValue(i)) {
         continue;
+      }
+      // 剪枝
+      // root时判断。第一个数不能选择0.。被解码成一个没有前导零的数字
+      if (i == 0) {
+        if (!StringUtils.hasDigit(result)) {
+          continue;
+        }
+        boolean flag = true;
+        for (String s : words) {
+          flag = flag && !StringUtils.hasDigit(s);
+        }
+        if (flag) {
+          continue;
+        }
       }
       map.put(c, i);
       String[] newWords = new String[words.length];
