@@ -69,17 +69,15 @@ public class VerbalArithmeticPuzzle {
         continue;
       }
       map.put(c, i);
-      for (String w : words) {
-        w.replaceAll(String.valueOf(c), String.valueOf(i));
+      String[] newWords = new String[words.length];
+      for (int i1 = 0; i1 < words.length; i1++) {
+        String w = words[i1];
+        newWords[i1] = w.replaceAll(String.valueOf(c), String.valueOf(i));
       }
-      result.replaceAll(String.valueOf(c), String.valueOf(i));
-      if (backTrack(word, start + 1, words, result, map)) {
+      String newResult = result.replaceAll(String.valueOf(c), String.valueOf(i));
+      if (backTrack(word, start + 1, newWords, newResult, map)) {
         return true;
       }
-      for (String w : words) {
-        w.replaceAll(String.valueOf(c), String.valueOf(c));
-      }
-      result.replaceAll(String.valueOf(c), String.valueOf(c));
       map.remove(c);
     }
 
