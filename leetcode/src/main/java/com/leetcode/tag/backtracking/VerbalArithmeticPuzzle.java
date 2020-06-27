@@ -76,6 +76,7 @@ public class VerbalArithmeticPuzzle {
       }
       String newResult = result.replace(String.valueOf(c), String.valueOf(i));
       if (backTrack(word, start + 1, newWords, newResult, map)) {
+        // 找到一个答案就返回。只需要一个答案。
         return true;
       }
       map.remove(c);

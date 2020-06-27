@@ -10,6 +10,6 @@ public class VerbalArithmeticPuzzleTest {
     String[] words = {"SEND", "MORE"};
     String result = "MONEY";
 
-    verbalArithmeticPuzzle.isSolvable(words, result);
+    System.out.println(verbalArithmeticPuzzle.isSolvable(words, result));
   }
 }
