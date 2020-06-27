@@ -12,4 +12,12 @@ public class VerbalArithmeticPuzzleTest {
 
     System.out.println(verbalArithmeticPuzzle.isSolvable(words, result));
   }
+
+  @Test
+  public void test1() {
+    String[] words = {"SIX", "SEVEN", "SEVEN"};
+    String result = "TWENTY";
+
+    System.out.println(verbalArithmeticPuzzle.isSolvable(words, result));
+  }
 }
