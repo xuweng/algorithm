@@ -56,8 +56,15 @@ public class VerbalArithmeticPuzzle {
   public boolean backTrack(
           String word, int start, String[] words, String result, Map<Character, Integer> map) {
     if (start >= word.length()) {
+      // 被解码成一个没有前导零的数字
+      if (result.charAt(0) == '0') {
+        return false;
+      }
       int sum = 0;
       for (String s : words) {
+        if (s.charAt(0) == '0') {
+          return false;
+        }
         sum += Integer.parseInt(s);
       }
 
