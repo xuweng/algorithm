@@ -16,7 +16,7 @@ public class MinSubArrayLen {
     }
     int result = Integer.MAX_VALUE;
     for (int i = 0; i < preSum.length; i++) {
-      int sum = 0;
+      int sum;
       for (int j = i; j < preSum.length; j++) {
         if (i == 0) {
           sum = preSum[j];
