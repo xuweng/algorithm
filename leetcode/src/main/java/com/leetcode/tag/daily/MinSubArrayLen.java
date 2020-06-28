@@ -121,6 +121,17 @@ public class MinSubArrayLen {
    * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
    */
   class Solution2 {
+    /**
+     * 扩张窗口：找可行解，找到了就不再扩张
+     *
+     * <p>收缩窗口：在长度上优化该可行解，直到条件被破坏
+     *
+     * <p>寻找下一个可行解，然后再优化……
+     *
+     * @param s
+     * @param nums
+     * @return
+     */
     public int minSubArrayLen(int s, int[] nums) {
       int n = nums.length;
       if (n == 0) {
@@ -130,13 +141,15 @@ public class MinSubArrayLen {
       // end指针扩大窗口。start指针收缩窗口
       int start = 0, end = 0;
       int sum = 0;
-      while (end < n) {
+      while (end < n) { // 扩张窗口
         sum += nums[end];
-        while (sum >= s) {
+        while (sum >= s) { // 收缩窗口
           ans = Math.min(ans, end - start + 1);
           sum -= nums[start];
+          // 收缩窗口
           start++;
         }
+        // 扩张窗口
         end++;
       }
       return ans == Integer.MAX_VALUE ? 0 : ans;
