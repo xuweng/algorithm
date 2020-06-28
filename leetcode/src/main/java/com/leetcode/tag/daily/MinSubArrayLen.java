@@ -127,6 +127,7 @@ public class MinSubArrayLen {
         return 0;
       }
       int ans = Integer.MAX_VALUE;
+      // end指针扩大窗口。start指针收缩窗口
       int start = 0, end = 0;
       int sum = 0;
       while (end < n) {
