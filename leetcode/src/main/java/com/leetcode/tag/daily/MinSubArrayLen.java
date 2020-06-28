@@ -18,7 +18,7 @@ public class MinSubArrayLen {
     for (int i = 0; i < preSum.length; i++) {
       int sum = nums[i];
       for (int j = i; j < preSum.length; j++) {
-        sum += preSum[j] - preSum[i];
+        sum += preSum[j] - preSum[i] + nums[i];
         if (sum >= s) {
           result = Math.min(result, j - i + 1);
           break;
