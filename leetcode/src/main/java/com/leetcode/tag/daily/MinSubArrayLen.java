@@ -21,6 +21,7 @@ public class MinSubArrayLen {
         sum += preSum[j] - preSum[i];
         if (sum == s) {
           result = Math.min(result, j - i + 1);
+          break;
         }
         if (sum > s) {
           break;
