@@ -4,6 +4,9 @@ package com.leetcode.tag.daily;
  * 215. 数组中的第K个最大元素
  */
 public class FindKthLargest {
+    /**
+     * 选择区间
+     */
     class Solution {
         public int findKthLargest(int[] nums, int k) {
             return quickSort(nums, 0, nums.length - 1, k);
