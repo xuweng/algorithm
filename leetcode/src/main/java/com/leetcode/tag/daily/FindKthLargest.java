@@ -30,10 +30,13 @@ public class FindKthLargest {
             //j是分区
             //两个区间:[l...j]和[j...r].k在哪个区间?
             if (r - j >= k) {
+                //第二个区间元素过多
                 //k在第二个区间.继续第k大.
                 return quickSort(nums, j + 1, r, k);
             }
+            //第一个区间元素过多
             //k在第一个区间.第k - r + j小.
+            //1,2,3,4,5.第2大=第4小.第4大=第2小.
             return quickSort(nums, l, j, k - r + j);
         }
 
