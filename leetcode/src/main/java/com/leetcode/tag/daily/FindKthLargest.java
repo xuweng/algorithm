@@ -10,6 +10,7 @@ public class FindKthLargest {
         }
 
         private int quickSort(int[] nums, int l, int r, int k) {
+            //数组只有一个元素
             if (l >= r) return nums[l];
             //-1?,+1?
             int i = l - 1, j = r + 1;
