@@ -35,9 +35,9 @@ public class FindKthLargest {
                 return quickSort(nums, j + 1, r, k);
             }
             //第一个区间元素过多
-            //k在第一个区间.第k - r + j小.
+            //k在第一个区间.第k - (r - j)大.排除第二个区间的元素
             //1,2,3,4,5.第2大=第4小.第4大=第2小.
-            return quickSort(nums, l, j, k - r + j);
+            return quickSort(nums, l, j, k - (r - j));
         }
 
         private void swap(int[] nums, int a, int b) {
