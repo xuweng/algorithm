@@ -40,7 +40,7 @@ public class WordDictionary {
    */
   public boolean match(String word, String pattern) {
     if (pattern.charAt(0) == '.') {
-      // . 可以表示任何一个字母
+      // . 可以表示任何一个字母。只能表示一个字母？不能重复表示不同字母？
       return match(word, pattern.substring(1)) || match(word.substring(1), pattern.substring(1));
     }
     if (word.charAt(0) == pattern.charAt(0)) {
