@@ -45,10 +45,6 @@ class CQueue {
         stack2.push(stack1.pop());
       }
     }
-    if (stack2.isEmpty()) {
-      return -1;
-    } else {
-      return stack2.pop();
-    }
+    return stack2.isEmpty() ? -1 : stack2.pop();
   }
 }
