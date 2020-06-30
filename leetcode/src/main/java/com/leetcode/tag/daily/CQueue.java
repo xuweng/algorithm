@@ -39,7 +39,7 @@ class CQueue {
     // 如果第二个栈为空
     if (stack2.isEmpty()) {
       while (!stack1.isEmpty()) {
-        // 第一个栈全部插入第二个栈
+        // 第一个栈的元素全部迁移到第二个栈
         stack2.push(stack1.pop());
       }
     }
