@@ -21,14 +21,25 @@ class CQueue {
     stack2 = new LinkedList<>();
   }
 
+  /**
+   * 第一个栈支持插入操作
+   *
+   * @param value
+   */
   public void appendTail(int value) {
     stack1.push(value);
   }
 
+  /**
+   * 第二个栈支持删除操作
+   *
+   * @return
+   */
   public int deleteHead() {
     // 如果第二个栈为空
     if (stack2.isEmpty()) {
       while (!stack1.isEmpty()) {
+        // 第一个栈全部插入第二个栈
         stack2.push(stack1.pop());
       }
     }
