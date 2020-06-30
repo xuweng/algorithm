@@ -6,16 +6,12 @@ package com.leetcode.tag.backtracking;
 public class WordDictionary {
   private StringBuilder stringBuilder;
 
-  /**
-   * Initialize your data structure here.
-   */
+  /** Initialize your data structure here. */
   public WordDictionary() {
     stringBuilder = new StringBuilder();
   }
 
-  /**
-   * Adds a word into the data structure.
-   */
+  /** Adds a word into the data structure. */
   public void addWord(String word) {
     stringBuilder.append(word);
   }
@@ -35,8 +31,16 @@ public class WordDictionary {
     return match(stringBuilder.toString(), word);
   }
 
+  /**
+   * . 可以表示任何一个字母
+   *
+   * @param word
+   * @param pattern
+   * @return
+   */
   public boolean match(String word, String pattern) {
     if (pattern.charAt(0) == '.') {
+      // . 可以表示任何一个字母
       return match(word, pattern.substring(1)) || match(word.substring(1), pattern.substring(1));
     }
     if (word.charAt(0) == pattern.charAt(0)) {
