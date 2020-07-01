@@ -100,35 +100,25 @@ public class MaximumLengthRepeatedSubarray {
       list2 = B;
       int max = 0;
       int maxlength = list1.length;
-      if (list1.length > list2.length) maxlength = list2.length;
+      if (list1.length > list2.length) {
+        maxlength = list2.length;
+      }
       max = bigSearch(1, maxlength);
       return max;
     }
 
     public int bigSearch(int start, int end) {
       if (start == end) {
-        if (forSpecificLength(start)) {
-          return start;
-        } else {
-          return 0;
-        }
+        return forSpecificLength(start) ? start : 0;
       }
       if (start == end - 1) {
         if (forSpecificLength(end)) {
           return end;
         }
-        if (forSpecificLength(start)) {
-          return start;
-        } else {
-          return 0;
-        }
+        return forSpecificLength(start) ? start : 0;
       }
       int mid = (start + end) / 2;
-      if (forSpecificLength(mid)) {
-        return bigSearch(mid, end);
-      } else {
-        return bigSearch(start, mid - 1);
-      }
+      return forSpecificLength(mid) ? bigSearch(mid, end) : bigSearch(start, mid - 1);
     }
 
     /**
