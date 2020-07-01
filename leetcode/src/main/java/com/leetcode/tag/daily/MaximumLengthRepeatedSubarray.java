@@ -131,6 +131,12 @@ public class MaximumLengthRepeatedSubarray {
       }
     }
 
+    /**
+     * list1和list2里面的元素是否都相同
+     *
+     * @param length
+     * @return
+     */
     public boolean forSpecificLength(int length) {
       hs1 = hashGenerate(length, list1);
       hs2 = hashGenerate(length, list2);
