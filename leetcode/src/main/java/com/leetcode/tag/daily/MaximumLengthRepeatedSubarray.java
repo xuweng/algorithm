@@ -19,4 +19,20 @@ public class MaximumLengthRepeatedSubarray {
 
     return 0;
   }
+
+  /**
+   * 长度最长。最优解。容易想到dp。
+   *
+   * <p>定义状态
+   *
+   * <p>状态转移方程?不能简单的递推。
+   *
+   * @param A
+   * @param B
+   * @return
+   */
+  public int dp(int[] A, int[] B) {
+    int[][] dpMax = new int[A.length][B.length];
+    return dpMax[A.length - 1][B.length - 1];
+  }
 }
