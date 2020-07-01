@@ -23,6 +23,8 @@ public class MaximumLengthRepeatedSubarray {
   /**
    * 长度最长。最优解。容易想到dp。
    *
+   * <p>计算顺序?
+   *
    * <p>定义状态
    *
    * <p>状态转移方程?不能简单的递推。
