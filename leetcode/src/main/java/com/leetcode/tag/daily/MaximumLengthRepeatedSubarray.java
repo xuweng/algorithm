@@ -21,7 +21,11 @@ public class MaximumLengthRepeatedSubarray {
   }
 
   /**
-   * 长度最长。最优解。容易想到dp。
+   * dp:小---->大。自底向上
+   *
+   * <p>递归:大--->小。自顶向下
+   *
+   * <p>长度最长。最优解。容易想到dp。
    *
    * <p>计算顺序?
    *
