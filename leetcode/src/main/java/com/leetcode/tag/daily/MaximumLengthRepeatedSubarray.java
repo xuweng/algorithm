@@ -145,11 +145,7 @@ public class MaximumLengthRepeatedSubarray {
 
     public int smallSearch(int[] input, int target, int start, int end) {
       if (start == end) {
-        if (input[end] == target) {
-          return end;
-        } else {
-          return -1;
-        }
+        return input[end] == target ? end : -1;
       }
 
       int mid = (start + end) / 2;
