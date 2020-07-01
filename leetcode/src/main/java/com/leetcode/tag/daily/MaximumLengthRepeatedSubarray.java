@@ -136,6 +136,7 @@ public class MaximumLengthRepeatedSubarray {
       hs2 = hashGenerate(length, list2);
       Arrays.sort(hs1);
       for (int value : hs2) {
+        // 只要hash值有一个数字相同就说明list1和list2相同。
         if (smallSearch(hs1, value, 0, hs1.length - 1) >= 0) {
           return true;
         }
