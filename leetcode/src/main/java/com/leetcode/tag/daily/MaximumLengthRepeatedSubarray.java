@@ -78,6 +78,8 @@ public class MaximumLengthRepeatedSubarray {
       int n = A.length, m = B.length;
       int[][] dp = new int[n + 1][m + 1];
       int ans = 0;
+      // 特别需要注意计算顺序
+      // 用已经计算的子问题推导大问题
       for (int i = n - 1; i >= 0; i--) {
         for (int j = m - 1; j >= 0; j--) {
           dp[i][j] = A[i] == B[j] ? dp[i + 1][j + 1] + 1 : 0;
