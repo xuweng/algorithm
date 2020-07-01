@@ -107,6 +107,13 @@ public class MaximumLengthRepeatedSubarray {
       return max;
     }
 
+    /**
+     * 区间：[start,end]
+     *
+     * @param start
+     * @param end
+     * @return
+     */
     public int bigSearch(int start, int end) {
       if (start == end) {
         return forSpecificLength(start) ? start : 0;
