@@ -88,6 +88,9 @@ public class MaximumLengthRepeatedSubarray {
     }
   }
 
+  /**
+   * 勉强看懂
+   */
   class Solution1 {
     public int[] hs1;
     public int[] hs2;
