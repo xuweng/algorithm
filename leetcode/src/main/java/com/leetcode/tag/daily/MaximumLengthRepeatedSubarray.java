@@ -1,5 +1,7 @@
 package com.leetcode.tag.daily;
 
+import java.util.Arrays;
+
 /**
  * 718. 最长重复子数组
  *
@@ -83,6 +85,127 @@ public class MaximumLengthRepeatedSubarray {
         }
       }
       return ans;
+    }
+  }
+
+  class Solution1 {
+    public int[] hs1;
+    public int[] hs2;
+    public int acc = 0;
+    public int[] list1;
+    public int[] list2;
+
+    public int findLength(int[] A, int[] B) {
+      list1 = A;
+      list2 = B;
+      int max = 0;
+      int maxlength = list1.length;
+      if (list1.length > list2.length) maxlength = list2.length;
+      max = bigSearch(1, maxlength);
+      return max;
+    }
+
+    public int bigSearch(int start, int end) {
+      if (start == end) {
+        if (forSpecificLength(start)) {
+          return start;
+        } else {
+          return 0;
+        }
+      }
+      if (start == end - 1) {
+        if (forSpecificLength(end)) {
+          return end;
+        }
+        if (forSpecificLength(start)) {
+          return start;
+        } else {
+          return 0;
+        }
+      }
+      int mid = (start + end) / 2;
+      if (forSpecificLength(mid)) {
+        return bigSearch(mid, end);
+      } else {
+        return bigSearch(start, mid - 1);
+      }
+    }
+
+    public boolean forSpecificLength(int length) {
+      hs1 = hashGenerate(length, list1);
+      hs2 = hashGenerate(length, list2);
+      Arrays.sort(hs1);
+      for (int value : hs2) {
+        if (smallSearch(hs1, value, 0, hs1.length - 1) >= 0) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    public int smallSearch(int[] input, int target, int start, int end) {
+      if (start == end) {
+        if (input[end] == target) {
+          return end;
+        } else {
+          return -1;
+        }
+      }
+
+      int mid = (start + end) / 2;
+      if (input[mid] == target) {
+        return mid;
+      }
+      if (input[mid] > target) {
+        return smallSearch(input, target, start, mid);
+      }
+      if (input[mid] < target) {
+        return smallSearch(input, target, mid + 1, end);
+      }
+      return 0;
+    }
+
+    /**
+     * 为list生成hash
+     *
+     * <p>用hash表示一个数组
+     *
+     * @param length
+     * @param list
+     * @return
+     */
+    public int[] hashGenerate(int length, int[] list) {
+      // f group
+      int[] hs = new int[list.length - length + 1];
+      int base = 139;
+      // long dvd=9223372036854775783l;
+      int temp = 1, temp2;
+      for (int i = length - 1; i >= 0; i--) {
+        temp = ((temp) * (base));
+        if (temp < 0) {
+          temp = (Integer.MAX_VALUE + 1 + temp);
+        }
+        hs[0] = hs[0] + list[i] * temp;
+        if (hs[0] < 0) {
+          hs[0] = (Integer.MAX_VALUE + 1 + hs[0]);
+        }
+      }
+      for (int i = 1; i < hs.length; i++) {
+        temp2 = (hs[i - 1] - (temp * list[i - 1]));
+        if (temp2 < 0) {
+          temp2 = (Integer.MAX_VALUE + 1 + temp2);
+        }
+        temp2 = temp2 * base;
+        if (temp2 < 0) {
+          temp2 = (Integer.MAX_VALUE + 1 + temp2);
+        }
+        temp2 = (temp2 + list[i + length - 1] * base);
+        if (temp2 < 0) {
+          temp2 = (Integer.MAX_VALUE + 1 + temp2);
+        }
+        hs[i] = temp2;
+      }
+      return hs;
     }
   }
 }
