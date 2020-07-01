@@ -12,6 +12,19 @@ package com.leetcode.tag.daily;
  * <p>子数组一定连续。子串一定连续。
  */
 public class MaximumLengthRepeatedSubarray {
+  /**
+   * 需要注意到数组长度不超过 1000，且子数组在原数组中连续。
+   *
+   * <p>容易想到一个暴力解法，即枚举数组 A 中的起始位置 i 与数组 B 中的起始位置 j，
+   *
+   * <p>然后计算 A[i:] 与 B[j:] 的最长公共前缀 k。最终答案即为所有的最长公共前缀的最大值。
+   *
+   * <p>最坏时间复杂度为 O(n^3)
+   *
+   * @param A
+   * @param B
+   * @return
+   */
   public int findLength(int[] A, int[] B) {
     // 排序不对。改变原来的顺序。不是子数组。
     //    Arrays.sort(A);
