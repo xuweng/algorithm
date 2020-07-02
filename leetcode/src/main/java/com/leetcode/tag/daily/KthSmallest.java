@@ -58,13 +58,7 @@ public class KthSmallest {
      * @return
      */
     public int kthSmallest(int[][] matrix, int k) {
-      PriorityQueue<int[]> pq =
-              new PriorityQueue<int[]>(
-                      new Comparator<int[]>() {
-                        public int compare(int[] a, int[] b) {
-                          return a[0] - b[0];
-                        }
-                      });
+      PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
       int n = matrix.length;
       for (int i = 0; i < n; i++) {
         pq.offer(new int[]{matrix[i][0], i, 0});
