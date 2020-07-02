@@ -74,7 +74,8 @@ public class KthSmallest {
         // {值，行，列}
         pq.offer(new int[]{matrix[i][0], i, 0});
       }
-      // 按列入堆
+      // n个排序数组归并。n个排序数组merge。
+      // 取出堆顶值后，堆顶值对应的行的数组的下一个元素入堆。
       for (int i = 0; i < k - 1; i++) {
         int[] now = pq.poll();
         if (now[2] != n - 1) {
