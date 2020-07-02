@@ -58,9 +58,12 @@ public class KthSmallest {
      * @return
      */
     public int kthSmallest(int[][] matrix, int k) {
+      // 扫描二维数组,最小堆先入k个元素?
       PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(a -> a[0]));
       int n = matrix.length;
+      // 第一列入堆
       for (int i = 0; i < n; i++) {
+        // {值，行，列}
         pq.offer(new int[]{matrix[i][0], i, 0});
       }
       for (int i = 0; i < k - 1; i++) {
