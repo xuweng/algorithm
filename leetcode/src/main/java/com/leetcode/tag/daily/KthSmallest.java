@@ -45,7 +45,7 @@ public class KthSmallest {
   /**
    * 方法二：归并排序
    *
-   * <p>n个排序数组归并。n个排序数组merge。
+   * <p>n个排序数组归并。n个排序数组merge。每个数组取最小值。
    *
    * <p>作者：LeetCode-Solution
    * 链接：https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/solution/you-xu-ju-zhen-zhong-di-kxiao-de-yuan-su-by-leetco/
