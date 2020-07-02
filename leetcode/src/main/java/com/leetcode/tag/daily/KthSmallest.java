@@ -85,7 +85,9 @@ public class KthSmallest {
    */
   class Solution3 {
     /**
-     * 锯齿线
+     * 取一些 mid 值，通过画图以加深理解
+     *
+     * <p>锯齿线
      *
      * <p>图解。图解。图解。图解。图解。图解。图解
      *
