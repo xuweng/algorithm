@@ -85,7 +85,9 @@ public class KthSmallest {
    */
   class Solution3 {
     /**
-     * 图解。图解。图解。图解。图解。图解。图解
+     * 锯齿线
+     *
+     * <p>图解。图解。图解。图解。图解。图解。图解
      *
      * <p>matrix[0][0] 为最小值，matrix[n−1][n−1] 为最大值，现在我们将其分别记作 l和 r。
      *
