@@ -6,6 +6,12 @@ import java.util.PriorityQueue;
 
 /**
  * 378. 有序矩阵中第K小的元素
+ *
+ * <p>上述三种解法，第一种没有利用矩阵的性质，所以时间复杂度最差；
+ *
+ * <p>第二种解法只利用了一部分性质（每一行是一个有序数列，而忽视了列之间的关系）；
+ *
+ * <p>第三种解法则利用了全部性质，所以时间复杂度最佳。
  */
 public class KthSmallest {
   public int kthSmallest(int[][] matrix, int k) {
@@ -39,6 +45,8 @@ public class KthSmallest {
   /**
    * 方法二：归并排序
    *
+   * <p>n个排序数组归并。n个排序数组merge。
+   *
    * <p>作者：LeetCode-Solution
    * 链接：https://leetcode-cn.com/problems/kth-smallest-element-in-a-sorted-matrix/solution/you-xu-ju-zhen-zhong-di-kxiao-de-yuan-su-by-leetco/
    * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
@@ -66,6 +74,7 @@ public class KthSmallest {
         // {值，行，列}
         pq.offer(new int[]{matrix[i][0], i, 0});
       }
+      // 按列入堆
       for (int i = 0; i < k - 1; i++) {
         int[] now = pq.poll();
         if (now[2] != n - 1) {
