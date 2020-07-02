@@ -124,6 +124,7 @@ public class KthSmallest {
       int left = matrix[0][0];
       int right = matrix[n - 1][n - 1];
       while (left < right) {
+        // 猜测正确的mid
         int mid = left + ((right - left) >> 1);
         if (check(matrix, mid, k, n)) {
           // mid划分过大，减少mid
