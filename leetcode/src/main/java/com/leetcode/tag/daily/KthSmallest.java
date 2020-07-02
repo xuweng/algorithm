@@ -89,6 +89,10 @@ public class KthSmallest {
      *
      * <p>每个mid的走法时间复杂度为 O(n)，即我们可以线性计算对于任意一个 mid，矩阵中有多少数不大于它
      *
+     * <p>每次对于「猜测」的答案 mid，计算矩阵中有多少数不大于 mid ：
+     *
+     * <p>如果数量不少于 k，那么说明最终答案 x 不大于 mid； 如果数量少于 k，那么说明最终答案 x 大于 mid。
+     *
      * <p>锯齿线
      *
      * <p>图解。图解。图解。图解。图解。图解。图解
@@ -112,14 +116,25 @@ public class KthSmallest {
       while (left < right) {
         int mid = left + ((right - left) >> 1);
         if (check(matrix, mid, k, n)) {
+          // mid划分过大，减少mid
           right = mid;
         } else {
+          // mid划分过小，增加mid
           left = mid + 1;
         }
       }
       return left;
     }
 
+    /**
+     * 每个mid的走法时间复杂度为 O(n)，即我们可以线性计算对于任意一个 mid，矩阵中有多少数不大于它
+     *
+     * @param matrix
+     * @param mid
+     * @param k
+     * @param n
+     * @return
+     */
     public boolean check(int[][] matrix, int mid, int k, int n) {
       int i = n - 1;
       int j = 0;
