@@ -8,6 +8,18 @@ public class SortedArrayToBST {
     return buildTree(nums, 0, nums.length - 1);
   }
 
+  /**
+   * 小规模数据调试
+   *
+   * <p>小规模数据调试
+   *
+   * <p>小规模数据调试
+   *
+   * @param nums
+   * @param start
+   * @param end
+   * @return
+   */
   public TreeNode buildTree(int[] nums, int start, int end) {
     if (start > end) {
       return null;
