@@ -16,7 +16,7 @@ public class SortedArrayToBST {
 
     TreeNode rootNode = new TreeNode(nums[root]);
     rootNode.left = buildTree(nums, start, root - 1);
-    rootNode.right = buildTree(nums, start, root + 1);
+    rootNode.right = buildTree(nums, root + 1, end);
 
     return rootNode;
   }
