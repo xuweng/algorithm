@@ -12,10 +12,10 @@ import java.util.LinkedList;
  */
 public class LongestValidParentheses {
   public int longestValidParentheses(String s) {
-    if (s == null || s.isEmpty()) {
+    if (s == null || s.length() <= 1) {
       return 0;
     }
-    int max = Integer.MIN_VALUE;
+    int max = 0;
     for (int i = 0; i < s.length(); i++) {
       for (int j = i; j < s.length(); j++) {
         String str = s.substring(i, j + 1);
