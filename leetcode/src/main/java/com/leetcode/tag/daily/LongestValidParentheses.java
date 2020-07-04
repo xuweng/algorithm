@@ -53,7 +53,15 @@ public class LongestValidParentheses {
    */
   public class Solution {
     /**
-     * 状态定义：以下标i结尾。一定会选择下标i的元素。
+     * 图解。看视频。
+     *
+     * <p>图解。看视频。
+     *
+     * <p>图解。看视频。
+     *
+     * <p>图解。看视频。
+     *
+     * <p>状态定义：以下标i结尾。一定会选择下标i的元素。
      *
      * <p>搞懂以下标i结尾。一定会选择下标i的元素。
      *
