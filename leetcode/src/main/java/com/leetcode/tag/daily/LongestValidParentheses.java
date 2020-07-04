@@ -36,9 +36,10 @@ public class LongestValidParentheses {
       if (c == '(') {
         stack.push(c);
       } else {
-        if (!stack.isEmpty()) {
-          stack.pop();
+        if (stack.isEmpty()) {
+          return false;
         }
+        stack.pop();
       }
     }
 
