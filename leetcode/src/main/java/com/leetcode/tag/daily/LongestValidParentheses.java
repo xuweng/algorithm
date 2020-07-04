@@ -53,7 +53,13 @@ public class LongestValidParentheses {
    */
   public class Solution {
     /**
-     * 我们定义 dp[i] 表示以下标 i 字符结尾的最长有效括号的长度。我们将 dp 数组全部初始化为 0 。
+     * 不太容易理解
+     *
+     * <p>不太容易理解
+     *
+     * <p>状态转移方程不太容易理解
+     *
+     * <p>我们定义 dp[i] 表示以下标 i 字符结尾的最长有效括号的长度。我们将 dp 数组全部初始化为 0 。
      *
      * <p>显然有效的子串一定以‘)’ 结尾，因此我们可以知道以 ‘(’ 结尾的子串对应的 dp 值必定为 0 ，
      *
@@ -76,8 +82,10 @@ public class LongestValidParentheses {
       for (int i = 1; i < s.length(); i++) {
         if (s.charAt(i) == ')') {
           if (s.charAt(i - 1) == '(') {
+            // 形如“……()”，我们可以推出：
             dp[i] = (i >= 2 ? dp[i - 2] : 0) + 2;
           } else if (i - dp[i - 1] > 0 && s.charAt(i - dp[i - 1] - 1) == '(') {
+            // 形如 “……))”
             dp[i] = dp[i - 1] + ((i - dp[i - 1]) >= 2 ? dp[i - dp[i - 1] - 2] : 0) + 2;
           }
           maxans = Math.max(maxans, dp[i]);
