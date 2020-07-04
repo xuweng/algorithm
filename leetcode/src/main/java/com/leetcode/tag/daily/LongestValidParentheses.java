@@ -59,6 +59,10 @@ public class LongestValidParentheses {
      *
      * <p>我们只需要求解‘)’ 在dp 数组中对应位置的值。
      *
+     * <p>形如“……()”，我们可以推出：
+     *
+     * <p>dp[i]=dp[i−2]+2
+     *
      * @param s
      * @return
      */
