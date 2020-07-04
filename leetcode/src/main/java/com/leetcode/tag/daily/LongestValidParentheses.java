@@ -55,6 +55,12 @@ public class LongestValidParentheses {
     /**
      * 状态定义：以下标i结尾
      *
+     * <p>搞懂以下标i结尾
+     *
+     * <p>搞懂以下标i结尾
+     *
+     * <p>搞懂以下标i结尾
+     *
      * <p>不太容易理解
      *
      * <p>不太容易理解
