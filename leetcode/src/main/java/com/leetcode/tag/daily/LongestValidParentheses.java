@@ -53,7 +53,9 @@ public class LongestValidParentheses {
    */
   public class Solution {
     /**
-     * 不太容易理解
+     * 状态定义：以下标i结尾
+     *
+     * <p>不太容易理解
      *
      * <p>不太容易理解
      *
