@@ -63,6 +63,10 @@ public class LongestValidParentheses {
      *
      * <p>dp[i]=dp[i−2]+2
      *
+     * <p>形如 “……))”
+     *
+     * <p>dp[i]=dp[i−1]+dp[i−dp[i−1]−2]+2
+     *
      * @param s
      * @return
      */
