@@ -47,6 +47,8 @@ public class WildcardMatching {
   class Solution1 {
     /**
      * 两个字符串的状态定义
+     * <p>
+     * 原问题很明显。原问题很明显。原问题很明显。原问题很明显。
      *
      * <p>我们用dp[i][j] 表示字符串 s 的前 i 个字符和模式 p 的前 j 个字符是否能匹配
      *
