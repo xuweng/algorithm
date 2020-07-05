@@ -29,7 +29,13 @@ public class MaximalSquare {
   }
 
   /**
-   * 方法一：暴力法
+   * 算法框架。
+   *
+   * <p>先理解算法框架。先搭好算法框架。再处理细节。
+   *
+   * <p>算法框架----------->处理细节
+   *
+   * <p>方法一：暴力法
    *
    * <p>作者：LeetCode-Solution
    * 链接：https://leetcode-cn.com/problems/maximal-square/solution/zui-da-zheng-fang-xing-by-leetcode-solution/
