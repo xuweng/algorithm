@@ -7,6 +7,12 @@ public class UniquePathsWithObstacles {
   private int count;
 
   public int uniquePathsWithObstacles(int[][] obstacleGrid) {
+    if (obstacleGrid == null
+            || obstacleGrid.length == 0
+            || obstacleGrid[0][0] == 1
+            || obstacleGrid[obstacleGrid.length - 1][obstacleGrid[0].length - 1] == 1) {
+      return 0;
+    }
     boolean[][] used = new boolean[obstacleGrid.length][obstacleGrid[0].length];
     backTrack(obstacleGrid, used, 0, 0);
 
