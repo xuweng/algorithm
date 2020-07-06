@@ -13,13 +13,12 @@ public class UniquePathsWithObstacles {
             || obstacleGrid[obstacleGrid.length - 1][obstacleGrid[0].length - 1] == 1) {
       return 0;
     }
-    boolean[][] used = new boolean[obstacleGrid.length][obstacleGrid[0].length];
-    backTrack(obstacleGrid, used, 0, 0);
+    backTrack(obstacleGrid, 0, 0);
 
     return count;
   }
 
-  public void backTrack(int[][] obstacleGrid, boolean[][] used, int row, int col) {
+  public void backTrack(int[][] obstacleGrid, int row, int col) {
     if (row >= obstacleGrid.length || col >= obstacleGrid[0].length) {
       return;
     }
@@ -30,18 +29,12 @@ public class UniquePathsWithObstacles {
       return;
     }
     // 向右
-    if (col + 1 < obstacleGrid[0].length
-            && !used[row][col + 1]
-            && obstacleGrid[row][col + 1] != 1) {
-      used[row][col + 1] = true;
-      backTrack(obstacleGrid, used, row, col + 1);
-      used[row][col + 1] = false;
+    if (col + 1 < obstacleGrid[0].length && obstacleGrid[row][col + 1] != 1) {
+      backTrack(obstacleGrid, row, col + 1);
     }
     // 向下
-    if (row + 1 < obstacleGrid.length && !used[row + 1][col] && obstacleGrid[row + 1][col] != 1) {
-      used[row + 1][col] = true;
-      backTrack(obstacleGrid, used, row + 1, col);
-      used[row + 1][col] = false;
+    if (row + 1 < obstacleGrid.length && obstacleGrid[row + 1][col] != 1) {
+      backTrack(obstacleGrid, row + 1, col);
     }
   }
 }
