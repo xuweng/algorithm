@@ -22,13 +22,15 @@ public class UniquePathsWithObstacles {
       return;
     }
     // 向右
-    if (!used[row][col + 1] && obstacleGrid[row][col + 1] != 1) {
+    if (col + 1 < obstacleGrid[0].length
+            && !used[row][col + 1]
+            && obstacleGrid[row][col + 1] != 1) {
       used[row][col + 1] = true;
       backTrack(obstacleGrid, used, row, col + 1);
       used[row][col + 1] = false;
     }
     // 向下
-    if (!used[row + 1][col] && obstacleGrid[row + 1][col] != 1) {
+    if (row + 1 < obstacleGrid.length && !used[row + 1][col] && obstacleGrid[row + 1][col] != 1) {
       used[row + 1][col] = true;
       backTrack(obstacleGrid, used, row + 1, col);
       used[row + 1][col] = false;
