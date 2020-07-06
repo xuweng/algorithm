@@ -17,7 +17,9 @@ public class UniquePathsWithObstacles {
     if (row >= obstacleGrid.length || col >= obstacleGrid[0].length) {
       return;
     }
-    if (row == obstacleGrid.length - 1 && col == obstacleGrid[0].length - 1) {
+    if (row == obstacleGrid.length - 1
+            && col == obstacleGrid[0].length - 1
+            && obstacleGrid[row][col] != 1) {
       count++;
       return;
     }
