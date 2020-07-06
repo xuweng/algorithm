@@ -14,10 +14,7 @@ public class UniquePathsWithObstacles {
   }
 
   public void backTrack(int[][] obstacleGrid, boolean[][] used, int row, int col) {
-    if (row >= obstacleGrid.length) {
-      return;
-    }
-    if (col >= obstacleGrid[0].length) {
+    if (row >= obstacleGrid.length || col >= obstacleGrid[0].length) {
       return;
     }
     if (row == obstacleGrid.length - 1 && col == obstacleGrid[0].length - 1) {
