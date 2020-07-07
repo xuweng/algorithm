@@ -28,6 +28,16 @@ public class HasPathSum {
     if (root == null) {
       return sum == 0;
     }
+    if (root.left == null && root.right == null) {
+      return root.val == sum;
+    }
+    if (root.left != null && root.right == null) {
+      return re(root.left, sum - root.val);
+    }
+    if (root.left == null) {
+      return re(root.right, sum - root.val);
+    }
+
     return re(root.left, sum - root.val) || re(root.right, sum - root.val);
   }
 
