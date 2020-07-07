@@ -19,9 +19,16 @@ public class HasPathSum {
    */
   public boolean hasPathSum(TreeNode root, int sum) {
     if (root == null) {
+      return false;
+    }
+    return re(root, sum);
+  }
+
+  public boolean re(TreeNode root, int sum) {
+    if (root == null) {
       return sum == 0;
     }
-    return hasPathSum(root.left, sum - root.val) || hasPathSum(root.right, sum - root.val);
+    return re(root.left, sum - root.val) || re(root.right, sum - root.val);
   }
 
   class TreeNode {
