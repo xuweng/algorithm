@@ -95,7 +95,9 @@ public class HasPathSum {
    */
   class Solution1 {
     public boolean hasPathSum(TreeNode root, int sum) {
+      // 终止条件
       if (root == null) {
+        // 直接return false也可以
         return false;
       }
       if (root.left == null && root.right == null) {
