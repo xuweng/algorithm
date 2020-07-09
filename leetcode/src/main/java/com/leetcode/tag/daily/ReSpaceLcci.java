@@ -1,6 +1,8 @@
 package com.leetcode.tag.daily;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * dp考验推理能力
@@ -93,6 +95,66 @@ public class ReSpaceLcci {
         curPos = curPos.next[t];
       }
       curPos.isEnd = true;
+    }
+  }
+
+  /**
+   * 方法二：字符串哈希
+   *
+   * <p>作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/re-space-lcci/solution/hui-fu-kong-ge-by-leetcode-solution/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution1 {
+    static final long P = Integer.MAX_VALUE;
+    static final long BASE = 41;
+
+    /**
+     * 思路和算法
+     *
+     * <p>我们使用字典树的目的是查找某一个串 s 是否在一个串的集合 S 当中，并且当我们知道s 是否在 S 中之后，
+     *
+     * <p>可以快速的知道在 s 后添加某一个新的字母得到的新串 s'是否在 S 中，
+     *
+     * <p>这个转移的过程是 O(1) 的。这是我们采用字典树而放弃使用 HashMap 类容器的一个理由，
+     *
+     * <p>这些容器不能实现 s 到 s' 的 O(1)转移，但字典树可以。
+     *
+     * @param dictionary
+     * @param sentence
+     * @return
+     */
+    public int respace(String[] dictionary, String sentence) {
+      Set<Long> hashValues = new HashSet<Long>();
+      for (String word : dictionary) {
+        hashValues.add(getHash(word));
+      }
+
+      int[] f = new int[sentence.length() + 1];
+      Arrays.fill(f, sentence.length());
+
+      f[0] = 0;
+      for (int i = 1; i <= sentence.length(); ++i) {
+        f[i] = f[i - 1] + 1;
+        long hashValue = 0;
+        for (int j = i; j >= 1; --j) {
+          int t = sentence.charAt(j - 1) - 'a' + 1;
+          hashValue = (hashValue * BASE + t) % P;
+          if (hashValues.contains(hashValue)) {
+            f[i] = Math.min(f[i], f[j - 1]);
+          }
+        }
+      }
+
+      return f[sentence.length()];
+    }
+
+    public long getHash(String s) {
+      long hashValue = 0;
+      for (int i = s.length() - 1; i >= 0; --i) {
+        hashValue = (hashValue * BASE + s.charAt(i) - 'a' + 1) % P;
+      }
+      return hashValue;
     }
   }
 }
