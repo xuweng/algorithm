@@ -133,12 +133,15 @@ public class ReSpaceLcci {
 
       f[0] = 0;
       for (int i = 1; i <= sentence.length(); ++i) {
+        // 默认赋值
         f[i] = f[i - 1] + 1;
         long hashValue = 0;
+        // 在词典中搜索子串
         for (int j = i; j >= 1; --j) {
           int t = sentence.charAt(j - 1) - 'a' + 1;
           hashValue = (hashValue * BASE + t) % P;
           if (hashValues.contains(hashValue)) {
+            // 子串在词典中存在
             f[i] = Math.min(f[i], f[j - 1]);
           }
         }
