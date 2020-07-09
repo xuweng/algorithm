@@ -125,7 +125,7 @@ public class ReSpaceLcci {
      * @return
      */
     public int respace(String[] dictionary, String sentence) {
-      Set<Long> hashValues = new HashSet<Long>();
+      Set<Long> hashValues = new HashSet<>();
       for (String word : dictionary) {
         hashValues.add(getHash(word));
       }
