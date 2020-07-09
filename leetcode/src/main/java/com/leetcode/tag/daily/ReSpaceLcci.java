@@ -1,8 +1,8 @@
 package com.leetcode.tag.daily;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * dp考验推理能力
@@ -125,10 +125,8 @@ public class ReSpaceLcci {
      * @return
      */
     public int respace(String[] dictionary, String sentence) {
-      Set<Long> hashValues = new HashSet<>();
-      for (String word : dictionary) {
-        hashValues.add(getHash(word));
-      }
+      Set<Long> hashValues =
+              Arrays.stream(dictionary).map(this::getHash).collect(Collectors.toSet());
 
       int[] f = new int[sentence.length() + 1];
       Arrays.fill(f, sentence.length());
