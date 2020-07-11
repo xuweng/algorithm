@@ -11,7 +11,17 @@ import java.util.*;
  */
 public class CountSmaller {
   /**
-   * 作者：LeetCode-Solution
+   * 方法一：离散化树状数组
+   *
+   * <p>「树状数组」是一种可以动态维护序列前缀和的数据结构，它的功能是：
+   *
+   * <p>单点更新 update(i, v)： 把序列 i 位置的数加上一个值 v，在该题中 v=1
+   *
+   * <p>区间查询 query(i)：查询序列 [1⋯i]区间的区间和，即 i 位置的前缀和
+   *
+   * <p>修改和查询的时间代价都是 O(logn)，其中 n 为需要维护前缀和的序列的长度。
+   *
+   * <p>作者：LeetCode-Solution
    * 链接：https://leetcode-cn.com/problems/count-of-smaller-numbers-after-self/solution/ji-suan-you-ce-xiao-yu-dang-qian-yuan-su-de-ge-s-7/
    * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
    */
