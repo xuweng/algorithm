@@ -85,7 +85,7 @@ public class CountSmaller {
     }
 
     private void discretization(int[] nums) {
-      Set<Integer> set = new HashSet<Integer>();
+      Set<Integer> set = new HashSet<>();
       for (int num : nums) {
         set.add(num);
       }
