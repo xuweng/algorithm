@@ -7,6 +7,12 @@ import java.util.*;
  *
  * <p>十分钟看答案
  *
+ * <p>为什么是对的？
+ *
+ * <p>为什么是对的？
+ *
+ * <p>为什么是对的？
+ *
  * <p>特殊的数据结构想不到的
  */
 public class CountSmaller {
