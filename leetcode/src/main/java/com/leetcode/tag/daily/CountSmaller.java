@@ -29,8 +29,18 @@ public class CountSmaller {
     private int[] c;
     private int[] a;
 
+    /**
+     * 「树状数组」是一种可以动态维护序列前缀和的数据结构
+     *
+     * <p>动态?不动态?
+     *
+     * <p>高级数据结构。动态维护。
+     *
+     * @param nums
+     * @return
+     */
     public List<Integer> countSmaller(int[] nums) {
-      List<Integer> resultList = new ArrayList<Integer>();
+      List<Integer> resultList = new ArrayList<>();
       discretization(nums);
       init(nums.length + 5);
       for (int i = nums.length - 1; i >= 0; --i) {
