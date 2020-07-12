@@ -59,6 +59,8 @@ public class CalculateMinimumHP {
      *
      * <p>第一个是「从出发点到当前点的路径和」，第二个是「从出发点到当前点所需的最小初始值」
      *
+     * <p>第一次觉得别人的相想法和我的想法一样
+     *
      * <p>作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/dungeon-game/solution/di-xia-cheng-you-xi-by-leetcode-solution/
      * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
