@@ -61,6 +61,10 @@ public class CalculateMinimumHP {
      *
      * <p>第一次觉得别人的相想法和我的想法一样
      *
+     * <p>如果按照从左上往右下的顺序进行动态规划，我们无法直接确定到达 (1,2)的方案，
+     *
+     * <p>因为有两个重要程度相同的参数同时影响后续的决策。也就是说，这样的动态规划是不满足「无后效性」的。
+     *
      * <p>作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/dungeon-game/solution/di-xia-cheng-you-xi-by-leetcode-solution/
      * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
