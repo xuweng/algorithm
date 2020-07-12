@@ -9,6 +9,11 @@ import java.util.Map;
  * 5211. 概率最大的路径
  */
 public class MaxProbability {
+  /**
+   * 越测试，程序越健壮，bug越少
+   *
+   * <p>多测试。多测试。多测试
+   */
   class Solution {
     Map<Integer, List<Object[]>> map = new HashMap<>();
     double max;
