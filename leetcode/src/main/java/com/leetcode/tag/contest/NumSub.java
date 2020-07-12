@@ -1,7 +1,5 @@
 package com.leetcode.tag.contest;
 
-import java.util.stream.IntStream;
-
 /**
  * 5461. 仅含 1 的子串数
  */
@@ -32,7 +30,11 @@ public class NumSub {
     }
 
     private long sum(int count) {
-      return IntStream.rangeClosed(1, count).sum();
+      long sum = 0;
+      for (long i = 1; i <= count; i++) {
+        sum += i;
+      }
+      return sum;
     }
   }
 }
