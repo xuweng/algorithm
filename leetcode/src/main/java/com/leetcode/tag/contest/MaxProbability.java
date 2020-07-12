@@ -11,23 +11,16 @@ import java.util.Map;
 public class MaxProbability {
   class Solution {
     Map<Integer, List<Object[]>> map = new HashMap<>();
-    Map<Integer, List<Object[]>> map1 = new HashMap<>();
     double max;
 
     public double maxProbability(int n, int[][] edges, double[] succProb, int start, int end) {
 
+      // map计算错误
       for (int i = 0; i < edges.length; i++) {
         int[] array = edges[i];
         List<Object[]> list = map.getOrDefault(array[0], new ArrayList<>());
         list.add(new Object[]{array[1], succProb[i]});
         map.put(array[0], list);
-      }
-
-      for (int i = 0; i < edges.length; i++) {
-        int[] array = edges[i];
-        List<Object[]> list = map1.getOrDefault(array[1], new ArrayList<>());
-        list.add(new Object[]{array[0], succProb[i]});
-        map1.put(array[1], list);
       }
 
       boolean[] used = new boolean[n];
@@ -42,9 +35,6 @@ public class MaxProbability {
         return;
       }
       List<Object[]> list = map.get(start);
-      if (list == null || list.isEmpty()) {
-        list = map1.get(start);
-      }
       for (Object[] array : list) {
         if (used[start]) {
           continue;
