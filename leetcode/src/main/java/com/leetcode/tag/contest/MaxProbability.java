@@ -1,9 +1,6 @@
 package com.leetcode.tag.contest;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 5211. 概率最大的路径
@@ -69,6 +66,45 @@ public class MaxProbability {
         dfs((int) array[0], end, sum * (double) array[1], used);
         used[start] = false;
       }
+    }
+  }
+
+  /**
+   * 最大概率
+   *
+   * <p>最优解
+   *
+   * <p>dp
+   *
+   * <p>图遍历。bfs。dp。
+   *
+   * <p>图dp。
+   */
+  class Solution1 {
+    Map<Integer, List<Object[]>> map = new HashMap<>();
+    double max;
+
+    public double maxProbability(int n, int[][] edges, double[] succProb, int start, int end) {
+      for (int i = 0; i < edges.length; i++) {
+        int[] array = edges[i];
+        List<Object[]> list = map.getOrDefault(array[0], new ArrayList<>());
+        list.add(new Object[]{array[1], succProb[i]});
+        map.put(array[0], list);
+      }
+      double[] dp = new double[n];
+      dp[start] = 0;
+      List<Object[]> list = map.get(start);
+      if (list == null || list.isEmpty()) {
+        return 0;
+      }
+      // bfs
+      Queue<Object[]> queue = new LinkedList<>();
+      queue.offer(new Object[]{start, 1});
+      while (!queue.isEmpty()) {
+        Object[] root = queue.poll();
+        List<Object[]> list1 = map.get(root[0]);
+      }
+      return max;
     }
   }
 }
