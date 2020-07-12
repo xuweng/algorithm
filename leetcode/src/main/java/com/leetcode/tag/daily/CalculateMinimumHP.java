@@ -48,6 +48,8 @@ public class CalculateMinimumHP {
 
   /**
    * 方法一：动态规划
+   *
+   * <p>状态定义:从起点到(i,j)。从(i,j)到终点。
    */
   class Solution1 {
     /**
@@ -64,6 +66,10 @@ public class CalculateMinimumHP {
      * <p>如果按照从左上往右下的顺序进行动态规划，我们无法直接确定到达 (1,2)的方案，
      *
      * <p>因为有两个重要程度相同的参数同时影响后续的决策。也就是说，这样的动态规划是不满足「无后效性」的。
+     *
+     * <p>于是我们考虑从右下往左上进行动态规划。令dp[i][j] 表示从坐标 (i,j) 到终点所需的最小初始值。换句话说，
+     *
+     * <p>当我们到达坐标 (i,j)时，如果此时我们的路径和不小于dp[i][j]，我们就能到达终点。
      *
      * <p>作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/dungeon-game/solution/di-xia-cheng-you-xi-by-leetcode-solution/
