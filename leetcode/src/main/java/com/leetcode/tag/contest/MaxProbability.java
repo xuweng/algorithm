@@ -39,6 +39,9 @@ public class MaxProbability {
         return;
       }
       List<Object[]> list = map.get(start);
+      if (list == null || list.isEmpty()) {
+        return;
+      }
       for (Object[] array : list) {
         if (used[start]) {
           continue;
