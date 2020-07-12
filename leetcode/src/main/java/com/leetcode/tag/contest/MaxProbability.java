@@ -7,6 +7,10 @@ import java.util.Map;
 
 /**
  * 5211. 概率最大的路径
+ *
+ * <p>概率最大?最优解。用dp。
+ *
+ * <p>dp：最优解、计数
  */
 public class MaxProbability {
   /**
