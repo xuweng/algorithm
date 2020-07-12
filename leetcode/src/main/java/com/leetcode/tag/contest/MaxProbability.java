@@ -38,6 +38,16 @@ public class MaxProbability {
       return max;
     }
 
+    /**
+     * 超出时间限制
+     *
+     * <p>大量数据就会超出时间限制
+     *
+     * @param start
+     * @param end
+     * @param sum
+     * @param used
+     */
     public void dfs(int start, int end, double sum, boolean[] used) {
       if (start == end) {
         max = Math.max(max, sum);
