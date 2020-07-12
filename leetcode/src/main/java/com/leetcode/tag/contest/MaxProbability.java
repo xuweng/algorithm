@@ -21,6 +21,10 @@ public class MaxProbability {
         List<Object[]> list = map.getOrDefault(array[0], new ArrayList<>());
         list.add(new Object[]{array[1], succProb[i]});
         map.put(array[0], list);
+
+        List<Object[]> list1 = map.getOrDefault(array[1], new ArrayList<>());
+        list1.add(new Object[]{array[0], succProb[i]});
+        map.put(array[1], list1);
       }
 
       boolean[] used = new boolean[n];
