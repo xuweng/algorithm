@@ -12,7 +12,7 @@ public class MaxProbability {
   class Solution {
     Map<Integer, List<Object[]>> map = new HashMap<>();
     Map<Integer, List<Object[]>> map1 = new HashMap<>();
-    int max;
+    double max;
 
     public double maxProbability(int n, int[][] edges, double[] succProb, int start, int end) {
 
@@ -36,7 +36,7 @@ public class MaxProbability {
       return max;
     }
 
-    public void dfs(int start, int end, int sum, boolean[] used) {
+    public void dfs(int start, int end, double sum, boolean[] used) {
       if (start == end) {
         max = Math.max(max, sum);
         return;
@@ -50,7 +50,7 @@ public class MaxProbability {
           continue;
         }
         used[start] = true;
-        dfs((int) array[0], end, sum * (int) array[1], used);
+        dfs((int) array[0], end, sum * (double) array[1], used);
         used[start] = false;
       }
     }
