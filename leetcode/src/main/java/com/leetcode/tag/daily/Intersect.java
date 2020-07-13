@@ -86,14 +86,7 @@ public class Intersect {
         }
         // 存在哈希表
         intersection[index++] = num;
-        count--;
-        if (count > 0) {
-          // 重新放入map
-          map.put(num, count);
-        } else {
-          // 删除
-          map.remove(num);
-        }
+        map.put(num, --count);
       }
       return Arrays.copyOfRange(intersection, 0, index);
     }
