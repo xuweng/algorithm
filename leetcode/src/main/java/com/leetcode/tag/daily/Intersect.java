@@ -64,12 +64,14 @@ public class Intersect {
      * 链接：https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/solution/liang-ge-shu-zu-de-jiao-ji-ii-by-leetcode-solution/
      * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      *
-     * @param nums1
-     * @param nums2
+     * @param nums1 较短数组
+     * @param nums2 较长数组
      * @return
      */
     public int[] intersect(int[] nums1, int[] nums2) {
       if (nums1.length > nums2.length) {
+        // 为了降低空间复杂度，首先遍历较短的数组并在哈希表中记录每个数字以及对应出现的次数，然后遍历较长的数组得到交集。
+        // 这个递归厉害。一次性递归。
         return intersect(nums2, nums1);
       }
       Map<Integer, Integer> map = new HashMap<>();
@@ -87,6 +89,37 @@ public class Intersect {
         // 存在哈希表
         intersection[index++] = num;
         map.put(num, --count);
+      }
+      return Arrays.copyOfRange(intersection, 0, index);
+    }
+  }
+
+  /**
+   * 作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/intersection-of-two-arrays-ii/solution/liang-ge-shu-zu-de-jiao-ji-ii-by-leetcode-solution/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution1 {
+    public int[] intersect(int[] nums1, int[] nums2) {
+      Arrays.sort(nums1);
+      Arrays.sort(nums2);
+
+      int length1 = nums1.length, length2 = nums2.length;
+      int[] intersection = new int[Math.min(length1, length2)];
+      int index1 = 0, index2 = 0, index = 0;
+      while (index1 < length1 && index2 < length2) {
+        // 每次比较两个指针指向的两个数组中的数字，如果两个数字不相等，则将指向较小数字的指针右移一位
+        if (nums1[index1] < nums2[index2]) {
+          index1++;
+        } else if (nums1[index1] > nums2[index2]) {
+          index2++;
+        } else {
+          // 如果两个数字相等，将该数字添加到答案，并将两个指针都右移一位
+          intersection[index] = nums1[index1];
+          index1++;
+          index2++;
+          index++;
+        }
       }
       return Arrays.copyOfRange(intersection, 0, index);
     }
