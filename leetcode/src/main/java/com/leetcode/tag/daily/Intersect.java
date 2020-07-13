@@ -109,6 +109,7 @@ public class Intersect {
       int index1 = 0, index2 = 0, index = 0;
       while (index1 < length1 && index2 < length2) {
         // 每次比较两个指针指向的两个数组中的数字，如果两个数字不相等，则将指向较小数字的指针右移一位
+        // 类似归并.移动小数字.
         if (nums1[index1] < nums2[index2]) {
           index1++;
         } else if (nums1[index1] > nums2[index2]) {
