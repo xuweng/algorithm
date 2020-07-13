@@ -55,16 +55,20 @@ public class Intersect {
       for (int num : nums1) {
         map.put(num, map.getOrDefault(num, 0) + 1);
       }
+      // 答案
       int[] intersection = new int[nums1.length];
       int index = 0;
       for (int num : nums2) {
         int count = map.getOrDefault(num, 0);
         if (count > 0) {
+          // 存在哈希表
           intersection[index++] = num;
           count--;
           if (count > 0) {
+            // 重新放入map
             map.put(num, count);
           } else {
+            // 删除
             map.remove(num);
           }
         }
