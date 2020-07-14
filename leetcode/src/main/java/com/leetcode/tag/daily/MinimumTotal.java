@@ -71,4 +71,39 @@ public class MinimumTotal {
       return minTotal;
     }
   }
+
+  /**
+   * 方法二：动态规划 + 空间优化
+   *
+   * <p>作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/triangle/solution/san-jiao-xing-zui-xiao-lu-jing-he-by-leetcode-solu/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution2 {
+    /**
+     * 只和某些状态有关，和其他状态无关
+     *
+     * @param triangle
+     * @return
+     */
+    public int minimumTotal(List<List<Integer>> triangle) {
+      int n = triangle.size();
+      int[][] f = new int[2][n];
+      f[0][0] = triangle.get(0).get(0);
+      for (int i = 1; i < n; ++i) {
+        int curr = i % 2;
+        int prev = 1 - curr;
+        f[curr][0] = f[prev][0] + triangle.get(i).get(0);
+        for (int j = 1; j < i; ++j) {
+          f[curr][j] = Math.min(f[prev][j - 1], f[prev][j]) + triangle.get(i).get(j);
+        }
+        f[curr][i] = f[prev][i - 1] + triangle.get(i).get(i);
+      }
+      int minTotal = f[(n - 1) % 2][0];
+      for (int i = 1; i < n; ++i) {
+        minTotal = Math.min(minTotal, f[(n - 1) % 2][i]);
+      }
+      return minTotal;
+    }
+  }
 }
