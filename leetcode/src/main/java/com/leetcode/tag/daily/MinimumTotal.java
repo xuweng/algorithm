@@ -56,6 +56,7 @@ public class MinimumTotal {
       f[0][0] = triangle.get(0).get(0);
       for (int i = 1; i < n; ++i) {
         // 在里面初始化特殊情况。注意计算顺序
+        // 从上到下，从左到右
         f[i][0] = f[i - 1][0] + triangle.get(i).get(0);
         for (int j = 1; j < i; ++j) {
           f[i][j] = Math.min(f[i - 1][j - 1], f[i - 1][j]) + triangle.get(i).get(j);
