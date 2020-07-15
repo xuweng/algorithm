@@ -20,6 +20,8 @@ package com.leetcode.tag.daily;
 public class NumTrees {
   /**
    * n=1?n=2?n=3......
+   *
+   * <p>对于树，我有想到递归，想到左子树和右子树
    */
   class Solution {
     public int numTrees(int n) {
