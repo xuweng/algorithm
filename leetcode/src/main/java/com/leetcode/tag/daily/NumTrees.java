@@ -92,6 +92,8 @@ public class NumTrees {
       G[0] = 1;
       G[1] = 1;
 
+      // 第一重循环是长度的范围
+      // 第二重循环是长度范围内的根结点的范围
       for (int i = 2; i <= n; ++i) {
         for (int j = 1; j <= i; ++j) {
           G[i] += G[j - 1] * G[i - j];
