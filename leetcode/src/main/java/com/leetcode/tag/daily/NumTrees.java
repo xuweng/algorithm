@@ -28,7 +28,15 @@ public class NumTrees {
   }
 
   /**
-   * 给定一个有序序列 1⋯n，为了构建出一棵二叉搜索树，我们可以遍历每个数字 i，
+   * 十分钟没有思路就看题解，不要浪费时间
+   *
+   * <p>十分钟没有思路就看题解，不要浪费时间
+   *
+   * <p>十分钟没有思路就看题解，不要浪费时间
+   *
+   * <p>https://leetcode-cn.com/problems/unique-binary-search-trees/solution/bu-tong-de-er-cha-sou-suo-shu-by-leetcode-solution/
+   *
+   * <p>给定一个有序序列 1⋯n，为了构建出一棵二叉搜索树，我们可以遍历每个数字 i，
    *
    * <p>将i作为树根，将1⋯(i−1) 序列作为左子树，将(i+1)⋯n 序列作为右子树。
    *
