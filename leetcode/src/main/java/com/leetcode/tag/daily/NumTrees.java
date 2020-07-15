@@ -87,6 +87,7 @@ public class NumTrees {
       // 1 2 3 4 ... i-1 i i+1 i+2 ... n
       // 三部分。i-1,i,n-i
       // G(n)=sum(G(i−1)⋅G(n−i))(1 <=i <= n)
+      // 我们从小到大计算 G 函数即可，因为 G(n) 的值依赖于G(0)⋯G(n−1)。
       int[] G = new int[n + 1];
       G[0] = 1;
       G[1] = 1;
