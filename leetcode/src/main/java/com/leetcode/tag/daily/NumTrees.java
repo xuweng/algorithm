@@ -84,6 +84,8 @@ public class NumTrees {
      * @return
      */
     public int numTrees(int n) {
+      // 1 2 3 4 ... i-1 i i+1 i+2 ... n
+      // 三部分。i-1,i,n-i
       int[] G = new int[n + 1];
       G[0] = 1;
       G[1] = 1;
