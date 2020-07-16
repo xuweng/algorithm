@@ -69,6 +69,7 @@ public class IsBipartite {
       int n = graph.length;
       valid = true;
       color = new int[n];
+      // 初始化所有结点未软色
       Arrays.fill(color, UNCOLORED);
       // 无向图不一定保证连通.需要遍历每个结点
       for (int i = 0; i < n && valid; ++i) {
