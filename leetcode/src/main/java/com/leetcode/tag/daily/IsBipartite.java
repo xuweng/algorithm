@@ -168,6 +168,7 @@ public class IsBipartite {
           while (!queue.isEmpty()) {
             int node = queue.poll();
             int cNei = color[node] == RED ? GREEN : RED;
+            // 一次是把所有邻接结点放入队列
             for (int neighbor : graph[node]) {
               if (color[neighbor] == UNCOLORED) {
                 queue.offer(neighbor);
