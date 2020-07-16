@@ -52,7 +52,11 @@ public class IsBipartite {
   }
 
   /**
-   * 图染色
+   * 算法模板
+   *
+   * <p>算法模板
+   *
+   * <p>图染色
    *
    * <p>图遍历
    *
@@ -69,6 +73,12 @@ public class IsBipartite {
     private int[] color;
     private boolean valid;
 
+    /**
+     * graph将会以邻接表方式给出，graph[i]表示图中与节点i相连的所有节点
+     *
+     * @param graph
+     * @return
+     */
     public boolean isBipartite(int[][] graph) {
       int n = graph.length;
       valid = true;
@@ -77,16 +87,22 @@ public class IsBipartite {
       Arrays.fill(color, UNCOLORED);
       // 无向图不一定保证连通.需要遍历每个结点
       for (int i = 0; i < n && valid; ++i) {
-        if (color[i] == UNCOLORED) {
-          dfs(i, RED, graph);
+        // 遍历每个未染色的结点
+        if (color[i] != UNCOLORED) {
+          continue;
         }
+        // 当前结点标记为红色
+        dfs(i, RED, graph);
       }
       return valid;
     }
 
     public void dfs(int node, int c, int[][] graph) {
+      // 当前结点标记为红色
       color[node] = c;
       int cNei = c == RED ? GREEN : RED;
+      // graph[i]表示图中与节点i相连的所有节点
+      // 候选集.当前node的所有邻接顶点
       for (int neighbor : graph[node]) {
         if (color[neighbor] == UNCOLORED) {
           dfs(neighbor, cNei, graph);
