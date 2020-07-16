@@ -119,6 +119,7 @@ public class IsBipartite {
       //      }
       // 当前结点标记为红色
       color[node] = c;
+      // 颜色取反
       int cNei = c == RED ? GREEN : RED;
       // graph[i]表示图中与节点i相连的所有节点
       // 候选集.当前node的所有邻接顶点
