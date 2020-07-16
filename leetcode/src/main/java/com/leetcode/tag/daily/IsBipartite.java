@@ -91,7 +91,7 @@ public class IsBipartite {
       color = new int[n];
       // 初始化所有结点未软色
       Arrays.fill(color, UNCOLORED);
-      // 无向图不一定保证连通.需要遍历每个结点
+      // 无向图不一定保证连通.需要遍历每个结点.这是模板
       for (int i = 0; i < n && valid; ++i) {
         // 遍历每个未染色的结点
         if (color[i] != UNCOLORED) {
@@ -103,11 +103,20 @@ public class IsBipartite {
       return valid;
     }
 
+    /**
+     * 这个函数也是模板
+     *
+     * <p>dfs:从某个结点开始dfs
+     *
+     * @param node  从node结点开始dfs
+     * @param c
+     * @param graph
+     */
     public void dfs(int node, int c, int[][] graph) {
       // 终止条件放在这里更加耗时
-      if (!valid) {
-        return;
-      }
+      //      if (!valid) {
+      //        return;
+      //      }
       // 当前结点标记为红色
       color[node] = c;
       int cNei = c == RED ? GREEN : RED;
@@ -116,8 +125,13 @@ public class IsBipartite {
       for (int neighbor : graph[node]) {
         if (color[neighbor] == UNCOLORED) {
           dfs(neighbor, cNei, graph);
+          if (!valid) {
+            // return是退出整个函数.break也行
+            return;
+          }
         } else if (color[neighbor] != cNei) {
           valid = false;
+          // return是退出整个函数.break也行
           return;
         }
       }
