@@ -52,7 +52,11 @@ public class IsBipartite {
   }
 
   /**
-   * 方法一：深度优先搜索
+   * 图染色
+   *
+   * <p>图遍历
+   *
+   * <p>方法一：深度优先搜索
    *
    * <p>作者：LeetCode-Solution
    * 链接：https://leetcode-cn.com/problems/is-graph-bipartite/solution/pan-duan-er-fen-tu-by-leetcode-solution/
