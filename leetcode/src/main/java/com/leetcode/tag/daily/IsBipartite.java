@@ -124,6 +124,7 @@ public class IsBipartite {
       // graph[i]表示图中与节点i相连的所有节点
       // 候选集.当前node的所有邻接顶点
       for (int neighbor : graph[node]) {
+        // 未染色.未访问
         if (color[neighbor] == UNCOLORED) {
           dfs(neighbor, cNei, graph);
           if (!valid) {
