@@ -74,7 +74,13 @@ public class IsBipartite {
     private boolean valid;
 
     /**
-     * graph将会以邻接表方式给出，graph[i]表示图中与节点i相连的所有节点
+     * 这个函数是模板
+     *
+     * <p>这个函数是模板
+     *
+     * <p>这个函数是模板
+     *
+     * <p>graph将会以邻接表方式给出，graph[i]表示图中与节点i相连的所有节点
      *
      * @param graph
      * @return
