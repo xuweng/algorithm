@@ -1,6 +1,8 @@
 package com.leetcode.tag.daily;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 十分钟看答案
@@ -137,6 +139,47 @@ public class IsBipartite {
           return;
         }
       }
+    }
+  }
+
+  /**
+   * 方法二：广度优先搜索
+   *
+   * <p>作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/is-graph-bipartite/solution/pan-duan-er-fen-tu-by-leetcode-solution/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution2 {
+    private static final int UNCOLORED = 0;
+    private static final int RED = 1;
+    private static final int GREEN = 2;
+    private int[] color;
+
+    public boolean isBipartite(int[][] graph) {
+      int n = graph.length;
+      color = new int[n];
+      Arrays.fill(color, UNCOLORED);
+      // 遍历所有结点
+      for (int i = 0; i < n; ++i) {
+        if (color[i] == UNCOLORED) {
+          Queue<Integer> queue = new LinkedList<>();
+          queue.offer(i);
+          color[i] = RED;
+          while (!queue.isEmpty()) {
+            int node = queue.poll();
+            int cNei = color[node] == RED ? GREEN : RED;
+            for (int neighbor : graph[node]) {
+              if (color[neighbor] == UNCOLORED) {
+                queue.offer(neighbor);
+                color[neighbor] = cNei;
+              } else if (color[neighbor] != cNei) {
+                return false;
+              }
+            }
+          }
+        }
+      }
+      return true;
     }
   }
 }
