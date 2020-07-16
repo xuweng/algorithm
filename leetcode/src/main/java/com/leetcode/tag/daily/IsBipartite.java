@@ -117,7 +117,7 @@ public class IsBipartite {
       //      if (!valid) {
       //        return;
       //      }
-      // 当前结点标记为红色
+      // 当前结点标记为红色.相当visited访问数组.标记已经访问
       color[node] = c;
       // 颜色取反
       int cNei = c == RED ? GREEN : RED;
