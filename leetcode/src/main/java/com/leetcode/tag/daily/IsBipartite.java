@@ -98,6 +98,10 @@ public class IsBipartite {
     }
 
     public void dfs(int node, int c, int[][] graph) {
+      // 终止条件放在这里更加耗时
+      if (!valid) {
+        return;
+      }
       // 当前结点标记为红色
       color[node] = c;
       int cNei = c == RED ? GREEN : RED;
@@ -106,9 +110,6 @@ public class IsBipartite {
       for (int neighbor : graph[node]) {
         if (color[neighbor] == UNCOLORED) {
           dfs(neighbor, cNei, graph);
-          if (!valid) {
-            return;
-          }
         } else if (color[neighbor] != cNei) {
           valid = false;
           return;
