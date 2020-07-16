@@ -70,6 +70,7 @@ public class IsBipartite {
       valid = true;
       color = new int[n];
       Arrays.fill(color, UNCOLORED);
+      // 无向图不一定保证连通.需要遍历每个结点
       for (int i = 0; i < n && valid; ++i) {
         if (color[i] == UNCOLORED) {
           dfs(i, RED, graph);
