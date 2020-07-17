@@ -22,13 +22,7 @@ public class SearchInsert {
 
     public int re(int[] nums, int target, int low, int high) {
       if (low >= high) {
-        if (nums[low] == target) {
-          return low;
-        }
-        if (nums[low] > target) {
-          return low;
-        }
-        return low + 1;
+        return nums[low] >= target ? low : low + 1;
       }
       int mid = low + (high - low) / 2;
       if (nums[mid] == target) {
