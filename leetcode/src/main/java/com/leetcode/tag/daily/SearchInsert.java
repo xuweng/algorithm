@@ -4,9 +4,7 @@ package com.leetcode.tag.daily;
  * 35. 搜索插入位置
  */
 public class SearchInsert {
-  /**
-   * 心里，脑海里测试所有示例
-   */
+  /** 心里，脑海里测试所有示例 */
   class Solution {
     /**
      * 假设数组中无重复元素
@@ -28,7 +26,7 @@ public class SearchInsert {
           return low;
         }
         if (nums[low] > target) {
-          return (low == 0) ? 0 : low - 1;
+          return low;
         }
         return low + 1;
       }
