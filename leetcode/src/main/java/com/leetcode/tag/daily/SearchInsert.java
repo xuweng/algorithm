@@ -22,6 +22,7 @@ public class SearchInsert {
 
     public int re(int[] nums, int target, int low, int high) {
       if (low >= high) {
+        // 简化代码
         return nums[low] >= target ? low : low + 1;
       }
       int mid = low + (high - low) / 2;
