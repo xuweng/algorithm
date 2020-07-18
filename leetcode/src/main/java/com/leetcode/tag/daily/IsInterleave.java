@@ -74,4 +74,38 @@ public class IsInterleave {
       return f[n][m];
     }
   }
+
+  /**
+   * 使用滚动数组优化空间复杂度
+   *
+   * <p>作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/interleaving-string/solution/jiao-cuo-zi-fu-chuan-by-leetcode-solution/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution2 {
+    public boolean isInterleave(String s1, String s2, String s3) {
+      int n = s1.length(), m = s2.length(), t = s3.length();
+
+      if (n + m != t) {
+        return false;
+      }
+
+      boolean[] f = new boolean[m + 1];
+
+      f[0] = true;
+      for (int i = 0; i <= n; ++i) {
+        for (int j = 0; j <= m; ++j) {
+          int p = i + j - 1;
+          if (i > 0) {
+            f[j] = f[j] && s1.charAt(i - 1) == s3.charAt(p);
+          }
+          if (j > 0) {
+            f[j] = f[j] || (f[j - 1] && s2.charAt(j - 1) == s3.charAt(p));
+          }
+        }
+      }
+
+      return f[m];
+    }
+  }
 }
