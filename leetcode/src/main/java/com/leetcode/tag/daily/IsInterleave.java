@@ -48,6 +48,10 @@ public class IsInterleave {
    *
    * <p>dp推理
    *
+   * <p>状态定义:定义 f(i,j) 表示 s1 的前 i个元素和 s2 ​的前 j 个元素是否能交错组成 s3 ​的前i+j 个元素。
+   *
+   * <p>s3的前i+j。这样定义很巧妙。状态定义巧妙。状态定义巧妙。状态定义巧妙。状态定义巧妙。
+   *
    * <p>f(i,j) = [f(i−1,j) and s1(i−1)=s3(p)] or [f(i,j−1) and s2(j−1) = s3(p)]
    *
    * <p>作者：LeetCode-Solution
@@ -58,7 +62,7 @@ public class IsInterleave {
     public boolean isInterleave(String s1, String s2, String s3) {
       int n = s1.length(), m = s2.length(), t = s3.length();
 
-      //这个容易理解
+      // 这个容易理解
       if (n + m != t) {
         return false;
       }
