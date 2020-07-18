@@ -52,6 +52,8 @@ public class IsInterleave {
    *
    * <p>s3的前i+j。这样定义很巧妙。状态定义巧妙。状态定义巧妙。状态定义巧妙。状态定义巧妙。
    *
+   * <p>状态方程类似。f(i-1)-------->f(i)
+   *
    * <p>f(i,j) = [f(i−1,j) and s1(i−1)=s3(p)] or [f(i,j−1) and s2(j−1) = s3(p)]
    *
    * <p>作者：LeetCode-Solution
