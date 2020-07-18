@@ -54,7 +54,7 @@ public class IsInterleave {
    *
    * <p>状态方程类似。f(i-1)-------->f(i)
    *
-   * <p>f(i,j) = [f(i−1,j) and s1(i−1)=s3(p)] or [f(i,j−1) and s2(j−1) = s3(p)]
+   * <p>f(i,j) = [f(i−1,j) and s1(i) = s3(p)] or [f(i,j−1) and s2(j) = s3(p)]
    *
    * 其中p=i+j−1。边界条件为f(0,0)=True
    *
