@@ -42,6 +42,8 @@ public class IsInterleave {
    *
    * <p>dp推理
    *
+   * <p>f(i,j) = [f(i−1,j) and s1(i−1)=s3(p)] or [f(i,j−1) and s2(j−1) = s3(p)]
+   *
    * <p>作者：LeetCode-Solution
    * 链接：https://leetcode-cn.com/problems/interleaving-string/solution/jiao-cuo-zi-fu-chuan-by-leetcode-solution/
    * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
