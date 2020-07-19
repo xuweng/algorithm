@@ -78,7 +78,7 @@ public class MaxCoins {
       // i的范围?low<i<high
       for (int i = low; i <= high; i++) {
         // 将全过程看作是每次添加一个气球
-        // 气球的范围?枚举所有气球?会有重复计算
+        // 气球的范围?枚举所有气球?会有重复计算。气球的候选集。
         max =
                 Math.max(max, re(nums, low, i) + re(nums, i, high) + nums[low] * nums[i] * nums[high]);
       }
@@ -140,6 +140,8 @@ public class MaxCoins {
    * <p>dp[i][j] 表示填满开区间 (i,j) 能得到的最多硬币数，那么边界条件是 i≥j−1，此时有
    *
    * <p>dp[i][j]=0。
+   *
+   * <p>最终答案即为dp[0][n+1]。实现时要注意到动态规划的次序。整个区间。
    *
    * <p>作者：LeetCode-Solution
    * 链接：https://leetcode-cn.com/problems/burst-balloons/solution/chuo-qi-qiu-by-leetcode-solution/
