@@ -162,6 +162,7 @@ public class MaxCoins {
       // 区间dp模板
       for (int i = n - 1; i >= 0; i--) {
         for (int j = i + 2; j <= n + 1; j++) {
+          // 第三重循环是枚举区间[i,j]
           for (int k = i + 1; k < j; k++) {
             int sum = val[i] * val[k] * val[j];
             sum += rec[i][k] + rec[k][j];
