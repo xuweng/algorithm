@@ -154,6 +154,8 @@ public class MaxCoins {
       int[] val = new int[n + 2];
       val[0] = val[n + 1] = 1;
       System.arraycopy(nums, 0, val, 1, n);
+      // 状态定义:dp[i][j]。肯定要枚举所有i和所有j
+      // 区间dp模板
       for (int i = n - 1; i >= 0; i--) {
         for (int j = i + 2; j <= n + 1; j++) {
           for (int k = i + 1; k < j; k++) {
