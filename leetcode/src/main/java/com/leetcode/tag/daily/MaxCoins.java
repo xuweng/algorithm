@@ -125,4 +125,43 @@ public class MaxCoins {
       return rec[left][right];
     }
   }
+
+  /**
+   * 最优解
+   *
+   * <p>是否dp
+   *
+   * <p>计数dp
+   *
+   * <p>区间dp
+   *
+   * <p>变换计算顺序，从「自顶向下」的记忆化搜索变为「自底向上」的动态规划。
+   *
+   * <p>dp[i][j] 表示填满开区间 (i,j) 能得到的最多硬币数，那么边界条件是 i≥j−1，此时有
+   *
+   * <p>dp[i][j]=0。
+   *
+   * <p>作者：LeetCode-Solution
+   * 链接：https://leetcode-cn.com/problems/burst-balloons/solution/chuo-qi-qiu-by-leetcode-solution/
+   * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+   */
+  class Solution2 {
+    public int maxCoins(int[] nums) {
+      int n = nums.length;
+      int[][] rec = new int[n + 2][n + 2];
+      int[] val = new int[n + 2];
+      val[0] = val[n + 1] = 1;
+      System.arraycopy(nums, 0, val, 1, n);
+      for (int i = n - 1; i >= 0; i--) {
+        for (int j = i + 2; j <= n + 1; j++) {
+          for (int k = i + 1; k < j; k++) {
+            int sum = val[i] * val[k] * val[j];
+            sum += rec[i][k] + rec[k][j];
+            rec[i][j] = Math.max(rec[i][j], sum);
+          }
+        }
+      }
+      return rec[0][n + 1];
+    }
+  }
 }
