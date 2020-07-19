@@ -32,7 +32,7 @@ public class MaxCoins {
       newNums[0] = 1;
       newNums[newNums.length - 1] = 1;
       System.arraycopy(nums, 0, newNums, 1, nums.length);
-      return re(newNums, 0, newNums.length - 1);
+      return re(newNums, 1, newNums.length - 2);
     }
 
     /**
@@ -54,7 +54,7 @@ public class MaxCoins {
       }
       int max = Integer.MIN_VALUE;
       // i的范围?low<i<high
-      for (int i = low + 1; i <= high - 1; i++) {
+      for (int i = low; i <= high; i++) {
         max =
                 Math.max(max, re(nums, low, i) + re(nums, i, high) + nums[low] * nums[i] * nums[high]);
       }
