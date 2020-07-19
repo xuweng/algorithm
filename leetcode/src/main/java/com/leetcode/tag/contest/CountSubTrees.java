@@ -29,9 +29,32 @@ public class CountSubTrees {
 
     public int[] countSubTrees(int n, int[][] edges, String labels) {
       for (int[] a : edges) {
-        List<Integer> list = map.getOrDefault(a[0], new ArrayList<>());
+        if (a[0] != 0) {
+          continue;
+        }
+        List<Integer> list = map.getOrDefault(0, new ArrayList<>());
         list.add(a[1]);
-        map.put(a[0], list);
+        map.put(0, list);
+      }
+
+      List<Integer> list1 = map.get(0);
+      for (int i : list1) {
+        for (int[] a : edges) {
+          if (a[0] == 0) {
+            continue;
+          }
+
+          if (a[0] == i) {
+            List<Integer> list = map.getOrDefault(i, new ArrayList<>());
+            list.add(a[1]);
+            map.put(i, list);
+          }
+          if (a[1] == i) {
+            List<Integer> list = map.getOrDefault(i, new ArrayList<>());
+            list.add(a[0]);
+            map.put(i, list);
+          }
+        }
       }
 
       char[] chars = labels.toCharArray();
