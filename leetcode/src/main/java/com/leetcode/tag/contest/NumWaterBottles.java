@@ -11,7 +11,7 @@ public class NumWaterBottles {
         int i = numBottles / numExchange;
         result += i;
 
-        numBottles = i + (numBottles - i * numExchange);
+        numBottles = i + (numBottles % numExchange);
       }
 
       return result;
