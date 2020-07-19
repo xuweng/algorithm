@@ -159,7 +159,9 @@ public class MaxCoins {
       val[0] = val[n + 1] = 1;
       System.arraycopy(nums, 0, val, 1, n);
       // 状态定义:dp[i][j]。肯定要枚举所有i和所有j
-      // 区间dp模板
+      // 区间dp模板\
+      // 先考虑一个区间，先不考虑循环，先不考虑所有区间，所有区间一样的道理
+      // 在一个区间里面加入气球
       for (int i = n - 1; i >= 0; i--) {
         for (int j = i + 2; j <= n + 1; j++) {
           // 第三重循环是枚举区间[i,j]
