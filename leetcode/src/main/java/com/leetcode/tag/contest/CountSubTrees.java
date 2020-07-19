@@ -3,7 +3,23 @@ package com.leetcode.tag.contest;
 import java.util.*;
 
 /**
- * 5465. 子树中标签相同的节点数
+ * 十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>十分钟看答案
+ *
+ * <p>不要浪费时间
+ *
+ * <p>十分钟看答案
+ *
+ * <p>不要浪费时间
+ *
+ * <p>5465. 子树中标签相同的节点数
  *
  * <p>搞懂题目
  *
@@ -31,6 +47,7 @@ public class CountSubTrees {
       // 构建map错误
       // 构建树的map
       // 不是构建图的map
+      // 构建单向?构建双向?
       for (int[] a : edges) {
         List<Integer> list = map.getOrDefault(a[0], new ArrayList<>());
         list.add(a[1]);
