@@ -5,13 +5,13 @@ import java.util.Arrays;
 /**
  * 312. 戳气球
  *
- * 分治
+ * <p>分治
  *
- * 记忆化
+ * <p>记忆化
  *
- * 递归
+ * <p>递归
  *
- * 心中有概念
+ * <p>心中有概念
  *
  * <p>搞懂题目
  *
@@ -76,6 +76,7 @@ public class MaxCoins {
       // i的范围?low<i<high
       for (int i = low; i <= high; i++) {
         // 将全过程看作是每次添加一个气球
+        // 气球的范围?枚举所有气球?会有重复计算
         max =
                 Math.max(max, re(nums, low, i) + re(nums, i, high) + nums[low] * nums[i] * nums[high]);
       }
