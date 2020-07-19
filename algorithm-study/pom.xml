@@ -8,6 +8,10 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
+    <properties>
+        <skipTests>true</skipTests>
+    </properties>
+
     <packaging>jar</packaging>
 
     <modelVersion>4.0.0</modelVersion>
