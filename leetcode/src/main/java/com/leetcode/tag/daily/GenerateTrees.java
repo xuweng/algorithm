@@ -42,6 +42,17 @@ public class GenerateTrees {
       return n == 0 ? new LinkedList<>() : generateTrees(1, n);
     }
 
+    /**
+     * 递归只需要考虑当前层
+     *
+     * <p>递归只需要考虑当前层
+     *
+     * <p>递归只需要考虑当前层
+     *
+     * @param start
+     * @param end
+     * @return
+     */
     public List<TreeNode> generateTrees(int start, int end) {
       List<TreeNode> allTrees = new LinkedList<>();
       if (start > end) {
@@ -76,8 +87,7 @@ public class GenerateTrees {
     TreeNode left;
     TreeNode right;
 
-    TreeNode() {
-    }
+    TreeNode() {}
 
     TreeNode(int val) {
       this.val = val;
