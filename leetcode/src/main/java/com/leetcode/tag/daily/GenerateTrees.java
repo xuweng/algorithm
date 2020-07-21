@@ -39,10 +39,7 @@ public class GenerateTrees {
    */
   class Solution1 {
     public List<TreeNode> generateTrees(int n) {
-      if (n == 0) {
-        return new LinkedList<>();
-      }
-      return generateTrees(1, n);
+      return n == 0 ? new LinkedList<>() : generateTrees(1, n);
     }
 
     public List<TreeNode> generateTrees(int start, int end) {
