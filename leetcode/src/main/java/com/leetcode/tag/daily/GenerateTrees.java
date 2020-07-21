@@ -52,7 +52,7 @@ public class GenerateTrees {
      *
      * @param start
      * @param end
-     * @return
+     * @return root结点集合
      */
     public List<TreeNode> generateTrees(int start, int end) {
       List<TreeNode> allTrees = new LinkedList<>();
@@ -122,8 +122,7 @@ public class GenerateTrees {
     TreeNode left;
     TreeNode right;
 
-    TreeNode() {
-    }
+    TreeNode() {}
 
     TreeNode(int val) {
       this.val = val;
