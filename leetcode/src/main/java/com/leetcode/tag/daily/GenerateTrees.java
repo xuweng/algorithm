@@ -1,5 +1,6 @@
 package com.leetcode.tag.daily;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -82,12 +83,47 @@ public class GenerateTrees {
     }
   }
 
+  /**
+   * 换数据结构
+   *
+   * <p>换数据结构
+   *
+   * <p>换数据结构
+   */
+  class Solution2 {
+    public List<TreeNode> generateTrees(int n) {
+      return n == 0 ? new ArrayList<>() : generateTrees(1, n);
+    }
+
+    private List<TreeNode> generateTrees(int m, int n) {
+      List<TreeNode> ans = new ArrayList<>();
+      if (m > n) {
+        ans.add(null);
+        return ans;
+      }
+      for (int i = m; i <= n; i++) {
+        List<TreeNode> left = generateTrees(m, i - 1);
+        List<TreeNode> right = generateTrees(i + 1, n);
+        for (TreeNode l : left) {
+          for (TreeNode r : right) {
+            TreeNode head = new TreeNode(i);
+            head.left = l;
+            head.right = r;
+            ans.add(head);
+          }
+        }
+      }
+      return ans;
+    }
+  }
+
   public class TreeNode {
     int val;
     TreeNode left;
     TreeNode right;
 
-    TreeNode() {}
+    TreeNode() {
+    }
 
     TreeNode(int val) {
       this.val = val;
