@@ -73,6 +73,7 @@ public class GenerateTrees {
         for (TreeNode left : leftTrees) {
           for (TreeNode right : rightTrees) {
             TreeNode currTree = new TreeNode(i);
+            // left和right都是根结点。这样才能连接
             currTree.left = left;
             currTree.right = right;
             allTrees.add(currTree);
