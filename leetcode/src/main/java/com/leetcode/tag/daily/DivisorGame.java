@@ -5,6 +5,10 @@ import java.util.List;
 
 /**
  * 1025. 除数博弈
+ *
+ * <p>爱丽丝和鲍勃一起玩游戏，他们轮流行动
+ *
+ * <p>两个人都想赢,谁都想赢
  */
 public class DivisorGame {
   /**
