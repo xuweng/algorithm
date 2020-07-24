@@ -100,7 +100,10 @@ public class DivisorGame {
       f[1] = false;
       f[2] = true;
       for (int i = 3; i <= N; ++i) {
+        // 候选集是1~i
         for (int j = 1; j < i; ++j) {
+          // 选择j,且判断剩余i-j(即对方选择)
+          // 如果i-j赢不了，就是我赢了
           if ((i % j) == 0 && !f[i - j]) {
             f[i] = true;
             break;
