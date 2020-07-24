@@ -9,6 +9,10 @@ import java.util.List;
  * <p>爱丽丝和鲍勃一起玩游戏，他们轮流行动
  *
  * <p>两个人都想赢,谁都想赢
+ *
+ * <p>没有思路看题解
+ *
+ * <p>算法肯定错了，不要浪费时间
  */
 public class DivisorGame {
   /**
