@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * 410. 分割数组的最大值
  *
- * <p>dp。一定要明确原问题。从原问题中提取变量作为dp的状态。如：隐含的状态包括数组长度、字符串长度。
+ * <p>dp。一定要明确原问题。从原问题中提取变量作为dp的状态。如：隐含的状态包括数组长度、字符串长度。然后枚举dp的每个状态。
  *
  * <p>不能用穷举
  *
@@ -69,7 +69,10 @@ public class SplitArray {
         sub[i + 1] = sub[i] + nums[i];
       }
       f[0][0] = 0;
+      // 枚举i的范围
       for (int i = 1; i <= n; i++) {
+        // 枚举j的范围
+        // 即我们可以枚举 k，其中前 k 个数被分割为 j−1 段，而第 k+1 到第 i 个数为第 j 段
         for (int j = 1; j <= Math.min(i, m); j++) {
           for (int k = 0; k < i; k++) {
             f[i][j] = Math.min(f[i][j], Math.max(f[k][j - 1], sub[i] - sub[k]));
