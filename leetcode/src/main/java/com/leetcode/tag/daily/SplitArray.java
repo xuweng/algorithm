@@ -66,6 +66,7 @@ public class SplitArray {
       for (int i = 0; i <= n; i++) {
         Arrays.fill(f[i], Integer.MAX_VALUE);
       }
+      // 前缀和
       int[] sub = new int[n + 1];
       for (int i = 0; i < n; i++) {
         sub[i + 1] = sub[i] + nums[i];
