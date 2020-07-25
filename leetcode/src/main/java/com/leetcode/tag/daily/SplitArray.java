@@ -49,7 +49,9 @@ public class SplitArray {
    *
    * <p>令f[i][j] 表示将数组的前 i 个数分割为 j 段所能得到的最大连续子数组和的最小值
    *
-   * <p>枚举i的范围，枚举j的范围。
+   * <p>枚举dp每个状态的范围。枚举i的范围，枚举j的范围。
+   *
+   * <p>i的范围很明显：1~n；j的范围？
    *
    * <p>作者：LeetCode-Solution
    * 链接：https://leetcode-cn.com/problems/split-array-largest-sum/solution/fen-ge-shu-zu-de-zui-da-zhi-by-leetcode-solution/
