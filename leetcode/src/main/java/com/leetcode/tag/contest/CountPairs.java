@@ -9,6 +9,8 @@ import java.util.List;
  * <p>二叉树的遍历
  *
  * <p>二叉树的遍历
+ *
+ * <p>有思路。只是思路很复杂。思路就是穷举。
  */
 public class CountPairs {
   class Solution {
@@ -26,6 +28,12 @@ public class CountPairs {
         }
       }
       return 0;
+    }
+
+    private void xian(TreeNode root) {
+      if (root == null) {
+        return;
+      }
     }
 
     private void zhong(TreeNode root) {
