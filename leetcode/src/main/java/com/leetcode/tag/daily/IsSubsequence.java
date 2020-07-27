@@ -1,5 +1,6 @@
 package com.leetcode.tag.daily;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -30,6 +31,27 @@ public class IsSubsequence {
         }
       }
 
+      return true;
+    }
+  }
+
+  class Solution1 {
+    public boolean isSubsequence(String s, String t) {
+      if (t == null || t.length() == 0) {
+        return s == null || s.length() == 0;
+      }
+      char[] schars = s.toCharArray();
+      char[] tchars = t.toCharArray();
+
+      Arrays.sort(schars);
+      Arrays.sort(tchars);
+
+      int length = Math.min(s.length(), t.length());
+      for (int i = 0; i < length; i++) {
+        if (schars[i] != tchars[i]) {
+          return false;
+        }
+      }
       return true;
     }
   }
