@@ -96,8 +96,10 @@ public class IsSubsequence {
       int i = 0, j = 0;
       while (i < n && j < m) {
         if (s.charAt(i) == t.charAt(j)) {
+          // 每次贪心地匹配，匹配成功则 i 和 j 同时右移
           i++;
         }
+        // 匹配失败则 j 右移，i 不变，尝试用 t 的下一个字符匹配 s。
         j++;
       }
       return i == n;
