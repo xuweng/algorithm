@@ -55,4 +55,31 @@ public class IsSubsequence {
       return true;
     }
   }
+
+  class Solution2 {
+    public boolean isSubsequence(String s, String t) {
+      if (t == null || t.length() == 0) {
+        return s == null || s.length() == 0;
+      }
+      int index = 0;
+      for (int i = 0; i < s.length(); i++) {
+        if (index >= t.length()) {
+          return false;
+        }
+        boolean flag = true;
+        for (int j = index; j < t.length(); j++) {
+          if (s.charAt(i) == t.charAt(j)) {
+            index = j + 1;
+            flag = false;
+            break;
+          }
+        }
+        if (flag) {
+          return false;
+        }
+      }
+
+      return true;
+    }
+  }
 }
