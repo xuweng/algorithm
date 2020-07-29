@@ -9,6 +9,14 @@ public class MinimalSteps {
   /**
    * 方法一：状态压缩动态规划
    *
+   * <p>原问题：起点开始，我们最少需要多少步才能最后拿到宝藏呢？
+   *
+   * <p>抽取原问题的变量。f(i,j)?
+   *
+   * <p>最后拿到宝藏。不是简单的计数dp。
+   *
+   * <p>最优dp。区间dp。计数dp。是否dp。
+   *
    * <p>作者：LeetCode-Solution
    * 链接：https://leetcode-cn.com/problems/xun-bao/solution/xun-bao-bfs-dp-by-leetcode-solution/
    * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
@@ -22,8 +30,8 @@ public class MinimalSteps {
       n = maze.length;
       m = maze[0].length();
       // 机关 & 石头
-      List<int[]> buttons = new ArrayList<int[]>();
-      List<int[]> stones = new ArrayList<int[]>();
+      List<int[]> buttons = new ArrayList<>();
+      List<int[]> stones = new ArrayList<>();
       // 起点 & 终点
       int sx = -1, sy = -1, tx = -1, ty = -1;
       for (int i = 0; i < n; i++) {
