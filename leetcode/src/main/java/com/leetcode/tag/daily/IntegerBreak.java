@@ -27,6 +27,12 @@ public class IntegerBreak {
    * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
    */
   class Solution1 {
+    /**
+     * dp[i] 表示将正整数 i 拆分成至少两个正整数的和之后，这些正整数的最大乘积
+     *
+     * @param n
+     * @return
+     */
     public int integerBreak(int n) {
       int[] dp = new int[n + 1];
       for (int i = 2; i <= n; i++) {
