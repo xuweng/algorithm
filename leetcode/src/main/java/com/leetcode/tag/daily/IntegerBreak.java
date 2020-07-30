@@ -30,6 +30,10 @@ public class IntegerBreak {
     /**
      * dp[i] 表示将正整数 i 拆分成至少两个正整数的和之后，这些正整数的最大乘积
      *
+     * <p>将 i 拆分成 j 和 i−j 的和，且 i−j 不再拆分成多个正整数，此时的乘积是 j×(i−j)；
+     *
+     * <p>将 i 拆分成 j 和 i−j 的和，且 i−j 继续拆分成多个正整数，此时的乘积是 j×dp[i−j]。
+     *
      * @param n
      * @return
      */
