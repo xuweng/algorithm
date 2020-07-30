@@ -43,6 +43,7 @@ public class IntegerBreak {
       for (int i = 2; i <= n; i++) {
         int curMax = 0;
         // 枚举j
+        // 选择j，剩下i-j。
         for (int j = 1; j < i; j++) {
           curMax = Math.max(curMax, Math.max(j * (i - j), j * dp[i - j]));
         }
