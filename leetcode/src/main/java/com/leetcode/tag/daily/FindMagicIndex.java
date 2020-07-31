@@ -32,7 +32,7 @@ public class FindMagicIndex {
      * <p>
      * 左边和右边都要搜索
      * <p>
-     * 考虑是否有重复数字。重复数字。
+     * 考虑是否有重复数字
      */
     class Solution1 {
         public int findMagicIndex(int[] nums) {
