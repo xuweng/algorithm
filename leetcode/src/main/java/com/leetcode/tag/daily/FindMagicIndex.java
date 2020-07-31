@@ -23,6 +23,10 @@ public class FindMagicIndex {
      * 链接：https://leetcode-cn.com/problems/magic-index-lcci/solution/mo-zhu-suo-yin-by-leetcode-solution/
      * 来源：力扣（LeetCode）
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * <p>
+     * 数组中只有一个满足条件的答案
+     * <p>
+     * 因此我们可以使用二分查找在O(logn) 的时间内找到答案 0 所在的下标，具体做法就是碰到负数舍弃左半边，碰到正数舍弃右半边即可
      */
     class Solution1 {
         public int findMagicIndex(int[] nums) {
