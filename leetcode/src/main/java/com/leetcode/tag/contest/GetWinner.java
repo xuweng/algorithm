@@ -13,6 +13,13 @@ public class GetWinner {
      * 找不到规律。根据题意用蛮力法。
      */
     class Solution {
+        /**
+         * 超出时间限制
+         *
+         * @param arr
+         * @param k
+         * @return
+         */
         public int getWinner(int[] arr, int k) {
             Map<Integer, Integer> map = new HashMap<>();
             int count = 0;
