@@ -21,7 +21,7 @@ public class Flatten {
         }
 
         /**
-         * 算法错误。3形成一个环。
+         * 算法错误。3形成一个环。终于做对了。
          *
          * @param root
          * @return
