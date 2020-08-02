@@ -18,21 +18,21 @@ public class GetWinner {
             while (count < k) {
                 int c = 0;
                 if (arr[0] > arr[1]) {
+                    map.put(arr[0], map.getOrDefault(arr[0], 0) + 1);
                     c = map.getOrDefault(arr[0], 0);
                     if (c >= k) {
                         result = arr[0];
                         break;
                     }
-                    map.put(arr[0], ++c);
                     moveArr(arr, 2);
                     arr[arr.length - 1] = arr[1];
                 } else {
+                    map.put(arr[1], map.getOrDefault(arr[1], 0) + 1);
                     c = map.getOrDefault(arr[1], 0);
                     if (c >= k) {
                         result = arr[1];
                         break;
                     }
-                    map.put(arr[1], ++c);
                     moveArr(arr, 1);
                     arr[arr.length - 1] = arr[0];
                 }
