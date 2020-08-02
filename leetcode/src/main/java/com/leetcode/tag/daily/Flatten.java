@@ -39,6 +39,7 @@ public class Flatten {
             if (node == null) {
                 root.right = re(root.right);
             } else {
+                //注意顺序。顺序不能变。
                 node.right = re(root.right);
                 root.right = re(root.left);
             }
