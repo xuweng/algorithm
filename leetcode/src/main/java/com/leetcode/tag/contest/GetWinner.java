@@ -45,9 +45,7 @@ public class GetWinner {
         }
 
         private void moveArr(int[] arr, int i) {
-            for (int j = i; j < arr.length; j++) {
-                arr[i - 1] = arr[i];
-            }
+            System.arraycopy(arr, i, arr, i - 1, arr.length - i);
         }
     }
 }
