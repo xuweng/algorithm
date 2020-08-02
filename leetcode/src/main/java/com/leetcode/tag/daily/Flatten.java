@@ -20,6 +20,12 @@ public class Flatten {
             re(root);
         }
 
+        /**
+         * 算法错误。3形成一个环。
+         *
+         * @param root
+         * @return
+         */
         private TreeNode re(TreeNode root) {
             if (root == null) {
                 return null;
@@ -43,7 +49,7 @@ public class Flatten {
         }
     }
 
-    public class TreeNode {
+    public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
