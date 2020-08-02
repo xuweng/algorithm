@@ -38,6 +38,12 @@ public class Flatten {
             return root;
         }
 
+        /**
+         * 由于形成环。这里遍历就会报错。
+         *
+         * @param root
+         * @return
+         */
         private TreeNode leftRight(TreeNode root) {
             if (root == null) {
                 return null;
