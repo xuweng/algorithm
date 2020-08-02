@@ -53,6 +53,12 @@ public class GetWinner {
             return result;
         }
 
+        /**
+         * 小细节错误浪费了大量的时间
+         *
+         * @param arr
+         * @param i
+         */
         private void moveArr(int[] arr, int i) {
             System.arraycopy(arr, i, arr, i - 1, arr.length - i);
         }
