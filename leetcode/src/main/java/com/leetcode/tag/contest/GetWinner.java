@@ -9,6 +9,8 @@ import java.util.Map;
 public class GetWinner {
     /**
      * 找规律。找规律。找规律。找规律。
+     * <p>
+     * 找不到规律。根据题意用蛮力法。
      */
     class Solution {
         public int getWinner(int[] arr, int k) {
