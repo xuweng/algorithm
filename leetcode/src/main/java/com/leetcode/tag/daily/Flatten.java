@@ -30,10 +30,17 @@ public class Flatten {
             if (root == null) {
                 return null;
             }
+            //叶子结点
+            boolean isLeaf = (root.left == null && root.right == null);
+            if (isLeaf) {
+                return root;
+            }
             TreeNode node = leftRight(root.left);
+            //保存
+            TreeNode right = root.right;
             root.right = re(root.left);
             if (node != null) {
-                node.right = re(root.right);
+                node.right = re(right);
             }
             return root;
         }
