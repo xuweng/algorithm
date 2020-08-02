@@ -36,12 +36,14 @@ public class Flatten {
                 return root;
             }
             TreeNode node = leftRight(root.left);
-            //保存
+            //保存right。
             TreeNode right = root.right;
             root.right = re(root.left);
             if (node != null) {
                 node.right = re(right);
             }
+            //left也要置为null
+            root.left = null;
             return root;
         }
 
