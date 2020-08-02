@@ -8,6 +8,11 @@ public class Flatten {
      * 算法是一种思维。代表一个人的思考。
      */
     class Solution {
+        /**
+         * 代码跟着示例走一遍
+         *
+         * @param root
+         */
         public void flatten(TreeNode root) {
             if (root == null) {
                 return;
