@@ -4,6 +4,11 @@ package com.leetcode.tag.daily;
  * 415. 字符串相加
  */
 public class AddStrings {
+    /**
+     * 字符串太大了
+     * <p>
+     * 大数越界
+     */
     class Solution {
         /**
          * 给定两个字符串形式的非负整数 num1 和num2 ，计算它们的和。
@@ -13,7 +18,7 @@ public class AddStrings {
          * @return 计算它们的和
          */
         public String addStrings(String num1, String num2) {
-            return String.valueOf(Integer.parseInt(num1) + Integer.parseInt(num2));
+            return String.valueOf(Long.parseLong(num1) + Long.parseLong(num2));
         }
     }
 }
