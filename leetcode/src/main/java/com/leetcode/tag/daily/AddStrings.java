@@ -44,6 +44,13 @@ public class AddStrings {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution1 {
+        /**
+         * 补零是一个小技巧。这类题目不容易想，直接看答案。
+         *
+         * @param num1
+         * @param num2
+         * @return
+         */
         public String addStrings(String num1, String num2) {
             int i = num1.length() - 1, j = num2.length() - 1, add = 0;
             StringBuffer ans = new StringBuffer();
