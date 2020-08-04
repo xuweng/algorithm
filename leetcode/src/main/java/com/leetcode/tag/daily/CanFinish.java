@@ -29,6 +29,8 @@ public class CanFinish {
         boolean valid = true;
 
         /**
+         * 记住三色搜索。三种颜色。三种状态。
+         * <p>
          * 算法
          * <p>
          * 对于图中的任意一个节点，它在搜索的过程中有三种状态，即：
