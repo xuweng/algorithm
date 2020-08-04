@@ -29,7 +29,7 @@ public class CanFinish {
         boolean valid = true;
 
         /**
-         * 记住三色搜索。三种颜色。三种状态。
+         * 记住三色搜索。三种颜色。三种状态。重点在回溯。
          * <p>
          * 算法
          * <p>
