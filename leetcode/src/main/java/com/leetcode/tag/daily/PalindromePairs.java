@@ -53,7 +53,7 @@ public class PalindromePairs {
             }
         }
 
-        List<Node> tree = new ArrayList<Node>();
+        List<Node> tree = new ArrayList<>();
 
         public List<List<Integer>> palindromePairs(String[] words) {
             tree.add(new Node());
@@ -61,7 +61,7 @@ public class PalindromePairs {
             for (int i = 0; i < n; i++) {
                 insert(words[i], i);
             }
-            List<List<Integer>> ret = new ArrayList<List<Integer>>();
+            List<List<Integer>> ret = new ArrayList<>();
             for (int i = 0; i < n; i++) {
                 int m = words[i].length();
                 for (int j = 0; j <= m; j++) {
@@ -128,7 +128,7 @@ public class PalindromePairs {
      */
     class Solution3 {
         List<String> wordsRev = new ArrayList<String>();
-        Map<String, Integer> indices = new HashMap<String, Integer>();
+        Map<String, Integer> indices = new HashMap<>();
 
         public List<List<Integer>> palindromePairs(String[] words) {
             int n = words.length;
@@ -139,7 +139,7 @@ public class PalindromePairs {
                 indices.put(wordsRev.get(i), i);
             }
 
-            List<List<Integer>> ret = new ArrayList<List<Integer>>();
+            List<List<Integer>> ret = new ArrayList<>();
             for (int i = 0; i < n; i++) {
                 String word = words[i];
                 int m = words[i].length();
