@@ -26,6 +26,7 @@ public class RecoverTree {
      */
     class Solution1 {
         public void recoverTree(TreeNode root) {
+            //中序遍历结果
             List<Integer> nums = new ArrayList<>();
             inorder(root, nums);
             int[] swapped = findTwoSwapped(nums);
