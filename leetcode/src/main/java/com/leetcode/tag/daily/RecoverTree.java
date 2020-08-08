@@ -17,6 +17,8 @@ public class RecoverTree {
     }
 
     /**
+     * 方法一：显式中序遍历
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/recover-binary-search-tree/solution/hui-fu-er-cha-sou-suo-shu-by-leetcode-solution/
      * 来源：力扣（LeetCode）
