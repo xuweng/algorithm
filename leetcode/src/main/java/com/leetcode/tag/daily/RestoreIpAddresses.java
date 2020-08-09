@@ -62,12 +62,14 @@ public class RestoreIpAddresses {
         }
 
         /**
-         * 回溯
+         * 回溯。
+         * <p>
+         * 第几段。搜索开始位置。两者都有了。
          * <p>
          * 学会回溯搜索字符串
          *
          * @param s
-         * @param segId
+         * @param segId    第 segId 段
          * @param segStart 搜索开始位置
          */
         public void dfs(String s, int segId, int segStart) {
