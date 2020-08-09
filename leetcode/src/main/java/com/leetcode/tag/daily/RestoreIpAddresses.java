@@ -35,6 +35,8 @@ public class RestoreIpAddresses {
      * 由于 IP 地址的每一段必须是 [0,255] 中的整数，因此我们从 segStart 开始，从小到大依次枚举当前这一段 IP 地址的结束位置segEnd
      * <p>
      * 如果满足要求，就递归地进行下一段搜索，调用递归函数 dfs(segId+1,segEnd+1)。
+     * <p>
+     * 分段搜索。搜索完一段再搜索下一段。分段搜索。分段搜索。分段搜索。分段搜索。分段搜索。分段搜索。分段搜索。分段搜索。
      */
     class Solution {
         public List<String> restoreIpAddresses(String s) {
