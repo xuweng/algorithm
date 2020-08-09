@@ -108,6 +108,7 @@ public class RestoreIpAddresses {
                 if (addr > 0 && addr <= 0xFF) {
                     //保存第几段
                     segments[segId] = addr;
+                    //搜索下一段。注意下一段的搜索开始位置。
                     dfs(s, segId + 1, segEnd + 1);
                 } else {
                     break;
