@@ -106,6 +106,7 @@ public class RestoreIpAddresses {
             for (int segEnd = segStart; segEnd < s.length(); ++segEnd) {
                 addr = addr * 10 + (s.charAt(segEnd) - '0');
                 if (addr > 0 && addr <= 0xFF) {
+                    //保存第几段
                     segments[segId] = addr;
                     dfs(s, segId + 1, segEnd + 1);
                 } else {
