@@ -11,6 +11,11 @@ package com.leetcode.tag.contest;
  */
 public class MaxNonOverlapping {
     class Solution {
+        /**
+         * @param nums
+         * @param target
+         * @return 返回 非空不重叠 子数组的最大数目，且每个子数组中数字和都为 target
+         */
         public int maxNonOverlapping(int[] nums, int target) {
             return 0;
         }
