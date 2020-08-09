@@ -116,6 +116,7 @@ public class RestoreIpAddresses {
                     segments[segId] = addr;
                     //搜索下一段。注意下一段的搜索开始位置。
                     dfs(s, segId + 1, segEnd + 1);
+                    //回溯不用重置。数组的数据会被覆盖。
                 } else {
                     break;
                 }
