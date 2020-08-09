@@ -22,7 +22,7 @@ public class MakeGood {
                 return makeGood(s.substring(i + 2));
             }
             if (i != 0) {
-                return makeGood(s.substring(0, i));
+                return makeGood(s.substring(0, i - 1) + s.substring(i + 1));
             }
             return null;
 
@@ -39,6 +39,23 @@ public class MakeGood {
             }
 
             return -1;
+        }
+    }
+
+    /**
+     * 动态数组。动态数组。
+     * <p>
+     * 在简单的题目浪费太多时间
+     */
+    class Solution1 {
+        public String makeGood(String s) {
+            if (s == null || s.isEmpty()) {
+                return s;
+            }
+            char[] chars = s.toCharArray();
+
+
+            return null;
         }
     }
 }
