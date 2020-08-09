@@ -71,6 +71,8 @@ public class RestoreIpAddresses {
          * 第几段。搜索开始位置。两者都有了。
          * <p>
          * 学会回溯搜索字符串
+         * <p>
+         * 这两个入参很不错
          *
          * @param s
          * @param segId    第 segId 段
