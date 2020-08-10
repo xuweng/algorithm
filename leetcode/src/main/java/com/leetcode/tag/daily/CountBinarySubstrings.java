@@ -2,6 +2,7 @@ package com.leetcode.tag.daily;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 /**
  * 696. 计数二进制子串
@@ -52,11 +53,7 @@ public class CountBinarySubstrings {
                 }
                 counts.add(count);
             }
-            int ans = 0;
-            for (int i = 1; i < counts.size(); ++i) {
-                ans += Math.min(counts.get(i), counts.get(i - 1));
-            }
-            return ans;
+            return IntStream.range(1, counts.size()).map(i -> Math.min(counts.get(i), counts.get(i - 1))).sum();
         }
     }
 
