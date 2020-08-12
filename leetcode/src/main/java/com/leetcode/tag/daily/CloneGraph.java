@@ -20,7 +20,7 @@ public class CloneGraph {
      * <p>
      * 即如果节点 A 和节点 B 之间存在无向边，则表示该图具有从节点 A 到节点 B 的有向边和从节点 B 到节点 A 的有向边。
      * <p>
-     * 无向图-----------死循环
+     * 无向图-----------死循环.死循环。死循环。死循环。死循环。死循环。死循环。
      */
     class Solution {
         public Node cloneGraph(Node node) {
