@@ -99,6 +99,8 @@ public class CloneGraph {
      * <p>
      * 这两种方法都需要借助哈希表记录被克隆过的节点来避免陷入死循环。
      * <p>
+     * 图遍历之死循环。
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/clone-graph/solution/ke-long-tu-by-leetcode-solution/
      * 来源：力扣（LeetCode）
