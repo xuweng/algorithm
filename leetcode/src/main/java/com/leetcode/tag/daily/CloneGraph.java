@@ -6,7 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * 133. 克隆图
+ * 133. 克隆图。
+ * <p>
+ * dfs和bfs是重点。
  * <p>
  * 十分钟看答案。
  * <p>
