@@ -56,6 +56,10 @@ public class CloneGraph {
     /**
      * 方法一：深度优先搜索
      * <p>
+     * 时间复杂度：O(N)
+     * <p>
+     * 空间复杂度：O(N)
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/clone-graph/solution/ke-long-tu-by-leetcode-solution/
      * 来源：力扣（LeetCode）
@@ -90,6 +94,10 @@ public class CloneGraph {
 
     /**
      * 方法二：广度优先遍历
+     * <p>
+     * 时间复杂度：O(N)
+     * <p>
+     * 空间复杂度：O(N)
      * <p>
      * 方法一与方法二的区别仅在于搜索的方式。
      * <p>
