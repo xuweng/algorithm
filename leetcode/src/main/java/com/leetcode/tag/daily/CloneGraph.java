@@ -19,6 +19,8 @@ public class CloneGraph {
      * 为了避免在深拷贝时陷入死循环，我们需要理解图的结构。对于一张无向图，任何给定的无向边都可以表示为两个有向边，
      * <p>
      * 即如果节点 A 和节点 B 之间存在无向边，则表示该图具有从节点 A 到节点 B 的有向边和从节点 B 到节点 A 的有向边。
+     * <p>
+     * 无向图-----------死循环
      */
     class Solution {
         public Node cloneGraph(Node node) {
