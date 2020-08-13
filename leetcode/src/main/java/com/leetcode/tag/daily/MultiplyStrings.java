@@ -15,6 +15,8 @@ public class MultiplyStrings {
     /**
      * 方法一：做加法
      * <p>
+     * 其余的每一位的运算结果都需要补 0
+     * <p>
      * num2除了最低位以外，其余的每一位的运算结果都需要补 0
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/multiply-strings/solution/zi-fu-chuan-xiang-cheng-by-leetcode-solution/
