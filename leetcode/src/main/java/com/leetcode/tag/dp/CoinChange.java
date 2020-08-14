@@ -15,6 +15,7 @@ public class CoinChange {
             dp[0] = 0;
 
             //假设计算到amount.脑海里执行代码。
+            //算法框架。算法模板。调整细节。
             for (int i = 1; i <= amount; i++) {
                 int max = Integer.MAX_VALUE;
                 for (int j : coins) {
