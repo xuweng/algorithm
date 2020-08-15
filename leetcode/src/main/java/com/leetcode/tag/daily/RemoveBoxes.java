@@ -24,6 +24,10 @@ public class RemoveBoxes {
      * <p>
      * 这道题，其实就是在玩消消乐游戏~
      * <p>
+     * 为了取得一个子序列的最高得分，我们分不同策略，每种策略的得分可以看作是1~2个子子序列的最高分之和。
+     * <p>
+     * max(策略1，策略2)
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/remove-boxes/solution/yi-chu-he-zi-by-leetcode-solution/
      * 来源：力扣（LeetCode）
