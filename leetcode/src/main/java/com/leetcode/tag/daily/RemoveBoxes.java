@@ -22,6 +22,8 @@ public class RemoveBoxes {
     /**
      * 区间dp。区间dp。前面的选择影响后面的选择。
      * <p>
+     * 这道题，其实就是在玩消消乐游戏~
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/remove-boxes/solution/yi-chu-he-zi-by-leetcode-solution/
      * 来源：力扣（LeetCode）
