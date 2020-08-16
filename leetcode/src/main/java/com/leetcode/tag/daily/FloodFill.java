@@ -68,7 +68,7 @@ public class FloodFill {
                 for (int i = 0; i < 4; i++) {
                     //新坐标。
                     int mx = x + dx[i], my = y + dy[i];
-                    //入队条件。边界判断+没有搜索过。
+                    //入队条件。边界判断+没有搜索过。理解比较容易。
                     if (mx >= 0 && mx < n && my >= 0 && my < m && image[mx][my] == currColor) {
                         queue.offer(new int[]{mx, my});
                         image[mx][my] = newColor;
