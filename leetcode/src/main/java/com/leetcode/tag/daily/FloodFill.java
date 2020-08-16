@@ -115,16 +115,17 @@ public class FloodFill {
         }
 
         public void dfs(int[][] image, int x, int y, int color, int newColor) {
-            if (image[x][y] == color) {
-                //上色
-                image[x][y] = newColor;
-                //4个方向。4个方向。4个方向。
-                for (int i = 0; i < 4; i++) {
-                    int mx = x + dx[i], my = y + dy[i];
-                    //边界.边界。边界
-                    if (mx >= 0 && mx < image.length && my >= 0 && my < image[0].length) {
-                        dfs(image, mx, my, color, newColor);
-                    }
+            if (image[x][y] != color) {
+                return;
+            }
+            //上色
+            image[x][y] = newColor;
+            //4个方向。4个方向。4个方向。
+            for (int i = 0; i < 4; i++) {
+                int mx = x + dx[i], my = y + dy[i];
+                //边界.边界。边界
+                if (mx >= 0 && mx < image.length && my >= 0 && my < image[0].length) {
+                    dfs(image, mx, my, color, newColor);
                 }
             }
         }
