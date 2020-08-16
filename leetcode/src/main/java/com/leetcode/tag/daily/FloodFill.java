@@ -83,7 +83,8 @@ public class FloodFill {
                     //入队条件。边界判断+没有搜索过。理解比较容易。
                     if (mx >= 0 && mx < n && my >= 0 && my < m && image[mx][my] == currColor) {
                         queue.offer(new int[]{mx, my});
-                        //上色
+                        //上色.
+                        //入队后上色
                         image[mx][my] = newColor;
                     }
                 }
@@ -119,6 +120,7 @@ public class FloodFill {
                 return;
             }
             //上色
+            //上色后递归
             image[x][y] = newColor;
             //4个方向。4个方向。4个方向。
             for (int i = 0; i < 4; i++) {
