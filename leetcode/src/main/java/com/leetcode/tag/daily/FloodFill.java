@@ -66,7 +66,9 @@ public class FloodFill {
                 int x = cell[0], y = cell[1];
                 //遍历上下左右4个方向。这是邻接结点。
                 for (int i = 0; i < 4; i++) {
+                    //新坐标。
                     int mx = x + dx[i], my = y + dy[i];
+                    //入队条件。
                     if (mx >= 0 && mx < n && my >= 0 && my < m && image[mx][my] == currColor) {
                         queue.offer(new int[]{mx, my});
                         image[mx][my] = newColor;
