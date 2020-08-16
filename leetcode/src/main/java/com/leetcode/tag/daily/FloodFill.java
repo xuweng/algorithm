@@ -75,6 +75,7 @@ public class FloodFill {
                 return image;
             }
             int n = image.length, m = image[0].length;
+            //保证队列里面的元素都是上色的。
             Queue<int[]> queue = new LinkedList<>();
             queue.offer(new int[]{sr, sc});
             image[sr][sc] = newColor;
