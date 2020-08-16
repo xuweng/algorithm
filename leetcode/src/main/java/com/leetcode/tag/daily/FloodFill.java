@@ -91,4 +91,37 @@ public class FloodFill {
         }
     }
 
+    /**
+     * 方法二：深度优先搜索
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/flood-fill/solution/tu-xiang-xuan-ran-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        int[] dx = {1, 0, 0, -1};
+        int[] dy = {0, 1, -1, 0};
+
+        public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+            int currColor = image[sr][sc];
+            if (currColor != newColor) {
+                dfs(image, sr, sc, currColor, newColor);
+            }
+            return image;
+        }
+
+        public void dfs(int[][] image, int x, int y, int color, int newColor) {
+            if (image[x][y] == color) {
+                image[x][y] = newColor;
+                for (int i = 0; i < 4; i++) {
+                    int mx = x + dx[i], my = y + dy[i];
+                    if (mx >= 0 && mx < image.length && my >= 0 && my < image[0].length) {
+                        dfs(image, mx, my, color, newColor);
+                    }
+                }
+            }
+        }
+    }
+
 }
