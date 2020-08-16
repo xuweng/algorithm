@@ -64,6 +64,7 @@ public class FloodFill {
             while (!queue.isEmpty()) {
                 int[] cell = queue.poll();
                 int x = cell[0], y = cell[1];
+                //遍历上下左右4个方向。
                 for (int i = 0; i < 4; i++) {
                     int mx = x + dx[i], my = y + dy[i];
                     if (mx >= 0 && mx < n && my >= 0 && my < m && image[mx][my] == currColor) {
