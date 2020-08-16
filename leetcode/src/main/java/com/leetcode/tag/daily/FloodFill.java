@@ -41,6 +41,17 @@ public class FloodFill {
         int[] dx = {1, 0, 0, -1};
         int[] dy = {0, 1, -1, 0};
 
+        /**
+         * 起点。起点。
+         * <p>
+         * 起点开始搜索。起点开始搜索。
+         *
+         * @param image
+         * @param sr
+         * @param sc
+         * @param newColor
+         * @return
+         */
         public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
             int currColor = image[sr][sc];
             if (currColor == newColor) {
