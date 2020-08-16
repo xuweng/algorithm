@@ -23,6 +23,11 @@ import java.util.Queue;
  * dfs。dfs。
  */
 public class FloodFill {
+    /**
+     * 三色遍历。三色遍历。三色遍历。三色遍历。
+     * <p>
+     * 适当放弃。不纠结。
+     */
     class Solution {
         public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
             return null;
