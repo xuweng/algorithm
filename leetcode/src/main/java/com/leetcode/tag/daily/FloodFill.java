@@ -83,6 +83,7 @@ public class FloodFill {
                     //入队条件。边界判断+没有搜索过。理解比较容易。
                     if (mx >= 0 && mx < n && my >= 0 && my < m && image[mx][my] == currColor) {
                         queue.offer(new int[]{mx, my});
+                        //上色
                         image[mx][my] = newColor;
                     }
                 }
@@ -100,12 +101,14 @@ public class FloodFill {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution2 {
+        //记住这个方法
         int[] dx = {1, 0, 0, -1};
         int[] dy = {0, 1, -1, 0};
 
         public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
             int currColor = image[sr][sc];
             if (currColor != newColor) {
+                //已知起点。不用遍历。
                 dfs(image, sr, sc, currColor, newColor);
             }
             return image;
@@ -113,9 +116,12 @@ public class FloodFill {
 
         public void dfs(int[][] image, int x, int y, int color, int newColor) {
             if (image[x][y] == color) {
+                //上色
                 image[x][y] = newColor;
+                //4个方向。4个方向。4个方向。
                 for (int i = 0; i < 4; i++) {
                     int mx = x + dx[i], my = y + dy[i];
+                    //边界.边界。边界
                     if (mx >= 0 && mx < image.length && my >= 0 && my < image[0].length) {
                         dfs(image, mx, my, color, newColor);
                     }
