@@ -38,6 +38,7 @@ public class IsBalanced {
             if (root == null) {
                 return true;
             }
+            //计算当前root结点。为true则递归计算左子树和右子树
             return Math.abs(height(root.left) - height(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right);
 
         }
