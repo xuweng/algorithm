@@ -20,6 +20,8 @@ public class IsBalanced {
     }
 
     /**
+     * 方法一：自顶向下的递归
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/balanced-binary-tree/solution/ping-heng-er-cha-shu-by-leetcode-solution/
      * 来源：力扣（LeetCode）
