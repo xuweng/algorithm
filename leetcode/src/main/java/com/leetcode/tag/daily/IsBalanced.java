@@ -69,6 +69,12 @@ public class IsBalanced {
             return height(root) >= 0;
         }
 
+        /**
+         * 后序遍历
+         *
+         * @param root
+         * @return
+         */
         public int height(TreeNode root) {
             if (root == null) {
                 return 0;
