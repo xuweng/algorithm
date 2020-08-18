@@ -2,6 +2,12 @@ package com.leetcode.tag.daily;
 
 /**
  * 109. 有序链表转换二叉搜索树
+ * <p>
+ * 套路
+ * <p>
+ * 框架
+ * <p>
+ * 模板
  */
 public class SortedListToBST {
     /**
