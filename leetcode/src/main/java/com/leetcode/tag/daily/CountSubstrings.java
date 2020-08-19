@@ -132,7 +132,8 @@ public class CountSubstrings {
             }
 
             // i<=j
-            //计算顺序
+            //计算顺序。这个很重要。
+            //先枚举j，再枚举i。
             for (int j = 0; j < len; j++) {
                 // i<=j
                 for (int i = 0; i <= j; i++) {
