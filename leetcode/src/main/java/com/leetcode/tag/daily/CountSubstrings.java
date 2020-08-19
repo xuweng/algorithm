@@ -1,5 +1,7 @@
 package com.leetcode.tag.daily;
 
+import java.util.Arrays;
+
 /**
  * 647. 回文子串
  */
@@ -104,4 +106,46 @@ public class CountSubstrings {
         }
     }
 
+    class Solution4 {
+        /**
+         * 我们罗列一下dp[i][j]为 true 的情形：
+         * <p>
+         * 由单个字符组成。
+         * 由 2 个字符组成，且字符要相同。(单独拿出来防止dp[i+1][j-1]越界)
+         * 由多于 2 个字符组成，首尾字符相同，且剩余子串是一个回文串。
+         * <p>
+         * dp[i][j]:字符串从i到j是否为回文串
+         * <p>
+         * s[i]!=s[j],dp[i][j]=false
+         * s[i]=s[j],dp[i][j]=dp[i+1][j-1]
+         *
+         * @param s
+         * @return
+         */
+        public int countSubstrings(String s) {
+            int count = 0;
+            int len = s.length();
+
+            boolean[][] dp = new boolean[len][len];
+            for (boolean[] booleans : dp) {
+                Arrays.fill(booleans, false);
+            }
+
+            for (int j = 0; j < len; j++) {
+                for (int i = 0; i <= j; i++) {
+                    if (i == j) { // 单个字符
+                        dp[i][j] = true;
+                        count++;
+                    } else if (j - i == 1 && s.charAt(i) == s.charAt(j)) { // 两个字符
+                        dp[i][j] = true;
+                        count++;
+                    } else if (j - i > 1 && s.charAt(i) == s.charAt(j) && dp[i + 1][j - 1]) { // 多于两个字符
+                        dp[i][j] = true;
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+    }
 }
