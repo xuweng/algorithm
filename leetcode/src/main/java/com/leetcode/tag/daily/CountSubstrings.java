@@ -131,7 +131,10 @@ public class CountSubstrings {
                 Arrays.fill(booleans, false);
             }
 
+            // i<=j
+            //计算顺序
             for (int j = 0; j < len; j++) {
+                // i<=j
                 for (int i = 0; i <= j; i++) {
                     if (i == j) { // 单个字符
                         dp[i][j] = true;
