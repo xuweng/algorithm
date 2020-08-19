@@ -40,4 +40,60 @@ public class CountSubstrings {
         }
     }
 
+    class Solution2 {
+        public int countSubstrings(String s) {
+            int n = s.length();
+            boolean[][] dp = new boolean[n][n];
+            int count = 0;
+            for (int j = 0; j < n; j++) {
+                for (int i = 0; i <= j; i++) {
+                    if (s.charAt(j) == s.charAt(i)) {
+                        if (dp[i][j] = i == j || j - i == 1 || dp[i + 1][j - 1]) {
+                            count++;
+                        }
+                    }
+                }
+            }
+            return count;
+        }
+    }
+
+    /**
+     * 作者：acw_weian
+     * 链接：https://leetcode-cn.com/problems/palindromic-substrings/solution/647-hui-wen-zi-chuan-qu-jian-dp-shi-jian-fu-za-du-/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        /**
+         * dp[i][j]:字符串从i到j是否为回文串
+         * <p>
+         * s[i]!=s[j],dp[i][j]=false
+         * s[i]=s[j],dp[i][j]=dp[i+1][j-1]
+         *
+         * @param s
+         * @return
+         */
+        public int countSubstrings(String s) {
+            int ans = 0, n = s.length(), j;
+            char[] cs = s.toCharArray();
+            boolean[][] dp = new boolean[n][n];
+            for (int len = 1; len <= n; len++) {
+                for (int i = 0; i + len - 1 < n; i++) {
+                    j = i + len - 1;
+                    if (len == 1) {
+                        dp[i][j] = true;
+                        ans++;
+                    } else {
+                        if (cs[i] == cs[j]) {
+                            dp[i][j] = len == 2 || dp[i + 1][j - 1];
+                            if (dp[i][j]) ans++;
+                        }
+                    }
+                }
+            }
+            return ans;
+        }
+    }
+
 }
