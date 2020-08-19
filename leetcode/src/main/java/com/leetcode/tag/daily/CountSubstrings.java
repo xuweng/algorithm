@@ -87,7 +87,9 @@ public class CountSubstrings {
                     } else {
                         if (cs[i] == cs[j]) {
                             dp[i][j] = len == 2 || dp[i + 1][j - 1];
-                            if (dp[i][j]) ans++;
+                            if (dp[i][j]) {
+                                ans++;
+                            }
                         }
                     }
                 }
