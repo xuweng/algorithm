@@ -36,6 +36,13 @@ public class UpdateBoard {
             return board;
         }
 
+        /**
+         * 从坐标开始搜索
+         *
+         * @param board
+         * @param x
+         * @param y
+         */
         public void dfs(char[][] board, int x, int y) {
             int cnt = 0;
             for (int i = 0; i < 8; ++i) {
@@ -59,6 +66,7 @@ public class UpdateBoard {
                     int tx = x + dirX[i];
                     int ty = y + dirY[i];
                     // 这里不需要在存在 B 的时候继续扩展，因为 B 之前被点击的时候已经被扩展过了
+                    // 边界条件
                     if (tx < 0 || tx >= board.length || ty < 0 || ty >= board[0].length || board[tx][ty] != 'E') {
                         continue;
                     }
@@ -91,10 +99,19 @@ public class UpdateBoard {
             return board;
         }
 
+        /**
+         * 从坐标开始
+         *
+         * @param board
+         * @param sx
+         * @param sy
+         */
         public void bfs(char[][] board, int sx, int sy) {
-            Queue<int[]> queue = new LinkedList<int[]>();
+            Queue<int[]> queue = new LinkedList<>();
             boolean[][] vis = new boolean[board.length][board[0].length];
+            //保存坐标
             queue.offer(new int[]{sx, sy});
+            //vis数组
             vis[sx][sy] = true;
             while (!queue.isEmpty()) {
                 int[] pos = queue.poll();
@@ -120,6 +137,7 @@ public class UpdateBoard {
                         int tx = x + dirX[i];
                         int ty = y + dirY[i];
                         // 这里不需要在存在 B 的时候继续扩展，因为 B 之前被点击的时候已经被扩展过了
+                        // 边界条件
                         if (tx < 0 || tx >= board.length || ty < 0 || ty >= board[0].length || board[tx][ty] != 'E' || vis[tx][ty]) {
                             continue;
                         }
