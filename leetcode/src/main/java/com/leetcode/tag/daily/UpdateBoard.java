@@ -5,6 +5,10 @@ import java.util.Queue;
 
 /**
  * 529. 扫雷游戏
+ * <p>
+ * 看一下dfs和bfs的代码
+ * <p>
+ * dfs和bfs的代码
  */
 public class UpdateBoard {
     class Solution {
