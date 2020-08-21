@@ -66,6 +66,7 @@ public class MinDepth {
     class Solution2 {
         class QueueNode {
             TreeNode node;
+            //记录每个结点的高度
             int depth;
 
             public QueueNode(TreeNode node, int depth) {
@@ -89,9 +90,11 @@ public class MinDepth {
                 if (node.left == null && node.right == null) {
                     return depth;
                 }
+                //模板
                 if (node.left != null) {
                     queue.offer(new QueueNode(node.left, depth + 1));
                 }
+                //模板
                 if (node.right != null) {
                     queue.offer(new QueueNode(node.right, depth + 1));
                 }
