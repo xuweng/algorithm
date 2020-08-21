@@ -5,12 +5,25 @@ package com.leetcode.tag.daily;
  */
 public class MinDepth {
     class Solution {
+        int result = Integer.MAX_VALUE;
+
         public int minDepth(TreeNode root) {
             if (root == null) {
                 return 0;
             }
+            pre(root, 1);
+            return result;
+        }
 
-            return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
+        public void pre(TreeNode treeNode, int count) {
+            if (treeNode == null) {
+                return;
+            }
+            if (treeNode.left == null && treeNode.right == null) {
+                result = Math.min(result, count);
+            }
+            pre(treeNode.left, ++count);
+            pre(treeNode.right, ++count);
         }
     }
 
