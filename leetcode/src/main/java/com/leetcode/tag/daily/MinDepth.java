@@ -26,6 +26,7 @@ public class MinDepth {
                 result = Math.min(result, count);
                 return;
             }
+            //在当前函数考虑count
             count = count + 1;
             if (treeNode.left != null) {
                 pre(treeNode.left, count);
