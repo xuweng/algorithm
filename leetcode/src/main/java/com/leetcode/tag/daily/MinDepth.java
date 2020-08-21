@@ -24,6 +24,7 @@ public class MinDepth {
             }
             if (treeNode.left == null && treeNode.right == null) {
                 result = Math.min(result, count);
+                return;
             }
             pre(treeNode.left, ++count);
             pre(treeNode.right, ++count);
