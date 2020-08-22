@@ -81,6 +81,7 @@ public class JudgePoint24 {
                                     list2.add(list.get(i) / list.get(j));
                                 }
                             }
+                            //模板
                             if (solve(list2)) {
                                 return true;
                             }
@@ -89,6 +90,7 @@ public class JudgePoint24 {
                     }
                 }
             }
+            //模板
             return false;
         }
     }
