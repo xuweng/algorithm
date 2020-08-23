@@ -16,6 +16,12 @@ package com.leetcode.tag.daily.two;
  * 找规律就惨了。万物皆有规律。
  * <p>
  * 万物皆有规律。万物皆有规律。万物皆有规律。
+ * <p>
+ * 位运算。位运算。位运算。位运算。位运算
+ * <p>
+ * 学概念。学概念。学概念。学概念。学概念。学概念
+ * <p>
+ * 公共前缀。公共前缀。
  */
 public class RangeBitwiseAnd {
     class Solution {
