@@ -71,13 +71,19 @@ public class FindSubsequences {
                 findSubsequences(i, nums);
                 int hashValue = getHash(263, (int) 1E9 + 7);
                 if (check() && !set.contains(hashValue)) {
-                    ans.add(new ArrayList<Integer>(temp));
+                    ans.add(new ArrayList<>(temp));
                     set.add(hashValue);
                 }
             }
             return ans;
         }
 
+        /**
+         * 子序列
+         *
+         * @param mask
+         * @param nums
+         */
         public void findSubsequences(int mask, int[] nums) {
             temp.clear();
             for (int i = 0; i < n; ++i) {
