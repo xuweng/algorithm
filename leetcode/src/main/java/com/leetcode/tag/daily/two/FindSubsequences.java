@@ -55,6 +55,16 @@ public class FindSubsequences {
         Set<Integer> set = new HashSet<>();
         int n;
 
+        /**
+         * 由此可见长度为 n 的序列选择子序列一共会有 2^n种情况，这 2^n中情况就是区间 [0， 2^{n - 1}]的所有整数的二进制表示。
+         * <p>
+         * 我们可以枚举区间 [0， 2^{n - 1}]中的每一个数
+         * <p>
+         * 我们还需要解决子序列去重的问题。对于序列去重，我们可以使用串哈希算法
+         *
+         * @param nums
+         * @return
+         */
         public List<List<Integer>> findSubsequences(int[] nums) {
             n = nums.length;
             for (int i = 0; i < (1 << n); ++i) {
@@ -78,6 +88,15 @@ public class FindSubsequences {
             }
         }
 
+        /**
+         * hash函数
+         * <p>
+         * 去重
+         *
+         * @param base
+         * @param mod
+         * @return
+         */
         public int getHash(int base, int mod) {
             int hashValue = 0;
             for (int x : temp) {
