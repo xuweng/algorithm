@@ -157,6 +157,8 @@ public class FindSubsequences {
          * @param nums
          */
         public void dfs(int cur, int last, int[] nums) {
+            //越界是一个答案
+            //结合二叉树。从底层回溯。每次到底都是答案。
             if (cur == nums.length) {
                 if (temp.size() >= 2) {
                     ans.add(new ArrayList<>(temp));
