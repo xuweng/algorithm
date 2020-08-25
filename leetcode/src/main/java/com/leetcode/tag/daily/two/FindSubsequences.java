@@ -159,16 +159,18 @@ public class FindSubsequences {
         public void dfs(int cur, int last, int[] nums) {
             if (cur == nums.length) {
                 if (temp.size() >= 2) {
-                    ans.add(new ArrayList<Integer>(temp));
+                    ans.add(new ArrayList<>(temp));
                 }
                 return;
             }
             if (nums[cur] >= last) {
+                //选择当前元素
                 temp.add(nums[cur]);
                 dfs(cur + 1, nums[cur], nums);
                 temp.remove(temp.size() - 1);
             }
             if (nums[cur] != last) {
+                //跳过当前元素
                 dfs(cur + 1, last, nums);
             }
         }
