@@ -18,4 +18,15 @@ public class FindSubsequences {
             return null;
         }
     }
+
+    /**
+     * 总感觉可以用回溯
+     * <p>
+     * 回溯可以脑海风暴
+     */
+    class Solution1 {
+        public List<List<Integer>> findSubsequences(int[] nums) {
+            return null;
+        }
+    }
 }
