@@ -165,12 +165,14 @@ public class FindSubsequences {
                 }
                 return;
             }
+            //使序列合法的办法非常简单
             if (nums[cur] >= last) {
                 //选择当前元素
                 temp.add(nums[cur]);
                 dfs(cur + 1, nums[cur], nums);
                 temp.remove(temp.size() - 1);
             }
+            //保证没有重复
             if (nums[cur] != last) {
                 //跳过当前元素
                 dfs(cur + 1, last, nums);
