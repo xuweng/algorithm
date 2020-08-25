@@ -52,6 +52,7 @@ public class FindSubsequences {
     class Solution2 {
         List<Integer> temp = new ArrayList<>();
         List<List<Integer>> ans = new ArrayList<>();
+        //使用set保存哈希值
         Set<Integer> set = new HashSet<>();
         int n;
 
