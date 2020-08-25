@@ -123,4 +123,55 @@ public class FindSubsequences {
         }
     }
 
+    /**
+     * 方法二：递归枚举 + 减枝
+     */
+    class Solution3 {
+        List<Integer> temp = new ArrayList<>();
+        List<List<Integer>> ans = new ArrayList<>();
+
+        public List<List<Integer>> findSubsequences(int[] nums) {
+            dfs(0, Integer.MIN_VALUE, nums);
+            return ans;
+        }
+
+        /**
+         * 通用模板
+         * <p>
+         * 讲清楚。讲清楚。讲清楚。讲清楚。讲清楚。
+         * <p>
+         * 讲清楚。讲清楚。讲清楚
+         * <p>
+         * 使用  cur 来表示当前位置的下标，在 dfs(cur, nums) 开始之前，[0,cur−1] 这个区间内的所有元素都已经被考虑过，
+         * <p>
+         * 而 [cur,n] 这个区间内的元素还未被考虑
+         * <p>
+         * 考虑 cur 这个位置选或者不选.如果选择当前元素，那么把当前元素加入到 temp 中，然后递归下一个位置
+         * <p>
+         * 结合二叉树。回溯？从最底层开始回溯。
+         * <p>
+         * 如果不选当前的元素，直接递归下一个位置
+         *
+         * @param cur
+         * @param last
+         * @param nums
+         */
+        public void dfs(int cur, int last, int[] nums) {
+            if (cur == nums.length) {
+                if (temp.size() >= 2) {
+                    ans.add(new ArrayList<Integer>(temp));
+                }
+                return;
+            }
+            if (nums[cur] >= last) {
+                temp.add(nums[cur]);
+                dfs(cur + 1, nums[cur], nums);
+                temp.remove(temp.size() - 1);
+            }
+            if (nums[cur] != last) {
+                dfs(cur + 1, last, nums);
+            }
+        }
+    }
+
 }
