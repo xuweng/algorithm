@@ -180,4 +180,33 @@ public class FindSubsequences {
         }
     }
 
+    class S {
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
+
+        public void dfs(int cur, int[] nums) {
+            if (cur == nums.length) {
+                // 判断是否合法，如果合法判断是否重复，将满足条件的加入答案
+                if (isVSalid() && notVisited()) {
+                    ans.add(new ArrayList<>(temp));
+                }
+                return;
+            }
+            // 如果选择当前元素
+            temp.add(nums[cur]);
+            dfs(cur + 1, nums);
+            temp.remove(temp.size() - 1);
+            // 如果不选择当前元素
+            dfs(cur + 1, nums);
+        }
+
+        private boolean isVSalid() {
+            return true;
+        }
+
+        private boolean notVisited() {
+            return true;
+        }
+    }
+
 }
