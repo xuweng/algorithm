@@ -56,8 +56,7 @@ public class LetterCombinations {
             }
             char digit = digits.charAt(cur);
             String letters = phoneMap.get(digit);
-            int lettersCount = letters.length();
-            for (int i = 0; i < lettersCount; i++) {
+            for (int i = 0; i < letters.length(); i++) {
                 backtrack(combinations, phoneMap, digits, cur + 1, temp + letters.charAt(i));
             }
         }
