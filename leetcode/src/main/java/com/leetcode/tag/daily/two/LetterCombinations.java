@@ -49,7 +49,17 @@ public class LetterCombinations {
             return combinations;
         }
 
+        /**
+         * 模板
+         *
+         * @param combinations
+         * @param phoneMap
+         * @param digits
+         * @param cur
+         * @param temp
+         */
         public void backtrack(List<String> combinations, Map<Character, String> phoneMap, String digits, int cur, String temp) {
+            //越界统计
             if (cur == digits.length()) {
                 combinations.add(temp);
                 return;
