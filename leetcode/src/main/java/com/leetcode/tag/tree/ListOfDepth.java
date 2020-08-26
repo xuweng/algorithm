@@ -31,8 +31,13 @@ public class ListOfDepth {
                     continue;
                 }
                 ListNode head = new ListNode(nodes.get(0).val);
+                //注意tail
+                //在细节花太多时间
+                ListNode tail = head;
                 for (int i = 1; i < nodes.size(); i++) {
-                    head.next = new ListNode(nodes.get(i).val);
+                    ListNode listNode = new ListNode(nodes.get(i).val);
+                    tail.next = listNode;
+                    tail = listNode;
                 }
                 result.add(head);
             }
