@@ -19,7 +19,7 @@ import java.util.List;
  * 层次遍历
  */
 public class ListOfDepth {
-    class Solution {
+    static class Solution {
         public ListNode[] listOfDepth(TreeNode tree) {
             List<List<TreeNode>> listNodes = new ArrayList<>();
 
@@ -54,7 +54,7 @@ public class ListOfDepth {
         }
     }
 
-    public class TreeNode {
+    public static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
@@ -64,7 +64,7 @@ public class ListOfDepth {
         }
     }
 
-    public class ListNode {
+    public static class ListNode {
         int val;
         ListNode next;
 
