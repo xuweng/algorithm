@@ -1,6 +1,7 @@
 package com.leetcode.tag.tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -65,6 +66,47 @@ public class ListOfDepth {
             listNodes.get(high).add(treeNode);
             reCeng(treeNode.left, listNodes, high + 1);
             reCeng(treeNode.right, listNodes, high + 1);
+        }
+    }
+
+    /**
+     * 模板
+     * <p>
+     * 作者：fisher12
+     * 链接：https://leetcode-cn.com/problems/list-of-depth-lcci/solution/ceng-xu-bian-li-by-fisher12/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public ListNode[] listOfDepth(TreeNode tree) {
+            LinkedList<TreeNode> queue = new LinkedList<>();
+            queue.offer(tree);
+
+            List<ListNode> res = new ArrayList<>();
+            //使用了dummy这样的虚拟节点，
+            //使得代码相对简洁一些，不用考虑head
+            ListNode dummy = new ListNode(0);
+            while (!queue.isEmpty()) {
+                int size = queue.size();
+                ListNode curr = dummy;
+                //处理一层
+                for (int i = 0; i < size; i++) {
+                    TreeNode treeNode = queue.poll();
+                    curr.next = new ListNode(treeNode.val);
+                    if (treeNode.left != null) {
+                        queue.offer(treeNode.left);
+                    }
+                    if (treeNode.right != null) {
+                        queue.offer(treeNode.right);
+                    }
+                    curr = curr.next;
+                }
+                //dummy.next就是head
+                res.add(dummy.next);
+                dummy.next = null;
+            }
+
+            return res.toArray(new ListNode[]{});
         }
     }
 
