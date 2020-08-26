@@ -29,8 +29,8 @@ public class LevelOrder {
                 result.add(new ArrayList<>());
             }
             result.get(high).add(root.val);
-            levelOrder(root, result, high + 1);
-            levelOrder(root, result, high + 1);
+            levelOrder(root.left, result, high + 1);
+            levelOrder(root.right, result, high + 1);
         }
     }
 
