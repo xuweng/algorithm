@@ -23,7 +23,7 @@ public class ListOfDepth {
         public ListNode[] listOfDepth(TreeNode tree) {
             List<List<TreeNode>> listNodes = new ArrayList<>();
 
-            ceng(tree, listNodes, 0);
+            reCeng(tree, listNodes, 0);
 
             List<ListNode> result = new ArrayList<>();
             for (List<TreeNode> nodes : listNodes) {
@@ -46,7 +46,16 @@ public class ListOfDepth {
 
         }
 
-        private void ceng(TreeNode treeNode, List<List<TreeNode>> listNodes, int high) {
+        /**
+         * 模板
+         * <p>
+         * 递归写层次遍历
+         *
+         * @param treeNode
+         * @param listNodes
+         * @param high
+         */
+        private void reCeng(TreeNode treeNode, List<List<TreeNode>> listNodes, int high) {
             if (treeNode == null) {
                 return;
             }
@@ -54,8 +63,8 @@ public class ListOfDepth {
                 listNodes.add(new ArrayList<>());
             }
             listNodes.get(high).add(treeNode);
-            ceng(treeNode.left, listNodes, high + 1);
-            ceng(treeNode.right, listNodes, high + 1);
+            reCeng(treeNode.left, listNodes, high + 1);
+            reCeng(treeNode.right, listNodes, high + 1);
         }
     }
 
