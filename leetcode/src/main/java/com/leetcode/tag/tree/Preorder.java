@@ -45,6 +45,10 @@ public class Preorder {
     class Solution1 {
         /**
          * 保证栈顶的节点就是我们当前遍历到的节点
+         * <p>
+         * 把 u 的所有子节点逆序推入栈中
+         * <p>
+         * 右子树先入栈，这样栈顶是左子树，这样先取出左子树
          *
          * @param root
          * @return
