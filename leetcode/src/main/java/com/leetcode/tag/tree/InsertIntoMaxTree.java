@@ -25,7 +25,9 @@ public class InsertIntoMaxTree {
             //root.val < val
             if (root == null || root.val < val) {
                 TreeNode tmp = new TreeNode(val);
+                //连接
                 tmp.left = root;
+                //返回新结点
                 return tmp;
             }
             //root.val >= val
