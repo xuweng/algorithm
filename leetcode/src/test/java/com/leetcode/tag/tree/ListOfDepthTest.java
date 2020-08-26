@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-class ListOfDepthTest {
+public class ListOfDepthTest {
 
     @BeforeEach
     void setUp() {
