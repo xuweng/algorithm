@@ -60,6 +60,7 @@ public class Preorder {
             while (!stack.isEmpty()) {
                 Node node = stack.pollLast();
                 output.add(node.val);
+                //把 u 的所有子节点逆序推入栈中
                 Collections.reverse(node.children);
                 stack.addAll(node.children);
             }
