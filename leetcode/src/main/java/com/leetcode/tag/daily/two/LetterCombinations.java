@@ -45,23 +45,20 @@ public class LetterCombinations {
             phoneMap.put('8', "tuv");
             phoneMap.put('9', "wxyz");
 
-            backtrack(combinations, phoneMap, digits, 0, new StringBuffer());
+            backtrack(combinations, phoneMap, digits, 0, "");
             return combinations;
         }
 
-        public void backtrack(List<String> combinations, Map<Character, String> phoneMap, String digits, int cur, StringBuffer combination) {
+        public void backtrack(List<String> combinations, Map<Character, String> phoneMap, String digits, int cur, String temp) {
             if (cur == digits.length()) {
-                combinations.add(combination.toString());
+                combinations.add(temp);
                 return;
             }
             char digit = digits.charAt(cur);
             String letters = phoneMap.get(digit);
             int lettersCount = letters.length();
             for (int i = 0; i < lettersCount; i++) {
-                combination.append(letters.charAt(i));
-                backtrack(combinations, phoneMap, digits, cur + 1, combination);
-                //回溯.从底开始回溯
-                combination.deleteCharAt(cur);
+                backtrack(combinations, phoneMap, digits, cur + 1, temp + letters.charAt(i));
             }
         }
     }
