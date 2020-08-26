@@ -14,6 +14,27 @@ public class InsertIntoMaxTree {
         }
     }
 
+    /**
+     * 作者：hu-li-hu-wai
+     * 链接：https://leetcode-cn.com/problems/maximum-binary-tree-ii/solution/shuang-bai-di-gui-by-hu-li-hu-wai/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public TreeNode insertIntoMaxTree(TreeNode root, int val) {
+            //root.val < val
+            if (root == null || root.val < val) {
+                TreeNode tmp = new TreeNode(val);
+                tmp.left = root;
+                return tmp;
+            }
+            //root.val >= val
+            root.right = insertIntoMaxTree(root.right, val);
+            return root;
+        }
+    }
+
+
     class TreeNode {
         int val;
         TreeNode left;
