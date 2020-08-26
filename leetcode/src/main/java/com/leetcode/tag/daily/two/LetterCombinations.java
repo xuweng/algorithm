@@ -60,6 +60,7 @@ public class LetterCombinations {
             for (int i = 0; i < lettersCount; i++) {
                 combination.append(letters.charAt(i));
                 backtrack(combinations, phoneMap, digits, cur + 1, combination);
+                //回溯.从底开始回溯
                 combination.deleteCharAt(cur);
             }
         }
