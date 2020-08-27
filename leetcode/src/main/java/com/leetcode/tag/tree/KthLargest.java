@@ -51,6 +51,11 @@ public class KthLargest {
             return res;
         }
 
+        /**
+         * 中序遍历倒序
+         *
+         * @param root
+         */
         void dfs(TreeNode root) {
             if (root == null) {
                 return;
