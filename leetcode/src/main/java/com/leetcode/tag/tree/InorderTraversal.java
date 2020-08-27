@@ -45,6 +45,7 @@ public class InorderTraversal {
                     curr = curr.left;
                 }
                 curr = stack.pop();
+                //访问当前结点
                 res.add(curr.val);
                 curr = curr.right;
             }
