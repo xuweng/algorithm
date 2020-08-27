@@ -128,20 +128,21 @@ public class CountPairs {
             List<Integer> list = new ArrayList<>();
             //root.left到其下方所有叶子节点的距离
             List<Integer> left = dfs(root.left, distance);
+            //选择满足条件的距离
             for (int it : left) {
-                if (++it > distance) {
-                    continue;
+                if (++it <= distance) {
+                    list.add(it);
                 }
-                list.add(it);
             }
             //root.right到其下方所有叶子节点的距离
             List<Integer> right = dfs(root.right, distance);
+            //选择满足条件的距离
             for (int it : right) {
-                if (++it > distance) {
-                    continue;
+                if (++it <= distance) {
+                    list.add(it);
                 }
-                list.add(it);
             }
+            //统计所有满足条件的距离
             for (int l : left) {
                 for (int r : right) {
                     if (l + r + 2 <= distance) {
