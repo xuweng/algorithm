@@ -41,6 +41,13 @@ public class CountPairs {
             return pair.count;
         }
 
+        /**
+         * 太复杂的代码以后也记不住
+         *
+         * @param root
+         * @param distance
+         * @return
+         */
         // 对于 dfs(root,distance)，同时返回：
         // 1）每个叶子节点与 root 之间的距离
         // 2) 以 root 为根节点的子树中好叶子节点对的数量
