@@ -30,6 +30,14 @@ public class FindItinerary {
         Map<String, PriorityQueue<String>> map = new HashMap<>();
         List<String> itinerary = new LinkedList<>();
 
+        /**
+         * 为了保证我们能够快速找到当前节点所连的节点中字典序最小的那一个，我们可以使用优先队列存储当前节点所连到的点，
+         * <p>
+         * 每次我们 O(1) 地找到最小字典序的节点，并 O(logm) 地删除它
+         *
+         * @param tickets
+         * @return
+         */
         public List<String> findItinerary(List<List<String>> tickets) {
             for (List<String> ticket : tickets) {
                 String src = ticket.get(0), dst = ticket.get(1);
