@@ -81,6 +81,9 @@ public class CountPairs {
         }
     }
 
+    /**
+     * 封装数据结构
+     */
     class Pair {
         int[] depths;
         int count;
