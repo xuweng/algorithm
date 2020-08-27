@@ -117,14 +117,16 @@ public class CountPairs {
         }
 
         private List<Integer> dfs(TreeNode root, int distance) {
-            if (root == null)
+            if (root == null) {
                 return new ArrayList<>();
+            }
             if (root.left == null && root.right == null) {
                 List<Integer> list = new ArrayList<>();
                 list.add(0);
                 return list;
             }
             List<Integer> list = new ArrayList<>();
+            //root.left到其下方所有叶子节点的距离
             List<Integer> left = dfs(root.left, distance);
             for (int it : left) {
                 if (++it > distance) {
@@ -132,6 +134,7 @@ public class CountPairs {
                 }
                 list.add(it);
             }
+            //root.right到其下方所有叶子节点的距离
             List<Integer> right = dfs(root.right, distance);
             for (int it : right) {
                 if (++it > distance) {
