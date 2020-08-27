@@ -61,9 +61,6 @@ public class KthLargest {
                 return;
             }
             dfs(root.right);
-            if (k == 0) {
-                return;
-            }
             //通过k递减实现
             if (--k == 0) {
                 res = root.val;
