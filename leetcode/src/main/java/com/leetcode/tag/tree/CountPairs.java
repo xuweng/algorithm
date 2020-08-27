@@ -116,6 +116,15 @@ public class CountPairs {
             return ans;
         }
 
+        /**
+         * 对于当前结点p，只考虑横跨，即left，root，right
+         * <p>
+         * 不用只仅仅考虑left或者仅仅考虑right
+         *
+         * @param root
+         * @param distance
+         * @return
+         */
         private List<Integer> dfs(TreeNode root, int distance) {
             if (root == null) {
                 return new ArrayList<>();
@@ -142,7 +151,7 @@ public class CountPairs {
                     list.add(it);
                 }
             }
-            //统计所有满足条件的距离
+            //统计所有满足条件的距离.只会统计left和right都非空
             for (int l : left) {
                 for (int r : right) {
                     if (l + r + 2 <= distance) {
