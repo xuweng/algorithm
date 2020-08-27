@@ -82,12 +82,15 @@ public class IncreasingBST {
      */
     class Solution2 {
         //移动cur，相当一个指针
+        //记录当前访问的结点
         TreeNode cur;
 
         public TreeNode increasingBST(TreeNode root) {
+            //虚拟结点
             TreeNode ans = new TreeNode(0);
             cur = ans;
             inorder(root);
+            //返回虚拟结点的下一个
             return ans.right;
         }
 
@@ -104,7 +107,9 @@ public class IncreasingBST {
             }
             inorder(node.left);
             node.left = null;
+            //cur连接当前结点
             cur.right = node;
+            //更新cur
             cur = node;
             inorder(node.right);
         }
