@@ -45,6 +45,10 @@ public class CountPairs {
          * 太复杂的代码以后也记不住
          * <p>
          * 通过递归的方式，统计叶子节点与 P 的左孩子 left、右孩子 right 之间的距离
+         * <p>
+         * 两个以 P 为最近公共祖先的叶子节点 A、B，其中一个（例如 A）在以 left 为根的子树中，另一个（例如 B）在以 right 为根的子树中。A 与 B 之间的距离，
+         * <p>
+         * 就等于 A 与 left 之间的距离，加上 B 与 right 之间的距离，再加上 2。
          *
          * @param root
          * @param distance
