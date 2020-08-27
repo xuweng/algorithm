@@ -43,6 +43,8 @@ public class CountPairs {
 
         /**
          * 太复杂的代码以后也记不住
+         * <p>
+         * 通过递归的方式，统计叶子节点与 P 的左孩子 left、右孩子 right 之间的距离
          *
          * @param root
          * @param distance
@@ -90,6 +92,8 @@ public class CountPairs {
 
     /**
      * 封装数据结构
+     * <p>
+     * 返回的数据太多，考虑封装数据结构
      */
     class Pair {
         int[] depths;
