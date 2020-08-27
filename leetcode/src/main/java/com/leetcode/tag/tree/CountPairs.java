@@ -1,5 +1,8 @@
 package com.leetcode.tag.tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 1530. 好叶子节点对的数量
  * <p>
@@ -91,6 +94,59 @@ public class CountPairs {
                 }
             }
             return new Pair(depths, cnt + leftCount + rightCount);
+        }
+    }
+
+    /**
+     * root->val 没用，父节点和子节点的距离是 1
+     * 对树后序遍历 ，需要返回这个节点到其下方所有叶子节点的距离
+     * 这样就可以将这个节点的左子树所有叶子节点和右子树所有叶子节点都凑个对
+     * 然后将所有叶子节点不超过距离的弄到一起返回
+     * <p>
+     * 作者：ikaruga
+     * 链接：https://leetcode-cn.com/problems/number-of-good-leaf-nodes-pairs/solution/good-leaf-nodes-pairs-by-ikaruga/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        private int ans = 0;
+
+        public int countPairs(TreeNode root, int distance) {
+            dfs(root, distance);
+            return ans;
+        }
+
+        private List<Integer> dfs(TreeNode root, int distance) {
+            if (root == null)
+                return new ArrayList<>();
+            if (root.left == null && root.right == null) {
+                List<Integer> list = new ArrayList<>();
+                list.add(0);
+                return list;
+            }
+            List<Integer> list = new ArrayList<>();
+            List<Integer> left = dfs(root.left, distance);
+            for (int it : left) {
+                if (++it > distance) {
+                    continue;
+                }
+                list.add(it);
+            }
+            List<Integer> right = dfs(root.right, distance);
+            for (int it : right) {
+                if (++it > distance) {
+                    continue;
+                }
+                list.add(it);
+            }
+            for (int l : left) {
+                for (int r : right) {
+                    if (l + r + 2 <= distance) {
+                        ans++;
+                    }
+                }
+            }
+            return list;
         }
     }
 
