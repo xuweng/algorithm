@@ -28,6 +28,12 @@ public class InorderTraversal {
     }
 
     /**
+     * 区别是访问当前结点的时机
+     * <p>
+     * 时间复杂度：O(n)。
+     * <p>
+     * 空间复杂度：O(n)。
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/binary-tree-inorder-traversal/solution/er-cha-shu-de-zhong-xu-bian-li-by-leetcode/
      * 来源：力扣（LeetCode）
