@@ -30,4 +30,31 @@ public class JudgeCircle {
             return result;
         }
     }
+
+    /**
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/robot-return-to-origin/solution/ji-qi-ren-neng-fou-fan-hui-yuan-dian-by-leetcode-s/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public boolean judgeCircle(String moves) {
+            int x = 0, y = 0;
+            int length = moves.length();
+            for (int i = 0; i < length; i++) {
+                char move = moves.charAt(i);
+                if (move == 'U') {
+                    y--;
+                } else if (move == 'D') {
+                    y++;
+                } else if (move == 'L') {
+                    x--;
+                } else if (move == 'R') {
+                    x++;
+                }
+            }
+            return x == 0 && y == 0;
+        }
+    }
+
 }
