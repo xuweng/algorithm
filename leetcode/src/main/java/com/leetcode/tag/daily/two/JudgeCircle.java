@@ -6,6 +6,8 @@ import java.util.Objects;
 
 /**
  * 657. 机器人能否返回原点
+ * <p>
+ * 模拟-----简单的思路
  */
 public class JudgeCircle {
     class Solution {
