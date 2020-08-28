@@ -32,6 +32,8 @@ public class JudgeCircle {
     }
 
     /**
+     * 方法一： 模拟
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/robot-return-to-origin/solution/ji-qi-ren-neng-fou-fan-hui-yuan-dian-by-leetcode-s/
      * 来源：力扣（LeetCode）
