@@ -104,6 +104,12 @@ public class ShortestPalindrome {
      * 字符串反转
      */
     static class Solution3 {
+        /**
+         * s：ananab，rev_s：banana
+         *
+         * @param s
+         * @return
+         */
         public String shortestPalindrome(String s) {
             if (s == null || s.isEmpty()) {
                 return s;
