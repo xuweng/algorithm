@@ -50,6 +50,10 @@ public class IsSubStructure {
 
         /**
          * 判断树 A 中 以 n_A为根节点的子树 是否包含树 B
+         * <p>
+         * 字符串匹配。原字符串>模式串
+         * <p>
+         * A>B
          *
          * @param A
          * @param B
@@ -57,9 +61,12 @@ public class IsSubStructure {
          */
         boolean recur(TreeNode A, TreeNode B) {
             //当作true来处理
+            //当节点 B 为空：说明树 B 已匹配完成
             if (B == null) {
                 return true;
             }
+            //当节点 A 为空：说明已经越过树 A 叶子节点，即匹配失败
+            //当节点 A 和 B 的值不同：说明匹配失败
             if (A == null || A.val != B.val) {
                 return false;
             }
