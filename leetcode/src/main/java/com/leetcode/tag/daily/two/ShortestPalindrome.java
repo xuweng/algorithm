@@ -10,6 +10,8 @@ import java.util.Arrays;
  * 十分钟看题解
  * <p>
  * 十分钟看题解
+ * <p>
+ * 官方题解老是晦涩的公式
  */
 public class ShortestPalindrome {
     class Solution {
