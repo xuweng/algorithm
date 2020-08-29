@@ -49,6 +49,8 @@ public class IsSubStructure {
         }
 
         /**
+         * 这里限制是等值匹配
+         * <p>
          * 判断树 A 中 以 n_A为根节点的子树 是否包含树 B
          * <p>
          * 字符串匹配。原字符串>模式串
