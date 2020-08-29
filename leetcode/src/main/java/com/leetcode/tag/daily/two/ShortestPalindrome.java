@@ -103,7 +103,7 @@ public class ShortestPalindrome {
     /**
      * 字符串反转
      */
-    class Solution3 {
+    static class Solution3 {
         public String shortestPalindrome(String s) {
             if (s == null || s.isEmpty()) {
                 return s;
