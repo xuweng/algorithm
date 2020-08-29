@@ -44,6 +44,7 @@ public class IsSubStructure {
          */
         public boolean isSubStructure(TreeNode A, TreeNode B) {
             //!=null才会先序遍历
+            //root,left,right
             return (A != null && B != null) && (recur(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B));
         }
 
