@@ -12,6 +12,8 @@ package com.leetcode.tag.tree;
  * 思路
  * <p>
  * 刷题效率。刷题效率。刷题效率。
+ * <p>
+ * 没有意义、太复杂的题目就放弃
  */
 public class CountCompleteTreeNodes {
     class Solution {
