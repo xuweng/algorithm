@@ -29,6 +29,12 @@ public class IsSubStructure {
     class Solution1 {
         /**
          * 先序遍历树 A 中的每个节点 n_An
+         * <p>
+         * 先序遍历?
+         * <p>
+         * 中序遍历倒序遍历
+         * <p>
+         * 结点的先序遍历。树的先序遍历。
          *
          * @param A
          * @param B
