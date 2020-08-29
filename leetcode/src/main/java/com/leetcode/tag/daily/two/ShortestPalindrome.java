@@ -1,6 +1,7 @@
 package com.leetcode.tag.daily.two;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * 214. 最短回文串
@@ -96,6 +97,24 @@ public class ShortestPalindrome {
             StringBuffer ans = new StringBuffer(add).reverse();
             ans.append(s);
             return ans.toString();
+        }
+    }
+
+    /**
+     * 字符串反转
+     */
+    class Solution3 {
+        public String shortestPalindrome(String s) {
+            if (s == null || s.isEmpty()) {
+                return s;
+            }
+            String reversed = new StringBuilder(s).reverse().toString();
+            for (int i = s.length() - 1; i >= 0; i--) {
+                if (Objects.equals(s.substring(0, i + 1), reversed.substring(reversed.length() - i))) {
+                    return s.substring(i + 1) + s;
+                }
+            }
+            return s;
         }
     }
 
