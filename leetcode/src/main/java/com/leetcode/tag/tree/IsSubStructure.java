@@ -35,6 +35,8 @@ public class IsSubStructure {
          * 中序遍历倒序遍历
          * <p>
          * 结点的先序遍历。树的先序遍历。
+         * <p>
+         * 在A里面搜索B。把B放到A里面搜索
          *
          * @param A
          * @param B
