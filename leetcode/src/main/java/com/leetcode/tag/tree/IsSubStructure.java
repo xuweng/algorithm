@@ -62,7 +62,7 @@ public class IsSubStructure {
             if (A == null || A.val != B.val) {
                 return false;
             }
-            return A.val == B.val && recur(A.left, B.left) && recur(A.right, B.right);
+            return recur(A.left, B.left) && recur(A.right, B.right);
         }
     }
 
