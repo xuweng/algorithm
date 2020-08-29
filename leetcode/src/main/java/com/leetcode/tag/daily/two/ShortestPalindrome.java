@@ -56,6 +56,8 @@ public class ShortestPalindrome {
     /**
      * 使用 KMP 字符串匹配算法来找出这个最长的前缀回文串
      * <p>
+     * 最长。前缀。回文串。
+     * <p>
      * 求 s 的「最长回文前缀」，然后在 rev_s 的后缀中砍掉这个回文，再加到 s 前面
      * <p>
      * 作者：LeetCode-Solution
