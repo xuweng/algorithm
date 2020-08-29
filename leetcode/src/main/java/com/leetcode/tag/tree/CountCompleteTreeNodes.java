@@ -37,6 +37,8 @@ public class CountCompleteTreeNodes {
     /**
      * 方法二：二分搜索
      * <p>
+     * 方法一没有利用完全二叉树的特性。完全二叉树中，除了最后一层外，其余每层节点都是满的，并且最后一层的节点全部靠向左边
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/count-complete-tree-nodes/solution/wan-quan-er-cha-shu-de-jie-dian-ge-shu-by-leetcode/
      * 来源：力扣（LeetCode）
