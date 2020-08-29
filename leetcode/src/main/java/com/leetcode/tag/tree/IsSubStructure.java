@@ -55,14 +55,7 @@ public class IsSubStructure {
          * @return
          */
         boolean recur(TreeNode A, TreeNode B) {
-            //当作true来处理
-            if (B == null) {
-                return true;
-            }
-            if (A == null || A.val != B.val) {
-                return false;
-            }
-            return recur(A.left, B.left) && recur(A.right, B.right);
+            return A.val == B.val && recur(A.left, B.left) && recur(A.right, B.right);
         }
     }
 
