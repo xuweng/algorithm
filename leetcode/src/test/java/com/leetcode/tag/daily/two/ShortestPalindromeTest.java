@@ -9,6 +9,6 @@ public class ShortestPalindromeTest {
     @Test
     public void shortestPalindrome() {
         String s = "aacecaaa";
-        solution3.shortestPalindrome(s);
+        System.out.println(solution3.shortestPalindrome(s));
     }
 }

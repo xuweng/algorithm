@@ -109,11 +109,11 @@ public class ShortestPalindrome {
                 return s;
             }
             String reversed = new StringBuilder(s).reverse().toString();
-            for (int i = s.length() - 1; i >= 0; i--) {
-                String s1 = s.substring(0, i + 1);
-                String s2 = reversed.substring(reversed.length() - i - 1);
+            for (int i = s.length(); i >= 0; i--) {
+                String s1 = s.substring(0, i);
+                String s2 = reversed.substring(reversed.length() - i);
                 if (Objects.equals(s1, s2)) {
-                    return s.substring(i + 1) + s;
+                    return reversed.substring(0, reversed.length() - i) + s;
                 }
             }
             return s;
