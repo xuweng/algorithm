@@ -60,6 +60,10 @@ public class ShortestPalindrome {
      * <p>
      * 求 s 的「最长回文前缀」，然后在 rev_s 的后缀中砍掉这个回文，再加到 s 前面
      * <p>
+     * 公共前后缀
+     * <p>
+     * KMP 的 next 数组记录的就是一个字符串的每个位置上，最长公共前后缀的长度
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/shortest-palindrome/solution/zui-duan-hui-wen-chuan-by-leetcode-solution/
      * 来源：力扣（LeetCode）
