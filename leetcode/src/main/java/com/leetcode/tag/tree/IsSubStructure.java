@@ -18,6 +18,44 @@ public class IsSubStructure {
         }
     }
 
+    /**
+     * 遍历+判断
+     * <p>
+     * 作者：jyd
+     * 链接：https://leetcode-cn.com/problems/shu-de-zi-jie-gou-lcof/solution/mian-shi-ti-26-shu-de-zi-jie-gou-xian-xu-bian-li-p/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        /**
+         * 先序遍历树 A 中的每个节点 n_An
+         *
+         * @param A
+         * @param B
+         * @return
+         */
+        public boolean isSubStructure(TreeNode A, TreeNode B) {
+            return (A != null && B != null) && (recur(A, B) || isSubStructure(A.left, B) || isSubStructure(A.right, B));
+        }
+
+        /**
+         * 判断树 A 中 以 n_A为根节点的子树 是否包含树 B
+         *
+         * @param A
+         * @param B
+         * @return
+         */
+        boolean recur(TreeNode A, TreeNode B) {
+            if (B == null) {
+                return true;
+            }
+            if (A == null || A.val != B.val) {
+                return false;
+            }
+            return recur(A.left, B.left) && recur(A.right, B.right);
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
