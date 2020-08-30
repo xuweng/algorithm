@@ -17,6 +17,8 @@ public class MaxProduct {
      * <p>
      * 即尽可能小。如果当前位置是一个正数的话，我们更希望以它前一个位置结尾的某个段的积也是个正数，并且希望它尽可能地大
      * <p>
+     * 于是这里我们可以再维护一个 fmin(i),它表示以第 i 个元素结尾的乘积最小子数组的乘积，那么我们可以得到这样的动态规划转移方程：
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/maximum-product-subarray/solution/cheng-ji-zui-da-zi-shu-zu-by-leetcode-solution/
      * 来源：力扣（LeetCode）
