@@ -54,6 +54,9 @@ public class MaxProduct {
         return ans;
     }
 
+    /**
+     * 算法错误
+     */
     class S {
         public int maxProduct(int[] nums) {
             //以第 i 个元素结尾的乘积最大子数组的乘积
@@ -74,6 +77,7 @@ public class MaxProduct {
                 //当前+，前一个-
                 //当前-，前一个+
 
+                //需要排除0
                 //同号
                 if (isTong(maxF[i - 1], nums[i])) {
                     maxF[i] = Math.max(maxF[i - 1] * nums[i], minF[i - 1] * nums[i]);
