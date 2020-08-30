@@ -11,6 +11,12 @@ public class MaxProduct {
      * <p>
      * 当前位置的最优解未必是由前一个位置的最优解转移得到的
      * <p>
+     * 我们可以根据正负性进行分类讨论。
+     * <p>
+     * 考虑当前位置如果是一个负数的话，那么我们希望以它前一个位置结尾的某个段的积也是个负数，这样就可以负负得正，并且我们希望这个积尽可能「负得更多」，
+     * <p>
+     * 即尽可能小。如果当前位置是一个正数的话，我们更希望以它前一个位置结尾的某个段的积也是个正数，并且希望它尽可能地大
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/maximum-product-subarray/solution/cheng-ji-zui-da-zi-shu-zu-by-leetcode-solution/
      * 来源：力扣（LeetCode）
