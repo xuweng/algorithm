@@ -28,7 +28,9 @@ public class MaxProduct {
      * @return
      */
     public int maxProduct(int[] nums) {
+        //以第 i 个元素结尾的乘积最大子数组的乘积
         int[] maxF = new int[nums.length];
+        //以第 i 个元素结尾的乘积最小子数组的乘积
         int[] minF = new int[nums.length];
 
         maxF[0] = nums[0];
