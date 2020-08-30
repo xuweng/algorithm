@@ -12,6 +12,13 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * 搞懂题目。搞懂题目。
  */
 public class ContainsPattern {
+    /**
+     * 测试用例
+     * <p>
+     * 输入：arr = [1,2,3,1,2], m = 2, k = 2
+     * 输出：false
+     * 解释：模式 (1,2) 出现 2 次但并不连续，所以不能算作连续重复 2 次。
+     */
     class Solution {
         public boolean containsPattern(int[] arr, int m, int k) {
             if (arr == null || arr.length == 0) {
