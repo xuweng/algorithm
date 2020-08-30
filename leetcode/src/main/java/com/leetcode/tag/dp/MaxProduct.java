@@ -45,6 +45,7 @@ public class MaxProduct {
             //当前+，前一个+
             //当前-，前一个-
             //当前+，前一个-
+            //当前-，前一个+
             maxF[i] = Math.max(maxF[i - 1] * nums[i], Math.max(nums[i], minF[i - 1] * nums[i]));
             minF[i] = Math.min(minF[i - 1] * nums[i], Math.min(nums[i], maxF[i - 1] * nums[i]));
             ans = Math.max(ans, maxF[i]);
