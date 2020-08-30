@@ -2,6 +2,8 @@ package com.leetcode.tag.dp;
 
 /**
  * 152. 乘积最大子数组
+ * <p>
+ * 脑海里执行一遍测试用例
  */
 public class MaxProduct {
     /**
