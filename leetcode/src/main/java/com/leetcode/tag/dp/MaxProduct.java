@@ -47,6 +47,7 @@ public class MaxProduct {
             //当前-，前一个-
             //当前+，前一个-
             //当前-，前一个+
+            //无论怎样，都是3个变量比较
             maxF[i] = Math.max(maxF[i - 1] * nums[i], Math.max(nums[i], minF[i - 1] * nums[i]));
             minF[i] = Math.min(minF[i - 1] * nums[i], Math.min(nums[i], maxF[i - 1] * nums[i]));
             ans = Math.max(ans, maxF[i]);
@@ -96,6 +97,9 @@ public class MaxProduct {
         }
 
         private boolean isTong(int i, int j) {
+            if (j == 0) {
+                return false;
+            }
             if (j > 0) {
                 return i > 0;
             }
