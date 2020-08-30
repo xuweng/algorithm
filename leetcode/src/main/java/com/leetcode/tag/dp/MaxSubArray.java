@@ -6,6 +6,8 @@ package com.leetcode.tag.dp;
  * 不用花太多时间在无所谓的竞赛
  * <p>
  * 巩固基础。巩固基础。巩固基础。
+ * <p>
+ * 竞赛的题目不太适合
  */
 public class MaxSubArray {
     /**
