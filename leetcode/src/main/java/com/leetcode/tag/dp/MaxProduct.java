@@ -109,7 +109,7 @@ public class MaxProduct {
     }
 
     /**
-     * 算法错误
+     * 根据当前元素判断正负，太多条件，累死。
      */
     class S1 {
         public int maxProduct(int[] nums) {
@@ -135,9 +135,17 @@ public class MaxProduct {
                 //同号
                 //++,--
                 if (nums[i] > 0) {
-                    maxF[i] = maxF[i - 1] * nums[i];
+                    if (maxF[i - 1] > 0) {
+                        maxF[i] = maxF[i - 1] * nums[i];
+                    } else {
+                        maxF[i] = nums[i];
+                    }
                 } else if (nums[i] < 0) {
-                    maxF[i] = minF[i - 1] * nums[i];
+                    if (minF[i - 1] < 0) {
+                        maxF[i] = minF[i - 1] * nums[i];
+                    } else {
+                        maxF[i] = nums[i];
+                    }
                 } else {
                     maxF[i] = nums[i];
                 }
