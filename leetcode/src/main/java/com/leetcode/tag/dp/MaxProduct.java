@@ -7,7 +7,7 @@ public class MaxProduct {
     /**
      * 错误的状态转移方程：
      * <p>
-     * fmax(i) = max{ f(i - 1) * a_i, a_i}
+     * fmax(i) = max{f(i - 1) * a_i, a_i}
      * <p>
      * 当前位置的最优解未必是由前一个位置的最优解转移得到的
      * <p>
