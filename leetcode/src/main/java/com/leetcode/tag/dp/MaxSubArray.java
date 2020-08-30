@@ -70,10 +70,12 @@ public class MaxSubArray {
         }
 
         /**
+         * 封装数据结构
+         * <p>
          * 对于一个区间 [l,r]，我们可以维护四个量：
          * <p>
-         * lSum 表示 [l,r] 内以 ll 为左端点的最大子段和
-         * rSum 表示 [l,r] 内以 rr 为右端点的最大子段和
+         * lSum 表示 [l,r] 内以 l 为左端点的最大子段和
+         * rSum 表示 [l,r] 内以 r 为右端点的最大子段和
          * mSum 表示 [l,r] 内的最大子段和
          * iSum 表示 [l,r] 的区间和
          * <p>
