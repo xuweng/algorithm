@@ -108,4 +108,52 @@ public class MaxProduct {
         }
     }
 
+    /**
+     * 算法错误
+     */
+    class S1 {
+        public int maxProduct(int[] nums) {
+            //以第 i 个元素结尾的乘积最大子数组的乘积
+            int[] maxF = new int[nums.length];
+            //以第 i 个元素结尾的乘积最小子数组的乘积
+            int[] minF = new int[nums.length];
+
+            maxF[0] = nums[0];
+            minF[0] = nums[0];
+            int ans = nums[0];
+
+            for (int i = 1; i < nums.length; ++i) {
+                //同号，异号
+                //++,--,+-
+                //当前做选择，当前做判断
+                //当前+，前一个+
+                //当前-，前一个-
+                //当前+，前一个-
+                //当前-，前一个+
+
+                //需要排除0
+                //同号
+                //++,--
+                if (nums[i] > 0) {
+                    maxF[i] = maxF[i - 1] * nums[i];
+                } else if (nums[i] < 0) {
+                    maxF[i] = minF[i - 1] * nums[i];
+                } else {
+                    maxF[i] = nums[i];
+                }
+            }
+            return ans;
+        }
+
+        private boolean isTong(int i, int j) {
+            if (j == 0) {
+                return false;
+            }
+            if (j > 0) {
+                return i > 0;
+            }
+            return i < 0;
+        }
+    }
+
 }
