@@ -9,6 +9,8 @@ public class MaxProduct {
      * <p>
      * fmax(i) = max{ f(i - 1) * a_i, a_i}
      * <p>
+     * 当前位置的最优解未必是由前一个位置的最优解转移得到的
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/maximum-product-subarray/solution/cheng-ji-zui-da-zi-shu-zu-by-leetcode-solution/
      * 来源：力扣（LeetCode）
