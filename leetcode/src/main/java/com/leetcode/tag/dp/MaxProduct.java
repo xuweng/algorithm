@@ -40,6 +40,11 @@ public class MaxProduct {
         int ans = nums[0];
 
         for (int i = 1; i < nums.length; ++i) {
+            //++,--,+-
+            //当前做选择，当前做判断
+            //当前+，前一个+
+            //当前-，前一个-
+            //当前+，前一个-
             maxF[i] = Math.max(maxF[i - 1] * nums[i], Math.max(nums[i], minF[i - 1] * nums[i]));
             minF[i] = Math.min(minF[i - 1] * nums[i], Math.min(nums[i], maxF[i - 1] * nums[i]));
             ans = Math.max(ans, maxF[i]);
