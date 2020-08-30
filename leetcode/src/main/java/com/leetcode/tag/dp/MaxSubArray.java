@@ -22,6 +22,12 @@ public class MaxSubArray {
         }
     }
 
+    /**
+     * 答案就是：
+     * <p>
+     * max{ f(i) }
+     * 0≤i≤n−1
+     */
     class Solution1 {
         public int maxSubArray(int[] nums) {
             int[] dp = new int[nums.length];
