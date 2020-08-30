@@ -40,6 +40,7 @@ public class MaxProduct {
         int ans = nums[0];
 
         for (int i = 1; i < nums.length; ++i) {
+            //同号，异号
             //++,--,+-
             //当前做选择，当前做判断
             //当前+，前一个+
