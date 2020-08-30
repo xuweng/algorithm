@@ -80,6 +80,7 @@ public class MaxProduct {
 
                 //需要排除0
                 //同号
+                //++,--
                 if (isTong(maxF[i - 1], nums[i])) {
                     maxF[i] = Math.max(maxF[i - 1] * nums[i], minF[i - 1] * nums[i]);
                 } else {
