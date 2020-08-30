@@ -96,10 +96,10 @@ public class MaxProduct {
         }
 
         private boolean isTong(int i, int j) {
-            if (i >= 0) {
-                return j >= 0;
+            if (j > 0) {
+                return i > 0;
             }
-            return j < 0;
+            return i < 0;
         }
     }
 
