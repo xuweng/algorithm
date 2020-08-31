@@ -33,6 +33,8 @@ public class IsValidBST {
             if (root == null) {
                 return true;
             }
+            //root当作最大值传入left
+            //root当作最小值传入right
             return isValidBSTHelp(root.left, Long.MIN_VALUE, root.val) && isValidBSTHelp(root.right, root.val, Long.MAX_VALUE);
         }
 
