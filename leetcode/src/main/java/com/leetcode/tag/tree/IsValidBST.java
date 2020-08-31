@@ -93,9 +93,15 @@ public class IsValidBST {
             res left = isValidBST_do(root.left);
             res right = isValidBST_do(root.right);
 
-            return root.val > left.max && root.val < right.min && left.bol == true && right.bol == true;
+            return root.val > left.max && root.val < right.min && left.bol && right.bol;
         }
 
+        /**
+         * 后序遍历
+         *
+         * @param root
+         * @return
+         */
         public res isValidBST_do(TreeNode root) {
             if (root == null) {
                 return new res(true, Long.MAX_VALUE, Long.MIN_VALUE);
@@ -103,15 +109,12 @@ public class IsValidBST {
             res left = isValidBST_do(root.left);
             res right = isValidBST_do(root.right);
 
-            boolean temp = left.bol && right.bol;
-            if (root.val > left.max && root.val < right.min) {
-                temp = temp;
-            } else {
-                temp = false;
-            }
+            boolean temp = (root.val > left.max && root.val < right.min);
 
+            //三者比较
             long max = Math.max(Math.max(left.max, right.max), root.val);
             long min = Math.min(Math.min(left.min, right.min), root.val);
+
             return new res(temp, min, max);
 
         }
