@@ -72,6 +72,19 @@ public class PruneTree {
             return containsOne(root) ? root : null;
         }
 
+        /**
+         * 用 containsOne(node) 函数来判断以 node 为根的子树中是否包含 1，其不包含 1 当且仅当以 node 的左右孩子为根的子树均不包含 1
+         * <p>
+         * 并且 node 节点本身的值也不为 1
+         * <p>
+         * 作者：LeetCode
+         * 链接：https://leetcode-cn.com/problems/binary-tree-pruning/solution/er-cha-shu-jian-zhi-by-leetcode/
+         * 来源：力扣（LeetCode）
+         * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+         *
+         * @param node
+         * @return
+         */
         public boolean containsOne(TreeNode node) {
             if (node == null) {
                 return false;
@@ -79,11 +92,14 @@ public class PruneTree {
             boolean a1 = containsOne(node.left);
             boolean a2 = containsOne(node.right);
             if (!a1) {
+                //不包含1
                 node.left = null;
             }
             if (!a2) {
+                //不包含1
                 node.right = null;
             }
+            //条件是root，left，right都判断
             return node.val == 1 || a1 || a2;
         }
     }
