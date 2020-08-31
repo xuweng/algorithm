@@ -72,6 +72,11 @@ public class IsValidBST {
         }
     }
 
+    /**
+     * 后序遍历
+     * <p>
+     * 保存树的最大值和最小值
+     */
     class Solution2 {
         /**
          * 参数太多。
