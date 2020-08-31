@@ -10,6 +10,8 @@ package com.leetcode.tag.tree;
  * 任意结点。递归定义。
  * <p>
  * 后序遍历
+ * <p>
+ * 大脑执行一遍代码
  */
 public class IsBalanced {
     class Solution {
