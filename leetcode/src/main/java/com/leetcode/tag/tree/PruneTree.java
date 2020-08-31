@@ -25,12 +25,24 @@ public class PruneTree {
             if (root == null) {
                 return null;
             }
+            TreeNode treeNode = myPruneTree(root);
+            if (treeNode == null || treeNode.left == null && treeNode.right == null && treeNode.val == 0) {
+                return null;
+            }
+
+            return treeNode;
+        }
+
+        public TreeNode myPruneTree(TreeNode root) {
+            if (root == null) {
+                return null;
+            }
             if (root.val == 1) {
                 list.add(root);
             }
 
-            TreeNode left = pruneTree(root.left);
-            TreeNode right = pruneTree(root.right);
+            TreeNode left = myPruneTree(root.left);
+            TreeNode right = myPruneTree(root.right);
             //天然获取父节点root
             if (left != null && left.val == 0 && !list.contains(left)) {
                 root.left = null;
@@ -38,6 +50,7 @@ public class PruneTree {
             if (right != null && right.val == 0 && !list.contains(right)) {
                 root.right = null;
             }
+            //把结果往上传递
             if (list.contains(left) || list.contains(right)) {
                 list.add(root);
             }
