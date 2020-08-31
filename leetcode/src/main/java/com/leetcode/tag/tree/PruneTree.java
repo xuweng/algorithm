@@ -73,6 +73,8 @@ public class PruneTree {
         }
 
         /**
+         * 也是把结果往上传递
+         * <p>
          * 用 containsOne(node) 函数来判断以 node 为根的子树中是否包含 1，其不包含 1 当且仅当以 node 的左右孩子为根的子树均不包含 1
          * <p>
          * 并且 node 节点本身的值也不为 1
