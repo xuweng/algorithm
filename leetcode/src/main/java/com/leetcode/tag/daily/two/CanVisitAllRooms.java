@@ -40,11 +40,13 @@ public class CanVisitAllRooms {
             vis[x] = true;
             num++;
             for (int it : rooms.get(x)) {
-                if (!vis[it]) {
-                    dfs(rooms, it);
+                if (vis[it]) {
+                    continue;
                 }
+                dfs(rooms, it);
+                //不需要回溯
             }
         }
-    }
 
+    }
 }
