@@ -11,7 +11,20 @@ package com.leetcode.tag.tree;
  */
 public class IsBalanced {
     class Solution {
+        /**
+         * 先序遍历
+         *
+         * @param root
+         * @return
+         */
         public boolean isBalanced(TreeNode root) {
+            if (root == null) {
+                return true;
+            }
+            return is(root) && isBalanced(root.left) && isBalanced(root.right);
+        }
+
+        public boolean is(TreeNode root) {
             return root == null || Math.abs(height(root.left) - height(root.right)) <= 1;
         }
 
