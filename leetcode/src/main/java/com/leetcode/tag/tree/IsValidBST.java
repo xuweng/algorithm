@@ -68,6 +68,55 @@ public class IsValidBST {
         }
     }
 
+    class Solution2 {
+        /**
+         * 参数太多。
+         * <p>
+         * 封装数据结构。
+         */
+        class res {
+            boolean bol;
+            long min;
+            long max;
+
+            res(boolean x, long y, long z) {
+                bol = x;
+                min = y;
+                max = z;
+            }
+        }
+
+        public boolean isValidBST(TreeNode root) {
+            if (root == null || (root.left == null && root.right == null)) {
+                return true;
+            }
+            res left = isValidBST_do(root.left);
+            res right = isValidBST_do(root.right);
+
+            return root.val > left.max && root.val < right.min && left.bol == true && right.bol == true;
+        }
+
+        public res isValidBST_do(TreeNode root) {
+            if (root == null) {
+                return new res(true, Long.MAX_VALUE, Long.MIN_VALUE);
+            }
+            res left = isValidBST_do(root.left);
+            res right = isValidBST_do(root.right);
+
+            boolean temp = left.bol && right.bol;
+            if (root.val > left.max && root.val < right.min) {
+                temp = temp;
+            } else {
+                temp = false;
+            }
+
+            long max = Math.max(Math.max(left.max, right.max), root.val);
+            long min = Math.min(Math.min(left.min, right.min), root.val);
+            return new res(temp, min, max);
+
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
