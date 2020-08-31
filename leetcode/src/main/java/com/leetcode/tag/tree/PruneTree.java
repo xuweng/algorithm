@@ -12,6 +12,8 @@ package com.leetcode.tag.tree;
 public class PruneTree {
     /**
      * 脑海里执行一遍代码
+     * <p>
+     * 算法错误。包含0的都干掉了。
      */
     class Solution {
         public TreeNode pruneTree(TreeNode root) {
