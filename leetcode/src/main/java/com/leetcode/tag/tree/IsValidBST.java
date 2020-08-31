@@ -53,6 +53,7 @@ public class IsValidBST {
             }
             boolean left = isValidBSTHelp(root.left, min, root.val);
             boolean right = isValidBSTHelp(root.right, root.val, max);
+
             return left && right;
         }
     }
