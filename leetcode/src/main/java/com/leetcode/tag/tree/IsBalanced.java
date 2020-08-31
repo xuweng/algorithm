@@ -83,6 +83,7 @@ public class IsBalanced {
             }
             //类似二分。返回-1.
             //满足条件则返回深度，否则返回-1
+            //一定会返回答案
             return Math.abs(left - right) <= 1 ? Math.max(left, right) + 1 : -1;
         }
     }
