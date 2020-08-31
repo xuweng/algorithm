@@ -8,6 +8,10 @@ import java.util.Queue;
  * 841. 钥匙和房间
  * <p>
  * 太晦涩的题目直接看答案
+ * <p>
+ * 晦涩。
+ * <p>
+ * 抽象成图。抽象成图。抽象成图。抽象成图。
  */
 public class CanVisitAllRooms {
     class Solution {
