@@ -1,6 +1,8 @@
 package com.leetcode.tag.daily.two;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * 841. 钥匙和房间
@@ -43,6 +45,7 @@ public class CanVisitAllRooms {
         public void dfs(List<List<Integer>> rooms, int x) {
             vis[x] = true;
             num++;
+            //结点x的邻接结点
             for (int it : rooms.get(x)) {
                 if (vis[it]) {
                     continue;
@@ -53,4 +56,30 @@ public class CanVisitAllRooms {
         }
 
     }
+
+    /**
+     * 方法二：广度优先搜索
+     */
+    class Solution2 {
+        public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+            int n = rooms.size(), num = 0;
+            boolean[] vis = new boolean[n];
+            Queue<Integer> que = new LinkedList<>();
+            vis[0] = true;
+            que.offer(0);
+            while (!que.isEmpty()) {
+                int x = que.poll();
+                num++;
+                //结点x的邻接结点
+                for (int it : rooms.get(x)) {
+                    if (!vis[it]) {
+                        vis[it] = true;
+                        que.offer(it);
+                    }
+                }
+            }
+            return num == n;
+        }
+    }
+
 }
