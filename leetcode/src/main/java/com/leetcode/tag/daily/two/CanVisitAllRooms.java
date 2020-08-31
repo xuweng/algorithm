@@ -73,7 +73,9 @@ public class CanVisitAllRooms {
                 //结点x的邻接结点
                 for (int it : rooms.get(x)) {
                     if (!vis[it]) {
+                        //标记访问
                         vis[it] = true;
+                        //入队
                         que.offer(it);
                     }
                 }
