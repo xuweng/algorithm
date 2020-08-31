@@ -38,6 +38,10 @@ public class IsBalanced {
     }
 
     /**
+     * 学习这种递归
+     * <p>
+     * 这种递归。这种递归。
+     * <p>
      * 方法一：后序遍历 + 剪枝 （从底至顶）
      * <p>
      * 作者：jyd
@@ -78,6 +82,26 @@ public class IsBalanced {
         }
     }
 
+    /**
+     * 方法二：先序遍历 + 判断深度 （从顶至底）
+     * <p>
+     * 作者：jyd
+     * 链接：https://leetcode-cn.com/problems/ping-heng-er-cha-shu-lcof/solution/mian-shi-ti-55-ii-ping-heng-er-cha-shu-cong-di-zhi/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public boolean isBalanced(TreeNode root) {
+            if (root == null) {
+                return true;
+            }
+            return Math.abs(depth(root.left) - depth(root.right)) <= 1 && isBalanced(root.left) && isBalanced(root.right);
+        }
+
+        private int depth(TreeNode root) {
+            return root == null ? 0 : Math.max(depth(root.left), depth(root.right)) + 1;
+        }
+    }
 
     class TreeNode {
         int val;
