@@ -79,8 +79,11 @@ public class IsValidBST {
          * 封装数据结构。
          */
         class res {
+            //是否是bst
             boolean bol;
+            //当前树的min
             long min;
+            //当前树的max
             long max;
 
             res(boolean x, long y, long z) {
