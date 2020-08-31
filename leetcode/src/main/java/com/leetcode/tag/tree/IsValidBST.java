@@ -38,6 +38,8 @@ public class IsValidBST {
 
         /**
          * 这个递归厉害。
+         * <p>
+         * 带区间的递归.不用马上求最小值和最大值。
          *
          * @param root
          * @param min
