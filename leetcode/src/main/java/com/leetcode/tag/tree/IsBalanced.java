@@ -8,6 +8,8 @@ package com.leetcode.tag.tree;
  * 任意节点的左右子树的深度相差不超过1
  * <p>
  * 任意结点。递归定义。
+ * <p>
+ * 后序遍历
  */
 public class IsBalanced {
     class Solution {
