@@ -46,6 +46,16 @@ public class IsBalanced {
             return recur(root) != -1;
         }
 
+        /**
+         * 肯定需要遍历
+         * <p>
+         * 已经后序遍历
+         * <p>
+         * 思路是对二叉树做后序遍历，从底至顶返回子树深度，若判定某子树不是平衡树则 “剪枝” ，直接向上返回。
+         *
+         * @param root
+         * @return
+         */
         private int recur(TreeNode root) {
             if (root == null) {
                 return 0;
