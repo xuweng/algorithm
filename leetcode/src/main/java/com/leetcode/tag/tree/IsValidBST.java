@@ -17,6 +17,7 @@ public class IsValidBST {
 
             //算法错误
             //不能只比较一个结点
+            //left的最大值和root比较，right的最小值和root比较
             return (root.left.val < root.val && root.val > root.right.val) && left && right;
         }
     }
