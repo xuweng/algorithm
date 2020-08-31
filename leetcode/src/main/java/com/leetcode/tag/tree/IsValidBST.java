@@ -1,5 +1,9 @@
 package com.leetcode.tag.tree;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
+
 /**
  * 面试题 04.05. 合法二叉搜索树
  */
@@ -118,6 +122,33 @@ public class IsValidBST {
             return new res(temp, min, max);
 
         }
+    }
+
+    /**
+     * 中序遍历
+     */
+    class Solution3 {
+        List<Integer> res = new ArrayList<>();
+
+        public boolean isValidBST(TreeNode root) {
+            if (root == null) {
+                return true;
+            }
+            travel(root);
+
+            //是否排序
+            return IntStream.range(1, res.size()).noneMatch(i -> res.get(i) <= res.get(i - 1));
+        }
+
+        public void travel(TreeNode root) {
+            if (root == null) {
+                return;
+            }
+            travel(root.left);
+            res.add(root.val);
+            travel(root.right);
+        }
+
     }
 
     class TreeNode {
