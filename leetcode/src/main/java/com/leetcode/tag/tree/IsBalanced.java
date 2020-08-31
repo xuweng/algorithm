@@ -4,6 +4,10 @@ package com.leetcode.tag.tree;
  * 剑指 Offer 55 - II. 平衡二叉树
  * <p>
  * 不用做晦涩题目。直接看题解。
+ * <p>
+ * 任意节点的左右子树的深度相差不超过1
+ * <p>
+ * 任意结点。递归定义。
  */
 public class IsBalanced {
     class Solution {
