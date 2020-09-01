@@ -17,6 +17,10 @@ public class PredictTheWinner {
     /**
      * 方法一：递归
      * <p>
+     * 2个分支。2个选择策略。
+     * <p>
+     * 选择第一个；选择第二个。
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/predict-the-winner/solution/yu-ce-ying-jia-by-leetcode-solution/
      * 来源：力扣（LeetCode）
