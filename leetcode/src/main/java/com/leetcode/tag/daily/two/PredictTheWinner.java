@@ -21,6 +21,11 @@ public class PredictTheWinner {
      * <p>
      * 选择第一个；选择第二个。
      * <p>
+     * <p>
+     * 递归树。决策树。
+     * <p>
+     * 存在大量重复计算。大量重复的结点。
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/predict-the-winner/solution/yu-ce-ying-jia-by-leetcode-solution/
      * 来源：力扣（LeetCode）
