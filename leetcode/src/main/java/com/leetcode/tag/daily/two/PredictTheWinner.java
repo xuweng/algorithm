@@ -6,6 +6,8 @@ package com.leetcode.tag.daily.two;
  * 不做太晦涩的题。
  * <p>
  * 直接看题解直接看代码。
+ * <p>
+ * 为了判断哪个玩家可以获胜，需要计算一个总分，为先手得分与后手得分之差。当数组中的所有数字都被拿取时，如果总分大于或等于 0，则先手获胜，反之则后手获胜。
  */
 public class PredictTheWinner {
     class Solution {
