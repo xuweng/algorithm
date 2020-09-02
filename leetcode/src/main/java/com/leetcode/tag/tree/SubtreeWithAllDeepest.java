@@ -77,10 +77,7 @@ public class SubtreeWithAllDeepest {
             if (L != null && R != null) {
                 return node;
             }
-            if (L != null) {
-                return L;
-            }
-            return R;
+            return L != null ? L : R;
         }
     }
 
