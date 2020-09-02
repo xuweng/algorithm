@@ -12,6 +12,8 @@ package com.leetcode.tag.tree;
 public class IsValidBST2 {
     /**
      * 自己写一遍
+     * <p>
+     * 大数越界。
      */
     class Solution {
         public boolean isValidBST(TreeNode root) {
