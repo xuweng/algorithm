@@ -48,6 +48,10 @@ public class PathSum {
     /**
      * 前缀和
      * <p>
+     * 学习前缀和。
+     * <p>
+     * 学习前缀和。
+     * <p>
      * 作者：burning-summer
      * 链接：https://leetcode-cn.com/problems/paths-with-sum-lcci/solution/qian-zhui-he-de-ying-yong-di-gui-hui-su-by-shi-huo/
      * 来源：力扣（LeetCode）
