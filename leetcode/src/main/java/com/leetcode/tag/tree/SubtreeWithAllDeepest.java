@@ -48,6 +48,8 @@ public class SubtreeWithAllDeepest {
         /**
          * 先序遍历
          * <p>
+         * 后序遍历更好
+         * <p>
          * 深度为parent+1
          *
          * @param node
