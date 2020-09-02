@@ -20,10 +20,10 @@ public class IsValidBST2 {
             if (root == null) {
                 return true;
             }
-            return isValidBST(root.left, Integer.MIN_VALUE, root.val) && isValidBST(root.right, root.val, Integer.MAX_VALUE);
+            return isValidBST(root.left, Long.MIN_VALUE, root.val) && isValidBST(root.right, root.val, Long.MAX_VALUE);
         }
 
-        private boolean isValidBST(TreeNode root, int min, int max) {
+        private boolean isValidBST(TreeNode root, long min, long max) {
             if (root == null) {
                 return true;
             }
@@ -33,7 +33,6 @@ public class IsValidBST2 {
             return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max);
         }
     }
-
 
     class TreeNode {
         int val;
