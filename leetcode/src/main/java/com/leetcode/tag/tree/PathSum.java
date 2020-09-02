@@ -126,6 +126,7 @@ public class PathSum {
             }
             //替换当前层的数据
             paths[level] = root.val;
+            //计算路径和
             int t = 0;
             for (int i = level; i >= 0; i--) {
                 t += paths[i];
