@@ -37,6 +37,8 @@ public class SubtreeWithAllDeepest {
             depth = new HashMap<>(64);
             depth.put(null, -1);
             dfs(root, null);
+
+            //最大深度
             max_depth = -1;
             for (Integer d : depth.values()) {
                 max_depth = Math.max(max_depth, d);
@@ -46,6 +48,8 @@ public class SubtreeWithAllDeepest {
         }
 
         /**
+         * 标记所有结点的深度
+         * <p>
          * 先序遍历
          * <p>
          * 后序遍历更好
