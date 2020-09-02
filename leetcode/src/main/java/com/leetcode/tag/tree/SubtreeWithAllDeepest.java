@@ -109,12 +109,14 @@ public class SubtreeWithAllDeepest {
             }
             Result L = dfs(node.left);
             Result R = dfs(node.right);
+            //如果只有一个 childResult 具有最深节点，返回 childResult.node
             if (L.dist > R.dist) {
                 return new Result(L.node, L.dist + 1);
             }
             if (L.dist < R.dist) {
                 return new Result(R.node, R.dist + 1);
             }
+            //如果两个孩子都有最深节点，返回 node
             return new Result(node, L.dist + 1);
         }
     }
