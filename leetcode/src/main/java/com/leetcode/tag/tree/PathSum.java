@@ -31,7 +31,7 @@ public class PathSum {
 
         private void path(TreeNode root, int sum) {
             //考虑负数
-            if (root == null || root.val > sum) {
+            if (root == null) {
                 return;
             }
             if (root.val == sum) {
