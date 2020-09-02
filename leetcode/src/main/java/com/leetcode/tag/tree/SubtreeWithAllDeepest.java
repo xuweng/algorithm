@@ -45,12 +45,21 @@ public class SubtreeWithAllDeepest {
             return answer(root);
         }
 
+        /**
+         * 先序遍历
+         * <p>
+         * 深度为parent+1
+         *
+         * @param node
+         * @param parent
+         */
         public void dfs(TreeNode node, TreeNode parent) {
-            if (node != null) {
-                depth.put(node, depth.get(parent) + 1);
-                dfs(node.left, node);
-                dfs(node.right, node);
+            if (node == null) {
+                return;
             }
+            depth.put(node, depth.get(parent) + 1);
+            dfs(node.left, node);
+            dfs(node.right, node);
         }
 
         public TreeNode answer(TreeNode node) {
