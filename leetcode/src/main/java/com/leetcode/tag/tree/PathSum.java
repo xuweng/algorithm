@@ -23,21 +23,23 @@ public class PathSum {
             if (root == null) {
                 return;
             }
-            if (path(root, sum)) {
-                result++;
-            }
+            path(root, sum);
+
             myPathSum(root.left, sum);
             myPathSum(root.right, sum);
         }
 
-        private boolean path(TreeNode root, int sum) {
+        private void path(TreeNode root, int sum) {
+            //考虑负数
             if (root == null || root.val > sum) {
-                return false;
+                return;
             }
             if (root.val == sum) {
-                return true;
+                result++;
+                return;
             }
-            return path(root.left, sum - root.val) || path(root.right, sum - root.val);
+            path(root.left, sum - root.val);
+            path(root.right, sum - root.val);
         }
     }
 
