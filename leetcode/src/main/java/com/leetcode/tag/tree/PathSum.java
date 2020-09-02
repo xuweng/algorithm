@@ -106,6 +106,42 @@ public class PathSum {
         }
     }
 
+    /**
+     *
+     */
+    class Solution2 {
+        public int pathSum(TreeNode root, int sum) {
+            int dep = depth(root);
+            //保存当前层的数据
+            int[] paths = new int[dep];
+            pathSum(root, sum, 0, paths);
+            return res;
+        }
+
+        int res = 0;
+
+        public void pathSum(TreeNode root, int sum, int level, int[] paths) {
+            if (root == null) {
+                return;
+            }
+            //替换当前层的数据
+            paths[level] = root.val;
+            int t = 0;
+            for (int i = level; i >= 0; i--) {
+                t += paths[i];
+                if (t == sum) {
+                    res++;
+                }
+            }
+            pathSum(root.left, sum, level + 1, paths);
+            pathSum(root.right, sum, level + 1, paths);
+        }
+
+        public int depth(TreeNode root) {
+            return root == null ? 0 : Math.max(depth(root.left), depth(root.right)) + 1;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
