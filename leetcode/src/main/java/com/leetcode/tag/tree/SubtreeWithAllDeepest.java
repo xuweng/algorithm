@@ -68,16 +68,22 @@ public class SubtreeWithAllDeepest {
             dfs(node.right, node);
         }
 
+        /**
+         * 后序遍历
+         *
+         * @param node
+         * @return
+         */
         public TreeNode answer(TreeNode node) {
             if (node == null || depth.get(node) == max_depth) {
                 return node;
             }
-            TreeNode L = answer(node.left),
-                    R = answer(node.right);
-            if (L != null && R != null) {
+            TreeNode l = answer(node.left);
+            TreeNode r = answer(node.right);
+            if (l != null && r != null) {
                 return node;
             }
-            return L != null ? L : R;
+            return l != null ? l : r;
         }
     }
 
