@@ -36,7 +36,6 @@ public class PathSum {
             }
             if (root.val == sum) {
                 result++;
-                return;
             }
             path(root.left, sum - root.val);
             path(root.right, sum - root.val);
