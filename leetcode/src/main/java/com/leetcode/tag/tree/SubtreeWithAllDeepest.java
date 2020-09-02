@@ -89,6 +89,55 @@ public class SubtreeWithAllDeepest {
         }
     }
 
+    /**
+     * 方法二： 一次深度优先搜索
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/smallest-subtree-with-all-the-deepest-nodes/solution/ju-you-suo-you-zui-shen-jie-dian-de-zui-xiao-zi-sh/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public TreeNode subtreeWithAllDeepest(TreeNode root) {
+            return dfs(root).node;
+        }
+
+        // Return the result of the subtree at this node.
+        public Result dfs(TreeNode node) {
+            if (node == null) {
+                return new Result(null, 0);
+            }
+            Result L = dfs(node.left);
+            Result R = dfs(node.right);
+            if (L.dist > R.dist) {
+                return new Result(L.node, L.dist + 1);
+            }
+            if (L.dist < R.dist) {
+                return new Result(R.node, R.dist + 1);
+            }
+            return new Result(node, L.dist + 1);
+        }
+    }
+
+    /**
+     * 封装数据结构
+     * <p>
+     * The result of a subtree is:
+     * Result.node: the largest depth node that is equal to or
+     * an ancestor of all the deepest nodes of this subtree.
+     * Result.dist: the number of nodes in the path from the root
+     * of this subtree, to the deepest node in this subtree.
+     */
+    class Result {
+        TreeNode node;
+        int dist;
+
+        Result(TreeNode n, int d) {
+            node = n;
+            dist = d;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
