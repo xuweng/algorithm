@@ -80,9 +80,11 @@ public class SubtreeWithAllDeepest {
             }
             TreeNode l = answer(node.left);
             TreeNode r = answer(node.right);
+            //left和right都不为null
             if (l != null && r != null) {
                 return node;
             }
+            //left和right有一个为null
             return l != null ? l : r;
         }
     }
