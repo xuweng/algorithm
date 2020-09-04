@@ -1,6 +1,9 @@
 package com.leetcode.tag.tree;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -71,10 +74,7 @@ public class DelNodes {
     class Solution2 {
         public List<TreeNode> delNodes(TreeNode root, int[] to_delete) {
             // 为了快速判断节点是否要被删除，使用HashSet加快查找
-            Set<Integer> deleteSet = new HashSet<>();
-            for (int x : to_delete) {
-                deleteSet.add(x);
-            }
+            Set<Integer> deleteSet = Arrays.stream(to_delete).boxed().collect(Collectors.toSet());
 
             // 给根节点伪造一个父节点
             TreeNode fakeRoot = new TreeNode(0);
