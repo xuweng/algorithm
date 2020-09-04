@@ -66,6 +66,8 @@ public class DelNodes {
     }
 
     /**
+     * 根据示例在脑海里执行一下代码
+     * <p>
      * 作者：walker-3
      * 链接：https://leetcode-cn.com/problems/delete-nodes-and-return-forest/solution/javashi-yong-hou-xu-bian-li-de-fang-shi-by-walker-/
      * 来源：力扣（LeetCode）
