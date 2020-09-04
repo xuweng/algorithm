@@ -72,11 +72,12 @@ public class BinaryTreePaths {
      */
     class Solution2 {
         public List<String> binaryTreePaths(TreeNode root) {
-            List<String> paths = new ArrayList<String>();
+            List<String> paths = new ArrayList<>();
             if (root == null) {
                 return paths;
             }
             Queue<TreeNode> nodeQueue = new LinkedList<>();
+            //队列保存路径
             Queue<String> pathQueue = new LinkedList<>();
 
             nodeQueue.offer(root);
@@ -91,12 +92,12 @@ public class BinaryTreePaths {
                 } else {
                     if (node.left != null) {
                         nodeQueue.offer(node.left);
-                        pathQueue.offer(new StringBuffer(path).append("->").append(node.left.val).toString());
+                        pathQueue.offer(path + "->" + node.left.val);
                     }
 
                     if (node.right != null) {
                         nodeQueue.offer(node.right);
-                        pathQueue.offer(new StringBuffer(path).append("->").append(node.right.val).toString());
+                        pathQueue.offer(path + "->" + node.right.val);
                     }
                 }
             }
