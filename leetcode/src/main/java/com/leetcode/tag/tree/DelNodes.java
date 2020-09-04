@@ -60,6 +60,7 @@ public class DelNodes {
             if (helper(root.right, ans, !del)) {
                 root.right = null;
             }
+            //根据示例执行一下代码
             if (!del && !parentExists) {
                 ans.add(root);
             }
