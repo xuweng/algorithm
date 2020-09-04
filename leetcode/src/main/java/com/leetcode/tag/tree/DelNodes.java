@@ -38,11 +38,13 @@ public class DelNodes {
 
         /**
          * 带返回的后序遍历
+         * <p>
+         * 我想学这个后序遍历
          *
          * @param root
          * @param ans
          * @param parentExists
-         * @return
+         * @return 是否删除
          */
         boolean helper(TreeNode root, List<TreeNode> ans, boolean parentExists) {
             boolean del = false;
