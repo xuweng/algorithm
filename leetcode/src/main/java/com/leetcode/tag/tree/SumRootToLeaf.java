@@ -9,8 +9,22 @@ package com.leetcode.tag.tree;
  */
 public class SumRootToLeaf {
     class Solution {
+        int sum;
+
         public int sumRootToLeaf(TreeNode root) {
-            return 0;
+            sum(root, "");
+
+            return sum;
+        }
+
+        private void sum(TreeNode root, String temp) {
+            if (root == null) {
+                sum += Integer.parseUnsignedInt(temp, 2);
+                return;
+            }
+
+            sum(root.left, temp + root.val);
+            sum(root.right, temp + root.val);
         }
     }
 
