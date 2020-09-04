@@ -45,6 +45,7 @@ public class SolveNQueens {
                 ret.add(list);
                 return;
             }
+            //初始化row行
             Arrays.fill(board[row], '.');
             for (int i = 0; i < n; i++) {
                 // 第i列是否填。左对角线是否填。右对角线是否填。
