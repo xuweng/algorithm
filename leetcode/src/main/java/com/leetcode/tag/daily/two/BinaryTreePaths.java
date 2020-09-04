@@ -105,6 +105,32 @@ public class BinaryTreePaths {
         }
     }
 
+    /**
+     *
+     */
+    class Solution3 {
+        public List<String> binaryTreePaths(TreeNode root) {
+            List<String> ret = new ArrayList<>();
+            dfs(root, new StringBuilder(), ret);
+            return ret;
+        }
+
+        private void dfs(TreeNode root, StringBuilder tmp, List<String> ret) {
+            if (root == null) {
+                return;
+            }
+            String s = tmp.length() == 0 ? "" : "->";
+            tmp.append(s);
+            tmp.append(root.val);
+            if (root.left == null && root.right == null) {
+                ret.add(tmp.toString());
+                return;
+            }
+            dfs(root.left, new StringBuilder(tmp), ret);
+            dfs(root.right, new StringBuilder(tmp), ret);
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
