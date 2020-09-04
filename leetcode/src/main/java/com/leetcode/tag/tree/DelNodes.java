@@ -159,9 +159,9 @@ public class DelNodes {
                 res.add(node);
             }
             //待删结点就是root
+            //后序遍历
             node.left = help(node.left, deleted);
             node.right = help(node.right, deleted);
-            //后序遍历
             return deleted ? null : node;
         }
     }
