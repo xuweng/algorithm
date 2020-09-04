@@ -141,6 +141,8 @@ public class DelNodes {
 
         /**
          * 厉害
+         * <p>
+         * 先序遍历+后序遍历
          *
          * @param node
          * @param is_root
@@ -150,12 +152,14 @@ public class DelNodes {
             if (node == null) {
                 return null;
             }
+            //先序遍历
             boolean deleted = set.contains(node.val);
             if (is_root && !deleted) {
                 res.add(node);
             }
             node.left = help(node.left, deleted);
             node.right = help(node.right, deleted);
+            //后序遍历
             return deleted ? null : node;
         }
     }
