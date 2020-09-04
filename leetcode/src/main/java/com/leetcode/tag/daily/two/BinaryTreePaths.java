@@ -29,6 +29,37 @@ public class BinaryTreePaths {
         }
     }
 
+    /**
+     * 方法一：深度优先搜索
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/binary-tree-paths/solution/er-cha-shu-de-suo-you-lu-jing-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public List<String> binaryTreePaths(TreeNode root) {
+            List<String> paths = new ArrayList<>();
+            constructPaths(root, "", paths);
+            return paths;
+        }
+
+        public void constructPaths(TreeNode root, String path, List<String> paths) {
+            if (root == null) {
+                return;
+            }
+            StringBuffer pathSB = new StringBuffer(path);
+            pathSB.append(root.val);
+            if (root.left == null && root.right == null) {  // 当前节点是叶子节点
+                paths.add(pathSB.toString());  // 把路径加入到答案中
+            } else {
+                pathSB.append("->");  // 当前节点不是叶子节点，继续递归遍历
+                constructPaths(root.left, pathSB.toString(), paths);
+                constructPaths(root.right, pathSB.toString(), paths);
+            }
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
