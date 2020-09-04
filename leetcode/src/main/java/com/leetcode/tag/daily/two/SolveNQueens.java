@@ -3,6 +3,8 @@ package com.leetcode.tag.daily.two;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * 51. N 皇后
@@ -37,11 +39,9 @@ public class SolveNQueens {
          * @param n
          */
         private void backTrack(char[][] board, int row, int n) {
+            //越界统计
             if (row >= n) {
-                List<String> list = new ArrayList<>();
-                for (int i = 0; i < n; i++) {
-                    list.add(new String(board[i]));
-                }
+                List<String> list = IntStream.range(0, n).mapToObj(i -> String.valueOf(board[i])).collect(Collectors.toList());
                 ret.add(list);
                 return;
             }
