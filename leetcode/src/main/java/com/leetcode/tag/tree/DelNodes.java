@@ -153,10 +153,12 @@ public class DelNodes {
                 return null;
             }
             //先序遍历
+            //待删结点
             boolean deleted = set.contains(node.val);
             if (is_root && !deleted) {
                 res.add(node);
             }
+            //待删结点就是root
             node.left = help(node.left, deleted);
             node.right = help(node.right, deleted);
             //后序遍历
