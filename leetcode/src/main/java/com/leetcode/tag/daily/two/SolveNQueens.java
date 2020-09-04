@@ -48,6 +48,7 @@ public class SolveNQueens {
             //初始化row行
             Arrays.fill(board[row], '.');
             for (int i = 0; i < n; i++) {
+                //左对角线和右对角线是难点
                 // 第i列是否填。左对角线是否填。右对角线是否填。
                 if (col[i] || left[row + i] || right[row - i + n - 1]) {
                     continue;
@@ -59,7 +60,9 @@ public class SolveNQueens {
                 left[row + i] = true;
                 right[row - i + n - 1] = true;
                 board[row][i] = 'Q';
+                //下一行
                 backTrack(board, row + 1, n);
+                //回溯
                 col[i] = false;
                 board[row][i] = '.';
                 left[row + i] = false;
