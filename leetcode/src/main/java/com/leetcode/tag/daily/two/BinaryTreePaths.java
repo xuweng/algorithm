@@ -1,7 +1,9 @@
 package com.leetcode.tag.daily.two;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * 257. 二叉树的所有路径
@@ -57,6 +59,48 @@ public class BinaryTreePaths {
                 constructPaths(root.left, pathSB.toString(), paths);
                 constructPaths(root.right, pathSB.toString(), paths);
             }
+        }
+    }
+
+    /**
+     * 方法二：广度优先搜索
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/binary-tree-paths/solution/er-cha-shu-de-suo-you-lu-jing-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public List<String> binaryTreePaths(TreeNode root) {
+            List<String> paths = new ArrayList<String>();
+            if (root == null) {
+                return paths;
+            }
+            Queue<TreeNode> nodeQueue = new LinkedList<>();
+            Queue<String> pathQueue = new LinkedList<>();
+
+            nodeQueue.offer(root);
+            pathQueue.offer(Integer.toString(root.val));
+
+            while (!nodeQueue.isEmpty()) {
+                TreeNode node = nodeQueue.poll();
+                String path = pathQueue.poll();
+
+                if (node.left == null && node.right == null) {
+                    paths.add(path);
+                } else {
+                    if (node.left != null) {
+                        nodeQueue.offer(node.left);
+                        pathQueue.offer(new StringBuffer(path).append("->").append(node.left.val).toString());
+                    }
+
+                    if (node.right != null) {
+                        nodeQueue.offer(node.right);
+                        pathQueue.offer(new StringBuffer(path).append("->").append(node.right.val).toString());
+                    }
+                }
+            }
+            return paths;
         }
     }
 
