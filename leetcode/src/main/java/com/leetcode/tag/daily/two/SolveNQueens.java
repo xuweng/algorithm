@@ -59,7 +59,7 @@ public class SolveNQueens {
                 // 标记左对角线已填。行+列=左对角线。厉害。
                 left[row + i] = true;
                 right[row - i + n - 1] = true;
-                //填第row行。选择第row行。
+                //填第row行。选择第i列。
                 board[row][i] = 'Q';
                 //填下一行
                 backTrack(board, row + 1, n);
