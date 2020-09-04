@@ -36,12 +36,21 @@ public class DelNodes {
             return ans;
         }
 
+        /**
+         * 带返回的后序遍历
+         *
+         * @param root
+         * @param ans
+         * @param parentExists
+         * @return
+         */
         boolean helper(TreeNode root, List<TreeNode> ans, boolean parentExists) {
             boolean del = false;
             if (root == null) {
                 return del;
             }
             del = toDelete.contains(root.val);
+            //如果子节点被删除，父节点的left、right字段需要更新
             if (helper(root.left, ans, !del)) {
                 root.left = null;
             }
