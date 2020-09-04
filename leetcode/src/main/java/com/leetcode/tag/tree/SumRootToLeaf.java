@@ -19,7 +19,10 @@ public class SumRootToLeaf {
 
         private void sum(TreeNode root, String temp) {
             if (root == null) {
-                sum += Integer.parseUnsignedInt(temp, 2);
+                return;
+            }
+            if (root.left == null && root.right == null) {
+                sum += Integer.parseUnsignedInt(temp + root.val, 2);
                 return;
             }
 
