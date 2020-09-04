@@ -1,9 +1,6 @@
 package com.leetcode.tag.tree;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -121,6 +118,45 @@ public class DelNodes {
                     parent.right = null;
                 }
             }
+        }
+    }
+
+    /**
+     *
+     */
+    class Solution3 {
+        Set<Integer> set;
+        List<TreeNode> res;
+
+        public List<TreeNode> delNodes(TreeNode root, int[] to_delete) {
+            res = new ArrayList<>();
+            set = new HashSet<>();
+            for (int i : to_delete) {
+                set.add(i);
+            }
+
+            help(root, true);
+            return res;
+        }
+
+        /**
+         * 厉害
+         *
+         * @param node
+         * @param is_root
+         * @return
+         */
+        public TreeNode help(TreeNode node, boolean is_root) {
+            if (node == null) {
+                return null;
+            }
+            boolean deleted = set.contains(node.val);
+            if (is_root && !deleted) {
+                res.add(node);
+            }
+            node.left = help(node.left, deleted);
+            node.right = help(node.right, deleted);
+            return deleted ? null : node;
         }
     }
 
