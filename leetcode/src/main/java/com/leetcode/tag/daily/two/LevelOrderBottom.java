@@ -72,7 +72,7 @@ public class LevelOrderBottom {
     /**
      * dfs
      */
-    class Solution2 {
+    static class Solution2 {
         public List<List<Integer>> levelOrderBottom(TreeNode root) {
             List<List<Integer>> res = new LinkedList<>();
             dfs(root, 0, res);
@@ -92,7 +92,7 @@ public class LevelOrderBottom {
         }
     }
 
-    class TreeNode {
+    static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
