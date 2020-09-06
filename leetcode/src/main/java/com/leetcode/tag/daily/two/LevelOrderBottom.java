@@ -69,6 +69,29 @@ public class LevelOrderBottom {
         }
     }
 
+    /**
+     * dfs
+     */
+    class Solution2 {
+        public List<List<Integer>> levelOrderBottom(TreeNode root) {
+            List<List<Integer>> res = new LinkedList<>();
+            dfs(root, 0, res);
+            return res;
+        }
+
+        public void dfs(TreeNode node, int depth, List<List<Integer>> res) {
+            if (node == null) {
+                return;
+            }
+            if (depth == res.size()) {
+                res.add(0, new ArrayList<>());
+            }
+            res.get(res.size() - depth - 1).add(node.val);
+            dfs(node.left, depth + 1, res);
+            dfs(node.right, depth + 1, res);
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
