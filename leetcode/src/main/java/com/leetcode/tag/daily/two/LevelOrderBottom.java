@@ -63,6 +63,7 @@ public class LevelOrderBottom {
                         queue.offer(right);
                     }
                 }
+                //头插法
                 levelOrder.add(0, level);
             }
             return levelOrder;
