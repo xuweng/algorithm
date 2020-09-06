@@ -80,6 +80,13 @@ public class LevelOrderBottom {
             return res;
         }
 
+        /**
+         * 头插法效率也很低
+         *
+         * @param node
+         * @param depth
+         * @param res
+         */
         public void dfs(TreeNode node, int depth, List<List<Integer>> res) {
             if (node == null) {
                 return;
