@@ -84,6 +84,7 @@ public class LevelOrderBottom {
                 return;
             }
             if (depth == res.size()) {
+                //头插法.后面数据向后移动
                 res.add(0, new ArrayList<>());
             }
             res.get(res.size() - depth - 1).add(node.val);
