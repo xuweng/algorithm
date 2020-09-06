@@ -1,6 +1,7 @@
 package com.leetcode.tag.daily.two;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -12,6 +13,8 @@ public class LevelOrderBottom {
 
         public List<List<Integer>> levelOrderBottom(TreeNode root) {
             hou(root, 0);
+
+            Collections.reverse(result);
 
             return result;
         }
