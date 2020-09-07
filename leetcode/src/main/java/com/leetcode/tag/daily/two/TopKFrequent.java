@@ -17,6 +17,7 @@ public class TopKFrequent {
                 map.put(num, map.getOrDefault(num, 0) + 1);
             }
 
+            //最简单的做法是给「出现次数数组」排序
             List<Map.Entry<Integer, Integer>> collect = map.entrySet().stream()
                     .sorted(Map.Entry.comparingByValue()).collect(Collectors.toList());
 
@@ -33,6 +34,8 @@ public class TopKFrequent {
 
     /**
      * 方法一：堆
+     * <p>
+     * 最简单的做法是给「出现次数数组」排序
      * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/top-k-frequent-elements/solution/qian-k-ge-gao-pin-yuan-su-by-leetcode-solution/
