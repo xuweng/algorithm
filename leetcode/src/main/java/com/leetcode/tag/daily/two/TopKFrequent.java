@@ -157,9 +157,11 @@ public class TopKFrequent {
                 //左区间过大，减少左区间
                 qsort(values, start, index - 1, ret, retIndex, k);
             } else {
+                //等于左侧子数组全部元素
                 for (int i = start; i <= index; i++) {
                     ret[retIndex++] = values.get(i)[0];
                 }
+                //加上右侧子数组 arr[q+1…j] 中前 k−(q−i) 大的值。
                 //左区间过小，增加左区间
                 if (k > index - start + 1) {
                     qsort(values, index + 1, end, ret, retIndex, k - (index - start + 1));
