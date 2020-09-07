@@ -115,6 +115,25 @@ public class TopKFrequent {
             return ret;
         }
 
+        /**
+         * 于是，我们根据 k 与左侧子数组 arr[i…q−1] 的长度（为q−i）的大小关系：
+         * <p>
+         * 如果 k≤q−i，则数组 arr[l…r] 前 k 大的值，就等于子数组 arr[i…q−1] 前 k 大的值。
+         * <p>
+         * 否则，数组 arr[l…r] 前 k 大的值，就等于左侧子数组全部元素，加上右侧子数组 arr[q+1…j] 中前 k−(q−i) 大的值。
+         * <p>
+         * 作者：LeetCode-Solution
+         * 链接：https://leetcode-cn.com/problems/top-k-frequent-elements/solution/qian-k-ge-gao-pin-yuan-su-by-leetcode-solution/
+         * 来源：力扣（LeetCode）
+         * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+         *
+         * @param values
+         * @param start
+         * @param end
+         * @param ret
+         * @param retIndex
+         * @param k
+         */
         public void qsort(List<int[]> values, int start, int end, int[] ret, int retIndex, int k) {
             //随机下标
             int picked = (int) (Math.random() * (end - start + 1)) + start;
