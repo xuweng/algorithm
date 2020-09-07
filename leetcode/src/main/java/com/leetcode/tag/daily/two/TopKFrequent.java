@@ -3,7 +3,6 @@ package com.leetcode.tag.daily.two;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -20,9 +19,7 @@ public class TopKFrequent {
                 map.put(num, map.getOrDefault(num, 0) + 1);
             }
 
-            Set<Map.Entry<Integer, Integer>> entries = map.entrySet();
-
-            List<Map.Entry<Integer, Integer>> collect = entries.stream()
+            List<Map.Entry<Integer, Integer>> collect = map.entrySet().stream()
                     .sorted(Map.Entry.comparingByValue()).collect(Collectors.toList());
 
             int[] result = new int[k];
