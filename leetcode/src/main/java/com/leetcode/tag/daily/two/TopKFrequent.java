@@ -141,6 +141,7 @@ public class TopKFrequent {
             Collections.swap(values, picked, start);
 
             int pivot = values.get(start)[1];
+            //边界
             int index = start;
             //分区
             //降序分区
