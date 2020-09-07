@@ -112,11 +112,14 @@ public class TopKFrequent {
         }
 
         public void qsort(List<int[]> values, int start, int end, int[] ret, int retIndex, int k) {
+            //随机下标
             int picked = (int) (Math.random() * (end - start + 1)) + start;
+            //pivot放到start
             Collections.swap(values, picked, start);
 
             int pivot = values.get(start)[1];
             int index = start;
+            //分区
             for (int i = start + 1; i <= end; i++) {
                 if (values.get(i)[1] >= pivot) {
                     Collections.swap(values, index + 1, i);
