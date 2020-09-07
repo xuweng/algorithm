@@ -143,6 +143,7 @@ public class TopKFrequent {
             int pivot = values.get(start)[1];
             int index = start;
             //分区
+            //降序分区
             for (int i = start + 1; i <= end; i++) {
                 if (values.get(i)[1] >= pivot) {
                     Collections.swap(values, index + 1, i);
