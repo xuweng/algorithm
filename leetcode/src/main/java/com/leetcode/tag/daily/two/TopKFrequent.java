@@ -7,6 +7,9 @@ import java.util.stream.Collectors;
  * 347. 前 K 个高频元素
  */
 public class TopKFrequent {
+    /**
+     * 复杂度会达到 O(NlogN)
+     */
     class Solution {
         public int[] topKFrequent(int[] nums, int k) {
             if (nums == null || nums.length == 0) {
@@ -37,6 +40,16 @@ public class TopKFrequent {
      * <p>
      * 最简单的做法是给「出现次数数组」排序
      * <p>
+     * 利用堆的思想：建立一个小顶堆，然后遍历「出现次数数组」：
+     * <p>
+     * 如果堆的元素个数小于 k，就可以直接插入堆中。
+     * <p>
+     * 如果堆的元素个数等于 k，则检查堆顶与当前出现次数的大小。如果堆顶更大，说明至少有 k 个数字的出现次数比当前值大，
+     * <p>
+     * 故舍弃当前值；否则，就弹出堆顶，并将当前值插入堆中。
+     * <p>
+     * 遍历完成后，堆中的元素就代表了「出现次数数组」中前 k 大的值。
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/top-k-frequent-elements/solution/qian-k-ge-gao-pin-yuan-su-by-leetcode-solution/
      * 来源：力扣（LeetCode）
@@ -63,6 +76,7 @@ public class TopKFrequent {
                     queue.offer(new int[]{num, count});
                 }
             }
+            //堆中的元素就代表了「出现次数数组」中前 k 大的值
             int[] ret = new int[k];
             for (int i = 0; i < k; ++i) {
                 ret[i] = Objects.requireNonNull(queue.poll())[0];
