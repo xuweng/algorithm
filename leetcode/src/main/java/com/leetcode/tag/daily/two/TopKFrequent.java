@@ -27,7 +27,7 @@ public class TopKFrequent {
 
             int[] result = new int[k];
             int index = 0;
-            for (int i = k; i < collect.size(); i++) {
+            for (int i = collect.size() - 1; i >= k - 1; i--) {
                 result[index++] = collect.get(i).getKey();
             }
 
