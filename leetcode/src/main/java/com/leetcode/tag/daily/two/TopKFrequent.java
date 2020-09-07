@@ -68,7 +68,7 @@ public class TopKFrequent {
             for (Map.Entry<Integer, Integer> entry : occurrences.entrySet()) {
                 int num = entry.getKey(), count = entry.getValue();
                 if (queue.size() == k) {
-                    if (queue.peek()[1] < count) {
+                    if (Objects.requireNonNull(queue.peek())[1] < count) {
                         queue.poll();
                         queue.offer(new int[]{num, count});
                     }
