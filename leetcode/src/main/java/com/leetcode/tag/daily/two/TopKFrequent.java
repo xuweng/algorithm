@@ -1,8 +1,6 @@
 package com.leetcode.tag.daily.two;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -32,4 +30,42 @@ public class TopKFrequent {
             return result;
         }
     }
+
+    /**
+     * 方法一：堆
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/top-k-frequent-elements/solution/qian-k-ge-gao-pin-yuan-su-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int[] topKFrequent(int[] nums, int k) {
+            Map<Integer, Integer> occurrences = new HashMap<>();
+            for (int num : nums) {
+                occurrences.put(num, occurrences.getOrDefault(num, 0) + 1);
+            }
+
+            // int[] 的第一个元素代表数组的值，第二个元素代表了该值出现的次数
+            PriorityQueue<int[]> queue = new PriorityQueue<>(Comparator.comparingInt(m -> m[1]));
+
+            for (Map.Entry<Integer, Integer> entry : occurrences.entrySet()) {
+                int num = entry.getKey(), count = entry.getValue();
+                if (queue.size() == k) {
+                    if (queue.peek()[1] < count) {
+                        queue.poll();
+                        queue.offer(new int[]{num, count});
+                    }
+                } else {
+                    queue.offer(new int[]{num, count});
+                }
+            }
+            int[] ret = new int[k];
+            for (int i = 0; i < k; ++i) {
+                ret[i] = Objects.requireNonNull(queue.poll())[0];
+            }
+            return ret;
+        }
+    }
+
 }
