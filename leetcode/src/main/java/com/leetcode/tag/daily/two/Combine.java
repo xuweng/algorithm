@@ -28,6 +28,7 @@ public class Combine {
                 stack.push(i);
                 for (int j = start + 1; j <= n; j++) {
                     back(n, j, k, stack, result);
+                    stack.pop();
                 }
             }
         }
