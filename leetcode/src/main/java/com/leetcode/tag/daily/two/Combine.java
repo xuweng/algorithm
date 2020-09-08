@@ -9,7 +9,7 @@ import java.util.List;
  * 77. 组合
  */
 public class Combine {
-    class Solution {
+    static class Solution {
         public List<List<Integer>> combine(int n, int k) {
             Deque<Integer> stack = new LinkedList<>();
             List<List<Integer>> result = new ArrayList<>();
