@@ -71,6 +71,8 @@ public class Combine {
     /**
      * 方法二：非递归（字典序法）实现组合型枚举
      * <p>
+     * 原序列中被选中的位置记为 1，不被选中的位置记为 0，对于每个方案都可以构造出一个二进制数
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/combinations/solution/zu-he-by-leetcode-solution/
      * 来源：力扣（LeetCode）
