@@ -24,12 +24,10 @@ public class Combine {
                 result.add(new ArrayList<>(stack));
                 return;
             }
-            for (int i = start; i < n; i++) {
+            for (int i = start; i <= n; i++) {
                 stack.push(i);
-                for (int j = start + 1; j <= n; j++) {
-                    back(n, j, k, stack, result);
-                    stack.pop();
-                }
+                back(n, start + 1, k, stack, result);
+                stack.pop();
             }
         }
     }
