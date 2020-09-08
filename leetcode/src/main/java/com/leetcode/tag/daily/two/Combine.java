@@ -26,7 +26,7 @@ public class Combine {
             }
             for (int i = start; i <= n; i++) {
                 stack.push(i);
-                back(n, start + 1, k, stack, result);
+                back(n, i + 1, k, stack, result);
                 stack.pop();
             }
         }
