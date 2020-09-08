@@ -208,7 +208,7 @@ public class Combine {
             // 不选当前考虑的数 begin，直接递归到下一层
             dfs(begin + 1, n, k, path, res);
 
-            // 不选当前考虑的数 begin，递归到下一层的时候 k - 1，这里 k 表示还需要选多少个数
+            // 选当前考虑的数 begin，递归到下一层的时候 k - 1，这里 k 表示还需要选多少个数
             path.addLast(begin);
             dfs(begin + 1, n, k - 1, path, res);
             // 深度优先遍历有回头的过程，因此需要撤销选择
