@@ -56,7 +56,7 @@ public class Combine {
             }
             // 记录合法的答案
             if (temp.size() == k) {
-                ans.add(new ArrayList<Integer>(temp));
+                ans.add(new ArrayList<>(temp));
                 return;
             }
             // 考虑选择当前位置
