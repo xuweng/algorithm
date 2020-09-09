@@ -66,6 +66,15 @@ public class CombinationSum {
             return ans;
         }
 
+        /**
+         * 不会倒退选择就不会重复.顺序选择。
+         *
+         * @param candidates
+         * @param target
+         * @param ans
+         * @param combine
+         * @param idx
+         */
         public void dfs(int[] candidates, int target, List<List<Integer>> ans, List<Integer> combine, int idx) {
             if (idx == candidates.length) {
                 return;
