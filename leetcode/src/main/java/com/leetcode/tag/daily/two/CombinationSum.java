@@ -7,6 +7,12 @@ import java.util.List;
 
 /**
  * 39. 组合总和
+ * <p>
+ * 递归树
+ * <p>
+ * 递归树
+ * <p>
+ * 候选集动态改变
  */
 public class CombinationSum {
     class Solution {
