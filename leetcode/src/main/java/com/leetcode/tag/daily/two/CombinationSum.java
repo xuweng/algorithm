@@ -14,7 +14,7 @@ public class CombinationSum {
             List<List<Integer>> result = new ArrayList<>();
             Deque<Integer> stack = new LinkedList<>();
 
-            back(candidates, target, 0, result, stack);
+            back(candidates, target, 0, 0, result, stack);
 
             return result;
         }
@@ -30,7 +30,7 @@ public class CombinationSum {
          * @param result
          * @param stack
          */
-        private void back(int[] candidates, int target, int sum, List<List<Integer>> result, Deque<Integer> stack) {
+        private void back(int[] candidates, int target, int start, int sum, List<List<Integer>> result, Deque<Integer> stack) {
             if (sum == target) {
                 result.add(new ArrayList<>(stack));
                 return;
@@ -38,9 +38,12 @@ public class CombinationSum {
             if (sum > target) {
                 return;
             }
-            for (int candidate : candidates) {
+            for (int i = start; i < candidates.length; i++) {
+                int candidate = candidates[i];
+                //选择i
                 stack.push(candidate);
-                back(candidates, target, sum + candidate, result, stack);
+                //这样不能重复选择i
+                back(candidates, target, i + 1, sum + candidate, result, stack);
                 stack.pop();
             }
         }
