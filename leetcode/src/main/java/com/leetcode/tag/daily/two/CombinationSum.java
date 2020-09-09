@@ -49,6 +49,10 @@ public class CombinationSum {
     /**
      * 方法一：搜索回溯
      * <p>
+     * 可以选择跳过不用第 idx 个数
+     * <p>
+     * 也可以选择使用第 idx 个数
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/combination-sum/solution/zu-he-zong-he-by-leetcode-solution/
      * 来源：力扣（LeetCode）
