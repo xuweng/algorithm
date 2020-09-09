@@ -19,7 +19,15 @@ public class CombinationSum {
             return result;
         }
 
-
+        /**
+         * 数据重复
+         *
+         * @param candidates
+         * @param target
+         * @param sum
+         * @param result
+         * @param stack
+         */
         private void back(int[] candidates, int target, int sum, List<List<Integer>> result, Deque<Integer> stack) {
             if (sum == target) {
                 result.add(new ArrayList<>(stack));
