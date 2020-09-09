@@ -74,11 +74,13 @@ public class CombinationSum {
                 ans.add(new ArrayList<>(combine));
                 return;
             }
-            // 直接跳过
+            // 直接跳过。idx+1.
             dfs(candidates, target, ans, combine, idx + 1);
+            // 即使选择当前数，idx也不变
             // 选择当前数
             if (target - candidates[idx] >= 0) {
                 combine.add(candidates[idx]);
+                //idx不变
                 dfs(candidates, target - candidates[idx], ans, combine, idx);
                 combine.remove(combine.size() - 1);
             }
