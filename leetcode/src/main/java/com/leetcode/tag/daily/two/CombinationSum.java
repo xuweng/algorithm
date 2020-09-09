@@ -21,6 +21,8 @@ public class CombinationSum {
 
         /**
          * 数据重复
+         * <p>
+         * 解集不能包含重复的组合
          *
          * @param candidates
          * @param target
