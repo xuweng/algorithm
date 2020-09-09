@@ -1,9 +1,6 @@
 package com.leetcode.tag.daily.two;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 39. 组合总和
@@ -102,6 +99,59 @@ public class CombinationSum {
                 //注意到每个数字可以被无限制重复选取，因此搜索的下标仍为 idx
                 dfs(candidates, target - candidates[idx], ans, combine, idx);
                 combine.remove(combine.size() - 1);
+            }
+        }
+    }
+
+    /**
+     * 作者：liweiwei1419
+     * 链接：https://leetcode-cn.com/problems/combination-sum/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-m-2/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+
+        public List<List<Integer>> combinationSum(int[] candidates, int target) {
+            int len = candidates.length;
+            List<List<Integer>> res = new ArrayList<>();
+            if (len == 0) {
+                return res;
+            }
+
+            Deque<Integer> path = new ArrayDeque<>();
+            dfs(candidates, 0, len, target, path, res);
+            return res;
+        }
+
+        /**
+         * 搜索的时候就需要 按某种顺序搜索。具体的做法是：每一次搜索的时候设置 下一轮搜索的起点 begin
+         *
+         * @param candidates 候选数组
+         * @param begin      搜索起点
+         * @param len        冗余变量，是 candidates 里的属性，可以不传
+         * @param target     每减去一个元素，目标值变小
+         * @param path       从根结点到叶子结点的路径，是一个栈
+         * @param res        结果集列表
+         */
+        private void dfs(int[] candidates, int begin, int len, int target, Deque<Integer> path, List<List<Integer>> res) {
+            // target 为负数和 0 的时候不再产生新的孩子结点
+            if (target < 0) {
+                return;
+            }
+            if (target == 0) {
+                res.add(new ArrayList<>(path));
+                return;
+            }
+
+            // 重点理解这里从 begin 开始搜索的语意
+            for (int i = begin; i < len; i++) {
+                path.addLast(candidates[i]);
+
+                // 注意：由于每一个元素可以重复使用，下一轮搜索的起点依然是 i，这里非常容易弄错
+                dfs(candidates, i, len, target - candidates[i], path, res);
+
+                // 状态重置
+                path.removeLast();
             }
         }
     }
