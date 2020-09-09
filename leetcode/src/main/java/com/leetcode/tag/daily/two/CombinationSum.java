@@ -81,6 +81,7 @@ public class CombinationSum {
             if (target - candidates[idx] >= 0) {
                 combine.add(candidates[idx]);
                 //idx不变
+                //注意到每个数字可以被无限制重复选取，因此搜索的下标仍为 idx
                 dfs(candidates, target - candidates[idx], ans, combine, idx);
                 combine.remove(combine.size() - 1);
             }
