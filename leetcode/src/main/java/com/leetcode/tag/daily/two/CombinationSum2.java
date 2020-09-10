@@ -36,6 +36,7 @@ public class CombinationSum2 {
                 return;
             }
             for (int i = begin; i < candidates.length; i++) {
+                //不是i>0
                 if (i > 0 && candidates[i] == candidates[i - 1] && stack.isEmpty()) {
                     continue;
                 }
