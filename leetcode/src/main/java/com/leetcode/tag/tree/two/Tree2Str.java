@@ -49,6 +49,33 @@ public class Tree2Str {
         }
     }
 
+    /**
+     * 执行用时为 1 ms 的范例
+     */
+    class Solution2 {
+        public String tree2str(TreeNode t) {
+            StringBuilder sb = new StringBuilder();
+            doTree2str(t, sb);
+            return sb.toString();
+        }
+
+        private void doTree2str(TreeNode t, StringBuilder sb) {
+            if (t != null) {
+                sb.append(t.val);
+                if (t.left != null || t.right != null) {
+                    sb.append('(');
+                    doTree2str(t.left, sb);
+                    sb.append(')');
+                    if (t.right != null) {
+                        sb.append('(');
+                        doTree2str(t.right, sb);
+                        sb.append(')');
+                    }
+                }
+            }
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
