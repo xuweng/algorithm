@@ -6,6 +6,9 @@ package com.leetcode.tag.tree.two;
  * 慢慢想
  */
 public class Tree2Str {
+    /**
+     * 没有去掉多余括号
+     */
     class Solution {
         public String tree2str(TreeNode t) {
             if (t == null) {
