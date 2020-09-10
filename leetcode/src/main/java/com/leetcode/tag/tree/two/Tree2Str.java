@@ -12,7 +12,7 @@ public class Tree2Str {
                 return "()";
             }
             if (t.left == null && t.right == null) {
-                return "(" + t.val + ")";
+                return t.val + "";
             }
 
             String left = "(" + tree2str(t.left) + ")";
