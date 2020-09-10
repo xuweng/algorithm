@@ -32,7 +32,7 @@ public class CombinationSum2 {
                 return;
             }
             for (int i = begin; i < candidates.length; i++) {
-                //排序去重
+                //排序去重错误
                 if (i > 0 && candidates[i] == candidates[i - 1]) {
                     continue;
                 }
