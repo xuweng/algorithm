@@ -70,6 +70,7 @@ public class CombinationSum2 {
             }
             for (int i = begin; i < candidates.length; i++) {
                 //搞清楚begin和i
+                //跳过重复分支
                 if (i > begin && candidates[i] == candidates[i - 1]) {
                     continue;
                 }
