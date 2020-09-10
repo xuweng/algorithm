@@ -1,9 +1,6 @@
 package com.leetcode.tag.daily.two;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 40. 组合总和 II
@@ -23,6 +20,8 @@ public class CombinationSum2 {
             List<List<Integer>> result = new ArrayList<>();
             Deque<Integer> stack = new LinkedList<>();
 
+            Arrays.sort(candidates);
+
             back(candidates, target, 0, result, stack);
 
             return result;
@@ -37,6 +36,9 @@ public class CombinationSum2 {
                 return;
             }
             for (int i = begin; i < candidates.length; i++) {
+                if (i > 0 && candidates[i] == candidates[i - 1] && stack.isEmpty()) {
+                    continue;
+                }
                 stack.push(candidates[i]);
                 back(candidates, target - candidates[i], i + 1, result, stack);
                 stack.pop();
