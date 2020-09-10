@@ -11,6 +11,8 @@ import java.util.List;
 public class CombinationSum2 {
     /**
      * candidates 中的每个数字在每个组合中只能使用一次
+     * <p>
+     * 解集不能包含重复的组合。
      */
     class Solution {
         public List<List<Integer>> combinationSum2(int[] candidates, int target) {
