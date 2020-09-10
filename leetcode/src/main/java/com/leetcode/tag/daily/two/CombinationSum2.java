@@ -7,6 +7,10 @@ import java.util.List;
 
 /**
  * 40. 组合总和 II
+ * <p>
+ * 排序去重错误(不能选择相同数据)
+ * <p>
+ * 顺序选择错误(数组的数据有重复)
  */
 public class CombinationSum2 {
     /**
