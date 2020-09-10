@@ -69,6 +69,7 @@ public class CombinationSum2 {
                 return;
             }
             for (int i = begin; i < candidates.length; i++) {
+                //搞清楚begin和i
                 if (i > begin && candidates[i] == candidates[i - 1]) {
                     continue;
                 }
