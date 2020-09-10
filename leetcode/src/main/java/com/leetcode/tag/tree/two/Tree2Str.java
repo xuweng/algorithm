@@ -50,27 +50,34 @@ public class Tree2Str {
     }
 
     /**
+     * 回溯
+     * <p>
      * 执行用时为 1 ms 的范例
      */
     class Solution2 {
         public String tree2str(TreeNode t) {
             StringBuilder sb = new StringBuilder();
+
             doTree2str(t, sb);
             return sb.toString();
         }
 
         private void doTree2str(TreeNode t, StringBuilder sb) {
-            if (t != null) {
-                sb.append(t.val);
-                if (t.left != null || t.right != null) {
+            if (t == null) {
+                return;
+            }
+            sb.append(t.val);
+            //只要有一个不为null
+            if (t.left != null || t.right != null) {
+                //左子树必填
+                sb.append('(');
+                doTree2str(t.left, sb);
+                sb.append(')');
+                //去掉多余右括号
+                if (t.right != null) {
                     sb.append('(');
-                    doTree2str(t.left, sb);
+                    doTree2str(t.right, sb);
                     sb.append(')');
-                    if (t.right != null) {
-                        sb.append('(');
-                        doTree2str(t.right, sb);
-                        sb.append(')');
-                    }
                 }
             }
         }
