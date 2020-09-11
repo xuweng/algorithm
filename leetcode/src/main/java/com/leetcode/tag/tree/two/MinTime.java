@@ -38,12 +38,13 @@ public class MinTime {
             if (list == null) {
                 return -1;
             }
-            if (hasApple.get(root)) {
-                return 0;
-            }
+
             int result = 0;
             for (Integer integer : list) {
                 int i = back(integer, map, hasApple);
+                if (hasApple.get(root)) {
+                    return 0;
+                }
                 if (i >= 0) {
                     result = i + 1;
                 }
