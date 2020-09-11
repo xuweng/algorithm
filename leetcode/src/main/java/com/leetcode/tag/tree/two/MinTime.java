@@ -20,7 +20,7 @@ public class MinTime {
 
             int result = back(0, map, hasApple);
 
-            return result * 2;
+            return (result > 0) ? result * 2 : 0;
         }
 
         /**
