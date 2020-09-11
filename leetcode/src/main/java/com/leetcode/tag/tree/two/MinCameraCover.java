@@ -54,6 +54,49 @@ public class MinCameraCover {
         }
     }
 
+    /**
+     * 作者：levyjeng
+     * 链接：https://leetcode-cn.com/problems/binary-tree-cameras/solution/chao-ji-hao-li-jie-de-da-an-by-levyjeng/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public int minCameraCover(TreeNode root) {
+            if (lrd(root) == 0) {
+                res++;
+            }
+            return res;
+        }
+
+        int res = 0;
+
+        /**
+         * 带返回的后序遍历
+         *
+         * @param node
+         * @return
+         */
+        int lrd(TreeNode node) {
+            if (node == null) {
+                return 1;
+            }
+            int left = lrd(node.left);
+            int right = lrd(node.right);
+            if (left == 0 || right == 0) {
+                res++;
+                return 2;
+            }
+            if (left == 1 && right == 1) {
+                return 0;
+            }
+            if (left + right >= 3) {
+                return 1;
+            }
+
+            return -1;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
