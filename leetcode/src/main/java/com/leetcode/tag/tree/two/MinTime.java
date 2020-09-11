@@ -24,8 +24,6 @@ public class MinTime {
         }
 
         /**
-         * 后序遍历写成先序遍历
-         *
          * @param root
          * @param map
          * @param hasApple
@@ -34,17 +32,16 @@ public class MinTime {
         private int back(int root, Map<Integer, List<Integer>> map, List<Boolean> hasApple) {
             List<Integer> list = map.get(root);
             //通过不同返回值区分
+            if (hasApple.get(root)) {
+                return 0;
+            }
             //叶子结点
             if (list == null) {
                 return -1;
             }
-
             int result = 0;
             for (Integer integer : list) {
                 int i = back(integer, map, hasApple);
-                if (hasApple.get(root)) {
-                    return 0;
-                }
                 if (i >= 0) {
                     result = i + 1;
                 }
