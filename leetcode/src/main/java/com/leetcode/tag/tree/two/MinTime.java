@@ -44,6 +44,8 @@ public class MinTime {
                 int i = back(integer, map, hasApple);
                 if (i >= 0) {
                     result += i + 1;
+                } else {
+                    result = -1;
                 }
             }
 
