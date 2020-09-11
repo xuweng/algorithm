@@ -24,6 +24,8 @@ public class MinTime {
         }
 
         /**
+         * 后序遍历
+         *
          * @param root
          * @param map
          * @param hasApple
@@ -43,6 +45,7 @@ public class MinTime {
             for (Integer integer : list) {
                 int i = back(integer, map, hasApple);
                 if (i >= 0) {
+                    //累加
                     result += i + 1;
                 }
             }
