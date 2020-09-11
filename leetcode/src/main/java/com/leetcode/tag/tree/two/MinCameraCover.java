@@ -10,7 +10,20 @@ package com.leetcode.tag.tree.two;
 public class MinCameraCover {
     class Solution {
         public int minCameraCover(TreeNode root) {
-            return 0;
+            if (root == null) {
+                return 0;
+            }
+            int min1 = 0;
+            if (root.left != null) {
+                min1 += minCameraCover(root.left.left);
+            }
+            if (root.right != null) {
+                min1 += minCameraCover(root.right.right);
+            }
+            int min2 = minCameraCover(root.left) + minCameraCover(root.right);
+
+            return Math.min(min1, min2);
+
         }
     }
 
