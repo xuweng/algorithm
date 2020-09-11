@@ -29,6 +29,8 @@ public class MinCameraCover {
         }
 
         /**
+         * 选择放或者选择不放
+         * <p>
          * 返回数组
          * <p>
          * 不要漏掉某个状态
