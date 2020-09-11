@@ -43,7 +43,7 @@ public class MinTime {
             for (Integer integer : list) {
                 int i = back(integer, map, hasApple);
                 if (i >= 0) {
-                    result = i + 1;
+                    result += i + 1;
                 }
             }
 
