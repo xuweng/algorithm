@@ -9,7 +9,7 @@ import java.util.Map;
  * 1443. 收集树上所有苹果的最少时间
  */
 public class MinTime {
-    class Solution {
+    static class Solution {
         public int minTime(int n, int[][] edges, List<Boolean> hasApple) {
             Map<Integer, List<Integer>> map = new HashMap<>(64);
             for (int[] edge : edges) {
