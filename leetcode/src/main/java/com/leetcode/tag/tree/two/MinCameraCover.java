@@ -8,6 +8,9 @@ package com.leetcode.tag.tree.two;
  * 没有思路直接看题解学习。
  */
 public class MinCameraCover {
+    /**
+     * 算法错误
+     */
     class Solution {
         public int minCameraCover(TreeNode root) {
             if (root == null) {
