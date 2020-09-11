@@ -28,12 +28,19 @@ public class MinCameraCover {
             return Math.min(ans[1], ans[2]);
         }
 
+        /**
+         * 返回数组
+         *
+         * @param node
+         * @return
+         */
         // 0: Strict ST; All nodes below this are covered, but not this one
         // 1: Normal ST; All nodes below and incl this are covered - no camera
         // 2: Placed camera; All nodes below this are covered, plus camera here
         public int[] solve(TreeNode node) {
-            if (node == null)
+            if (node == null) {
                 return new int[]{0, 0, 99999};
+            }
 
             int[] L = solve(node.left);
             int[] R = solve(node.right);
