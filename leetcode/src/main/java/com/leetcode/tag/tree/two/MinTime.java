@@ -25,6 +25,7 @@ public class MinTime {
 
         private int back(int root, Map<Integer, List<Integer>> map, List<Boolean> hasApple) {
             List<Integer> list = map.get(root);
+            //通过不同返回值区分
             if (list == null) {
                 return -1;
             }
