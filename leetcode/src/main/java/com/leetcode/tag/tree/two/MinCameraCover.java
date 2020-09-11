@@ -30,6 +30,8 @@ public class MinCameraCover {
 
         /**
          * 返回数组
+         * <p>
+         * 不要漏掉某个状态
          *
          * @param node
          * @return
