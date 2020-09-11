@@ -16,6 +16,9 @@ public class MinCameraCover {
             if (root == null) {
                 return 0;
             }
+            if (root.left == null && root.right == null) {
+                return 1;
+            }
             int min1 = 0;
             if (root.left != null) {
                 min1 += minCameraCover(root.left.left);
