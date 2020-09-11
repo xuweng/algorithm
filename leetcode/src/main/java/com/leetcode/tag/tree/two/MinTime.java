@@ -23,6 +23,14 @@ public class MinTime {
             return result * 2;
         }
 
+        /**
+         * 后序遍历写成先序遍历
+         *
+         * @param root
+         * @param map
+         * @param hasApple
+         * @return
+         */
         private int back(int root, Map<Integer, List<Integer>> map, List<Boolean> hasApple) {
             List<Integer> list = map.get(root);
             //通过不同返回值区分
