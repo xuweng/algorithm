@@ -52,6 +52,10 @@ public class MinTime {
     }
 
     /**
+     * 这题从父节点往子节点走肯定会很复杂，因为每个父节点往子节点走有很多种走法，而且很多条边都是不需要走的，
+     * <p>
+     * 这样就得不偿失了。相对来说，从叶子结点往父结点走更快，因为叶子结点只有一个父结点，走的永远是需要走的路线
+     * <p>
      * 作者：geguanting
      * 链接：https://leetcode-cn.com/problems/minimum-time-to-collect-all-apples-in-a-tree/solution/dfsshen-ru-qian-chu-by-geguanting/
      * 来源：力扣（LeetCode）
