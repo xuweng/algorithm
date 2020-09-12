@@ -1,7 +1,9 @@
 package com.leetcode.tag.daily.two;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * 637. 二叉树的层平均值
@@ -74,6 +76,39 @@ public class AverageOfLevels {
             }
             dfs(root.left, level + 1, counts, sums);
             dfs(root.right, level + 1, counts, sums);
+        }
+    }
+
+    /**
+     * 方法二：广度优先搜索
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/average-of-levels-in-binary-tree/solution/er-cha-shu-de-ceng-ping-jun-zhi-by-leetcode-soluti/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public List<Double> averageOfLevels(TreeNode root) {
+            List<Double> averages = new ArrayList<>();
+            Queue<TreeNode> queue = new LinkedList<>();
+            queue.offer(root);
+            while (!queue.isEmpty()) {
+                double sum = 0;
+                int size = queue.size();
+                for (int i = 0; i < size; i++) {
+                    TreeNode node = queue.poll();
+                    sum += node.val;
+                    TreeNode left = node.left, right = node.right;
+                    if (left != null) {
+                        queue.offer(left);
+                    }
+                    if (right != null) {
+                        queue.offer(right);
+                    }
+                }
+                averages.add(sum / size);
+            }
+            return averages;
         }
     }
 
