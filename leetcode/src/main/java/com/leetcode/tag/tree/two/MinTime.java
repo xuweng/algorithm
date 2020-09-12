@@ -91,6 +91,7 @@ public class MinTime {
             buildReverseEdges(nodeMap, 0);
 
             visited = new boolean[n];
+            //root初始化为true，不会走到root
             visited[0] = true;
 
             //遍历每个结点
@@ -106,6 +107,7 @@ public class MinTime {
         int ans = 0;
         //两个点.from-------->to改为to---------->from
         int[] reverseEdges;
+        //visited是全局，而且没有回溯，没有重置
         boolean[] visited;
 
         /**
