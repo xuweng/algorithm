@@ -17,6 +17,7 @@ public class MergeTrees {
             if (t2 == null) {
                 return new TreeNode(t1.val);
             }
+
             TreeNode root = new TreeNode(t1.val + t2.val);
             TreeNode left = mergeTrees(t1.left, t2.left);
             TreeNode right = mergeTrees(t1.right, t2.right);
