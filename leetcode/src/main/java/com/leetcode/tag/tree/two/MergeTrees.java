@@ -12,10 +12,10 @@ public class MergeTrees {
                 return null;
             }
             if (t1 == null) {
-                return new TreeNode(t2.val);
+                return t2;
             }
             if (t2 == null) {
-                return new TreeNode(t1.val);
+                return t1;
             }
 
             TreeNode root = new TreeNode(t1.val + t2.val);
