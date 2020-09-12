@@ -89,7 +89,9 @@ public class MinTime {
             visited = new boolean[n];
             visited[0] = true;
 
+            //遍历每个结点
             for (int i = 0; i < n; i++) {
+                //如果该结点为苹果，则查找
                 if (hasApple.get(i)) {
                     dfsEdge(i);
                 }
@@ -102,12 +104,18 @@ public class MinTime {
         int[] reverseEdges;
         boolean[] visited;
 
+        /**
+         * 从苹果结点向上查找
+         *
+         * @param to
+         */
         public void dfsEdge(int to) {
-            if (!visited[to]) {
-                visited[to] = true;
-                ans++;
-                dfsEdge(reverseEdges[to]);
+            if (visited[to]) {
+                return;
             }
+            visited[to] = true;
+            ans++;
+            dfsEdge(reverseEdges[to]);
         }
     }
 
