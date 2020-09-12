@@ -48,10 +48,12 @@ public class AverageOfLevels {
      */
     class Solution1 {
         public List<Double> averageOfLevels(TreeNode root) {
-            List<Integer> counts = new ArrayList<Integer>();
-            List<Double> sums = new ArrayList<Double>();
+            List<Integer> counts = new ArrayList<>();
+            List<Double> sums = new ArrayList<>();
+
             dfs(root, 0, counts, sums);
-            List<Double> averages = new ArrayList<Double>();
+
+            List<Double> averages = new ArrayList<>();
             int size = sums.size();
             for (int i = 0; i < size; i++) {
                 averages.add(sums.get(i) / counts.get(i));
