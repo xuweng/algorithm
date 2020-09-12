@@ -94,6 +94,7 @@ public class AverageOfLevels {
             queue.offer(root);
             while (!queue.isEmpty()) {
                 double sum = 0;
+                //size是关键,当前层元素个数
                 int size = queue.size();
                 //统计每一层的和
                 for (int i = 0; i < size; i++) {
