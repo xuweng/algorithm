@@ -122,6 +122,7 @@ public class MinTime {
             }
             visited[to] = true;
             ans++;
+            //to的父结点
             dfsEdge(reverseEdges[to]);
         }
     }
