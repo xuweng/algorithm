@@ -65,6 +65,8 @@ public class MergeTrees {
     /**
      * 方法二：迭代
      * <p>
+     * 层次遍历
+     * <p>
      * Definition for a binary tree node.
      * public class TreeNode {
      * int val;
