@@ -108,6 +108,7 @@ public class MinTime {
         //两个点.from-------->to改为to---------->from
         int[] reverseEdges;
         //visited是全局，而且没有回溯，没有重置
+        //避免了走重复的路线
         boolean[] visited;
 
         /**
