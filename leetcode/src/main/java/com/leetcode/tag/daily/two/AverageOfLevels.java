@@ -96,7 +96,8 @@ public class AverageOfLevels {
                 double sum = 0;
                 //size是关键,当前层元素个数
                 int size = queue.size();
-                //统计每一层的和
+                //统计当前层的和
+                //下一层入队
                 for (int i = 0; i < size; i++) {
                     TreeNode node = queue.poll();
                     sum += node.val;
