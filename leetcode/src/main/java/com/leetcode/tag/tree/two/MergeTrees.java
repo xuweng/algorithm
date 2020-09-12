@@ -41,6 +41,13 @@ public class MergeTrees {
      * }
      */
     class Solution1 {
+        /**
+         * 不用创建新结点,使用原来的tree
+         *
+         * @param t1
+         * @param t2
+         * @return
+         */
         public TreeNode mergeTrees(TreeNode t1, TreeNode t2) {
             if (t1 == null) {
                 return t2;
