@@ -75,8 +75,7 @@ public class LcaDeepestLeaves {
             if (root == null) {
                 return null;
             }
-            dfs(root);
-
+            dfs(root, 0);
             return node;
         }
 
@@ -84,15 +83,17 @@ public class LcaDeepestLeaves {
          * 这是后序遍历
          *
          * @param root
+         * @param depth
          * @return
          */
-        private int dfs(TreeNode root) {
+        private int dfs(TreeNode root, int depth) {
             if (root == null) {
-                return 0;
+                return depth;
             }
-            int left = dfs(root.left);
-            int right = dfs(root.right);
-            int depth = Math.max(left, right) + 1;
+            depth++;
+            int left = dfs(root.left, depth);
+            int right = dfs(root.right, depth);
+            depth = Math.max(left, right);
             //如果当前节点是最深叶子节点的最近公共祖先，那么它的左右子树的高度一定是相等的
             if (left == right && depth >= maxDepth) {
                 node = root;
