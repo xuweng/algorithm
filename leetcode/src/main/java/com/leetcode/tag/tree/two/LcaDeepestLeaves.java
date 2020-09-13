@@ -75,11 +75,14 @@ public class LcaDeepestLeaves {
             if (root == null) {
                 return null;
             }
+            //root赋值为0
             dfs(root, 0);
             return node;
         }
 
         /**
+         * 递归树
+         * <p>
          * 先序遍历+后序遍历
          *
          * @param root
@@ -92,6 +95,7 @@ public class LcaDeepestLeaves {
             }
             //depth向下传递,depth同时传递给left和right
             depth++;
+            //left和right都赋值为depth
             int left = dfs(root.left, depth);
             int right = dfs(root.right, depth);
             depth = Math.max(left, right);
