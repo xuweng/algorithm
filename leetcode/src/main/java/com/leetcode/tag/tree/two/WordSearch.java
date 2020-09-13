@@ -30,8 +30,11 @@ public class WordSearch {
             if (begin >= word.length()) {
                 return true;
             }
+            if (board[row][col] != word.charAt(begin)) {
+                return false;
+            }
             for (int i = 0; i < 4; i++) {
-                if (board[row][col] != word.charAt(begin) && used[row][col]) {
+                if (used[row][col]) {
                     continue;
                 }
                 used[row][col] = true;
