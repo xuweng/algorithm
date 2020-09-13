@@ -10,11 +10,14 @@ public class WordSearch {
         int[] cols = {0, 0, -1, 1};
 
         public boolean exist(char[][] board, String word) {
+            if (word == null || word.isEmpty()) {
+                return false;
+            }
             boolean[][] used = new boolean[board.length][board[0].length];
 
             for (int i = 0; i < board.length; i++) {
                 for (int j = 0; j < board[0].length; j++) {
-                    if (board[i][j] == word.charAt(0) && back(board, word, 0, i, j, used)) {
+                    if (board[i][j] == word.charAt(0) && (word.length() == 1 || back(board, word, 0, i, j, used))) {
                         return true;
                     }
                 }
