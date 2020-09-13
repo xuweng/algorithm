@@ -14,8 +14,8 @@ public class WordSearch {
 
             for (int i = 0; i < board.length; i++) {
                 for (int j = 0; j < board[0].length; j++) {
-                    if (board[i][j] == word.charAt(0)) {
-                        return back(board, word, 0, i, j, used);
+                    if (board[i][j] == word.charAt(0) && back(board, word, 0, i, j, used)) {
+                        return true;
                     }
                 }
             }
