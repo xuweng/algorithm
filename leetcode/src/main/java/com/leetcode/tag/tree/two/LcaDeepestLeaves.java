@@ -80,7 +80,7 @@ public class LcaDeepestLeaves {
         }
 
         /**
-         * 这是后序遍历
+         * 先序遍历+后序遍历
          *
          * @param root
          * @param depth
@@ -90,6 +90,7 @@ public class LcaDeepestLeaves {
             if (root == null) {
                 return depth;
             }
+            //depth向下传递,depth同时传递给left和right
             depth++;
             int left = dfs(root.left, depth);
             int right = dfs(root.right, depth);
