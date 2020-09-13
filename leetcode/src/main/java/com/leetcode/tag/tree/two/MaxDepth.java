@@ -22,6 +22,12 @@ public class MaxDepth {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution1 {
+        /**
+         * 每遍历一层，则计数器 +1 ，直到遍历完成，则可得到树的深度
+         *
+         * @param root
+         * @return
+         */
         public int maxDepth(TreeNode root) {
             if (root == null) {
                 return 0;
