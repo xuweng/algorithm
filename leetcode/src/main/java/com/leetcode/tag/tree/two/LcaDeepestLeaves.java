@@ -99,7 +99,8 @@ public class LcaDeepestLeaves {
                 node = root;
                 maxDepth = depth;
             }
-            //返回root的深度
+            //不是返回root的深度
+            //返回left和right的最大深度
             return depth;
         }
     }
