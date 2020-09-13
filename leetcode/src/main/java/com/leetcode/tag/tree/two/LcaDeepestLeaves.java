@@ -49,6 +49,41 @@ public class LcaDeepestLeaves {
         }
     }
 
+    /**
+     * 后序遍历
+     * <p>
+     * 作者：hundanLi
+     * 链接：https://leetcode-cn.com/problems/lowest-common-ancestor-of-deepest-leaves/solution/jian-dan-de-hou-xu-bian-li-by-hundanli/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        private TreeNode node;
+        private int maxDepth;
+
+        public TreeNode lcaDeepestLeaves(TreeNode root) {
+            if (root == null) {
+                return null;
+            }
+            dfs(root, 0);
+            return node;
+        }
+
+        private int dfs(TreeNode root, int depth) {
+            if (root == null) {
+                return depth;
+            }
+            depth++;
+            int left = dfs(root.left, depth), right = dfs(root.right, depth);
+            depth = Math.max(left, right);
+            if (left == right && depth >= maxDepth) {
+                node = root;
+                maxDepth = depth;
+            }
+            return depth;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
