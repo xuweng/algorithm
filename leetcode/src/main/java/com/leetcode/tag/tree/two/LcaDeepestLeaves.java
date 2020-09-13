@@ -69,17 +69,26 @@ public class LcaDeepestLeaves {
             return node;
         }
 
+        /**
+         * 这是后序遍历
+         *
+         * @param root
+         * @param depth
+         * @return
+         */
         private int dfs(TreeNode root, int depth) {
             if (root == null) {
                 return depth;
             }
             depth++;
-            int left = dfs(root.left, depth), right = dfs(root.right, depth);
+            int left = dfs(root.left, depth);
+            int right = dfs(root.right, depth);
             depth = Math.max(left, right);
             if (left == right && depth >= maxDepth) {
                 node = root;
                 maxDepth = depth;
             }
+            //返回root的深度
             return depth;
         }
     }
