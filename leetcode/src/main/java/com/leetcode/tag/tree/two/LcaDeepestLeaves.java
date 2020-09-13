@@ -44,6 +44,14 @@ public class LcaDeepestLeaves {
             }
         }
 
+        /**
+         * 后序遍历
+         * <p>
+         * 结果向上传递
+         *
+         * @param node
+         * @return
+         */
         public int depth(TreeNode node) {
             return node == null ? 0 : Math.max(depth(node.right), depth(node.left)) + 1;
         }
