@@ -23,6 +23,12 @@ public class LcaDeepestLeaves {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution1 {
+        /**
+         * 需要计算每个node的深度，重复遍历
+         *
+         * @param root
+         * @return
+         */
         public TreeNode lcaDeepestLeaves(TreeNode root) {
             if (root == null) {
                 return null;
