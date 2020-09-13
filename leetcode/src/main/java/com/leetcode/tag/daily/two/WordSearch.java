@@ -1,4 +1,4 @@
-package com.leetcode.tag.tree.two;
+package com.leetcode.tag.daily.two;
 
 /**
  * 79. 单词搜索
