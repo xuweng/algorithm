@@ -58,6 +58,8 @@ public class LcaDeepestLeaves {
     }
 
     /**
+     * 如果当前节点是最深叶子节点的最近公共祖先，那么它的左右子树的高度一定是相等的
+     * <p>
      * 后序遍历
      * <p>
      * 作者：hundanLi
@@ -92,6 +94,7 @@ public class LcaDeepestLeaves {
             int left = dfs(root.left, depth);
             int right = dfs(root.right, depth);
             depth = Math.max(left, right);
+            //如果当前节点是最深叶子节点的最近公共祖先，那么它的左右子树的高度一定是相等的
             if (left == right && depth >= maxDepth) {
                 node = root;
                 maxDepth = depth;
