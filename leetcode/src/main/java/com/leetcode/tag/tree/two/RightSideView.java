@@ -29,6 +29,7 @@ public class RightSideView {
             Map<Integer, Integer> rightmostValueAtDepth = new HashMap<>();
             int max_depth = -1;
 
+            //使用栈，不是使用队列
             Stack<TreeNode> nodeStack = new Stack<>();
             Stack<Integer> depthStack = new Stack<>();
             nodeStack.push(root);
