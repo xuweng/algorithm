@@ -187,6 +187,7 @@ public class RightSideView {
             }
             // 先访问 当前节点，再递归地访问 右子树 和 左子树。
             // 如果当前节点所在深度还没有出现在res里，说明在该深度下当前节点是第一个被访问的节点，因此将当前节点加入res中。
+            // 这个条件厉害.depth深度第一个访问的结点
             if (depth == res.size()) {
                 res.add(root.val);
             }
