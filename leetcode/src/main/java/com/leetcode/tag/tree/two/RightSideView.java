@@ -169,7 +169,9 @@ public class RightSideView {
         List<Integer> res = new ArrayList<>();
 
         public List<Integer> rightSideView(TreeNode root) {
-            dfs(root, 0); // 从根节点开始访问，根节点深度是0
+            // 从根节点开始访问，根节点深度是0
+            dfs(root, 0);
+
             return res;
         }
 
