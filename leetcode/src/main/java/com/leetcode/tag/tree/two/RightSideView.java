@@ -17,6 +17,12 @@ public class RightSideView {
     }
 
     /**
+     * 深度和高度
+     * <p>
+     * 深度自上往下递增
+     * <p>
+     * 高度自下往上递增
+     * <p>
      * 方法一：深度优先搜索
      * <p>
      * 作者：LeetCode-Solution
