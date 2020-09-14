@@ -193,7 +193,9 @@ public class RightSideView {
             if (depth == res.size()) {
                 res.add(root.val);
             }
+            //先访问右子树
             dfs(root.right, depth + 1);
+            //再访问左子树
             dfs(root.left, depth + 1);
         }
     }
