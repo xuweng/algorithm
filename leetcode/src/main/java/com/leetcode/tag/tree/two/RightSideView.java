@@ -173,6 +173,14 @@ public class RightSideView {
             return res;
         }
 
+        /**
+         * 给每个结点都打上深度的标记
+         * <p>
+         * 标记每个结点的深度
+         *
+         * @param root
+         * @param depth
+         */
         private void dfs(TreeNode root, int depth) {
             if (root == null) {
                 return;
