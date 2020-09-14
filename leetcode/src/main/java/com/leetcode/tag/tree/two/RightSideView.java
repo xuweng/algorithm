@@ -31,6 +31,12 @@ public class RightSideView {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution1 {
+        /**
+         * 在搜索过程中，我们总是先访问右子树。那么对于每一层来说，我们在这层见到的第一个结点一定是最右边的结点
+         *
+         * @param root
+         * @return
+         */
         public List<Integer> rightSideView(TreeNode root) {
             Map<Integer, Integer> rightmostValueAtDepth = new HashMap<>();
             int max_depth = -1;
@@ -55,6 +61,7 @@ public class RightSideView {
                     }
 
                     //left和right可能为null
+                    //left先入栈,right后入栈.总是先访问right
                     nodeStack.push(node.left);
                     nodeStack.push(node.right);
                     depthStack.push(depth + 1);
