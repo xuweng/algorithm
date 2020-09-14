@@ -47,6 +47,7 @@ public class RightSideView {
                         rightmostValueAtDepth.put(depth, node.val);
                     }
 
+                    //left和right可能为null
                     nodeStack.push(node.left);
                     nodeStack.push(node.right);
                     depthStack.push(depth + 1);
