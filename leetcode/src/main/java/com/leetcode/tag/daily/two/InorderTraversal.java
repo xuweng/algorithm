@@ -26,7 +26,9 @@ public class InorderTraversal {
                     root = root.left;
                 }
                 root = stk.pop();
+                //root
                 res.add(root.val);
+                //right
                 root = root.right;
             }
             return res;
