@@ -139,6 +139,8 @@ public class RightSideView {
             while (!queue.isEmpty()) {
                 int size = queue.size();
                 for (int i = 0; i < size; i++) {
+                    //一个队列有出队,有入队,队列大小不断改变
+                    //只需要0到size之间的元素即可
                     TreeNode node = queue.poll();
                     if (node.left != null) {
                         queue.offer(node.left);
