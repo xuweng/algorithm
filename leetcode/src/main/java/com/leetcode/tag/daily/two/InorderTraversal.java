@@ -20,6 +20,7 @@ public class InorderTraversal {
             List<Integer> res = new ArrayList<>();
             Deque<TreeNode> stk = new LinkedList<>();
             while (root != null || !stk.isEmpty()) {
+                //先把left全部入栈
                 while (root != null) {
                     stk.push(root);
                     root = root.left;
