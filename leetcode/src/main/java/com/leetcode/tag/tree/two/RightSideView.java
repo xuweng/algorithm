@@ -55,6 +55,7 @@ public class RightSideView {
                     // 维护二叉树的最大深度
                     max_depth = Math.max(max_depth, depth);
 
+                    //我们在这层见到的第一个结点一定是最右边的结点
                     // 如果不存在对应深度的节点我们才插入
                     if (!rightmostValueAtDepth.containsKey(depth)) {
                         rightmostValueAtDepth.put(depth, node.val);
