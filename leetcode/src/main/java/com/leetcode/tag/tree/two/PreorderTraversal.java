@@ -3,6 +3,7 @@ package com.leetcode.tag.tree.two;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 144. 二叉树的前序遍历
@@ -55,6 +56,31 @@ public class PreorderTraversal {
                 }
             }
             return output;
+        }
+    }
+
+    class Solution2 {
+        public List<Integer> preorderTraversal(TreeNode root) {
+            List<Integer> list = new ArrayList<>();
+            Stack<TreeNode> stack = new Stack<>();
+            TreeNode cur = root;
+
+            //两个条件
+            while (cur != null || !stack.isEmpty()) {
+                while (cur != null) {
+                    //root
+                    list.add(cur.val);
+                    stack.push(cur);
+                    //left
+                    cur = cur.left;
+                }
+                cur = stack.pop();
+                //right
+                //cur.right可能为null,cur可能为null
+                cur = cur.right;
+
+            }
+            return list;
         }
     }
 
