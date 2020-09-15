@@ -31,6 +31,7 @@ public class SolveSudoku {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution1 {
+        //标记数组加多一维,表示要填的数字
         //行
         private boolean[][] line = new boolean[9][10];
         //列
