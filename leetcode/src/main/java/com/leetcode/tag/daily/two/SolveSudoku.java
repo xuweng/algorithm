@@ -90,6 +90,7 @@ public class SolveSudoku {
                 dfs(board, pos + 1);
                 //一行搞定
                 line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = false;
+                //board[i][j]不需要重置.标记数组重置就可以.
             }
         }
     }
