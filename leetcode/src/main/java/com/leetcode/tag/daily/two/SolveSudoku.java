@@ -96,6 +96,8 @@ public class SolveSudoku {
     }
 
     /**
+     * 先不管位运算
+     * <p>
      * 方法二：位运算优化
      * <p>
      * 作者：LeetCode-Solution
