@@ -38,6 +38,7 @@ public class SolveSudoku {
         //小宫格
         private boolean[][][] block = new boolean[3][3][9];
         private boolean valid = false;
+        //保存.的坐标
         private List<int[]> spaces = new ArrayList<>();
 
         public void solveSudoku(char[][] board) {
@@ -46,6 +47,7 @@ public class SolveSudoku {
                     if (board[i][j] == '.') {
                         spaces.add(new int[]{i, j});
                     } else {
+                        //如果是当前元素是数字,初始化标记数组.和八皇后不一样
                         int digit = board[i][j] - '0' - 1;
                         line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = true;
                     }
