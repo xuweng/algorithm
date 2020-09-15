@@ -48,6 +48,7 @@ public class SolveSudoku {
                         spaces.add(new int[]{i, j});
                     } else {
                         //如果是当前元素是数字,初始化标记数组.和八皇后不一样
+                        //digit就是当前坐标的数字.厉害
                         int digit = board[i][j] - '0' - 1;
                         line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = true;
                     }
