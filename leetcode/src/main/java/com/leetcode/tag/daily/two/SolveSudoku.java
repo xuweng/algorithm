@@ -60,6 +60,10 @@ public class SolveSudoku {
 
         /**
          * 只需要在空格填就可以
+         * <p>
+         * 用 line[2][3]=True 表示数字 4 在第 2 行已经出现过
+         * <p>
+         * 可以填写的数字范围为 [1, 9]
          *
          * @param board
          * @param pos
@@ -81,6 +85,7 @@ public class SolveSudoku {
                 }
                 //一行搞定
                 line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = true;
+                //digit是下标,digit+1才表示要填的数字
                 board[i][j] = (char) (digit + '0' + 1);
                 dfs(board, pos + 1);
                 //一行搞定
