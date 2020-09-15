@@ -38,7 +38,8 @@ public class SolveSudoku {
         //小宫格.3*3.3行3列.
         private boolean[][][] block = new boolean[3][3][9];
         private boolean valid = false;
-        //保存.的坐标
+        //保存.的坐标.候选集
+        //搞清楚候选集
         private List<int[]> spaces = new ArrayList<>();
 
         public void solveSudoku(char[][] board) {
