@@ -26,6 +26,8 @@ public class PreorderTraversal {
     }
 
     /**
+     * 用一个栈就可以完成遍历,不用cur
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/binary-tree-preorder-traversal/solution/er-cha-shu-de-qian-xu-bian-li-by-leetcode/
      * 来源：力扣（LeetCode）
@@ -56,6 +58,9 @@ public class PreorderTraversal {
         }
     }
 
+    /**
+     * 栈+cur
+     */
     class Solution2 {
         public List<Integer> preorderTraversal(TreeNode root) {
             List<Integer> list = new ArrayList<>();
