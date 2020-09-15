@@ -32,11 +32,11 @@ public class SolveSudoku {
      */
     class Solution1 {
         //行
-        private boolean[][] line = new boolean[9][9];
+        private boolean[][] line = new boolean[9][10];
         //列
-        private boolean[][] column = new boolean[9][9];
+        private boolean[][] column = new boolean[9][10];
         //小宫格.3*3.3行3列.
-        private boolean[][][] block = new boolean[3][3][9];
+        private boolean[][][] block = new boolean[3][3][10];
         private boolean valid = false;
         //保存.的坐标.候选集
         //搞清楚候选集
@@ -50,7 +50,7 @@ public class SolveSudoku {
                     } else {
                         //如果是当前元素是数字,初始化标记数组.和八皇后不一样
                         //digit就是当前坐标的数字.厉害
-                        int digit = board[i][j] - '0' - 1;
+                        int digit = board[i][j] - '0';
                         line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = true;
                     }
                 }
@@ -80,14 +80,14 @@ public class SolveSudoku {
             int i = space[0];
             //列
             int j = space[1];
-            for (int digit = 0; digit < 9 && !valid; ++digit) {
+            for (int digit = 1; digit <= 9 && !valid; ++digit) {
                 if (line[i][digit] || column[j][digit] || block[i / 3][j / 3][digit]) {
                     continue;
                 }
                 //一行搞定
                 line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = true;
-                //digit是下标,digit+1才表示要填的数字
-                board[i][j] = (char) (digit + '0' + 1);
+                //digit是表示要填的数字
+                board[i][j] = (char) (digit + '0');
                 dfs(board, pos + 1);
                 //一行搞定
                 line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = false;
