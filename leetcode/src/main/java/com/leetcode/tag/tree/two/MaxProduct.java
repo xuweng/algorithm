@@ -71,8 +71,6 @@ public class MaxProduct {
         }
     }
 
-    ;
-
     class TreeNode {
         int val;
         TreeNode left;
