@@ -35,7 +35,7 @@ public class SolveSudoku {
         private boolean[][] line = new boolean[9][9];
         //列
         private boolean[][] column = new boolean[9][9];
-        //小宫格
+        //小宫格.3*3.3行3列.
         private boolean[][][] block = new boolean[3][3][9];
         private boolean valid = false;
         //保存.的坐标
