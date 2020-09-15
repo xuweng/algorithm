@@ -58,6 +58,12 @@ public class SolveSudoku {
             dfs(board, 0);
         }
 
+        /**
+         * 只需要在空格填就可以
+         *
+         * @param board
+         * @param pos
+         */
         public void dfs(char[][] board, int pos) {
             if (pos == spaces.size()) {
                 valid = true;
@@ -65,16 +71,20 @@ public class SolveSudoku {
             }
 
             int[] space = spaces.get(pos);
-            int i = space[0], j = space[1];
+            //行
+            int i = space[0];
+            //列
+            int j = space[1];
             for (int digit = 0; digit < 9 && !valid; ++digit) {
-                if (!line[i][digit] && !column[j][digit] && !block[i / 3][j / 3][digit]) {
-                    //一行搞定
-                    line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = true;
-                    board[i][j] = (char) (digit + '0' + 1);
-                    dfs(board, pos + 1);
-                    //一行搞定
-                    line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = false;
+                if (line[i][digit] || column[j][digit] || block[i / 3][j / 3][digit]) {
+                    continue;
                 }
+                //一行搞定
+                line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = true;
+                board[i][j] = (char) (digit + '0' + 1);
+                dfs(board, pos + 1);
+                //一行搞定
+                line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = false;
             }
         }
     }
