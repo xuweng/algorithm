@@ -1,9 +1,6 @@
 package com.leetcode.tag.tree.two;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * 144. 二叉树的前序遍历
@@ -36,15 +33,15 @@ public class PreorderTraversal {
      */
     class Solution1 {
         public List<Integer> preorderTraversal(TreeNode root) {
-            LinkedList<TreeNode> stack = new LinkedList<>();
+            Deque<TreeNode> stack = new LinkedList<>();
             LinkedList<Integer> output = new LinkedList<>();
             if (root == null) {
                 return output;
             }
 
-            stack.add(root);
+            stack.push(root);
             while (!stack.isEmpty()) {
-                TreeNode node = stack.pollLast();
+                TreeNode node = stack.poll();
                 output.add(node.val);
                 //right先入栈
                 if (node.right != null) {
