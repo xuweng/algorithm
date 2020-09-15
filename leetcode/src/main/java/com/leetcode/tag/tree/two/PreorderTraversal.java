@@ -45,9 +45,11 @@ public class PreorderTraversal {
             while (!stack.isEmpty()) {
                 TreeNode node = stack.pollLast();
                 output.add(node.val);
+                //right先入栈
                 if (node.right != null) {
                     stack.add(node.right);
                 }
+                //left后入栈,后进先出
                 if (node.left != null) {
                     stack.add(node.left);
                 }
