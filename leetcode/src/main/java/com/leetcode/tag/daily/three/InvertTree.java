@@ -6,9 +6,7 @@ package com.leetcode.tag.daily.three;
 public class InvertTree {
     class Solution {
         public TreeNode invertTree(TreeNode root) {
-            invert(root, root);
-
-            return root;
+            return invert(root, root);
         }
 
         /**
@@ -19,13 +17,15 @@ public class InvertTree {
          * @param root
          * @param root1
          */
-        private void invert(TreeNode root, TreeNode root1) {
+        private TreeNode invert(TreeNode root, TreeNode root1) {
             if (root == null) {
-                return;
+                return null;
             }
-            root.val = root1.val;
-            invert(root.left, root1.right);
-            invert(root.right, root1.left);
+            TreeNode treeNode = new TreeNode(root.val);
+            treeNode.left = invert(root.left, root1.right);
+            treeNode.right = invert(root.right, root1.left);
+
+            return treeNode;
         }
     }
 
