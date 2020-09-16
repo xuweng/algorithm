@@ -117,6 +117,8 @@ public class LongestZigZag {
         }
 
         /**
+         * 带返回的后序遍历.自下往上计算.计算每个结点的结果.每个结点只需要通过left和right计算.类似dp.
+         * <p>
          * 搞懂后序遍历
          * <p>
          * 先序+后序
