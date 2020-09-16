@@ -102,6 +102,33 @@ public class LongestZigZag {
         }
     }
 
+    /**
+     * 代码简洁
+     */
+    class Solution2 {
+        int max = 0;
+
+        public int longestZigZag(TreeNode root) {
+            dfs(root, true);
+
+            return max;
+        }
+
+        private int dfs(TreeNode root, boolean isLeft) {
+            if (root == null) {
+                return 0;
+            }
+            int r = dfs(root.right, false);
+            int l = dfs(root.left, true);
+
+            int big = Math.max(l, r);
+            if (big > max) {
+                max = big;
+            }
+            return isLeft ? r + 1 : l + 1;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
