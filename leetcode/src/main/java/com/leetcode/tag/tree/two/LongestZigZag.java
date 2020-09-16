@@ -12,6 +12,8 @@ package com.leetcode.tag.tree.two;
 public class LongestZigZag {
     /**
      * 超出时间限制
+     * <p>
+     * 先序遍历会重复计算
      */
     class Solution {
         int result;
