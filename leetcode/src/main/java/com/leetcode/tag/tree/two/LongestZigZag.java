@@ -114,6 +114,15 @@ public class LongestZigZag {
             return max;
         }
 
+        /**
+         * 先序+后序
+         * <p>
+         * 值向下传递+值向上传递
+         *
+         * @param root
+         * @param isLeft
+         * @return
+         */
         private int dfs(TreeNode root, boolean isLeft) {
             if (root == null) {
                 return 0;
@@ -123,6 +132,8 @@ public class LongestZigZag {
 
             max = Math.max(max, Math.max(l, r));
 
+            //root从左子树下来,需要r+1
+            //root从右子树下来,需要l+1
             return isLeft ? r + 1 : l + 1;
         }
     }
