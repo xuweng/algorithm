@@ -47,12 +47,24 @@ public class InvertTree {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution1 {
+        /**
+         * 如果当前遍历到的节点 root 的左右两棵子树都已经翻转，那么我们只需要交换两棵子树的位置，即可完成以 root 为根节点的整棵子树的翻转
+         * <p>
+         * 作者：LeetCode-Solution
+         * 链接：https://leetcode-cn.com/problems/invert-binary-tree/solution/fan-zhuan-er-cha-shu-by-leetcode-solution/
+         * 来源：力扣（LeetCode）
+         * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+         *
+         * @param root
+         * @return
+         */
         public TreeNode invertTree(TreeNode root) {
             if (root == null) {
                 return null;
             }
             TreeNode left = invertTree(root.left);
             TreeNode right = invertTree(root.right);
+            //交换两棵子树的位置
             root.left = right;
             root.right = left;
             return root;
