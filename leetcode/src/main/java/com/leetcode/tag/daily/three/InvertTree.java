@@ -11,6 +11,14 @@ public class InvertTree {
             return root;
         }
 
+        /**
+         * 都是一颗tree
+         * <p>
+         * 这样会改变tree的数据,导致后面的赋值错误
+         *
+         * @param root
+         * @param root1
+         */
         private void invert(TreeNode root, TreeNode root1) {
             if (root == null) {
                 return;
