@@ -73,6 +73,14 @@ public class LongestZigZag {
             return maxPath;
         }
 
+        /**
+         * 带返回的后序遍历
+         * <p>
+         * res[0]表示当前节点下一步向左走带来的最大收益，res[1]表示当前节点下一步向右走带来的最大收益
+         *
+         * @param root
+         * @return
+         */
         private int[] dfs(TreeNode root) {
             int[] res = new int[2];
             if (root == null) {
