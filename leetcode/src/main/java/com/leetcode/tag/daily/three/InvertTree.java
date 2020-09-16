@@ -18,7 +18,10 @@ public class InvertTree {
          * @param root1
          */
         private TreeNode invert(TreeNode root, TreeNode root1) {
-            if (root == null || root1 == null) {
+            if (root == null) {
+                return root1;
+            }
+            if (root1 == null) {
                 return null;
             }
             TreeNode treeNode = new TreeNode(root1.val);
