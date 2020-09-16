@@ -70,6 +70,7 @@ public class LongestZigZag {
 
         public int longestZigZag(TreeNode root) {
             dfs(root);
+
             return maxPath;
         }
 
@@ -90,7 +91,11 @@ public class LongestZigZag {
             }
             int[] left = dfs(root.left);
             int[] right = dfs(root.right);
+            //res[0]表示当前节点下一步向左走带来的最大收益
+            //右----->左
             res[0] = 1 + left[1];
+            //res[1]表示当前节点下一步向右走带来的最大收益
+            //左------>右
             res[1] = 1 + right[0];
             maxPath = Math.max(maxPath, Math.max(res[0], res[1]));
             return res;
