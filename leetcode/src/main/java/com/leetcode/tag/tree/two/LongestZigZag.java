@@ -56,6 +56,39 @@ public class LongestZigZag {
         }
     }
 
+    /**
+     * 自底向上树形DP
+     * <p>
+     * 作者：jackie-tien
+     * 链接：https://leetcode-cn.com/problems/longest-zigzag-path-in-a-binary-tree/solution/javazi-di-xiang-shang-shu-xing-dp-by-jackie-tien/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * }
+     */
+    class Solution1 {
+        private int maxPath = 0;
+
+        public int longestZigZag(TreeNode root) {
+            dfs(root);
+            return maxPath;
+        }
+
+        private int[] dfs(TreeNode root) {
+            int[] res = new int[2];
+            if (root == null) {
+                res[0] = -1;
+                res[1] = -1;
+                return res;
+            }
+            int[] left = dfs(root.left);
+            int[] right = dfs(root.right);
+            res[0] = 1 + left[1];
+            res[1] = 1 + right[0];
+            maxPath = Math.max(maxPath, Math.max(res[0], res[1]));
+            return res;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
