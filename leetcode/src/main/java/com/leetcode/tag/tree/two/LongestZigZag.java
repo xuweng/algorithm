@@ -11,8 +11,39 @@ package com.leetcode.tag.tree.two;
  */
 public class LongestZigZag {
     class Solution {
+        int result;
+        int result2;
+
         public int longestZigZag(TreeNode root) {
-            return 0;
+            return result;
+        }
+
+        private void pre(TreeNode root) {
+            if (root == null) {
+                return;
+            }
+            result = 0;
+            pre(root, true, 0);
+            result2 = Math.max(result2, result);
+            result = 0;
+            pre(root, false, 0);
+            result2 = Math.max(result2, result);
+
+            pre(root.left);
+            pre(root.right);
+        }
+
+        private void pre(TreeNode root, boolean isLeft, int count) {
+            if (root == null) {
+                result = Math.max(result, count);
+                return;
+            }
+            if (isLeft) {
+                pre(root.right, false, count + 1);
+            } else {
+                pre(root.left, true, count + 1);
+            }
+
         }
     }
 
