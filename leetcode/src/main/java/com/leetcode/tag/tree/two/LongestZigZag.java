@@ -115,6 +115,8 @@ public class LongestZigZag {
         }
 
         /**
+         * 搞懂后序遍历
+         * <p>
          * 先序+后序
          * <p>
          * 值向下传递+值向上传递
