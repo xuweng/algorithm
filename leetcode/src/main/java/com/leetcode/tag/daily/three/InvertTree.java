@@ -64,6 +64,7 @@ public class InvertTree {
             }
             TreeNode left = invertTree(root.left);
             TreeNode right = invertTree(root.right);
+            //关键一步
             //交换两棵子树的位置
             root.left = right;
             root.right = left;
