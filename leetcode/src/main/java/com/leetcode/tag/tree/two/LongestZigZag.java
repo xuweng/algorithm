@@ -12,24 +12,19 @@ package com.leetcode.tag.tree.two;
 public class LongestZigZag {
     class Solution {
         int result;
-        int result2;
 
         public int longestZigZag(TreeNode root) {
             pre(root);
 
-            return result2;
+            return result;
         }
 
         private void pre(TreeNode root) {
             if (root == null) {
                 return;
             }
-            result = 0;
             pre(root, true, 0);
-            result2 = Math.max(result2, result);
-            result = 0;
             pre(root, false, 0);
-            result2 = Math.max(result2, result);
 
             pre(root.left);
             pre(root.right);
