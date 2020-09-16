@@ -21,7 +21,7 @@ public class InvertTree {
             if (root == null) {
                 return null;
             }
-            TreeNode treeNode = new TreeNode(root.val);
+            TreeNode treeNode = new TreeNode(root1.val);
             treeNode.left = invert(root.left, root1.right);
             treeNode.right = invert(root.right, root1.left);
 
