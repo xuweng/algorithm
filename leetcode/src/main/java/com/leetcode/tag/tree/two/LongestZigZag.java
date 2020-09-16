@@ -15,7 +15,9 @@ public class LongestZigZag {
         int result2;
 
         public int longestZigZag(TreeNode root) {
-            return result;
+            pre(root);
+
+            return result2;
         }
 
         private void pre(TreeNode root) {
