@@ -30,10 +30,19 @@ public class LongestZigZag {
             pre(root.right);
         }
 
+        /**
+         * 算法错误
+         *
+         * @param root
+         * @param isLeft
+         * @param count
+         */
         private void pre(TreeNode root, boolean isLeft, int count) {
+            //不是这里统计
             if (root == null) {
                 return;
             }
+            //也不是这里统计
             if (root.left == null && root.right == null) {
                 result = Math.max(result, count);
                 return;
