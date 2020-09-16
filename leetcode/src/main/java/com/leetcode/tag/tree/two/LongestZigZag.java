@@ -16,7 +16,8 @@ public class LongestZigZag {
         public int longestZigZag(TreeNode root) {
             pre(root);
 
-            return result;
+            //减掉null结点
+            return result - 1;
         }
 
         private void pre(TreeNode root) {
@@ -38,12 +39,8 @@ public class LongestZigZag {
          * @param count
          */
         private void pre(TreeNode root, boolean isLeft, int count) {
-            //不是这里统计
+            //是这里统计
             if (root == null) {
-                return;
-            }
-            //也不是这里统计
-            if (root.left == null && root.right == null) {
                 result = Math.max(result, count);
                 return;
             }
