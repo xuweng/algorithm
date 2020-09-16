@@ -121,10 +121,8 @@ public class LongestZigZag {
             int r = dfs(root.right, false);
             int l = dfs(root.left, true);
 
-            int big = Math.max(l, r);
-            if (big > max) {
-                max = big;
-            }
+            max = Math.max(max, Math.max(l, r));
+
             return isLeft ? r + 1 : l + 1;
         }
     }
