@@ -10,6 +10,9 @@ package com.leetcode.tag.tree.two;
  * 虽然简单,就是想不出来
  */
 public class LongestZigZag {
+    /**
+     * 超出时间限制
+     */
     class Solution {
         int result;
 
