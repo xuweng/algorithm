@@ -37,6 +37,9 @@ public class LongestZigZag {
 
         private void pre(TreeNode root, boolean isLeft, int count) {
             if (root == null) {
+                return;
+            }
+            if (root.left == null && root.right == null) {
                 result = Math.max(result, count);
                 return;
             }
