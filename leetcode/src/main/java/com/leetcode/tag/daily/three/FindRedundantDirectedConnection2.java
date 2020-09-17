@@ -9,7 +9,7 @@ package com.leetcode.tag.daily.three;
  * <p>
  * 直接看答案
  */
-public class FindRedundantDirectedConnection {
+public class FindRedundantDirectedConnection2 {
     class Solution {
         public int[] findRedundantDirectedConnection(int[][] edges) {
             return null;
