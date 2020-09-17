@@ -3,7 +3,7 @@ package com.leetcode.tag.daily.three;
 /**
  * 684. 冗余连接
  * <p>
- * 并查集
+ * 并查集.3个函数:初始化、查找、合并.
  * <p>
  * 根据高度来合并(UnionUnion byby RankRank)
  * 路径压缩(PathPath CompressionCompression)
