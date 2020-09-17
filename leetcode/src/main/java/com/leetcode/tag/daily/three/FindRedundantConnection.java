@@ -59,15 +59,17 @@ public class FindRedundantConnection {
         }
 
         /**
-         * 改写union方法，第一次当x与y没有联通时，将其设置联通关系，返回ture
          * 第二次x和y的跟节点发现一致时，他们已经联通了，返回false
+         * 改写union方法，第一次当x与y没有联通时，将其设置联通关系，返回ture
          *
          * @param x
          * @param y
          * @return
          */
         public boolean union(int x, int y) {
-            int rootX = find(x), rootY = find(y);
+            int rootX = find(x);
+            int rootY = find(y);
+
             if (rootX == rootY) {
                 return false;
             }
