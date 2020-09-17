@@ -25,7 +25,8 @@ public class FindRedundantConnection {
             if (edges == null || edges.length == 0) {
                 return new int[]{0, 0};
             }
-            int n = edges.length + 1; //注意此处下标多放一个
+            //注意此处下标多放一个
+            int n = edges.length + 1;
 
             init(n);
 
