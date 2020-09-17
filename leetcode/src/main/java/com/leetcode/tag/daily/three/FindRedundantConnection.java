@@ -10,6 +10,7 @@ package com.leetcode.tag.daily.three;
  */
 public class FindRedundantConnection {
     class Solution {
+        //parents数组厉害
         int[] parents;
 
         public int[] findRedundantConnection(int[][] edges) {
