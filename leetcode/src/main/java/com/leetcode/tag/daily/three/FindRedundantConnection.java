@@ -7,6 +7,8 @@ package com.leetcode.tag.daily.three;
  * <p>
  * 根据高度来合并(UnionUnion byby RankRank)
  * 路径压缩(PathPath CompressionCompression)
+ * <p>
+ * https://leetcode-cn.com/problems/redundant-connection/solution/tong-su-jiang-jie-bing-cha-ji-bang-zhu-xiao-bai-ku/
  */
 public class FindRedundantConnection {
     class Solution {
