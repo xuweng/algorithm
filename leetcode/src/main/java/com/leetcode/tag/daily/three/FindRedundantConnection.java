@@ -5,6 +5,8 @@ package com.leetcode.tag.daily.three;
  * <p>
  * 并查集.3个函数:初始化、查找、合并.
  * <p>
+ * 数组的下标表示结点
+ * <p>
  * 比如vector[2] = 2，意味着2这个节点所在集合的代表节点就是2
  * <p>
  * 数组的下标表示结点,值存放parent,不是存放root
