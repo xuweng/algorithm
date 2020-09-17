@@ -70,7 +70,7 @@ public class FindRedundantDirectedConnection {
         /**
          * 下标初始化
          * <p>
-         * 每个结点都是父结点
+         * 每个结点都是root
          *
          * @param n
          */
@@ -85,6 +85,12 @@ public class FindRedundantDirectedConnection {
             ancestor[find(index1)] = find(index2);
         }
 
+        /**
+         * 查询index的root
+         *
+         * @param index
+         * @return
+         */
         public int find(int index) {
             if (ancestor[index] != index) {
                 ancestor[index] = find(ancestor[index]);
