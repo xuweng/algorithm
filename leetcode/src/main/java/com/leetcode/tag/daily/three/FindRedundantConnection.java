@@ -24,6 +24,7 @@ public class FindRedundantConnection {
             for (int[] edge : edges) {
                 int x = edge[0], y = edge[1];
                 if ((!union(x, y))) {
+                    //root相同
                     //第二次出现了联通的边时，表示已经找到了
                     return edge;
                 }
@@ -46,7 +47,7 @@ public class FindRedundantConnection {
         /**
          * 递归版路径压缩，找到x的根节点
          * <p>
-         * 第一次路径压缩之后,高度降低,后面的查询很快
+         * 第一次路径压缩之后,高度降低,高度保持为1,后面的查询很快
          * <p>
          * x的root且路径压缩
          *
@@ -73,10 +74,13 @@ public class FindRedundantConnection {
             int rootX = find(x);
             int rootY = find(y);
 
+            //在同一个集合
             if (rootX == rootY) {
                 return false;
             }
+            //rootX合并到rootY
             parents[rootX] = rootY;
+
             return true;
         }
 
