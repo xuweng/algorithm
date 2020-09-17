@@ -69,6 +69,8 @@ public class FindRedundantDirectedConnection {
 
         /**
          * 下标初始化
+         * <p>
+         * 每个结点都是父结点
          *
          * @param n
          */
