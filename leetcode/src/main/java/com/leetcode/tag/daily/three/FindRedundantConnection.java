@@ -46,6 +46,8 @@ public class FindRedundantConnection {
         /**
          * 递归版路径压缩，找到x的根节点
          * <p>
+         * 第一次路径压缩之后,高度降低,后面的查询很快
+         * <p>
          * x的root且路径压缩
          *
          * @param x
