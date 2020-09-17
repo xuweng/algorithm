@@ -44,12 +44,15 @@ public class FindRedundantConnection {
 
         /**
          * 递归版路径压缩，找到x的根节点
+         * <p>
+         * x的root且路径压缩
          *
          * @param x
-         * @return
+         * @return x的root且路径压缩
          */
         public int find(int x) {
             if (x != parents[x]) {
+                //路径上的每个结点都指向x的root
                 parents[x] = find(parents[x]);
             }
             return parents[x];
