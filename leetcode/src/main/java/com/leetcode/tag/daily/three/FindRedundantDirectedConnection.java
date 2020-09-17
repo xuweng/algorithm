@@ -81,6 +81,14 @@ public class FindRedundantDirectedConnection {
             }
         }
 
+        /**
+         * index1合并到index2
+         * <p>
+         * index1的root改为index2的root
+         *
+         * @param index1
+         * @param index2
+         */
         public void union(int index1, int index2) {
             ancestor[find(index1)] = find(index2);
         }
