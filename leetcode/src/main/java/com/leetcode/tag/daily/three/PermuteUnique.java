@@ -4,6 +4,8 @@ import java.util.*;
 
 /**
  * 47. 全排列 II
+ * <p>
+ * 几乎每次去重都错
  */
 public class PermuteUnique {
     class Solution {
