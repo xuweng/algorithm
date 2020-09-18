@@ -27,6 +27,8 @@ public class LowestCommonAncestor {
     }
 
     /**
+     * 代码简洁
+     * <p>
      * 作者：jyd
      * 链接：https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/solution/mian-shi-ti-68-i-er-cha-sou-suo-shu-de-zui-jin-g-7/
      * 来源：力扣（LeetCode）
@@ -50,12 +52,15 @@ public class LowestCommonAncestor {
          * @return
          */
         public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+            //p和q在right(不包括root)
             if (root.val < p.val && root.val < q.val) {
                 return lowestCommonAncestor(root.right, p, q);
             }
+            //p和q在left(不包括root)
             if (root.val > p.val && root.val > q.val) {
                 return lowestCommonAncestor(root.left, p, q);
             }
+            //p和q有一个是root.直接返回root
             return root;
         }
     }
