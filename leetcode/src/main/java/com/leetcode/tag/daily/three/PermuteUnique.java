@@ -19,6 +19,15 @@ public class PermuteUnique {
             return result;
         }
 
+        /**
+         * 脑里执行一遍示例
+         *
+         * @param nums
+         * @param used
+         * @param begin
+         * @param stack
+         * @param result
+         */
         private void back(int[] nums, boolean[] used, int begin, Deque<Integer> stack, List<List<Integer>> result) {
             if (stack.size() == nums.length) {
                 result.add(new ArrayList<>(stack));
