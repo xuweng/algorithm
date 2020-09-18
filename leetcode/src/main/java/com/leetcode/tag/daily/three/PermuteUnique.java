@@ -25,7 +25,8 @@ public class PermuteUnique {
                 return;
             }
             for (int i = 0; i < nums.length; i++) {
-                if ((used[i]) || (stack.isEmpty() && i > 0 && nums[i] == nums[i - 1])) {
+                //没有去重
+                if ((used[i])) {
                     continue;
                 }
                 used[i] = true;
