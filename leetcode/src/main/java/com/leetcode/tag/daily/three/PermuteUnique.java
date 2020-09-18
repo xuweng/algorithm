@@ -8,7 +8,7 @@ import java.util.*;
  * 几乎每次去重都错
  */
 public class PermuteUnique {
-    class Solution {
+    static class Solution {
         public List<List<Integer>> permuteUnique(int[] nums) {
             Arrays.sort(nums);
 
