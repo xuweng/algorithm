@@ -52,16 +52,32 @@ public class LowestCommonAncestor {
          * @return
          */
         public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-            //p和q在right(不包括root)
+            //p和q都在right(不包括root)
             if (root.val < p.val && root.val < q.val) {
                 return lowestCommonAncestor(root.right, p, q);
             }
-            //p和q在left(不包括root)
+            //p和q都在left(不包括root)
             if (root.val > p.val && root.val > q.val) {
                 return lowestCommonAncestor(root.left, p, q);
             }
             //p和q有一个是root.直接返回root
             return root;
+        }
+    }
+
+    class Solution2 {
+        public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+            if (null == root) {
+                return null;
+            }
+            if (((root.val <= p.val) && (root.val >= q.val)) || ((root.val >= p.val) && (root.val <= q.val))) {
+                return root;
+            }
+            if (root.val < p.val) {
+                return lowestCommonAncestor(root.right, p, q);
+            } else {
+                return lowestCommonAncestor(root.left, p, q);
+            }
         }
     }
 
