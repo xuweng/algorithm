@@ -14,24 +14,24 @@ public class PermuteUnique {
             Deque<Integer> stack = new LinkedList<>();
             List<List<Integer>> result = new ArrayList<>();
 
-            back(nums, used, stack, result);
+            back(nums, used, 0, stack, result);
 
             return result;
         }
 
-        private void back(int[] nums, boolean[] used, Deque<Integer> stack, List<List<Integer>> result) {
+        private void back(int[] nums, boolean[] used, int begin, Deque<Integer> stack, List<List<Integer>> result) {
             if (stack.size() == nums.length) {
                 result.add(new ArrayList<>(stack));
                 return;
             }
             for (int i = 0; i < nums.length; i++) {
                 //没有去重
-                if ((used[i])) {
+                if ((used[i]) || (begin > 0 && nums[begin] == nums[begin - 1])) {
                     continue;
                 }
                 used[i] = true;
                 stack.push(nums[i]);
-                back(nums, used, stack, result);
+                back(nums, used, begin + 1, stack, result);
                 used[i] = false;
                 stack.pop();
             }
