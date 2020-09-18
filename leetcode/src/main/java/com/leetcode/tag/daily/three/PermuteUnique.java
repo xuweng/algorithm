@@ -39,6 +39,7 @@ public class PermuteUnique {
             for (int i = 0; i < nums.length; i++) {
                 //没有去重
                 //就差最后一个条件
+                //i > 0 && nums[i] == nums[i - 1].必须的
                 if ((used[i]) || (i > 0 && nums[i] == nums[i - 1] && !used[i - 1])) {
                     continue;
                 }
