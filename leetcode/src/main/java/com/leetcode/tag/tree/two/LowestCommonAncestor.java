@@ -29,6 +29,8 @@ public class LowestCommonAncestor {
     /**
      * 代码简洁
      * <p>
+     * bst很明显会剪枝
+     * <p>
      * 作者：jyd
      * 链接：https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/solution/mian-shi-ti-68-i-er-cha-sou-suo-shu-de-zui-jin-g-7/
      * 来源：力扣（LeetCode）
