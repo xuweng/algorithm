@@ -23,6 +23,8 @@ public class PermuteUnique {
 
         /**
          * 脑里执行一遍示例
+         * <p>
+         * begin是递归层次.递归层次.递归层次
          *
          * @param nums
          * @param used
