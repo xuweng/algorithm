@@ -26,7 +26,7 @@ public class PermuteUnique {
             }
             for (int i = 0; i < nums.length; i++) {
                 //没有去重
-                if ((used[i]) || (i > begin && nums[begin] == nums[begin - 1])) {
+                if ((used[i]) || (i > begin && nums[i] == nums[i - 1])) {
                     continue;
                 }
                 used[i] = true;
