@@ -16,7 +16,7 @@ public class PermuteUnique {
             Deque<Integer> stack = new LinkedList<>();
             List<List<Integer>> result = new ArrayList<>();
 
-            back(nums, used, 0, stack, result);
+            back(nums, used, stack, result);
 
             return result;
         }
@@ -28,23 +28,23 @@ public class PermuteUnique {
          *
          * @param nums
          * @param used
-         * @param begin
          * @param stack
          * @param result
          */
-        private void back(int[] nums, boolean[] used, int begin, Deque<Integer> stack, List<List<Integer>> result) {
+        private void back(int[] nums, boolean[] used, Deque<Integer> stack, List<List<Integer>> result) {
             if (stack.size() == nums.length) {
                 result.add(new ArrayList<>(stack));
                 return;
             }
             for (int i = 0; i < nums.length; i++) {
                 //没有去重
-                if ((used[i]) || (i > begin && nums[i] == nums[i - 1])) {
+                //就差最后一个条件
+                if ((used[i]) || (i > 0 && nums[i] == nums[i - 1] && !used[i - 1])) {
                     continue;
                 }
                 used[i] = true;
                 stack.push(nums[i]);
-                back(nums, used, begin + 1, stack, result);
+                back(nums, used, stack, result);
                 used[i] = false;
                 stack.pop();
             }
@@ -63,17 +63,19 @@ public class PermuteUnique {
         boolean[] vis;
 
         public List<List<Integer>> permuteUnique(int[] nums) {
-            List<List<Integer>> ans = new ArrayList<List<Integer>>();
-            List<Integer> perm = new ArrayList<Integer>();
+            List<List<Integer>> ans = new ArrayList<>();
+            List<Integer> perm = new ArrayList<>();
             vis = new boolean[nums.length];
             Arrays.sort(nums);
+
             backtrack(nums, ans, 0, perm);
+
             return ans;
         }
 
         public void backtrack(int[] nums, List<List<Integer>> ans, int idx, List<Integer> perm) {
             if (idx == nums.length) {
-                ans.add(new ArrayList<Integer>(perm));
+                ans.add(new ArrayList<>(perm));
                 return;
             }
             for (int i = 0; i < nums.length; ++i) {
