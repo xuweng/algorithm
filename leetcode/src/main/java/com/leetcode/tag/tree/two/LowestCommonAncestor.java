@@ -26,6 +26,40 @@ public class LowestCommonAncestor {
         }
     }
 
+    /**
+     * 作者：jyd
+     * 链接：https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/solution/mian-shi-ti-68-i-er-cha-sou-suo-shu-de-zui-jin-g-7/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        /**
+         * 递推工作：
+         * 当 p,q 都在 root 的 右子树 中，则开启递归 root.right 并返回；
+         * 否则，当p,q 都在 root 的 左子树 中，则开启递归 root.left 并返回；
+         * 返回值： 最近公共祖先 root 。
+         * <p>
+         * 作者：jyd
+         * 链接：https://leetcode-cn.com/problems/er-cha-sou-suo-shu-de-zui-jin-gong-gong-zu-xian-lcof/solution/mian-shi-ti-68-i-er-cha-sou-suo-shu-de-zui-jin-g-7/
+         * 来源：力扣（LeetCode）
+         * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+         *
+         * @param root
+         * @param p
+         * @param q
+         * @return
+         */
+        public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+            if (root.val < p.val && root.val < q.val) {
+                return lowestCommonAncestor(root.right, p, q);
+            }
+            if (root.val > p.val && root.val > q.val) {
+                return lowestCommonAncestor(root.left, p, q);
+            }
+            return root;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
