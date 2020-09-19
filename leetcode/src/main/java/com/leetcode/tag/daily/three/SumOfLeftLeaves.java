@@ -8,7 +8,7 @@ public class SumOfLeftLeaves {
         int result;
 
         public int sumOfLeftLeaves(TreeNode root) {
-            pre(root, true);
+            pre(root, false);
 
             return result;
         }
