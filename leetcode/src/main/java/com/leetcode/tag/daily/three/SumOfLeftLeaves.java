@@ -106,6 +106,25 @@ public class SumOfLeftLeaves {
         }
     }
 
+    class Solution4 {
+        public int sumOfLeftLeaves(TreeNode root) {
+            return sumofleavesHelper(root, false);
+        }
+
+        public int sumofleavesHelper(TreeNode root, boolean leftOrRight) {
+            if (root == null) {
+                return 0;
+            }
+            int counter = 0;
+            int left = sumofleavesHelper(root.left, true);
+            int right = sumofleavesHelper(root.right, false);
+            if (leftOrRight && root.left == null && root.right == null) {
+                counter = root.val; //左叶子节点的值
+            }
+            return left + right + counter;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
