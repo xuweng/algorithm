@@ -38,6 +38,7 @@ public class BtreeGameWinningMove {
         }
 
         private int dfs(TreeNode node) {
+            //可以不用这个递归终止条件
             if (node == null) {
                 return 0;
             }
