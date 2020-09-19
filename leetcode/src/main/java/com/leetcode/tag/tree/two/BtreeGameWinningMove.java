@@ -37,6 +37,12 @@ public class BtreeGameWinningMove {
             return left > half || right > half || (left + right) < half;
         }
 
+        /**
+         * 统计node(包含node)的结点数量
+         *
+         * @param node
+         * @return
+         */
         private int dfs(TreeNode node) {
             //可以不用这个递归终止条件
             if (node == null) {
@@ -54,6 +60,7 @@ public class BtreeGameWinningMove {
                 left = leftNum;
                 right = rightNum;
             }
+            //返回node的结点数量
             return leftNum + rightNum + 1;
         }
     }
