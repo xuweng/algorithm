@@ -39,6 +39,45 @@ public class InsertIntoBST {
         }
     }
 
+    /**
+     * 方法二：迭代
+     * <p>
+     * 遍历到叶子结点
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/insert-into-a-binary-search-tree/solution/er-cha-sou-suo-shu-zhong-de-cha-ru-cao-zuo-by-le-2/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public TreeNode insertIntoBST(TreeNode root, int val) {
+            TreeNode node = root;
+            while (node != null) {
+                // insert into the right subtree
+                if (val > node.val) {
+                    // insert right now
+                    if (node.right == null) {
+                        node.right = new TreeNode(val);
+                        return root;
+                    } else {
+                        node = node.right;
+                    }
+                }
+                // insert into the left subtree
+                else {
+                    // insert right now
+                    if (node.left == null) {
+                        node.left = new TreeNode(val);
+                        return root;
+                    } else {
+                        node = node.left;
+                    }
+                }
+            }
+            return new TreeNode(val);
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
