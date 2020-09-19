@@ -38,6 +38,9 @@ public class BtreeGameWinningMove {
         }
 
         private int dfs(TreeNode node) {
+            if (node == null) {
+                return 0;
+            }
             int leftNum = 0;
             int rightNum = 0;
             if (node.left != null) {
