@@ -95,6 +95,17 @@ public class SumOfLeftLeaves {
         }
     }
 
+    class Solution3 {
+        public int sumOfLeftLeaves(TreeNode root) {
+            if (root == null) {
+                return 0;
+            }
+            return sumOfLeftLeaves(root.left)
+                    + sumOfLeftLeaves(root.right)
+                    + (root.left != null && root.left.left == null && root.left.right == null ? root.left.val : 0);
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
