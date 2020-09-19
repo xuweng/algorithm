@@ -2,6 +2,8 @@ package com.leetcode.tag.tree.two;
 
 /**
  * 701. 二叉搜索树中的插入操作
+ * <p>
+ * bst天然剪枝.天然剪枝.天然剪枝
  */
 public class InsertIntoBST {
     class Solution {
