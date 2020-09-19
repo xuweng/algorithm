@@ -10,6 +10,47 @@ public class BtreeGameWinningMove {
         }
     }
 
+    /**
+     * 巧妙利用左右节点数量
+     * <p>
+     * 作者：huangyt
+     * 链接：https://leetcode-cn.com/problems/binary-tree-coloring-game/solution/qiao-miao-li-yong-zuo-you-jie-dian-shu-liang-jian-/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        private int left;
+
+        private int right;
+
+        private int num;
+
+        public boolean btreeGameWinningMove(TreeNode root, int n, int x) {
+            num = x;
+
+            dfs(root);
+
+            int half = n / 2;
+            return left > half || right > half || (left + right) < half;
+        }
+
+        private int dfs(TreeNode node) {
+            int leftNum = 0;
+            int rightNum = 0;
+            if (node.left != null) {
+                leftNum = dfs(node.left);
+            }
+            if (node.right != null) {
+                rightNum = dfs(node.right);
+            }
+            if (node.val == num) {
+                left = leftNum;
+                right = rightNum;
+            }
+            return leftNum + rightNum + 1;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
