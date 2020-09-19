@@ -44,6 +44,8 @@ public class BtreeGameWinningMove {
         }
 
         /**
+         * 给每个结点都打上标记.每个结点都标上数量.
+         * <p>
          * 统计node(包含node)的结点数量
          *
          * @param node
