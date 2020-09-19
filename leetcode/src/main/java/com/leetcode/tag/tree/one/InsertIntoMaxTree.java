@@ -1,4 +1,4 @@
-package com.leetcode.tag.tree;
+package com.leetcode.tag.tree.one;
 
 /**
  * 998. 最大二叉树 II

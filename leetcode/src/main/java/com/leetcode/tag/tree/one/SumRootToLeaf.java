@@ -1,4 +1,4 @@
-package com.leetcode.tag.tree;
+package com.leetcode.tag.tree.one;
 
 /**
  * 1022. 从根到叶的二进制数之和

@@ -1,4 +1,4 @@
-package com.leetcode.tag.tree;
+package com.leetcode.tag.tree.one;
 
 /**
  * 递归代码要简洁，易读

@@ -1,4 +1,4 @@
-package com.leetcode.tag.tree;
+package com.leetcode.tag.tree.one;
 
 /**
  * 222. 完全二叉树的节点个数

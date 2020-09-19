@@ -1,5 +1,6 @@
 package com.leetcode.tag.tree;
 
+import com.leetcode.tag.tree.one.RemoveLeafNodes;
 import org.junit.Assert;
 import org.junit.Test;
 

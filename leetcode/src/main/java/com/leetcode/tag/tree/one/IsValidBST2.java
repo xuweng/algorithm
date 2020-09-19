@@ -1,4 +1,4 @@
-package com.leetcode.tag.tree;
+package com.leetcode.tag.tree.one;
 
 /**
  * 面试题 04.05. 合法二叉搜索树
