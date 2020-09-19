@@ -13,6 +13,9 @@ public class BtreeGameWinningMove {
     /**
      * 巧妙利用左右节点数量
      * <p>
+     * 如何确定蓝色是否有必胜策略，就可以转换为，被红色点切割的三个连通分量中，是否存在一个连通分量，大小大于所有结点数目的一半
+     *
+     * <p>
      * 作者：huangyt
      * 链接：https://leetcode-cn.com/problems/binary-tree-coloring-game/solution/qiao-miao-li-yong-zuo-you-jie-dian-shu-liang-jian-/
      * 来源：力扣（LeetCode）
