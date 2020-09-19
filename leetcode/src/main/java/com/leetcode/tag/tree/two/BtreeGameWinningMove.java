@@ -2,6 +2,8 @@ package com.leetcode.tag.tree.two;
 
 /**
  * 1145. 二叉树着色游戏
+ * <p>
+ * 搞懂入参.搞懂题意
  */
 public class BtreeGameWinningMove {
     class Solution {
@@ -23,11 +25,15 @@ public class BtreeGameWinningMove {
      */
     class Solution1 {
         private int left;
-
         private int right;
-
         private int num;
 
+        /**
+         * @param root
+         * @param n    树上总共有 n 个节点
+         * @param x    给值为 x 的节点染上红色
+         * @return
+         */
         public boolean btreeGameWinningMove(TreeNode root, int n, int x) {
             num = x;
 
