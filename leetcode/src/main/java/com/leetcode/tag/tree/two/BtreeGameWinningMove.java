@@ -40,6 +40,7 @@ public class BtreeGameWinningMove {
             dfs(root);
 
             int half = n / 2;
+            //关键是这个判断
             return left > half || right > half || (left + right) < half;
         }
 
