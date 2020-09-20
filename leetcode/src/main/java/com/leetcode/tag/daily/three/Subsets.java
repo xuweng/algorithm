@@ -78,7 +78,14 @@ public class Subsets {
             return ans;
         }
 
+        /**
+         * 满二叉树
+         *
+         * @param cur
+         * @param nums
+         */
         public void dfs(int cur, int[] nums) {
+            //叶子结点就是答案
             if (cur == nums.length) {
                 ans.add(new ArrayList<>(t));
                 return;
