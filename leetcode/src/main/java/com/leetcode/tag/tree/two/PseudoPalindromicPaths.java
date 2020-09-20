@@ -1,5 +1,7 @@
 package com.leetcode.tag.tree.two;
 
+import java.util.Arrays;
+
 /**
  * 1457. 二叉树中的伪回文路径
  */
@@ -47,6 +49,48 @@ public class PseudoPalindromicPaths {
                 helper(node.right, temp);
             }
         }
+    }
+
+    /**
+     * 方法1.1 DFS + 数组
+     * <p>
+     * 作者：lixianfeng
+     * 链接：https://leetcode-cn.com/problems/pseudo-palindromic-paths-in-a-binary-tree/solution/java-by-lixianfeng/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class S {
+        int res = 0;
+
+        public int pseudoPalindromicPaths(TreeNode root) {
+            int[] arr = new int[10];
+            preOrder(root, arr);
+            return res;
+        }
+
+        public void preOrder(TreeNode root, int[] arr) {
+            if (root == null) {
+                return;
+            }
+            arr[root.val]++;
+            // 叶子节点 ，统计数组中奇数个元素的个数
+            if (root.left == null && root.right == null) {
+                int cnt = (int) Arrays.stream(arr).filter(a -> a % 2 != 0).count();
+                // 奇数个元素的小于2，才能组成回文序列
+                if (cnt <= 1) {
+                    res++;
+                }
+            }
+            // 左节点不为空，将数组拷贝出一个新的，继续前序遍历
+            if (root.left != null) {
+                preOrder(root.left, Arrays.copyOfRange(arr, 0, arr.length));
+            }
+            if (root.right != null) {
+                preOrder(root.right, Arrays.copyOfRange(arr, 0, arr.length));
+            }
+
+        }
+
     }
 
     class TreeNode {
