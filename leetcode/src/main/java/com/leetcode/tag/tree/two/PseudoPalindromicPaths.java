@@ -21,10 +21,19 @@ public class PseudoPalindromicPaths {
             return ans;
         }
 
+        /**
+         * 先序遍历
+         *
+         * @param node
+         * @param temp
+         */
         void helper(TreeNode node, int temp) {
-            temp ^= (1 << node.val);//node节点的val为几就左移几位
-            if (node.left == null && node.right == null) {//判断是否叶子节点
-                if (temp == 0 || (temp & (temp - 1)) == 0) {//判断是否为伪回文
+            //node节点的val为几就左移几位
+            temp ^= (1 << node.val);
+            //判断是否叶子节点
+            if (node.left == null && node.right == null) {
+                //判断是否为伪回文
+                if (temp == 0 || (temp & (temp - 1)) == 0) {
                     ans++;
                 }
             }
