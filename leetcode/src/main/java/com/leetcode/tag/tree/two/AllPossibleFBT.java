@@ -38,31 +38,29 @@ public class AllPossibleFBT {
             }
             //没有满二叉树具有正偶数个结点
             //满二叉树是奇数个结点
-            if (N % 2 == 1) {
-                //我们知道一共有N个结点，root占了1个结点，左子树可能有1，3，5，..，N-2个结点
-                //对应的，右子树可能有N-2，..，5，3，1个结点
-                //那么，我们可以用一个循环，找到所有可能的左右子树的可能的数量的情况，把root放进列表里
-                for (int x = 0; x < N; ++x) {
-                    //这里就是递归的精髓了，每次看到递归，就一头雾水
-                    //在这里，我们不用去关心左右子树是怎么递归形成的
-                    //我们可以仅仅去关心，这个函数，它实现的是什么功能
-                    //allPossibleFBT(i)返回了一个列表，它存放着当结点数为i时，所有满足条件的树的root的集合
-                    //我们可以认为，allPossibleFBT(i)存放着所有满足条件的左子树的集合
-                    //同样，allPossibleFBT(N-1-i)存放着所有满足条件的右子树的集合
-                    //这是由allPossibleFBT(int N)这个函数的定义所确定的
+            //我们知道一共有N个结点，root占了1个结点，左子树可能有1，3，5，..，N-2个结点
+            //对应的，右子树可能有N-2，..，5，3，1个结点
+            //那么，我们可以用一个循环，找到所有可能的左右子树的可能的数量的情况，把root放进列表里
+            for (int x = 1; x < N; x = x + 2) {
+                //这里就是递归的精髓了，每次看到递归，就一头雾水
+                //在这里，我们不用去关心左右子树是怎么递归形成的
+                //我们可以仅仅去关心，这个函数，它实现的是什么功能
+                //allPossibleFBT(i)返回了一个列表，它存放着当结点数为i时，所有满足条件的树的root的集合
+                //我们可以认为，allPossibleFBT(i)存放着所有满足条件的左子树的集合
+                //同样，allPossibleFBT(N-1-i)存放着所有满足条件的右子树的集合
+                //这是由allPossibleFBT(int N)这个函数的定义所确定的
 
-                    //接下来，就是左右子树的排列组合，当左子树为m时，右子树可能有right.size()个可能
-                    //所以一共有right.size() * left.size()种可能
-                    //我们把每一种排列，都放到我们所要的结果中
-                    List<TreeNode> lefts = allPossibleFBT(x);
-                    List<TreeNode> rights = allPossibleFBT(N - 1 - x);
-                    for (TreeNode left : lefts) {
-                        for (TreeNode right : rights) {
-                            TreeNode bns = new TreeNode(0);
-                            bns.left = left;
-                            bns.right = right;
-                            ans.add(bns);
-                        }
+                //接下来，就是左右子树的排列组合，当左子树为m时，右子树可能有right.size()个可能
+                //所以一共有right.size() * left.size()种可能
+                //我们把每一种排列，都放到我们所要的结果中
+                List<TreeNode> lefts = allPossibleFBT(x);
+                List<TreeNode> rights = allPossibleFBT(N - 1 - x);
+                for (TreeNode left : lefts) {
+                    for (TreeNode right : rights) {
+                        TreeNode bns = new TreeNode(0);
+                        bns.left = left;
+                        bns.right = right;
+                        ans.add(bns);
                     }
                 }
             }
