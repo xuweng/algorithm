@@ -58,6 +58,10 @@ public class Subsets {
     }
 
     /**
+     * 集合中每个元素的选和不选，构成了一个满二叉状态树，比如，左子树是不选，右子树是选
+     * <p>
+     * 可以有前序、中序、后序的不同写法，结果的顺序不一样。本质上，其实是比较完整的中序遍历。
+     * <p>
      * 方法二：递归法实现子集枚举
      * <p>
      * 作者：LeetCode-Solution
@@ -88,4 +92,65 @@ public class Subsets {
         }
     }
 
+    /**
+     * 集合中每个元素的选和不选，构成了一个满二叉状态树，比如，左子树是不选，右子树是选
+     * <p>
+     * 可以有前序、中序、后序的不同写法，结果的顺序不一样。本质上，其实是比较完整的中序遍历。
+     * <p>
+     * 作者：dao-fa-zi-ran-2
+     * 链接：https://leetcode-cn.com/problems/subsets/solution/er-jin-zhi-wei-zhu-ge-mei-ju-dfssan-chong-si-lu-9c/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    static class S {
+        /**
+         * DFS，前序遍历
+         */
+        public static void preOrder(int[] nums, int i, ArrayList<Integer> subset, List<List<Integer>> res) {
+            if (i >= nums.length) {
+                return;
+            }
+            // 到了新的状态，记录新的路径，要重新拷贝一份
+            subset = new ArrayList<>(subset);
+
+            // 这里
+            res.add(subset);
+            preOrder(nums, i + 1, subset, res);
+            subset.add(nums[i]);
+            preOrder(nums, i + 1, subset, res);
+        }
+
+        /**
+         * DFS，中序遍历
+         */
+        public static void inOrder(int[] nums, int i, ArrayList<Integer> subset, List<List<Integer>> res) {
+            if (i >= nums.length) {
+                return;
+            }
+            subset = new ArrayList<>(subset);
+
+            inOrder(nums, i + 1, subset, res);
+            subset.add(nums[i]);
+            // 这里
+            res.add(subset);
+            inOrder(nums, i + 1, subset, res);
+        }
+
+        /**
+         * DFS，后序遍历
+         */
+        public static void postOrder(int[] nums, int i, ArrayList<Integer> subset, List<List<Integer>> res) {
+            if (i >= nums.length) {
+                return;
+            }
+            subset = new ArrayList<>(subset);
+
+            postOrder(nums, i + 1, subset, res);
+            subset.add(nums[i]);
+            postOrder(nums, i + 1, subset, res);
+            // 这里
+            res.add(subset);
+        }
+
+    }
 }
