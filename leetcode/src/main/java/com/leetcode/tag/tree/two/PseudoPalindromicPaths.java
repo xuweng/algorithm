@@ -72,6 +72,7 @@ public class PseudoPalindromicPaths {
             if (root == null) {
                 return;
             }
+            //统计结点的个数
             arr[root.val]++;
             // 叶子节点 ，统计数组中奇数个元素的个数
             if (root.left == null && root.right == null) {
