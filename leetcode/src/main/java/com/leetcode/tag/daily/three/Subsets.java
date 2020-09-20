@@ -80,6 +80,8 @@ public class Subsets {
 
         /**
          * 满二叉树
+         * <p>
+         * 每个元素选择或者不选择
          *
          * @param cur
          * @param nums
