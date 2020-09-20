@@ -10,7 +10,7 @@ package com.leetcode.tag.tree.two;
 public class GetMinimumDifference {
     class Solution {
         int pre;
-        int result;
+        int result = Integer.MAX_VALUE;
 
         public int getMinimumDifference(TreeNode root) {
             zhong(root);
