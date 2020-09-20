@@ -119,6 +119,7 @@ public class PseudoPalindromicPaths {
             int tmp = num ^ (1 << root.val);
             // 叶子节点
             if (root.left == null && root.right == null) {
+                // 奇数个元素的小于2，才能组成回文序列.奇数个元素为0或者为1.
                 // tmp==0表示当前路径奇数个元素的个数为0
                 // tmp&(tmp-1)会消除tmp中二进制位的最右边一个1，值等于0，表示只有一个1，奇数个元素的个数为1
                 if (tmp == 0 || (tmp & (tmp - 1)) == 0) {
