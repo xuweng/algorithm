@@ -57,4 +57,35 @@ public class Subsets {
         }
     }
 
+    /**
+     * 方法二：递归法实现子集枚举
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/subsets/solution/zi-ji-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        List<Integer> t = new ArrayList<>();
+        List<List<Integer>> ans = new ArrayList<>();
+
+        public List<List<Integer>> subsets(int[] nums) {
+            dfs(0, nums);
+            return ans;
+        }
+
+        public void dfs(int cur, int[] nums) {
+            if (cur == nums.length) {
+                ans.add(new ArrayList<>(t));
+                return;
+            }
+            // 考虑选择当前位置
+            t.add(nums[cur]);
+            dfs(cur + 1, nums);
+            t.remove(t.size() - 1);
+            // 考虑不选择当前位置
+            dfs(cur + 1, nums);
+        }
+    }
+
 }
