@@ -135,6 +135,36 @@ public class PseudoPalindromicPaths {
 
     }
 
+    /**
+     * 标准答案了
+     */
+    class Solution1 {
+        int res;
+
+        public int pseudoPalindromicPaths(TreeNode root) {
+            int sign = 0;
+
+            dfs(sign, root);
+            return res;
+        }
+
+        private void dfs(int sign, TreeNode node) {
+            sign ^= 1 << node.val;
+            if (node.left == null && node.right == null) {
+                if (sign == 0 || (sign & sign - 1) == 0) {
+                    res++;
+                }
+            }
+
+            if (node.left != null) {
+                dfs(sign, node.left);
+            }
+            if (node.right != null) {
+                dfs(sign, node.right);
+            }
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
