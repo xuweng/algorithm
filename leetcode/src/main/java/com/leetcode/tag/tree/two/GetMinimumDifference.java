@@ -22,10 +22,6 @@ public class GetMinimumDifference {
             if (root == null) {
                 return;
             }
-            if (root.left == null && root.right == null) {
-                pre = root.val;
-                return;
-            }
             zhong(root.left);
             if (pre != -1) {
                 result = Math.min(result, Math.abs(root.val - pre));
