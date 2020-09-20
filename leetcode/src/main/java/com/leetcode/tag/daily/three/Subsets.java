@@ -29,4 +29,32 @@ public class Subsets {
             }
         }
     }
+
+    /**
+     * 方法一：迭代法实现子集枚举
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/subsets/solution/zi-ji-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        List<Integer> t = new ArrayList<>();
+        List<List<Integer>> ans = new ArrayList<>();
+
+        public List<List<Integer>> subsets(int[] nums) {
+            int n = nums.length;
+            for (int mask = 0; mask < (1 << n); ++mask) {
+                t.clear();
+                for (int i = 0; i < n; ++i) {
+                    if ((mask & (1 << i)) != 0) {
+                        t.add(nums[i]);
+                    }
+                }
+                ans.add(new ArrayList<>(t));
+            }
+            return ans;
+        }
+    }
+
 }
