@@ -9,7 +9,7 @@ package com.leetcode.tag.tree.two;
  */
 public class GetMinimumDifference {
     class Solution {
-        int pre;
+        int pre = -1;
         int result = Integer.MAX_VALUE;
 
         public int getMinimumDifference(TreeNode root) {
@@ -27,7 +27,9 @@ public class GetMinimumDifference {
                 return;
             }
             zhong(root.left);
-            result = Math.min(result, Math.abs(root.val - pre));
+            if (pre != -1) {
+                result = Math.min(result, Math.abs(root.val - pre));
+            }
             pre = root.val;
             zhong(root.right);
         }
