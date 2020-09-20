@@ -43,7 +43,6 @@ public class AllPossibleFBT {
                 //对应的，右子树可能有N-2，..，5，3，1个结点
                 //那么，我们可以用一个循环，找到所有可能的左右子树的可能的数量的情况，把root放进列表里
                 for (int x = 0; x < N; ++x) {
-                    int y = N - 1 - x;
                     //这里就是递归的精髓了，每次看到递归，就一头雾水
                     //在这里，我们不用去关心左右子树是怎么递归形成的
                     //我们可以仅仅去关心，这个函数，它实现的是什么功能
@@ -55,8 +54,10 @@ public class AllPossibleFBT {
                     //接下来，就是左右子树的排列组合，当左子树为m时，右子树可能有right.size()个可能
                     //所以一共有right.size() * left.size()种可能
                     //我们把每一种排列，都放到我们所要的结果中
-                    for (TreeNode left : allPossibleFBT(x)) {
-                        for (TreeNode right : allPossibleFBT(y)) {
+                    List<TreeNode> lefts = allPossibleFBT(x);
+                    List<TreeNode> rights = allPossibleFBT(N - 1 - x);
+                    for (TreeNode left : lefts) {
+                        for (TreeNode right : rights) {
                             TreeNode bns = new TreeNode(0);
                             bns.left = left;
                             bns.right = right;
