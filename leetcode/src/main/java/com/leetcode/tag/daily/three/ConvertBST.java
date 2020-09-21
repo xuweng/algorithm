@@ -27,6 +27,12 @@ public class ConvertBST {
             pre(root.right);
         }
 
+        /**
+         * 每次都是遍历原来的tree,会修改原来tree的值
+         *
+         * @param root
+         * @param val
+         */
         private void pre(TreeNode root, int val) {
             if (root == null) {
                 return;
