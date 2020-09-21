@@ -217,6 +217,8 @@ public class FindRedundantDirectedConnection {
             }
 
             /**
+             * 合并是否成功
+             *
              * @param x
              * @param y
              * @return 如果合并成功返回 true
