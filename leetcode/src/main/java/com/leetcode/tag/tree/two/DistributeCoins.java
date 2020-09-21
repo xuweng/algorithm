@@ -36,6 +36,7 @@ public class DistributeCoins {
             int L = dfs(node.left);
             int R = dfs(node.right);
             ans += Math.abs(L) + Math.abs(R);
+            //使每个结点上只有一枚硬币
             //后序遍历看返回值
             return node.val + L + R - 1;
         }
