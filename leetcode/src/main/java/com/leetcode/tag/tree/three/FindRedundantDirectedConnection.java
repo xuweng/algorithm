@@ -8,6 +8,12 @@ package com.leetcode.tag.tree.three;
  * 基于有向图，在有向图中判断是是否有环，需要使用拓扑排序
  * <p>
  * 拓扑排序中的重要概念 结点的入度 可以帮助我们解决这个问题
+ * <p>
+ * 有根树的特点：
+ * <p>
+ * 只有唯一的一个入度为 0 的结点，它是根结点；
+ * 不是根结点的其它所有的结点入度为 1；
+ * 不可能存在入度为 2 的结点
  */
 public class FindRedundantDirectedConnection {
     static class Solution {
