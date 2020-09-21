@@ -141,6 +141,50 @@ public class ConvertBST {
         }
     }
 
+    /**
+     * 方法二：Morris 遍历
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/convert-bst-to-greater-tree/solution/ba-er-cha-sou-suo-shu-zhuan-huan-wei-lei-jia-sh-14/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution4 {
+        public TreeNode convertBST(TreeNode root) {
+            int sum = 0;
+            TreeNode node = root;
+
+            while (node != null) {
+                if (node.right == null) {
+                    sum += node.val;
+                    node.val = sum;
+                    node = node.left;
+                } else {
+                    TreeNode succ = getSuccessor(node);
+                    if (succ.left == null) {
+                        succ.left = node;
+                        node = node.right;
+                    } else {
+                        succ.left = null;
+                        sum += node.val;
+                        node.val = sum;
+                        node = node.left;
+                    }
+                }
+            }
+
+            return root;
+        }
+
+        public TreeNode getSuccessor(TreeNode node) {
+            TreeNode succ = node.right;
+            while (succ.left != null && succ.left != node) {
+                succ = succ.left;
+            }
+            return succ;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
