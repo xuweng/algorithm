@@ -58,8 +58,10 @@ public class LevelOrder {
                 for (int i = queue.size(); i > 0; i--) {
                     TreeNode node = queue.poll();
                     if (res.size() % 2 == 0) {
+                        //头插法.倒序
                         tmp.addLast(node.val); // 偶数层 -> 队列头部
                     } else {
+                        //尾插法.正序.
                         tmp.addFirst(node.val); // 奇数层 -> 队列尾部
                     }
                     if (node.left != null) {
