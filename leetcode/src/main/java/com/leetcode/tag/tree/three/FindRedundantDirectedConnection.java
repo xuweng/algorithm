@@ -6,6 +6,8 @@ package com.leetcode.tag.tree.three;
  * 基于无向图，在无向图中判断是否有环，很容易想到可以使用 并查集
  * <p>
  * 基于有向图，在有向图中判断是是否有环，需要使用拓扑排序
+ * <p>
+ * 拓扑排序中的重要概念 结点的入度 可以帮助我们解决这个问题
  */
 public class FindRedundantDirectedConnection {
     static class Solution {
