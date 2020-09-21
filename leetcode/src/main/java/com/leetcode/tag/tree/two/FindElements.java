@@ -47,6 +47,44 @@ public class FindElements {
         return false;
     }
 
+    /**
+     * 简洁代码
+     */
+    class FindElements1 {
+
+        private TreeNode root;
+
+        public FindElements1(TreeNode root) {
+            restore(this.root = root, 0);
+        }
+
+        private void restore(TreeNode node, int index) {
+            if (node != null) {
+                node.val = index;
+                restore(node.left, index << 1 | 1);
+                restore(node.right, (index + 1) << 1);
+            }
+        }
+
+        public boolean find(int target) {
+            int bit;
+            for (bit = 1, target++; (1 << (bit + 1)) <= target; bit++) {
+            }
+            TreeNode node = root;
+            for (bit--; bit >= 0 && node != null; bit--) {
+                // System.out.println(node.val);
+                if ((target & (1 << bit)) == 0) {
+                    node = node.left;
+                } else {
+                    node = node.right;
+                }
+            }
+            // System.out.println(node == null ? "null" : node.val);
+            // System.out.println();
+            return node != null;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
