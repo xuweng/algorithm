@@ -23,6 +23,12 @@ public class DistributeCoins {
             return ans;
         }
 
+        /**
+         * 定义 dfs(node) 为这个节点所在的子树中金币的 过载量，也就是这个子树中金币的数量减去这个子树中节点的数量
+         *
+         * @param node
+         * @return
+         */
         public int dfs(TreeNode node) {
             if (node == null) {
                 return 0;
@@ -30,6 +36,7 @@ public class DistributeCoins {
             int L = dfs(node.left);
             int R = dfs(node.right);
             ans += Math.abs(L) + Math.abs(R);
+            //后序遍历看返回值
             return node.val + L + R - 1;
         }
     }
