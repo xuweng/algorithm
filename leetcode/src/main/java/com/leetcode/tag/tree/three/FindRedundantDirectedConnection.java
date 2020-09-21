@@ -29,9 +29,15 @@ public class FindRedundantDirectedConnection {
             }
         }
 
+        /**
+         * 递归的下一层的入参不改变肯定错
+         *
+         * @param i
+         * @return
+         */
         public int find(int i) {
             if (parents[i] != i) {
-                parents[i] = find(i);
+                parents[i] = find(parents[i]);
             }
             return parents[i];
         }
