@@ -20,6 +20,7 @@ public class DistributeCoins {
         public int distributeCoins(TreeNode root) {
             ans = 0;
             dfs(root);
+
             return ans;
         }
 
@@ -38,6 +39,10 @@ public class DistributeCoins {
             ans += Math.abs(L) + Math.abs(R);
             //使每个结点上只有一枚硬币
             //后序遍历看返回值
+            //像求和
+            // 个人总结：node.val + L + R - 1 表示当前节点需要 拿给子节点的金币个数 或者 从子节点拿给自己的金币的个数
+            // 即当前节点的金币的移动次数。因为是后序遍历，所以能保证子节点已经都得到了需要的金币
+            // 同时 ans += Math.abs(L) + Math.abs(R);记录了子节点的移动次数，故累加后即是最终结果。
             return node.val + L + R - 1;
         }
     }
