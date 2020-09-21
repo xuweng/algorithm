@@ -69,6 +69,7 @@ public class FindElements {
                 return;
             }
             node.val = index;
+            //左移.异或.与
             restore(node.left, index << 1 | 1);
             restore(node.right, (index + 1) << 1);
         }
