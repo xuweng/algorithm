@@ -58,12 +58,19 @@ public class FindElements {
             restore(this.root = root, 0);
         }
 
+        /**
+         * 位运算
+         *
+         * @param node
+         * @param index
+         */
         private void restore(TreeNode node, int index) {
-            if (node != null) {
-                node.val = index;
-                restore(node.left, index << 1 | 1);
-                restore(node.right, (index + 1) << 1);
+            if (node == null) {
+                return;
             }
+            node.val = index;
+            restore(node.left, index << 1 | 1);
+            restore(node.right, (index + 1) << 1);
         }
 
         public boolean find(int target) {
