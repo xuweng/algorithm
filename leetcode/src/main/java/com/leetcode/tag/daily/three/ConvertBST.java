@@ -144,6 +144,10 @@ public class ConvertBST {
     /**
      * 方法二：Morris 遍历
      * <p>
+     * 有一种巧妙的方法可以在线性时间内，只占用常数空间来实现中序遍历
+     * <p>
+     * Morris 遍历的核心思想是利用树的大量空闲指针，实现空间开销的极限缩减
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/convert-bst-to-greater-tree/solution/ba-er-cha-sou-suo-shu-zhuan-huan-wei-lei-jia-sh-14/
      * 来源：力扣（LeetCode）
