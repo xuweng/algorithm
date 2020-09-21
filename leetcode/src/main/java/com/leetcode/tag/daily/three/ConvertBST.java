@@ -1,9 +1,6 @@
 package com.leetcode.tag.daily.three;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.IntStream;
 
 /**
@@ -108,6 +105,37 @@ public class ConvertBST {
             root.val = sum;
             convertBST(root.left);
             return root;
+        }
+    }
+
+    /**
+     * 用栈也很厉害
+     */
+    class Solution3 {
+        public TreeNode convertBST(TreeNode root) {
+            if (root == null) {
+                return root;
+            }
+            //用栈也很厉害
+            Stack<TreeNode> stack = new Stack<>();
+            f(root, stack);
+
+            TreeNode next = stack.pop();
+            while (!stack.isEmpty()) {
+                TreeNode cur = stack.pop();
+                cur.val += next.val;
+                next = cur;
+            }
+            return root;
+        }
+
+        private void f(TreeNode root, Stack<TreeNode> stack) {
+            if (root == null) {
+                return;
+            }
+            f(root.left, stack);
+            stack.push(root);
+            f(root.right, stack);
         }
     }
 
