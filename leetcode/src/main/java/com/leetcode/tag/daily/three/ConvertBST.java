@@ -1,7 +1,10 @@
 package com.leetcode.tag.daily.three;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 /**
  * 538. 把二叉搜索树转换为累加树
@@ -56,6 +59,30 @@ public class ConvertBST {
             }
             pre(root.left, val);
             pre(root.right, val);
+        }
+    }
+
+    class Solution1 {
+        public TreeNode convertBST(TreeNode root) {
+            List<TreeNode> result = new ArrayList<>();
+
+            zhong(root, result);
+
+            for (int i = 0; i < result.size(); i++) {
+                int sum = IntStream.range(i + 1, result.size()).map(j -> result.get(j).val).sum();
+                result.get(i).val += sum;
+            }
+
+            return root;
+        }
+
+        private void zhong(TreeNode root, List<TreeNode> result) {
+            if (root == null) {
+                return;
+            }
+            zhong(root.left, result);
+            result.add(root);
+            zhong(root.right, result);
         }
     }
 
