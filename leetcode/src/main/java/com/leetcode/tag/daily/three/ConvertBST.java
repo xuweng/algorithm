@@ -5,6 +5,8 @@ import java.util.stream.IntStream;
 
 /**
  * 538. 把二叉搜索树转换为累加树
+ * <p>
+ * 核心是反序处理
  */
 public class ConvertBST {
     class Solution {
