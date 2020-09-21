@@ -160,15 +160,19 @@ public class ConvertBST {
 
             while (node != null) {
                 if (node.right == null) {
+                    //如果当前节点的右子节点为空，处理当前节点，并遍历当前节点的左子节点
                     sum += node.val;
                     node.val = sum;
                     node = node.left;
                 } else {
+                    //如果当前节点的右子节点不为空，找到当前节点右子树的最左节点（该节点为当前节点中序遍历的前驱节点）；
                     TreeNode succ = getSuccessor(node);
                     if (succ.left == null) {
+                        //如果最左节点的左指针为空，将最左节点的左指针指向当前节点，遍历当前节点的右子节点；
                         succ.left = node;
                         node = node.right;
                     } else {
+                        //如果最左节点的左指针不为空，将最左节点的左指针重新置为空（恢复树的原状），处理当前节点，并将当前节点置为其左节点
                         succ.left = null;
                         sum += node.val;
                         node.val = sum;
