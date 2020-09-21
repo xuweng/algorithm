@@ -112,10 +112,22 @@ public class FindRedundantDirectedConnection {
             }
         }
 
+        /**
+         * 注意数组下标
+         *
+         * @param index1
+         * @param index2
+         */
         public void union(int index1, int index2) {
             ancestor[find(index1)] = find(index2);
         }
 
+        /**
+         * 注意入参
+         *
+         * @param index
+         * @return
+         */
         public int find(int index) {
             if (ancestor[index] != index) {
                 ancestor[index] = find(ancestor[index]);
