@@ -1,17 +1,22 @@
 package com.leetcode.tag.daily.three;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 538. 把二叉搜索树转换为累加树
  */
 public class ConvertBST {
     class Solution {
-        int sum;
         TreeNode root;
+        Map<Integer, Integer> map;
 
         public TreeNode convertBST(TreeNode root) {
             this.root = root;
+            map = new HashMap<>();
 
             pre(root);
+            pre1(root);
 
             return root;
         }
@@ -21,10 +26,17 @@ public class ConvertBST {
                 return;
             }
             pre(this.root, root.val);
-            root.val += sum;
-            sum = 0;
             pre(root.left);
             pre(root.right);
+        }
+
+        private void pre1(TreeNode root) {
+            if (root == null) {
+                return;
+            }
+            root.val += map.get(root.val);
+            pre1(root.left);
+            pre1(root.right);
         }
 
         /**
@@ -38,7 +50,7 @@ public class ConvertBST {
                 return;
             }
             if (root.val > val) {
-                sum += root.val;
+                map.put(val, map.getOrDefault(val, 0) + root.val);
             }
             pre(root.left, val);
             pre(root.right, val);
