@@ -86,6 +86,31 @@ public class ConvertBST {
         }
     }
 
+    /**
+     * 方法一：反序中序遍历
+     * <p>
+     * 厉害.反序中序遍历厉害
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/convert-bst-to-greater-tree/solution/ba-er-cha-sou-suo-shu-zhuan-huan-wei-lei-jia-sh-14/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        int sum = 0;
+
+        public TreeNode convertBST(TreeNode root) {
+            if (root == null) {
+                return root;
+            }
+            convertBST(root.right);
+            sum += root.val;
+            root.val = sum;
+            convertBST(root.left);
+            return root;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
