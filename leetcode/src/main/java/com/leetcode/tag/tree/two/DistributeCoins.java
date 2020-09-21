@@ -18,7 +18,6 @@ public class DistributeCoins {
         int ans;
 
         public int distributeCoins(TreeNode root) {
-            ans = 0;
             dfs(root);
 
             return ans;
