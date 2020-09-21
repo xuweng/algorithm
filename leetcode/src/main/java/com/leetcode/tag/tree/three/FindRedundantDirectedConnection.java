@@ -49,7 +49,7 @@ public class FindRedundantDirectedConnection {
                 return false;
             }
             //i合并到j
-            parents[i] = rootJ;
+            parents[rootI] = rootJ;
             return true;
         }
     }
