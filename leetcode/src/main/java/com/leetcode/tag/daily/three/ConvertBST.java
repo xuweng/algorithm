@@ -6,8 +6,11 @@ package com.leetcode.tag.daily.three;
 public class ConvertBST {
     class Solution {
         int sum;
+        TreeNode root;
 
         public TreeNode convertBST(TreeNode root) {
+            this.root = root;
+
             pre(root);
 
             return root;
@@ -17,7 +20,7 @@ public class ConvertBST {
             if (root == null) {
                 return;
             }
-            pre(root, root.val);
+            pre(this.root, root.val);
             root.val += sum;
             sum = 0;
             pre(root.left);
