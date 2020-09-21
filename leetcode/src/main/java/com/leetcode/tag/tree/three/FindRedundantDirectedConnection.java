@@ -4,7 +4,7 @@ package com.leetcode.tag.tree.three;
  * 685. 冗余连接 II
  */
 public class FindRedundantDirectedConnection {
-    class Solution {
+    static class Solution {
 
         public int[] findRedundantDirectedConnection(int[][] edges) {
             UF uf = new UF(edges.length + 1);
@@ -19,7 +19,7 @@ public class FindRedundantDirectedConnection {
         }
     }
 
-    class UF {
+    static class UF {
         int[] parents;
 
         public UF(int n) {
