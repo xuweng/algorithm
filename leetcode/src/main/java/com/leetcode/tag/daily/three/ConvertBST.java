@@ -51,6 +51,8 @@ public class ConvertBST {
             }
             if (root.val > val) {
                 map.put(val, map.getOrDefault(val, 0) + root.val);
+            } else {
+                map.put(val, map.getOrDefault(val, 0));
             }
             pre(root.left, val);
             pre(root.right, val);
