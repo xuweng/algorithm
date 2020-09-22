@@ -81,12 +81,16 @@ public class DeleteNode {
                 }
                 // the node is not a leaf and has a right child
                 else if (root.right != null) {
+                    //右子树的最小值赋值
                     root.val = successor(root);
+                    //删掉右子树的最小值.厉害
                     root.right = deleteNode(root.right, root.val);
                 }
                 // the node is not a leaf, has no right child, and has a left child
                 else {
+                    //左子树的最大值赋值
                     root.val = predecessor(root);
+                    //删掉左子树的最大值
                     root.left = deleteNode(root.left, root.val);
                 }
             }
