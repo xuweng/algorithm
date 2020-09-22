@@ -34,6 +34,12 @@ public class MinCameraCover {
             return array[1];
         }
 
+        /**
+         * 树形dp
+         *
+         * @param root
+         * @return
+         */
         public int[] dfs(TreeNode root) {
             if (root == null) {
                 return new int[]{Integer.MAX_VALUE / 2, 0, 0};
