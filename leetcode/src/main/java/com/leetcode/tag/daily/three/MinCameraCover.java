@@ -6,6 +6,10 @@ package com.leetcode.tag.daily.three;
  * 这道题和 打家劫舍III 很像，同样是二叉树，打家劫舍规定不能打劫相邻的节点，求打劫节点值的最大收益。
  * <p>
  * 树形 DP 不像常规 DP 那样在迭代中 “填表”，而是在递归遍历中 “填表”。
+ * <p>
+ * 看图.看图
+ * <p>
+ * https://leetcode-cn.com/problems/binary-tree-cameras/solution/968-jian-kong-er-cha-shu-di-gui-shang-de-zhuang-ta/
  */
 public class MinCameraCover {
     class Solution {
