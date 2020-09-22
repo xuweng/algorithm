@@ -130,26 +130,31 @@ public class MinCameraCover {
             // 情况1
             // 左右节点都有覆盖
             if (left == 2 && right == 2) {
+                //则该节点无覆盖
                 return 0;
             }
 
             // 情况2
+            // 左右节点至少有一个无覆盖的情况
             // left == 0 && right == 0 左右节点无覆盖
             // left == 1 && right == 0 左节点有摄像头，右节点无覆盖
             // left == 0 && right == 1 左节点有无覆盖，右节点摄像头
             // left == 0 && right == 2 左节点无覆盖，右节点覆盖
             // left == 2 && right == 0 左节点覆盖，右节点无覆盖
             if (left == 0 || right == 0) {
+                //则该节点放摄像头
                 result++;
                 return 1;
             }
 
             // 情况3
+            // 左右节点至少有一个有摄像头
             // left == 1 && right == 2 左节点有摄像头，右节点有覆盖
             // left == 2 && right == 1 左节点有覆盖，右节点有摄像头
             // left == 1 && right == 1 左右节点都有摄像头
             // 其他情况前段代码均已覆盖
             if (left == 1 || right == 1) {
+                //则该节点覆盖
                 return 2;
             }
 
