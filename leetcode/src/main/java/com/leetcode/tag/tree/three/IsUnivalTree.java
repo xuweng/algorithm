@@ -5,21 +5,23 @@ package com.leetcode.tag.tree.three;
  */
 public class IsUnivalTree {
     class Solution {
+        boolean result = true;
+
         public boolean isUnivalTree(TreeNode root) {
-            return root == null || isUnivalTree(root, root.val);
+            isUnivalTree(root, root.val);
+
+            return result;
         }
 
-        public boolean isUnivalTree(TreeNode root, int val) {
-            if (root == null) {
-                return true;
+        public void isUnivalTree(TreeNode root, int val) {
+            if (root == null || !result) {
+                return;
             }
             if (root.val != val) {
-                return false;
+                result = false;
             }
-            if (isUnivalTree(root.left, val)) {
-                return true;
-            }
-            return isUnivalTree(root.right, val);
+            isUnivalTree(root.left, val);
+            isUnivalTree(root.right, val);
 
         }
     }
