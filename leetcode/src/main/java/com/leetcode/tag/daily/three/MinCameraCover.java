@@ -11,6 +11,14 @@ public class MinCameraCover {
     }
 
     /**
+     * 两种情况.安装与不安装.选择与不选择
+     * <p>
+     * 假设当前节点为 root，其左右孩子为 left,right。如果要覆盖以 root 为根的树，有两种情况：
+     * <p>
+     * 若在 root 处安放摄像头，则孩子 left,right 一定也会被监控到。此时，只需要保证left 的两棵子树被覆盖，同时保证 right 的两棵子树也被覆盖即可。
+     * <p>
+     * 否则， 如果 root 处不安放摄像头，则除了覆盖 root 的两棵子树之外，孩子 left,right 之一必须要安装摄像头，从而保证 root 会被监控到。
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/binary-tree-cameras/solution/jian-kong-er-cha-shu-by-leetcode-solution/
      * 来源：力扣（LeetCode）
