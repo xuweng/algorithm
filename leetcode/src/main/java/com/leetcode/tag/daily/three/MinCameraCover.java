@@ -117,6 +117,14 @@ public class MinCameraCover {
     class Solution3 {
         private int result;
 
+        /**
+         * 逻辑清晰.逻辑清晰.
+         * <p>
+         * 3个状态:有无覆盖、放摄像头
+         *
+         * @param cur
+         * @return
+         */
         int traversal(TreeNode cur) {
 
             // 空节点，该节点有覆盖
