@@ -2,6 +2,8 @@ package com.leetcode.tag.daily.three;
 
 /**
  * 968. 监控二叉树
+ * <p>
+ * 这道题和 打家劫舍III 很像，同样是二叉树，打家劫舍规定不能打劫相邻的节点，求打劫节点值的最大收益。
  */
 public class MinCameraCover {
     class Solution {
