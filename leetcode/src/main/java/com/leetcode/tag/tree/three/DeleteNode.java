@@ -20,6 +20,12 @@ public class DeleteNode {
             if (root.val > key) {
                 root.left = deleteNode(root.left, key);
             }
+            if (root.left != null) {
+
+            }
+            if (root.right != null) {
+
+            }
 
             return root;
         }
