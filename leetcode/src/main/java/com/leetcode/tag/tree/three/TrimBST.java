@@ -55,6 +55,7 @@ public class TrimBST {
                 return trimBST(root.right, L, R);
             }
 
+            //这里想不到.厉害.
             root.left = trimBST(root.left, L, R);
             root.right = trimBST(root.right, L, R);
             return root;
