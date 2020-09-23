@@ -31,28 +31,22 @@ public class SumEvenGrandparent {
             if (root == null || root.val % 2 != 0) {
                 return;
             }
-            TreeNode left = root.left;
-            TreeNode right = root.right;
-            if (left != null) {
-                if (left.left != null) {
-                    sum += left.left.val;
-                }
-                if (left.right != null) {
-                    sum += left.right.val;
-                }
-                pre(left.left);
-                pre(left.right);
+            mySum(root.left);
+            mySum(root.right);
+        }
+
+        private void mySum(TreeNode root) {
+            if (root == null) {
+                return;
             }
-            if (right != null) {
-                if (right.right != null) {
-                    sum += right.left.val;
-                }
-                if (right.right != null) {
-                    sum += right.right.val;
-                }
-                pre(right.left);
-                pre(right.right);
+            if (root.left != null) {
+                sum += root.left.val;
             }
+            if (root.right != null) {
+                sum += root.right.val;
+            }
+            pre(root.left);
+            pre(root.right);
         }
 
     }
