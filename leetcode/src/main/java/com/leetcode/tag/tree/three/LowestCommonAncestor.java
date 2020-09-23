@@ -25,6 +25,28 @@ public class LowestCommonAncestor {
         }
     }
 
+    /**
+     * 简洁代码
+     */
+    class Solution1 {
+        public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+            //3合1
+            //这个条件厉害
+            if (root == null || root == p || root == q) {
+                return root;
+            }
+
+            TreeNode left = lowestCommonAncestor(root.left, p, q);
+            TreeNode right = lowestCommonAncestor(root.right, p, q);
+
+            if (left == null) {
+                return right;
+            }
+            return right == null ? left : root;
+
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
