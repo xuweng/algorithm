@@ -1,8 +1,6 @@
 package com.leetcode.tag.tree.three;
 
-import java.util.LinkedList;
-import java.util.Objects;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * 剑指 Offer 37. 序列化二叉树
@@ -75,6 +73,74 @@ public class Codec {
             i++;
         }
         return root;
+    }
+}
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ * int val;
+ * TreeNode left;
+ * TreeNode right;
+ * TreeNode(int x) { val = x; }
+ * }
+ */
+class Codec1 {
+    List<Integer> list;
+    int index;
+    // Encodes a tree to a single string.
+
+    /**
+     * 先序遍历
+     *
+     * @param node
+     */
+    private void func(TreeNode node) {
+        if (node == null) {
+            list.add(null);
+            return;
+        }
+        list.add(node.val);
+        func(node.left);
+        func(node.right);
+
+    }
+
+    public String serialize(TreeNode root) {
+        list = new ArrayList<>();
+
+        func(root);
+
+        return "";
+    }
+
+    /**
+     * 先序遍历.先序遍历.
+     *
+     * @return
+     */
+    private TreeNode func1() {
+        if (index > list.size() - 1) {
+            return null;
+        }
+        //index厉害
+        Integer val = list.get(index);
+        index++;
+        if (val == null) {
+            return null;
+        }
+        TreeNode node = new TreeNode(val);
+        node.left = func1();
+        node.right = func1();
+
+        return node;
+    }
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        index = 0;
+
+        return func1();
     }
 }
 
