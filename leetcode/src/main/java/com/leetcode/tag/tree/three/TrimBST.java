@@ -34,6 +34,8 @@ public class TrimBST {
     /**
      * 方法：递归
      * <p>
+     * bst的套路.left或者right.
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/trim-a-binary-search-tree/solution/xiu-jian-er-cha-sou-suo-shu-by-leetcode/
      * 来源：力扣（LeetCode）
@@ -45,9 +47,11 @@ public class TrimBST {
                 return root;
             }
             if (root.val > R) {
+                //区间在left
                 return trimBST(root.left, L, R);
             }
             if (root.val < L) {
+                //区间在right
                 return trimBST(root.right, L, R);
             }
 
