@@ -3,7 +3,9 @@ package com.leetcode.tag.tree.three;
 /**
  * 669. 修剪二叉搜索树
  * <p>
- * 简洁代码.简洁代码.简洁代码
+ * 简洁代码.简洁代码.简洁代码.
+ * <p>
+ * 递归没有那么清晰.
  */
 public class TrimBST {
     class Solution {
