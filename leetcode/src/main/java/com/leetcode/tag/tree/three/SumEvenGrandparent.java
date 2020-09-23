@@ -45,8 +45,6 @@ public class SumEvenGrandparent {
             if (root.right != null) {
                 sum += root.right.val;
             }
-            pre(root.left);
-            pre(root.right);
         }
 
     }
