@@ -77,16 +77,11 @@ public class Codec {
 }
 
 /**
- * Definition for a binary tree node.
- * public class TreeNode {
- * int val;
- * TreeNode left;
- * TreeNode right;
- * TreeNode(int x) { val = x; }
- * }
+ *
  */
 class Codec1 {
     List<Integer> list;
+    //下标
     int index;
     // Encodes a tree to a single string.
 
@@ -139,6 +134,49 @@ class Codec1 {
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
         return func1();
+    }
+}
+
+/**
+ *
+ */
+class Codec2 {
+    //下标
+    int i;
+    StringBuilder sb;
+
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        sb = new StringBuilder();
+        serializeDFS(root);
+        return sb.toString();
+    }
+
+    public void serializeDFS(TreeNode root) {
+        if (root == null) {
+            sb.append("#");
+            return;
+        }
+        sb.append((char) (root.val + '0'));
+        serializeDFS(root.left);
+        serializeDFS(root.right);
+    }
+
+
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        return deserializeDFS(data.toCharArray());
+    }
+
+    public TreeNode deserializeDFS(char[] data) {
+        if (data[i] == '#') {
+            i++;
+            return null;
+        }
+        TreeNode root = new TreeNode(data[i++] - '0');
+        root.left = deserializeDFS(data);
+        root.right = deserializeDFS(data);
+        return root;
     }
 }
 
