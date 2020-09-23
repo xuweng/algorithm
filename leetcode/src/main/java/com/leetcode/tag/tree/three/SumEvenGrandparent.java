@@ -20,19 +20,12 @@ public class SumEvenGrandparent {
                 return;
             }
             if (root.val % 2 == 0) {
-                pre(root);
+                mySum(root.left);
+                mySum(root.right);
             }
             sum(root.left);
             sum(root.right);
 
-        }
-
-        private void pre(TreeNode root) {
-            if (root == null || root.val % 2 != 0) {
-                return;
-            }
-            mySum(root.left);
-            mySum(root.right);
         }
 
         private void mySum(TreeNode root) {
