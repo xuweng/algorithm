@@ -59,6 +59,7 @@ public class Codec {
         TreeNode root = new TreeNode(Integer.parseInt(vals[0]));
         Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
+        //保证i正确
         int i = 1;
         while (!queue.isEmpty()) {
             TreeNode node = queue.poll();
