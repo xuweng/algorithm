@@ -138,8 +138,6 @@ class Codec1 {
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-        index = 0;
-
         return func1();
     }
 }
