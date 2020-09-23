@@ -168,7 +168,14 @@ class Codec2 {
         return deserializeDFS(data.toCharArray());
     }
 
+    /**
+     * 先序遍历包含null.通过null确定left和right
+     *
+     * @param data
+     * @return
+     */
     public TreeNode deserializeDFS(char[] data) {
+        //这样也可以
         if (data[i] == '#') {
             i++;
             return null;
