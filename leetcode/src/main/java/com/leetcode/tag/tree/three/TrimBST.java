@@ -6,6 +6,8 @@ package com.leetcode.tag.tree.three;
  * 简洁代码.简洁代码.简洁代码.
  * <p>
  * 递归没有那么清晰.
+ * <p>
+ * 十分钟没思路看题解.
  */
 public class TrimBST {
     class Solution {
