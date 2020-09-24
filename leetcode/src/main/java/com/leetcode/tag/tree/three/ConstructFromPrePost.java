@@ -24,6 +24,7 @@ public class ConstructFromPrePost {
         }
 
         public TreeNode constructFromPrePost(int[] pre, int preStart, int preEnd, int[] post, int postStart, int postEnd) {
+            //防止数组下标越界.此条件必须.
             if (preStart > preEnd || postStart > postEnd) {
                 return null;
             }
