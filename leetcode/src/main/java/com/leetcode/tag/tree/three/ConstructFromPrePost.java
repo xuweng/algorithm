@@ -23,6 +23,17 @@ public class ConstructFromPrePost {
             return constructFromPrePost(pre, 0, pre.length - 1, post, 0, post.length - 1);
         }
 
+        /**
+         * 计算下标.确定left结点的个数.
+         *
+         * @param pre
+         * @param preStart
+         * @param preEnd
+         * @param post
+         * @param postStart
+         * @param postEnd
+         * @return
+         */
         public TreeNode constructFromPrePost(int[] pre, int preStart, int preEnd, int[] post, int postStart, int postEnd) {
             //防止数组下标越界.此条件必须.
             if (preStart > preEnd || postStart > postEnd) {
@@ -33,7 +44,9 @@ public class ConstructFromPrePost {
             }
             int l = map.get(pre[preStart + 1]);
             TreeNode root = new TreeNode(pre[preStart]);
+            //(l - postStart + 1)是left结点的个数
             root.left = constructFromPrePost(pre, preStart + 1, preStart + l - postStart + 1, post, postStart, l);
+            //(preStart + l - postStart + 2)=(preStart + l - postStart + 1 + 1)
             root.right = constructFromPrePost(pre, preStart + l - postStart + 2, preEnd, post, l + 1, postEnd - 1);
 
             return root;
