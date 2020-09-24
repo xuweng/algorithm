@@ -21,6 +21,7 @@ public class FindMode {
                 }
             });
 
+            //转换为数组这么简单.记住.
             return result.stream().mapToInt(item -> item).toArray();
         }
 
