@@ -62,6 +62,7 @@ public class ConstructFromPrePost {
             for (int i = 0; i < N; ++i) {
                 if (post[i] == pre[1]) {
                     L = i + 1;
+                    break;
                 }
             }
 
