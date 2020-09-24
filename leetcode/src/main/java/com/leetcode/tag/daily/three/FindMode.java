@@ -55,6 +55,7 @@ public class FindMode {
             findAndFill(root);
 
             // 复位
+            // 记录前一个结点,这个变量可以
             this.pre = null;
             this.result = new int[this.resultCount];    // 初始化数组
             this.resultCount = 0;
@@ -74,6 +75,7 @@ public class FindMode {
             }
             findAndFill(root.left); // 递归遍历 左子树
 
+            //这个条件可以
             if (this.pre != null && this.pre.val == root.val) {
                 // 与前一个节点的值相等
                 this.currCount++;
@@ -100,6 +102,49 @@ public class FindMode {
             // 递归遍历 右子树
             findAndFill(root.right);
         }
+    }
+
+    /**
+     * 简洁代码
+     * <p>
+     * index指针
+     */
+    class Solution2 {
+
+        int preVal = 0;
+        int curTimes = 0;
+        int maxTimes = 0;
+        ArrayList<Integer> list = new ArrayList<>();
+
+        public int[] findMode(TreeNode root) {
+            traversal(root);
+            //list转换为int[]
+            return list.stream().mapToInt(integer -> integer).toArray();
+        }
+
+        private void traversal(TreeNode root) {
+            if (root == null) {
+                return;
+            }
+            traversal(root.left);
+
+            if (preVal == root.val) {
+                curTimes++;
+            } else {
+                preVal = root.val;
+                curTimes = 1;
+            }
+            if (curTimes == maxTimes) {
+                list.add(root.val);
+            } else if (curTimes > maxTimes) {
+                list.clear();
+                list.add(root.val);
+                maxTimes = curTimes;
+            }
+
+            traversal(root.right);
+        }
+
     }
 
     class TreeNode {
