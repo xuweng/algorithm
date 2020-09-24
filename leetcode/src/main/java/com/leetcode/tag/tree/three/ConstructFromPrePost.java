@@ -1,0 +1,48 @@
+package com.leetcode.tag.tree.three;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 889. 根据前序和后序遍历构造二叉树
+ * <p>
+ * 没有null.
+ */
+public class ConstructFromPrePost {
+    class Solution {
+        Map<Integer, Integer> map = new HashMap<>();
+
+        public TreeNode constructFromPrePost(int[] pre, int[] post) {
+            for (int i = 0; i < post.length; i++) {
+                map.put(post[i], i);
+            }
+
+            return constructFromPrePost(pre, 0, pre.length - 1, post, 0, post.length - 1);
+        }
+
+        public TreeNode constructFromPrePost(int[] pre, int preStart, int preEnd, int[] post, int postStart, int postEnd) {
+            int l = map.get(pre[preStart + 1]);
+            if (preStart + 1 > l) {
+                return null;
+            }
+            if (preStart == preEnd || postStart == postEnd) {
+                return new TreeNode(pre[preStart]);
+            }
+            TreeNode root = new TreeNode(pre[preStart]);
+            root.left = constructFromPrePost(pre, preStart + 1, preStart + l - postStart + 1, post, postStart, l);
+            root.right = constructFromPrePost(pre, preStart + l - postStart + 2, preEnd, post, l + 1, postEnd);
+
+            return root;
+        }
+    }
+
+    class TreeNode {
+        int val;
+        TreeNode left;
+        TreeNode right;
+
+        TreeNode(int x) {
+            val = x;
+        }
+    }
+}
