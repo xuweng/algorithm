@@ -115,7 +115,9 @@ public class FindMode {
     class Solution2 {
 
         int preVal = 0;
+        //记录当前数字重复的次数
         int curTimes = 0;
+        //维护已经扫描过的数当中出现最多的那个数字的出现次数
         int maxTimes = 0;
         ArrayList<Integer> list = new ArrayList<>();
 
@@ -140,6 +142,7 @@ public class FindMode {
             if (curTimes == maxTimes) {
                 list.add(root.val);
             } else if (curTimes > maxTimes) {
+                //这里直接清空厉害.不会添加重复数字.
                 list.clear();
                 list.add(root.val);
                 maxTimes = curTimes;
