@@ -24,6 +24,9 @@ public class ConstructFromPrePost {
         }
 
         public TreeNode constructFromPrePost(int[] pre, int preStart, int preEnd, int[] post, int postStart, int postEnd) {
+            if (preStart > preEnd || postStart > postEnd) {
+                return null;
+            }
             if (preStart == preEnd || postStart == postEnd) {
                 return new TreeNode(pre[preStart]);
             }
@@ -70,6 +73,36 @@ public class ConstructFromPrePost {
                     Arrays.copyOfRange(post, 0, L));
             root.right = constructFromPrePost(Arrays.copyOfRange(pre, L + 1, N),
                     Arrays.copyOfRange(post, L, N - 1));
+            return root;
+        }
+    }
+
+    /**
+     *
+     */
+    class Solution2 {
+        public TreeNode constructFromPrePost(int[] pre, int[] post) {
+            if (pre.length == 0) {
+                return null;
+            }
+            int len = post.length - 1;
+            return build(pre, post, 0, len, 0, len);
+        }
+
+        public TreeNode build(int[] preorder, int[] postorder, int prel, int prer, int postl, int postr) {
+            if ((prel > prer) || (postl > postr)) {
+                return null;
+            }
+            TreeNode root = new TreeNode(preorder[prel]);
+            if (prel == prer) {
+                return root;
+            }
+            int start = postl;
+            while (start < postr && postorder[start] != preorder[prel + 1]) {
+                start++;
+            }
+            root.left = build(preorder, postorder, prel + 1, prel + (start - postl) + 1, postl, start);
+            root.right = build(preorder, postorder, prel + (start - postl) + 2, prer, start + 1, postr - 1);
             return root;
         }
     }
