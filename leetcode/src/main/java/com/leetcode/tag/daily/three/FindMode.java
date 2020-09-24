@@ -12,11 +12,11 @@ public class FindMode {
         public int[] findMode(TreeNode root) {
             zhong(root);
 
-            Integer integer = map.values().stream().max(Integer::compareTo).orElse(0);
+            Integer max = map.values().stream().max(Integer::compareTo).orElse(0);
 
             List<Integer> result = new ArrayList<>();
             map.forEach((k, v) -> {
-                if (Objects.equals(v, integer)) {
+                if (Objects.equals(v, max)) {
                     result.add(k);
                 }
             });
