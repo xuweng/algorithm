@@ -22,9 +22,6 @@ public class ConstructFromPrePost {
 
         public TreeNode constructFromPrePost(int[] pre, int preStart, int preEnd, int[] post, int postStart, int postEnd) {
             int l = map.get(pre[preStart + 1]);
-            if (preStart + 1 > l) {
-                return null;
-            }
             if (preStart == preEnd || postStart == postEnd) {
                 return new TreeNode(pre[preStart]);
             }
