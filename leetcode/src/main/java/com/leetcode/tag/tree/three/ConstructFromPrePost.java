@@ -27,7 +27,7 @@ public class ConstructFromPrePost {
             int l = map.get(pre[preStart + 1]);
             TreeNode root = new TreeNode(pre[preStart]);
             root.left = constructFromPrePost(pre, preStart + 1, preStart + l - postStart + 1, post, postStart, l);
-            root.right = constructFromPrePost(pre, preStart + l - postStart + 2, preEnd, post, l + 1, postEnd);
+            root.right = constructFromPrePost(pre, preStart + l - postStart + 2, preEnd, post, l + 1, postEnd - 1);
 
             return root;
         }
