@@ -108,6 +108,9 @@ public class FindMode {
      * 简洁代码
      * <p>
      * index指针
+     * <p>
+     * 中序遍历序列.重复出现的数字一定是一个连续出现的.
+     * 用 count 记录当前数字重复的次数，用 maxCount 来维护已经扫描过的数当中出现最多的那个数字的出现次数
      */
     class Solution2 {
 
