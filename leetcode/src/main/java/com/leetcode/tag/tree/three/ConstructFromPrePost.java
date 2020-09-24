@@ -7,6 +7,8 @@ import java.util.Map;
  * 889. 根据前序和后序遍历构造二叉树
  * <p>
  * 没有null.
+ * <p>
+ * 注意数组越界和下标计算
  */
 public class ConstructFromPrePost {
     class Solution {
