@@ -43,7 +43,9 @@ public class WidthOfBinaryTree {
     }
 
     /**
-     * bsf
+     * bsf.
+     * <p>
+     * 标记每个结点
      * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/maximum-width-of-binary-tree/solution/er-cha-shu-zui-da-kuan-du-by-leetcode/
