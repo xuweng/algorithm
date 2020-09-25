@@ -1,9 +1,6 @@
 package com.leetcode.tag.tree.three;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 653. 两数之和 IV - 输入 BST
@@ -61,6 +58,35 @@ public class FindTarget {
             }
             set.add(root.val);
             return find(root.left, k, set) || find(root.right, k, set);
+        }
+    }
+
+    /**
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/two-sum-iv-input-is-a-bst/solution/liang-shu-zhi-he-iv-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public boolean findTarget(TreeNode root, int k) {
+            Set<Integer> set = new HashSet<>();
+            Queue<TreeNode> queue = new LinkedList<>();
+            queue.add(root);
+            while (!queue.isEmpty()) {
+                TreeNode node = queue.poll();
+                if (set.contains(k - node.val)) {
+                    return true;
+                }
+                set.add(node.val);
+                //队列保证存储非null结点
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+            }
+            return false;
         }
     }
 
