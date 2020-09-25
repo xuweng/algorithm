@@ -28,6 +28,8 @@ public class DiameterOfBinaryTree {
     }
 
     /**
+     * dfs
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/diameter-of-binary-tree/solution/er-cha-shu-de-zhi-jing-by-leetcode-solution/
      * 来源：力扣（LeetCode）
@@ -42,6 +44,12 @@ public class DiameterOfBinaryTree {
             return ans - 1;
         }
 
+        /**
+         * 返回值厉害
+         *
+         * @param node
+         * @return
+         */
         public int depth(TreeNode node) {
             if (node == null) {
                 // 访问到空节点了，返回0
