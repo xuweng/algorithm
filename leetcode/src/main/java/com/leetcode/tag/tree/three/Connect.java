@@ -88,6 +88,16 @@ public class Connect {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution2 {
+        /**
+         * 看图
+         * <p>
+         * 第一种情况是连接同一个父节点的两个子节点
+         * <p>
+         * 第二种情况在不同父亲的子节点之间建立连接，这种情况不能直接连接
+         *
+         * @param root
+         * @return
+         */
         public Node connect(Node root) {
             if (root == null) {
                 return root;
