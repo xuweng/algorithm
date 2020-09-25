@@ -20,6 +20,7 @@ public class IsCompleteTree {
     class Solution {
         public boolean isCompleteTree(TreeNode root) {
             List<ANode> nodes = new ArrayList<>();
+            //对于根节点，我们定义其编号为 1
             nodes.add(new ANode(root, 1));
             int i = 0;
             while (i < nodes.size()) {
@@ -36,6 +37,7 @@ public class IsCompleteTree {
 
     class ANode {  // Annotated Node
         TreeNode node;
+        //编号
         int code;
 
         ANode(TreeNode node, int code) {
