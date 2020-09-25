@@ -4,6 +4,9 @@ package com.leetcode.tag.tree.three;
  * 543. 二叉树的直径
  */
 public class DiameterOfBinaryTree {
+    /**
+     * 算法错误
+     */
     class Solution {
         int max;
 
