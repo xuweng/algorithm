@@ -46,6 +46,42 @@ public class IsCompleteTree {
         }
     }
 
+    /**
+     *
+     */
+    class Solution1 {
+        //tree的数量
+        int count = 0;
+        //最大编号
+        int maxSize = 0;
+
+        public boolean isCompleteTree(TreeNode root) {
+            if (root == null) {
+                return true;
+            }
+            getMax(root, 1);
+
+            return count == maxSize;
+        }
+
+        /**
+         * 访问一个结点就调用一次函数
+         *
+         * @param root
+         * @param k
+         */
+        public void getMax(TreeNode root, int k) {
+            if (root == null) {
+                return;
+            }
+            count++;
+            maxSize = Math.max(maxSize, k);
+
+            getMax(root.left, k * 2);
+            getMax(root.right, k * 2 + 1);
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
