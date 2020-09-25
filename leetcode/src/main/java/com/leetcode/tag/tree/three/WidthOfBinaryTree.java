@@ -1,9 +1,6 @@
 package com.leetcode.tag.tree.three;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * 662. 二叉树最大宽度
@@ -54,6 +51,8 @@ public class WidthOfBinaryTree {
      */
     class Solution1 {
         /**
+         * 用编号计算厉害
+         * <p>
          * 当我们在看同一层深度的位置值 L 和 R 的时候，宽度就是 R - L + 1
          * <p>
          * 对于每一个深度，第一个遇到的节点是最左边的节点，最后一个到达的节点是最右边的节点l
@@ -80,6 +79,36 @@ public class WidthOfBinaryTree {
                 ans = Math.max(ans, a.pos - left + 1);
             }
             return ans;
+        }
+    }
+
+    /**
+     * dfs
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/maximum-width-of-binary-tree/solution/er-cha-shu-zui-da-kuan-du-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        int ans;
+        Map<Integer, Integer> left;
+
+        public int widthOfBinaryTree(TreeNode root) {
+            ans = 0;
+            left = new HashMap<>();
+            dfs(root, 0, 0);
+            return ans;
+        }
+
+        public void dfs(TreeNode root, int depth, int pos) {
+            if (root == null) {
+                return;
+            }
+            left.putIfAbsent(depth, pos);
+            ans = Math.max(ans, pos - left.get(depth) + 1);
+            dfs(root.left, depth + 1, 2 * pos);
+            dfs(root.right, depth + 1, 2 * pos + 1);
         }
     }
 
