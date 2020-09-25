@@ -114,6 +114,7 @@ public class WidthOfBinaryTree {
             }
             //先序遍历.最左分支的深度是第一次访问.缓存第一次访问的深度.
             left.putIfAbsent(depth, pos);
+            //计算公式
             ans = Math.max(ans, pos - left.get(depth) + 1);
             dfs(root.left, depth + 1, 2 * pos);
             dfs(root.right, depth + 1, 2 * pos + 1);
