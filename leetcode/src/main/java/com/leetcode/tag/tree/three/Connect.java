@@ -79,6 +79,36 @@ public class Connect {
         }
     }
 
+    /**
+     * 方法二：使用已建立的 next 指针
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node/solution/tian-chong-mei-ge-jie-dian-de-xia-yi-ge-you-ce-j-3/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public Node connect(Node root) {
+            if (root == null) {
+                return root;
+            }
+            Node leftmost = root;
+            while (leftmost.left != null) {
+                Node head = leftmost;
+                while (head != null) {
+                    head.left.next = head.right;
+                    if (head.next != null) {
+                        head.right.next = head.next.left;
+                    }
+                    head = head.next;
+                }
+                leftmost = leftmost.left;
+            }
+
+            return root;
+        }
+    }
+
     class Node {
         public int val;
         public Node left;
