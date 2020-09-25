@@ -22,16 +22,16 @@ public class IsCompleteTree {
             List<ANode> nodes = new ArrayList<>();
             //对于根节点，我们定义其编号为 1
             nodes.add(new ANode(root, 1));
-            int i = 0;
-            while (i < nodes.size()) {
-                ANode anode = nodes.get(i++);
+            int cur = 0;
+            while (cur < nodes.size()) {
+                ANode anode = nodes.get(cur++);
                 if (anode.node != null) {
                     nodes.add(new ANode(anode.node.left, anode.code * 2));
                     nodes.add(new ANode(anode.node.right, anode.code * 2 + 1));
                 }
             }
 
-            return nodes.get(i - 1).code == nodes.size();
+            return nodes.get(nodes.size() - 1).code == nodes.size();
         }
     }
 
