@@ -27,6 +27,7 @@ public class BuildTree {
             }
             TreeNode root = new TreeNode(postorder[postorderEnd]);
             int l = map.get(postorderEnd);
+            //(l - inorderStart)是left结点的数量
             root.left = buildTree(inorder, inorderStart, l - 1, postorder, postorderStart, postorderStart + l - inorderStart - 1);
             root.right = buildTree(inorder, l + 1, inorderEnd, postorder, postorderStart + l - inorderStart, postorderEnd - 1);
             return root;
