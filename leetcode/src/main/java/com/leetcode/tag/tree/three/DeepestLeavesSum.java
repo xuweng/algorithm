@@ -83,8 +83,10 @@ public class DeepestLeavesSum {
             }
             if (maxDepth < depth) {
                 maxDepth = depth;
+                //深度最大的最左边的结点赋值
                 sum = root.val;
             } else if (depth == maxDepth) {
+                //其他结点
                 sum += root.val;
             }
             if (root.left != null) {
