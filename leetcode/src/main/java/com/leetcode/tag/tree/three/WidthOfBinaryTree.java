@@ -62,6 +62,7 @@ public class WidthOfBinaryTree {
                 if (a.node == null) {
                     continue;
                 }
+                //null也会入队
                 queue.add(new AnnotatedNode(a.node.left, a.depth + 1, a.pos * 2));
                 queue.add(new AnnotatedNode(a.node.right, a.depth + 1, a.pos * 2 + 1));
                 if (curDepth != a.depth) {
@@ -76,7 +77,10 @@ public class WidthOfBinaryTree {
 
     class AnnotatedNode {
         TreeNode node;
-        int depth, pos;
+        //深度
+        int depth;
+        //编号
+        int pos;
 
         AnnotatedNode(TreeNode n, int d, int p) {
             node = n;
