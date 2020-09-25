@@ -1,7 +1,9 @@
 package com.leetcode.tag.tree.three;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * 662. 二叉树最大宽度
@@ -37,6 +39,47 @@ public class WidthOfBinaryTree {
             lists.get(level).add(root.val);
             pre(root.left, level + 1);
             pre(root.right, level + 1);
+        }
+    }
+
+    /**
+     * bsf
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/maximum-width-of-binary-tree/solution/er-cha-shu-zui-da-kuan-du-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int widthOfBinaryTree(TreeNode root) {
+            Queue<AnnotatedNode> queue = new LinkedList<>();
+            queue.add(new AnnotatedNode(root, 0, 0));
+            int curDepth = 0, left = 0, ans = 0;
+            while (!queue.isEmpty()) {
+                AnnotatedNode a = queue.poll();
+                if (a.node == null) {
+                    continue;
+                }
+                queue.add(new AnnotatedNode(a.node.left, a.depth + 1, a.pos * 2));
+                queue.add(new AnnotatedNode(a.node.right, a.depth + 1, a.pos * 2 + 1));
+                if (curDepth != a.depth) {
+                    curDepth = a.depth;
+                    left = a.pos;
+                }
+                ans = Math.max(ans, a.pos - left + 1);
+            }
+            return ans;
+        }
+    }
+
+    class AnnotatedNode {
+        TreeNode node;
+        int depth, pos;
+
+        AnnotatedNode(TreeNode n, int d, int p) {
+            node = n;
+            depth = d;
+            pos = p;
         }
     }
 
