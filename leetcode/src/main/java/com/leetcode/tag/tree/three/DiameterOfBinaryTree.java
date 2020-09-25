@@ -8,13 +8,21 @@ public class DiameterOfBinaryTree {
         int max;
 
         public int diameterOfBinaryTree(TreeNode root) {
+            if ((root == null) || (root.left == null && root.right == null)) {
+                return 0;
+            }
+
+            return diameterOfBinaryTree1(root);
+        }
+
+        public int diameterOfBinaryTree1(TreeNode root) {
             if (root == null) {
                 return 0;
             }
             if (root.left == null && root.right == null) {
                 return 1;
             }
-            int result = diameterOfBinaryTree(root.left) + diameterOfBinaryTree(root.right);
+            int result = diameterOfBinaryTree1(root.left) + diameterOfBinaryTree1(root.right);
             max = Math.max(max, result);
             return result;
         }
