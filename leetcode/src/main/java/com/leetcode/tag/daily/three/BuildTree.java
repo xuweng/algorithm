@@ -60,7 +60,7 @@ public class BuildTree {
             // 根据 root 所在位置分成左右两棵子树
             int index = idx_map.get(root_val);
 
-            // 下标减一
+            // 下标减一.肯定先构造right.
             post_idx--;
             // 注意这里有需要先创建右子树，再创建左子树的依赖关系
             // 构造右子树
