@@ -43,6 +43,27 @@ public class FindSecondMinimumValue {
         }
     }
 
+    class Solution1 {
+        int result = Integer.MAX_VALUE;
+
+        public int findSecondMinimumValue(TreeNode root) {
+            pre(root, root.val);
+
+            return result == Integer.MAX_VALUE ? -1 : result;
+        }
+
+        public void pre(TreeNode root, int rootVal) {
+            if (root == null) {
+                return;
+            }
+            if (root.val != rootVal) {
+                result = Math.min(result, root.val);
+            }
+            pre(root.left, rootVal);
+            pre(root.right, rootVal);
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
