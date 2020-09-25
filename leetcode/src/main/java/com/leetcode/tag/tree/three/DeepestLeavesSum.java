@@ -11,6 +11,10 @@ public class DeepestLeavesSum {
         List<List<Integer>> result = new ArrayList<>();
 
         public int deepestLeavesSum(TreeNode root) {
+            if (root == null) {
+                return 0;
+            }
+
             level(root, 0);
 
             return result.get(result.size() - 1).stream().mapToInt(i -> i).sum();
