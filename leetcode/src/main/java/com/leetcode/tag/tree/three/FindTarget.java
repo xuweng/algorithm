@@ -62,6 +62,8 @@ public class FindTarget {
     }
 
     /**
+     * 方法二：使用 BFS 和 HashSet【通过】
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/two-sum-iv-input-is-a-bst/solution/liang-shu-zhi-he-iv-by-leetcode/
      * 来源：力扣（LeetCode）
@@ -87,6 +89,45 @@ public class FindTarget {
                 }
             }
             return false;
+        }
+    }
+
+    /**
+     * 方法三：使用 BST【通过】
+     * <p>
+     * 利用排序.
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/two-sum-iv-input-is-a-bst/solution/liang-shu-zhi-he-iv-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        public boolean findTarget(TreeNode root, int k) {
+            List<Integer> list = new ArrayList<>();
+            inorder(root, list);
+            int l = 0, r = list.size() - 1;
+            while (l < r) {
+                int sum = list.get(l) + list.get(r);
+                if (sum == k) {
+                    return true;
+                }
+                if (sum < k) {
+                    l++;
+                } else {
+                    r--;
+                }
+            }
+            return false;
+        }
+
+        public void inorder(TreeNode root, List<Integer> list) {
+            if (root == null) {
+                return;
+            }
+            inorder(root.left, list);
+            list.add(root.val);
+            inorder(root.right, list);
         }
     }
 
