@@ -14,6 +14,9 @@ public class FindTarget {
 
         public boolean findTarget(TreeNode root, int k) {
             zhong(root);
+            if (list.size() <= 1) {
+                return false;
+            }
 
             Set<Integer> set = new HashSet<>(list);
 
