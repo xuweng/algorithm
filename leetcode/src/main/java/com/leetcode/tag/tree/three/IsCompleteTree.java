@@ -61,6 +61,7 @@ public class IsCompleteTree {
             }
             getMax(root, 1);
 
+            //tree的数量和最大编号是否相等
             return count == maxSize;
         }
 
