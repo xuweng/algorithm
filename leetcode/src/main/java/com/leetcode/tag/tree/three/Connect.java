@@ -123,6 +123,26 @@ public class Connect {
         }
     }
 
+    /**
+     * 先序遍历
+     */
+    class Solution3 {
+        public Node connect(Node root) {
+            if (root == null) {
+                return root;
+            }
+            if (root.left != null) {
+                root.left.next = root.right;
+            }
+            if (root.right != null) {
+                root.right.next = root.next != null ? root.next.left : null;
+            }
+            connect(root.left);
+            connect(root.right);
+            return root;
+        }
+    }
+
     class Node {
         public int val;
         public Node left;
