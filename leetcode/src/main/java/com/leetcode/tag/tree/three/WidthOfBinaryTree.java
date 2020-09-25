@@ -53,6 +53,14 @@ public class WidthOfBinaryTree {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution1 {
+        /**
+         * 当我们在看同一层深度的位置值 L 和 R 的时候，宽度就是 R - L + 1
+         * <p>
+         * 对于每一个深度，第一个遇到的节点是最左边的节点，最后一个到达的节点是最右边的节点l
+         *
+         * @param root
+         * @return
+         */
         public int widthOfBinaryTree(TreeNode root) {
             Queue<AnnotatedNode> queue = new LinkedList<>();
             queue.add(new AnnotatedNode(root, 0, 0));
