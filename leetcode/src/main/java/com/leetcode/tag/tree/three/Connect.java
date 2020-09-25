@@ -125,6 +125,8 @@ public class Connect {
 
     /**
      * 先序遍历
+     * <p>
+     * 厉害.厉害.
      */
     class Solution3 {
         public Node connect(Node root) {
