@@ -5,6 +5,8 @@ import java.util.List;
 
 /**
  * 662. 二叉树最大宽度
+ * <p>
+ * 十分钟看题解.有些测试用例是一个坑.
  */
 public class WidthOfBinaryTree {
     class Solution {
