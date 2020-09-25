@@ -101,10 +101,18 @@ public class WidthOfBinaryTree {
             return ans;
         }
 
+        /**
+         * 先序遍历
+         *
+         * @param root
+         * @param depth
+         * @param pos
+         */
         public void dfs(TreeNode root, int depth, int pos) {
             if (root == null) {
                 return;
             }
+            //先序遍历.最左分支的深度是第一次访问.缓存第一次访问的深度.
             left.putIfAbsent(depth, pos);
             ans = Math.max(ans, pos - left.get(depth) + 1);
             dfs(root.left, depth + 1, 2 * pos);
