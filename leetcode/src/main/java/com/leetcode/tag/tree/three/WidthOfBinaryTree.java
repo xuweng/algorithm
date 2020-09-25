@@ -22,7 +22,7 @@ public class WidthOfBinaryTree {
 
         private void pre(TreeNode root, int level) {
             if (root == null) {
-                if (lists.get(level) != null) {
+                if (level < lists.size() && lists.get(level) != null) {
                     lists.get(level).add(null);
                 }
                 return;
