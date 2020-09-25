@@ -55,6 +55,7 @@ public class FindTarget {
             if (root == null) {
                 return false;
             }
+            //这个条件厉害.遍历时检查另外一个数.
             if (set.contains(k - root.val)) {
                 return true;
             }
