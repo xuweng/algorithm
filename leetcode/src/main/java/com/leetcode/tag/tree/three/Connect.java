@@ -80,6 +80,8 @@ public class Connect {
     }
 
     /**
+     * 当前层通过上一层已经建立的next指针.
+     * <p>
      * 方法二：使用已建立的 next 指针
      * <p>
      * 作者：LeetCode
@@ -92,8 +94,10 @@ public class Connect {
          * 看图
          * <p>
          * 第一种情况是连接同一个父节点的两个子节点
+         * node.left.next = node.right
          * <p>
          * 第二种情况在不同父亲的子节点之间建立连接，这种情况不能直接连接
+         * node.right.next = node.next.left
          *
          * @param root
          * @return
