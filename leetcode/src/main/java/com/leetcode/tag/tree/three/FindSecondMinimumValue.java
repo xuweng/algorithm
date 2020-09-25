@@ -44,12 +44,12 @@ public class FindSecondMinimumValue {
     }
 
     class Solution1 {
-        int result = Integer.MAX_VALUE;
+        long result = Long.MAX_VALUE;
 
         public int findSecondMinimumValue(TreeNode root) {
             pre(root, root.val);
 
-            return result == Integer.MAX_VALUE ? -1 : result;
+            return result == Long.MAX_VALUE ? -1 : (int) result;
         }
 
         public void pre(TreeNode root, int rootVal) {
