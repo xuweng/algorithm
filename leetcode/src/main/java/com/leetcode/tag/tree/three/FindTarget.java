@@ -14,14 +14,11 @@ public class FindTarget {
 
         public boolean findTarget(TreeNode root, int k) {
             zhong(root);
-            if (list.size() <= 1) {
-                return false;
-            }
 
             Set<Integer> set = new HashSet<>(list);
 
             for (Integer integer : list) {
-                if (set.contains(k - integer)) {
+                if (k != k - integer && set.contains(k - integer)) {
                     return true;
                 }
             }
