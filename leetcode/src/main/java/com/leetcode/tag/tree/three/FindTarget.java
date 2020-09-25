@@ -18,7 +18,7 @@ public class FindTarget {
             Set<Integer> set = new HashSet<>(list);
 
             for (Integer integer : list) {
-                if (k != k - integer && set.contains(k - integer)) {
+                if (integer != k - integer && set.contains(k - integer)) {
                     return true;
                 }
             }
