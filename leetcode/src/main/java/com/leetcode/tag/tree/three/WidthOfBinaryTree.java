@@ -14,7 +14,9 @@ public class WidthOfBinaryTree {
             pre(root, 0);
             int result = 0;
             for (List<Integer> list : lists) {
-                result = Math.max(result, list.size());
+                if (list.size() > 1 && list.get(0) != null && lists.get(lists.size() - 1) != null) {
+                    result = Math.max(result, list.size());
+                }
             }
             return result;
 
