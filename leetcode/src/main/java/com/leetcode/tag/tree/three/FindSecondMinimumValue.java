@@ -8,11 +8,12 @@ package com.leetcode.tag.tree.three;
 public class FindSecondMinimumValue {
     class Solution {
         int min = 1;
+        int result;
 
         public int findSecondMinimumValue(TreeNode root) {
             pre(root);
 
-            return min;
+            return min == 2 ? result : -1;
         }
 
         private void pre(TreeNode root) {
@@ -22,12 +23,20 @@ public class FindSecondMinimumValue {
             if (root.left != null) {
                 if (root.left.val > root.val) {
                     min++;
+                    if (min == 2) {
+                        result = root.left.val;
+                        return;
+                    }
                     pre(root.left);
                 }
             }
             if (root.right != null) {
                 if (root.right.val > root.val) {
                     min++;
+                    if (min == 2) {
+                        result = root.right.val;
+                        return;
+                    }
                     pre(root.left);
                 }
             }
