@@ -98,7 +98,9 @@ public class PathSum {
                 return ret;
             }
 
+            //bfs的队列
             Queue<TreeNode> queueNode = new LinkedList<>();
+            //保存路径和
             Queue<Integer> queueSum = new LinkedList<>();
             queueNode.offer(root);
             queueSum.offer(0);
