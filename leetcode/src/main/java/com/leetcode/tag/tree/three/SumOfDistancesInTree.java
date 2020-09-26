@@ -25,9 +25,11 @@ public class SumOfDistancesInTree {
             count = new int[N];
             Arrays.fill(count, 1);
 
+            //构造结点
             for (int i = 0; i < N; ++i) {
                 graph.add(new HashSet<>());
             }
+            //构造边
             for (int[] edge : edges) {
                 graph.get(edge[0]).add(edge[1]);
                 graph.get(edge[1]).add(edge[0]);
