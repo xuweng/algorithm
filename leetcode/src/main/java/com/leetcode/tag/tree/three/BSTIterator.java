@@ -13,9 +13,8 @@ public class BSTIterator {
 
     public BSTIterator(TreeNode root) {
         result = new ArrayList<>();
-        iterator = result.iterator();
-
         zhong(root);
+        iterator = result.iterator();
     }
 
     private void zhong(TreeNode root) {
