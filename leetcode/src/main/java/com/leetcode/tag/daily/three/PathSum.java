@@ -47,6 +47,39 @@ public class PathSum {
         }
     }
 
+    /**
+     * dfs
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/path-sum-ii/solution/lu-jing-zong-he-ii-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        List<List<Integer>> ret = new LinkedList<>();
+        Deque<Integer> path = new LinkedList<>();
+
+        public List<List<Integer>> pathSum(TreeNode root, int sum) {
+            dfs(root, sum);
+            return ret;
+        }
+
+        public void dfs(TreeNode root, int sum) {
+            if (root == null) {
+                return;
+            }
+            path.offerLast(root.val);
+            sum -= root.val;
+            //这个条件一样
+            if (root.left == null && root.right == null && sum == 0) {
+                ret.add(new LinkedList<>(path));
+            }
+            dfs(root.left, sum);
+            dfs(root.right, sum);
+            path.pollLast();
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
