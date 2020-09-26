@@ -3,6 +3,7 @@ package com.leetcode.tag.tree.three;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 /**
  * 655. 输出二叉树
@@ -53,6 +54,47 @@ public class PrintTree {
 
         public int getHeight(TreeNode root) {
             return root == null ? 0 : Math.max(getHeight(root.left), getHeight(root.right)) + 1;
+        }
+    }
+
+    class Solution1 {
+        public List<List<String>> printTree(TreeNode root) {
+            int m = getHeight(root);
+            int n = (int) Math.pow(2, m) - 1;
+
+            List<List<String>> res = IntStream.range(0, m)
+                    .mapToObj(i -> IntStream.range(0, n).mapToObj(j -> "")
+                            .collect(Collectors.toList())).collect(Collectors.toList());
+
+            fill(root, res, 0, 0, n - 1);
+
+            return res;
+        }
+
+        /**
+         * 二分
+         *
+         * @param node
+         * @param res
+         * @param row
+         * @param low
+         * @param high
+         */
+        private void fill(TreeNode node, List<List<String>> res, int row, int low, int high) {
+            if (node == null) {
+                return;
+            }
+
+            //mid
+            int mid = low + (high - low) / 2;
+            res.get(row).set(mid, Integer.toString(node.val));
+
+            fill(node.left, res, row + 1, low, mid - 1);
+            fill(node.right, res, row + 1, mid + 1, high);
+        }
+
+        private int getHeight(TreeNode root) {
+            return root == null ? 0 : 1 + Math.max(getHeight(root.left), getHeight(root.right));
         }
     }
 
