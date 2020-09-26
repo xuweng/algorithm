@@ -31,6 +31,13 @@ public class PrintTree {
             return ans;
         }
 
+        /**
+         * @param res
+         * @param root
+         * @param i    表示当前节点所在层数
+         * @param l    表示当前子树在数组 res 中的左边界
+         * @param r    表示当前子树在数组 res 中的右边界
+         */
         public void fill(String[][] res, TreeNode root, int i, int l, int r) {
             if (root == null) {
                 return;
