@@ -78,6 +78,65 @@ public class DistanceK {
         }
     }
 
+    class Solution1 {
+        //key是结点.value是结点的父节点.
+        Map<TreeNode, TreeNode> parent;
+
+        public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
+            parent = new HashMap<>();
+            dfs(root, null);
+
+            //结点到target的距离
+            Map<TreeNode, Integer> distMap = new HashMap<>();
+            Queue<TreeNode> queue = new LinkedList<>();
+            //从target开始做bsf.不是从root开始.
+            queue.add(target);
+            distMap.put(target, 0);
+
+            //是否搜索过
+            Set<TreeNode> seen = new HashSet<>();
+            seen.add(target);
+
+            List<Integer> result = new ArrayList<>();
+            while (!queue.isEmpty()) {
+                TreeNode node = queue.poll();
+                if (distMap.get(node) == K) {
+                    result.add(node.val);
+                }
+                //left
+                if (node.left != null && !seen.contains(node.left)) {
+                    seen.add(node.left);
+                    queue.offer(node.left);
+                    distMap.put(node.left, distMap.get(node) + 1);
+                }
+                //right
+                if (node.right != null && !seen.contains(node.right)) {
+                    seen.add(node.right);
+                    queue.offer(node.right);
+                    distMap.put(node.right, distMap.get(node) + 1);
+                }
+                //parent
+                TreeNode par = parent.get(node);
+                if (par != null && !seen.contains(par)) {
+                    seen.add(par);
+                    queue.offer(par);
+                    distMap.put(par, distMap.get(node) + 1);
+                }
+            }
+
+            return result;
+        }
+
+        public void dfs(TreeNode node, TreeNode par) {
+            if (node == null) {
+                return;
+            }
+            parent.put(node, par);
+            dfs(node.left, node);
+            dfs(node.right, node);
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
