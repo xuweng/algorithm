@@ -18,6 +18,13 @@ public class SumOfDistancesInTree {
         List<Set<Integer>> graph;
         int N;
 
+        /**
+         * 返回一个表示节点 i 与其他所有节点距离之和的列表 ans
+         *
+         * @param N
+         * @param edges
+         * @return
+         */
         public int[] sumOfDistancesInTree(int N, int[][] edges) {
             this.N = N;
             graph = new ArrayList<>();
@@ -37,6 +44,7 @@ public class SumOfDistancesInTree {
             }
             dfs(0, -1);
             dfs2(0, -1);
+            //表示节点 i 与其他所有节点距离之和的列表
             return ans;
         }
 
