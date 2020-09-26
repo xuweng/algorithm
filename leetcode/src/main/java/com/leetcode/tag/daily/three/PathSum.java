@@ -26,6 +26,7 @@ public class PathSum {
             if (sum == root.val) {
                 stack.push(root.val);
                 result.add(new ArrayList<>(stack));
+                stack.pop();
                 return;
             }
             stack.push(root.val);
