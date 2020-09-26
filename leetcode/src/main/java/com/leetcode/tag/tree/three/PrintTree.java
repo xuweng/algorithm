@@ -41,10 +41,7 @@ public class PrintTree {
         }
 
         public int getHeight(TreeNode root) {
-            if (root == null) {
-                return 0;
-            }
-            return 1 + Math.max(getHeight(root.left), getHeight(root.right));
+            return root == null ? 0 : Math.max(getHeight(root.left), getHeight(root.right)) + 1;
         }
     }
 
