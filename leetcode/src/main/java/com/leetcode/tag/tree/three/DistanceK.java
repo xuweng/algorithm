@@ -27,7 +27,7 @@ public class DistanceK {
 
             Queue<TreeNode> queue = new LinkedList<>();
             queue.add(null);
-            //从target开始做bsf
+            //从target开始做bsf.不是从root开始.
             queue.add(target);
 
             Set<TreeNode> seen = new HashSet<>();
