@@ -20,11 +20,12 @@ public class PathSum {
         }
 
         private void pre(TreeNode root, int sum, List<List<Integer>> result, Deque<Integer> stack) {
-            if (sum == 0) {
-                result.add(new ArrayList<>(stack));
+            if (root == null || root.val > sum) {
                 return;
             }
-            if (root == null || root.val > sum) {
+            if (sum == root.val) {
+                stack.push(root.val);
+                result.add(new ArrayList<>(stack));
                 return;
             }
             stack.push(root.val);
