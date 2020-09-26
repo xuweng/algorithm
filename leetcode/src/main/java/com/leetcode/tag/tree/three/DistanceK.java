@@ -5,10 +5,12 @@ import java.util.stream.Collectors;
 
 /**
  * 863. 二叉树中所有距离为 K 的结点
+ * <p>
+ * dfs+bfs
  */
 public class DistanceK {
     /**
-     * 对所有节点添加一个指向父节点的引用，之后做深度优先搜索，找到所有距离 target 节点 K 距离的节点
+     * 对所有节点添加一个指向父节点的引用，之后做bsf，找到所有距离 target 节点 K 距离的节点
      * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/all-nodes-distance-k-in-binary-tree/solution/er-cha-shu-zhong-suo-you-ju-chi-wei-k-de-jie-dian-/
