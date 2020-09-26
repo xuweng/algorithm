@@ -20,7 +20,8 @@ public class PathSum {
             if (root == null || root.val > sum) {
                 return;
             }
-            if (sum == root.val) {
+            //叶子结点
+            if (root.left == null && root.right == null && sum == root.val) {
                 stack.push(root.val);
                 List<Integer> list = new ArrayList<>(stack);
                 Collections.reverse(list);
