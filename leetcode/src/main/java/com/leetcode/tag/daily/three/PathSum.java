@@ -90,7 +90,7 @@ public class PathSum {
      */
     class Solution2 {
         List<List<Integer>> ret = new LinkedList<>();
-        //使用哈希表记录树中的每一个节点的父节点
+        //使用哈希表记录树中的每一个节点的父节点.厉害.回溯.
         Map<TreeNode, TreeNode> map = new HashMap<>();
 
         public List<List<Integer>> pathSum(TreeNode root, int sum) {
