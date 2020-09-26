@@ -16,8 +16,16 @@ public class PathSum {
             return result;
         }
 
+        /**
+         * root.val和sum可能是负数
+         *
+         * @param root
+         * @param sum
+         * @param result
+         * @param stack
+         */
         private void pre(TreeNode root, int sum, List<List<Integer>> result, Deque<Integer> stack) {
-            if (root == null || root.val > sum) {
+            if (root == null) {
                 return;
             }
             //叶子结点
