@@ -27,6 +27,8 @@ public class PrintTree {
 
             fill(res, root, 0, 0, res[0].length);
 
+            //数组转list
+            //list转数组
             return Arrays.stream(res).map(Arrays::asList).collect(Collectors.toList());
         }
 
