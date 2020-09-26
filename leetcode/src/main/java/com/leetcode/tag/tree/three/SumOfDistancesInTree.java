@@ -29,8 +29,9 @@ public class SumOfDistancesInTree {
             for (int i = 0; i < N; ++i) {
                 graph.add(new HashSet<>());
             }
-            //构造边
+            //构造边.
             for (int[] edge : edges) {
+                //无向图.有向图.
                 graph.get(edge[0]).add(edge[1]);
                 graph.get(edge[1]).add(edge[0]);
             }
