@@ -113,11 +113,13 @@ public class PathSum {
                     }
                 } else {
                     if (node.left != null) {
+                        //key是结点.value是父节点
                         map.put(node.left, node);
                         queueNode.offer(node.left);
                         queueSum.offer(rec);
                     }
                     if (node.right != null) {
+                        //key是结点.value是父节点
                         map.put(node.right, node);
                         queueNode.offer(node.right);
                         queueSum.offer(rec);
