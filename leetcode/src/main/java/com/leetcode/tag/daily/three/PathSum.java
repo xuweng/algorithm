@@ -80,6 +80,70 @@ public class PathSum {
         }
     }
 
+    /**
+     * bfs
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/path-sum-ii/solution/lu-jing-zong-he-ii-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        List<List<Integer>> ret = new LinkedList<>();
+        //使用哈希表记录树中的每一个节点的父节点
+        Map<TreeNode, TreeNode> map = new HashMap<>();
+
+        public List<List<Integer>> pathSum(TreeNode root, int sum) {
+            if (root == null) {
+                return ret;
+            }
+
+            Queue<TreeNode> queueNode = new LinkedList<>();
+            Queue<Integer> queueSum = new LinkedList<>();
+            queueNode.offer(root);
+            queueSum.offer(0);
+
+            while (!queueNode.isEmpty()) {
+                TreeNode node = queueNode.poll();
+                int rec = queueSum.poll() + node.val;
+
+                if (node.left == null && node.right == null) {
+                    if (rec == sum) {
+                        getPath(node);
+                    }
+                } else {
+                    if (node.left != null) {
+                        map.put(node.left, node);
+                        queueNode.offer(node.left);
+                        queueSum.offer(rec);
+                    }
+                    if (node.right != null) {
+                        map.put(node.right, node);
+                        queueNode.offer(node.right);
+                        queueSum.offer(rec);
+                    }
+                }
+            }
+
+            return ret;
+        }
+
+        /**
+         * 每次找到一个满足条件的节点，我们就从该节点出发不断向父节点迭代，即可还原出从根节点到当前节点的路径
+         *
+         * @param node
+         */
+        public void getPath(TreeNode node) {
+            List<Integer> temp = new LinkedList<>();
+            while (node != null) {
+                temp.add(node.val);
+                node = map.get(node);
+            }
+            Collections.reverse(temp);
+            ret.add(new LinkedList<>(temp));
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
