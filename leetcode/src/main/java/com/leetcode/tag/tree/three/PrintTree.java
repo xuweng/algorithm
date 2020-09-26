@@ -1,8 +1,8 @@
 package com.leetcode.tag.tree.three;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 655. 输出二叉树
@@ -19,16 +19,15 @@ public class PrintTree {
     class Solution {
         public List<List<String>> printTree(TreeNode root) {
             int height = getHeight(root);
+
             String[][] res = new String[height][(1 << height) - 1];
             for (String[] arr : res) {
                 Arrays.fill(arr, "");
             }
-            List<List<String>> ans = new ArrayList<>();
+
             fill(res, root, 0, 0, res[0].length);
-            for (String[] arr : res) {
-                ans.add(Arrays.asList(arr));
-            }
-            return ans;
+
+            return Arrays.stream(res).map(Arrays::asList).collect(Collectors.toList());
         }
 
         /**
