@@ -20,6 +20,8 @@ public class SumOfDistancesInTree {
 
         /**
          * 返回一个表示节点 i 与其他所有节点距离之和的列表 ans
+         * <p>
+         * 父->子和子->父.
          *
          * @param N
          * @param edges
