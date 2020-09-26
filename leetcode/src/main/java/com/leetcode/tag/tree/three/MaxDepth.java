@@ -15,7 +15,7 @@ public class MaxDepth {
             for (Node child : root.children) {
                 max = Math.max(max, maxDepth(child));
             }
-            return max;
+            return max + 1;
         }
     }
 
