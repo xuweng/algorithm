@@ -1,9 +1,6 @@
 package com.leetcode.tag.daily.three;
 
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 113. 路径总和 II
@@ -25,7 +22,9 @@ public class PathSum {
             }
             if (sum == root.val) {
                 stack.push(root.val);
-                result.add(new ArrayList<>(stack));
+                List<Integer> list = new ArrayList<>(stack);
+                Collections.reverse(list);
+                result.add(list);
                 stack.pop();
                 return;
             }
