@@ -45,7 +45,7 @@ public class MaxAncestorDiff {
     }
 
     /**
-     * dfs
+     * dfs.厉害.
      * <p>
      * 作者：mmmmmJCY
      * 链接：https://leetcode-cn.com/problems/maximum-difference-between-node-and-ancestor/solution/java-dfs-by-zxy0917-4/
