@@ -44,14 +44,18 @@ public class DistanceK {
                     queue.offer(null);
                     dist++;
                 } else {
+                    //每个结点最多3个方向
+                    //left
                     if (!seen.contains(node.left)) {
                         seen.add(node.left);
                         queue.offer(node.left);
                     }
+                    //right
                     if (!seen.contains(node.right)) {
                         seen.add(node.right);
                         queue.offer(node.right);
                     }
+                    //parent
                     TreeNode par = parent.get(node);
                     if (!seen.contains(par)) {
                         seen.add(par);
