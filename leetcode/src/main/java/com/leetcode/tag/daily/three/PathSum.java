@@ -23,7 +23,7 @@ public class PathSum {
             if (root == null || root.val > sum) {
                 return;
             }
-            if (sum == 0) {
+            if (sum == root.val) {
                 result.add(new ArrayList<>(stack));
                 return;
             }
