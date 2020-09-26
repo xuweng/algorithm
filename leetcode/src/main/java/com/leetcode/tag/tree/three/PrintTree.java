@@ -33,6 +33,8 @@ public class PrintTree {
         }
 
         /**
+         * 用二分的思路
+         *
          * @param res
          * @param root
          * @param i    表示当前节点所在层数
@@ -43,9 +45,10 @@ public class PrintTree {
             if (root == null) {
                 return;
             }
-            res[i][(l + r) / 2] = "" + root.val;
-            fill(res, root.left, i + 1, l, (l + r) / 2);
-            fill(res, root.right, i + 1, (l + r + 1) / 2, r);
+            //二分的思路
+            res[i][((l + r) >> 1)] = "" + root.val;
+            fill(res, root.left, i + 1, l, (l + r) >> 1);
+            fill(res, root.right, i + 1, (l + r + 1) >> 1, r);
         }
 
         public int getHeight(TreeNode root) {
