@@ -30,6 +30,7 @@ public class DistanceK {
             //从target开始做bsf.不是从root开始.
             queue.add(target);
 
+            //是否搜索过
             Set<TreeNode> seen = new HashSet<>();
             seen.add(target);
             seen.add(null);
