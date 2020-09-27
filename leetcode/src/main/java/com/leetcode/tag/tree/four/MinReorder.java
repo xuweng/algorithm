@@ -14,6 +14,7 @@ public class MinReorder {
     class Solution {
         public int minReorder(int n, int[][] connections) {
             List<List<Integer>> tree = new ArrayList<>();
+            //下标表示结点
             for (int i = 0; i < n; i++) {
                 tree.add(new ArrayList<>());
             }
