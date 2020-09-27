@@ -10,7 +10,7 @@ public class SmallestFromLeaf {
 
             StringBuilder result = new StringBuilder();
             for (char c : str.toCharArray()) {
-                result.append((c + 97));
+                result.append((char) (c + 97));
             }
             return result.toString();
         }
