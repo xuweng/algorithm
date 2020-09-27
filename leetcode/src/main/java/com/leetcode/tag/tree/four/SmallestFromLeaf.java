@@ -6,11 +6,21 @@ package com.leetcode.tag.tree.four;
 public class SmallestFromLeaf {
     class Solution {
         public String smallestFromLeaf(TreeNode root) {
+            String str = hou(root);
+
+            StringBuilder result = new StringBuilder();
+            for (char c : str.toCharArray()) {
+                result.append((c + 97));
+            }
+            return result.toString();
+        }
+
+        public String hou(TreeNode root) {
             if (root == null) {
                 return "";
             }
-            String left = smallestFromLeaf(root.left);
-            String right = smallestFromLeaf(root.right);
+            String left = hou(root.left);
+            String right = hou(root.right);
 
             return left.compareTo(right) <= 0 ? left + root.val : right + root.val;
         }
