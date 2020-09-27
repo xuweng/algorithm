@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.stream.IntStream;
 
 /**
  * 1466. 重新规划路线
@@ -49,6 +50,37 @@ public class MinReorder {
                 }
             }
 
+            return ans;
+        }
+    }
+
+    /**
+     * 优秀代码
+     */
+    class Solution1 {
+        public int minReorder(int n, int[][] connections) {
+            int[] un = IntStream.range(0, n).map(i -> -1).toArray();
+            int ans = 0;
+            for (int i = 0; i < n - 1; ++i) {
+                int p1, p2, cnt1 = 0, cnt2 = 1;
+                for (p1 = connections[i][0]; un[p1] != -1; ++cnt1) {
+                    p1 = un[p1];
+                }
+                for (p2 = connections[i][1]; un[p2] != -1; ++cnt2) {
+                    p2 = un[p2];
+                }
+                if (p1 == 0) {
+                    ans += cnt2;
+                    un[p2] = 0;
+                } else if (p2 == 0) {
+                    if (un[connections[i][0]] != -1) {
+                        ans += cnt1;
+                    }
+                    un[p1] = 0;
+                } else {
+                    un[p1] = connections[i][1];
+                }
+            }
             return ans;
         }
     }
