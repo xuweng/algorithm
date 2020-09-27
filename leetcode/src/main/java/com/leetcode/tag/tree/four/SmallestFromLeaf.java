@@ -8,11 +8,11 @@ package com.leetcode.tag.tree.four;
 public class SmallestFromLeaf {
     class Solution {
         public String smallestFromLeaf(TreeNode root) {
-            String str = hou(root);
+            String[] str = hou(root).split(",");
 
             StringBuilder result = new StringBuilder();
-            for (char c : str.toCharArray()) {
-                result.append((char) (c + 49));
+            for (String s : str) {
+                result.append((char) (Integer.parseInt(s) + 49));
             }
             return result.toString();
         }
