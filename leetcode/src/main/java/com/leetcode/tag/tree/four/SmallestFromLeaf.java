@@ -2,6 +2,8 @@ package com.leetcode.tag.tree.four;
 
 /**
  * 988. 从叶结点开始的最小字符串
+ * <p>
+ * 数字字符串是一个坑.数字如何隔离.
  */
 public class SmallestFromLeaf {
     class Solution {
