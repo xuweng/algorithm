@@ -6,6 +6,8 @@ package com.leetcode.tag.tree.four;
  * 数字字符串是一个坑.数字如何隔离.
  * <p>
  * 数字字符串隔离是一个坑.换一种思路.
+ * <p>
+ * 十分钟看答案.
  */
 public class SmallestFromLeaf {
     class Solution {
@@ -27,6 +29,47 @@ public class SmallestFromLeaf {
             String right = hou(root.right);
 
             return right.isEmpty() || left.compareTo(right) <= 0 ? left + root.val + "," : right + root.val + ",";
+        }
+    }
+
+    /**
+     * 方法：暴力法
+     * <p>
+     * 让我们创建出所有可能的字符串，然后逐一比较，输出字典序最小的那个。
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/smallest-string-starting-from-leaf/solution/cong-xie-jie-dian-kai-shi-de-zui-xiao-zi-fu-chuan-/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        String ans = "~";
+
+        public String smallestFromLeaf(TreeNode root) {
+            dfs(root, new StringBuilder());
+            return ans;
+        }
+
+        public void dfs(TreeNode node, StringBuilder sb) {
+            if (node == null) {
+                return;
+            }
+            //转换这么简单
+            sb.append((char) ('a' + node.val));
+
+            if (node.left == null && node.right == null) {
+                sb.reverse();
+                String S = sb.toString();
+                sb.reverse();
+
+                if (S.compareTo(ans) < 0) {
+                    ans = S;
+                }
+            }
+
+            dfs(node.left, sb);
+            dfs(node.right, sb);
+            sb.deleteCharAt(sb.length() - 1);
         }
     }
 
