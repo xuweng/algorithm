@@ -10,11 +10,13 @@ public class Rob {
                 return 0;
             }
             int max = root.val;
-            if (root.left.left != null) {
+            if (root.left != null) {
                 max += rob(root.left.left);
+                max += rob(root.left.right);
             }
-            if (root.right.right != null) {
-                max += rob(root.right.right);
+            if (root.right != null) {
+                max += rob(root.right.left);
+                max += rob(root.right.left);
             }
             int max1 = rob(root.left) + rob(root.right);
 
