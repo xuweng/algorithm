@@ -28,10 +28,13 @@ public class MinReorder {
                 tree.get(connections[i][1]).add(i);
             }
             boolean[] visited = new boolean[connections.length];
+            //队列
             Queue<Integer> queue = new LinkedList<>();
+            //入队用它
             queue.offer(0);
             int ans = 0;
             while (!queue.isEmpty()) {
+                //出队用它
                 int node = queue.poll();
                 List<Integer> connection = tree.get(node);
                 for (Integer idx : connection) {
