@@ -12,7 +12,7 @@ public class SmallestFromLeaf {
             String left = smallestFromLeaf(root.left);
             String right = smallestFromLeaf(root.right);
 
-            return left.compareTo(right) >= 0 ? left + root.val : right + root.val;
+            return left.compareTo(right) <= 0 ? left + root.val : right + root.val;
         }
     }
 
