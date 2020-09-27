@@ -93,6 +93,36 @@ public class PostorderTraversal {
         }
     }
 
+    class S {
+        public List<Integer> postorderTraversal(TreeNode root) {
+            LinkedList<Integer> treeList = new LinkedList<>();
+            Stack<TreeNode> stack = new Stack<>();
+            while (root != null || !stack.isEmpty()) {
+                while (root != null) {
+                    stack.push(root);
+                    root = root.left;
+                }
+                //与中序不同，不直接pop出来，而是先看看有没有右节点
+                TreeNode temp = stack.peek();
+                //没有右节点就pop出来进表
+                //不要root=stack.pop()，这样root就是最后的null，下一轮就会跳过while循环
+                if (temp.right == null) {
+                    treeList.add(stack.pop().val);
+                }
+                //有的话就去遍历右节点，
+                //并把当前节点的右节点设为空，否则就无尽循环了，
+                //所以要用临时变量temp，
+                //root=temp.right后root已变为当前节点的右节点
+                //直接root.right=null就是把右节点的右节点设为空了
+                else {
+                    root = temp.right;
+                    temp.right = null;
+                }
+            }
+            return treeList;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
