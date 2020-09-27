@@ -14,7 +14,7 @@ import java.util.Queue;
  * 无向图.保存两个方向.
  */
 public class MinReorder {
-    class Solution {
+    static class Solution {
         public int minReorder(int n, int[][] connections) {
             List<List<Integer>> tree = new ArrayList<>();
             //下标表示结点
