@@ -23,6 +23,7 @@ public class MinReorder {
             }
             //遍历边数
             for (int i = 0; i < connections.length; i++) {
+                //保存边
                 tree.get(connections[i][0]).add(i);
                 tree.get(connections[i][1]).add(i);
             }
