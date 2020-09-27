@@ -3,6 +3,7 @@ package com.leetcode.tag.tree.four;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 145. 二叉树的后序遍历.
@@ -59,6 +60,36 @@ public class PostorderTraversal {
                 }
             }
             return output;
+        }
+    }
+
+    class Solution2 {
+        public List<Integer> list = new ArrayList<>();
+
+        public List<Integer> postorderTraversal(TreeNode root) {
+            Stack<TreeNode> st = new Stack<>();
+            while (true) {
+                while (root != null) {
+                    //入栈两次
+                    st.push(root);
+                    st.push(root);
+                    //left
+                    root = root.left;
+                }
+                if (st.isEmpty()) {
+                    break;
+                }
+                root = st.pop();
+                if (!st.isEmpty() && st.peek() == root) {
+                    //right
+                    root = root.right;
+                } else {
+                    //root
+                    list.add(root.val);
+                    root = null;
+                }
+            }
+            return list;
         }
     }
 
