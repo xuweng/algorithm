@@ -60,7 +60,7 @@ public class SmallestFromLeaf {
             if (node == null) {
                 return;
             }
-            //转换这么简单
+            //int转char.转换这么简单
             sb.append((char) ('a' + node.val));
 
             //叶子结点.
