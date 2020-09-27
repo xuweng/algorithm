@@ -12,7 +12,7 @@ public class SmallestFromLeaf {
 
             StringBuilder result = new StringBuilder();
             for (String s : str) {
-                result.append((char) (Integer.parseInt(s) + 49));
+                result.append((char) (Integer.parseInt(s) + 97));
             }
             return result.toString();
         }
