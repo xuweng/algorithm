@@ -16,7 +16,7 @@ public class Rob {
             }
             if (root.right != null) {
                 max += rob(root.right.left);
-                max += rob(root.right.left);
+                max += rob(root.right.right);
             }
             int max1 = rob(root.left) + rob(root.right);
 
