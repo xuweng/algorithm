@@ -4,7 +4,7 @@ package com.leetcode.tag.tree.three;
  * 面试题 04.02. 最小高度树
  */
 public class SortedArrayToBST {
-    class Solution {
+    static class Solution {
         public TreeNode sortedArrayToBST(int[] nums) {
             return sortedArrayToBST(nums, 0, nums.length - 1);
         }
@@ -23,7 +23,7 @@ public class SortedArrayToBST {
         }
     }
 
-    class TreeNode {
+    static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
