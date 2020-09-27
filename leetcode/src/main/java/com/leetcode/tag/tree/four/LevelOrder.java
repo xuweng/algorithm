@@ -39,7 +39,7 @@ public class LevelOrder {
     }
 
     class Solution1 {
-        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> result = new ArrayList<>();
 
         public int[] levelOrder(TreeNode root) {
             if (root == null) {
@@ -47,11 +47,7 @@ public class LevelOrder {
             }
             bfs(root);
 
-            List<Integer> list = new ArrayList<>();
-            for (List<Integer> l : result) {
-                list.addAll(l);
-            }
-            return list.stream().mapToInt(Integer::intValue).toArray();
+            return result.stream().mapToInt(Integer::intValue).toArray();
         }
 
         private void bfs(TreeNode root) {
@@ -59,10 +55,9 @@ public class LevelOrder {
             queue.offer(root);
 
             while (!queue.isEmpty()) {
-                List<Integer> temp = new ArrayList<>();
                 for (int i = queue.size(); i > 0; i--) {
                     TreeNode node = queue.poll();
-                    temp.add(node.val);
+                    result.add(node.val);
                     if (node.left != null) {
                         queue.offer(node.left);
                     }
@@ -70,8 +65,37 @@ public class LevelOrder {
                         queue.offer(node.right);
                     }
                 }
-                result.add(temp);
             }
+        }
+    }
+
+    /**
+     *
+     */
+    class Solution2 {
+        public int[] levelOrder(TreeNode root) {
+            if (root == null) {
+                return new int[0];
+            }
+            List<Integer> res = new ArrayList<>();
+
+            Queue<TreeNode> q = new LinkedList<>();
+            q.add(root);
+            while (!q.isEmpty()) {
+                TreeNode t = q.poll();
+                res.add(t.val);
+                if (t.left != null) {
+                    q.offer(t.left);
+                }
+                if (t.right != null) {
+                    q.offer(t.right);
+                }
+            }
+            int[] t = new int[res.size()];
+            for (int i = 0; i < res.size(); i++) {
+                t[i] = res.get(i);
+            }
+            return t;
         }
     }
 
