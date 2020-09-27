@@ -24,7 +24,7 @@ public class SmallestFromLeaf {
             String left = hou(root.left);
             String right = hou(root.right);
 
-            return left.compareTo(right) <= 0 ? left + root.val : right + root.val;
+            return left.compareTo(right) <= 0 ? left + root.val + "," : right + root.val + ",";
         }
     }
 
