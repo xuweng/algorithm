@@ -28,8 +28,8 @@ public class LevelOrder {
                 result.add(new ArrayList<>());
             }
             result.get(level).add(root.val);
-            levelOrder(root.left, level);
-            levelOrder(root.right, level);
+            levelOrder(root.left, level + 1);
+            levelOrder(root.right, level + 1);
         }
     }
 
