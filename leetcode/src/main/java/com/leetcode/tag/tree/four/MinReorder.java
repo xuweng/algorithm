@@ -9,6 +9,9 @@ import java.util.Queue;
  * 1466. 重新规划路线
  * <p>
  * 十分钟看答案
+ * <p>
+ * 有向图.保存一个方向.
+ * 无向图.保存两个方向.
  */
 public class MinReorder {
     class Solution {
