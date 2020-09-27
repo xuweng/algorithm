@@ -15,6 +15,9 @@ import java.util.stream.IntStream;
  * 无向图.保存两个方向.
  */
 public class MinReorder {
+    /**
+     * 变成一颗tree后用bsf
+     */
     static class Solution {
         public int minReorder(int n, int[][] connections) {
             List<List<Integer>> tree = new ArrayList<>();
