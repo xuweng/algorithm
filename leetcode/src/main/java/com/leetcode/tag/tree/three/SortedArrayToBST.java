@@ -10,6 +10,10 @@ public class SortedArrayToBST {
         }
 
         public TreeNode sortedArrayToBST(int[] nums, int low, int high) {
+            //此条件必须
+            if (low > high) {
+                return null;
+            }
             if (low == high) {
                 return new TreeNode(nums[low]);
             }
