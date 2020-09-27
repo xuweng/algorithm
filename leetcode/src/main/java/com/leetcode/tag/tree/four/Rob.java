@@ -9,6 +9,7 @@ public class Rob {
             if (root == null) {
                 return 0;
             }
+            //选择root
             int max = root.val;
             if (root.left != null) {
                 max += rob(root.left.left);
@@ -18,6 +19,7 @@ public class Rob {
                 max += rob(root.right.left);
                 max += rob(root.right.right);
             }
+            //不选择root
             int max1 = rob(root.left) + rob(root.right);
 
             return Math.max(max, max1);
