@@ -13,6 +13,9 @@ public class LevelOrder {
         List<List<Integer>> result = new ArrayList<>();
 
         public int[] levelOrder(TreeNode root) {
+            if (root == null) {
+                return new int[0];
+            }
             levelOrder(root, 0);
 
             List<Integer> list = new ArrayList<>();
@@ -39,6 +42,9 @@ public class LevelOrder {
         List<List<Integer>> result = new ArrayList<>();
 
         public int[] levelOrder(TreeNode root) {
+            if (root == null) {
+                return new int[0];
+            }
             bfs(root);
 
             List<Integer> list = new ArrayList<>();
