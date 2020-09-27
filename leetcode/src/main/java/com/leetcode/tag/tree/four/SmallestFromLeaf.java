@@ -79,7 +79,7 @@ public class SmallestFromLeaf {
 
             dfs(node.left, sb);
             dfs(node.right, sb);
-            //回溯
+            //回溯.干掉最后一个.
             sb.deleteCharAt(sb.length() - 1);
         }
     }
