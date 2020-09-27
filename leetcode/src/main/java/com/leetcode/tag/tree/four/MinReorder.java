@@ -21,6 +21,7 @@ public class MinReorder {
             for (int i = 0; i < n; i++) {
                 tree.add(new ArrayList<>());
             }
+            //遍历边数
             for (int i = 0; i < connections.length; i++) {
                 tree.get(connections[i][0]).add(i);
                 tree.get(connections[i][1]).add(i);
