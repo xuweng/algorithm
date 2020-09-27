@@ -50,6 +50,12 @@ public class SmallestFromLeaf {
             return ans;
         }
 
+        /**
+         * 先序遍历
+         *
+         * @param node
+         * @param sb
+         */
         public void dfs(TreeNode node, StringBuilder sb) {
             if (node == null) {
                 return;
@@ -57,11 +63,15 @@ public class SmallestFromLeaf {
             //转换这么简单
             sb.append((char) ('a' + node.val));
 
+            //叶子结点.
             if (node.left == null && node.right == null) {
+                //反转.叶子->root.
                 sb.reverse();
                 String S = sb.toString();
+                //还原
                 sb.reverse();
 
+                //保存最小值
                 if (S.compareTo(ans) < 0) {
                     ans = S;
                 }
@@ -69,6 +79,7 @@ public class SmallestFromLeaf {
 
             dfs(node.left, sb);
             dfs(node.right, sb);
+            //回溯
             sb.deleteCharAt(sb.length() - 1);
         }
     }
