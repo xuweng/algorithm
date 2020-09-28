@@ -16,20 +16,24 @@ public class Connect {
                 if (root.right != null) {
                     root.left.next = root.right;
                 } else {
-                    if (root.next != null) {
-                        if (root.next.left != null) {
-                            root.left.next = root.next.left;
+                    Node node = get(root);
+                    if (node != null) {
+                        if (node.left != null) {
+                            root.left.next = node.left;
                         } else {
-                            root.left.next = root.next.right;
+                            root.left.next = node.right;
                         }
                     }
                 }
             }
-            if (root.right != null && root.next != null) {
-                if (root.next.left != null) {
-                    root.right.next = root.next.left;
-                } else {
-                    root.right.next = root.next.right;
+            if (root.right != null) {
+                Node node = get(root);
+                if (node != null) {
+                    if (node.left != null) {
+                        root.right.next = node.left;
+                    } else {
+                        root.right.next = node.right;
+                    }
                 }
             }
             connect(root.left);
@@ -37,6 +41,14 @@ public class Connect {
 
             return root;
 
+        }
+
+        private Node get(Node node) {
+            Node n = node.next;
+            while (n != null && n.left == null && n.right == null) {
+                n = n.next;
+            }
+            return n;
         }
     }
 
