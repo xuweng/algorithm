@@ -33,4 +33,26 @@ public class PathInZigZagTree {
             return integers;//1.返回结果
         }
     }
+
+    /**
+     * 位运算
+     */
+    class Solution1 {
+        public List<Integer> pathInZigZagTree(int l) {
+            if (l == 1) {
+                List<Integer> list = new ArrayList<>();
+                list.add(1);
+                return list;
+            }
+            int i = 1;
+            while (l >= i) {
+                i = i << 1;
+            }
+            int pin = (l - (i >> 1)) / 2 + 1;
+            int resnow = (i >> 1) - pin;
+            List<Integer> res = pathInZigZagTree(resnow);
+            res.add(l);
+            return res;
+        }
+    }
 }
