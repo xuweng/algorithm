@@ -20,8 +20,15 @@ public class ConnectTest {
         node7.left = node9;
 
         Node node = get(node4);
+        if (node != null) {
+            if (node.left != null) {
+                node4.left.next = node.left;
+            } else {
+                node4.left.next = node.right;
+            }
+        }
 
-        System.out.println(node);
+        System.out.println(node4);
     }
 
     private Node get(Node node) {
