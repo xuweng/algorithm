@@ -1,5 +1,8 @@
 package com.leetcode.tag.tree.four;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 117. 填充每个节点的下一个右侧节点指针 II
  */
@@ -52,6 +55,38 @@ public class Connect {
             }
             return n;
         }
+    }
+
+    /**
+     * 先序遍历
+     */
+    class Solution1 {
+        List<List<Node>> result = new ArrayList<>();
+
+        public Node connect(Node root) {
+            pre(root, 0);
+
+            for (List<Node> nodes : result) {
+                for (int i = 0; i < nodes.size() - 1; i++) {
+                    nodes.get(i).next = nodes.get(i + 1);
+                }
+            }
+
+            return root;
+        }
+
+        private void pre(Node node, int level) {
+            if (node == null) {
+                return;
+            }
+            if (result.size() == level) {
+                result.add(new ArrayList<>());
+            }
+            result.get(level).add(node);
+            pre(node.left, level + 1);
+            pre(node.right, level + 1);
+        }
+
     }
 
     static class Node {
