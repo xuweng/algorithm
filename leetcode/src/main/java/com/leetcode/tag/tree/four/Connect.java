@@ -140,6 +140,7 @@ public class Connect {
             if (map.containsKey(deepth)) {
                 map.get(deepth).next = node;
             }
+            //map不断覆盖同一个深度的结点.同一个深度只保留最后一个结点.
             map.put(deepth, node);
             helper(node.left, deepth + 1);
             helper(node.right, deepth + 1);
