@@ -7,7 +7,7 @@ public class Connect {
     /**
      * 算法错误
      */
-    class Solution {
+    static class Solution {
         public Node connect(Node root) {
             if (root == null) {
                 return root;
@@ -52,7 +52,7 @@ public class Connect {
         }
     }
 
-    class Node {
+    static class Node {
         public int val;
         public Node left;
         public Node right;
