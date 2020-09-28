@@ -15,7 +15,11 @@ public class SumNumbers {
 
         private void pre(TreeNode root, String temp) {
             if (root == null) {
-                result += Integer.parseInt(temp);
+                return;
+            }
+            //在叶子结点计算
+            if (root.left == null && root.right == null) {
+                result += Integer.parseInt(temp + root.val);
                 return;
             }
             pre(root.left, temp + root.val);
