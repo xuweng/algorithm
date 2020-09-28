@@ -107,6 +107,7 @@ public class Connect {
             while (!queue.isEmpty()) {
                 for (int i = queue.size(); i > 0; i--) {
                     Node node = queue.poll();
+                    //这个条件厉害
                     if (i > 1) {
                         node.next = queue.peek();
                     }
@@ -123,6 +124,10 @@ public class Connect {
     }
 
     /**
+     * 学习这个
+     * <p>
+     * 因为必须处理树上的所有节点，所以无法降低时间复杂度，但是可以尝试降低空间复杂度。
+     * <p>
      * 正确的先序遍历.厉害.
      */
     class S {
