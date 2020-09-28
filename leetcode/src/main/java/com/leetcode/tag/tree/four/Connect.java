@@ -104,6 +104,7 @@ public class Connect {
             if (root == null) {
                 return null;
             }
+            //bfs.队列只是保存每层的数据.
             Queue<Node> queue = new LinkedList<>();
             queue.offer(root);
             while (!queue.isEmpty()) {
