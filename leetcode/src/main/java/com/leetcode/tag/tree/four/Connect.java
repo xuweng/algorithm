@@ -6,6 +6,8 @@ package com.leetcode.tag.tree.four;
 public class Connect {
     /**
      * 算法错误
+     * <p>
+     * 先序遍历.root->left->right.上一层还没搞定.肯定错误.是层次遍历.
      */
     static class Solution {
         public Node connect(Node root) {
