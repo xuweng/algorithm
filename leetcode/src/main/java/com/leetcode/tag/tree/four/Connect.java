@@ -123,7 +123,7 @@ public class Connect {
     }
 
     /**
-     * 正确的先序遍历
+     * 正确的先序遍历.厉害.
      */
     class S {
         Map<Integer, Node> map = new HashMap<>();
