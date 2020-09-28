@@ -49,8 +49,10 @@ public class PathInZigZagTree {
                 i = i << 1;
             }
             int pin = (l - (i >> 1)) / 2 + 1;
-            int resnow = (i >> 1) - pin;
-            List<Integer> res = pathInZigZagTree(resnow);
+            //关键是计算parent
+            int parent = (i >> 1) - pin;
+            //root到parent的路径
+            List<Integer> res = pathInZigZagTree(parent);
             res.add(l);
             return res;
         }
