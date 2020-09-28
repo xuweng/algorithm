@@ -32,7 +32,9 @@ public class LeafSimilar {
             if (root == null) {
                 return;
             }
-            result.add(root.val);
+            if (root.left == null && root.right == null) {
+                result.add(root.val);
+            }
             pre(root.left, result);
             pre(root.right, result);
         }
