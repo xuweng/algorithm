@@ -1,9 +1,6 @@
 package com.leetcode.tag.tree.four;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * 117. 填充每个节点的下一个右侧节点指针 II
@@ -122,6 +119,30 @@ public class Connect {
                 }
             }
             return root;
+        }
+    }
+
+    /**
+     * 正确的先序遍历
+     */
+    class S {
+        Map<Integer, Node> map = new HashMap<>();
+
+        public Node connect(Node root) {
+            helper(root, 0);
+            return root;
+        }
+
+        void helper(Node node, int deepth) {
+            if (node == null) {
+                return;
+            }
+            if (map.containsKey(deepth)) {
+                map.get(deepth).next = node;
+            }
+            map.put(deepth, node);
+            helper(node.left, deepth + 1);
+            helper(node.right, deepth + 1);
         }
     }
 
