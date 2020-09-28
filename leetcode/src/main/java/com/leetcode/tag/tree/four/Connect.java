@@ -10,7 +10,15 @@ public class Connect {
                 return root;
             }
             if (root.left != null) {
-                root.left.next = root.right;
+                if (root.right != null) {
+                    root.left.next = root.right;
+                } else {
+                    if (root.next.left != null) {
+                        root.left.next = root.next.left;
+                    } else {
+                        root.left.next = root.next.right;
+                    }
+                }
             }
             if (root.right != null && root.next != null) {
                 if (root.next.left != null) {
