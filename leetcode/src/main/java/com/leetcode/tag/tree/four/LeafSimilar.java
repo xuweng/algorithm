@@ -40,6 +40,37 @@ public class LeafSimilar {
         }
     }
 
+    /**
+     * dfs
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/leaf-similar-trees/solution/xie-zi-xiang-si-de-shu-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+            List<Integer> leaves1 = new ArrayList<>();
+            List<Integer> leaves2 = new ArrayList<>();
+
+            dfs(root1, leaves1);
+            dfs(root2, leaves2);
+            //这个比较厉害
+            return leaves1.equals(leaves2);
+        }
+
+        public void dfs(TreeNode node, List<Integer> leafValues) {
+            if (node == null) {
+                return;
+            }
+            if (node.left == null && node.right == null) {
+                leafValues.add(node.val);
+            }
+            dfs(node.left, leafValues);
+            dfs(node.right, leafValues);
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
