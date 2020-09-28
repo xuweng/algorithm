@@ -18,6 +18,12 @@ public class LevelOrder2 {
             return result;
         }
 
+        /**
+         * 算法类似每层链接next
+         *
+         * @param root
+         * @param level
+         */
         private void pre(TreeNode root, int level) {
             if (root == null) {
                 return;
