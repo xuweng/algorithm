@@ -4,6 +4,9 @@ package com.leetcode.tag.tree.four;
  * 117. 填充每个节点的下一个右侧节点指针 II
  */
 public class Connect {
+    /**
+     * 算法错误
+     */
     class Solution {
         public Node connect(Node root) {
             if (root == null) {
