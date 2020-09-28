@@ -1,7 +1,9 @@
 package com.leetcode.tag.tree.four;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * 117. 填充每个节点的下一个右侧节点指针 II
@@ -87,6 +89,39 @@ public class Connect {
             pre(node.right, level + 1);
         }
 
+    }
+
+    /**
+     * 方法一：层次遍历
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/populating-next-right-pointers-in-each-node-ii/solution/tian-chong-mei-ge-jie-dian-de-xia-yi-ge-you-ce-15/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public Node connect(Node root) {
+            if (root == null) {
+                return null;
+            }
+            Queue<Node> queue = new LinkedList<>();
+            queue.offer(root);
+            while (!queue.isEmpty()) {
+                for (int i = queue.size(); i > 0; i--) {
+                    Node node = queue.poll();
+                    if (i > 1) {
+                        node.next = queue.peek();
+                    }
+                    if (node.left != null) {
+                        queue.offer(node.left);
+                    }
+                    if (node.right != null) {
+                        queue.offer(node.right);
+                    }
+                }
+            }
+            return root;
+        }
     }
 
     static class Node {
