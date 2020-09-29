@@ -40,6 +40,33 @@ public class BstFromPreorder {
         }
     }
 
+    /**
+     * 简洁代码
+     */
+    class S {
+        public TreeNode bstFromPreorder(int[] preorder) {
+            return bstDfs(preorder, 0, preorder.length - 1);
+        }
+
+        private TreeNode bstDfs(int[] preorder, int start, int end) {
+            if (start > end) {
+                return null;
+            }
+            TreeNode root = new TreeNode(preorder[start]);
+            //简洁代码
+            int index = start + 1;
+            while (index <= end) {
+                if (preorder[index] > root.val) {
+                    break;
+                }
+                index++;
+            }
+            root.left = bstDfs(preorder, start + 1, index - 1);
+            root.right = bstDfs(preorder, index, end);
+            return root;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
