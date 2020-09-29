@@ -9,13 +9,14 @@ import java.util.List;
 public class BSTSequences {
     class Solution {
         public List<List<Integer>> BSTSequences(TreeNode root) {
+            List<List<Integer>> lists = new ArrayList<>();
+            List<Integer> list = new ArrayList<>();
             if (root == null) {
-                return new ArrayList<>();
+                lists.add(list);
+                return lists;
             }
             if (root.left == null && root.right == null) {
-                List<Integer> list = new ArrayList<>();
                 list.add(root.val);
-                List<List<Integer>> lists = new ArrayList<>();
                 lists.add(list);
 
                 return lists;
