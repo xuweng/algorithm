@@ -74,6 +74,42 @@ public class LongestUnivaluePath {
         }
     }
 
+    /**
+     * 一样的思路
+     */
+    class Solution2 {
+        private int maxCount = 0;
+
+        public int longestUnivaluePath(TreeNode root) {
+            if (root == null) {
+                return maxCount;
+            }
+            getSameChildMaxCount(root);
+            return maxCount;
+        }
+
+        private int getSameChildMaxCount(TreeNode node) {
+            int left = 0;
+            if (node.left != null) {
+                left = getSameChildMaxCount(node.left);
+                if (node.left.val != node.val) {
+                    left = 0;
+                }
+            }
+            int right = 0;
+            if (node.right != null) {
+                right = getSameChildMaxCount(node.right);
+                if (node.right.val != node.val) {
+                    right = 0;
+                }
+            }
+            if (maxCount < right + left) {
+                maxCount = right + left;
+            }
+            return Math.max(left, right) + 1;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
