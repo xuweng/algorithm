@@ -1,6 +1,7 @@
 package com.leetcode.tag.tree.five;
 
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -141,6 +142,50 @@ public class BSTSequences {
                 //回溯
                 queue.add(i, cur);
                 path.removeLast();
+            }
+        }
+    }
+
+    class Solution2 {
+        public List<List<Integer>> BSTSequences(TreeNode root) {
+            List<List<Integer>> res = new ArrayList<>();
+            if (root == null) {
+                res.add(new ArrayList<>());
+                return res;
+            }
+            Deque<Integer> path = new LinkedList<>();
+            Deque<TreeNode> queue = new LinkedList<>();
+            queue.add(root);
+            backtrack(res, path, queue);
+            return res;
+        }
+
+        public void backtrack(List<List<Integer>> res, Deque<Integer> path, Deque<TreeNode> queue) {
+            if (queue.isEmpty()) {
+                res.add(new ArrayList<>(path));
+                return;
+            }
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                //数据
+                TreeNode node = queue.poll();
+                if (node.left != null) {
+                    queue.add(node.left);
+                }
+                if (node.right != null) {
+                    queue.add(node.right);
+                }
+                path.push(node.val);
+                backtrack(res, path, queue);
+                //回溯.和原来的顺序相反.
+                path.pop();
+                if (node.right != null) {
+                    queue.removeLast();
+                }
+                if (node.left != null) {
+                    queue.removeLast();
+                }
+                queue.add(node);
             }
         }
     }
