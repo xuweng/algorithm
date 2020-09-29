@@ -4,6 +4,9 @@ package com.leetcode.tag.tree.five;
  * 687. 最长同值路径
  */
 public class LongestUnivaluePath {
+    /**
+     * 脑里执行一下示例
+     */
     class Solution {
         int result;
         int count;
