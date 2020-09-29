@@ -21,6 +21,25 @@ public class GetTargetCopy {
         }
     }
 
+    /**
+     * 时间快
+     */
+    class Solution1 {
+        public final TreeNode getTargetCopy(final TreeNode original, final TreeNode cloned, final TreeNode target) {
+            if (cloned == null) {
+                return null;
+            }
+            if (original == target) {
+                return cloned;
+            }
+            TreeNode left = getTargetCopy(original.left, cloned.left, target);
+            if (left != null) {
+                return left;
+            }
+            return getTargetCopy(original.right, cloned.right, target);
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
