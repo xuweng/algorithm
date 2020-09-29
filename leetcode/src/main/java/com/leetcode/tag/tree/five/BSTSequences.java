@@ -11,7 +11,7 @@ public class BSTSequences {
         public List<List<Integer>> BSTSequences(TreeNode root) {
             if (root == null) {
                 List<List<Integer>> lists = new ArrayList<>();
-                lists.add(new ArrayList<>());
+//                lists.add(new ArrayList<>());
                 return lists;
             }
             if (root.left == null && root.right == null) {
@@ -23,6 +23,7 @@ public class BSTSequences {
                 return lists;
             }
             List<List<Integer>> lefts = BSTSequences(root.left);
+            List<List<Integer>> newLefts = new ArrayList<>(lefts);
             List<List<Integer>> rights = BSTSequences(root.right);
             for (List<Integer> left : lefts) {
                 if (rights.isEmpty()) {
@@ -37,7 +38,7 @@ public class BSTSequences {
                 if (lefts.isEmpty()) {
                     right.add(0, root.val);
                 }
-                for (List<Integer> left : lefts) {
+                for (List<Integer> left : newLefts) {
                     right.add(0, root.val);
                     right.addAll(left);
                 }
