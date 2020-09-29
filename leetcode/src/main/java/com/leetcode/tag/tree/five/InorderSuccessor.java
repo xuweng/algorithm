@@ -6,7 +6,7 @@ package com.leetcode.tag.tree.five;
 public class InorderSuccessor {
     class Solution {
         int index;
-        int pIndex;
+        int pIndex = -1;
         TreeNode result;
 
         public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
