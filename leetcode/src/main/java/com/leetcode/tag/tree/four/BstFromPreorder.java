@@ -24,6 +24,7 @@ public class BstFromPreorder {
                 }
             }
             TreeNode root = new TreeNode(preorder[low]);
+            //注意下标计算
             root.left = bstFromPreorder(preorder, low + 1, index - 1);
             root.right = bstFromPreorder(preorder, index, high);
             return root;
