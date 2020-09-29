@@ -76,7 +76,7 @@ public class AddOneRow {
                 depth++;
             }
             while (!queue.isEmpty()) {
-                TreeNode node = queue.remove();
+                TreeNode node = queue.poll();
                 TreeNode temp = node.left;
                 node.left = new TreeNode(v);
                 node.left.left = temp;
