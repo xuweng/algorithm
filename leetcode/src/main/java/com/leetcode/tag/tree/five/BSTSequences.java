@@ -6,6 +6,8 @@ import java.util.List;
 
 /**
  * 面试题 04.09. 二叉搜索树序列
+ * <p>
+ * 全排列问题
  */
 public class BSTSequences {
     class Solution {
