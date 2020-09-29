@@ -48,7 +48,7 @@ public class BSTSequences {
                     list.addAll(right);
                     newRights.add(list);
                 }
-                for (List<Integer> left : newLefts) {
+                for (List<Integer> left : lefts) {
                     List<Integer> list = new ArrayList<>();
                     list.add(root.val);
                     list.addAll(right);
