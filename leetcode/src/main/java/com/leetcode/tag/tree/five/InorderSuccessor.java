@@ -15,12 +15,15 @@ public class InorderSuccessor {
             return result;
         }
 
+        /**
+         * 中序遍历不要搞错位置
+         *
+         * @param root
+         * @param p
+         */
         public void inorder(TreeNode root, TreeNode p) {
             if (root == null) {
                 return;
-            }
-            if (root == p) {
-                pIndex = index;
             }
             if (index == pIndex + 1) {
                 result = root;
@@ -28,6 +31,9 @@ public class InorderSuccessor {
             }
             inorder(root.left, p);
             index++;
+            if (root == p) {
+                pIndex = index;
+            }
             inorder(root.right, p);
         }
 
