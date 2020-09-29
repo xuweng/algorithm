@@ -2,6 +2,8 @@ package com.leetcode.tag.tree.five;
 
 /**
  * 面试题 04.06. 后继者
+ * <p>
+ * bst.天然剪枝.
  */
 public class InorderSuccessor {
     class Solution {
@@ -38,6 +40,25 @@ public class InorderSuccessor {
             inorder(root.right, p);
         }
 
+    }
+
+    /**
+     *
+     */
+    class Solution1 {
+        public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+            TreeNode res = root;
+            TreeNode temp = root;
+            while (temp != null) {
+                if (temp.val <= p.val) {
+                    temp = temp.right;
+                } else {
+                    res = temp;
+                    temp = temp.left;
+                }
+            }
+            return res.val <= p.val ? null : res;
+        }
     }
 
     class TreeNode {
