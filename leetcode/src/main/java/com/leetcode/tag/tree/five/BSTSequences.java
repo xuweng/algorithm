@@ -25,12 +25,18 @@ public class BSTSequences {
             List<List<Integer>> lefts = BSTSequences(root.left);
             List<List<Integer>> rights = BSTSequences(root.right);
             for (List<Integer> left : lefts) {
+                if (rights.isEmpty()) {
+                    left.add(0, root.val);
+                }
                 for (List<Integer> right : rights) {
                     left.add(0, root.val);
                     left.addAll(right);
                 }
             }
             for (List<Integer> right : rights) {
+                if (lefts.isEmpty()) {
+                    right.add(0, root.val);
+                }
                 for (List<Integer> left : lefts) {
                     right.add(0, root.val);
                     right.addAll(left);
