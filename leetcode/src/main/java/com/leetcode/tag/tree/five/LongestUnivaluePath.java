@@ -39,6 +39,10 @@ public class LongestUnivaluePath {
     /**
      * 后序遍历.类似之前的.
      * <p>
+     * 类似以i结尾的dp.
+     * <p>
+     * 元素和root相等的最大路径.
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/longest-univalue-path/solution/zui-chang-tong-zhi-lu-jing-by-leetcode/
      * 来源：力扣（LeetCode）
