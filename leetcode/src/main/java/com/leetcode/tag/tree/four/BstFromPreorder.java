@@ -67,6 +67,30 @@ public class BstFromPreorder {
         }
     }
 
+    /**
+     * 简洁代码
+     */
+    class Solution2 {
+        public TreeNode bstFromPreorder(int[] preorder) {
+            return build(preorder, 0, preorder.length - 1);
+        }
+
+        private TreeNode build(int[] preorder, int l, int r) {
+            if (l > r) {
+                return null;
+            }
+            TreeNode root = new TreeNode(preorder[l]);
+            int index = l + 1;
+            while (index <= r && preorder[index] < preorder[l]) {
+                index++;
+            }
+            root.left = build(preorder, l + 1, index - 1);
+            root.right = build(preorder, index, r);
+
+            return root;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
