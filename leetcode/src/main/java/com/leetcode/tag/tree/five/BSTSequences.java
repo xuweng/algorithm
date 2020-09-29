@@ -127,6 +127,7 @@ public class BSTSequences {
 
                 helper(cur, new LinkedList<>(queue), path);
 
+                //回溯
                 queue.add(i, cur);
                 path.removeLast();
             }
