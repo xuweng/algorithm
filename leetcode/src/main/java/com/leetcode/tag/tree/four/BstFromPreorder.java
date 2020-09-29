@@ -2,6 +2,8 @@ package com.leetcode.tag.tree.four;
 
 /**
  * 1008. 先序遍历构造二叉树
+ * <p>
+ * 小结果集排查问题
  */
 public class BstFromPreorder {
     class Solution {
@@ -13,8 +15,13 @@ public class BstFromPreorder {
         }
 
         public TreeNode bstFromPreorder(int[] preorder, int low, int high) {
+            //必须
             if (low > high) {
                 return null;
+            }
+            //必须
+            if (low == high) {
+                return new TreeNode(preorder[low]);
             }
             int index = 0;
             for (int i = low + 1; i <= high; i++) {
