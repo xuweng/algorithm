@@ -1,5 +1,8 @@
 package com.leetcode.tag.tree.four;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 /**
  * 449. 序列化和反序列化二叉搜索树
  */
@@ -83,23 +86,17 @@ public class Codec {
             if (data == null || data.length() == 0) {
                 return null;
             }
-            String[] arr = data.split(",");
+            int[] arr = Arrays.stream(data.split(",")).mapToInt(Integer::parseInt).toArray();
             return builder(arr, 0, arr.length - 1);
         }
 
-        private TreeNode builder(String[] arr, int low, int high) {
+        private TreeNode builder(int[] arr, int low, int high) {
             if (low > high) {
                 return null;
             }
-            TreeNode root = new TreeNode(Integer.parseInt(arr[low]));
+            TreeNode root = new TreeNode(arr[low]);
             //找到第一个比首元素大的元素位置.这个思路厉害.left和right都是连续的.
-            int index = high + 1;
-            for (int i = low + 1; i <= high; i++) {
-                if (Integer.parseInt(arr[i]) > root.val) {
-                    index = i;
-                    break;
-                }
-            }
+            int index = IntStream.rangeClosed(low + 1, high).filter(i -> arr[i] > root.val).findFirst().orElse(high + 1);
             //递归构建子树
             root.left = builder(arr, low + 1, index - 1);
             root.right = builder(arr, index, high);
