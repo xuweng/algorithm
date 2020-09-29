@@ -25,14 +25,15 @@ public class InorderSuccessor {
             if (root == null) {
                 return;
             }
-            if (index == pIndex + 1) {
-                result = root;
-                return;
-            }
+
             inorder(root.left, p);
             index++;
             if (root == p) {
                 pIndex = index;
+            }
+            if (index == pIndex + 1) {
+                result = root;
+                return;
             }
             inorder(root.right, p);
         }
