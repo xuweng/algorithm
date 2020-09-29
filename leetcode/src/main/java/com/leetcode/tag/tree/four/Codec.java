@@ -30,7 +30,8 @@ public class Codec {
     }
 
     private TreeNode deserialize(String[] data) {
-        if ("#".equals(data[root++])) {
+        if ("#".equals(data[root])) {
+            root++;
             return null;
         }
         TreeNode rootNode = new TreeNode(Integer.parseInt(data[root++]));
