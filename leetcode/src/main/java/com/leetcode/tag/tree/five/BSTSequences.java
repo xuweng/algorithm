@@ -57,8 +57,8 @@ public class BSTSequences {
                 }
             }
             List<List<Integer>> result = new ArrayList<>();
-            result.addAll(lefts);
-            result.addAll(rights);
+            result.addAll(newLefts);
+            result.addAll(newRights);
             return result;
         }
 
