@@ -23,7 +23,7 @@ public class BstFromPreorder {
             if (low == high) {
                 return new TreeNode(preorder[low]);
             }
-            //查找right的下标.如果没有right.right为null.
+            //查找right的下标.如果没有right.right为null.只有root->left.high属于left.
             int index = high + 1;
             for (int i = low + 1; i <= high; i++) {
                 if (preorder[i] > preorder[low]) {
