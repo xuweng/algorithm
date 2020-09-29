@@ -65,9 +65,11 @@ public class LongestUnivaluePath {
             int right = arrowLength(node.right);
             int arrowLeft = 0, arrowRight = 0;
             //这个厉害.这样可以区分left和right.
+            //树形dp
             if (node.left != null && node.left.val == node.val) {
                 arrowLeft = left + 1;
             }
+            //树形dp
             if (node.right != null && node.right.val == node.val) {
                 arrowRight = right + 1;
             }
