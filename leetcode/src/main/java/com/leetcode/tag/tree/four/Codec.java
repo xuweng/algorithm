@@ -44,7 +44,12 @@ public class Codec {
     /**
      * 普通的二叉树需要两种遍历结果才能固定二叉树，而对于BST，得到BST的前序遍历，根据BST的性质，第一个元素值为根节点，
      * <p>
-     * 所有小于根节点的元素为左子树，使用大于根节点的元素为右子树
+     * 所有小于根节点的元素为左子树，使用大于根节点的元素为右子树.
+     * <p>
+     * 先序:root,left,right
+     * 中序:left,root,right
+     * <p>
+     * bst:left<root<right
      * <p>
      * 作者：mmmmmJCY
      * 链接：https://leetcode-cn.com/problems/serialize-and-deserialize-bst/solution/java-shi-yong-qian-xu-bian-li-jin-xing-xu-lie-hua-/
@@ -87,7 +92,7 @@ public class Codec {
                 return null;
             }
             TreeNode root = new TreeNode(Integer.parseInt(arr[low]));
-            //找到第一个比首元素大的元素位置.就是right.
+            //找到第一个比首元素大的元素位置.这个思路厉害.left和right都是连续的.
             int index = high + 1;
             for (int i = low + 1; i <= high; i++) {
                 if (Integer.parseInt(arr[i]) > root.val) {
