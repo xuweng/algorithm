@@ -5,7 +5,9 @@ package com.leetcode.tag.tree.five;
  */
 public class LongestUnivaluePath {
     /**
-     * 脑里执行一下示例
+     * 脑里执行一下示例.
+     * <p>
+     * 算法错误.
      */
     class Solution {
         int result;
