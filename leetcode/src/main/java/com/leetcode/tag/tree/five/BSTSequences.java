@@ -12,6 +12,12 @@ public class BSTSequences {
             if (root == null) {
                 return new ArrayList<>();
             }
+            if (root.left == null && root.right == null) {
+                List<Integer> list = new ArrayList<>();
+                list.add(root.val);
+                List<List<Integer>> lists = new ArrayList<>();
+                lists.add(list);
+            }
             List<List<Integer>> lefts = BSTSequences(root.left);
             List<List<Integer>> rights = BSTSequences(root.right);
             for (List<Integer> left : lefts) {
