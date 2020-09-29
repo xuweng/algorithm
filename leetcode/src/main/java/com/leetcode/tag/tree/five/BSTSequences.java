@@ -17,6 +17,8 @@ public class BSTSequences {
                 list.add(root.val);
                 List<List<Integer>> lists = new ArrayList<>();
                 lists.add(list);
+
+                return lists;
             }
             List<List<Integer>> lefts = BSTSequences(root.left);
             List<List<Integer>> rights = BSTSequences(root.right);
