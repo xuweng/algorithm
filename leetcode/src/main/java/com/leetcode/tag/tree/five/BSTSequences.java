@@ -16,6 +16,8 @@ public class BSTSequences {
      * 继续看看复杂一些的例子
      * <p>
      * 各个序列的差异主要是子树的插入顺序不同这一猜想不正确。插入的顺序可能是先插部分左子树节点，再插部分右子树节点
+     * <p>
+     * 序列中子树节点的相对顺序是可以确定的
      */
     class Solution {
         public List<List<Integer>> BSTSequences(TreeNode root) {
