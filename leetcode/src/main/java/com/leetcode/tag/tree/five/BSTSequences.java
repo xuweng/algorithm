@@ -10,6 +10,13 @@ import java.util.List;
  * 全排列问题
  */
 public class BSTSequences {
+    /**
+     * 猜想：各个序列的差异主要是子树的插入顺序不同，例如此例子可以对应先插左子树后插右子树，或者是先插右子树再插左子树
+     * <p>
+     * 继续看看复杂一些的例子
+     * <p>
+     * 各个序列的差异主要是子树的插入顺序不同这一猜想不正确。插入的顺序可能是先插部分左子树节点，再插部分右子树节点
+     */
     class Solution {
         public List<List<Integer>> BSTSequences(TreeNode root) {
             if (root == null) {
