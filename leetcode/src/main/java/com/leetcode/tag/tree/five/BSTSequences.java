@@ -23,24 +23,37 @@ public class BSTSequences {
                 return lists;
             }
             List<List<Integer>> lefts = BSTSequences(root.left);
-            List<List<Integer>> newLefts = new ArrayList<>(lefts);
             List<List<Integer>> rights = BSTSequences(root.right);
+            List<List<Integer>> newLefts = new ArrayList<>();
+            List<List<Integer>> newRights = new ArrayList<>();
             for (List<Integer> left : lefts) {
                 if (rights.isEmpty()) {
-                    left.add(0, root.val);
+                    List<Integer> list = new ArrayList<>();
+                    list.add(root.val);
+                    list.addAll(left);
+                    newLefts.add(list);
                 }
                 for (List<Integer> right : rights) {
-                    left.add(0, root.val);
-                    left.addAll(right);
+                    List<Integer> list = new ArrayList<>();
+                    list.add(root.val);
+                    list.addAll(left);
+                    list.addAll(right);
+                    newLefts.add(list);
                 }
             }
             for (List<Integer> right : rights) {
                 if (lefts.isEmpty()) {
-                    right.add(0, root.val);
+                    List<Integer> list = new ArrayList<>();
+                    list.add(root.val);
+                    list.addAll(right);
+                    newRights.add(list);
                 }
                 for (List<Integer> left : newLefts) {
-                    right.add(0, root.val);
-                    right.addAll(left);
+                    List<Integer> list = new ArrayList<>();
+                    list.add(root.val);
+                    list.addAll(right);
+                    list.addAll(left);
+                    newRights.add(list);
                 }
             }
             List<List<Integer>> result = new ArrayList<>();
