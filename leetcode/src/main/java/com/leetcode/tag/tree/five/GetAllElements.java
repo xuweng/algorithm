@@ -5,6 +5,8 @@ import java.util.List;
 
 /**
  * 1305. 两棵二叉搜索树中的所有元素
+ * <p>
+ * 先通过所有示例再提交
  */
 public class GetAllElements {
     class Solution {
@@ -17,7 +19,7 @@ public class GetAllElements {
             inorder(root2, list2);
 
             List<Integer> result = new ArrayList<>();
-            int minSize = Math.max(list1.size(), list2.size());
+            int minSize = Math.min(list1.size(), list2.size());
             List<Integer> minList = (list1.size() <= list2.size()) ? list1 : list2;
             List<Integer> maxList = (list1.size() > list2.size()) ? list1 : list2;
 
