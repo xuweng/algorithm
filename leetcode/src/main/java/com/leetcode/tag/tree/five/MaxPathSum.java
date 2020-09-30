@@ -5,7 +5,8 @@ package com.leetcode.tag.tree.five;
  */
 public class MaxPathSum {
     class Solution {
-        int result;
+        //注意初始化
+        int result = Integer.MIN_VALUE;
 
         public int maxPathSum(TreeNode root) {
             dfs(root);
