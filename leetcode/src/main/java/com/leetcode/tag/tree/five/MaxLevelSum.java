@@ -1,7 +1,9 @@
 package com.leetcode.tag.tree.five;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -93,6 +95,44 @@ public class MaxLevelSum {
                 maxIdx = levelSum[i] > levelSum[maxIdx] ? i : maxIdx;
             }
             return maxIdx;
+        }
+    }
+
+    /**
+     * 方法二：BFS：使用队列实现的层序遍历
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/maximum-level-sum-of-a-binary-tree/solution/zui-da-ceng-nei-yuan-su-he-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public int maxLevelSum(TreeNode root) {
+            int currLevel = 1, maxLevel = 1;
+            int maxSum = root.val;
+
+            Queue<TreeNode> queue = new LinkedList<>();
+            queue.offer(root);
+            while (!queue.isEmpty()) {
+                int currSum = 0;
+                for (int i = queue.size(); i > 0; i--) {
+                    TreeNode node = queue.poll();
+                    currSum += node.val;
+                    if (node.left != null) {
+                        queue.offer(node.left);
+                    }
+                    if (node.right != null) {
+                        queue.offer(node.right);
+                    }
+                }
+                if (currSum > maxSum) {
+                    maxSum = currSum;
+                    maxLevel = currLevel;
+                }
+                currLevel++;
+            }
+
+            return maxLevel;
         }
     }
 
