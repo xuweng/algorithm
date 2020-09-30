@@ -41,17 +41,15 @@ public class MaxLevelSum {
             if (root == null) {
                 return;
             }
-            if (map.containsKey(depth)) {
-                map.put(depth, map.get(depth) + root.val);
-            } else {
-                map.put(depth, root.val);
-            }
+            map.put(depth, map.getOrDefault(depth, 0) + root.val);
             pre(root.left, depth + 1);
             pre(root.right, depth + 1);
         }
     }
 
     /**
+     * 遍历时需要记录当前层节点之和。由于 Java 中 HashMap 的性能问题，在 Java 中使用数组，在 Python 中使用 hashmap。
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/maximum-level-sum-of-a-binary-tree/solution/zui-da-ceng-nei-yuan-su-he-by-leetcode/
      * 来源：力扣（LeetCode）
@@ -61,6 +59,12 @@ public class MaxLevelSum {
         int n = 10000;
         int[] levelSum = new int[n];
 
+        /**
+         * 遍历时需要记录当前层节点之和。由于 Java 中 HashMap 的性能问题，在 Java 中使用数组，在 Python 中使用 hashmap。
+         *
+         * @param node
+         * @param level
+         */
         public void inorder(TreeNode node, int level) {
             if (node == null) {
                 return;
