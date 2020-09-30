@@ -29,8 +29,8 @@ public class MaxLevelSum {
                 map.put(depth, root.val);
             }
             result = Math.max(result, map.get(depth));
-            pre(root.left, depth);
-            pre(root.right, depth);
+            pre(root.left, depth + 1);
+            pre(root.right, depth + 1);
         }
     }
 
