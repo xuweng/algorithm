@@ -9,15 +9,15 @@ import java.util.stream.Collectors;
  */
 public class LargestValues {
     class Solution {
-        int[] maxLevel;
+        long[] maxLevel;
 
         public List<Integer> largestValues(TreeNode root) {
-            maxLevel = new int[10000];
-            Arrays.fill(maxLevel, Integer.MIN_VALUE);
+            maxLevel = new long[10000];
+            Arrays.fill(maxLevel, Long.MIN_VALUE);
 
             preorder(root, 1);
 
-            return Arrays.stream(maxLevel).filter(i -> i != Integer.MIN_VALUE).boxed().collect(Collectors.toList());
+            return Arrays.stream(maxLevel).mapToInt(i -> (int) i).filter(i -> i != Integer.MIN_VALUE).boxed().collect(Collectors.toList());
         }
 
         private void preorder(TreeNode root, int level) {
