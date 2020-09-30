@@ -74,8 +74,17 @@ public class MaxLevelSum {
             inorder(node.right, level + 1);
         }
 
+        public void preorder(TreeNode node, int level) {
+            if (node == null) {
+                return;
+            }
+            levelSum[level] += node.val;
+            preorder(node.left, level + 1);
+            preorder(node.right, level + 1);
+        }
+
         public int maxLevelSum(TreeNode root) {
-            inorder(root, 1);
+            preorder(root, 1);
 
             int maxIdx = 0;
             for (int i = 0; i < n; ++i) {
