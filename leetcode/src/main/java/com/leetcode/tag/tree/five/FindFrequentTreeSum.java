@@ -36,6 +36,50 @@ public class FindFrequentTreeSum {
         }
     }
 
+    /**
+     * 减少遍历次数
+     */
+    class Solution1 {
+        private int max;
+        private final ArrayList<Integer> list = new ArrayList<>();
+        private final HashMap<Integer, Integer> map = new HashMap<>();
+
+        public int[] findFrequentTreeSum(TreeNode root) {
+            if (root == null) {
+                return new int[0];
+            }
+            dfs(root);
+
+            return list.stream().mapToInt(integer -> integer).toArray();
+        }
+
+        /**
+         * 减少遍历次数
+         *
+         * @param root
+         * @return
+         */
+        private int dfs(TreeNode root) {
+            if (root == null) {
+                return 0;
+            }
+            int left = dfs(root.left);
+            int right = dfs(root.right);
+            int sum = left + right + root.val;
+            int current = map.getOrDefault(sum, 0) + 1;
+            map.put(sum, current);
+            if (current == max) {
+                list.add(sum);
+            } else if (current > max) {
+                //这个清空厉害
+                list.clear();
+                list.add(sum);
+                max = current;
+            }
+            return sum;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
