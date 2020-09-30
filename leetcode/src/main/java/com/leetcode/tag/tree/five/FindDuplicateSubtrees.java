@@ -12,6 +12,10 @@ import java.util.Map;
  */
 public class FindDuplicateSubtrees {
     /**
+     * 方法一：深度优先搜索【通过】
+     * <p>
+     * 每棵不同子树的序列化结果都是唯一的。
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/find-duplicate-subtrees/solution/xun-zhao-zhong-fu-de-zi-shu-by-leetcode/
      * 来源：力扣（LeetCode）
@@ -47,6 +51,45 @@ public class FindDuplicateSubtrees {
                 ans.add(node);
             }
             return serial;
+        }
+    }
+
+    /**
+     * 方法二：唯一标识符【通过】
+     * <p>
+     * 假设每棵子树都有一个唯一标识符：只有当两个子树的 id 相同时，认为这两个子树是相同的。
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/find-duplicate-subtrees/solution/xun-zhao-zhong-fu-de-zi-shu-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        int t;
+        Map<String, Integer> trees;
+        Map<Integer, Integer> count;
+        List<TreeNode> ans;
+
+        public List<TreeNode> findDuplicateSubtrees(TreeNode root) {
+            t = 1;
+            trees = new HashMap<>();
+            count = new HashMap<>();
+            ans = new ArrayList<>();
+            lookup(root);
+            return ans;
+        }
+
+        public int lookup(TreeNode node) {
+            if (node == null) {
+                return 0;
+            }
+            String serial = node.val + "," + lookup(node.left) + "," + lookup(node.right);
+            int uid = trees.computeIfAbsent(serial, x -> t++);
+            count.put(uid, count.getOrDefault(uid, 0) + 1);
+            if (count.get(uid) == 2) {
+                ans.add(node);
+            }
+            return uid;
         }
     }
 
