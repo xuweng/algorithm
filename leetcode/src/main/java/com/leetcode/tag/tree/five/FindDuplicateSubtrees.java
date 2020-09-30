@@ -83,6 +83,7 @@ public class FindDuplicateSubtrees {
             if (node == null) {
                 return 0;
             }
+            //一个节点 node 的左孩子 id 为 x，右孩子 id 为 y，那么该节点的 id 为 (node.val, x, y)。
             String serial = node.val + "," + lookup(node.left) + "," + lookup(node.right);
             int uid = trees.computeIfAbsent(serial, x -> t++);
             count.put(uid, count.getOrDefault(uid, 0) + 1);
