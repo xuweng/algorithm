@@ -6,6 +6,8 @@ package com.leetcode.tag.tree.five;
  * 十分钟看答案.十分钟看答案.不能浪费太多时间.
  * <p>
  * 一开始的思路错误.
+ * <p>
+ * 101. 对称二叉树的变形
  */
 public class FlipEquiv {
     class Solution {
