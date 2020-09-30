@@ -11,15 +11,16 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class MaxLevelSum {
     class Solution {
-        int levelSum;
         Map<Integer, Integer> map = new HashMap<>();
 
         public int maxLevelSum(TreeNode root) {
             pre(root, 1);
 
+            AtomicInteger levelSum = new AtomicInteger();
             AtomicInteger result = new AtomicInteger();
             map.forEach((k, v) -> {
-                if (v == levelSum) {
+                if (v > levelSum.get()) {
+                    levelSum.set(v);
                     result.set(k);
                 }
             });
@@ -36,7 +37,6 @@ public class MaxLevelSum {
             } else {
                 map.put(depth, root.val);
             }
-            levelSum = Math.max(levelSum, map.get(depth));
             pre(root.left, depth + 1);
             pre(root.right, depth + 1);
         }
