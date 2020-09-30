@@ -18,20 +18,20 @@ public class GetAllElements {
 
             List<Integer> result = new ArrayList<>();
             int minSize = Math.max(list1.size(), list2.size());
-            List<Integer> list3 = (list1.size() < list2.size()) ? list1 : list2;
-            List<Integer> list4 = (list1.size() > list2.size()) ? list1 : list2;
+            List<Integer> minList = (list1.size() < list2.size()) ? list1 : list2;
+            List<Integer> maxList = (list1.size() > list2.size()) ? list1 : list2;
 
             for (int i = 0; i < minSize; i++) {
-                if (list3.get(i) <= list4.get(i)) {
-                    result.add(list3.get(i));
-                    result.add(list4.get(i));
+                if (minList.get(i) <= maxList.get(i)) {
+                    result.add(minList.get(i));
+                    result.add(maxList.get(i));
                 } else {
-                    result.add(list4.get(i));
-                    result.add(list3.get(i));
+                    result.add(maxList.get(i));
+                    result.add(minList.get(i));
                 }
             }
-            if (minSize < list4.size()) {
-                result.addAll(minSize, list4);
+            if (minSize < maxList.size()) {
+                result.addAll(minSize, maxList);
             }
             return result;
         }
