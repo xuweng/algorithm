@@ -42,7 +42,7 @@ public class LargestValues {
     class S {
         public List<Integer> largestValues(TreeNode root) {
             List<Integer> res = new ArrayList<>();
-            helper(root, res, 1);
+            helper(root, res, 0);
             return res;
         }
 
@@ -53,7 +53,7 @@ public class LargestValues {
                 return;
             }
             //如果走到下一层了直接加入到集合中
-            if (level == res.size() + 1) {
+            if (level == res.size()) {
                 //先序遍历.第level层的最左边的结点.
                 res.add(root.val);
             } else {
@@ -63,7 +63,9 @@ public class LargestValues {
                 // Math.max(res.get(level - 1), root.val)表示的
                 // 是遍历到的第level层的root.val值和集合中的第level
                 // 个元素的值哪个大，就要哪个。
-                res.set(level - 1, Math.max(res.get(level - 1), root.val));
+
+                //保留第level层最大值.厉害.
+                res.set(level, Math.max(res.get(level), root.val));
             }
             //下面两行是DFS的核心代码
             helper(root.left, res, level + 1);
