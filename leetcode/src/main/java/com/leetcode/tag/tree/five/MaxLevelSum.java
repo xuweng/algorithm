@@ -48,6 +48,8 @@ public class MaxLevelSum {
     }
 
     /**
+     * 使用数组替换hashmap
+     * <p>
      * 遍历时需要记录当前层节点之和。由于 Java 中 HashMap 的性能问题，在 Java 中使用数组，在 Python 中使用 hashmap。
      * <p>
      * 作者：LeetCode
