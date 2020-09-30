@@ -33,7 +33,7 @@ public class GetAllElements {
                 }
             }
             if (minSize < maxList.size()) {
-                result.addAll(minSize, maxList);
+                result.addAll(maxList.subList(minSize, maxList.size()));
             }
             return result;
         }
