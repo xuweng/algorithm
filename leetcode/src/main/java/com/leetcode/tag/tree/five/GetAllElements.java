@@ -1,6 +1,7 @@
 package com.leetcode.tag.tree.five;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -49,6 +50,37 @@ public class GetAllElements {
             list.add((long) root.val);
             inorder(root.right, list);
         }
+    }
+
+    /**
+     * 方法一 前序遍历+排序
+     * <p>
+     * 作者：yuruiyin
+     * 链接：https://leetcode-cn.com/problems/all-elements-in-two-binary-search-trees/solution/java-san-chong-jie-fa-by-npe_tle/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class S {
+        private List<Integer> ansList = new ArrayList<>();
+
+        private void dfs(TreeNode root) {
+            if (root == null) {
+                return;
+            }
+
+            ansList.add(root.val);
+            dfs(root.left);
+            dfs(root.right);
+        }
+
+        public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
+            dfs(root1);
+            dfs(root2);
+
+            Collections.sort(ansList);
+            return ansList;
+        }
+
     }
 
     class TreeNode {
