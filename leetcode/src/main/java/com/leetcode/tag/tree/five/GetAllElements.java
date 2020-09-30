@@ -18,7 +18,7 @@ public class GetAllElements {
 
             List<Integer> result = new ArrayList<>();
             int minSize = Math.max(list1.size(), list2.size());
-            List<Integer> minList = (list1.size() < list2.size()) ? list1 : list2;
+            List<Integer> minList = (list1.size() <= list2.size()) ? list1 : list2;
             List<Integer> maxList = (list1.size() > list2.size()) ? list1 : list2;
 
             for (int i = 0; i < minSize; i++) {
