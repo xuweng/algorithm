@@ -17,7 +17,7 @@ public class BuildTree {
             for (int i = 0; i < inorder.length; i++) {
                 map.put(inorder[i], i);
             }
-            return buildTree(inorder, 0, inorder.length, postorder, 0, postorder.length);
+            return buildTree(inorder, 0, inorder.length - 1, postorder, 0, postorder.length - 1);
         }
 
         public TreeNode buildTree(int[] inorder, int inorderStart, int inorderEnd, int[] postorder, int postorderStart, int postorderEnd) {
