@@ -10,13 +10,14 @@ import java.util.Map;
  */
 public class MaxLevelSum {
     class Solution {
+        int levelSum;
         int result;
         Map<Integer, Integer> map = new HashMap<>();
 
         public int maxLevelSum(TreeNode root) {
             pre(root, 1);
 
-            return result;
+            return levelSum;
         }
 
         private void pre(TreeNode root, int depth) {
@@ -28,7 +29,10 @@ public class MaxLevelSum {
             } else {
                 map.put(depth, root.val);
             }
-            result = Math.max(result, map.get(depth));
+            if (map.get(depth) > levelSum) {
+                levelSum = map.get(depth);
+                result = depth;
+            }
             pre(root.left, depth + 1);
             pre(root.right, depth + 1);
         }
