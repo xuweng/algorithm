@@ -51,10 +51,11 @@ public class BuildTree {
             if (inLeft > inRight) {
                 return null;
             }
-            // 选择 post_idx 位置的元素作为当前子树根节点
-            TreeNode root = new TreeNode(postorder[postIndex--]);
             // 根据 root 所在位置分成左右两棵子树
             int index = map.get(postorder[postIndex]);
+            // 选择 post_idx 位置的元素作为当前子树根节点
+            TreeNode root = new TreeNode(postorder[postIndex--]);
+
             //一定是先构造right
             // 构造右子树
             root.right = helper(index + 1, inRight);
