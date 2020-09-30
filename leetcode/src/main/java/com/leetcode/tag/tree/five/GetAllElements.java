@@ -23,8 +23,8 @@ public class GetAllElements {
             list2.add(Long.MAX_VALUE);
 
             List<Integer> result = new ArrayList<>();
-            //合并后的长度
-            int size = list1.size() + list2.size();
+            //注意合并后的长度.
+            int size = list1.size() + list2.size() - 2;
 
             int list1Index = 0;
             int list2Index = 0;
