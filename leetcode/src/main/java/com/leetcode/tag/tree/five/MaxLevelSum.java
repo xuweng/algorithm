@@ -17,7 +17,7 @@ public class MaxLevelSum {
         public int maxLevelSum(TreeNode root) {
             pre(root, 1);
 
-            return levelSum;
+            return result;
         }
 
         private void pre(TreeNode root, int depth) {
