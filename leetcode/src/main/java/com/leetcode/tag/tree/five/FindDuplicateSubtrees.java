@@ -30,9 +30,11 @@ public class FindDuplicateSubtrees {
 
         /**
          * 序列化二叉树。
+         * <p>
+         * 使用深度优先搜索，其中递归函数返回当前子树的序列化结果。把每个节点开始的子树序列化结果保存在 mapmap 中，然后判断是否存在重复的子树
          *
          * @param node
-         * @return
+         * @return 当前树的序列化结果
          */
         public String collect(TreeNode node) {
             if (node == null) {
