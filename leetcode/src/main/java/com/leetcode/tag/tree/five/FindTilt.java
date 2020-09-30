@@ -8,7 +8,7 @@ public class FindTilt {
         int result;
 
         public int findTilt(TreeNode root) {
-            return root == null ? 0 : result + Math.abs(dfs(root.left) - dfs(root.right));
+            return root == null ? 0 : Math.abs(dfs(root.left) - dfs(root.right)) + result;
         }
 
         private int dfs(TreeNode root) {
