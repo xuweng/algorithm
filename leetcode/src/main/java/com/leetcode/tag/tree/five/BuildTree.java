@@ -14,6 +14,9 @@ public class BuildTree {
             if (inorder == null || inorder.length == 0 || postorder == null || postorder.length == 0) {
                 return null;
             }
+            for (int i = 0; i < inorder.length; i++) {
+                map.put(inorder[i], i);
+            }
             return buildTree(inorder, 0, inorder.length, postorder, 0, postorder.length);
         }
 
