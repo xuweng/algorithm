@@ -21,12 +21,13 @@ public class PathSum {
 
         private void back(TreeNode root, int sum, List<List<Integer>> result, Deque<Integer> stack) {
             if (root == null) {
-                if (sum == 0) {
-                    result.add(new ArrayList<>(stack));
-                }
                 return;
             }
             stack.push(root.val);
+            //叶子结点
+            if (root.left == null && root.right == null && sum == root.val) {
+                result.add(new ArrayList<>(stack));
+            }
             back(root.left, sum - root.val, result, stack);
             back(root.right, sum - root.val, result, stack);
             stack.pop();
