@@ -17,7 +17,7 @@ public class LargestValues {
 
             preorder(root, 1);
 
-            return Arrays.stream(maxLevel).mapToInt(i -> (int) i).filter(i -> i != Integer.MIN_VALUE).boxed().collect(Collectors.toList());
+            return Arrays.stream(maxLevel).filter(i -> i != Long.MIN_VALUE).mapToInt(i -> (int) i).boxed().collect(Collectors.toList());
         }
 
         private void preorder(TreeNode root, int level) {
