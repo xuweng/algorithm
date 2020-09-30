@@ -15,6 +15,8 @@ public class LargestValues {
             maxLevel = new int[10000];
             Arrays.fill(maxLevel, Integer.MIN_VALUE);
 
+            preorder(root, 1);
+
             return Arrays.stream(maxLevel).filter(i -> i != Integer.MIN_VALUE).boxed().collect(Collectors.toList());
         }
 
@@ -23,8 +25,8 @@ public class LargestValues {
                 return;
             }
             maxLevel[level] = Math.max(root.val, maxLevel[level]);
-            preorder(root.left, level);
-            preorder(root.right, level);
+            preorder(root.left, level + 1);
+            preorder(root.right, level + 1);
         }
     }
 
