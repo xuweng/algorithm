@@ -40,6 +40,7 @@ public class FindDuplicateSubtrees {
             if (node == null) {
                 return "#";
             }
+            //数字字符串拼接一定要隔离
             String serial = node.val + "," + collect(node.left) + "," + collect(node.right);
             count.put(serial, count.getOrDefault(serial, 0) + 1);
             if (count.get(serial) == 2) {
