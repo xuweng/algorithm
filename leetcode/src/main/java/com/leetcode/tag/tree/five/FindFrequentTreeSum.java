@@ -14,8 +14,9 @@ public class FindFrequentTreeSum {
         int count;
 
         public int[] findFrequentTreeSum(TreeNode root) {
-            List<Integer> list = new ArrayList<>();
+            dfs(root);
 
+            List<Integer> list = new ArrayList<>();
             map.forEach((k, v) -> {
                 if (v == count) {
                     list.add(k);
