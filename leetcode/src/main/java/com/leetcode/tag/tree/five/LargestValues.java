@@ -1,8 +1,6 @@
 package com.leetcode.tag.tree.five;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -70,6 +68,44 @@ public class LargestValues {
             //下面两行是DFS的核心代码
             helper(root.left, res, level + 1);
             helper(root.right, res, level + 1);
+        }
+    }
+
+    /**
+     * bfs
+     * <p>
+     * 作者：sdwwld
+     * 链接：https://leetcode-cn.com/problems/find-largest-value-in-each-tree-row/solution/javadai-ma-bfshe-dfsliang-chong-jie-jue-si-lu-yi-j/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class S1 {
+        public List<Integer> largestValues(TreeNode root) {
+            List<Integer> values = new ArrayList<>();
+            //bfs判空
+            if (root == null) {
+                return values;
+            }
+            //LinkedList实现队列
+            Queue<TreeNode> queue = new LinkedList<>();
+            queue.offer(root);//入队
+            while (!queue.isEmpty()) {
+                //初始化厉害.
+                int max = Integer.MIN_VALUE;
+                int levelSize = queue.size();//每一层的数量
+                for (int i = 0; i < levelSize; i++) {
+                    TreeNode node = queue.poll();//出队
+                    max = Math.max(max, node.val);//记录每层的最大值
+                    if (node.left != null) {
+                        queue.offer(node.left);
+                    }
+                    if (node.right != null) {
+                        queue.offer(node.right);
+                    }
+                }
+                values.add(max);
+            }
+            return values;
         }
     }
 
