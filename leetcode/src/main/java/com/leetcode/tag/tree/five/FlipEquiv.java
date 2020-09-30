@@ -1,5 +1,8 @@
 package com.leetcode.tag.tree.five;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 951. 翻转等价二叉树
  * <p>
@@ -71,6 +74,47 @@ public class FlipEquiv {
             //left-right.right-left.
             return (flipEquiv(root1.left, root2.left) && flipEquiv(root1.right, root2.right)) ||
                     (flipEquiv(root1.left, root2.right) && flipEquiv(root1.right, root2.left));
+        }
+    }
+
+    /**
+     * 方法二： 标准态遍历.
+     * <p>
+     * 排序
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/flip-equivalent-binary-trees/solution/fan-zhuan-deng-jie-er-cha-shu-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public boolean flipEquiv(TreeNode root1, TreeNode root2) {
+            List<Integer> vals1 = new ArrayList<>();
+            List<Integer> vals2 = new ArrayList<>();
+            dfs(root1, vals1);
+            dfs(root2, vals2);
+            return vals1.equals(vals2);
+        }
+
+        public void dfs(TreeNode node, List<Integer> vals) {
+            if (node == null) {
+                return;
+            }
+            vals.add(node.val);
+            //这个赋值厉害
+            int L = node.left != null ? node.left.val : -1;
+            int R = node.right != null ? node.right.val : -1;
+
+            //排序.先添加小的.
+            if (L < R) {
+                dfs(node.left, vals);
+                dfs(node.right, vals);
+            } else {
+                dfs(node.right, vals);
+                dfs(node.left, vals);
+            }
+
+            vals.add(null);
         }
     }
 
