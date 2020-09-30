@@ -44,7 +44,6 @@ public class BuildTree {
         //这个下标厉害
         int postIndex;
         int[] postorder;
-        int[] inorder;
         Map<Integer, Integer> map = new HashMap<>();
 
         public TreeNode helper(int inLeft, int inRight) {
@@ -56,6 +55,7 @@ public class BuildTree {
             TreeNode root = new TreeNode(postorder[postIndex--]);
             // 根据 root 所在位置分成左右两棵子树
             int index = map.get(postorder[postIndex]);
+            //一定是先构造right
             // 构造右子树
             root.right = helper(index + 1, inRight);
             // 构造左子树
@@ -65,7 +65,6 @@ public class BuildTree {
 
         public TreeNode buildTree(int[] inorder, int[] postorder) {
             this.postorder = postorder;
-            this.inorder = inorder;
             // 从后序遍历的最后一个元素开始
             postIndex = postorder.length - 1;
 
