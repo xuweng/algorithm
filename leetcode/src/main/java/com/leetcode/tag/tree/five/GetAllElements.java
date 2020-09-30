@@ -23,11 +23,12 @@ public class GetAllElements {
             list2.add(Long.MAX_VALUE);
 
             List<Integer> result = new ArrayList<>();
-            int maxSize = Math.max(list1.size(), list2.size());
+            //合并后的长度
+            int size = list1.size() + list2.size();
 
             int list1Index = 0;
             int list2Index = 0;
-            for (int i = 0; i < maxSize; i++) {
+            for (int i = 0; i < size; i++) {
                 //注意数组越界
                 if (list1.get(list1Index) <= list2.get(list2Index)) {
                     result.add(Math.toIntExact(list1.get(list1Index)));
