@@ -3,7 +3,7 @@ package com.leetcode.tag.tree.five;
 /**
  * 572. 另一个树的子树
  * <p>
- * 这道题有点坑
+ * 这道题有点坑.难怪通过率这么低.
  */
 public class IsSubtree {
     class Solution {
