@@ -97,6 +97,41 @@ public class RecoverTree {
         }
     }
 
+    /**
+     * 方法二：隐式中序遍历
+     */
+    class Solution2 {
+        TreeNode node1, node2, pre;
+        int count;
+
+        public void recoverTree(TreeNode root) {
+            inorder(root);
+
+            int temp = node1.val;
+            node1.val = node2.val;
+            node2.val = temp;
+        }
+
+        private void inorder(TreeNode root) {
+            if (root == null) {
+                return;
+            }
+            inorder(root.left);
+            if (pre != null && pre.val < root.val) {
+                if (count == 0) {
+                    //保持node1不会改变
+                    node1 = pre;
+                }
+                //改变node2
+                node2 = root;
+                count++;
+            }
+
+            pre = root;
+            inorder(root.right);
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
