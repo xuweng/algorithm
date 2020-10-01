@@ -2,6 +2,8 @@ package com.leetcode.tag.tree.five;
 
 /**
  * 572. 另一个树的子树
+ * <p>
+ * 这道题有点坑
  */
 public class IsSubtree {
     class Solution {
