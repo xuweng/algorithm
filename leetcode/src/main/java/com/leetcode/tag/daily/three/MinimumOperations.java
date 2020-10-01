@@ -124,6 +124,8 @@ public class MinimumOperations {
      * <p>
      * 对于左右两个区间, 操作次数为区间长度减去红叶的数量, 对于中间的区间, 操作次数就是红叶的数量.
      * <p>
+     * 需要操作的总次数为 (i - sum[i]) + (n - j - sum[n] + sum[j]) + (sum[j] - sum[i])
+     * <p>
      * 作者：aerysn
      * 链接：https://leetcode-cn.com/problems/UlBDOe/solution/simple-java-by-aerysn/
      * 来源：力扣（LeetCode）
