@@ -134,6 +134,11 @@ public class IsSubtree {
             }
         }
 
+        /**
+         * 可以暴力匹配，也可以使用 KMP 或者 Rabin-Karp 算法
+         *
+         * @return
+         */
         public boolean kmp() {
             int sLen = sOrder.size(), tLen = tOrder.size();
             int[] fail = new int[tOrder.size()];
