@@ -140,6 +140,7 @@ public class MinimumOperations {
             //用 sum[x] 表示 [0, x) 区间内红叶数量
             int[] sum = new int[n + 1];
             for (int i = 0; i < n; i++) {
+                //这个计算厉害
                 sum[i + 1] = sum[i] + (array[i] == 'r' ? 1 : 0);
             }
             int[] min = new int[n + 1];
