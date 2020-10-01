@@ -102,7 +102,7 @@ public class RecoverTree {
      */
     class Solution2 {
         TreeNode node1, node2, pre;
-        int count;
+        boolean first = true;
 
         public void recoverTree(TreeNode root) {
             inorder(root);
@@ -118,13 +118,13 @@ public class RecoverTree {
             }
             inorder(root.left);
             if (pre != null && pre.val < root.val) {
-                if (count == 0) {
+                if (first) {
                     //保持node1不会改变
                     node1 = pre;
                 }
                 //改变node2
                 node2 = root;
-                count++;
+                first = false;
             }
 
             pre = root;
