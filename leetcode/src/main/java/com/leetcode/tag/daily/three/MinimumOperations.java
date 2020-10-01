@@ -36,4 +36,30 @@ public class MinimumOperations {
             return f[n - 1][2];
         }
     }
+
+    /**
+     * 方法二：前缀和 + 动态规划
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/UlBDOe/solution/qiu-xie-shou-cang-ji-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int minimumOperations(String leaves) {
+            int n = leaves.length();
+            int g = leaves.charAt(0) == 'y' ? 1 : -1;
+            int gmin = g;
+            int ans = Integer.MAX_VALUE;
+            for (int i = 1; i < n; ++i) {
+                int isYellow = leaves.charAt(i) == 'y' ? 1 : 0;
+                g += 2 * isYellow - 1;
+                if (i != n - 1) {
+                    ans = Math.min(ans, gmin - g);
+                }
+                gmin = Math.min(gmin, g);
+            }
+            return ans + (g + n) / 2;
+        }
+    }
 }
