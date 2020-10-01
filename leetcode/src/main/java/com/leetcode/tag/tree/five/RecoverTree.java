@@ -117,7 +117,7 @@ public class RecoverTree {
                 return;
             }
             inorder(root.left);
-            if (pre != null && pre.val < root.val) {
+            if (pre != null && pre.val > root.val) {
                 if (first) {
                     //保持node1不会改变
                     node1 = pre;
