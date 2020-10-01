@@ -4,6 +4,8 @@ import java.util.Stack;
 
 /**
  * 1130. 叶值的最小代价生成树
+ * <p>
+ * 最优、最值->dp
  */
 public class MctFromLeafValues {
     /**
