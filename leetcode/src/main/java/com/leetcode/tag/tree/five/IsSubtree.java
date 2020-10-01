@@ -62,7 +62,7 @@ public class IsSubtree {
          * @return
          */
         public boolean isSubtree(TreeNode s, TreeNode t) {
-            return check(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t);
+            return s != null && (check(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t));
         }
 
         public boolean check(TreeNode s, TreeNode t) {
