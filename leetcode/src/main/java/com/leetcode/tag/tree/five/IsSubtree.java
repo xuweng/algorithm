@@ -60,6 +60,8 @@ public class IsSubtree {
          * 简洁代码.
          * <p>
          * 简单的先序遍历.厉害.
+         * <p>
+         * 先序遍历s
          *
          * @param s
          * @param t
