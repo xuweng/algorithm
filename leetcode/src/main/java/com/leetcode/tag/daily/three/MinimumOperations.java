@@ -40,6 +40,14 @@ public class MinimumOperations {
     /**
      * 方法二：前缀和 + 动态规划
      * <p>
+     * 我们也可以尝试从整体的角度考虑这个问题。
+     * <p>
+     * 排列调整成「红、黄、红」三部分
+     * <p>
+     * 假设我们希望将 leaves[0..x]，leaves[x+1..y] 以及 leaves[y+1..n−1] 分别作为每一部分，那么需要的操作次数为：
+     * <p>
+     * isYellow(i)+isRed(i)+isYellow(i)
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/UlBDOe/solution/qiu-xie-shou-cang-ji-by-leetcode-solution/
      * 来源：力扣（LeetCode）
