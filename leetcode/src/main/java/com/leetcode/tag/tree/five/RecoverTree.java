@@ -7,6 +7,9 @@ import java.util.List;
  * 99. 恢复二叉搜索树
  */
 public class RecoverTree {
+    /**
+     * 以为简单.算法错误.
+     */
     class Solution {
         List<TreeNode> list = new ArrayList<>();
 
