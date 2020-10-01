@@ -99,10 +99,11 @@ public class RecoverTree {
 
     /**
      * 方法二：隐式中序遍历
+     * <p>
+     * 简洁代码
      */
     class Solution2 {
         TreeNode node1, node2, pre;
-        boolean first = true;
 
         public void recoverTree(TreeNode root) {
             inorder(root);
@@ -118,13 +119,10 @@ public class RecoverTree {
             }
             inorder(root.left);
             if (pre != null && pre.val > root.val) {
-                if (first) {
-                    //保持node1不会改变
-                    node1 = pre;
-                }
+                //保持node1不会改变
+                node1 = node1 == null ? pre : node1;
                 //改变node2
                 node2 = root;
-                first = false;
             }
 
             pre = root;
