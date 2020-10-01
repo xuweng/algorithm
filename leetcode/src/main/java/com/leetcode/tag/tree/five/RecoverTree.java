@@ -19,9 +19,10 @@ public class RecoverTree {
             int x = -1, y = -1;
             for (int i = 0; i < list.size() - 1; i++) {
                 if (list.get(i).val > list.get(i + 1).val) {
-                    x = i;
-                    if (y == -1) {
-                        y = i + 1;
+                    y = i + 1;
+                    if (x == -1) {
+                        //记录第一个错误数据.
+                        x = i;
                     }
                 }
             }
