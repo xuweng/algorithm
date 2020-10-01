@@ -61,6 +61,8 @@ public class MctFromLeafValues {
                     max[i][j] = maxValue;
                 }
             }
+            //区间:[i,j]
+            //区间dp遍历、枚举:枚举i、j、k
             int[][] dp = new int[n][n];
             for (int j = 0; j < n; j++) {
                 for (int i = j; i >= 0; i--) {
