@@ -9,10 +9,10 @@ public class IsSubtree {
             if (s == null) {
                 return t == null;
             }
-            if (t == null || s.val != t.val) {
+            if (t == null) {
                 return false;
             }
-            return isSubtree(s.left, t.left) && isSubtree(s.right, t.right);
+            return (s.val == t.val && isSubtree(s.left, t.left) && isSubtree(s.right, t.right)) || (isSubtree(s.left, t)) || isSubtree(s.right, t);
         }
     }
 
