@@ -16,14 +16,18 @@ public class RecoverTree {
         public void recoverTree(TreeNode root) {
             inorder(root);
 
+            int x = -1, y = -1;
             for (int i = 0; i < list.size() - 1; i++) {
                 if (list.get(i).val > list.get(i + 1).val) {
-                    int temp = list.get(i).val;
-                    list.get(i).val = list.get(i + 1).val;
-                    list.get(i + 1).val = temp;
-                    break;
+                    x = i;
+                    if (y == -1) {
+                        y = i + 1;
+                    }
                 }
             }
+            int temp = list.get(x).val;
+            list.get(x).val = list.get(y).val;
+            list.get(y).val = temp;
         }
 
         private void inorder(TreeNode root) {
