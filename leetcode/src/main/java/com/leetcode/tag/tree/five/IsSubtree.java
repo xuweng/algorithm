@@ -167,6 +167,15 @@ public class IsSubtree {
         }
     }
 
+    /**
+     * 方法三：树哈希
+     * <p>
+     * 把每个子树都映射成一个唯一的数，如果 t 对应的数字和 s 中任意一个子树映射的数字相等，则 t 是 s 的某一棵子树。
+     */
+    class S {
+
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
