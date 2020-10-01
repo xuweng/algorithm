@@ -43,6 +43,39 @@ public class IsSubtree {
         }
     }
 
+    /**
+     * 先序遍历
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/subtree-of-another-tree/solution/ling-yi-ge-shu-de-zi-shu-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        /**
+         * 简洁代码.
+         * <p>
+         * 简单的先序遍历
+         *
+         * @param s
+         * @param t
+         * @return
+         */
+        public boolean isSubtree(TreeNode s, TreeNode t) {
+            return check(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t);
+        }
+
+        public boolean check(TreeNode s, TreeNode t) {
+            if (s == null) {
+                return t == null;
+            }
+            if (t == null || s.val != t.val) {
+                return false;
+            }
+            return check(s.left, t.left) && check(s.right, t.right);
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
