@@ -118,6 +118,8 @@ public class MinimumOperations {
     }
 
     /**
+     * 前缀和
+     * <p>
      * 逆向思维.从结果开始推导.
      * <p>
      * 用 sum[x] 表示 [0, x) 区间内红叶数量. 假设整理后红叶的区间为 [0, i) 和 [j, n), 那么黄叶区间为 [i, j).
@@ -135,6 +137,7 @@ public class MinimumOperations {
         public int minimumOperations(String leaves) {
             int n = leaves.length();
             char[] array = leaves.toCharArray();
+            //用 sum[x] 表示 [0, x) 区间内红叶数量
             int[] sum = new int[n + 1];
             for (int i = 0; i < n; i++) {
                 sum[i + 1] = sum[i] + (array[i] == 'r' ? 1 : 0);
