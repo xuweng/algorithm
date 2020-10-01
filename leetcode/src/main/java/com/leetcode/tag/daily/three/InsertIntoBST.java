@@ -1,4 +1,4 @@
-package com.leetcode.tag.daily;
+package com.leetcode.tag.daily.three;
 
 /**
  * 701. 二叉搜索树中的插入操作
