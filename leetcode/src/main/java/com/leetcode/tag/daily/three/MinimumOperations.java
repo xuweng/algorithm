@@ -117,4 +117,38 @@ public class MinimumOperations {
         }
     }
 
+    /**
+     * 逆向思维.从结果开始推导.
+     * <p>
+     * 用 sum[x] 表示 [0, x) 区间内红叶数量. 假设整理后红叶的区间为 [0, i) 和 [j, n), 那么黄叶区间为 [i, j).
+     * <p>
+     * 对于左右两个区间, 操作次数为区间长度减去红叶的数量, 对于中间的区间, 操作次数就是红叶的数量.
+     * <p>
+     * 作者：aerysn
+     * 链接：https://leetcode-cn.com/problems/UlBDOe/solution/simple-java-by-aerysn/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        public int minimumOperations(String leaves) {
+            int n = leaves.length();
+            char[] array = leaves.toCharArray();
+            int[] sum = new int[n + 1];
+            for (int i = 0; i < n; i++) {
+                sum[i + 1] = sum[i] + (array[i] == 'r' ? 1 : 0);
+            }
+            int[] min = new int[n + 1];
+            int currentMin = Integer.MAX_VALUE;
+            for (int i = 1; i < n - 1; i++) {
+                currentMin = Math.min(currentMin, i - 2 * sum[i]);
+                min[i] = currentMin;
+            }
+            int result = Integer.MAX_VALUE;
+            for (int j = n - 1; j > 1; j--) {
+                result = Math.min(result, n - sum[n] + min[j - 1] - j + 2 * sum[j]);
+            }
+            return result;
+        }
+    }
+
 }
