@@ -33,7 +33,7 @@ public class MctFromLeafValues {
     }
 
     /**
-     * dp
+     * 区间DP
      * <p>
      * 作者：ke-xue-jia-12
      * 链接：https://leetcode-cn.com/problems/minimum-cost-tree-from-leaf-values/solution/java-dp-by-ke-xue-jia-12/
