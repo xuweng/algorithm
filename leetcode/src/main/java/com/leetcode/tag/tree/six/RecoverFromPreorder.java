@@ -132,6 +132,42 @@ public class RecoverFromPreorder {
         }
     }
 
+    /**
+     * 简洁代码
+     */
+    class Solution3 {
+        int index;
+
+        public TreeNode recoverFromPreorder(String S) {
+            return build(S, 0);
+        }
+
+        private TreeNode build(String S, int level) {
+            int i = index;
+            while (i < S.length() && Character.isDigit(S.charAt(i))) {
+                i++;
+            }
+            TreeNode root = new TreeNode(Integer.parseInt(S.substring(index, i)));
+            index = i;
+            while (i < S.length() && S.charAt(i) == '-') {
+                i++;
+            }
+            if (i - index > level) {
+                index = i;
+                root.left = build(S, level + 1);
+            }
+            i = index;
+            while (i < S.length() && S.charAt(i) == '-') {
+                i++;
+            }
+            if (i - index > level) {
+                index = i;
+                root.right = build(S, level + 1);
+            }
+            return root;
+        }
+    }
+
     static class TreeNode {
         int val;
         TreeNode left;
