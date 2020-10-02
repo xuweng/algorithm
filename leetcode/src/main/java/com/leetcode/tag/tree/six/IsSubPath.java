@@ -4,6 +4,9 @@ package com.leetcode.tag.tree.six;
  * 1367. 二叉树中的列表
  */
 public class IsSubPath {
+    /**
+     * 先序遍历.先序遍历匹配.
+     */
     class Solution {
         public boolean isSubPath(ListNode head, TreeNode root) {
             return (root != null) && (check(head, root) || isSubPath(head, root.left) || isSubPath(head, root.right));
