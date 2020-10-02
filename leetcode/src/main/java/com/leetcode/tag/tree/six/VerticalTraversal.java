@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
  */
 public class VerticalTraversal {
     class Solution {
-        Map<Integer, List<Integer>> map = new HashMap<>();
+        Map<Integer, List<Node>> map = new HashMap<>();
 
         public List<List<Integer>> verticalTraversal(TreeNode root) {
             List<List<Integer>> result = new ArrayList<>();
@@ -17,14 +17,13 @@ public class VerticalTraversal {
             }
             pre(root, 0, 0);
 
-            Map<Integer, List<Integer>> linkedHashMap = map.entrySet().stream()
+            Map<Integer, List<Node>> linkedHashMap = map.entrySet().stream()
                     .sorted(Map.Entry.comparingByKey())
                     .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
                             (oldValue, newValue) -> oldValue, LinkedHashMap::new));
 
             linkedHashMap.forEach((k, v) -> {
-                Collections.sort(v);
-                result.add(v);
+                result.add(v.stream().sorted(Comparator.comparing(Node::getY)).map(Node::getVal).collect(Collectors.toList()));
             });
 
             return result;
@@ -34,34 +33,33 @@ public class VerticalTraversal {
             if (root == null) {
                 return;
             }
-            List<Integer> list = map.getOrDefault(x, new ArrayList<>());
-            list.add(root.val);
+            List<Node> list = map.getOrDefault(x, new ArrayList<>());
+            list.add(new Node(root.val, x, y));
             map.put(x, list);
 
             pre(root.left, x - 1, y - 1);
             pre(root.right, x + 1, y - 1);
         }
 
-        private Node post(TreeNode root) {
-            if (root == null) {
-                return null;
-            }
-            Node left = post(root.left);
-            Node right = post(root.right);
-            Node node = new Node(root.val);
-            return node;
-        }
     }
 
     class Node {
         int val;
         int x;
         int y;
-        TreeNode left;
-        TreeNode right;
 
-        Node(int x) {
-            val = x;
+        Node(int val, int x, int y) {
+            this.val = val;
+            this.x = x;
+            this.y = y;
+        }
+
+        public int getVal() {
+            return val;
+        }
+
+        public int getY() {
+            return y;
         }
     }
 
