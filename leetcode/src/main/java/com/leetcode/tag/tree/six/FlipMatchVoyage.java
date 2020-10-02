@@ -13,12 +13,12 @@ public class FlipMatchVoyage {
         List<Integer> result = new ArrayList<>();
 
         public List<Integer> flipMatchVoyage(TreeNode root, int[] voyage) {
-            pre(root, null, voyage);
+            pre(root, voyage);
 
             return result;
         }
 
-        public void pre(TreeNode root, TreeNode parent, int[] voyage) {
+        public void pre(TreeNode root, int[] voyage) {
             if (root == null || flag) {
                 return;
             }
@@ -34,13 +34,13 @@ public class FlipMatchVoyage {
                     root.left.val = root.right.val;
                     root.right.val = temp;
 
-                    result.add(parent.val);
+                    result.add(root.val);
                 }
 
-                pre(root.left, root, voyage);
+                pre(root.left, voyage);
             }
             if (root.right != null) {
-                pre(root.right, root, voyage);
+                pre(root.right, voyage);
             }
         }
     }
