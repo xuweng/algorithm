@@ -154,6 +154,7 @@ public class RecoverFromPreorder {
             }
             if (i - index > level) {
                 index = i;
+                // '-'的长度+1就会进入下一层
                 root.left = build(S, level + 1);
             }
             i = index;
