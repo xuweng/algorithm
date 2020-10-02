@@ -13,12 +13,10 @@ public class NumJewelsInStones {
             boolean[] Jb = new boolean[100];
             int sum = 0;
             for (char c : J.toCharArray()) {
-                int index = c - '0';
-                Jb[index] = true;
+                Jb[c - '0'] = true;
             }
             for (char c : S.toCharArray()) {
-                int index = c - '0';
-                if (Jb[index]) {
+                if (Jb[c - '0']) {
                     sum++;
                 }
             }
