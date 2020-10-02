@@ -8,7 +8,9 @@ import java.util.Arrays;
 public class NumJewelsInStones {
     static class Solution {
         public int numJewelsInStones(String J, String S) {
+            //默认为false
             boolean[] Jb = new boolean[100];
+            //默认为0
             int[] Sb = new int[100];
             for (char c : J.toCharArray()) {
                 int index = c - '0';
