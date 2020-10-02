@@ -29,7 +29,7 @@ public class FlipMatchVoyage {
                 return;
             }
             if (root.left != null) {
-                if (root.left.val != voyage[rootIndex]) {
+                if (root.left.val != voyage[rootIndex] && root.right != null) {
                     int temp = root.left.val;
                     root.left.val = root.right.val;
                     root.right.val = temp;
