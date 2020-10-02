@@ -3,7 +3,7 @@ package com.leetcode.tag.tree.six;
 /**
  * 1028. 从先序遍历还原二叉树
  * <p>
- * 数字字符串.
+ * 数字字符串.保佑下标没有计算错误.
  */
 public class RecoverFromPreorder {
     class Solution {
