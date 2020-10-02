@@ -54,8 +54,8 @@ public class ThroneInheritance {
         if (!hashMap.containsKey(name)) {
             return;
         }
-        List<String> childs = hashMap.get(name);
-        for (String c : childs) {
+        List<String> childes = hashMap.get(name);
+        for (String c : childes) {
             if (!setDead.contains(c)) {
                 res.add(c);
             }
