@@ -6,7 +6,7 @@ package com.leetcode.tag.tree.six;
  * 数字字符串.保佑下标没有计算错误.
  */
 public class RecoverFromPreorder {
-    class Solution {
+    static class Solution {
         public TreeNode recoverFromPreorder(String S) {
             return recoverFromPreorder(S, 0, S.length() - 1);
         }
@@ -65,7 +65,7 @@ public class RecoverFromPreorder {
         }
     }
 
-    class TreeNode {
+    static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
