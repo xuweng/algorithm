@@ -9,7 +9,20 @@ public class RecoverFromPreorderTest {
     public void recoverFromPreorderTest() {
         String S = "1-2--3--4-5--6--7";
 
-        solution.recoverFromPreorder(S);
+        RecoverFromPreorder.TreeNode treeNode = solution.recoverFromPreorder(S);
+
+        pre(treeNode);
+
+        System.out.println();
+    }
+
+    private void pre(RecoverFromPreorder.TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        System.out.print(root.val + ",");
+        pre(root.left);
+        pre(root.right);
     }
 
 }
