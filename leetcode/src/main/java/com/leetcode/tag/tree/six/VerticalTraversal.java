@@ -23,8 +23,8 @@ public class VerticalTraversal {
                             (oldValue, newValue) -> oldValue, LinkedHashMap::new));
 
             linkedHashMap.forEach((k, v) -> result.add(v.stream()
-                    .sorted(Comparator.comparing(Node::getY).reversed())
                     .sorted(Comparator.comparing(Node::getVal))
+                    .sorted(Comparator.comparing(Node::getY).reversed())
                     .map(Node::getVal).collect(Collectors.toList())));
 
             return result;
