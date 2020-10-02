@@ -15,7 +15,7 @@ public class FlipMatchVoyage {
         public List<Integer> flipMatchVoyage(TreeNode root, int[] voyage) {
             pre(root, null, voyage);
 
-            return flag ? new ArrayList<>() : result;
+            return result;
         }
 
         public void pre(TreeNode root, TreeNode parent, int[] voyage) {
@@ -23,6 +23,8 @@ public class FlipMatchVoyage {
                 return;
             }
             if (root.val != voyage[rootIndex++]) {
+                result.clear();
+                result.add(-1);
                 flag = true;
                 return;
             }
