@@ -25,10 +25,14 @@ public class ConstructMaximumBinaryTree {
 
         private int getMax(int[] nums, int low, int high) {
             int max = Integer.MIN_VALUE;
+            int result = 0;
             for (int i = low; i <= high; i++) {
-                max = Math.max(max, nums[i]);
+                if (nums[i] > max) {
+                    result = i;
+                    max = nums[i];
+                }
             }
-            return max;
+            return result;
         }
     }
 
