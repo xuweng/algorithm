@@ -1,6 +1,5 @@
 package com.leetcode.tag.daily.three;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,8 +11,7 @@ public class NumJewelsInStones {
         public int numJewelsInStones(String J, String S) {
             //默认为false
             boolean[] Jb = new boolean[100];
-            //默认为0
-            int[] Sb = new int[100];
+            int sum = 0;
             for (char c : J.toCharArray()) {
                 int index = c - '0';
                 Jb[index] = true;
@@ -21,10 +19,10 @@ public class NumJewelsInStones {
             for (char c : S.toCharArray()) {
                 int index = c - '0';
                 if (Jb[index]) {
-                    Sb[index]++;
+                    sum++;
                 }
             }
-            return Arrays.stream(Sb).filter(i -> i != -1).sum();
+            return sum;
         }
     }
 
