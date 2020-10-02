@@ -50,6 +50,7 @@ public class Connect {
                 int n = queue.size();
                 for (int i = 1; i <= n; ++i) {
                     Node node = queue.poll();
+                    //注意这个条件
                     if (i < n) {
                         node.next = queue.peek();
                     }
