@@ -69,6 +69,8 @@ public class RecoverFromPreorder {
     }
 
     /**
+     * 通过 - 的个数，我们就可以知道当前节点的深度信息
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/recover-a-tree-from-preorder-traversal/solution/cong-xian-xu-bian-li-huan-yuan-er-cha-shu-by-leetc/
      * 来源：力扣（LeetCode）
@@ -106,6 +108,27 @@ public class RecoverFromPreorder {
                 path.pop();
             }
             return path.peek();
+        }
+    }
+
+    /**
+     * 正则
+     */
+    class Solution2 {
+        public TreeNode recoverFromPreorder(String S) {
+            return build(S, "-");
+        }
+
+        private TreeNode build(String S, String delim) {
+            String[] tokens = S.split(String.format("(?<=\\d)%s(?=\\d)", delim));
+            TreeNode root = new TreeNode(Integer.parseInt(tokens[0]));
+            if (tokens.length > 1) {
+                root.left = build(tokens[1], delim + "-");
+            }
+            if (tokens.length > 2) {
+                root.right = build(tokens[2], delim + "-");
+            }
+            return root;
         }
     }
 
