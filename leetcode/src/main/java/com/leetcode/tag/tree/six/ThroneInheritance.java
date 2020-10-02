@@ -59,5 +59,70 @@ public class ThroneInheritance {
         }
 
     }
+
+    class ThroneInheritance1 {
+        /**
+         * 自定义数据结构
+         */
+        class Node {
+            String name;
+            Node left;
+            Node right;
+            boolean isAlive;
+
+            public Node(String name) {
+                this.name = name;
+                isAlive = true;
+                left = null;
+                right = null;
+            }
+        }
+
+        Node root;
+        Map<String, Node> map;
+        List<String> inherit;
+
+        public ThroneInheritance1(String kingName) {
+            root = new Node(kingName);
+            map = new HashMap<>();
+            map.put(kingName, root);
+        }
+
+        public void birth(String parentName, String childName) {
+            Node parentNode = map.get(parentName);
+            Node childNode = new Node(childName);
+            map.put(childName, childNode);
+            if (parentNode.left == null) {
+                parentNode.left = childNode;
+            } else {
+                Node tmp = parentNode.left;
+                while (tmp.right != null) {
+                    tmp = tmp.right;
+                }
+                tmp.right = childNode;
+            }
+        }
+
+        public void death(String name) {
+            map.get(name).isAlive = false;
+        }
+
+        public List<String> getInheritanceOrder() {
+            inherit = new ArrayList<>();
+            preOrder(root);
+            return inherit;
+        }
+
+        private void preOrder(Node root) {
+            if (root == null) {
+                return;
+            }
+            if (root.isAlive) {
+                inherit.add(root.name);
+            }
+            preOrder(root.left);
+            preOrder(root.right);
+        }
+    }
 }
 
