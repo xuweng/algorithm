@@ -170,6 +170,51 @@ public class RecoverFromPreorder {
         }
     }
 
+    class Solution4 {
+        int ith = 0;
+        char[] str = null;
+
+        public TreeNode recoverFromPreorder(String S) {
+            str = S.toCharArray();
+            TreeNode virtual = new TreeNode(-1);
+            build(virtual, -1, 0);
+            return virtual.left;
+        }
+
+        public int build(TreeNode pre, int preDeep, int nextDeep) {
+            while (preDeep + 1 == nextDeep) {
+                TreeNode newNode = new TreeNode(val());
+                if (pre.left == null) {
+                    pre.left = newNode;
+                } else {
+                    pre.right = newNode;
+                }
+                nextDeep = build(newNode, nextDeep, deep());
+            }
+            return nextDeep;
+        }
+
+        int val() {
+            int val = 0;
+            while (ith < str.length && '0' <= str[ith] && str[ith] <= '9') {
+                val = val * 10 + (str[ith++] - '0');
+            }
+            return val;
+        }
+
+        int deep() {
+            if (ith >= str.length) {
+                return -1;
+            }
+            int oldIth = ith;
+            while (str[ith] == '-') {
+                ith++;
+            }
+            return ith - oldIth;
+        }
+    }
+
+
     static class TreeNode {
         int val;
         TreeNode left;
