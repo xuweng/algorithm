@@ -13,7 +13,10 @@ public class IsSubPath {
             if (root == null) {
                 return head == null;
             }
-            if (head == null || head.val != root.val) {
+            if (head == null) {
+                return true;
+            }
+            if (head.val != root.val) {
                 return false;
             }
             return check(head.next, root.left) || check(head.next, root.right);
