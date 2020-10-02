@@ -44,6 +44,79 @@ public class VerticalTraversal {
 
     }
 
+    /**
+     * 方法一：记录坐标
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/vertical-order-traversal-of-a-binary-tree/solution/er-cha-shu-de-chui-xu-bian-li-by-leetcode-2/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        List<Location> locations;
+
+        public List<List<Integer>> verticalTraversal(TreeNode root) {
+            // Each location is a node's x position, y position, and value
+            locations = new ArrayList<>();
+            dfs(root, 0, 0);
+            Collections.sort(locations);
+
+            List<List<Integer>> ans = new ArrayList<>();
+            ans.add(new ArrayList<>());
+
+            int prev = locations.get(0).x;
+
+            for (Location loc : locations) {
+                // If the x value changed, it's part of a new report.
+                if (loc.x != prev) {
+                    prev = loc.x;
+                    ans.add(new ArrayList<>());
+                }
+
+                // We always add the node's value to the latest report.
+                ans.get(ans.size() - 1).add(loc.val);
+            }
+
+            return ans;
+        }
+
+        public void dfs(TreeNode node, int x, int y) {
+            if (node == null) {
+                return;
+            }
+            locations.add(new Location(x, y, node.val));
+            dfs(node.left, x - 1, y + 1);
+            dfs(node.right, x + 1, y + 1);
+        }
+    }
+
+    class Location implements Comparable<Location> {
+        int x, y, val;
+
+        Location(int x, int y, int val) {
+            this.x = x;
+            this.y = y;
+            this.val = val;
+        }
+
+        /**
+         * x 坐标排序，再根据 y 坐标排序，最后是val排序
+         *
+         * @param that
+         * @return
+         */
+        @Override
+        public int compareTo(Location that) {
+            if (this.x != that.x) {
+                return Integer.compare(this.x, that.x);
+            } else if (this.y != that.y) {
+                return Integer.compare(this.y, that.y);
+            } else {
+                return Integer.compare(this.val, that.val);
+            }
+        }
+    }
+
     class Node {
         int val;
         int x;
