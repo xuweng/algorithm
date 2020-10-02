@@ -48,14 +48,16 @@ public class Connect {
             queue.offer(root);
             while (!queue.isEmpty()) {
                 int n = queue.size();
-                for (int i = 1; i < n; ++i) {
-                    Node f = queue.poll();
-                    f.next = queue.peek();
-                    if (f.left != null) {
-                        queue.offer(f.left);
+                for (int i = 1; i <= n; ++i) {
+                    Node node = queue.poll();
+                    if (!queue.isEmpty()) {
+                        node.next = queue.peek();
                     }
-                    if (f.right != null) {
-                        queue.offer(f.right);
+                    if (node.left != null) {
+                        queue.offer(node.left);
+                    }
+                    if (node.right != null) {
+                        queue.offer(node.right);
                     }
                 }
             }
