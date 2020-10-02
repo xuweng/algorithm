@@ -3,6 +3,16 @@ package com.leetcode.tag.daily.three;
 import org.junit.Test;
 
 public class NumJewelsInStonesTest {
+    NumJewelsInStones.Solution solution = new NumJewelsInStones.Solution();
+
+    @Test
+    public void numJewelsInStonesTest() {
+        String J = "aA";
+        String S = "aAAbbbb";
+
+        solution.numJewelsInStones(J, S);
+    }
+
     @Test
     public void test() {
         System.out.println(Character.isUpperCase('A'));
