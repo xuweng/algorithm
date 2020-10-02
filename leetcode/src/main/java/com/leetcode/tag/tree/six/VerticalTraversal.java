@@ -35,7 +35,7 @@ public class VerticalTraversal {
                 return;
             }
             List<Integer> list = map.getOrDefault(x, new ArrayList<>());
-            list.add(x);
+            list.add(root.val);
             map.put(x, list);
 
             pre(root.left, x - 1, y - 1);
