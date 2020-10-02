@@ -136,6 +136,7 @@ public class RecoverFromPreorder {
      * 简洁代码
      */
     class Solution3 {
+        //这个厉害
         int index;
 
         public TreeNode recoverFromPreorder(String S) {
