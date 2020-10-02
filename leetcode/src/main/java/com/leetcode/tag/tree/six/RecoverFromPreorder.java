@@ -21,7 +21,7 @@ public class RecoverFromPreorder {
                 return new TreeNode(Integer.parseInt(S.substring(low, high + 1)));
             }
             int length = firstIndex[1] - firstIndex[0] + 1;
-            int index = getIndex(S, low, high, length);
+            int index = getIndex(S, firstIndex[1] + 1, high, length);
             int left = index == -1 ? high : index - length - 1;
             int right = index == -1 ? high + 1 : index;
 
