@@ -31,9 +31,9 @@ public class FlipMatchVoyage {
             if (root.left != null) {
                 if (root.left.val != voyage[rootIndex] && root.right != null) {
                     //注意npe
-                    int temp = root.left.val;
-                    root.left.val = root.right.val;
-                    root.right.val = temp;
+                    TreeNode temp = root.left;
+                    root.left = root.right;
+                    root.right = temp;
 
                     result.add(root.val);
                 }
