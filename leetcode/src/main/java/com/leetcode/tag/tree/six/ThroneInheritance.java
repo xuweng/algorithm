@@ -27,13 +27,9 @@ public class ThroneInheritance {
     }
 
     public void birth(String parentName, String childName) {
-        if (hashMap.containsKey(parentName)) {
-            hashMap.get(parentName).add(childName);
-        } else {
-            List<String> temp = new ArrayList<>();
-            temp.add(childName);
-            hashMap.put(parentName, temp);
-        }
+        List<String> list = hashMap.getOrDefault(parentName, new ArrayList<>());
+        list.add(childName);
+        hashMap.put(parentName, list);
     }
 
     public void death(String name) {
