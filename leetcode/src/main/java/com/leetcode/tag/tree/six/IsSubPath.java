@@ -8,6 +8,13 @@ public class IsSubPath {
      * 先序遍历.先序遍历匹配.
      */
     class Solution {
+        /**
+         * 匹配
+         *
+         * @param head 匹配串
+         * @param root 原字符串
+         * @return
+         */
         public boolean isSubPath(ListNode head, TreeNode root) {
             return (root != null) && (check(head, root) || isSubPath(head, root.left) || isSubPath(head, root.right));
         }
