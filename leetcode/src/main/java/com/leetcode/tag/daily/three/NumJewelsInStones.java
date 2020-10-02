@@ -10,8 +10,6 @@ public class NumJewelsInStones {
         public int numJewelsInStones(String J, String S) {
             boolean[] Jb = new boolean[100];
             int[] Sb = new int[100];
-            Arrays.fill(Jb, false);
-            Arrays.fill(Sb, -1);
             for (char c : J.toCharArray()) {
                 int index = c - '0';
                 Jb[index] = true;

@@ -10,7 +10,7 @@ public class NumJewelsInStonesTest {
         String J = "aA";
         String S = "aAAbbbb";
 
-        solution.numJewelsInStones(J, S);
+        System.out.println(solution.numJewelsInStones(J, S));
     }
 
     @Test
