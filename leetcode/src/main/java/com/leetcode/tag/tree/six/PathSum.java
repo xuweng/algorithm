@@ -38,6 +38,8 @@ public class PathSum {
     }
 
     /**
+     * 和相关-前缀和.
+     * <p>
      * 前缀和+回溯
      * <p>
      * 作者：burning-summer
