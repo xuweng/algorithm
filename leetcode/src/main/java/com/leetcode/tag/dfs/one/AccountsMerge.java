@@ -57,6 +57,7 @@ public class AccountsMerge {
                         }
                     }
                     Collections.sort(component);
+                    //头插法
                     component.add(0, emailToName.get(email));
                     ans.add(component);
                 }
