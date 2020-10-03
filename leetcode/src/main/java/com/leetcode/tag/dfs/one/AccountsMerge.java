@@ -7,6 +7,8 @@ import java.util.*;
  */
 public class AccountsMerge {
     /**
+     * 方法一：深度优先搜索
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/accounts-merge/solution/zhang-hu-he-bing-by-leetcode/
      * 来源：力扣（LeetCode）
@@ -14,7 +16,9 @@ public class AccountsMerge {
      */
     class Solution {
         public List<List<String>> accountsMerge(List<List<String>> accounts) {
+            //记录一张从电子邮件到名字的哈希表
             Map<String, String> emailToName = new HashMap<>();
+            //无向图.两个方向.
             Map<String, ArrayList<String>> graph = new HashMap<>();
             for (List<String> account : accounts) {
                 String name = "";
