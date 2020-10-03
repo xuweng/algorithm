@@ -23,8 +23,9 @@ public class AccountsMerge {
                         name = email;
                         continue;
                     }
-                    graph.computeIfAbsent(email, x -> new ArrayList<String>()).add(account.get(1));
-                    graph.computeIfAbsent(account.get(1), x -> new ArrayList<String>()).add(email);
+                    //这个函数厉害
+                    graph.computeIfAbsent(email, x -> new ArrayList<>()).add(account.get(1));
+                    graph.computeIfAbsent(account.get(1), x -> new ArrayList<>()).add(email);
                     emailToName.put(email, name);
                 }
             }
