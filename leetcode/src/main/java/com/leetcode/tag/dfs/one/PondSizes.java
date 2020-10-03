@@ -27,13 +27,13 @@ public class PondSizes {
                 for (int i1 = 0; i1 < land[0].length; i1++) {
                     if (land[i][i1] == 0 && !used[i][i1]) {
                         dfs(land, i, i1);
-                        result.add(count + 1);
+                        result.add(count);
                         count = 0;
                     }
                 }
             }
 
-            return result.stream().mapToInt(Integer::intValue).toArray();
+            return result.stream().sorted().mapToInt(Integer::intValue).toArray();
         }
 
         public void dfs(int[][] land, int r, int c) {
