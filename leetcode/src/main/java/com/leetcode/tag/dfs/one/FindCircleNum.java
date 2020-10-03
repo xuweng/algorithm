@@ -15,8 +15,10 @@ public class FindCircleNum {
             for (int i = 0; i < M.length; i++) {
                 for (int i1 = 0; i1 < M[0].length; i1++) {
                     if (M[i][i1] == 1 && !used[i][i1]) {
-                        result++;
-                        dfs(M, i, i1);
+                        int count = dfs(M, i, i1);
+                        if (count > 1) {
+                            result++;
+                        }
                     }
                 }
             }
@@ -24,14 +26,16 @@ public class FindCircleNum {
             return result;
         }
 
-        private void dfs(int[][] M, int row, int col) {
+        private int dfs(int[][] M, int row, int col) {
             if (row < 0 || row >= M.length || col < 0 || col >= M[0].length || M[row][col] == 0 || used[row][col]) {
-                return;
+                return 0;
             }
             used[row][col] = true;
+            int count = 1;
             for (int i = 0; i < r.length; i++) {
-                dfs(M, row + r[i], col + c[i]);
+                count += dfs(M, row + r[i], col + c[i]);
             }
+            return count;
         }
     }
 }
