@@ -26,7 +26,7 @@ public class PondSizes {
             for (int i = 0; i < land.length; i++) {
                 for (int i1 = 0; i1 < land[0].length; i1++) {
                     if (land[i][i1] == 0 && !used[i][i1]) {
-                        dfs(land, i, i1, 0);
+                        dfs(land, i, i1);
                         result.add(count + 1);
                         count = 0;
                     }
@@ -36,10 +36,12 @@ public class PondSizes {
             return result.stream().mapToInt(Integer::intValue).toArray();
         }
 
-        public void dfs(int[][] land, int r, int c, int sum) {
+        public void dfs(int[][] land, int r, int c) {
             if (r < 0 || r >= land.length || c < 0 || c >= land[0].length || land[r][c] != 0) {
-                count += sum;
                 return;
+            }
+            if (land[r][c] == 0) {
+                count++;
             }
             used[r][c] = true;
             for (int i = 0; i < row.length; i++) {
@@ -47,7 +49,7 @@ public class PondSizes {
                     continue;
                 }
                 usedBack[r][c] = true;
-                dfs(land, r + row[i], c + col[i], sum + 1);
+                dfs(land, r + row[i], c + col[i]);
                 usedBack[r][c] = false;
             }
         }
