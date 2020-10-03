@@ -26,7 +26,7 @@ public class FindMode {
             inorder(root.left);
 
             if (pre != null) {
-                count = pre.val == root.val ? count++ : 0;
+                count = pre.val == root.val ? ++count : 0;
                 if (count > max) {
                     list.clear();
                     max = count;
