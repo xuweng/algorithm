@@ -40,7 +40,7 @@ public class PondSizes {
             if (r < 0 || r >= land.length || c < 0 || c >= land[0].length || land[r][c] != 0) {
                 return;
             }
-            if (land[r][c] == 0) {
+            if (!used[r][c] && land[r][c] == 0) {
                 count++;
             }
             used[r][c] = true;
