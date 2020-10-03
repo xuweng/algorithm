@@ -1,7 +1,11 @@
 package com.leetcode.tag.dfs.one;
 
 /**
- * 547. 朋友圈
+ * 547. 朋友圈.
+ * <p>
+ * 搞懂题意.
+ * <p>
+ * 无向图.搞懂题意.
  */
 public class FindCircleNum {
     class Solution {
