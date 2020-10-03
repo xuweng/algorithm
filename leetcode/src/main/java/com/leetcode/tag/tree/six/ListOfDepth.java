@@ -23,13 +23,14 @@ public class ListOfDepth {
             if (root == null) {
                 return;
             }
+            ListNode listNode = new ListNode(root.val);
             if (map.containsKey(level)) {
-                map.get(level).next = new ListNode(root.val);
+                map.get(level).next = listNode;
             } else {
-                ListNode listNode = new ListNode(root.val);
                 result.add(listNode);
-                map.put(level, listNode);
             }
+            map.put(level, listNode);
+
             pre(root, level + 1);
             pre(root, level + 1);
         }
