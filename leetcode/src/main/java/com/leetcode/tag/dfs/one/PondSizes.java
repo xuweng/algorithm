@@ -14,10 +14,12 @@ public class PondSizes {
         int[] row = {-1, 1, 0, 0, -1, -1, 1, 1};
         int[] col = {0, 0, -1, 1, -1, 1, -1, 1};
 
+        boolean[][] usedBack;
         boolean[][] used;
         int count;
 
         public int[] pondSizes(int[][] land) {
+            usedBack = new boolean[land.length][land[0].length];
             used = new boolean[land.length][land[0].length];
 
             List<Integer> result = new ArrayList<>();
@@ -41,12 +43,14 @@ public class PondSizes {
             if (!used[r][c] && land[r][c] == 0) {
                 count++;
             }
+            used[r][c] = true;
             for (int i = 0; i < row.length; i++) {
-                if (used[r][c]) {
+                if (usedBack[r][c]) {
                     continue;
                 }
-                used[r][c] = true;
+                usedBack[r][c] = true;
                 dfs(land, r + row[i], c + col[i]);
+                usedBack[r][c] = false;
             }
         }
     }
