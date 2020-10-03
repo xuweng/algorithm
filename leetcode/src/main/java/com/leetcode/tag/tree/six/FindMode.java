@@ -1,7 +1,7 @@
 package com.leetcode.tag.tree.six;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * 501. 二叉搜索树中的众数
@@ -11,12 +11,12 @@ public class FindMode {
         TreeNode pre;
         int max;
         int count;
-        List<Integer> list = new ArrayList<>();
+        Set<Integer> set = new HashSet<>();
 
         public int[] findMode(TreeNode root) {
             inorder(root);
 
-            return list.stream().mapToInt(Integer::intValue).toArray();
+            return set.stream().mapToInt(Integer::intValue).toArray();
         }
 
         private void inorder(TreeNode root) {
@@ -28,11 +28,11 @@ public class FindMode {
             if (pre != null) {
                 count = pre.val == root.val ? ++count : 0;
                 if (count > max) {
-                    list.clear();
+                    set.clear();
                     max = count;
                 }
             }
-            list.add(root.val);
+            set.add(root.val);
             pre = root;
 
             inorder(root.right);
