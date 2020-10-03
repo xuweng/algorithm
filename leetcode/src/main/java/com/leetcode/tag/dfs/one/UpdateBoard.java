@@ -95,6 +95,7 @@ public class UpdateBoard {
         }
 
         public void bfs(char[][] board, int sx, int sy) {
+            // 队列保存坐标
             Queue<int[]> queue = new LinkedList<>();
             boolean[][] vis = new boolean[board.length][board[0].length];
             queue.offer(new int[]{sx, sy});
