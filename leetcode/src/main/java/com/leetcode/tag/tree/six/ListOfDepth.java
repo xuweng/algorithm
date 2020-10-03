@@ -31,8 +31,8 @@ public class ListOfDepth {
             }
             map.put(level, listNode);
 
-            pre(root, level + 1);
-            pre(root, level + 1);
+            pre(root.left, level + 1);
+            pre(root.right, level + 1);
         }
     }
 
