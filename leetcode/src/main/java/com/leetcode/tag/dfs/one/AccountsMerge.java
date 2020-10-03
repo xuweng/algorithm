@@ -26,6 +26,7 @@ public class AccountsMerge {
                 String name = "";
                 for (String email : account) {
                     if (Objects.equals(name, "")) {
+                        //第一个是name.
                         name = email;
                         continue;
                     }
