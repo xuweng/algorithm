@@ -12,7 +12,7 @@ public class AddTwoNumbers {
             ListNode listNode = new ListNode(str.charAt(str.length() - 1));
             ListNode tail = listNode;
             for (int i = str.length() - 2; i >= 0; i--) {
-                ListNode l = new ListNode(str.charAt(i));
+                ListNode l = new ListNode(Integer.parseInt(String.valueOf(str.charAt(i))));
                 tail.next = l;
                 tail = l;
             }
