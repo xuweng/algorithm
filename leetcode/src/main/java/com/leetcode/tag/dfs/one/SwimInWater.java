@@ -9,6 +9,8 @@ import java.util.Set;
  * 778. 水位上升的泳池中游泳
  * <p>
  * 十分钟看答案.
+ * <p>
+ * Dijkstra算法
  */
 public class SwimInWater {
     /**
