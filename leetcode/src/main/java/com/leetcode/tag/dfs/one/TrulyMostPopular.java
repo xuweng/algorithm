@@ -1,6 +1,8 @@
 package com.leetcode.tag.dfs.one;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -58,6 +60,101 @@ public class TrulyMostPopular {
             }
             return res;
         }
+    }
+
+    class Solution1 {
+        HashMap<String, Integer> nameIndexMap;
+        HashMap<String, String> disJoinMap;
+        int[] frequencies;
+        String[] pureNames;
+
+        public String[] trulyMostPopular(String[] names, String[] synonyms) {
+            disJoinMap = new HashMap<>();
+            nameIndexMap = new HashMap<>();
+            int n = names.length;
+            frequencies = new int[n];
+            pureNames = new String[n];
+
+            UF set = new UF(n);
+            int i = 0;
+            for (String nameCount : names) {
+                int index1 = nameCount.indexOf("(");
+                String name = nameCount.substring(0, index1);
+                String count = nameCount.substring(index1 + 1, nameCount.length() - 1);
+                int countInt = Integer.parseInt(count);
+
+                frequencies[i] = countInt;
+                nameIndexMap.put(name, i);
+                pureNames[i++] = name;
+            }
+
+            for (String synName : synonyms) {
+                int index2 = synName.indexOf(",");
+                String name1 = synName.substring(1, index2);
+                String name2 = synName.substring(index2 + 1, synName.length() - 1);
+
+                if (nameIndexMap.containsKey(name1) && nameIndexMap.containsKey(name2)) {
+                    set.union(nameIndexMap.get(name1), nameIndexMap.get(name2));
+                }
+            }
+
+            int[] counts = new int[n];
+            for (int j = 0; j < n; j++) {
+                int index = set.find(j);
+                counts[index] += frequencies[j];
+            }
+
+
+            List<String> resList = new ArrayList<>();
+            for (int j = 0; j < n; j++) {
+                if (counts[j] != 0) {
+                    String sb = pureNames[j] + '(' +
+                            counts[j] +
+                            ')';
+                    resList.add(sb);
+                }
+            }
+
+            return resList.toArray(new String[0]);
+        }
+
+        private class UF {
+            int[] f;
+            int[] sf;
+
+            UF(int n) {
+                f = new int[n];
+                sf = new int[n];
+
+                for (int i = 0; i < n; i++) {
+                    f[i] = i;
+                    sf[i] = 1;
+                }
+            }
+
+            public int find(int x) {
+                while (x != f[x]) {
+                    x = f[x];
+                }
+                return x;
+            }
+
+            public void union(int x, int y) {
+                int rootX = find(x);
+                int rootY = find(y);
+
+                if (rootX == rootY) {
+                    return;
+                }
+                //长名字合并到短名字
+                if (pureNames[rootX].compareTo(pureNames[rootY]) > 0) {
+                    f[rootX] = rootY;
+                } else {
+                    f[rootY] = rootX;
+                }
+            }
+        }
+
     }
 
 }
