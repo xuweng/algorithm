@@ -199,6 +199,7 @@ public class FindCircleNum {
                     }
                 }
             }
+            //统计root的个数
             return (int) Arrays.stream(parent).filter(j -> j == -1).count();
         }
     }
