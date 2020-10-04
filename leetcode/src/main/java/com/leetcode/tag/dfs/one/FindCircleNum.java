@@ -49,6 +49,8 @@ public class FindCircleNum {
     }
 
     /**
+     * 邻接矩阵的dfs
+     * <p>
      * 方法 1：深度优先搜索
      * <p>
      * 把 M 看成图的邻接矩阵
