@@ -21,7 +21,7 @@ public class AddTwoNumbers {
         }
 
         private String getInt(ListNode listNode) {
-            return listNode == null ? "" : getInt(listNode) + listNode.val;
+            return listNode == null ? "" : getInt(listNode.next) + listNode.val;
         }
     }
 
