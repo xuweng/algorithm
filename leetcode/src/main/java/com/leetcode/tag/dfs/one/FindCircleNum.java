@@ -13,11 +13,20 @@ import java.util.Queue;
  * 邻接矩阵.邻接表.每行都代表顶点.
  */
 public class FindCircleNum {
+    /**
+     * 按照坐标dfs
+     */
     class Solution {
         int[] r = {-1, 1, 0, 0};
         int[] c = {0, 0, -1, 1};
         boolean[][] used;
 
+        /**
+         * 按照坐标dfs
+         *
+         * @param M
+         * @return
+         */
         public int findCircleNum(int[][] M) {
             used = new boolean[M.length][M[0].length];
             int result = 0;
@@ -49,6 +58,8 @@ public class FindCircleNum {
     }
 
     /**
+     * 按照图的顶点dfs
+     * <p>
      * 邻接矩阵的dfs
      * <p>
      * 图的遍历.可能有些顶点没有连通.需要从每个顶点开始dfs.
