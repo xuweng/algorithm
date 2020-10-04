@@ -42,6 +42,7 @@ public class AddTwoNumbers {
      */
     class Solution1 {
         public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+            //使用头尾结点
             ListNode head = null, tail = null;
             //进位值
             int carry = 0;
