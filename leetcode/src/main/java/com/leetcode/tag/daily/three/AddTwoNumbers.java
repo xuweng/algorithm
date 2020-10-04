@@ -43,17 +43,22 @@ public class AddTwoNumbers {
     class Solution1 {
         public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
             ListNode head = null, tail = null;
+            //进位值
             int carry = 0;
             while (l1 != null || l2 != null) {
+                //如果两个链表的长度不同，则可以认为长度短的链表的后面有若干个 00
                 int n1 = l1 != null ? l1.val : 0;
                 int n2 = l2 != null ? l2.val : 0;
                 int sum = n1 + n2 + carry;
                 if (head == null) {
+                    //厉害
+                    //答案:sum % 10
                     head = tail = new ListNode(sum % 10);
                 } else {
                     tail.next = new ListNode(sum % 10);
                     tail = tail.next;
                 }
+                //新的进位值
                 carry = sum / 10;
                 if (l1 != null) {
                     l1 = l1.next;
