@@ -12,6 +12,8 @@ import java.util.Queue;
  * 无向图.搞懂题意.
  * <p>
  * 邻接矩阵.邻接表.每行都代表顶点.
+ * <p>
+ * 按照坐标dfs.按照行dfs.按照顶点dfs.
  */
 public class FindCircleNum {
     /**
