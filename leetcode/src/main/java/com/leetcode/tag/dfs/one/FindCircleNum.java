@@ -96,6 +96,7 @@ public class FindCircleNum {
          * @return
          */
         public int findCircleNum(int[][] M) {
+            //顶点是否访问过.不是坐标.
             boolean[] visited = new boolean[M.length];
             //连通块的个数
             int count = 0;
@@ -123,6 +124,7 @@ public class FindCircleNum {
      */
     class Solution2 {
         public int findCircleNum(int[][] M) {
+            ////顶点是否访问过.不是坐标.
             boolean[] visited = new boolean[M.length];
             int count = 0;
             Queue<Integer> queue = new LinkedList<>();
@@ -132,13 +134,14 @@ public class FindCircleNum {
                 }
                 queue.add(i);
                 while (!queue.isEmpty()) {
-                    int s = queue.remove();
+                    int s = queue.poll();
                     visited[s] = true;
+                    //顶点s的邻接顶点入队
                     for (int j = 0; j < M.length; j++) {
                         if (M[s][j] != 1 || visited[j]) {
                             continue;
                         }
-                        queue.add(j);
+                        queue.offer(j);
                     }
                 }
                 count++;
