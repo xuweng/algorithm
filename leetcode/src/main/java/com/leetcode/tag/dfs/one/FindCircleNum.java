@@ -1,5 +1,6 @@
 package com.leetcode.tag.dfs.one;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -145,6 +146,50 @@ public class FindCircleNum {
                     }
                 }
                 count++;
+            }
+            return count;
+        }
+    }
+
+    /**
+     * 方法 3：并查集
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/friend-circles/solution/peng-you-quan-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        int find(int[] parent, int i) {
+            if (parent[i] == -1) {
+                return i;
+            }
+            return find(parent, parent[i]);
+        }
+
+        void union(int[] parent, int x, int y) {
+            int xset = find(parent, x);
+            int yset = find(parent, y);
+            if (xset != yset) {
+                parent[xset] = yset;
+            }
+        }
+
+        public int findCircleNum(int[][] M) {
+            int[] parent = new int[M.length];
+            Arrays.fill(parent, -1);
+            for (int i = 0; i < M.length; i++) {
+                for (int j = 0; j < M.length; j++) {
+                    if (M[i][j] == 1 && i != j) {
+                        union(parent, i, j);
+                    }
+                }
+            }
+            int count = 0;
+            for (int j : parent) {
+                if (j == -1) {
+                    count++;
+                }
             }
             return count;
         }
