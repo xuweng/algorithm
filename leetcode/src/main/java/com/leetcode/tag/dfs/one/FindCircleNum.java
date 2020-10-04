@@ -154,6 +154,10 @@ public class FindCircleNum {
     /**
      * 方法 3：并查集
      * <p>
+     * 复杂度分析
+     * 时间复杂度：O(n^3)，访问整个矩阵一次，并查集操作需要最坏 O(n) 的时间。
+     * 空间复杂度：O(n)，parent 大小为 n。
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/friend-circles/solution/peng-you-quan-by-leetcode/
      * 来源：力扣（LeetCode）
