@@ -14,6 +14,8 @@ public class SwimInWater {
     /**
      * 方法一： 堆【通过】
      * <p>
+     * 用优先队列保存下一步可以游向的平台，每次都选择高度最小的平台。以这种方式到达终点时，路径中遇到的最高平台就是答案。
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/swim-in-rising-water/solution/shui-wei-shang-sheng-de-yong-chi-zhong-you-yong-by/
      * 来源：力扣（LeetCode）
