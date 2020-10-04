@@ -20,6 +20,12 @@ public class AddTwoNumbers {
             return listNode;
         }
 
+        /**
+         * 大数溢出
+         *
+         * @param listNode
+         * @return
+         */
         private String getLong(ListNode listNode) {
             return listNode == null ? "" : getLong(listNode.next) + listNode.val;
         }
