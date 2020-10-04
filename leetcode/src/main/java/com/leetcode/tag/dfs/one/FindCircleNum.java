@@ -54,13 +54,21 @@ public class FindCircleNum {
      * 把 M 看成图的邻接矩阵
      */
     class Solution1 {
+        /**
+         * @param M
+         * @param visited
+         * @param i       顶点.邻接矩阵.其实是每行.
+         */
         public void dfs(int[][] M, boolean[] visited, int i) {
+            //遍历第i行的列
+            //遍历顶点i的邻接顶点
             for (int j = 0; j < M.length; j++) {
                 if (M[i][j] != 1 || visited[j]) {
                     continue;
                 }
                 visited[j] = true;
                 dfs(M, visited, j);
+                //visited没有回溯
             }
         }
 
@@ -76,6 +84,7 @@ public class FindCircleNum {
             boolean[] visited = new boolean[M.length];
             //连通块的个数
             int count = 0;
+            //遍历每行.遍历每个顶点.
             for (int i = 0; i < M.length; i++) {
                 if (visited[i]) {
                     continue;
