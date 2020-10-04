@@ -1,11 +1,16 @@
 package com.leetcode.tag.dfs.one;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * 547. 朋友圈.
  * <p>
  * 搞懂题意.
  * <p>
  * 无向图.搞懂题意.
+ * <p>
+ * 邻接矩阵
  */
 public class FindCircleNum {
     class Solution {
@@ -49,25 +54,70 @@ public class FindCircleNum {
      * 把 M 看成图的邻接矩阵
      */
     class Solution1 {
-        public void dfs(int[][] M, int[] visited, int i) {
+        public void dfs(int[][] M, boolean[] visited, int i) {
             for (int j = 0; j < M.length; j++) {
-                if (M[i][j] == 1 && visited[j] == 0) {
-                    visited[j] = 1;
-                    dfs(M, visited, j);
+                if (M[i][j] != 1 || visited[j]) {
+                    continue;
                 }
+                visited[j] = true;
+                dfs(M, visited, j);
             }
         }
 
+        /**
+         * N * N 的矩阵 M
+         * <p>
+         * N 名学生
+         *
+         * @param M
+         * @return
+         */
         public int findCircleNum(int[][] M) {
-            int[] visited = new int[M.length];
+            boolean[] visited = new boolean[M.length];
+            //连通块的个数
             int count = 0;
             for (int i = 0; i < M.length; i++) {
-                if (visited[i] == 0) {
-                    //i是起点
-                    //还是tree好.tree的起点是root.
-                    dfs(M, visited, i);
-                    count++;
+                if (visited[i]) {
+                    continue;
                 }
+                //i是起点
+                //还是tree好.tree的起点是root.
+                dfs(M, visited, i);
+                count++;
+            }
+            return count;
+        }
+    }
+
+    /**
+     * 方法 2：广度优先搜索
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/friend-circles/solution/peng-you-quan-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public int findCircleNum(int[][] M) {
+            boolean[] visited = new boolean[M.length];
+            int count = 0;
+            Queue<Integer> queue = new LinkedList<>();
+            for (int i = 0; i < M.length; i++) {
+                if (visited[i]) {
+                    continue;
+                }
+                queue.add(i);
+                while (!queue.isEmpty()) {
+                    int s = queue.remove();
+                    visited[s] = true;
+                    for (int j = 0; j < M.length; j++) {
+                        if (M[s][j] != 1 || visited[j]) {
+                            continue;
+                        }
+                        queue.add(j);
+                    }
+                }
+                count++;
             }
             return count;
         }
