@@ -45,6 +45,7 @@ public class AddTwoNumbers {
             ListNode head = null, tail = null;
             //进位值
             int carry = 0;
+            //遍历两个链表
             while (l1 != null || l2 != null) {
                 //如果两个链表的长度不同，则可以认为长度短的链表的后面有若干个 00
                 int n1 = l1 != null ? l1.val : 0;
@@ -60,6 +61,8 @@ public class AddTwoNumbers {
                 }
                 //新的进位值
                 carry = sum / 10;
+                //厉害
+                //l1和l2同时移动
                 if (l1 != null) {
                     l1 = l1.next;
                 }
