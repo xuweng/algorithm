@@ -6,7 +6,7 @@ package com.leetcode.tag.daily.three;
 public class AddTwoNumbers {
     class Solution {
         public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-            int sum = Integer.parseInt(getInt(l1) + getInt(l2));
+            int sum = Integer.parseInt(getInt(l1)) + Integer.parseInt(getInt(l2));
             String str = String.valueOf(sum);
 
             ListNode listNode = new ListNode(str.charAt(str.length() - 1));
