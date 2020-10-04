@@ -132,7 +132,7 @@ public class FindCircleNum {
                 if (visited[i]) {
                     continue;
                 }
-                queue.add(i);
+                queue.offer(i);
                 while (!queue.isEmpty()) {
                     int s = queue.poll();
                     visited[s] = true;
