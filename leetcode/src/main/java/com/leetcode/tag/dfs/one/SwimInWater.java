@@ -29,17 +29,22 @@ public class SwimInWater {
             pq.offer(0);
             int ans = 0;
 
+            //上下左右
             int[] dr = new int[]{1, -1, 0, 0};
             int[] dc = new int[]{0, 0, 1, -1};
 
             while (!pq.isEmpty()) {
                 int k = pq.poll();
-                int r = k / N, c = k % N;
+                //计算行
+                int r = k / N;
+                //计算列
+                int c = k % N;
                 ans = Math.max(ans, grid[r][c]);
                 if (r == N - 1 && c == N - 1) {
                     return ans;
                 }
 
+                //遍历上下左右
                 for (int i = 0; i < 4; ++i) {
                     int cr = r + dr[i], cc = c + dc[i];
                     int ck = cr * N + cc;
