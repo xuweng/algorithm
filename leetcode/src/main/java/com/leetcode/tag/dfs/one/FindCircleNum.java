@@ -186,6 +186,7 @@ public class FindCircleNum {
             int xRoot = find(parent, x);
             int yRoot = find(parent, y);
 
+            //此条件必须.否则x和y会形成环.并查集是树.并查集不是图.
             if (xRoot != yRoot) {
                 parent[xRoot] = yRoot;
             }
