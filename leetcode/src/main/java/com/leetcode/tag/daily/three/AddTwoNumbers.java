@@ -9,7 +9,7 @@ public class AddTwoNumbers {
             int sum = Integer.parseInt(getInt(l1)) + Integer.parseInt(getInt(l2));
             String str = String.valueOf(sum);
 
-            ListNode listNode = new ListNode(str.charAt(str.length() - 1));
+            ListNode listNode = new ListNode(Integer.parseInt(String.valueOf(str.charAt(str.length() - 1))));
             ListNode tail = listNode;
             for (int i = str.length() - 2; i >= 0; i--) {
                 ListNode l = new ListNode(Integer.parseInt(String.valueOf(str.charAt(i))));
