@@ -47,7 +47,7 @@ public class AddTwoNumbers {
             int carry = 0;
             //遍历两个链表
             while (l1 != null || l2 != null) {
-                //如果两个链表的长度不同，则可以认为长度短的链表的后面有若干个 00
+                //如果两个链表的长度不同，则可以认为长度短的链表的后面有若干个 0
                 int n1 = l1 != null ? l1.val : 0;
                 int n2 = l2 != null ? l2.val : 0;
                 int sum = n1 + n2 + carry;
