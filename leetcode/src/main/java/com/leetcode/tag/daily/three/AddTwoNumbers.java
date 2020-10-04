@@ -6,7 +6,7 @@ package com.leetcode.tag.daily.three;
 public class AddTwoNumbers {
     class Solution {
         public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-            int sum = Integer.parseInt(getInt(l1)) + Integer.parseInt(getInt(l2));
+            long sum = Long.parseLong(getLong(l1)) + Long.parseLong(getLong(l2));
             String str = String.valueOf(sum);
 
             ListNode listNode = new ListNode(Integer.parseInt(String.valueOf(str.charAt(str.length() - 1))));
@@ -20,8 +20,8 @@ public class AddTwoNumbers {
             return listNode;
         }
 
-        private String getInt(ListNode listNode) {
-            return listNode == null ? "" : getInt(listNode.next) + listNode.val;
+        private String getLong(ListNode listNode) {
+            return listNode == null ? "" : getLong(listNode.next) + listNode.val;
         }
     }
 
