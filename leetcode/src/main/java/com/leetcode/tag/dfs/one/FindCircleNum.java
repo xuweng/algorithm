@@ -10,7 +10,7 @@ import java.util.Queue;
  * <p>
  * 无向图.搞懂题意.
  * <p>
- * 邻接矩阵.邻接表.
+ * 邻接矩阵.邻接表.每行都代表顶点.
  */
 public class FindCircleNum {
     class Solution {
