@@ -17,6 +17,10 @@ import java.util.Set;
  * 无向图
  * <p>
  * 带权有向图
+ * <p>
+ * Floyd-Warshall算法（Floyd-Warshall algorithm）是解决任意两点间的最短路径的一种算法
+ * <p>
+ * Floyd算法是一个经典的动态规划算法
  */
 public class SwimInWater {
     /**
