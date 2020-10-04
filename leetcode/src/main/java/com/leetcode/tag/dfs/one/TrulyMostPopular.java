@@ -157,4 +157,61 @@ public class TrulyMostPopular {
 
     }
 
+    class Solution2 {
+        private Node find(Node node) {
+            return node.parent == null ? node : (node.parent = find(node.parent));
+        }
+
+        public String[] trulyMostPopular(String[] names, String[] synonyms) {
+            Node[] list = new Node[names.length];
+            Map<String, Integer> index = new HashMap<>();
+            for (int i = 0; i < names.length; i++) {
+                list[i] = new Node(names[i]);
+                index.put(list[i].name, i);
+            }
+            int merged = 0, length = 0;
+            for (String pair : synonyms) {
+                int sp = pair.indexOf(',');
+                String s1 = pair.substring(1, sp);
+                String s2 = pair.substring(sp + 1, pair.length() - 1);
+                Integer id1 = index.get(s1);
+                Integer id2 = index.get(s2);
+                if (id1 == null || id2 == null) {
+                    continue;
+                }
+                Node f1 = find(list[id1]);
+                Node f2 = find(list[id2]);
+                if (f1 != f2) {
+                    if (f2.name.compareTo(f1.name) < 0) {
+                        Node temp = f1;
+                        f1 = f2;
+                        f2 = temp;
+                    }
+                    f1.count += f2.count;
+                    f2.parent = f1;
+                    merged++;
+                }
+            }
+            String[] ans = new String[names.length - merged];
+            for (Node node : list) {
+                if (node.parent == null) {
+                    ans[length++] = node.name + "(" + node.count + ")";
+                }
+            }
+            return ans;
+        }
+    }
+
+    class Node {
+        String name;
+        int count;
+        Node parent = null;
+
+        Node(String s) {
+            int sp = s.indexOf('(');
+            this.name = s.substring(0, sp);
+            this.count = Integer.parseInt(s.substring(sp + 1, s.length() - 1));
+        }
+    }
+
 }
