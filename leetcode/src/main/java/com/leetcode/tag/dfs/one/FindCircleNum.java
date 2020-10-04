@@ -91,7 +91,7 @@ public class FindCircleNum {
                 if (visited[i]) {
                     continue;
                 }
-                //i是起点
+                //i是顶点
                 //还是tree好.tree的起点是root.
                 dfs(M, visited, i);
                 count++;
