@@ -11,6 +11,12 @@ import java.util.Set;
  * 十分钟看答案.
  * <p>
  * Dijkstra算法
+ * <p>
+ * Dijkstra(迪杰斯特拉)算法是典型的单源最短路径算法
+ * <p>
+ * 无向图
+ * <p>
+ * 带权有向图
  */
 public class SwimInWater {
     /**
