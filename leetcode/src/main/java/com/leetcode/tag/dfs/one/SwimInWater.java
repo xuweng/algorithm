@@ -1,9 +1,6 @@
 package com.leetcode.tag.dfs.one;
 
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.PriorityQueue;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 778. 水位上升的泳池中游泳
@@ -74,4 +71,60 @@ public class SwimInWater {
             return ans;
         }
     }
+
+    /**
+     * 方法二： 二分搜索 + 深度优先搜索
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/swim-in-rising-water/solution/shui-wei-shang-sheng-de-yong-chi-zhong-you-yong-by/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int swimInWater(int[][] grid) {
+            int N = grid.length;
+            int low = grid[0][0], high = N * N;
+            while (low < high) {
+                int mid = low + (high - low) / 2;
+                if (!possible(mid, grid)) {
+                    low = mid + 1;
+                } else {
+                    high = mid;
+                }
+            }
+            return low;
+        }
+
+        public boolean possible(int T, int[][] grid) {
+            int N = grid.length;
+            Set<Integer> seen = new HashSet<>();
+            seen.add(0);
+            int[] dr = new int[]{1, -1, 0, 0};
+            int[] dc = new int[]{0, 0, 1, -1};
+
+            Stack<Integer> stack = new Stack<>();
+            stack.add(0);
+
+            while (!stack.empty()) {
+                int k = stack.pop();
+                int r = k / N, c = k % N;
+                if (r == N - 1 && c == N - 1) {
+                    return true;
+                }
+
+                for (int i = 0; i < 4; ++i) {
+                    int cr = r + dr[i], cc = c + dc[i];
+                    int ck = cr * N + cc;
+                    if (0 <= cr && cr < N && 0 <= cc && cc < N
+                            && !seen.contains(ck) && grid[cr][cc] <= T) {
+                        stack.add(ck);
+                        seen.add(ck);
+                    }
+                }
+            }
+
+            return false;
+        }
+    }
+
 }
