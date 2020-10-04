@@ -1,13 +1,14 @@
 package com.leetcode.tag.daily.three;
 
+import java.math.BigInteger;
+
 /**
  * 2. 两数相加
  */
 public class AddTwoNumbers {
     class Solution {
         public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-            long sum = Long.parseLong(getLong(l1)) + Long.parseLong(getLong(l2));
-            String str = String.valueOf(sum);
+            String str = String.valueOf(new BigInteger(getLong(l1)).add(new BigInteger(getLong(l2))));
 
             ListNode listNode = new ListNode(Integer.parseInt(String.valueOf(str.charAt(str.length() - 1))));
             ListNode tail = listNode;
