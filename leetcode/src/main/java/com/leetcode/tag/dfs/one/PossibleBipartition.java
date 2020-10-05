@@ -1,9 +1,6 @@
 package com.leetcode.tag.dfs.one;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 886. 可能的二分法
@@ -137,6 +134,54 @@ public class PossibleBipartition {
                 //异或厉害
                 if (!dfs(nei, c ^ 1)) {
                     return false;
+                }
+            }
+            return true;
+        }
+    }
+
+    /**
+     * 本质上就是看相邻的两个点是不是能够染成不同的颜色
+     * <p>
+     * 0101010101...
+     * <p>
+     * 作者：heidi-1
+     * 链接：https://leetcode-cn.com/problems/possible-bipartition/solution/javaunion-findgai-jin-guo-de-bing-cha-ji-zuo-fa-by/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public boolean possibleBipartition(int N, int[][] dislikes) {
+            List<Set<Integer>> graph = new ArrayList<>();
+            for (int i = 0; i <= N; i++) {
+                graph.add(new HashSet<>());
+            }
+            for (int[] edge : dislikes) {
+                graph.get(edge[0]).add(edge[1]);
+                graph.get(edge[1]).add(edge[0]);
+            }
+
+            int[] colors = new int[N + 1];
+
+            for (int i = 1; i < N + 1; i++) {
+                if (colors[i] != 0) {
+                    continue;
+                }
+                Queue<Integer> queue = new LinkedList<>();
+                colors[i] = 1;
+                queue.add(i);
+                while (!queue.isEmpty()) {
+                    int curr = queue.poll();
+                    int color = colors[curr];
+                    int nextColor = color == 1 ? 2 : 1;
+                    for (int neighbor : graph.get(curr)) {
+                        if (colors[neighbor] == 0) {
+                            colors[neighbor] = nextColor;
+                            queue.add(neighbor);
+                        } else if (colors[neighbor] != nextColor) {
+                            return false;
+                        }
+                    }
                 }
             }
             return true;
