@@ -141,6 +141,8 @@ public class PossibleBipartition {
     }
 
     /**
+     * bfs
+     * <p>
      * 本质上就是看相邻的两个点是不是能够染成不同的颜色
      * <p>
      * 0101010101...
@@ -163,21 +165,24 @@ public class PossibleBipartition {
 
             int[] colors = new int[N + 1];
 
-            for (int i = 1; i < N + 1; i++) {
+            //dfs和bfs都要遍历每个顶点
+            //遍历每个顶点
+            for (int i = 1; i <= N; i++) {
                 if (colors[i] != 0) {
                     continue;
                 }
                 Queue<Integer> queue = new LinkedList<>();
                 colors[i] = 1;
-                queue.add(i);
+                queue.offer(i);
                 while (!queue.isEmpty()) {
                     int curr = queue.poll();
                     int color = colors[curr];
                     int nextColor = color == 1 ? 2 : 1;
+                    //链接顶点
                     for (int neighbor : graph.get(curr)) {
                         if (colors[neighbor] == 0) {
                             colors[neighbor] = nextColor;
-                            queue.add(neighbor);
+                            queue.offer(neighbor);
                         } else if (colors[neighbor] != nextColor) {
                             return false;
                         }
