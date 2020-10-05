@@ -141,6 +141,8 @@ public class PossibleBipartition {
     }
 
     /**
+     * BFS染色法
+     * <p>
      * bfs
      * <p>
      * 本质上就是看相邻的两个点是不是能够染成不同的颜色
