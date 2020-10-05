@@ -106,6 +106,8 @@ public class PossibleBipartition {
         }
 
         /**
+         * 把node结点变成c颜色
+         * <p>
          * 软色:0-1-0-1-0...
          *
          * @param node
