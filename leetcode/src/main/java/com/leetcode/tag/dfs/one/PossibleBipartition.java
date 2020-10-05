@@ -2,6 +2,7 @@ package com.leetcode.tag.dfs.one;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -69,27 +70,37 @@ public class PossibleBipartition {
     /**
      * 方法：深度优先搜索
      * <p>
+     * 对于每个连通的部分，我们只需试着用两种颜色对它进行着色，就可以检查它是否是二分的
+     * <p>
+     * 如何做到这一点：将任一结点涂成红色，然后将它的所有邻居都涂成蓝色，然后将所有的邻居的邻居都涂成红色，以此类推
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/possible-bipartition/solution/ke-neng-de-er-fen-fa-by-leetcode/
      * 来源：力扣（LeetCode）
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution1 {
-        ArrayList<Integer>[] graph;
+        //图存储方式是邻接矩阵和邻接表
+        //邻接表
+        //用map来表示图的邻接表
+        List<List<Integer>> graph;
         Map<Integer, Integer> color;
 
         public boolean possibleBipartition(int N, int[][] dislikes) {
-            graph = new ArrayList[N + 1];
-            for (int i = 1; i <= N; ++i) {
-                graph[i] = new ArrayList<>();
+            graph = new ArrayList<>(N + 1);
+            for (int i = 0; i <= N; ++i) {
+                graph.add(new ArrayList<>());
             }
 
+            //图构建
+            //无向图构建
             for (int[] edge : dislikes) {
-                graph[edge[0]].add(edge[1]);
-                graph[edge[1]].add(edge[0]);
+                graph.get(edge[0]).add(edge[1]);
+                graph.get(edge[1]).add(edge[0]);
             }
 
             color = new HashMap<>();
+            //图从顶点开始dfs
             for (int node = 1; node <= N; ++node) {
                 if (!color.containsKey(node) && !dfs(node, 0)) {
                     return false;
@@ -104,7 +115,7 @@ public class PossibleBipartition {
             }
             color.put(node, c);
 
-            for (int nei : graph[node]) {
+            for (int nei : graph.get(node)) {
                 if (!dfs(nei, c ^ 1)) {
                     return false;
                 }
