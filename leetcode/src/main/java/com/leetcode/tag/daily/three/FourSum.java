@@ -200,6 +200,7 @@ public class FourSum {
                     continue;
                 }
                 if (i < nums.length - 1 && cur + nums[i] + (3 - list.size()) * nums[i + 1] > target) {
+                    //递归返回
                     return;
                 }
                 if (i < nums.length - 1 && cur + nums[i] + (3 - list.size()) * nums[nums.length - 1] < target) {
