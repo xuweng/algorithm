@@ -193,9 +193,10 @@ public class FourSum {
                 if (nums.length - i < 4 - list.size()) {
                     return;
                 }
+                // 对第i个判断
                 // 测试用例:111111
                 //这个条件厉害.去重.
-                if (begin != i && nums[i - 1] == nums[i]) {
+                if (i != begin && nums[i] == nums[i - 1]) {
                     continue;
                 }
                 if (i < nums.length - 1 && cur + nums[i] + (3 - list.size()) * nums[i + 1] > target) {
