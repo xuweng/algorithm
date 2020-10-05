@@ -16,9 +16,11 @@ public class DecodeString {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution {
-        int ptr;
+        int current;
 
         /**
+         * 好多细节处理
+         * <p>
          * 遇到数字、字母、[都入栈
          * <p>
          * 遇到]出栈
@@ -30,10 +32,8 @@ public class DecodeString {
          */
         public String decodeString(String s) {
             LinkedList<String> stk = new LinkedList<>();
-            ptr = 0;
-
-            while (ptr < s.length()) {
-                char cur = s.charAt(ptr);
+            while (current < s.length()) {
+                char cur = s.charAt(current);
                 //遇到数字、字母、[都入栈
                 //遇到]出栈
                 if (Character.isDigit(cur)) {
@@ -42,10 +42,10 @@ public class DecodeString {
                     stk.addLast(digits);
                 } else if (Character.isLetter(cur) || cur == '[') {
                     // 获取一个字母或者[并进栈
-                    stk.addLast(String.valueOf(s.charAt(ptr++)));
+                    stk.addLast(String.valueOf(s.charAt(current++)));
                 } else {
                     //处理]
-                    ++ptr;
+                    ++current;
                     LinkedList<String> sub = new LinkedList<>();
                     while (!"[".equals(stk.peekLast())) {
                         sub.addLast(stk.removeLast());
@@ -55,14 +55,14 @@ public class DecodeString {
                     stk.removeLast();
                     // 此时栈顶为当前 sub 对应的字符串应该出现的次数
                     int repTime = Integer.parseInt(stk.removeLast());
-                    StringBuilder t = new StringBuilder();
-                    String o = getString(sub);
+                    String string = getString(sub);
+                    StringBuilder stringBuilder = new StringBuilder();
                     // 构造字符串
                     while (repTime-- > 0) {
-                        t.append(o);
+                        stringBuilder.append(string);
                     }
                     // 将构造好的字符串入栈
-                    stk.addLast(t.toString());
+                    stk.addLast(stringBuilder.toString());
                 }
             }
 
@@ -79,8 +79,8 @@ public class DecodeString {
          */
         public String getDigits(String s) {
             StringBuilder ret = new StringBuilder();
-            while (Character.isDigit(s.charAt(ptr))) {
-                ret.append(s.charAt(ptr++));
+            while (Character.isDigit(s.charAt(current))) {
+                ret.append(s.charAt(current++));
             }
             return ret.toString();
         }
