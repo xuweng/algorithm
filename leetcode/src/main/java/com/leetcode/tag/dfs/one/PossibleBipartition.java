@@ -83,20 +83,16 @@ public class PossibleBipartition {
         //图存储方式是邻接矩阵和邻接表
         //邻接表
         //用map来表示图的邻接表
-        List<List<Integer>> graph;
+        Map<Integer, List<Integer>> graph;
         Map<Integer, Integer> color;
 
         public boolean possibleBipartition(int N, int[][] dislikes) {
-            graph = new ArrayList<>(N + 1);
-            for (int i = 0; i <= N; ++i) {
-                graph.add(new ArrayList<>());
-            }
-
+            graph = new HashMap<>(N + 1);
             //无向图构建
             //用map来表示无向图的邻接表
             for (int[] edge : dislikes) {
-                graph.get(edge[0]).add(edge[1]);
-                graph.get(edge[1]).add(edge[0]);
+                graph.computeIfAbsent(edge[0], v -> new ArrayList<>()).add(edge[1]);
+                graph.computeIfAbsent(edge[1], v -> new ArrayList<>()).add(edge[0]);
             }
 
             color = new HashMap<>();
@@ -109,6 +105,13 @@ public class PossibleBipartition {
             return true;
         }
 
+        /**
+         * 软色:0-1-0-1-0...
+         *
+         * @param node
+         * @param c
+         * @return
+         */
         public boolean dfs(int node, int c) {
             if (color.containsKey(node)) {
                 return color.get(node) == c;
