@@ -55,4 +55,27 @@ public class FourSum {
             }
         }
     }
+
+    /**
+     * 暴力
+     */
+    class Solution1 {
+        public List<List<Integer>> fourSum(int[] nums, int target) {
+            List<List<Integer>> result = new ArrayList<>();
+
+            for (int i = 0; i <= nums.length - 4; i++) {
+                for (int i1 = i + 1; i1 <= nums.length - 3; i1++) {
+                    for (int i2 = i1 + 1; i2 <= nums.length - 2; i2++) {
+                        for (int i3 = i2 + 1; i3 <= nums.length - 1; i3++) {
+                            if (nums[i] + nums[i1] + nums[i2] + nums[i3] == target) {
+                                result.add(Arrays.asList(nums[i], nums[i1], nums[i2], nums[i3]));
+                            }
+                        }
+                    }
+                }
+            }
+
+            return result;
+        }
+    }
 }
