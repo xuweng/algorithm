@@ -119,11 +119,12 @@ public class PossibleBipartition {
             color.put(node, c);
 
             for (int nei : graph.get(node)) {
-                if (!dfs(nei, c ^ 1)) {
-                    return false;
+                //异或厉害
+                if (dfs(nei, c ^ 1)) {
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
     }
 
