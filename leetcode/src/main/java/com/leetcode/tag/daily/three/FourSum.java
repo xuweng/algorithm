@@ -68,13 +68,15 @@ public class FourSum {
                 for (int i1 = i + 1; i1 <= nums.length - 3; i1++) {
                     for (int i2 = i1 + 1; i2 <= nums.length - 2; i2++) {
                         for (int i3 = i2 + 1; i3 <= nums.length - 1; i3++) {
-                            String s = nums[i] + "" + nums[i1] + "" + nums[i2] + "" + nums[i3];
-                            if (set.contains(s)) {
-                                continue;
-                            }
                             if (nums[i] + nums[i1] + nums[i2] + nums[i3] == target) {
+                                int[] array = {nums[i], nums[i1], nums[i2], nums[i3]};
+                                Arrays.sort(array);
+
+                                String s = array[0] + "" + array[1] + "" + array[2] + "" + array[3];
+                                if (!set.contains(s)) {
+                                    result.add(Arrays.asList(nums[i], nums[i1], nums[i2], nums[i3]));
+                                }
                                 set.add(s);
-                                result.add(Arrays.asList(nums[i], nums[i1], nums[i2], nums[i3]));
                             }
                         }
                     }
