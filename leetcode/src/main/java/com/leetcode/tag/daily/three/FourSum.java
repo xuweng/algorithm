@@ -153,4 +153,63 @@ public class FourSum {
         }
     }
 
+    /**
+     * 回溯大家都会，问题是剪枝
+     * <p>
+     * 首先将 nums 升序排序，并把答案四元组中没确定的个数设为 n
+     * <p>
+     * 我把剪枝分为了 4 类，括号内的是用什么完成剪枝
+     * <p>
+     * 如果剩余可选的数字数量少于 n，则剪掉（递归返回）；
+     * 每层递归中，从第二轮循环开始，如果数组中当前数字和前一个相同，则剪掉（进行下一次循环，这条的任务就是去重）；
+     * 如果 当前数字 + 已确定数字的和 + (n - 1) * 排序后数组中当前数字的下一个数字 > target，则说明后面的数无论怎么选，加起来都一定大于 target，所以剪掉（递归返回）；
+     * 如果 当前数字 + 已确定数字的和 + (n - 1) * 排序后数组最后一个数字 < target，则说明后面的数无论怎么选，加起来都一定小于 target，所以剪掉（进行下一次循环）；
+     * <p>
+     * 作者：Provencih
+     * 链接：https://leetcode-cn.com/problems/4sum/solution/mei-kan-dao-ji-ge-hui-su-de-ti-jie-na-wo-lai-xie-y/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        int cur = 0;
+
+        public List<List<Integer>> fourSum(int[] nums, int target) {
+            Arrays.sort(nums);
+            dfs(nums, target, 0);
+            return ans;
+        }
+
+        void dfs(int[] nums, int target, int begin) {
+            if (list.size() == 4) {
+                if (cur == target) {
+                    ans.add(new ArrayList<>(list));
+                }
+                return;
+            }
+
+            for (int i = begin; i < nums.length; i++) {
+                if (nums.length - i < 4 - list.size()) {
+                    return;
+                }
+                //这个条件厉害.去重.
+                if (begin != i && nums[i - 1] == nums[i]) {
+                    continue;
+                }
+                if (i < nums.length - 1 && cur + nums[i] + (3 - list.size()) * nums[i + 1] > target) {
+                    return;
+                }
+                if (i < nums.length - 1 && cur + nums[i] + (3 - list.size()) * nums[nums.length - 1] < target) {
+                    continue;
+                }
+                cur += nums[i];
+                list.add(nums[i]);
+                dfs(nums, target, i + 1);
+                list.remove(list.size() - 1);
+                cur -= nums[i];
+            }
+        }
+    }
+
 }
