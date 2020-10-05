@@ -215,4 +215,52 @@ public class FourSum {
         }
     }
 
+    class Solution4 {
+        public List<List<Integer>> fourSum(int[] nums, int target) {
+            Deque<Integer> stack = new LinkedList<>();
+            List<List<Integer>> result = new ArrayList<>();
+
+            Arrays.sort(nums);
+            back(nums, target, 0, stack, result);
+
+            return result;
+        }
+
+        /**
+         * 超出时间限制
+         * <p>
+         * 通过start去重.
+         * <p>
+         * used是排列用法.
+         * <p>
+         * 排序去重.
+         *
+         * @param nums
+         * @param target
+         * @param start
+         * @param stack
+         * @param result
+         */
+        private void back(int[] nums, int target, int start, Deque<Integer> stack, List<List<Integer>> result) {
+            if (stack.size() == 4) {
+                if (target == 0) {
+                    result.add(new ArrayList<>(stack));
+                }
+                return;
+            }
+            for (int i = start; i < nums.length; i++) {
+                if (i > start && nums[i] == nums[i - 1]) {
+                    continue;
+                }
+                //负数算法错误.负数求和是坑.
+                if (nums[i] > target) {
+                    return;
+                }
+                stack.push(nums[i]);
+                back(nums, target - nums[i], i + 1, stack, result);
+                stack.pop();
+            }
+        }
+    }
+
 }
