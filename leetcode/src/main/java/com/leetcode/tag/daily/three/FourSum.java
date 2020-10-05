@@ -32,11 +32,10 @@ public class FourSum {
          * @param result
          */
         private void back(int[] nums, int target, boolean[] used, int start, Deque<Integer> stack, List<List<Integer>> result) {
-            if (stack.size() == 4 && target == 0) {
-                result.add(new ArrayList<>(stack));
-                return;
-            }
-            if (stack.size() > 4) {
+            if (stack.size() == 4) {
+                if (target == 0) {
+                    result.add(new ArrayList<>(stack));
+                }
                 return;
             }
             for (int i = start; i < nums.length; i++) {
