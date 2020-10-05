@@ -30,9 +30,10 @@ public class DecodeString {
                     String digits = getDigits(s);
                     stk.addLast(digits);
                 } else if (Character.isLetter(cur) || cur == '[') {
-                    // 获取一个字母并进栈
+                    // 获取一个字母或者[并进栈
                     stk.addLast(String.valueOf(s.charAt(ptr++)));
                 } else {
+                    //处理]
                     ++ptr;
                     LinkedList<String> sub = new LinkedList<>();
                     while (!"[".equals(stk.peekLast())) {
