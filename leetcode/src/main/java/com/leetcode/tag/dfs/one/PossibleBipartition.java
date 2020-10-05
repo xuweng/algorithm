@@ -92,8 +92,8 @@ public class PossibleBipartition {
                 graph.add(new ArrayList<>());
             }
 
-            //图构建
             //无向图构建
+            //用map来表示无向图的邻接表
             for (int[] edge : dislikes) {
                 graph.get(edge[0]).add(edge[1]);
                 graph.get(edge[1]).add(edge[0]);
