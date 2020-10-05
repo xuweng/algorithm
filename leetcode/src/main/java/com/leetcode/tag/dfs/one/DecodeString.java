@@ -57,6 +57,14 @@ public class DecodeString {
             return getString(stk);
         }
 
+        /**
+         * 数字字符串
+         * <p>
+         * "15"
+         *
+         * @param s
+         * @return
+         */
         public String getDigits(String s) {
             StringBuilder ret = new StringBuilder();
             while (Character.isDigit(s.charAt(ptr))) {
