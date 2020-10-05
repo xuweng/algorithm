@@ -25,7 +25,7 @@ public class FourSum {
             if (stack.size() > 4) {
                 return;
             }
-            for (int i = start; i <= nums.length - 4; i++) {
+            for (int i = start; i < nums.length; i++) {
                 stack.push(nums[i]);
                 back(nums, target - nums[i], i + 1, stack, result);
                 stack.pop();
