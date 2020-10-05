@@ -21,6 +21,8 @@ public class FourSum {
          * 通过start去重.
          * <p>
          * used是排列用法.
+         * <p>
+         * 排序去重.
          *
          * @param nums
          * @param target
@@ -37,6 +39,9 @@ public class FourSum {
                 return;
             }
             for (int i = start; i < nums.length; i++) {
+                if (i > 1 && nums[i] == nums[i - 1]) {
+                    continue;
+                }
                 stack.push(nums[i]);
                 back(nums, target - nums[i], i + 1, stack, result);
                 stack.pop();
