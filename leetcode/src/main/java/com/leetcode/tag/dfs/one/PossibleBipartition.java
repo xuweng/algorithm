@@ -102,6 +102,7 @@ public class PossibleBipartition {
             color = new HashMap<>();
             //图从顶点开始dfs
             for (int node = 1; node <= N; ++node) {
+                //此条件必须.
                 if (!graph.containsKey(node)) {
                     continue;
                 }
