@@ -83,6 +83,7 @@ public class PossibleBipartition {
         //图存储方式是邻接矩阵和邻接表
         //邻接表
         //用map来表示图的邻接表
+        //key是顶点,value是邻接表
         Map<Integer, List<Integer>> graph;
         Map<Integer, Integer> color;
 
