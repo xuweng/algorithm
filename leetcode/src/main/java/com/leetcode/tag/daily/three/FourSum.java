@@ -99,12 +99,13 @@ public class FourSum {
      */
     class Solution2 {
         public List<List<Integer>> fourSum(int[] nums, int target) {
-            List<List<Integer>> quadruplets = new ArrayList<>();
+            List<List<Integer>> result = new ArrayList<>();
             if (nums == null || nums.length < 4) {
-                return quadruplets;
+                return result;
             }
             Arrays.sort(nums);
             int length = nums.length;
+            //枚举第1个数
             for (int i = 0; i < length - 3; i++) {
                 if (i > 0 && nums[i] == nums[i - 1]) {
                     continue;
@@ -115,6 +116,7 @@ public class FourSum {
                 if (nums[i] + nums[length - 3] + nums[length - 2] + nums[length - 1] < target) {
                     continue;
                 }
+                //枚举第2个数
                 for (int j = i + 1; j < length - 2; j++) {
                     if (j > i + 1 && nums[j] == nums[j - 1]) {
                         continue;
@@ -125,11 +127,12 @@ public class FourSum {
                     if (nums[i] + nums[j] + nums[length - 2] + nums[length - 1] < target) {
                         continue;
                     }
+                    //使用双指针枚举剩下的两个数的时间复杂度是 O(n)
                     int left = j + 1, right = length - 1;
                     while (left < right) {
                         int sum = nums[i] + nums[j] + nums[left] + nums[right];
                         if (sum == target) {
-                            quadruplets.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));
+                            result.add(Arrays.asList(nums[i], nums[j], nums[left], nums[right]));
                             while (left < right && nums[left] == nums[left + 1]) {
                                 left++;
                             }
@@ -146,7 +149,7 @@ public class FourSum {
                     }
                 }
             }
-            return quadruplets;
+            return result;
         }
     }
 
