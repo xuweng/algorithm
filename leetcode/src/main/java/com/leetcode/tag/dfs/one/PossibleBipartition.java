@@ -87,6 +87,9 @@ public class PossibleBipartition {
         Map<Integer, Integer> color;
 
         public boolean possibleBipartition(int N, int[][] dislikes) {
+            if (dislikes == null || dislikes.length == 0) {
+                return true;
+            }
             graph = new HashMap<>(N);
             //无向图构建
             //用map来表示无向图的邻接表
