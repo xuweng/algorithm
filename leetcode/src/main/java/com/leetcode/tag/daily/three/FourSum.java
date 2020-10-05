@@ -193,6 +193,7 @@ public class FourSum {
                 if (nums.length - i < 4 - list.size()) {
                     return;
                 }
+                // 测试用例:111111
                 //这个条件厉害.去重.
                 if (begin != i && nums[i - 1] == nums[i]) {
                     continue;
