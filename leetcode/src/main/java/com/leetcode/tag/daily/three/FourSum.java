@@ -17,6 +17,17 @@ public class FourSum {
             return result;
         }
 
+        /**
+         * 通过start去重.
+         * <p>
+         * used是排列用法.
+         *
+         * @param nums
+         * @param target
+         * @param start
+         * @param stack
+         * @param result
+         */
         private void back(int[] nums, int target, int start, Deque<Integer> stack, List<List<Integer>> result) {
             if (stack.size() == 4 && target == 0) {
                 result.add(new ArrayList<>(stack));
