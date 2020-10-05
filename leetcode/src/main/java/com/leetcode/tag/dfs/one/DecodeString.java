@@ -2,7 +2,6 @@ package com.leetcode.tag.dfs.one;
 
 import java.util.Collections;
 import java.util.LinkedList;
-import java.util.stream.Collectors;
 
 /**
  * 394. 字符串解码
@@ -87,7 +86,7 @@ public class DecodeString {
         }
 
         public String getString(LinkedList<String> v) {
-            return v.stream().collect(Collectors.joining());
+            return String.join("", v);
         }
     }
 }
