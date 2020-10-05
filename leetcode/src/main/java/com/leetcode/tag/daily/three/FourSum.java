@@ -41,6 +41,9 @@ public class FourSum {
                 return;
             }
             for (int i = start; i < nums.length; i++) {
+                //这个条件厉害.
+                //nums[i]是root,且nums[i] == nums[i - 1].
+                //如果i-1没有选择,i就是root.
                 if (i > 0 && nums[i] == nums[i - 1] && !used[i - 1]) {
                     continue;
                 }
