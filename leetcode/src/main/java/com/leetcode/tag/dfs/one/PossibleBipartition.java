@@ -98,11 +98,11 @@ public class PossibleBipartition {
             color = new HashMap<>();
             //图从顶点开始dfs
             for (int node = 1; node <= N; ++node) {
-                if (!color.containsKey(node) && dfs(node, 0)) {
-                    return true;
+                if (!color.containsKey(node) && !dfs(node, 0)) {
+                    return false;
                 }
             }
-            return false;
+            return true;
         }
 
         /**
@@ -122,11 +122,11 @@ public class PossibleBipartition {
 
             for (int nei : graph.get(node)) {
                 //异或厉害
-                if (dfs(nei, c ^ 1)) {
-                    return true;
+                if (!dfs(nei, c ^ 1)) {
+                    return false;
                 }
             }
-            return false;
+            return true;
         }
     }
 
