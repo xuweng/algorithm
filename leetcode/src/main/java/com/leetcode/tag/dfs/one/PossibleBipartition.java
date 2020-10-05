@@ -128,9 +128,10 @@ public class PossibleBipartition {
             color.put(node, c);
 
             for (int nei : graph.get(node)) {
-                if (color.containsKey(nei)) {
-                    continue;
-                }
+                //剪枝错误.不需要剪枝.
+//                if (color.containsKey(nei)) {
+//                    continue;
+//                }
                 //异或厉害
                 if (!dfs(nei, c ^ 1)) {
                     return false;
