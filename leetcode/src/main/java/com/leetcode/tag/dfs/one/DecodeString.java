@@ -19,12 +19,24 @@ public class DecodeString {
     class Solution {
         int ptr;
 
+        /**
+         * 遇到数字、字母、[都入栈
+         * <p>
+         * 遇到]出栈
+         * <p>
+         * 2[a2[bc]]
+         *
+         * @param s
+         * @return
+         */
         public String decodeString(String s) {
             LinkedList<String> stk = new LinkedList<>();
             ptr = 0;
 
             while (ptr < s.length()) {
                 char cur = s.charAt(ptr);
+                //遇到数字、字母、[都入栈
+                //遇到]出栈
                 if (Character.isDigit(cur)) {
                     // 获取一个数字并进栈
                     String digits = getDigits(s);
