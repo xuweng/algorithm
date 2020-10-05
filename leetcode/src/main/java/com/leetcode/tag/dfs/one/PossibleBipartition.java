@@ -1,5 +1,9 @@
 package com.leetcode.tag.dfs.one;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 886. 可能的二分法
  * <p>
@@ -61,4 +65,52 @@ public class PossibleBipartition {
             return true;
         }
     }
+
+    /**
+     * 方法：深度优先搜索
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/possible-bipartition/solution/ke-neng-de-er-fen-fa-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        ArrayList<Integer>[] graph;
+        Map<Integer, Integer> color;
+
+        public boolean possibleBipartition(int N, int[][] dislikes) {
+            graph = new ArrayList[N + 1];
+            for (int i = 1; i <= N; ++i) {
+                graph[i] = new ArrayList<>();
+            }
+
+            for (int[] edge : dislikes) {
+                graph[edge[0]].add(edge[1]);
+                graph[edge[1]].add(edge[0]);
+            }
+
+            color = new HashMap<>();
+            for (int node = 1; node <= N; ++node) {
+                if (!color.containsKey(node) && !dfs(node, 0)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public boolean dfs(int node, int c) {
+            if (color.containsKey(node)) {
+                return color.get(node) == c;
+            }
+            color.put(node, c);
+
+            for (int nei : graph[node]) {
+                if (!dfs(nei, c ^ 1)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+    }
+
 }
