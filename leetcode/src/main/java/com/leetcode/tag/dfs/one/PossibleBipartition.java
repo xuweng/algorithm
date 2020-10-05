@@ -95,6 +95,7 @@ public class PossibleBipartition {
             //无向图构建
             //用map来表示无向图的邻接表
             for (int[] edge : dislikes) {
+                //记住computeIfAbsent函数
                 graph.computeIfAbsent(edge[0], v -> new ArrayList<>()).add(edge[1]);
                 graph.computeIfAbsent(edge[1], v -> new ArrayList<>()).add(edge[0]);
             }
