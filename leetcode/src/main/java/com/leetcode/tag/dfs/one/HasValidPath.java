@@ -39,11 +39,14 @@ public class HasValidPath {
                 }
             }
 
+            /**
+             * 简洁代码
+             *
+             * @param x
+             * @return
+             */
             private int find(int x) {
-                if (parents[x] == x) {
-                    return x;
-                }
-                return parents[x] = find(parents[x]);
+                return parents[x] == x ? x : (parents[x] = find(parents[x]));
             }
 
             private void union(int x, int y) {
