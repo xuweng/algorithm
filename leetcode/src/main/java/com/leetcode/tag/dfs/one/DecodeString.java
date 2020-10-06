@@ -170,12 +170,18 @@ public class DecodeString {
 
     /**
      * 用示例来理解代码
+     * <p>
+     * 3[a]2[bc].不通过.
      */
     class Solution2 {
         /**
          * 用递归解析[]里面的string
          * <p>
+         * 测试用例
+         * <p>
          * 2[a2[bc]]
+         * <p>
+         * 3[a]2[bc]
          * <p>
          * 没有递归参数
          * <p>
