@@ -11,7 +11,6 @@ import java.util.Map;
 public class SumOfDistancesInTree {
     static class Solution {
         Map<Integer, List<Integer>> graph;
-        Map<Integer, Integer> parent;
         boolean[] used;
         int count;
 
@@ -22,11 +21,10 @@ public class SumOfDistancesInTree {
                 return result;
             }
             graph = new HashMap<>(N);
-            parent = new HashMap<>(N);
             used = new boolean[N];
             for (int[] edge : edges) {
                 graph.computeIfAbsent(edge[0], k -> new ArrayList<>()).add(edge[1]);
-                parent.put(edge[1], edge[0]);
+                graph.computeIfAbsent(edge[1], k -> new ArrayList<>()).add(edge[0]);
             }
             for (int i = 0; i < N; i++) {
                 dfs(i, 0);
@@ -49,10 +47,6 @@ public class SumOfDistancesInTree {
                     }
                     dfs(integer, j + 1);
                 }
-            }
-            Integer p = parent.get(i);
-            if (p != null && !used[p]) {
-                dfs(p, j + 1);
             }
 
             used[i] = false;
