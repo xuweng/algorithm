@@ -41,6 +41,7 @@ public class SumOfDistancesInTree {
 
         private void dfs(int i, int j) {
             count += j;
+            //哪里选择哪里标记
             //选择顶点i
             //在这里标记
             //顶点i和邻接顶点没有重合
