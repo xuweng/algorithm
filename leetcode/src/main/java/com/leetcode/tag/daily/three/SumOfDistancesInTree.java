@@ -65,6 +65,10 @@ public class SumOfDistancesInTree {
     /**
      * 方法一：树形动态规划
      * <p>
+     * 考虑一个节点的情况，即每次题目指定一棵树，以 root 为根，询问节点 root 与其他所有节点的距离之和
+     * <p>
+     * 求出每个节点为根节点的时候，它与其他所有节点的距离之和。暴力的角度我们可以考虑对每个节点都做一次如上的树形动态规划，这样时间复杂度即为 O(N^2)
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/sum-of-distances-in-tree/solution/shu-zhong-ju-chi-zhi-he-by-leetcode-solution/
      * 来源：力扣（LeetCode）
