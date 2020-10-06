@@ -49,6 +49,14 @@ public class HasValidPath {
                 return parents[x] == x ? x : (parents[x] = find(parents[x]));
             }
 
+            private int find1(int i) {
+                if (parents[i] == i) {
+                    return i;
+                }
+                parents[i] = find1(parents[i]);
+                return parents[i];
+            }
+
             private void union(int x, int y) {
                 int first = find(x);
                 int second = find(y);
