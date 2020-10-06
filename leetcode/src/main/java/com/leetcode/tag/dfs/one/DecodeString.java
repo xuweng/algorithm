@@ -89,4 +89,66 @@ public class DecodeString {
             return String.join("", v);
         }
     }
+
+    /**
+     * 方法二：递归
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/decode-string/solution/zi-fu-chuan-jie-ma-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        String src;
+        //递归传参数麻烦
+        //全局下标变量
+        int current;
+
+        public String decodeString(String s) {
+            src = s;
+            current = 0;
+            return getString();
+        }
+
+        public String getString() {
+            if (current == src.length() || src.charAt(current) == ']') {
+                // String -> EPS
+                return "";
+            }
+
+            char cur = src.charAt(current);
+            int repTime;
+            StringBuilder stringBuilder = new StringBuilder();
+
+            if (Character.isDigit(cur)) {
+                // String -> Digits [ String ] String
+                // 解析 Digits
+                repTime = getDigits();
+                // 过滤左括号
+                ++current;
+                // 解析 String
+                String str = getString();
+                // 过滤右括号
+                ++current;
+                // 构造字符串
+                while (repTime-- > 0) {
+                    stringBuilder.append(str);
+                }
+            } else if (Character.isLetter(cur)) {
+                // String -> Char String
+                // 解析 Char
+                stringBuilder = new StringBuilder(String.valueOf(src.charAt(current++)));
+            }
+
+            return stringBuilder + getString();
+        }
+
+        public int getDigits() {
+            int ret = 0;
+            while (current < src.length() && Character.isDigit(src.charAt(current))) {
+                ret = ret * 10 + src.charAt(current++) - '0';
+            }
+            return ret;
+        }
+    }
 }
