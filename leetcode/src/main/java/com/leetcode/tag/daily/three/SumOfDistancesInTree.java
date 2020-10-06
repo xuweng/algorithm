@@ -9,6 +9,9 @@ import java.util.Map;
  * 834. 树中距离之和
  */
 public class SumOfDistancesInTree {
+    /**
+     * 超出时间限制
+     */
     static class Solution {
         //map表示无向图
         Map<Integer, List<Integer>> graph;
