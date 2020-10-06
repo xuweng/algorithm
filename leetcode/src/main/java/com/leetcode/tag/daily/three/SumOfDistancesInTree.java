@@ -9,7 +9,7 @@ import java.util.Map;
  * 834. 树中距离之和
  */
 public class SumOfDistancesInTree {
-    class Solution {
+    static class Solution {
         Map<Integer, List<Integer>> graph;
         Map<Integer, Integer> parent;
         boolean[] used;
