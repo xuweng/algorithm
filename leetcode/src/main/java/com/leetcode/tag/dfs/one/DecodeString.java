@@ -102,6 +102,7 @@ public class DecodeString {
         String src;
         //递归传参数麻烦
         //全局下标变量
+        //只能按照顺序解析.不能截取.
         int current;
 
         public String decodeString(String s) {
