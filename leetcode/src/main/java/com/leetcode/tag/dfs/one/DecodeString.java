@@ -206,9 +206,8 @@ public class DecodeString {
             }
             // 解析 Char
             int index = getLetterIndex(s);
-            String str = s.substring(0, index) + getString(s.substring(index));
 
-            return str + getString(s.substring(index));
+            return s.substring(0, index) + getString(s.substring(index));
         }
 
         public int getLetterIndex(String s) {
