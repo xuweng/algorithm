@@ -111,6 +111,7 @@ public class SumOfDistancesInTree {
          * @param f
          */
         public void dfs(int u, int f) {
+            //初始化为1厉害
             sz[u] = 1;
             dp[u] = 0;
             for (int v : graph.get(u)) {
@@ -118,6 +119,7 @@ public class SumOfDistancesInTree {
                     continue;
                 }
                 dfs(v, u);
+                //这个dp方程厉害
                 dp[u] += dp[v] + sz[v];
                 sz[u] += sz[v];
             }
