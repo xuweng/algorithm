@@ -39,8 +39,10 @@ public class SumOfDistancesInTree {
         private void dfs(int i, int j) {
             count += j;
             //选择顶点i
+            //在这里标记
             used[i] = true;
 
+            //顶点i的邻接顶点dfs
             List<Integer> list = graph.get(i);
             if (list != null && !list.isEmpty()) {
                 for (Integer integer : list) {
