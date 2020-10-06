@@ -267,4 +267,90 @@ public class DecodeString {
             return ans.toString();
         }
     }
+
+    /**
+     * 解法一：辅助栈法
+     * <p>
+     * 作者：jyd
+     * 链接：https://leetcode-cn.com/problems/decode-string/solution/decode-string-fu-zhu-zhan-fa-di-gui-fa-by-jyd/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        public String decodeString(String s) {
+            StringBuilder res = new StringBuilder();
+            int multi = 0;
+            LinkedList<Integer> stackMulti = new LinkedList<>();
+            LinkedList<String> stackRes = new LinkedList<>();
+            for (char c : s.toCharArray()) {
+                if (c == '[') {
+                    stackMulti.addLast(multi);
+                    stackRes.addLast(res.toString());
+                    multi = 0;
+                    res = new StringBuilder();
+                } else if (c == ']') {
+                    StringBuilder tmp = new StringBuilder();
+                    int curMulti = stackMulti.removeLast();
+                    for (int i = 0; i < curMulti; i++) {
+                        tmp.append(res);
+                    }
+                    res = new StringBuilder(stackRes.removeLast() + tmp);
+                } else if (c >= '0' && c <= '9') {
+                    multi = multi * 10 + Integer.parseInt(c + "");
+                } else {
+                    res.append(c);
+                }
+            }
+            return res.toString();
+        }
+    }
+
+    /**
+     * 解法二：递归法
+     * <p>
+     * 总体思路与辅助栈法一致，不同点在于将 [ 和 ] 分别作为递归的开启与终止条件：
+     * <p>
+     * 当 s[i] == ']' 时，返回当前括号内记录的 res 字符串与 ] 的索引 i （更新上层递归指针位置）；
+     * 当 s[i] == '[' 时，开启新一层递归，记录此 [...] 内字符串 tmp 和递归后的最新索引 i，并执行 res + multi * tmp 拼接字符串。
+     * 遍历完毕后返回 res。
+     * <p>
+     * 作者：jyd
+     * 链接：https://leetcode-cn.com/problems/decode-string/solution/decode-string-fu-zhu-zhan-fa-di-gui-fa-by-jyd/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution4 {
+        public String decodeString(String s) {
+            return dfs(s, 0)[0];
+        }
+
+        /**
+         * @param s
+         * @param i 下标
+         * @return
+         */
+        private String[] dfs(String s, int i) {
+            StringBuilder res = new StringBuilder();
+            int multi = 0;
+            while (i < s.length()) {
+                if (s.charAt(i) >= '0' && s.charAt(i) <= '9') {
+                    multi = multi * 10 + Integer.parseInt(String.valueOf(s.charAt(i)));
+                } else if (s.charAt(i) == '[') {
+                    String[] tmp = dfs(s, i + 1);
+                    i = Integer.parseInt(tmp[0]);
+                    while (multi > 0) {
+                        res.append(tmp[1]);
+                        multi--;
+                    }
+                } else if (s.charAt(i) == ']') {
+                    return new String[]{String.valueOf(i), res.toString()};
+                } else {
+                    res.append(s.charAt(i));
+                }
+                i++;
+            }
+            return new String[]{res.toString()};
+        }
+    }
+
 }
