@@ -125,8 +125,18 @@ public class SumOfDistancesInTree {
             }
         }
 
+        /**
+         * 执行换根操作
+         * <p>
+         * 经过一次树形动态规划后其实我们获得了在 u 为根的树中，每个节点为根的子树的答案 dp，我们可以利用这些已有信息来优化时间复杂度。
+         *
+         * @param u
+         * @param f
+         */
         public void dfs2(int u, int f) {
+            // 记录节点u的结果
             ans[u] = dp[u];
+            // 对u的相邻边进行换根
             for (int v : graph.get(u)) {
                 if (v == f) {
                     continue;
@@ -139,8 +149,10 @@ public class SumOfDistancesInTree {
                 dp[v] += dp[u] + sz[u];
                 sz[v] += sz[u];
 
+                // 记录v的值 并且对v的邻边进行换根
                 dfs2(v, u);
 
+                // 还原
                 dp[u] = pu;
                 dp[v] = pv;
                 sz[u] = su;
