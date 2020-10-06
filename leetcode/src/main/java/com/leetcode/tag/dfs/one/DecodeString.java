@@ -167,4 +167,64 @@ public class DecodeString {
             return ret;
         }
     }
+
+    class Solution2 {
+        public String decodeString(String s) {
+            return getString(s);
+        }
+
+        /**
+         * 用递归解析[]里面的string
+         * <p>
+         * 2[a2[bc]]
+         * <p>
+         * 没有递归参数
+         * <p>
+         * 全局变量取代递归参数.
+         * <p>
+         * 递归参数太麻烦.全局变量厉害.
+         *
+         * @return
+         */
+        public String getString(String s) {
+            //终止条件
+            if (!s.contains("[") || !s.contains("]")) {
+                return s;
+            }
+
+            StringBuilder stringBuilder = new StringBuilder();
+            if (Character.isDigit(s.charAt(0))) {
+                // 解析 Digits
+                int repTime = getDigits(s);
+                // 用递归解析[]里面的string
+                String str = getString(s.substring(s.indexOf("[") + 1, s.lastIndexOf("]")));
+                // 构造字符串
+                while (repTime-- > 0) {
+                    stringBuilder.append(str);
+                }
+                return stringBuilder.toString();
+            }
+            // 解析 Char
+            int index = getLetterIndex(s);
+            String str = s.substring(0, index) + getString(s.substring(index));
+
+            return str + getString(s.substring(index));
+        }
+
+        public int getLetterIndex(String s) {
+            int i = 0;
+            while (i < s.length() && Character.isLetter(s.charAt(i))) {
+                i++;
+            }
+            return i;
+        }
+
+        public int getDigits(String s) {
+            int ret = 0;
+            for (int i = 0; i < s.length() && Character.isDigit(s.charAt(i)); i++) {
+                ret = ret * 10 + s.charAt(i) - '0';
+            }
+            return ret;
+        }
+    }
 }
