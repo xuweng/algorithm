@@ -36,6 +36,7 @@ public class DecodeString2 {
             while (current < s.length() && Character.isDigit(s.charAt(current))) {
                 current++;
             }
+            //此时current是[
             return Integer.parseInt(s.substring(index, current));
         }
     }
