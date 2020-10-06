@@ -102,6 +102,14 @@ public class SumOfDistancesInTree {
             return ans;
         }
 
+        /**
+         * 看示例理解代码
+         * <p>
+         * 看图理解代码
+         *
+         * @param u
+         * @param f
+         */
         public void dfs(int u, int f) {
             sz[u] = 1;
             dp[u] = 0;
