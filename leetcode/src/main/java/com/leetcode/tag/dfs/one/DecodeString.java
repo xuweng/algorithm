@@ -111,6 +111,8 @@ public class DecodeString {
         }
 
         /**
+         * 2[a2[bc]]
+         * <p>
          * 没有递归参数
          * <p>
          * 全局变量取代递归参数.
