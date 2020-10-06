@@ -168,11 +168,10 @@ public class DecodeString {
         }
     }
 
+    /**
+     * 用示例来理解代码
+     */
     class Solution2 {
-        public String decodeString(String s) {
-            return getString(s);
-        }
-
         /**
          * 用递归解析[]里面的string
          * <p>
@@ -186,7 +185,7 @@ public class DecodeString {
          *
          * @return
          */
-        public String getString(String s) {
+        public String decodeString(String s) {
             //终止条件
             if (!s.contains("[") || !s.contains("]")) {
                 return s;
@@ -197,7 +196,7 @@ public class DecodeString {
                 // 解析 Digits
                 int repTime = getDigits(s);
                 // 用递归解析[]里面的string
-                String str = getString(s.substring(s.indexOf("[") + 1, s.lastIndexOf("]")));
+                String str = decodeString(s.substring(s.indexOf("[") + 1, s.lastIndexOf("]")));
                 // 构造字符串
                 while (repTime-- > 0) {
                     stringBuilder.append(str);
@@ -207,7 +206,7 @@ public class DecodeString {
             // 解析 Char
             int index = getLetterIndex(s);
 
-            return s.substring(0, index) + getString(s.substring(index));
+            return s.substring(0, index) + decodeString(s.substring(index));
         }
 
         public int getLetterIndex(String s) {
