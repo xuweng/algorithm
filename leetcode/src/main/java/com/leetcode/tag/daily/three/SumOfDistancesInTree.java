@@ -16,8 +16,10 @@ public class SumOfDistancesInTree {
         int count;
 
         public int[] sumOfDistancesInTree(int N, int[][] edges) {
+            int[] result = new int[N];
             if (edges == null || edges.length == 0) {
-                return new int[0];
+                result[0] = 0;
+                return result;
             }
             graph = new HashMap<>(N);
             parent = new HashMap<>(N);
@@ -26,7 +28,6 @@ public class SumOfDistancesInTree {
                 graph.computeIfAbsent(edge[0], k -> new ArrayList<>()).add(edge[1]);
                 parent.put(edge[1], edge[0]);
             }
-            int[] result = new int[N];
             for (int i = 0; i < N; i++) {
                 dfs(i, 0);
                 result[i] = count;
