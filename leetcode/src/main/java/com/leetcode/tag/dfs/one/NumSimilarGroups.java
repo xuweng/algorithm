@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 /**
  * 839. 相似字符串组
@@ -73,13 +74,17 @@ public class NumSimilarGroups {
             return ans;
         }
 
+        /**
+         * 使用一个辅助函数 similar(word1, word2) 为 true 当且仅当两个单词相似
+         * <p>
+         * 两个单词只有两个字符不一样
+         *
+         * @param word1
+         * @param word2
+         * @return
+         */
         public boolean similar(String word1, String word2) {
-            int diff = 0;
-            for (int i = 0; i < word1.length(); ++i) {
-                if (word1.charAt(i) != word2.charAt(i)) {
-                    diff++;
-                }
-            }
+            int diff = (int) IntStream.range(0, word1.length()).filter(i -> word1.charAt(i) != word2.charAt(i)).count();
             return diff <= 2;
         }
 
