@@ -10,6 +10,7 @@ import java.util.Map;
  */
 public class SumOfDistancesInTree {
     static class Solution {
+        //map表示无向图
         Map<Integer, List<Integer>> graph;
         boolean[] used;
         int count;
@@ -22,6 +23,7 @@ public class SumOfDistancesInTree {
             }
             graph = new HashMap<>(N);
             used = new boolean[N];
+            //构建无向图
             for (int[] edge : edges) {
                 graph.computeIfAbsent(edge[0], k -> new ArrayList<>()).add(edge[1]);
                 graph.computeIfAbsent(edge[1], k -> new ArrayList<>()).add(edge[0]);
