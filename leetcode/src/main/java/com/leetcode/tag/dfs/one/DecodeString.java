@@ -111,6 +111,8 @@ public class DecodeString {
         }
 
         /**
+         * 用递归解析[]里面的string
+         * <p>
          * 2[a2[bc]]
          * <p>
          * 没有递归参数
@@ -140,6 +142,7 @@ public class DecodeString {
                 // 过滤左括号
                 ++current;
                 // 解析 String
+                // 用递归解析[]里面的string
                 String str = getString();
                 // 过滤右括号
                 ++current;
