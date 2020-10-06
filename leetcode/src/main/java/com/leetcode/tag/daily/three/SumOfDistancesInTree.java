@@ -42,11 +42,11 @@ public class SumOfDistancesInTree {
 
             List<Integer> list = graph.get(i);
             if (list != null && !list.isEmpty()) {
-                for (int i1 = 0; i1 < list.size(); i1++) {
-                    if (used[i1]) {
+                for (Integer integer : list) {
+                    if (used[integer]) {
                         continue;
                     }
-                    dfs(i1, j + 1);
+                    dfs(integer, j + 1);
                 }
             }
             Integer p = parent.get(i);
