@@ -110,6 +110,13 @@ public class DecodeString {
             return getString();
         }
 
+        /**
+         * 没有递归参数
+         * <p>
+         * 全局变量取代递归参数
+         *
+         * @return
+         */
         public String getString() {
             if (current == src.length() || src.charAt(current) == ']') {
                 // String -> EPS
