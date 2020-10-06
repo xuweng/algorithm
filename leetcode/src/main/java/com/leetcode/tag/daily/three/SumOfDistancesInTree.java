@@ -7,6 +7,8 @@ import java.util.Map;
 
 /**
  * 834. 树中距离之和
+ * <p>
+ * 树形dp通常是后序遍历
  */
 public class SumOfDistancesInTree {
     /**
