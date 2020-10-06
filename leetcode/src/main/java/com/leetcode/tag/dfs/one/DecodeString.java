@@ -169,6 +169,8 @@ public class DecodeString {
     }
 
     /**
+     * 算法错误
+     * <p>
      * 用示例来理解代码
      * <p>
      * 3[a]2[bc].不通过.
