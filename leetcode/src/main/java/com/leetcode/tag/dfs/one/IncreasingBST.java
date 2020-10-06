@@ -5,6 +5,7 @@ package com.leetcode.tag.dfs.one;
  */
 public class IncreasingBST {
     class Solution {
+        //中序遍历的pre太好用
         TreeNode pre;
         TreeNode root;
 
