@@ -43,6 +43,7 @@ public class SumOfDistancesInTree {
             count += j;
             //选择顶点i
             //在这里标记
+            //顶点i和邻接顶点没有重合
             used[i] = true;
 
             //顶点i的邻接顶点dfs
