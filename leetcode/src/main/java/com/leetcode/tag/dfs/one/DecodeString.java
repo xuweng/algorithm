@@ -122,6 +122,8 @@ public class DecodeString {
          * @return
          */
         public String getString() {
+            //终止条件
+            //遇到]就做一次计算
             if (current == src.length() || src.charAt(current) == ']') {
                 // String -> EPS
                 return "";
