@@ -17,7 +17,7 @@ public class UpdateMatrix {
             for (int i = 0; i < matrix.length; i++) {
                 for (int i1 = 0; i1 < matrix[0].length; i1++) {
                     if (matrix[i][i1] == 1) {
-                        matrix[i][i1] = dfs(matrix, i, i);
+                        matrix[i][i1] = dfs(matrix, i, i1);
                     }
                 }
             }
