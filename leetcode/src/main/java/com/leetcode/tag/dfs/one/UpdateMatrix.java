@@ -17,16 +17,16 @@ public class UpdateMatrix {
             for (int i = 0; i < matrix.length; i++) {
                 for (int i1 = 0; i1 < matrix[0].length; i1++) {
                     if (matrix[i][i1] == 1) {
-                        matrix[i][i] = dfs(matrix, i, i, 0);
+                        matrix[i][i] = dfs(matrix, i, i);
                     }
                 }
             }
             return matrix;
         }
 
-        private int dfs(int[][] matrix, int row, int col, int count) {
+        private int dfs(int[][] matrix, int row, int col) {
             if (matrix[row][col] == 0) {
-                return count;
+                return 0;
             }
             used[row][col] = true;
             int result = Integer.MAX_VALUE;
@@ -36,7 +36,7 @@ public class UpdateMatrix {
                 if (r < 0 || r >= matrix.length || c < 0 || c >= matrix[0].length || used[r][c]) {
                     continue;
                 }
-                result = Math.min(result, dfs(matrix, r, c, count + 1));
+                result = Math.min(result, dfs(matrix, r, c) + 1);
             }
             used[row][col] = false;
             return result;
