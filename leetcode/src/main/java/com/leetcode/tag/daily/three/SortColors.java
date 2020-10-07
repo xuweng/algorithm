@@ -56,16 +56,15 @@ public class SortColors {
                 if (nums[i] == 0) {
                     int temp = nums[i];
                     nums[i] = nums[ptr];
-                    nums[ptr] = temp;
-                    ++ptr;
+                    nums[ptr++] = temp;
                 }
             }
+            //此时前ptr都是0
             for (int i = ptr; i < n; ++i) {
                 if (nums[i] == 1) {
                     int temp = nums[i];
                     nums[i] = nums[ptr];
-                    nums[ptr] = temp;
-                    ++ptr;
+                    nums[ptr++] = temp;
                 }
             }
         }
