@@ -70,4 +70,41 @@ public class SortColors {
         }
     }
 
+    /**
+     * 方法二：双指针
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/sort-colors/solution/yan-se-fen-lei-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        public void sortColors(int[] nums) {
+            int n = nums.length;
+            //指向0.0的分割线.
+            int p0 = 0;
+            //指向1.1的分割线.
+            int p1 = 0;
+            for (int i = 0; i < n; ++i) {
+                if (nums[i] == 1) {
+                    int temp = nums[i];
+                    nums[i] = nums[p1];
+                    nums[p1] = temp;
+                    ++p1;
+                } else if (nums[i] == 0) {
+                    int temp = nums[i];
+                    nums[i] = nums[p0];
+                    nums[p0] = temp;
+                    if (p0 < p1) {
+                        temp = nums[i];
+                        nums[i] = nums[p1];
+                        nums[p1] = temp;
+                    }
+                    ++p0;
+                    ++p1;
+                }
+            }
+        }
+    }
+
 }
