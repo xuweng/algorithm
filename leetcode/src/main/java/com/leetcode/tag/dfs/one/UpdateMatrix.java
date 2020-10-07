@@ -32,7 +32,7 @@ public class UpdateMatrix {
                 return count;
             }
             used[row][col] = true;
-            int result = 0;
+            int result = Integer.MAX_VALUE;
             for (int i = 0; i < rows.length; i++) {
                 int r = row + rows[i];
                 int c = col + cols[i];
