@@ -29,7 +29,9 @@ public class UpdateMatrix {
                 return 0;
             }
             used[row][col] = true;
-            int result = Integer.MAX_VALUE;
+            //溢出
+            //int result = Integer.MAX_VALUE;
+            int result = 10000;
             for (int i = 0; i < rows.length; i++) {
                 int r = row + rows[i];
                 int c = col + cols[i];
