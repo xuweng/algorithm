@@ -8,6 +8,7 @@ public class UpdateMatrix {
         int[] rows = {-1, 1, 0, 0};
         int[] cols = {0, 0, -1, 1};
         boolean[][] used;
+        int result = Integer.MAX_VALUE;
 
         public int[][] updateMatrix(int[][] matrix) {
             if (matrix == null || matrix.length == 0) {
@@ -17,31 +18,33 @@ public class UpdateMatrix {
             for (int i = 0; i < matrix.length; i++) {
                 for (int i1 = 0; i1 < matrix[0].length; i1++) {
                     if (matrix[i][i1] == 1) {
-                        matrix[i][i1] = dfs(matrix, i, i1);
+                        dfs(matrix, i, i1, 0);
+                        matrix[i][i1] = result;
+                        result = Integer.MAX_VALUE;
                     }
                 }
             }
             return matrix;
         }
 
-        private int dfs(int[][] matrix, int row, int col) {
+        private void dfs(int[][] matrix, int row, int col, int count) {
+            if (result != Integer.MAX_VALUE && count > result) {
+                return;
+            }
             if (matrix[row][col] == 0) {
-                return 0;
+                result = Math.min(result, count);
+                return;
             }
             used[row][col] = true;
-            //溢出
-            //int result = Integer.MAX_VALUE;
-            int result = 10000;
             for (int i = 0; i < rows.length; i++) {
                 int r = row + rows[i];
                 int c = col + cols[i];
                 if (r < 0 || r >= matrix.length || c < 0 || c >= matrix[0].length || used[r][c]) {
                     continue;
                 }
-                result = Math.min(result, dfs(matrix, r, c));
+                dfs(matrix, r, c, count + 1);
             }
             used[row][col] = false;
-            return result + 1;
         }
     }
 
