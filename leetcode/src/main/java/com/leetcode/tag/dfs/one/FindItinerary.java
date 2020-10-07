@@ -10,6 +10,7 @@ public class FindItinerary {
         Map<String, List<String>> map = new HashMap<>();
         Map<String, Integer> used = new HashMap<>();
         List<String> result = new ArrayList<>();
+        List<String> stack = new ArrayList<>();
 
         public List<String> findItinerary(List<List<String>> tickets) {
             for (List<String> ticket : tickets) {
@@ -20,13 +21,15 @@ public class FindItinerary {
                 Collections.sort(v);
             });
 
-            dfs("JFK");
+            dfs("JFK", tickets.size());
 
             return result;
         }
 
-        public void dfs(String str) {
-            result.add(str);
+        public void dfs(String str, int n) {
+            if (n == 0) {
+                result = new ArrayList<>(stack);
+            }
             if (!map.containsKey(str)) {
                 return;
             }
@@ -35,8 +38,11 @@ public class FindItinerary {
                 if (used.containsKey(str) && used.get(str).equals(i)) {
                     continue;
                 }
+                stack.add(list.get(i));
                 used.put(str, i);
-                dfs(list.get(i));
+                dfs(list.get(i), n - 1);
+                used.remove(str);
+                stack.remove(stack.size() - 1);
             }
         }
     }
