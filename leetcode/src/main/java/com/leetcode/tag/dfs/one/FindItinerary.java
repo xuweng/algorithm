@@ -65,16 +65,13 @@ public class FindItinerary {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution1 {
-        Map<String, PriorityQueue<String>> map = new HashMap<String, PriorityQueue<String>>();
-        List<String> itinerary = new LinkedList<String>();
+        Map<String, PriorityQueue<String>> map = new HashMap<>();
+        List<String> itinerary = new LinkedList<>();
 
         public List<String> findItinerary(List<List<String>> tickets) {
             for (List<String> ticket : tickets) {
                 String src = ticket.get(0), dst = ticket.get(1);
-                if (!map.containsKey(src)) {
-                    map.put(src, new PriorityQueue<String>());
-                }
-                map.get(src).offer(dst);
+                map.computeIfAbsent(src, k -> new PriorityQueue<>()).offer(dst);
             }
             dfs("JFK");
             Collections.reverse(itinerary);
