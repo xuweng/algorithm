@@ -30,6 +30,7 @@ public class FindItinerary {
         public void dfs(String str, int n) {
             if (n == 0) {
                 result = new ArrayList<>(stack);
+                return;
             }
             if (!map.containsKey(str)) {
                 return;
