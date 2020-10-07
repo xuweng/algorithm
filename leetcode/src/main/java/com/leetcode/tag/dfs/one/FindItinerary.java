@@ -8,7 +8,7 @@ import java.util.*;
 public class FindItinerary {
     class Solution {
         Map<String, List<String>> map = new HashMap<>();
-        Map<String, Integer> used = new HashMap<>();
+        Map<String, Set<Integer>> used = new HashMap<>();
         List<String> result = new ArrayList<>();
         List<String> stack = new ArrayList<>();
 
@@ -37,13 +37,13 @@ public class FindItinerary {
             }
             List<String> list = map.get(str);
             for (int i = 0; i < list.size(); i++) {
-                if (used.containsKey(str) && used.get(str).equals(i)) {
+                if (used.containsKey(str) && used.get(str).contains(i)) {
                     continue;
                 }
                 stack.add(list.get(i));
-                used.put(str, i);
+                used.computeIfAbsent(str, k -> new HashSet<>()).add(i);
                 dfs(list.get(i), n - 1);
-                used.remove(str);
+                used.get(str).remove(i);
                 stack.remove(stack.size() - 1);
             }
         }
