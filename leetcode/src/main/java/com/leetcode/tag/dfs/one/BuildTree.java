@@ -21,6 +21,7 @@ public class BuildTree {
 
         public TreeNode buildTree(int[] postorder, int low, int high) {
             //low和high确定终止条件
+            //low和high确定子树的数量
             if (low > high) {
                 return null;
             }
