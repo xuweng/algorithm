@@ -4,7 +4,7 @@ package com.leetcode.tag.dfs.one;
  * 542. 01 矩阵
  */
 public class UpdateMatrix {
-    class Solution {
+    static class Solution {
         int[] rows = {-1, 1, 0, 0};
         int[] cols = {0, 0, -1, 1};
         boolean[][] used;
