@@ -73,6 +73,8 @@ public class SortColors {
     /**
      * 方法二：双指针
      * <p>
+     * 指针划分区间
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/sort-colors/solution/yan-se-fen-lei-by-leetcode-solution/
      * 来源：力扣（LeetCode）
@@ -81,6 +83,8 @@ public class SortColors {
     class Solution3 {
         public void sortColors(int[] nums) {
             int n = nums.length;
+            //[0,p0)是0
+            //[p0,p1)是1
             //指向0.0的分割线.
             int p0 = 0;
             //指向1.1的分割线.
