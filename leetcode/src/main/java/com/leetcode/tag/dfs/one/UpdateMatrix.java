@@ -10,7 +10,7 @@ public class UpdateMatrix {
         boolean[][] used;
 
         public int[][] updateMatrix(int[][] matrix) {
-            if (matrix == null || matrix.length == 1) {
+            if (matrix == null || matrix.length == 0) {
                 return new int[0][0];
             }
             used = new boolean[matrix.length][matrix[0].length];
