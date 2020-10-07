@@ -9,7 +9,7 @@ public class FindItinerary {
     class Solution {
         Map<String, List<String>> map = new HashMap<>();
         Map<String, Set<Integer>> used = new HashMap<>();
-        List<String> result = new ArrayList<>();
+        List<String> result;
         List<String> stack = new ArrayList<>();
 
         public List<String> findItinerary(List<List<String>> tickets) {
@@ -29,7 +29,7 @@ public class FindItinerary {
 
         public void dfs(String str, int n) {
             if (n == 0) {
-                result = new ArrayList<>(stack);
+                result = result == null ? new ArrayList<>(stack) : result;
                 return;
             }
             if (!map.containsKey(str)) {
