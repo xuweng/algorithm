@@ -9,7 +9,7 @@ import java.util.List;
  * 树形dp.树形dp.
  */
 public class CountPairs {
-    class Solution {
+    static class Solution {
         int result;
 
         public int countPairs(TreeNode root, int distance) {
@@ -48,7 +48,7 @@ public class CountPairs {
         }
     }
 
-    class TreeNode {
+    static class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
