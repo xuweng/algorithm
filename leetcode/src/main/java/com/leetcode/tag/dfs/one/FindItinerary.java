@@ -26,10 +26,10 @@ public class FindItinerary {
         }
 
         public void dfs(String str) {
+            result.add(str);
             if (!map.containsKey(str)) {
                 return;
             }
-            result.add(str);
             List<String> list = map.get(str);
             for (int i = 0; i < list.size(); i++) {
                 if (used.containsKey(str) && used.get(str).equals(i)) {
