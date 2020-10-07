@@ -25,9 +25,6 @@ public class UpdateMatrix {
         }
 
         private int dfs(int[][] matrix, int row, int col, int count) {
-            if (row < 0 || row >= matrix.length || col < 0 || col >= matrix[0].length) {
-                return Integer.MAX_VALUE;
-            }
             if (matrix[row][col] == 0) {
                 return count;
             }
@@ -36,7 +33,7 @@ public class UpdateMatrix {
             for (int i = 0; i < rows.length; i++) {
                 int r = row + rows[i];
                 int c = col + cols[i];
-                if (used[r][c]) {
+                if (r < 0 || r >= matrix.length || c < 0 || c >= matrix[0].length || used[r][c]) {
                     continue;
                 }
                 result = Math.min(result, dfs(matrix, r, c, count + 1));
