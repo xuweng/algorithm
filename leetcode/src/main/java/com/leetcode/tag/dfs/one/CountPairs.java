@@ -30,10 +30,10 @@ public class CountPairs {
             List<Integer> left = post(root.left, distance);
             List<Integer> right = post(root.right, distance);
             for (int i = 0; i < left.size(); i++) {
-                left.add(i, left.get(i) + 1);
+                left.set(i, left.get(i) + 1);
             }
             for (int i = 0; i < right.size(); i++) {
-                right.add(i, right.get(i) + 1);
+                right.set(i, right.get(i) + 1);
             }
             for (Integer i : left) {
                 for (Integer j : right) {
