@@ -22,6 +22,7 @@ public class FindItinerary {
             });
 
             dfs("JFK", tickets.size());
+            result.add(0, "JFK");
 
             return result;
         }
