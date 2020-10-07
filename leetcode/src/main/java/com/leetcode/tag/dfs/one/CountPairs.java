@@ -43,7 +43,7 @@ public class CountPairs {
                 }
             }
             List<Integer> list = new ArrayList<>(left);
-            left.addAll(right);
+            list.addAll(right);
             return list;
         }
     }
