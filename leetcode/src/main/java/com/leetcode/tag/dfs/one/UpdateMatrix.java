@@ -28,11 +28,11 @@ public class UpdateMatrix {
         }
 
         private void dfs(int[][] matrix, int row, int col, int count) {
-            if (result != Integer.MAX_VALUE && count > result) {
+            if (count > result) {
                 return;
             }
             if (matrix[row][col] == 0) {
-                result = Math.min(result, count);
+                result = count;
                 return;
             }
             used[row][col] = true;
