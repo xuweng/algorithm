@@ -36,10 +36,10 @@ public class UpdateMatrix {
                 if (r < 0 || r >= matrix.length || c < 0 || c >= matrix[0].length || used[r][c]) {
                     continue;
                 }
-                result = Math.min(result, dfs(matrix, r, c) + 1);
+                result = Math.min(result, dfs(matrix, r, c));
             }
             used[row][col] = false;
-            return result;
+            return result + 1;
         }
     }
 
