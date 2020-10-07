@@ -20,7 +20,7 @@ public class FindItinerary {
                 Collections.sort(v);
             });
 
-            dfs("JFK ");
+            dfs("JFK");
 
             return result;
         }
