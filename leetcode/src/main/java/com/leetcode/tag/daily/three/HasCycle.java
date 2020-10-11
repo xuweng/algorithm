@@ -14,8 +14,11 @@ public class HasCycle {
             ListNode slow = head, fast = head;
             while (slow != null) {
                 slow = slow.next;
-                if (fast != null && fast.next != null) {
-                    fast = fast.next.next;
+                if (fast != null) {
+                    fast = fast.next;
+                }
+                if (fast != null) {
+                    fast = fast.next;
                 }
                 if (slow != null && slow == fast) {
                     return true;
