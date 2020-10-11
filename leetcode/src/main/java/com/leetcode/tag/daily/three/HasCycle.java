@@ -6,7 +6,7 @@ package com.leetcode.tag.daily.three;
  * dp是难点和重点
  */
 public class HasCycle {
-    public class Solution {
+    class Solution {
         public boolean hasCycle(ListNode head) {
             if (head == null) {
                 return false;
