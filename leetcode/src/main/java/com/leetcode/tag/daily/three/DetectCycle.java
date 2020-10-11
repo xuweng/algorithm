@@ -1,5 +1,8 @@
 package com.leetcode.tag.daily.three;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 142. 环形链表 II
  * <p>
@@ -9,6 +12,22 @@ package com.leetcode.tag.daily.three;
  */
 public class DetectCycle {
     class Solution {
+        public ListNode detectCycle(ListNode head) {
+            if (head == null) {
+                return null;
+            }
+            Set<ListNode> set = new HashSet<>();
+            while (head != null) {
+                if (!set.add(head)) {
+                    return head;
+                }
+                head = head.next;
+            }
+            return null;
+        }
+    }
+
+    class Solution1 {
         public ListNode detectCycle(ListNode head) {
             if (head == null || head.next == null) {
                 return null;
