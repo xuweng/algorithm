@@ -67,6 +67,7 @@ public class CanPartition {
             for (int i = 1; i < n; i++) {
                 int num = nums[i];
                 for (int j = 1; j <= target; j++) {
+                    //注意数组越界
                     if (j >= num) {
                         dp[i][j] = dp[i - 1][j] | dp[i - 1][j - num];
                     } else {
