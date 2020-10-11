@@ -65,6 +65,12 @@ public class HasCycle {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution2 {
+        /**
+         * 简洁代码
+         *
+         * @param head
+         * @return
+         */
         public boolean hasCycle(ListNode head) {
             if (head == null || head.next == null) {
                 return false;
@@ -72,12 +78,15 @@ public class HasCycle {
             ListNode slow = head;
             ListNode fast = head.next;
             while (slow != fast) {
+                //没有环
+                //同时判空
                 if (fast == null || fast.next == null) {
                     return false;
                 }
                 slow = slow.next;
                 fast = fast.next.next;
             }
+            //此时slow==fast.有环.
             return true;
         }
     }
