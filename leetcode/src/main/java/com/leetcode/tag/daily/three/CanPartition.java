@@ -23,6 +23,8 @@ public class CanPartition {
     /**
      * 方法一：动态规划
      * <p>
+     * 转换为 「0 - 1」 背包问题
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/partition-equal-subset-sum/solution/fen-ge-deng-he-zi-ji-by-leetcode-solution/
      * 来源：力扣（LeetCode）
