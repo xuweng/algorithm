@@ -25,6 +25,11 @@ public class CanPartition {
      * <p>
      * 转换为 「0 - 1」 背包问题
      * <p>
+     * <p>
+     * 二维
+     * <p>
+     * 状态定义：dp[i][j]表示从数组的 [0, i] 这个子区间内挑选一些正整数，每个数只能用一次，使得这些数的和恰好等于 j。
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/partition-equal-subset-sum/solution/fen-ge-deng-he-zi-ji-by-leetcode-solution/
      * 来源：力扣（LeetCode）
