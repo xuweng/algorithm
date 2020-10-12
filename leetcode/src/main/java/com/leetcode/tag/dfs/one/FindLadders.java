@@ -215,4 +215,108 @@ public class FindLadders {
         }
     }
 
+    /**
+     * dfs
+     */
+    class Solution4 {
+        Map<String, Set<String>> map = new HashMap<>();
+        List<String> res = new ArrayList<>();
+        boolean flag = false;
+        boolean match = false;
+
+        public List<String> findLadders(String beginWord, String endWord, List<String> wordList) {
+            Set<String> set = new HashSet<>(wordList);
+
+            Set<String> beginSet = new HashSet<>();
+            beginSet.add(beginWord);
+
+            Set<String> endSet = new HashSet<>();
+            endSet.add(endWord);
+            if (!set.contains(endWord)) {
+                return new ArrayList<>();
+            }
+
+            set.remove(beginWord);
+            set.remove(endWord);
+            if (!bfs(beginSet, endSet, set, true)) {
+                return new ArrayList<>();
+            }
+
+            List<String> list = new ArrayList<>();
+            list.add(beginWord);
+            dfs(beginWord, endWord, list);
+
+            return res;
+        }
+
+
+        public void dfs(String beginWord, String endWord, List<String> list) {
+            if (flag) {
+                return;
+            }
+            if (beginWord.equals(endWord)) {
+                res.addAll(list);
+                flag = true;
+                return;
+            }
+            Set<String> l = map.get(beginWord);
+            if (l == null) {
+                return;
+            }
+            for (String o : l) {
+                list.add(o);
+                dfs(o, endWord, list);
+                list.remove(list.size() - 1);
+            }
+        }
+
+        public boolean bfs(Set<String> beginSet, Set<String> endSet, Set<String> set, boolean forward) {
+            if (match) {
+                return true;
+            }
+            if (beginSet.size() == 0) {
+                return false;
+            }
+
+            boolean match = false;
+            Set<String> newset = new HashSet<>();
+            for (String o : beginSet) {
+
+                char[] str = o.toCharArray();
+                for (int i = 0; i < str.length; i++) {
+                    char tmp = str[i];
+                    for (char j = 'a'; j < 'z'; j++) {
+                        if (str[i] == j) {
+                            continue;
+                        }
+                        str[i] = j;
+                        String temp = String.valueOf(str);
+                        if (set.contains(temp) || endSet.contains(temp)) {
+                            newset.add(temp);
+                            if (forward) {
+                                map.computeIfAbsent(o, k -> new HashSet<>()).add(temp);
+                            } else {
+                                map.computeIfAbsent(temp, k -> new HashSet<>()).add(temp);
+                            }
+                            if (endSet.contains(temp)) {
+                                match = true;
+                            }
+                        }
+                    }
+                    str[i] = tmp;
+                }
+            }
+            set.removeAll(newset);
+            beginSet = newset;
+            if (match) {
+                return true;
+            }
+            if (beginSet.size() > endSet.size()) {
+                return bfs(endSet, beginSet, set, !forward);
+            } else {
+                return bfs(beginSet, endSet, set, forward);
+            }
+        }
+    }
+
 }
