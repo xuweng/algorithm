@@ -84,8 +84,11 @@ public class FindLadders {
         }
 
         public void dfs(String beginWord, String endWord, List<String> wordList) {
+            if (result != null) {
+                return;
+            }
             if (beginWord.equals(endWord)) {
-                result = result == null ? new ArrayList<>(stack) : result;
+                result = new ArrayList<>(stack);
                 return;
             }
             for (int i = 0; i < wordList.size(); i++) {
