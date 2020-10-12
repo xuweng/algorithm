@@ -99,7 +99,8 @@ public class FindLadders {
                 stack.add(wordList.get(i));
                 dfs(wordList.get(i), endWord, wordList);
                 stack.remove(stack.size() - 1);
-                used[i] = false;
+                //used不需要回溯
+                //used[i] = false;
             }
         }
 
