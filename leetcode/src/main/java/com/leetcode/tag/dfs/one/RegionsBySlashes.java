@@ -113,7 +113,10 @@ public class RegionsBySlashes {
                     if (graph[i][j]) {
                         continue;
                     }
+                    //并查集合并每个连通分量
+                    //dfs标记每个连通分量
                     dfs(graph, i, j);
+                    //统计
                     res++;
                 }
             }
