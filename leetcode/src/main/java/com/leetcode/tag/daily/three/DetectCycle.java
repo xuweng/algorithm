@@ -47,6 +47,8 @@ public class DetectCycle {
     }
 
     /**
+     * 数学推导才是重点
+     * <p>
      * 方法二：快慢指针
      * <p>
      * 如果链表中存在环，则 fast 指针最终将再次与 slow 指针在环中相遇。
@@ -65,6 +67,7 @@ public class DetectCycle {
             if (head == null) {
                 return null;
             }
+            //双指针从同一节点出发
             ListNode slow = head, fast = head;
             while (fast != null) {
                 slow = slow.next;
