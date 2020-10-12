@@ -28,7 +28,7 @@ public class FrogPosition {
         }
 
         private void dfs(int i, int t, int target, double result) {
-            if (visited[i] || !graph.containsKey(i) || t < 0 || flag) {
+            if (visited[i] || t < 0 || flag) {
                 return;
             }
             if (i == target) {
@@ -37,6 +37,9 @@ public class FrogPosition {
                 return;
             }
             visited[i] = true;
+            if (!graph.containsKey(i)) {
+                return;
+            }
             List<Integer> list = graph.get(i);
             for (Integer integer : list) {
                 dfs(integer, t - 1, target, result * ((double) 1 / list.size()));
