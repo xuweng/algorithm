@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class FindLadders {
     class Solution {
-        List<String> result = new ArrayList<>();
+        List<String> result;
         List<String> stack = new ArrayList<>();
 
         public List<String> findLadders(String beginWord, String endWord, List<String> wordList) {
