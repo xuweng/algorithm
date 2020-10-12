@@ -120,6 +120,7 @@ public class FindLadders {
 
     class Solution6 {
         List<String> result;
+        // LinkedList当作stack厉害
         LinkedList<String> stack = new LinkedList<>();
         boolean[] used;
 
