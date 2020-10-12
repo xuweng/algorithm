@@ -15,7 +15,7 @@ public class FrogPosition {
         public double frogPosition(int n, int[][] edges, int t, int target) {
             for (int[] edge : edges) {
                 graph.computeIfAbsent(edge[0], k -> new ArrayList<>()).add(edge[1]);
-                //graph.computeIfAbsent(edge[1], k -> new ArrayList<>()).add(edge[0]);
+                graph.computeIfAbsent(edge[1], k -> new ArrayList<>()).add(edge[0]);
             }
             visited = new boolean[n + 1];
 
@@ -40,8 +40,9 @@ public class FrogPosition {
                 return;
             }
             List<Integer> list = graph.get(i);
+            int size = (int) list.stream().filter(integer -> !visited[integer]).count();
             for (Integer integer : list) {
-                dfs(integer, t - 1, target, result * ((double) 1 / list.size()));
+                dfs(integer, t - 1, target, result * ((double) 1 / size));
             }
         }
     }
