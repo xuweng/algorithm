@@ -1,7 +1,6 @@
 package com.leetcode.tag.dfs.one;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -16,17 +15,19 @@ import java.util.List;
 public class FindLadders {
     class Solution {
         List<String> result = new ArrayList<>();
-        List<String> stack = new LinkedList<>();
+        List<String> stack = new ArrayList<>();
 
         public List<String> findLadders(String beginWord, String endWord, List<String> wordList) {
             dfs(beginWord, endWord, wordList, 0);
+
+            result.add(0, beginWord);
 
             return result;
         }
 
         public void dfs(String beginWord, String endWord, List<String> wordList, int start) {
             if (beginWord.equals(endWord)) {
-                result = result == null ? new LinkedList<>(stack) : result;
+                result = result == null ? new ArrayList<>(stack) : result;
                 return;
             }
             for (int i = start; i < wordList.size(); i++) {
