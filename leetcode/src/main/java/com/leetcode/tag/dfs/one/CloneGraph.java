@@ -19,6 +19,7 @@ public class CloneGraph {
                 return hashMap.get(node);
             }
             Node newNode = new Node(node.val, new ArrayList<>());
+            //先标记node已经clone.再递归.
             hashMap.put(node, newNode);
             for (Node neighbor : node.neighbors) {
                 newNode.neighbors.add(cloneGraph(neighbor));
