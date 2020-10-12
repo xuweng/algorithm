@@ -7,6 +7,11 @@ package com.leetcode.tag.dfs.one;
  * 动态规划： dp[i] 代表以 nums[i] 为结尾的子数组的最大和。
  * 转移方程： dp[i] = max(dp[i-1], 0) + nums[i]。
  * <p>
+ * 在树上, 设 dp[C] 代表以当前节点为结尾的最大上升路径和,
+ * 则我们需要对节点的左右子树做一个选择, 有
+ * dp[C] = max(max(dp[L], 0), max(dp[R], 0)) + C.val
+ * 式中, C,L,R 分别代指 当前节点、左子节点、右子节点。
+ * <p>
  * 分析.
  * <p>
  * dp.dp.dp.dp.
