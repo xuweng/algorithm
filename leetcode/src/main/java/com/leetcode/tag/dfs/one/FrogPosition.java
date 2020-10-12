@@ -13,6 +13,7 @@ public class FrogPosition {
         Map<Integer, List<Integer>> graph = new HashMap<>();
         boolean[] visited;
         double result;
+        boolean flag;
 
         public double frogPosition(int n, int[][] edges, int t, int target) {
             for (int[] edge : edges) {
@@ -27,11 +28,12 @@ public class FrogPosition {
         }
 
         private void dfs(int i, int t, int target, double result) {
-            if (visited[i] || !graph.containsKey(i) || t < 0) {
+            if (visited[i] || !graph.containsKey(i) || t < 0 || flag) {
                 return;
             }
             if (i == target) {
                 this.result = result;
+                flag = true;
                 return;
             }
             visited[i] = true;
