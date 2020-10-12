@@ -1,5 +1,7 @@
 package com.leetcode.tag.dfs.one;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -13,8 +15,41 @@ import java.util.List;
  */
 public class FindLadders {
     class Solution {
+        List<String> result = new ArrayList<>();
+        List<String> stack = new LinkedList<>();
+
         public List<String> findLadders(String beginWord, String endWord, List<String> wordList) {
-            return null;
+            dfs(beginWord, endWord, wordList, 0);
+
+            return result;
+        }
+
+        public void dfs(String beginWord, String endWord, List<String> wordList, int start) {
+            if (beginWord.equals(endWord)) {
+                result = result == null ? new LinkedList<>(stack) : result;
+                return;
+            }
+            for (int i = start; i < wordList.size(); i++) {
+                if (!check(beginWord, wordList.get(i))) {
+                    continue;
+                }
+                stack.add(wordList.get(i));
+                dfs(wordList.get(i), endWord, wordList, i + 1);
+                stack.remove(stack.size() - 1);
+            }
+        }
+
+        private boolean check(String beginWord, String str) {
+            if (beginWord.length() != str.length()) {
+                return false;
+            }
+            int count = 0;
+            for (int i = 0; i < beginWord.length(); i++) {
+                if (beginWord.charAt(i) != str.charAt(i)) {
+                    count++;
+                }
+            }
+            return count == 1;
         }
     }
 }
