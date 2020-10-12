@@ -205,6 +205,7 @@ public class UpdateMatrix {
 
         public int[][] updateMatrix(int[][] matrix) {
             int m = matrix.length, n = matrix[0].length;
+            // 设置大值
             // 初始化动态规划的数组，所有的距离值都设置为一个很大的数
             int[][] dist = new int[m][n];
             for (int i = 0; i < m; ++i) {
@@ -218,6 +219,7 @@ public class UpdateMatrix {
                     }
                 }
             }
+            // 行-1或者列-1
             // 只有 水平向左移动 和 竖直向上移动，注意动态规划的计算顺序
             for (int i = 0; i < m; ++i) {
                 for (int j = 0; j < n; ++j) {
@@ -229,6 +231,7 @@ public class UpdateMatrix {
                     }
                 }
             }
+            // 行+1或者列+1
             // 只有 水平向右移动 和 竖直向下移动，注意动态规划的计算顺序
             for (int i = m - 1; i >= 0; --i) {
                 for (int j = n - 1; j >= 0; --j) {
