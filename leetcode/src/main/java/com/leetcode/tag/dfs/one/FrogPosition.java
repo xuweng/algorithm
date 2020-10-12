@@ -18,7 +18,7 @@ public class FrogPosition {
         public double frogPosition(int n, int[][] edges, int t, int target) {
             for (int[] edge : edges) {
                 graph.computeIfAbsent(edge[0], k -> new ArrayList<>()).add(edge[1]);
-                graph.computeIfAbsent(edge[1], k -> new ArrayList<>()).add(edge[0]);
+                //graph.computeIfAbsent(edge[1], k -> new ArrayList<>()).add(edge[0]);
             }
             visited = new boolean[n + 1];
 
