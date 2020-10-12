@@ -1,7 +1,6 @@
 package com.leetcode.tag.dfs.one;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 面试题 17.22. 单词转换
@@ -116,4 +115,56 @@ public class FindLadders {
             return count == 1;
         }
     }
+
+    /**
+     * bfs
+     * <p>
+     * 作者：lonely-praecursor
+     * 链接：https://leetcode-cn.com/problems/word-transformer-lcci/solution/xiang-bu-chu-biao-ti-by-lonely-praecursor/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        boolean f(String a, String b) {
+            int cnt = 0;
+            for (int i = 0; i < a.length(); i++) {
+                if (a.charAt(i) != b.charAt(i)) {
+                    cnt++;
+                }
+                if (cnt > 1) {
+                    return false;
+                }
+            }
+            return cnt == 1;
+        }
+
+        public List<String> findLadders(String beginWord, String endWord, List<String> wordList) {
+            Stack<LinkedList<String>> stack = new Stack<>();
+            LinkedList<String> result = new LinkedList<>();
+            result.add(beginWord);
+            stack.add(new LinkedList<>(result));
+            wordList.remove(beginWord);
+
+            while (!stack.isEmpty()) {
+                result = stack.pop();
+                String s1 = result.peekLast();
+                if (Objects.equals(s1, endWord)) {
+                    return result;
+                } else {
+                    for (int i = wordList.size() - 1; i >= 0; i--) {
+                        String s = wordList.get(i);
+                        if (!f(s1, s)) {
+                            continue;
+                        }
+                        wordList.remove(i);
+                        result.add(s);
+                        stack.add(new LinkedList<>(result));
+                        result.remove(s);
+                    }
+                }
+            }
+            return new LinkedList<>();
+        }
+    }
+
 }
