@@ -20,6 +20,7 @@ public class FindLadders {
         public List<String> findLadders(String beginWord, String endWord, List<String> wordList) {
             dfs(beginWord, endWord, wordList, 0);
 
+            result = result == null ? new ArrayList<>() : result;
             result.add(0, beginWord);
 
             return result;
