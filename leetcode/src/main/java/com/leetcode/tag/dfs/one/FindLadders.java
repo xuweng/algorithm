@@ -118,6 +118,68 @@ public class FindLadders {
         }
     }
 
+    class Solution6 {
+        List<String> result;
+        LinkedList<String> stack = new LinkedList<>();
+        boolean[] used;
+
+        public List<String> findLadders(String beginWord, String endWord, List<String> wordList) {
+            used = new boolean[wordList.size()];
+
+            dfs(beginWord, endWord, wordList);
+
+            if (result == null) {
+                return new ArrayList<>();
+            }
+            result.add(0, beginWord);
+
+            return result;
+        }
+
+        public void dfs(String beginWord, String endWord, List<String> wordList) {
+            if (result != null) {
+                return;
+            }
+            if (beginWord.equals(endWord)) {
+                result = new ArrayList<>(stack);
+                return;
+            }
+            List<String> hou = getHou(beginWord, wordList);
+            for (String s : hou) {
+                stack.add(s);
+                dfs(s, endWord, wordList);
+                stack.removeLast();
+            }
+        }
+
+
+        private List<String> getHou(String beginWord, List<String> wordList) {
+            List<String> result = new ArrayList<>();
+            for (int i = 0; i < wordList.size(); i++) {
+                if (used[i] || !check(beginWord, wordList.get(i))) {
+                    continue;
+                }
+                used[i] = true;
+                result.add(wordList.get(i));
+            }
+            return result;
+        }
+
+        private boolean check(String beginWord, String str) {
+            if (beginWord.length() != str.length()) {
+                return false;
+            }
+            int count = 0;
+            for (int i = 0; i < beginWord.length(); i++) {
+                if (beginWord.charAt(i) != str.charAt(i)) {
+                    count++;
+                }
+            }
+            return count == 1;
+        }
+
+    }
+
     /**
      * bfs
      * <p>
