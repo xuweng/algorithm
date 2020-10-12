@@ -16,7 +16,7 @@ public class CloneGraph {
 
         public Node cloneGraph(Node node) {
             if (set.contains(node)) {
-                return node;
+                return new Node(node.val);
             }
             set.add(node);
             Node newNode = new Node(node.val, new ArrayList<>());
