@@ -136,6 +136,7 @@ public class UpdateMatrix {
             // 只有 水平向左移动 和 竖直向上移动，注意动态规划的计算顺序
             for (int i = 0; i < m; ++i) {
                 for (int j = 0; j < n; ++j) {
+                    //注意数组越界
                     if (i - 1 >= 0) {
                         dist[i][j] = Math.min(dist[i][j], dist[i - 1][j] + 1);
                     }
