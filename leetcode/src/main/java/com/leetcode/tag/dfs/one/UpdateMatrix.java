@@ -104,6 +104,12 @@ public class UpdateMatrix {
     /**
      * 方法二：动态规划
      * <p>
+     * 4个移动方向的dp
+     * <p>
+     * 画图.看图.
+     * <p>
+     * 用 f(i,j) 表示位置 (i,j) 到最近的 0 的距离
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/01-matrix/solution/01ju-zhen-by-leetcode-solution/
      * 来源：力扣（LeetCode）
