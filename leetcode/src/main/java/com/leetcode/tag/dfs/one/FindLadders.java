@@ -185,16 +185,19 @@ public class FindLadders {
             if (curWord.equals(endWord)) {
                 return true;
             }
+            // 候选集是所有数据
             for (int i = 0; i < wordList.size(); ++i) {
                 if (visited[i] || !canTranslate(curWord, wordList.get(i))) {
                     continue;
                 }
+                // 只需要把访问的数据标记.标记不需要回溯.
                 visited[i] = true;
                 result.add(wordList.get(i));
                 if (hasRoute(wordList.get(i), endWord, wordList, visited, result)) {
                     return true;
                 }
                 result.remove(result.size() - 1);
+                // 精华
                 // 如果运行到这一步，意味着无法从i这个点找到路径，所以visited[i]无需改为false.
                 // visited[i] = false;
             }
