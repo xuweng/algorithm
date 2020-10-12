@@ -151,6 +151,7 @@ public class FindLadders {
                 if (Objects.equals(s1, endWord)) {
                     return result;
                 } else {
+                    //满足条件的元素入队
                     for (int i = wordList.size() - 1; i >= 0; i--) {
                         String s = wordList.get(i);
                         if (!f(s1, s)) {
