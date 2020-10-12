@@ -92,6 +92,8 @@ public class RegionsBySlashes {
      */
     class Solution1 {
         boolean[][] graph;
+        int[] rows = {-1, 1, 0, 0};
+        int[] cols = {0, 0, -1, 1};
 
         public int regionsBySlashes(String[] grid) {
             int n = grid.length;
@@ -135,10 +137,9 @@ public class RegionsBySlashes {
             }
             graph[row][col] = true;
             //上下左右
-            dfs(row - 1, col);
-            dfs(row + 1, col);
-            dfs(row, col - 1);
-            dfs(row, col + 1);
+            for (int i = 0; i < rows.length; i++) {
+                dfs(row + rows[i], col + cols[i]);
+            }
         }
     }
 
