@@ -37,6 +37,8 @@ public class FrogPosition {
                 return;
             }
             visited[i] = true;
+            //上面是计算顶点i
+            //下面开始计算顶点i的邻接顶点
             if (!graph.containsKey(i)) {
                 return;
             }
