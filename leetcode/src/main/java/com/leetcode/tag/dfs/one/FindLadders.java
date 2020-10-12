@@ -138,9 +138,13 @@ public class FindLadders {
         }
 
         public void dfs(String beginWord, String endWord, List<String> wordList) {
+            //剪枝
+            //递归终止条件
             if (result != null) {
                 return;
             }
+            //剪枝
+            //递归终止条件
             if (beginWord.equals(endWord)) {
                 result = new ArrayList<>(stack);
                 return;
