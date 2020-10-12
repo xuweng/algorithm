@@ -1,9 +1,6 @@
 package com.leetcode.tag.dfs.one;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 1377. T 秒后青蛙的位置
@@ -48,4 +45,74 @@ public class FrogPosition {
             }
         }
     }
+
+    /**
+     * BFS
+     * <p>
+     * 作者：Joseph1314
+     * 链接：https://leetcode-cn.com/problems/frog-position-after-t-seconds/solution/bfs-zhe-ge-qing-wa-shi-si-xin-yan-by-joseph1314/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        //自定义数据结构
+        class Node {
+            //顶点
+            int id;
+            //概率
+            double p;
+            //时间
+            int t;
+
+            Node(int i, double pp, int tt) {
+                id = i;
+                p = pp;
+                t = tt;
+            }
+        }
+
+        public double frogPosition(int n, int[][] edges, int t, int target) {
+            Set<Integer>[] graph = new Set[n + 1];
+            for (int i = 0; i <= n; i++) {
+                graph[i] = new HashSet<>();
+            }
+            //构建无向图
+            for (int[] e : edges) {
+                graph[e[0]].add(e[1]);
+                graph[e[1]].add(e[0]);
+            }
+            Queue<Node> queue = new LinkedList<>();
+            queue.offer(new Node(1, 1.000000, 0));
+            boolean[] visited = new boolean[n + 1];
+            visited[1] = true;
+            while (!queue.isEmpty()) {
+                Node node = queue.poll();
+                if (node.t == t && node.id == target) {
+                    //找到target
+                    return node.p;
+                }
+                if (node.t >= t) {
+                    continue;
+                }
+                int size = (int) graph[node.id].stream().mapToInt(nb -> nb).filter(nb -> !visited[nb]).count();
+                boolean find = false;
+                //邻接顶点
+                for (int nb : graph[node.id]) {
+                    if (visited[nb]) {
+                        continue;
+                    }
+                    find = true;
+                    visited[nb] = true;
+                    queue.offer(new Node(nb, node.p / size, node.t + 1));
+                }
+                if (!find) {
+                    queue.offer(new Node(node.id, node.p, node.t + 1));
+                }
+
+            }
+            return 0.0;
+
+        }
+    }
+
 }
