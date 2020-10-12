@@ -26,11 +26,11 @@ public class RegionsBySlashes {
      */
     class Solution {
         public int regionsBySlashes(String[] grid) {
-            int N = grid.length;
-            DSU dsu = new DSU(4 * N * N);
-            for (int r = 0; r < N; ++r) {
-                for (int c = 0; c < N; ++c) {
-                    int root = 4 * (r * N + c);
+            int n = grid.length;
+            DSU dsu = new DSU(4 * n * n);
+            for (int r = 0; r < n; ++r) {
+                for (int c = 0; c < n; ++c) {
+                    int root = 4 * (r * n + c);
                     char val = grid[r].charAt(c);
                     if (val != '\\') {
                         dsu.union(root, root + 1);
@@ -42,14 +42,14 @@ public class RegionsBySlashes {
                     }
 
                     // north south
-                    if (r + 1 < N) {
-                        dsu.union(root + 3, (root + 4 * N));
+                    if (r + 1 < n) {
+                        dsu.union(root + 3, (root + 4 * n));
                     }
                     if (r - 1 >= 0) {
-                        dsu.union(root, (root - 4 * N) + 3);
+                        dsu.union(root, (root - 4 * n) + 3);
                     }
                     // east west
-                    if (c + 1 < N) {
+                    if (c + 1 < n) {
                         dsu.union(root + 2, (root + 4) + 1);
                     }
                     if (c - 1 >= 0) {
@@ -58,18 +58,16 @@ public class RegionsBySlashes {
                 }
             }
 
-            return (int) IntStream.range(0, 4 * N * N).filter(x -> dsu.find(x) == x).count();
+            return (int) IntStream.range(0, 4 * n * n).filter(x -> dsu.find(x) == x).count();
         }
     }
 
     class DSU {
         int[] parent;
 
-        public DSU(int N) {
-            parent = new int[N];
-            for (int i = 0; i < N; ++i) {
-                parent[i] = i;
-            }
+        public DSU(int n) {
+            parent = new int[n];
+            IntStream.range(0, n).forEach(i -> parent[i] = i);
         }
 
         public int find(int x) {
