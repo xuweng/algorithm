@@ -62,6 +62,9 @@ public class FindLadders {
         }
     }
 
+    /**
+     * 超出时间限制
+     */
     class Solution1 {
         List<String> result;
         List<String> stack = new ArrayList<>();
