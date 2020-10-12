@@ -1,6 +1,7 @@
 package com.leetcode.tag.dfs.one;
 
 import java.util.*;
+import java.util.stream.IntStream;
 
 /**
  * 面试题 17.22. 单词转换
@@ -165,6 +166,48 @@ public class FindLadders {
                 }
             }
             return new LinkedList<>();
+        }
+    }
+
+    /**
+     * dfs
+     */
+    class Solution3 {
+        public boolean canTranslate(String from, String to) {
+            if (from.length() != to.length()) {
+                return false;
+            }
+            return (int) IntStream.range(0, from.length()).filter(i -> from.charAt(i) != to.charAt(i)).count() == 1;
+        }
+
+        boolean hasRoute(String curWord, String endWord, List<String> wordList,
+                         boolean[] visited, List<String> result) {
+            if (curWord.equals(endWord)) {
+                return true;
+            }
+            for (int i = 0; i < wordList.size(); ++i) {
+                if (visited[i] || !canTranslate(curWord, wordList.get(i))) {
+                    continue;
+                }
+                visited[i] = true;
+                result.add(wordList.get(i));
+                if (hasRoute(wordList.get(i), endWord, wordList, visited, result)) {
+                    return true;
+                }
+                result.remove(result.size() - 1);
+                // 如果运行到这一步，意味着无法从i这个点找到路径，所以visited[i]无需改为false.
+                // visited[i] = false;
+            }
+            return false;
+        }
+
+        public List<String> findLadders(String beginWord, String endWord, List<String> wordList) {
+            List<String> result = new ArrayList<>();
+            boolean[] visited = new boolean[wordList.size()];
+            if (hasRoute(beginWord, endWord, wordList, visited, result)) {
+                return result;
+            }
+            return new ArrayList<>();
         }
     }
 
