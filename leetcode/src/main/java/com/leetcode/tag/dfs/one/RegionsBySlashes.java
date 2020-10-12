@@ -91,9 +91,11 @@ public class RegionsBySlashes {
      * dfs
      */
     class Solution1 {
+        boolean[][] graph;
+
         public int regionsBySlashes(String[] grid) {
             int n = grid.length;
-            boolean[][] graph = new boolean[n * 3][n * 3];
+            graph = new boolean[n * 3][n * 3];
             for (int i = 0; i < n; ++i) {
                 for (int j = 0; j < n; ++j) {
                     if (grid[i].charAt(j) == '/') {
@@ -115,7 +117,7 @@ public class RegionsBySlashes {
                     }
                     //并查集合并每个连通分量
                     //dfs标记每个连通分量
-                    dfs(graph, i, j);
+                    dfs(i, j);
                     //统计
                     res++;
                 }
@@ -124,19 +126,19 @@ public class RegionsBySlashes {
 
         }
 
-        private void dfs(boolean[][] graph, int i, int j) {
+        private void dfs(int row, int col) {
             int n = graph.length;
             //数组边界检查
             //是否访问
-            if (i < 0 || i >= n || j < 0 || j >= n || graph[i][j]) {
+            if (row < 0 || row >= n || col < 0 || col >= n || graph[row][col]) {
                 return;
             }
-            graph[i][j] = true;
+            graph[row][col] = true;
             //上下左右
-            dfs(graph, i - 1, j);
-            dfs(graph, i + 1, j);
-            dfs(graph, i, j - 1);
-            dfs(graph, i, j + 1);
+            dfs(row - 1, col);
+            dfs(row + 1, col);
+            dfs(row, col - 1);
+            dfs(row, col + 1);
         }
     }
 
