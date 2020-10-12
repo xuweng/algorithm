@@ -206,6 +206,7 @@ public class FindLadders {
 
         public List<String> findLadders(String beginWord, String endWord, List<String> wordList) {
             List<String> result = new ArrayList<>();
+            result.add(beginWord);
             boolean[] visited = new boolean[wordList.size()];
             if (hasRoute(beginWord, endWord, wordList, visited, result)) {
                 return result;
