@@ -62,6 +62,7 @@ public class RegionsBySlashes {
                 }
             }
 
+            //计算连通分量个数
             return (int) IntStream.range(0, 4 * n * n).filter(x -> dsu.find(x) == x).count();
         }
     }
@@ -83,6 +84,56 @@ public class RegionsBySlashes {
 
         public void union(int x, int y) {
             parent[find(x)] = find(y);
+        }
+    }
+
+    /**
+     * dfs
+     */
+    class Solution1 {
+        public int regionsBySlashes(String[] grid) {
+            int n = grid.length;
+            boolean[][] graph = new boolean[n * 3][n * 3];
+            for (int i = 0; i < n; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    if (grid[i].charAt(j) == '/') {
+                        graph[i * 3][j * 3 + 2] = true;
+                        graph[i * 3 + 1][j * 3 + 1] = true;
+                        graph[i * 3 + 2][j * 3] = true;
+                    } else if (grid[i].charAt(j) == '\\') {
+                        graph[i * 3][j * 3] = true;
+                        graph[i * 3 + 1][j * 3 + 1] = true;
+                        graph[i * 3 + 2][j * 3 + 2] = true;
+                    }
+                }
+            }
+            int res = 0;
+            for (int i = 0; i < n * 3; ++i) {
+                for (int j = 0; j < n * 3; ++j) {
+                    if (graph[i][j]) {
+                        continue;
+                    }
+                    dfs(graph, i, j);
+                    res++;
+                }
+            }
+            return res;
+
+        }
+
+        private void dfs(boolean[][] graph, int i, int j) {
+            int n = graph.length;
+            //数组边界检查
+            //是否访问
+            if (i < 0 || i >= n || j < 0 || j >= n || graph[i][j]) {
+                return;
+            }
+            graph[i][j] = true;
+            //上下左右
+            dfs(graph, i - 1, j);
+            dfs(graph, i + 1, j);
+            dfs(graph, i, j - 1);
+            dfs(graph, i, j + 1);
         }
     }
 
