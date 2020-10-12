@@ -51,6 +51,10 @@ public class DetectCycle {
      * <p>
      * 如果链表中存在环，则 fast 指针最终将再次与 slow 指针在环中相遇。
      * <p>
+     * 数学公式
+     * <p>
+     * a+n(b+c)+b=a+(n+1)b+nca+n(b+c)+b=a+(n+1)b+nc。
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/linked-list-cycle-ii/solution/huan-xing-lian-biao-ii-by-leetcode-solution/
      * 来源：力扣（LeetCode）
