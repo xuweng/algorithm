@@ -5,7 +5,7 @@ package com.leetcode.tag.daily.three;
  */
 public class GetMinimumDifference {
     class Solution {
-        int result;
+        int result = Integer.MIN_VALUE;
         TreeNode pre;
 
         public int getMinimumDifference(TreeNode root) {
