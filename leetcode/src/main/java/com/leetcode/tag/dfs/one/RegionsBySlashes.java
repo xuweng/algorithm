@@ -100,6 +100,8 @@ public class RegionsBySlashes {
         public int regionsBySlashes(String[] grid) {
             int n = grid.length;
             graph = new boolean[n * 3][n * 3];
+            //构造图
+            //将原来n*n方格转为3n * 3n 方格。求0的连通量个数。
             for (int i = 0; i < n; ++i) {
                 for (int j = 0; j < n; ++j) {
                     if (grid[i].charAt(j) == '/') {
