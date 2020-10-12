@@ -19,10 +19,10 @@ public class CloneGraph {
                 return hashMap.get(node);
             }
             Node newNode = new Node(node.val, new ArrayList<>());
+            hashMap.put(node, newNode);
             for (Node neighbor : node.neighbors) {
                 newNode.neighbors.add(cloneGraph(neighbor));
             }
-            hashMap.put(node, newNode);
             return newNode;
         }
     }
