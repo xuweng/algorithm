@@ -15,6 +15,9 @@ public class CloneGraph {
         Map<Node, Node> hashMap = new HashMap<>();
 
         public Node cloneGraph(Node node) {
+            if (node == null) {
+                return null;
+            }
             if (hashMap.containsKey(node)) {
                 return hashMap.get(node);
             }
