@@ -364,6 +364,14 @@ public class FindLadders {
 
         }
 
+        /**
+         * 预先处理候选集
+         * <p>
+         * 返回与当前String 只差一个字母的字符串列表
+         *
+         * @param s
+         * @return
+         */
         public Queue<String> oneCharDiff(String s) {
             Queue<String> queue = new LinkedList<>();
             for (int j = 0; j < wordList.size(); j++) {
