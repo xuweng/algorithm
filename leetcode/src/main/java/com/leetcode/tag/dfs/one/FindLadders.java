@@ -320,4 +320,73 @@ public class FindLadders {
         }
     }
 
+    /**
+     * DFS+回溯
+     * <p>
+     * 第一次遇到标记不需要回溯
+     * <p>
+     * 递归终止条件
+     * <p>
+     * 作者：sangege
+     * 链接：https://leetcode-cn.com/problems/word-transformer-lcci/solution/dfshui-su-by-sangege/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution5 {
+        List<String> wordList;
+        boolean[] marked;
+        List<String> output;
+        String endWord;
+        List<String> result;
+
+        public List<String> findLadders(String beginWord, String endWord, List<String> wordList) {
+            this.wordList = wordList;
+            output = new ArrayList<>();
+            marked = new boolean[wordList.size()];
+            result = new ArrayList<>();
+            this.endWord = endWord;
+            dfs(beginWord);
+            return result;
+        }
+
+        public void dfs(String s) {
+            output.add(s);
+            Queue<String> queue = oneCharDiff(s);
+            for (String str : queue) {
+                if (str.equals(endWord)) {
+                    output.add(str);
+                    result = new ArrayList<>(output);
+                    return;
+                }
+                dfs(str);
+                output.remove(output.size() - 1);
+            }
+
+        }
+
+        public Queue<String> oneCharDiff(String s) {
+            Queue<String> queue = new LinkedList<>();
+            for (int j = 0; j < wordList.size(); j++) {
+                String str = wordList.get(j);
+                int diffNum = 0;
+                if (str.length() != s.length() || marked[j]) {
+                    continue;
+                }
+                for (int i = 0; i < str.length(); i++) {
+                    if (diffNum >= 2) {
+                        break;
+                    }
+                    if (str.charAt(i) != s.charAt(i)) {
+                        diffNum++;
+                    }
+                }
+                if (diffNum == 1) {
+                    queue.add(str);
+                    marked[j] = true;
+                }
+            }
+            return queue;
+        }
+    }
+
 }
