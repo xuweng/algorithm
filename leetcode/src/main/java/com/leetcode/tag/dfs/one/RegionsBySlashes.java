@@ -8,6 +8,8 @@ package com.leetcode.tag.dfs.one;
  * 从左到右顺序选择
  * <p>
  * 选择策略
+ * <p>
+ * 标记不回溯,相当visited.
  */
 public class RegionsBySlashes {
     class Solution {
