@@ -88,6 +88,8 @@ public class RegionsBySlashes {
     }
 
     /**
+     * 每个小格分解为 3 * 3 方格。求连通分量。
+     * <p>
      * dfs
      */
     class Solution1 {
