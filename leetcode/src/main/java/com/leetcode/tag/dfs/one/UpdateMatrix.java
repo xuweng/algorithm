@@ -110,6 +110,10 @@ public class UpdateMatrix {
      * <p>
      * 用 f(i,j) 表示位置 (i,j) 到最近的 0 的距离
      * <p>
+     * 状态转移方程:
+     * f(i,j) = 1+min(f(i−1,j),f(i,j−1)) 位置 (i,j) 的元素为 1
+     * f(i,j) = 0                        位置 (i,j) 的元素为 0
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/01-matrix/solution/01ju-zhen-by-leetcode-solution/
      * 来源：力扣（LeetCode）
