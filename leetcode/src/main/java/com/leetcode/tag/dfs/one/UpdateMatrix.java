@@ -66,6 +66,7 @@ public class UpdateMatrix {
             int m = matrix.length, n = matrix[0].length;
             int[][] dist = new int[m][n];
             boolean[][] seen = new boolean[m][n];
+            //保存坐标
             Queue<int[]> queue = new LinkedList<>();
             // 将所有的 0 添加进初始队列中
             for (int i = 0; i < m; ++i) {
@@ -81,10 +82,13 @@ public class UpdateMatrix {
             while (!queue.isEmpty()) {
                 int[] cell = queue.poll();
                 int i = cell[0], j = cell[1];
+                //上下左右
                 for (int d = 0; d < 4; ++d) {
                     int ni = i + dirs[d][0];
                     int nj = j + dirs[d][1];
+                    //边界检查、是否访问
                     if (ni >= 0 && ni < m && nj >= 0 && nj < n && !seen[ni][nj]) {
+                        //计算
                         dist[ni][nj] = dist[i][j] + 1;
                         queue.offer(new int[]{ni, nj});
                         seen[ni][nj] = true;
