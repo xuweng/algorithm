@@ -19,6 +19,10 @@ public class RegionsBySlashes {
     /**
      * 方法 1：并查集
      * <p>
+     * 为了找到图中连通块的数量，我们可以使用深度优先搜索或者并查集算法。问题的难点在于如何识别出整张图。
+     * <p>
+     * 这道题本质上是计算连通分量个数，难点在于理解题意以及确定哪些元素是相连的．
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/regions-cut-by-slashes/solution/you-xie-gang-hua-fen-qu-yu-by-leetcode/
      * 来源：力扣（LeetCode）
