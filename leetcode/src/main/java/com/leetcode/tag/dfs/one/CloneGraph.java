@@ -1,9 +1,9 @@
 package com.leetcode.tag.dfs.one;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 /**
  * 133. 克隆图
@@ -12,17 +12,17 @@ import java.util.Set;
  */
 public class CloneGraph {
     class Solution {
-        Set<Node> set = new HashSet<>();
+        Map<Node, Node> hashMap = new HashMap<>();
 
         public Node cloneGraph(Node node) {
-            if (set.contains(node)) {
-                return new Node(node.val);
+            if (hashMap.containsKey(node)) {
+                return hashMap.get(node);
             }
-            set.add(node);
             Node newNode = new Node(node.val, new ArrayList<>());
             for (Node neighbor : node.neighbors) {
                 newNode.neighbors.add(cloneGraph(neighbor));
             }
+            hashMap.put(node, newNode);
             return newNode;
         }
     }
