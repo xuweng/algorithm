@@ -186,7 +186,7 @@ public class Flatten {
     }
 
     /**
-     * 顺序递归(先序遍历)
+     * 顺序递归(先序遍历)、递增方式递归
      * <p>
      * 从递归开始标记位置开始递归
      * <p>
@@ -218,6 +218,32 @@ public class Flatten {
                 head.child = null;
             }
 
+            return head;
+        }
+    }
+
+    class Solution3 {
+        public Node flatten(Node head) {
+            Node p = head;
+            while (p != null) {
+                if (p.child != null) {
+                    Node next = p.next;
+                    Node child = p.child;
+                    p.next = child;
+
+                    p.child = null;
+                    child.prev = p;
+
+                    while (child.next != null) {
+                        child = child.next;
+                    }
+                    child.next = next;
+                    if (next != null) {
+                        next.prev = child;
+                    }
+                }
+                p = p.next;
+            }
             return head;
         }
     }
