@@ -49,7 +49,10 @@ public class SwapPairs {
      */
     class Solution2 {
         public ListNode swapPairs(ListNode head) {
+            //创建哑结点
+            //哑结点不会改变
             ListNode dummyHead = new ListNode(0);
+            //指向head
             dummyHead.next = head;
             ListNode temp = dummyHead;
             while (temp.next != null && temp.next.next != null) {
