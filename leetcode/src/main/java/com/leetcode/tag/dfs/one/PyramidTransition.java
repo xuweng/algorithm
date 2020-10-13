@@ -11,6 +11,21 @@ public class PyramidTransition {
     /**
      * 方法一：状态转换
      * <p>
+     * 状态压缩
+     * 1. 只有7个字母 {'A', 'B', 'C', 'D', 'E', 'F', 'G'}, 可以使用一个字节来表示每个字母
+     * 00000001 => 'A'
+     * 00000010 => 'B'
+     * 00000100 => 'C'
+     * 00001000 => 'D'
+     * 00010000 => 'E'
+     * 00100000 => 'F'
+     * 01000000 => 'G'
+     * <p>
+     * 作者：little-von
+     * 链接：https://leetcode-cn.com/problems/pyramid-transition-matrix/solution/cyu-yan-zhuang-tai-ya-suo-wei-yun-suan-by-little-v/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * <p>
      * 每个状态都是一个二进制数，如果第 k 类型的方块是可能的，则设置第 k 位
      * <p>
      * 作者：LeetCode
