@@ -32,6 +32,9 @@ public class Flatten {
             while (result.next != null) {
                 result = result.next;
             }
+            //注意置为null
+            child.child = null;
+
             return result;
         }
     }
