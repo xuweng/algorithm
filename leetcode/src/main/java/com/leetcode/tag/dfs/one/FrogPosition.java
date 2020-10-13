@@ -116,4 +116,77 @@ public class FrogPosition {
         }
     }
 
+    /**
+     * dfs
+     * <p>
+     * 作者：wu-bin-cong
+     * 链接：https://leetcode-cn.com/problems/frog-position-after-t-seconds/solution/da-jia-du-yong-bfswo-lai-ge-dfsban-ben-xiang-xi-ji/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        //表示跳到每个节点的概率,初始值pr[1] = 1.0
+        double[] p = new double[105];
+        //dfs过程会使用到，用于记录该节点有没有被遍历过。
+        boolean[] visited = new boolean[105];
+        Map<Integer, List<Integer>> graph = new HashMap<>(); //记录边的连接信息
+
+        void dfs(int cur, int t) {
+            //如果时间到了，那就退出
+            if (t <= 0) {
+                return;
+            }
+            int toCount = (int) graph.get(cur).stream().mapToInt(next -> next).filter(next -> !visited[next]).count();
+            //首先观察青蛙能去的地方
+            //如果已经没有地方能去了，那就退出
+            if (toCount == 0) {
+                return;
+            }
+            //跳往每个地方都是均匀分布的，概率均匀
+            double p = this.p[cur] / toCount;
+            for (int next : graph.get(cur)) {
+                if (visited[next]) {
+                    continue;
+                }
+                visited[next] = true;
+                this.p[cur] -= p;
+                //开始跳之前，将概率转移
+                this.p[next] += p;
+                //这样青蛙就可以安心跳过去了
+                dfs(next, t - 1);
+                visited[next] = false;
+            }
+        }
+
+        /**
+         * 1 <= n <= 100
+         * <p>
+         * 1 <= t <= 50
+         *
+         * @param n
+         * @param edges
+         * @param t
+         * @param target
+         * @return
+         */
+        public double frogPosition(int n, int[][] edges, int t, int target) {
+            //题目的数据量很小，才100个节点，本来担心暴力dfs模拟的话会不会超时。
+            //但是青蛙不会走回头路，这样就可以去掉很多很多的情况，对于dfs来说，应该不会超时的，然后开始干！
+            //初始化。
+            for (int i = 0; i < n; i++) {
+                p[i] = 0;
+                visited[i] = false;
+            }
+            //因为是无向图
+            for (int[] edge : edges) {
+                graph.computeIfAbsent(edge[0], k -> new ArrayList<>()).add(edge[1]);
+                graph.computeIfAbsent(edge[1], k -> new ArrayList<>()).add(edge[0]);
+            }
+            //初始化表示在当前1节点。
+            p[1] = 1;
+            visited[1] = true;
+            dfs(1, t);
+            return p[target];
+        }
+    }
 }
