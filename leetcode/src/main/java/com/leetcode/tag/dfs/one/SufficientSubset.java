@@ -98,6 +98,25 @@ public class SufficientSubset {
         }
     }
 
+    /**
+     * 简洁代码
+     */
+    class S {
+        public TreeNode sufficientSubset(TreeNode root, int limit) {
+            if (root == null) {
+                return null;
+            }
+            //到根结点了
+            if (root.left == root.right) {
+                return root.val < limit ? null : root;
+            }
+            root.left = sufficientSubset(root.left, limit - root.val);
+            root.right = sufficientSubset(root.right, limit - root.val);
+            //左右子树都为空，意味着这个子树上没有被保留的路径，那么这个结点也没有保留的必要了
+            return root.left == null && root.right == null ? null : root;
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
