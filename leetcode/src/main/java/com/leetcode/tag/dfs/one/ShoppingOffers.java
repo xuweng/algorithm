@@ -57,6 +57,7 @@ public class ShoppingOffers {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution1 {
+        //List作为map的key
         Map<List<Integer>, Integer> map = new HashMap<>();
 
         public int shoppingOffers(List<Integer> price, List<List<Integer>> special, List<Integer> needs) {
