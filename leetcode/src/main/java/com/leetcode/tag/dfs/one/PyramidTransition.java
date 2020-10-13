@@ -1,8 +1,6 @@
 package com.leetcode.tag.dfs.one;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 756. 金字塔转换矩阵
@@ -126,6 +124,56 @@ public class PyramidTransition {
                 return false;
             }
         }
+    }
+
+    /**
+     * dfs
+     * <p>
+     * 作者：a-12-ca1eae-cae
+     * 链接：https://leetcode-cn.com/problems/pyramid-transition-matrix/solution/java-shen-du-you-xian-sou-suo-di-gui-by-a-12-ca1ea/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        HashMap<String, List<Character>> map = new HashMap<>();
+
+        public boolean pyramidTransition(String bottom, List<String> allowed) {
+            for (String word : allowed) {
+                String key = word.substring(0, 2);
+                char value = word.charAt(2);
+                map.computeIfAbsent(key, k -> new ArrayList<>()).add(value);
+            }
+            return helper(bottom);
+        }
+
+        public boolean helper(String bottom) {
+            if (bottom.length() == 1) {
+                return true;
+            }
+            int n = bottom.length();
+            //上一层的长度为 n - 1
+            List<Character>[] lists = new List[n - 1];
+            for (int i = 1; i < n; i++) {
+                lists[i - 1] = map.getOrDefault(bottom.substring(i - 1, i + 1), new ArrayList<>());
+            }
+            return dfs(lists, 0, new StringBuilder());
+        }
+
+        //用 sb 记录着一层被构建的情况
+        public boolean dfs(List<Character>[] lists, int cur, StringBuilder sb) {
+            if (cur == lists.length) {
+                return helper(sb.toString());
+            }
+            for (char c : lists[cur]) {
+                sb.append(c);
+                if (dfs(lists, cur + 1, sb)) {
+                    return true;
+                }
+                sb.deleteCharAt(sb.length() - 1);
+            }
+            return false;
+        }
+
     }
 
 }
