@@ -67,7 +67,7 @@ public class ShoppingOffers {
             if (map.containsKey(needs)) {
                 return map.get(needs);
             }
-            int j, res = dot(needs, price);
+            int j, result = dot(needs, price);
             for (List<Integer> s : special) {
                 ArrayList<Integer> clone = new ArrayList<>(needs);
                 for (j = 0; j < needs.size(); j++) {
@@ -78,11 +78,11 @@ public class ShoppingOffers {
                     clone.set(j, diff);
                 }
                 if (j == needs.size()) {
-                    res = Math.min(res, s.get(j) + shopping(price, special, clone));
+                    result = Math.min(result, s.get(j) + shopping(price, special, clone));
                 }
             }
-            map.put(needs, res);
-            return res;
+            map.put(needs, result);
+            return result;
         }
 
         public int dot(List<Integer> a, List<Integer> b) {
