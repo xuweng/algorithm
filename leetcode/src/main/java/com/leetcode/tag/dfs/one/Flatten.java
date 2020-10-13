@@ -185,6 +185,41 @@ public class Flatten {
         }
     }
 
+    /**
+     * 顺序递归(先序遍历)
+     * <p>
+     * 后序遍历
+     */
+    class S {
+        public Node flatten(Node head) {
+            if (head == null) {
+                return null;
+            }
+            if (head.next != null) {
+                flatten(head.next);
+            }
+            if (head.child != null) {
+                Node child = flatten(head.child);
+
+                if (head.next != null) {
+                    Node last = child;
+                    while (last.next != null) {
+                        last = last.next;
+                    }
+                    last.next = head.next;
+                    head.next.prev = last;
+                }
+
+                child.prev = head;
+                head.next = child;
+
+                head.child = null;
+            }
+
+            return head;
+        }
+    }
+
     class Node {
         public int val;
         public Node prev;
