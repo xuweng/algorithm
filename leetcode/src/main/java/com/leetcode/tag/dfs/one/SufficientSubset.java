@@ -106,7 +106,8 @@ public class SufficientSubset {
             if (root == null) {
                 return null;
             }
-            //到根结点了
+            //叶子结点
+            //叶子结点可以这么写
             if (root.left == root.right) {
                 return root.val < limit ? null : root;
             }
