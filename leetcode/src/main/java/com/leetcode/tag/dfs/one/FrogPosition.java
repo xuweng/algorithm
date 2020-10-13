@@ -189,4 +189,40 @@ public class FrogPosition {
             return p[target];
         }
     }
+
+    class Solution3 {
+        public double frogPosition(int n, int[][] edges, int t, int target) {
+            int[] path = new int[n];
+            int[] from = new int[n];
+            // int[][] edges = {{1, 2}, {1, 3}, {1, 7}, {2, 4}, {2, 6}, {3, 5}};
+            for (int[] edge : edges) {
+                path[(Math.min(edge[0], edge[1])) - 1]++;
+                from[(Math.max(edge[0], edge[1])) - 1] = Math.min(edge[0], edge[1]);
+            }
+            // path = [3, 2, 1, 0, 0, 0, 0] // 每个顶点下面有多少个边
+            // from = [0, 1, 1, 2, 3, 2, 1] // 每个顶点的父节点
+
+            int time = 0;
+            double p = 1.0;
+            int currentTo = target; // 4
+            while (currentTo != 1) {
+                int temp = from[currentTo - 1];
+                p *= 1 / (double) path[temp - 1];
+                time++;
+                currentTo = temp;
+            }
+
+            if (time > t) {
+                return 0;
+            } else if (time == t) {
+                return p;
+            } else {
+                if (path[target - 1] == 0) {
+                    return p;
+                } else {
+                    return 0;
+                }
+            }
+        }
+    }
 }
