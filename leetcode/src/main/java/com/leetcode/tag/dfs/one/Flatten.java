@@ -1,5 +1,8 @@
 package com.leetcode.tag.dfs.one;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
+
 /**
  * 430. 扁平化多级双向链表
  * <p>
@@ -99,6 +102,69 @@ public class Flatten {
             // 右子树
             // 左子树的结果传给右子树
             return flattenDfs(tail, tempNext);
+        }
+
+        class Node {
+            public int val;
+            public Node prev;
+            public Node next;
+            public Node child;
+
+            public Node() {
+            }
+
+            public Node(int val, Node prev, Node next, Node child) {
+                this.val = val;
+                this.prev = prev;
+                this.next = next;
+                this.child = child;
+            }
+        }
+    }
+
+    /**
+     * 方法二：迭代的深度优先搜索
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/flatten-a-multilevel-doubly-linked-list/solution/bian-ping-hua-duo-ji-shuang-xiang-lian-biao-by-lee/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public Node flatten(Node head) {
+            if (head == null) {
+                return null;
+            }
+
+            // 哑结点不用改变
+            Node pseudoHead = new Node(0, null, head, null);
+            Node curr, prev = pseudoHead;
+
+            Deque<Node> stack = new ArrayDeque<>();
+            stack.push(head);
+
+            // 不是左子树先全部入栈
+            while (!stack.isEmpty()) {
+                // left先出
+                curr = stack.pop();
+                prev.next = curr;
+                curr.prev = prev;
+
+                // 右子树
+                if (curr.next != null) {
+                    stack.push(curr.next);
+                }
+                // 左子树
+                if (curr.child != null) {
+                    stack.push(curr.child);
+                    // don't forget to remove all child pointers.
+                    curr.child = null;
+                }
+                prev = curr;
+            }
+            // detach the pseudo node from the result
+            pseudoHead.next.prev = null;
+            return pseudoHead.next;
         }
 
         class Node {
