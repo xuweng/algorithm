@@ -38,10 +38,14 @@ public class Flatten {
             child.next = child.child;
             child.child.prev = child;
 
+            Node result = child.child;
+            while (result.next != null) {
+                result = result.next;
+            }
             //注意置为null
             child.child = null;
 
-            return node;
+            return result;
         }
     }
 
