@@ -15,12 +15,12 @@ public class FindTargetSumWays {
 
         private void dfs(int[] nums, int s, int sum, int start) {
             if (start >= nums.length) {
+                if (s == sum) {
+                    result++;
+                }
                 return;
             }
-            if (s == sum) {
-                result++;
-                return;
-            }
+
             dfs(nums, s, sum + nums[start], start + 1);
             dfs(nums, s, sum - nums[start], start + 1);
         }
