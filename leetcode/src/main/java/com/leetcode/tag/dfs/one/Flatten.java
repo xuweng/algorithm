@@ -97,6 +97,7 @@ public class Flatten {
             curr.child = null;
 
             // 右子树
+            // 左子树的结果传给右子树
             return flattenDfs(tail, tempNext);
         }
 
