@@ -21,8 +21,8 @@ public class FindTargetSumWays {
                 result++;
                 return;
             }
-            dfs(nums, s, nums[start], start + 1);
-            dfs(nums, s, -nums[start], start + 1);
+            dfs(nums, s, sum + nums[start], start + 1);
+            dfs(nums, s, sum - nums[start], start + 1);
         }
     }
 }
