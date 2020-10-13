@@ -11,8 +11,8 @@ public class SwapPairs {
             }
             ListNode p1 = head.next;
             ListNode p2 = p1.next;
-            p1.next = head;
 
+            p1.next = head;
             head.next = swapPairs(p2);
             return p1;
         }
