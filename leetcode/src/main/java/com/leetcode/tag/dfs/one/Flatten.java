@@ -2,6 +2,11 @@ package com.leetcode.tag.dfs.one;
 
 /**
  * 430. 扁平化多级双向链表
+ * <p>
+ * 开始递归、结束递归
+ * <p>
+ * 开始递归:[
+ * 结束递归:]
  */
 public class Flatten {
     class Solution {
