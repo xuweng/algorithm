@@ -13,14 +13,14 @@ public class Flatten {
 
         private Node dfs(Node head) {
             Node child = head;
-            while (child != null) {
+            while (child != null && child.next != null) {
                 if (child.child != null) {
                     break;
                 }
                 child = child.next;
             }
-            if (child == null) {
-                return head;
+            if (child != null && child.child == null) {
+                return child;
             }
             Node node = dfs(child.child);
             node.next = child.next;
