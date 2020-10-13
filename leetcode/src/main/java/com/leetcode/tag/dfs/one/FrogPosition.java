@@ -133,7 +133,7 @@ public class FrogPosition {
 
         void dfs(int cur, int t) {
             //如果时间到了，那就退出
-            if (t <= 0) {
+            if (t <= 0 || !graph.containsKey(cur)) {
                 return;
             }
             int toCount = (int) graph.get(cur).stream().mapToInt(next -> next).filter(next -> !visited[next]).count();
