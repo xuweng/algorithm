@@ -137,4 +137,53 @@ public class ShoppingOffers {
         }
 
     }
+
+    class Solution3 {
+        private int sum = 0, res = Integer.MAX_VALUE;
+
+        public int shoppingOffers(List<Integer> price, List<List<Integer>> special, List<Integer> needs) {
+            find(0, price, special, needs);
+            return res;
+        }
+
+        private void find(int begin, List<Integer> price, List<List<Integer>> special, List<Integer> needs) {
+            int tempSum = sum;
+            for (int i = 0; i < needs.size(); ++i) {
+                sum += needs.get(i) * price.get(i);
+            }
+            res = Math.min(res, sum);
+            sum = tempSum;
+            for (int i = begin; i < special.size(); ++i) {
+                List<Integer> curSpecial = special.get(i);
+                int specialNum = calSpecialNum(curSpecial, needs);
+                for (int j = 1; j <= specialNum; ++j) {
+                    List<Integer> tempNeeds = new ArrayList<>(needs);
+                    for (int k = 0; k < needs.size(); ++k) {
+                        needs.set(k, needs.get(k) - curSpecial.get(k) * j);
+                    }
+
+                    sum += curSpecial.get(needs.size()) * j;
+                    find(i + 1, price, special, needs);
+                    //回溯
+                    needs = tempNeeds;
+                    sum = tempSum;
+                }
+            }
+        }
+
+        private int calSpecialNum(List<Integer> item, List<Integer> needs) {
+            int max = Integer.MAX_VALUE;
+            for (int i = 0; i < needs.size(); ++i) {
+                int curNeed = needs.get(i), curItem = item.get(i);
+                if (curNeed < curItem) {
+                    return 0;
+                }
+
+                if (curItem != 0) {
+                    max = Math.min(curNeed / curItem, max);
+                }
+            }
+            return max;
+        }
+    }
 }
