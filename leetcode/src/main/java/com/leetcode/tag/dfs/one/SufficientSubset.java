@@ -109,11 +109,12 @@ public class SufficientSubset {
             //叶子结点
             //叶子结点可以这么写
             if (root.left == root.right) {
+                //用null表示叶子结点是否删除
                 return root.val < limit ? null : root;
             }
             root.left = sufficientSubset(root.left, limit - root.val);
             root.right = sufficientSubset(root.right, limit - root.val);
-            //左右子树都为空，意味着这个子树上没有被保留的路径，那么这个结点也没有保留的必要了
+            //左右子树都为null，意味着这个子树上没有被保留的路径，那么这个结点也没有保留的必要了
             return root.left == null && root.right == null ? null : root;
         }
     }
