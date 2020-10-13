@@ -226,9 +226,11 @@ public class Flatten {
         public Node flatten(Node head) {
             Node p = head;
             while (p != null) {
+                // 进入下一层
                 if (p.child != null) {
                     Node next = p.next;
                     Node child = p.child;
+                    // 指向child
                     p.next = child;
 
                     p.child = null;
