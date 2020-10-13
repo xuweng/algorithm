@@ -2,6 +2,10 @@ package com.leetcode.tag.dfs.one;
 
 /**
  * 494. 目标和
+ * <p>
+ * 递增递归
+ * <p>
+ * 处理候选集
  */
 public class FindTargetSumWays {
     class Solution {
@@ -15,6 +19,7 @@ public class FindTargetSumWays {
 
         private void dfs(int[] nums, int s, int sum, int start) {
             if (start >= nums.length) {
+                //越界统计
                 if (s == sum) {
                     result++;
                 }
