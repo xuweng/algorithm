@@ -26,8 +26,10 @@ public class Flatten {
                 return child;
             }
             Node node = dfs(child.child);
-            node.next = child.next;
-            child.next.prev = node;
+            if (child.next != null) {
+                node.next = child.next;
+                child.next.prev = node;
+            }
             child.next = child.child;
             child.child.prev = child;
 
