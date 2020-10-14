@@ -93,7 +93,9 @@ public class FindTargetSumWays {
             //不允许数组的下标为负数的，因此我们需要给 dp[i][j] 的第二维预先增加 1000
             dp[0][nums[0] + 1000] = 1;
             dp[0][-nums[0] + 1000] += 1;
+            //枚举前i个数
             for (int i = 1; i < nums.length; i++) {
+                //枚举和
                 for (int sum = -1000; sum <= 1000; sum++) {
                     if (dp[i - 1][sum + 1000] > 0) {
                         dp[i][sum + nums[i] + 1000] += dp[i - 1][sum + 1000];
