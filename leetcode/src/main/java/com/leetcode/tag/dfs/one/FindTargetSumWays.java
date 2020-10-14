@@ -1,5 +1,7 @@
 package com.leetcode.tag.dfs.one;
 
+import java.util.Arrays;
+
 /**
  * 494. 目标和
  * <p>
@@ -87,6 +89,8 @@ public class FindTargetSumWays {
          */
         public int findTargetSumWays(int[] nums, int S) {
             int[][] dp = new int[nums.length][2001];
+            //于数组中所有数的和不超过 1000，那么 j 的最小值可以达到 -1000
+            //不允许数组的下标为负数的，因此我们需要给 dp[i][j] 的第二维预先增加 1000
             dp[0][nums[0] + 1000] = 1;
             dp[0][-nums[0] + 1000] += 1;
             for (int i = 1; i < nums.length; i++) {
@@ -99,6 +103,39 @@ public class FindTargetSumWays {
             }
             return S > 1000 ? 0 : dp[nums.length - 1][S + 1000];
         }
+    }
+
+    class S {
+        public int findTargetSumWays(int[] nums, int s) {
+            int sum = Arrays.stream(nums).sum();
+            // 绝对值范围超过了sum的绝对值范围则无法得到
+            if (Math.abs(s) > Math.abs(sum)) {
+                return 0;
+            }
+
+            int len = nums.length;
+            // - 0 +
+            int t = sum * 2 + 1;
+            int[][] dp = new int[len][t];
+            // 初始化
+            if (nums[0] == 0) {
+                dp[0][sum] = 2;
+            } else {
+                dp[0][sum + nums[0]] = 1;
+                dp[0][sum - nums[0]] = 1;
+            }
+
+            for (int i = 1; i < len; i++) {
+                for (int j = 0; j < t; j++) {
+                    // 边界
+                    int l = Math.max((j - nums[i]), 0);
+                    int r = (j + nums[i]) < t ? j + nums[i] : 0;
+                    dp[i][j] = dp[i - 1][l] + dp[i - 1][r];
+                }
+            }
+            return dp[len - 1][sum + s];
+        }
+
     }
 
 }
