@@ -64,6 +64,8 @@ public class FindTargetSumWays {
      * <p>
      * 画表格理解dp状态转换
      * <p>
+     * 计算顺序
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/target-sum/solution/mu-biao-he-by-leetcode/
      * 来源：力扣（LeetCode）
