@@ -37,7 +37,7 @@ public class FindPaths {
             if (row + N < m && row - N >= 0 && col + N < n && col - N >= 0) {
                 return 0;
             }
-            //移出边界
+            //移出边界.
             if (row < 0 || row >= m || col < 0 || col >= n) {
                 return 1;
             }
@@ -45,6 +45,7 @@ public class FindPaths {
                 return dp[row][col][N];
             }
             int ans = 0;
+            //上下左右4个方向累加.不是最大值.
             for (int[] ints : mp) {
                 ans = (ans % mod + f(m, n, N - 1, row + ints[0], col + ints[1]) % mod) % mod;
             }
