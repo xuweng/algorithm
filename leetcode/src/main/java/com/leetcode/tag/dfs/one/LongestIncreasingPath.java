@@ -1,5 +1,8 @@
 package com.leetcode.tag.dfs.one;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * 329. 矩阵中的最长递增路径
  */
@@ -97,6 +100,67 @@ public class LongestIncreasingPath {
                 }
             }
             return memo[row][column];
+        }
+    }
+
+    /**
+     * 方法二：拓扑排序
+     * <p>
+     * 每个单元格对应的最长递增路径的结果只和相邻单元格的结果有关
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/solution/ju-zhen-zhong-de-zui-chang-di-zeng-lu-jing-by-le-2/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+        public int rows, columns;
+
+        public int longestIncreasingPath(int[][] matrix) {
+            if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+                return 0;
+            }
+            rows = matrix.length;
+            columns = matrix[0].length;
+            int[][] outdegrees = new int[rows][columns];
+            for (int i = 0; i < rows; ++i) {
+                for (int j = 0; j < columns; ++j) {
+                    for (int[] dir : dirs) {
+                        int newRow = i + dir[0], newColumn = j + dir[1];
+                        if (newRow >= 0 && newRow < rows && newColumn >= 0 && newColumn < columns && matrix[newRow][newColumn] > matrix[i][j]) {
+                            ++outdegrees[i][j];
+                        }
+                    }
+                }
+            }
+            Queue<int[]> queue = new LinkedList<int[]>();
+            for (int i = 0; i < rows; ++i) {
+                for (int j = 0; j < columns; ++j) {
+                    if (outdegrees[i][j] == 0) {
+                        queue.offer(new int[]{i, j});
+                    }
+                }
+            }
+            int ans = 0;
+            while (!queue.isEmpty()) {
+                ++ans;
+                int size = queue.size();
+                for (int i = 0; i < size; ++i) {
+                    int[] cell = queue.poll();
+                    int row = cell[0], column = cell[1];
+                    for (int[] dir : dirs) {
+                        int newRow = row + dir[0], newColumn = column + dir[1];
+                        if (newRow >= 0 && newRow < rows && newColumn >= 0 && newColumn < columns && matrix[newRow][newColumn] < matrix[row][column]) {
+                            --outdegrees[newRow][newColumn];
+                            if (outdegrees[newRow][newColumn] == 0) {
+                                queue.offer(new int[]{newRow, newColumn});
+                            }
+                        }
+                    }
+                }
+            }
+            return ans;
         }
     }
 
