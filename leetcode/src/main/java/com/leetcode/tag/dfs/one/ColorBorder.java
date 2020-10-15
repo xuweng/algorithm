@@ -62,6 +62,7 @@ public class ColorBorder {
                 return;
             }
 
+            //坐标区分边界和非边界
             //边界
             if (i == 0 || j == 0 || i == grid.length - 1 || j == grid[0].length - 1) {
                 grid[i][j] = color;
