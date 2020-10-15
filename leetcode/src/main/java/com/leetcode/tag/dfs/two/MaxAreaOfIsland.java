@@ -2,6 +2,7 @@ package com.leetcode.tag.dfs.two;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 695. 岛屿的最大面积
@@ -116,6 +117,46 @@ public class MaxAreaOfIsland {
                             int nextI = curI + di[index], nextJ = curJ + dj[index];
                             stackI.push(nextI);
                             stackJ.push(nextJ);
+                        }
+                    }
+                    ans = Math.max(ans, cur);
+                }
+            }
+            return ans;
+        }
+    }
+
+    /**
+     * 方法三：广度优先搜索
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/max-area-of-island/solution/dao-yu-de-zui-da-mian-ji-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution4 {
+        public int maxAreaOfIsland(int[][] grid) {
+            int ans = 0;
+            for (int i = 0; i != grid.length; ++i) {
+                for (int j = 0; j != grid[0].length; ++j) {
+                    int cur = 0;
+                    Queue<Integer> queueI = new LinkedList<>();
+                    Queue<Integer> queueJ = new LinkedList<>();
+                    queueI.offer(i);
+                    queueJ.offer(j);
+                    while (!queueI.isEmpty()) {
+                        int curI = queueI.poll(), curJ = queueJ.poll();
+                        if (curI < 0 || curJ < 0 || curI == grid.length || curJ == grid[0].length || grid[curI][curJ] != 1) {
+                            continue;
+                        }
+                        ++cur;
+                        grid[curI][curJ] = 0;
+                        int[] di = {0, 0, 1, -1};
+                        int[] dj = {1, -1, 0, 0};
+                        for (int index = 0; index != 4; ++index) {
+                            int nextI = curI + di[index], nextJ = curJ + dj[index];
+                            queueI.offer(nextI);
+                            queueJ.offer(nextJ);
                         }
                     }
                     ans = Math.max(ans, cur);
