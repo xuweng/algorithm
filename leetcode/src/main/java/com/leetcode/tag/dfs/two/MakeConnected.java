@@ -79,6 +79,8 @@ public class MakeConnected {
     /**
      * 连通---并查集
      * <p>
+     * 并查集其本身就是用来统计连通分量数的数据结构
+     * <p>
      * 作者：liweiwei1419
      * 链接：https://leetcode-cn.com/problems/number-of-operations-to-make-network-connected/solution/bing-cha-ji-by-liweiwei1419/
      * 来源：力扣（LeetCode）
