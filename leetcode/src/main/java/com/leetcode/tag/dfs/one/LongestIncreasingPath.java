@@ -60,6 +60,7 @@ public class LongestIncreasingPath {
     class Solution1 {
         public int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
         public int rows, columns;
+        //矩阵缓存
         int[][] memo;
 
         public int longestIncreasingPath(int[][] matrix) {
@@ -73,6 +74,9 @@ public class LongestIncreasingPath {
             int ans = 0;
             for (int i = 0; i < rows; ++i) {
                 for (int j = 0; j < columns; ++j) {
+                    if (memo[i][j] != 0) {
+                        continue;
+                    }
                     ans = Math.max(ans, dfs(matrix, i, j));
                 }
             }
