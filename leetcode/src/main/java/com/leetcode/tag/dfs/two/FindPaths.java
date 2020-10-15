@@ -33,6 +33,10 @@ public class FindPaths {
             if (N < 0) {
                 return 0;
             }
+            //如果 上下左右 一直 直走 都不能到达边界，那么无需继续走下去
+            if (row + N < m && row - N >= 0 && col + N < n && col - N >= 0) {
+                return 0;
+            }
             //移出边界
             if (row < 0 || row >= m || col < 0 || col >= n) {
                 return 1;
