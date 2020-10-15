@@ -45,6 +45,10 @@ public class LongestIncreasingPath {
     /**
      * 方法一：记忆化深度优先搜索
      * <p>
+     * 大量的重复计算，同一个单元格会被访问多次，每次访问都要重新计算。
+     * <p>
+     * 由于同一个单元格对应的最长递增路径的长度是固定不变的，因此可以使用记忆化的方法进行优化。
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/longest-increasing-path-in-a-matrix/solution/ju-zhen-zhong-de-zui-chang-di-zeng-lu-jing-by-le-2/
      * 来源：力扣（LeetCode）
