@@ -27,14 +27,14 @@ public class ContainVirus {
         List<Set<Integer>> frontiers;
         List<Integer> perimeters;
         int[][] grid;
-        int R, C;
-        int[] dr = new int[]{-1, 1, 0, 0};
-        int[] dc = new int[]{0, 0, -1, 1};
+        int r, c;
+        int[] dr = {-1, 1, 0, 0};
+        int[] dc = {0, 0, -1, 1};
 
         public int containVirus(int[][] grid) {
             this.grid = grid;
-            R = grid.length;
-            C = grid[0].length;
+            r = grid.length;
+            c = grid[0].length;
 
             int ans = 0;
             while (true) {
@@ -43,9 +43,9 @@ public class ContainVirus {
                 frontiers = new ArrayList<>();
                 perimeters = new ArrayList<>();
 
-                for (int r = 0; r < R; ++r) {
-                    for (int c = 0; c < C; ++c) {
-                        if (grid[r][c] == 1 && !seen.contains(r * C + c)) {
+                for (int r = 0; r < this.r; ++r) {
+                    for (int c = 0; c < this.c; ++c) {
+                        if (grid[r][c] == 1 && !seen.contains(r * this.c + c)) {
                             regions.add(new HashSet<>());
                             frontiers.add(new HashSet<>());
                             perimeters.add(0);
@@ -68,14 +68,14 @@ public class ContainVirus {
                 for (int i = 0; i < regions.size(); ++i) {
                     if (i == triageIndex) {
                         for (int code : regions.get(i)) {
-                            grid[code / C][code % C] = -1;
+                            grid[code / c][code % c] = -1;
                         }
                     } else {
                         for (int code : regions.get(i)) {
-                            int r = code / C, c = code % C;
+                            int r = code / this.c, c = code % this.c;
                             for (int k = 0; k < 4; ++k) {
                                 int nr = r + dr[k], nc = c + dc[k];
-                                if (nr >= 0 && nr < R && nc >= 0 && nc < C && grid[nr][nc] == 0) {
+                                if (nr >= 0 && nr < this.r && nc >= 0 && nc < this.c && grid[nr][nc] == 0) {
                                     grid[nr][nc] = 1;
                                 }
                             }
@@ -87,20 +87,20 @@ public class ContainVirus {
         }
 
         public void dfs(int r, int c) {
-            if (seen.contains(r * C + c)) {
+            if (seen.contains(r * this.c + c)) {
                 return;
             }
-            seen.add(r * C + c);
-            int N = regions.size();
-            regions.get(N - 1).add(r * C + c);
+            seen.add(r * this.c + c);
+            int n = regions.size();
+            regions.get(n - 1).add(r * this.c + c);
             for (int k = 0; k < 4; ++k) {
                 int nr = r + dr[k], nc = c + dc[k];
-                if (nr >= 0 && nr < R && nc >= 0 && nc < C) {
+                if (nr >= 0 && nr < this.r && nc >= 0 && nc < this.c) {
                     if (grid[nr][nc] == 1) {
                         dfs(nr, nc);
                     } else if (grid[nr][nc] == 0) {
-                        frontiers.get(N - 1).add(nr * C + nc);
-                        perimeters.set(N - 1, perimeters.get(N - 1) + 1);
+                        frontiers.get(n - 1).add(nr * this.c + nc);
+                        perimeters.set(n - 1, perimeters.get(n - 1) + 1);
                     }
                 }
             }
