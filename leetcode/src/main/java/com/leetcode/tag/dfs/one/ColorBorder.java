@@ -16,6 +16,8 @@ public class ColorBorder {
         boolean[][] visited;
 
         public int[][] colorBorder(int[][] grid, int r0, int c0, int color) {
+            visited = new boolean[grid.length][grid[0].length];
+
             dfs(grid, r0, c0, color, grid[r0][c0]);
 
             return grid;
