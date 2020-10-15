@@ -159,4 +159,51 @@ public class MakeConnected {
         }
     }
 
+    /**
+     * 并查集
+     * <p>
+     * 连通分量个数
+     */
+    class Solution2 {
+        private int[] fa;
+        private int conponents;
+
+        private int find(int x) {
+            if (fa[x] == x) {
+                return x;
+            }
+            fa[x] = find(fa[x]);
+            return fa[x];
+        }
+
+        private void union(int i, int j) {
+            if (find(i) == find(j)) {
+                return;
+            }
+            fa[find(i)] = find(j);
+            conponents--;
+        }
+
+        public int makeConnected(int n, int[][] connections) {
+            fa = new int[n];
+            conponents = n;
+            for (int i = 0; i < n; i++) {
+                fa[i] = i;
+            }
+
+            int edges = connections.length;
+            if (edges < n - 1) {
+                return -1;
+            }
+            for (int[] connection : connections) {
+                union(connection[0], connection[1]);
+            }
+            // Set<Integer> set = new HashSet<>();
+            // for(int i=0;i<n;i++){
+            //     set.add(find(i));
+            // }
+            return conponents - 1;
+        }
+    }
+
 }
