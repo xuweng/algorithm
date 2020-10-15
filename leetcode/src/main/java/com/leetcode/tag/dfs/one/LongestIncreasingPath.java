@@ -15,6 +15,7 @@ public class LongestIncreasingPath {
             if (matrix == null || matrix.length == 0) {
                 return 0;
             }
+            visited = new boolean[matrix.length][matrix[0].length];
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix[0].length; j++) {
                     dfs(matrix, i, j, 1);
