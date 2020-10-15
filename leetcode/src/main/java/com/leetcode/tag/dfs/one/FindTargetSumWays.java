@@ -131,7 +131,7 @@ public class FindTargetSumWays {
             for (int i = 1; i < nums.length; i++) {
                 //枚举和
                 for (int sum = -1000; sum <= 1000; sum++) {
-                    dp[i][sum + 1000] = dp[i - 1][sum - nums[i] + 1000] + dp[i - 1][sum + nums[i] + 1000];
+                    dp[i][sum + 2000] = dp[i - 1][sum - nums[i] + 2000] + dp[i - 1][sum + nums[i] + 2000];
                 }
             }
             return S > 1000 ? 0 : dp[nums.length - 1][S + 1000];
