@@ -16,7 +16,7 @@ public class MaxAreaOfIsland {
             int max = 0;
             for (int i = 0; i < grid.length; i++) {
                 for (int j = 0; j < grid.length; j++) {
-                    if (visited[i][j]) {
+                    if (visited[i][j] || grid[i][j] == 0) {
                         continue;
                     }
                     max = Math.max(max, dfs(grid, i, j));
@@ -27,11 +27,11 @@ public class MaxAreaOfIsland {
         }
 
         private int dfs(int[][] grid, int row, int col) {
-            if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length || visited[row][col]) {
+            if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length || visited[row][col] || grid[row][col] == 0) {
                 return 0;
             }
             visited[row][col] = true;
-            int result = 0;
+            int result = 1;
             for (int i = 0; i < rows.length; i++) {
                 result += dfs(grid, row + rows[i], col + cols[i]);
             }
