@@ -13,6 +13,7 @@ public class MaxAreaOfIsland {
             if (grid == null || grid.length == 0 || grid[0].length == 0) {
                 return 0;
             }
+            visited = new boolean[grid.length][grid[0].length];
             int max = 0;
             for (int i = 0; i < grid.length; i++) {
                 for (int j = 0; j < grid.length; j++) {
