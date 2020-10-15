@@ -164,4 +164,58 @@ public class LongestIncreasingPath {
         }
     }
 
+    class Solution3 {
+        //搜索题解：java实现 深度优先 超级简单易懂
+        //dfs+动态规划：时间：O(m * n)
+        //思路：先从一个格子开始找，对比它4周的格子，有没有比它小的，如果有，比如有A，B，C三个格子都比它小，那么当前格子的最大连续递增长度就是这3个格子的最大连续递增长度中的最大值+1
+        public int longestIncreasingPath(int[][] matrix) {
+            if (matrix.length == 0 || matrix[0].length == 0) {
+                return 0;
+            }
+            int m = matrix.length, n = matrix[0].length;
+            int max = 0;
+            //记录当前格子的最长递增路径以及是否访问过，已经访问过的记录最长路径
+            int[][] visited = new int[m][n];
+            for (int i = 0; i < m; i++) {
+                for (int j = 0; j < n; j++) {
+                    //该位置没有访问过才dfs搜索
+                    if (visited[i][j] == 0) {
+                        max = Math.max(max, dfs(matrix, i, j, visited));
+                    }
+                }
+            }
+            return max;
+        }
+
+        //以[i,j]位置开始向上下左右搜索最长递增路径，返回最长路径
+        private int dfs(int[][] matrix, int i, int j, int[][] visited) {
+            if (i < 0 || i >= matrix.length || j < 0 || j >= matrix[0].length) {
+                return 0;
+            }
+            //避免重复计算，如果之前已经算过了最长路径了，直接返回
+            if (visited[i][j] > 0) {
+                return visited[i][j];
+            }
+            int max = 0;
+            int cur = matrix[i][j];
+            //上下左右递归找是否比当前数字小，找到最长递增路径
+            if (i > 0 && matrix[i - 1][j] < cur) {
+                max = Math.max(max, dfs(matrix, i - 1, j, visited));
+            }
+            if (i < matrix.length - 1 && matrix[i + 1][j] < cur) {
+                max = Math.max(max, dfs(matrix, i + 1, j, visited));
+            }
+            if (j > 0 && matrix[i][j - 1] < cur) {
+                max = Math.max(max, dfs(matrix, i, j - 1, visited));
+            }
+            if (j < matrix[0].length - 1 && matrix[i][j + 1] < cur) {
+                max = Math.max(max, dfs(matrix, i, j + 1, visited));
+            }
+            //更新[i,j]位置最长递增路径+1
+            visited[i][j] = max + 1;
+            return visited[i][j];
+        }
+    }
+
+
 }
