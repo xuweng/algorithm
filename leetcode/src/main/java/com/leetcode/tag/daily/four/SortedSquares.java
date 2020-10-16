@@ -1,5 +1,7 @@
 package com.leetcode.tag.daily.four;
 
+import java.util.Arrays;
+
 /**
  * 977. 有序数组的平方
  */
@@ -17,6 +19,7 @@ public class SortedSquares {
                 }
                 A[i] = A[i] * A[i];
             }
+            Arrays.sort(A);
 
             return A;
         }
