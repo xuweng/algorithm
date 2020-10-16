@@ -122,4 +122,17 @@ public class SortedSquares {
         }
     }
 
+    class Solution4 {
+        public int[] sortedSquares(int[] A) {
+            int start = 0;
+            int end = A.length - 1;
+            int i = end;
+            int[] result = new int[A.length];
+            while (i >= 0) {
+                result[i--] = A[start] * A[start] >= A[end] * A[end] ? A[start] * A[start++] : A[end] * A[end--];
+            }
+            return result;
+        }
+    }
+
 }
