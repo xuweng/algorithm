@@ -25,9 +25,14 @@ public class FindRotateSteps {
                     .filter(i -> ring.charAt(i) == key.charAt(start)).findFirst().orElse(0);
 
             int result = index + 1;
-            if (index + 1 < ring.length()) {
-                result += dfs(ring.substring(index + 1) + ring.substring(0, index + 1), key, start + 1);
+            if (ring.charAt(0) == key.charAt(start)) {
+                result += dfs(ring, key, start + 1);
+            } else {
+                if (index + 1 < ring.length()) {
+                    result += dfs(ring.substring(index + 1) + ring.substring(0, index + 1), key, start + 1);
+                }
             }
+
             return result;
         }
     }
