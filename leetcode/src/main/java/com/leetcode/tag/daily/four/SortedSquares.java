@@ -55,6 +55,7 @@ public class SortedSquares {
     class Solution2 {
         public int[] sortedSquares(int[] A) {
             int n = A.length;
+            //设 neg 为数组 A 中负数与非负数的分界线，也就是说A[0] 到A[neg] 均为负数，而 A[neg+1] 到 A[n−1] 均为非负数
             int negative = -1;
             for (int i = 0; i < n; ++i) {
                 if (A[i] < 0) {
@@ -64,7 +65,10 @@ public class SortedSquares {
                 }
             }
 
+            //当我们将数组 A 中的数平方后，那么 A[0] 到 A[neg] 单调递减，A[neg+1] 到 A[n−1] 单调递增。
+            //得到了两个已经有序的子数组，因此就可以使用归并的方法进行排序了
             int[] ans = new int[n];
+            //使用两个指针分别指向位置 neg 和 neg+1
             int index = 0, i = negative, j = negative + 1;
             while (i >= 0 || j < n) {
                 if (i < 0) {
