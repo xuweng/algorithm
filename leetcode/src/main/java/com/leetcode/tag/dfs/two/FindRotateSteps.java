@@ -17,6 +17,8 @@ public class FindRotateSteps {
      * <p>
      * 重复字符不通过.重复数据始终是坑.
      * <p>
+     * 还是有些测试用例不通过
+     * <p>
      * 数字字符串.
      */
     class Solution {
