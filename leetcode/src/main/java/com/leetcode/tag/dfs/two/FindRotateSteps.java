@@ -22,6 +22,16 @@ public class FindRotateSteps {
      * 数字字符串.
      */
     class Solution {
+        /**
+         * 测试用例
+         * <p>
+         * "inggodd"
+         * "o"
+         *
+         * @param ring
+         * @param key
+         * @return
+         */
         public int findRotateSteps(String ring, String key) {
             return dfs(ring, key, 0);
         }
