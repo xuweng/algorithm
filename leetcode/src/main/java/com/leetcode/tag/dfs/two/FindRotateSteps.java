@@ -12,6 +12,9 @@ import java.util.stream.IntStream;
  * 递增递归.
  */
 public class FindRotateSteps {
+    /**
+     * 用多种不同的测试用例测试.有些测试用例不通过.
+     */
     class Solution {
         public int findRotateSteps(String ring, String key) {
             return dfs(ring, key, 0);
