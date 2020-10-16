@@ -91,4 +91,35 @@ public class SortedSquares {
         }
     }
 
+    /**
+     * 方法三：双指针
+     * <p>
+     * 可以使用两个指针分别指向位置 0 和 n−1，每次比较两个指针对应的数，选择较大的那个逆序放入答案并移动指针
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/squares-of-a-sorted-array/solution/you-xu-shu-zu-de-ping-fang-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        public int[] sortedSquares(int[] A) {
+            int n = A.length;
+            int[] ans = new int[n];
+            int i = 0, j = n - 1, pos = n - 1;
+            while (i <= j) {
+                int iSquare = A[i] * A[i];
+                int jSquare = A[j] * A[j];
+                if (iSquare > jSquare) {
+                    ans[pos] = iSquare;
+                    ++i;
+                } else {
+                    ans[pos] = jSquare;
+                    --j;
+                }
+                --pos;
+            }
+            return ans;
+        }
+    }
+
 }
