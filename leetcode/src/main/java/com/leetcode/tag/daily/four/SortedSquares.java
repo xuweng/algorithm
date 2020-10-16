@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 /**
  * 977. 有序数组的平方
+ * <p>
+ * 有序------双指针
  */
 public class SortedSquares {
     class Solution {
