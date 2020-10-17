@@ -32,6 +32,7 @@ public class TotalNQueens {
                     continue;
                 }
                 cols[i] = true;
+                //本质都是坐标相加.只是原点不一样.
                 //左上为原点
                 lefts[row + i] = true;
                 //右上为原点
