@@ -14,6 +14,16 @@ public class CrackSafe {
     /**
      * 方法一：Hierholzer 算法
      * <p>
+     * 求解欧拉回路 / 欧拉通路的题目
+     * <p>
+     * Hierholzer 算法如下：
+     * <p>
+     * 我们从节点 u 开始，任意地经过还未经过的边，直到我们「无路可走」。此时我们一定回到了节点 u，这是因为所有节点的入度和出度都相等。
+     * <p>
+     * 回到节点 u 之后，我们得到了一条从 u 开始到 u 结束的回路，这条回路上仍然有些节点有未经过的出边。
+     * <p>
+     * 我么从某个这样的节点 v 开始，继续得到一条从 v 开始到 v 结束的回路，再嵌入之前的回路中
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/cracking-the-safe/solution/po-jie-bao-xian-xiang-by-leetcode-solution/
      * 来源：力扣（LeetCode）
