@@ -50,11 +50,12 @@ public class CrackSafe {
         public void dfs(int node) {
             for (int x = 0; x < k; ++x) {
                 int nei = node * 10 + x;
-                if (!seen.contains(nei)) {
-                    seen.add(nei);
-                    dfs(nei % highest);
-                    ans.append(x);
+                if (seen.contains(nei)) {
+                    continue;
                 }
+                seen.add(nei);
+                dfs(nei % highest);
+                ans.append(x);
             }
         }
     }
