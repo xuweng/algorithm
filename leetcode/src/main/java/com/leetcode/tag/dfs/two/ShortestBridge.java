@@ -190,4 +190,82 @@ public class ShortestBridge {
         }
     }
 
+    /**
+     * 本质上求两座岛屿的最短距离
+     */
+    class Solution3 {
+        Queue<Node> points = new LinkedList<>(); // 与岛屿相邻的水域坐标
+        int[][] directions = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+
+        public int shortestBridge(int[][] A) {
+            // 本质上求两座岛屿的最短距离
+            int m = A.length, n = A[0].length;
+            boolean flipped = false;
+            // 先找到第一座岛, 并将1改为2以作区分
+            for (int i = 0; i < m; i++) {
+                if (flipped) {
+                    break;
+                }
+                for (int j = 0; j < n; j++) {
+                    if (A[i][j] == 1) {
+                        dfs(A, i, j);
+                        flipped = true;
+                        break;
+                    }
+                }
+            }
+
+            int count = 0;
+            while (!points.isEmpty()) {
+                count++;
+                int size = points.size();
+                while (size-- != 0) {
+                    Node node = points.poll();
+                    for (int i = 0; i < 4; i++) {
+                        int x = node.r + directions[i][0];
+                        int y = node.c + directions[i][1];
+                        if (x < 0 || x >= m || y < 0 || y >= n || A[x][y] == 2) {
+                            continue;
+                        }
+                        if (A[x][y] == 1) {
+                            return count;
+                        }
+                        points.offer(new Node(x, y));
+                        A[x][y] = 2;
+
+                    }
+                }
+            }
+
+            return count;
+        }
+
+        private void dfs(int[][] A, int i, int j) {
+            if (i < 0 || i >= A.length || j < 0 || j >= A[0].length || A[i][j] == 2) {
+                return;
+            }
+
+            if (A[i][j] == 0) {
+                points.offer(new Node(i, j));
+                return;
+            }
+
+            A[i][j] = 2;
+
+            dfs(A, i + 1, j);
+            dfs(A, i - 1, j);
+            dfs(A, i, j + 1);
+            dfs(A, i, j - 1);
+        }
+
+        class Node { // 对应的行和列
+            public int r;
+            public int c;
+
+            public Node(int r, int c) {
+                this.r = r;
+                this.c = c;
+            }
+        }
+    }
 }
