@@ -1,7 +1,9 @@
 package com.leetcode.tag.dfs.two;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 /**
@@ -100,6 +102,60 @@ public class FindRotateSteps {
                 dist = Math.min(dist, ring.length() - dist);
                 res = Math.min(res, dist + dfs(next, p2 + 1) + 1);
             }
+            return res;
+        }
+
+    }
+
+    /**
+     * 记忆化搜索
+     * <p>
+     * 作者：acw_weian
+     * 链接：https://leetcode-cn.com/problems/freedom-trail/solution/514-zi-you-zhi-lu-bao-li-dao-ji-yi-hua-sou-suo-by-/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        String ring, key;
+        List<Integer>[] pos;
+        Map<Integer, Map<Integer, Integer>> memo = new HashMap<>();
+
+        public int findRotateSteps(String ring, String key) {
+            this.ring = ring;
+            this.key = key;
+            pos = new List[26];
+            for (int i = 0; i < ring.length(); i++) {
+                int p = ring.charAt(i) - 'a';
+                if (pos[p] == null) {
+                    pos[p] = new ArrayList<>();
+                }
+                pos[p].add(i);
+            }
+            return dfs(0, 0);
+        }
+
+        /**
+         * 结果只与p1, p2相关， 把p1,p2当成key值，就可以加入记忆化搜索
+         *
+         * @param p1 在ring上的位置
+         * @param p2 在key上的位置
+         * @return
+         */
+        public int dfs(int p1, int p2) {
+            if (p2 == key.length()) {
+                return 0;
+            }
+            if (memo.containsKey(p1) && memo.get(p1).containsKey(p2)) {
+                return memo.get(p1).get(p2);
+            }
+            int p = key.charAt(p2) - 'a';
+            int res = Integer.MAX_VALUE;
+            for (Integer next : pos[p]) {
+                int dist = Math.abs(p1 - next);
+                dist = Math.min(dist, ring.length() - dist);
+                res = Math.min(res, dist + dfs(next, p2 + 1) + 1);
+            }
+            memo.computeIfAbsent(p1, k -> new HashMap<>()).put(p2, res);
             return res;
         }
 
