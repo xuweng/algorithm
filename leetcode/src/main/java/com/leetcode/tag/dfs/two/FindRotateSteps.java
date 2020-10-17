@@ -289,7 +289,9 @@ public class FindRotateSteps {
     }
 
     /**
-     * dp
+     * dp.
+     * <p>
+     * 状态转移.不要漏掉状态.
      * <p>
      * 作者：feixiang-4
      * 链接：https://leetcode-cn.com/problems/freedom-trail/solution/dong-tai-gui-hua-xiang-xi-jie-shi-bei-keng-de-xian/
