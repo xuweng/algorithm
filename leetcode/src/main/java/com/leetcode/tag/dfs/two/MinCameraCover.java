@@ -16,11 +16,17 @@ public class MinCameraCover {
             return result;
         }
 
-        //0:可被观测但无摄像机，上一层节点为1
-
-        //下面2个状态容易理解
-        //1：不可被观测到，上一层节点为2
-        //2：有摄像机，上一层节点为0
+        /**
+         * 有无摄像机划分
+         * <p>
+         * 0:可被观测但无摄像机，上一层节点为1
+         * 下面2个状态容易理解
+         * 1：不可被观测到，上一层节点为2
+         * 2：有摄像机，上一层节点为0
+         *
+         * @param root
+         * @return
+         */
         private int dfs(TreeNode root) {
             if (root == null) {
                 return 0;
