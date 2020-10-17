@@ -72,6 +72,7 @@ public class TotalNQueens {
                         continue;
                     }
                     //用set处理负数
+                    //相减和相加.这样对角线处理很简单.
                     int diagonal1 = row - i;
                     if (diagonals1.contains(diagonal1)) {
                         continue;
