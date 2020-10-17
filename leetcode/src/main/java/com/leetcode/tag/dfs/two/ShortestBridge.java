@@ -118,4 +118,76 @@ public class ShortestBridge {
         }
     }
 
+    /**
+     * DFS找到其中一个岛，BFS搜寻最短的桥
+     * <p>
+     * 作者：_He11oWor1d
+     * 链接：https://leetcode-cn.com/problems/shortest-bridge/solution/java-dfsbfs-zhi-xing-yong-shi-9-ms-zai-suo-you-jav/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        int[][] dir = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+        boolean[][] visited;
+
+        public int shortestBridge(int[][] A) {
+            int res = 0;
+            visited = new boolean[A.length][A[0].length];
+            out:
+            for (int i = 0; i < A.length; i++) {
+                for (int j = 0; j < A[0].length; j++) {
+                    if (A[i][j] != 1) {
+                        continue;
+                    }
+                    dfs(A, i, j);
+                    break out;
+
+                }
+            }
+            Queue<int[]> queue = new LinkedList<>();
+            for (int i = 0; i < A.length; i++) {
+                for (int j = 0; j < A[0].length; j++) {
+                    if (A[i][j] == 2) {
+                        queue.offer(new int[]{i, j});
+                    }
+                }
+            }
+            while (!queue.isEmpty()) {
+                int size = queue.size();
+                for (int i = 0; i < size; i++) {
+                    int[] root = queue.poll();
+                    for (int j = 0; j < 4; j++) {
+                        int nx = root[0] + dir[j][0];
+                        int ny = root[1] + dir[j][1];
+                        if (nx < 0 || nx >= A.length || ny < 0 || ny >= A[0].length || visited[nx][ny]) {
+                            continue;
+                        }
+                        if (A[nx][ny] == 1) {
+                            return res;
+                        }
+                        queue.offer(new int[]{nx, ny});
+                        visited[nx][ny] = true;
+                    }
+                }
+                res++;
+            }
+            return -1;
+        }
+
+        public void dfs(int[][] a, int i, int j) {
+            if (a[i][j] == 1) {
+                a[i][j] = 2;
+            }
+            for (int k = 0; k < 4; k++) {
+                int x = i + dir[k][0];
+                int y = j + dir[k][1];
+                if (x < 0 || x >= a.length || y < 0 || y >= a[0].length || visited[x][y] || a[x][y] == 0 || a[x][y] == 2) {
+                    continue;
+                }
+                dfs(a, x, y);
+                visited[x][y] = true;
+            }
+        }
+    }
+
 }
