@@ -2,6 +2,8 @@ package com.leetcode.tag.dfs.two;
 
 /**
  * 968. 监控二叉树
+ * <p>
+ * 本题并不是动态规划，其本质是贪心
  */
 public class MinCameraCover {
     class Solution {
