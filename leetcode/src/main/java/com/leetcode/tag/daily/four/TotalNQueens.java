@@ -71,6 +71,7 @@ public class TotalNQueens {
                     if (columns.contains(i)) {
                         continue;
                     }
+                    //用set处理负数
                     int diagonal1 = row - i;
                     if (diagonals1.contains(diagonal1)) {
                         continue;
