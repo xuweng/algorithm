@@ -288,4 +288,62 @@ public class FindRotateSteps {
 
     }
 
+    /**
+     * dp
+     * <p>
+     * 作者：feixiang-4
+     * 链接：https://leetcode-cn.com/problems/freedom-trail/solution/dong-tai-gui-hua-xiang-xi-jie-shi-bei-keng-de-xian/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution5 {
+        Map<Character, List<Integer>> map;
+        int[][] dp;
+
+        public int findRotateSteps(String ring, String key) {
+            int rl = ring.length();
+            int kl = key.length();
+            if (kl == 0) {
+                return 0;
+            }
+            char[] r = ring.toCharArray();
+            char[] k = key.toCharArray();
+            map = new HashMap<>();
+            for (int i = 0; i < rl; i++) {
+                //因为存在重复字符串，所以我们把所有重复的位置都考虑到
+                //保存字符出现的位置
+                map.computeIfAbsent(r[i], v -> new ArrayList<>()).add(i);
+            }
+            dp = new int[kl][rl];
+            List<Integer> next2 = map.get(k[0]);
+            for (int c : next2) {
+                int m = Math.min(c, rl - c);//找到每个位置
+                dp[0][c] = m + 1;
+            }
+            for (int i = 1; i < kl; i++) {
+
+                List<Integer> next = map.get(k[i]);
+                //找到本次的所有位置
+                for (int c : next) {
+                    int min = Integer.MAX_VALUE;
+                    List<Integer> next1 = map.get(k[i - 1]);
+                    //找到上个字符所有的位置来计算
+                    for (int d : next1) {
+                        int m = Math.min(rl - c + d, rl - d + c);
+                        m = Math.min(m, Math.abs(c - d));
+                        min = Math.min(min, dp[i - 1][d] + m + 1);
+
+                    }
+                    dp[i][c] = min;
+                }
+            }
+            int ans = Integer.MAX_VALUE;
+            List<Integer> next = map.get(k[kl - 1]);
+            for (Integer integer : next) {
+                ans = Math.min(ans, dp[kl - 1][integer]);
+            }
+            return ans;
+        }
+    }
+
 }
