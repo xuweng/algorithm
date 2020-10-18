@@ -77,6 +77,22 @@ public class CriticalConnections {
     /**
      * tarjan算法
      * <p>
+     * 如果一个边是关键路径，当且仅当该边不在环中。
+     * <p>
+     * 使用深度优先搜索查找环。
+     * <p>
+     * 首先转换成邻接表
+     * 深度优先访问
+     * 对每一个节点记录访问深度
+     * 如果子节点的深度小于等于当前节点了，说明我们找到环了！去掉该边
+     * 同时记录返回当前节点的最小深度，以便去掉整个环
+     * 最后剩下的边就是关键路径~
+     * <p>
+     * 作者：kongyifei
+     * 链接：https://leetcode-cn.com/problems/critical-connections-in-a-network/solution/dfsfan-yi-liao-xia-ying-wen-ban-zui-jia-da-an-by-k/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * <p>
      * 作者：iame
      * 链接：https://leetcode-cn.com/problems/critical-connections-in-a-network/solution/1192-cha-zhao-ji-qun-nei-de-guan-jian-lian-jie-jav/
      * 来源：力扣（LeetCode）
@@ -89,7 +105,7 @@ public class CriticalConnections {
         private int[] lOW;
         private boolean[] visited;
         private List<List<Integer>> ans;
-        private int t;
+        private int count;
 
         public List<List<Integer>> criticalConnections(int n, List<List<Integer>> connections) {
             this.edges = new ArrayList[n];
@@ -97,7 +113,6 @@ public class CriticalConnections {
             this.lOW = new int[n];
             this.visited = new boolean[n];
             this.ans = new ArrayList<>();
-            this.t = 0;
 
             //构建无向图
             for (int i = 0; i < n; i++) {
@@ -113,16 +128,23 @@ public class CriticalConnections {
             return ans;
         }
 
+        /**
+         * @param cur 当前结点
+         * @param pre 父结点
+         */
         public void tarjan(int cur, int pre) {
-            t++;
-            dfn[cur] = t;
-            lOW[cur] = t;
+            //计数
+            count++;
+            dfn[cur] = count;
+            lOW[cur] = count;
             visited[cur] = true;
             for (int node : edges[cur]) {
+                //父结点的作用
                 if (node == pre) {
                     continue;
                 }
                 if (visited[node]) {
+                    //找到一个环
                     lOW[cur] = Math.min(lOW[cur], dfn[node]);
                 } else {
                     tarjan(node, cur);
