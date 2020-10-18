@@ -35,32 +35,53 @@ public class Makesquare {
      */
     class Solution {
         public List<Integer> nums;
+        //分为4组
         public int[] sums;
+        //每组和
         public int possibleSquareSide;
 
         public Solution() {
             this.sums = new int[4];
         }
 
-        // Depth First Search function.
+        /**
+         * 方法一：深度优先搜索
+         * <p>
+         * 我们可以使用深度优先搜索枚举出所有的分组情况，并对于每一种情况，判断是否满足上述的两个条件。
+         * <p>
+         * 我们依次对每一根火柴进行搜索，当搜索到第 i 根火柴时，我们可以把它放到四组中的任意一种。对于每一种放置方法，
+         * <p>
+         * 我们继续对第 i + 1 根火柴进行递归搜索。当我们搜索完全部的 N 根火柴后，再判断每一组火柴的长度之和是否都相同。
+         * <p>
+         * 作者：LeetCode
+         * 链接：https://leetcode-cn.com/problems/matchsticks-to-square/solution/huo-chai-pin-zheng-fang-xing-by-leetcode/
+         * 来源：力扣（LeetCode）
+         * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+         *
+         * @param index
+         * @return
+         */
         public boolean dfs(int index) {
-            // If we have exhausted all our matchsticks, check if all sides of the square are of equal length
             if (index == this.nums.size()) {
+                //越界统计.数据全部放完.
+                //4组的和是否都一样
                 return sums[0] == sums[1] && sums[1] == sums[2] && sums[2] == sums[3];
             }
 
             // Get current matchstick.
             int element = this.nums.get(index);
-
             // Try adding it to each of the 4 sides (if possible)
+            //当搜索到第 i 根火柴时，我们可以把它放到四组中的任意一种
             for (int i = 0; i < 4; i++) {
-                if (this.sums[i] + element <= this.possibleSquareSide) {
-                    this.sums[i] += element;
-                    if (this.dfs(index + 1)) {
-                        return true;
-                    }
-                    this.sums[i] -= element;
+                //剪枝
+                if (this.sums[i] + element > this.possibleSquareSide) {
+                    continue;
                 }
+                this.sums[i] += element;
+                if (this.dfs(index + 1)) {
+                    return true;
+                }
+                this.sums[i] -= element;
             }
 
             return false;
