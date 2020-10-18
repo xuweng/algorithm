@@ -15,6 +15,7 @@ public class CriticalConnections {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution {
+        // 无向图
         // 构建一个map，存放每个节点的相邻节点有哪些
         Map<Integer, Set<Integer>> map = new HashMap<>();
 
@@ -57,6 +58,7 @@ public class CriticalConnections {
                 if (neighbor == parent) {
                     continue;
                 }
+                //root结点
                 if (id[neighbor] == -1) {
                     id[node] = Math.min(id[node], dfs(neighbor, nodeID + 1, node, id, res));
                 } else {
