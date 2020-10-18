@@ -10,10 +10,10 @@ package com.leetcode.tag.dfs.two;
 public class IsValidBST {
     class Solution {
         public boolean isValidBST(TreeNode root) {
-            return dfs(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+            return dfs(root, Long.MIN_VALUE, Long.MAX_VALUE);
         }
 
-        public boolean dfs(TreeNode root, int min, int max) {
+        public boolean dfs(TreeNode root, long min, long max) {
             if (root == null) {
                 return true;
             }
