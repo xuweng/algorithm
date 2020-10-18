@@ -41,12 +41,20 @@ public class CriticalConnections {
             }
         }
 
-        public int dfs(int node, int nodeID, int par, int[] id, List<List<Integer>> res) {
+        /**
+         * @param node   结点
+         * @param nodeID 结点编号
+         * @param parent 父结点
+         * @param id
+         * @param res
+         * @return
+         */
+        public int dfs(int node, int nodeID, int parent, int[] id, List<List<Integer>> res) {
             id[node] = nodeID;
 
             Set<Integer> set = map.get(node);
             for (Integer neighbor : set) {
-                if (neighbor == par) {
+                if (neighbor == parent) {
                     continue;
                 }
                 if (id[neighbor] == -1) {
@@ -57,7 +65,7 @@ public class CriticalConnections {
             }
 
             if (id[node] == nodeID && node != 0) {
-                res.add(Arrays.asList(par, node));
+                res.add(Arrays.asList(parent, node));
             }
 
             return id[node];
