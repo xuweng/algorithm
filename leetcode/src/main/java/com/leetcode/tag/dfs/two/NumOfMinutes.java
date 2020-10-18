@@ -12,10 +12,9 @@ import java.util.Map;
  */
 public class NumOfMinutes {
     /**
-     * 算法错误
+     * 所有从根到叶子（或从叶子到根）的最大的路径和
      */
     class Solution {
-        int d;
         int result;
         Map<Integer, List<Integer>> map = new HashMap<>();
 
@@ -24,21 +23,19 @@ public class NumOfMinutes {
                 map.computeIfAbsent(manager[i], k -> new ArrayList<>()).add(i);
             }
 
-            dfs(headID, informTime, 1);
+            dfs(headID, informTime, 0);
 
             return result;
         }
 
-        public void dfs(int headID, int[] informTime, int depth) {
+        public void dfs(int headID, int[] informTime, int sum) {
             if (!map.containsKey(headID)) {
+                //叶子结点
+                result = Math.max(result, sum + informTime[headID]);
                 return;
             }
-            if (depth > d) {
-                result += informTime[headID];
-            }
-            d = depth;
             for (Integer integer : map.get(headID)) {
-                dfs(integer, informTime, depth + 1);
+                dfs(integer, informTime, sum + informTime[headID]);
             }
         }
     }
@@ -69,6 +66,51 @@ public class NumOfMinutes {
                 }
             }
             return res;
+        }
+    }
+
+    /**
+     * 所有从根到叶子（或从叶子到根）的最大的路径和
+     * <p>
+     * 作者：yuruiyin
+     * 链接：https://leetcode-cn.com/problems/time-needed-to-inform-all-employees/solution/java-liang-chong-jie-fa-zi-ding-xiang-xia-he-zi-di/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        private List<Integer>[] adj;
+        private int ansMax = 0;
+        private int[] informTime;
+
+        private void dfs(int idx, int sum) {
+            if (adj[idx] == null) {
+                ansMax = Math.max(ansMax, sum);
+                return;
+            }
+
+            List<Integer> nextList = adj[idx];
+            for (Integer next : nextList) {
+                dfs(next, sum + informTime[idx]);
+            }
+        }
+
+        public int numOfMinutes(int n, int headID, int[] managers, int[] informTime) {
+            adj = new ArrayList[n];
+            this.informTime = informTime;
+
+            for (int i = 0; i < n; i++) {
+                int manager = managers[i];
+                if (manager == -1) {
+                    continue;
+                }
+                if (adj[manager] == null) {
+                    adj[manager] = new ArrayList<>();
+                }
+                adj[manager].add(i);
+            }
+
+            dfs(headID, 0);
+            return ansMax;
         }
     }
 
