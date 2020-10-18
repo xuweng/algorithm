@@ -161,4 +161,52 @@ public class CriticalConnections {
         }
     }
 
+    /**
+     * 当图中有环的时候，环中的每一个节点的timestamp都是一样的，但是在关键连接的两端的节点的timestap是不同的
+     * <p>
+     * 作者：don-vito-corleone
+     * 链接：https://leetcode-cn.com/problems/critical-connections-in-a-network/solution/java-dfs-jie-fa-by-don-vito-corleone-8/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        List<List<Integer>> res = new ArrayList<>();
+        int[] timestamp;
+        List<List<Integer>> connections;
+        Map<Integer, List<Integer>> map = new HashMap<>();
+
+        public List<List<Integer>> criticalConnections(int n, List<List<Integer>> connections) {
+            this.connections = connections;
+            for (List<Integer> conn : connections) {
+                map.computeIfAbsent(conn.get(0), k -> new ArrayList<>()).add(conn.get(1));
+                map.computeIfAbsent(conn.get(1), k -> new ArrayList<>()).add(conn.get(0));
+            }
+
+            timestamp = new int[n];
+
+            dfs(0, -1, 1);
+
+            return res;
+        }
+
+        int dfs(int cur, int parent, int time) {
+            timestamp[cur] = time;
+            for (int neighbor : map.getOrDefault(cur, new ArrayList<>())) {
+                if (neighbor == parent) {
+                    continue;
+                }
+                //timestamp默认是0
+                if (timestamp[neighbor] != 0) {
+                    timestamp[cur] = Math.min(timestamp[cur], timestamp[neighbor]);
+                } else {
+                    timestamp[cur] = Math.min(timestamp[cur], dfs(neighbor, cur, time + 1));
+                }
+                if (time < timestamp[neighbor]) {
+                    res.add(Arrays.asList(cur, neighbor));
+                }
+            }
+            return timestamp[cur];
+        }
+    }
+
 }
