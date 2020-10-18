@@ -22,6 +22,12 @@ public class Makesquare {
     /**
      * 方法一：深度优先搜索
      * <p>
+     * 因此，对于给定的若干根火柴，我们需要：
+     * <p>
+     * 将它们分成四组，每一根火柴恰好属于其中的一组；
+     * <p>
+     * 每一组火柴的长度之和都相同，等于所有火柴长度之和的四分之一。
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/matchsticks-to-square/solution/huo-chai-pin-zheng-fang-xing-by-leetcode/
      * 来源：力扣（LeetCode）
