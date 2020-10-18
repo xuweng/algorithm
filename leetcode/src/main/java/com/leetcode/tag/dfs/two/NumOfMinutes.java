@@ -10,6 +10,8 @@ import java.util.Map;
  */
 public class NumOfMinutes {
     class Solution {
+        int d;
+        int result;
         Map<Integer, List<Integer>> map = new HashMap<>();
 
         public int numOfMinutes(int n, int headID, int[] manager, int[] informTime) {
@@ -17,18 +19,22 @@ public class NumOfMinutes {
                 map.computeIfAbsent(manager[i], k -> new ArrayList<>()).add(i);
             }
 
-            return dfs(headID, informTime);
+            dfs(headID, informTime, 1);
+
+            return result;
         }
 
-        public int dfs(int headID, int[] informTime) {
-            int result = informTime[headID];
+        public void dfs(int headID, int[] informTime, int depth) {
             if (!map.containsKey(headID)) {
-                return result;
+                return;
             }
+            if (depth > d) {
+                result += informTime[headID];
+            }
+            d++;
             for (Integer integer : map.get(headID)) {
-                result += dfs(integer, informTime);
+                dfs(integer, informTime, depth + 1);
             }
-            return result;
         }
     }
 }
