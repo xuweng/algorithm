@@ -77,6 +77,7 @@ public class Makesquare {
                 if (this.sums[i] + element > this.possibleSquareSide) {
                     continue;
                 }
+                //以下是标准回溯
                 this.sums[i] += element;
                 if (this.dfs(index + 1)) {
                     return true;
