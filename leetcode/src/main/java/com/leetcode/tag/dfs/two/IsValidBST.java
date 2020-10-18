@@ -24,6 +24,35 @@ public class IsValidBST {
         }
     }
 
+    class Solution1 {
+        TreeNode pre = null;
+        boolean result = true;
+
+        public boolean isValidBST(TreeNode root) {
+            //中序遍历
+            dfs(root);
+
+            return result;
+        }
+
+        private void dfs(TreeNode root) {
+            if (root == null || !result) {
+                return;
+            }
+            dfs(root.left);
+
+            if (pre != null) {
+                if (pre.val >= root.val) {
+                    result = false;
+                    return;
+                }
+            }
+            pre = root;
+
+            dfs(root.right);
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
