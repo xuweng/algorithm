@@ -73,12 +73,9 @@ public class Makesquare {
             }
 
             // Find the perimeter of the square (if at all possible)
-            int l = nums.length;
-            int perimeter = 0;
-            for (int num : nums) {
-                perimeter += num;
-            }
+            int perimeter = Arrays.stream(nums).sum();
 
+            //每一组火柴的长度之和都相同，等于所有火柴长度之和的四分之一
             this.possibleSquareSide = perimeter / 4;
             if (this.possibleSquareSide * 4 != perimeter) {
                 return false;
