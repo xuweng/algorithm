@@ -19,6 +19,9 @@ public class RemoveNthFromEnd {
                 p2 = p2.next;
                 p1 = p1.next;
             }
+            if (p3 == head) {
+                return head.next;
+            }
             p3.next = p3.next.next;
             return head;
         }
