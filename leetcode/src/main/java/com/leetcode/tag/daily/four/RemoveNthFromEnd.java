@@ -1,5 +1,8 @@
 package com.leetcode.tag.daily.four;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
 /**
  * 19. 删除链表的倒数第N个节点
  */
@@ -56,6 +59,65 @@ public class RemoveNthFromEnd {
                 head = head.next;
             }
             return length;
+        }
+    }
+
+    /**
+     * 方法二：栈
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/solution/shan-chu-lian-biao-de-dao-shu-di-nge-jie-dian-b-61/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public ListNode removeNthFromEnd(ListNode head, int n) {
+            //学习哑结点
+            ListNode dummy = new ListNode(0, head);
+            //栈
+            Deque<ListNode> stack = new LinkedList<>();
+            ListNode cur = dummy;
+            while (cur != null) {
+                stack.push(cur);
+                cur = cur.next;
+            }
+            for (int i = 0; i < n; ++i) {
+                stack.pop();
+            }
+            ListNode prev = stack.peek();
+            prev.next = prev.next.next;
+            return dummy.next;
+        }
+    }
+
+    /**
+     * 快慢指针
+     * <p>
+     * 双指针
+     * <p>
+     * 方法三：一次遍历
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/remove-nth-node-from-end-of-list/solution/shan-chu-lian-biao-de-dao-shu-di-nge-jie-dian-b-61/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        public ListNode removeNthFromEnd(ListNode head, int n) {
+            ListNode dummy = new ListNode(0, head);
+            ListNode first = head;
+            //当 first 遍历到链表的末尾时，second 的下一个节点就是我们需要删除的节点
+            ListNode second = dummy;
+            for (int i = 0; i < n; ++i) {
+                first = first.next;
+            }
+            while (first != null) {
+                first = first.next;
+                second = second.next;
+            }
+            //当 first 遍历到链表的末尾时，second 的下一个节点就是我们需要删除的节点
+            second.next = second.next.next;
+            return dummy.next;
         }
     }
 
