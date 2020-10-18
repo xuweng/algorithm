@@ -119,6 +119,8 @@ public class NumOfMinutes {
     /**
      * 自底向上，无需建树。但是自底向上遍历路径的过程中会有很多的重复节点的遍历，会比较耗时，所以这里可以引入记忆化
      * <p>
+     * 重复计算.记忆化.
+     * <p>
      * 作者：yuruiyin
      * 链接：https://leetcode-cn.com/problems/time-needed-to-inform-all-employees/solution/java-liang-chong-jie-fa-zi-ding-xiang-xia-he-zi-di/
      * 来源：力扣（LeetCode）
@@ -145,18 +147,19 @@ public class NumOfMinutes {
         public int numOfMinutes(int n, int headID, int[] manager, int[] informTime) {
             // 计算所有的叶子节点到根节点的路径和，取最大
             int ansMax = 0;
-            memo = new Integer[n];  // 记忆化
+            // 记忆化
+            memo = new Integer[n];
             this.manager = manager;
             this.informTime = informTime;
 
             for (int i = 0; i < n; i++) {
-                if (informTime[i] != 0) { // 不是叶子
+                // 不是叶子
+                if (informTime[i] != 0) {
                     continue;
                 }
 
                 // 当前是叶子节点，往上遍历到根
-                int sum = rec(i);
-                ansMax = Math.max(ansMax, sum);
+                ansMax = Math.max(ansMax, rec(i));
             }
 
             return ansMax;
