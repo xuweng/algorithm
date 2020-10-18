@@ -70,6 +70,8 @@ public class NumOfMinutes {
     }
 
     /**
+     * 自顶向下，也就是需要dfs，需要建树；
+     * <p>
      * 所有从根到叶子（或从叶子到根）的最大的路径和
      * <p>
      * 作者：yuruiyin
@@ -112,6 +114,54 @@ public class NumOfMinutes {
             dfs(headID, 0);
             return ansMax;
         }
+    }
+
+    /**
+     * 自底向上，无需建树。但是自底向上遍历路径的过程中会有很多的重复节点的遍历，会比较耗时，所以这里可以引入记忆化
+     * <p>
+     * 作者：yuruiyin
+     * 链接：https://leetcode-cn.com/problems/time-needed-to-inform-all-employees/solution/java-liang-chong-jie-fa-zi-ding-xiang-xia-he-zi-di/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        private Integer[] memo;
+        private int[] manager;
+        private int[] informTime;
+
+        private int rec(int cur) {
+            if (manager[cur] == -1) {
+                return 0;
+            }
+
+            if (memo[cur] != null) {
+                return memo[cur];
+            }
+
+            memo[cur] = informTime[manager[cur]] + rec(manager[cur]);
+            return memo[cur];
+        }
+
+        public int numOfMinutes(int n, int headID, int[] manager, int[] informTime) {
+            // 计算所有的叶子节点到根节点的路径和，取最大
+            int ansMax = 0;
+            memo = new Integer[n];  // 记忆化
+            this.manager = manager;
+            this.informTime = informTime;
+
+            for (int i = 0; i < n; i++) {
+                if (informTime[i] != 0) { // 不是叶子
+                    continue;
+                }
+
+                // 当前是叶子节点，往上遍历到根
+                int sum = rec(i);
+                ansMax = Math.max(ansMax, sum);
+            }
+
+            return ansMax;
+        }
+
     }
 
 }
