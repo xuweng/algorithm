@@ -20,7 +20,7 @@ public class RemoveNthFromEnd {
                 p1 = p1.next;
             }
             //删掉第一个结点
-            if (p3 == head && p1.next == null) {
+            if (p3 == head && p2 == p3) {
                 return head.next;
             }
             p3.next = p3.next.next;
