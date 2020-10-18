@@ -6,6 +6,8 @@ import java.util.*;
  * 1192. 查找集群内的「关键连接」
  * <p>
  * 哑结点.哑结点.哑结点.哑结点.
+ * <p>
+ * 用示例来理解代码.用示例来理解代码.
  */
 public class CriticalConnections {
     /**
@@ -145,9 +147,13 @@ public class CriticalConnections {
                 }
                 if (visited[node]) {
                     //找到一个环
+                    //node----->node
+                    //此时dfn[node]最小
                     lOW[cur] = Math.min(lOW[cur], dfn[node]);
                 } else {
+                    //计算node
                     tarjan(node, cur);
+                    //计算cur
                     lOW[cur] = Math.min(lOW[cur], lOW[node]);
                     if (lOW[node] > dfn[cur]) {
                         List<Integer> list = new ArrayList<>();
