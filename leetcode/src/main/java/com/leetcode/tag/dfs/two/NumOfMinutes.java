@@ -31,7 +31,7 @@ public class NumOfMinutes {
             if (depth > d) {
                 result += informTime[headID];
             }
-            d++;
+            d = depth;
             for (Integer integer : map.get(headID)) {
                 dfs(integer, informTime, depth + 1);
             }
