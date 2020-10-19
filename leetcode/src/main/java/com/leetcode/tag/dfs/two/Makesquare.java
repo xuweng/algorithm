@@ -125,6 +125,9 @@ public class Makesquare {
                 return false;
             }
 
+            //倒序
+            Collections.reverse(Arrays.asList(nums));
+
             return dfs(nums, 0);
         }
 
