@@ -313,27 +313,28 @@ public class Makesquare {
             }
 
             for (int i = start; i < nums.length; i++) {
-                if (!flag[i] && u + nums[i] <= len) {
-                    flag[i] = true;
-                    if (dfs(edge, len, u + nums[i], i + 1, nums)) {
-                        return true;
-                    }
-                    flag[i] = false;
+                if (flag[i] || u + nums[i] > len) {
+                    continue;
+                }
+                flag[i] = true;
+                if (dfs(edge, len, u + nums[i], i + 1, nums)) {
+                    return true;
+                }
+                flag[i] = false;
 
-                    // 能够走到这一步，说明这根火柴不行，否则已经return了
-                    // 相等的火柴也不行
-                    while (i + 1 < nums.length && nums[i + 1] == nums[i]) {
-                        i++;
-                    }
+                // 能够走到这一步，说明这根火柴不行，否则已经return了
+                // 相等的火柴也不行
+                while (i + 1 < nums.length && nums[i + 1] == nums[i]) {
+                    i++;
+                }
 
-                    // 如果这条火柴是边的第一条，那说明在这条边的任意一个位置都不行，那说明这一整个方案也不行，
-                    if (u == 0) {
-                        return false;
-                    }
-                    // 如果是最后一条，同理
-                    if (u + nums[i] == len) {
-                        return false;
-                    }
+                // 如果这条火柴是边的第一条，那说明在这条边的任意一个位置都不行，那说明这一整个方案也不行，
+                if (u == 0) {
+                    return false;
+                }
+                // 如果是最后一条，同理
+                if (u + nums[i] == len) {
+                    return false;
                 }
             }
             return false;
