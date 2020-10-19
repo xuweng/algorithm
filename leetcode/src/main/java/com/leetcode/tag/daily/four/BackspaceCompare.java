@@ -16,7 +16,7 @@ public class BackspaceCompare {
         }
 
         private void dfs(StringBuilder s, int index) {
-            if (index >= s.length() || index == -1) {
+            if (index >= s.length() || index == -1 || s.indexOf("#") == -1) {
                 return;
             }
             if (s.charAt(index) == '#') {
