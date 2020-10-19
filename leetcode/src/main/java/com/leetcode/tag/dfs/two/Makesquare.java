@@ -130,7 +130,7 @@ public class Makesquare {
 
         private boolean dfs(int[] nums, int index) {
             if (index >= nums.length) {
-                return (sums[0] == s && sums[1] == s && sums[2] == s && sums[3] == s)
+                return (sums[0] == s && sums[1] == s && sums[2] == s && sums[3] == s);
             }
 
             for (int i = 0; i < 4; i++) {
