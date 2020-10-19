@@ -73,4 +73,57 @@ public class BackspaceCompare {
         }
     }
 
+    /**
+     * 方法二：双指针
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/backspace-string-compare/solution/bi-jiao-han-tui-ge-de-zi-fu-chuan-by-leetcode-solu/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public boolean backspaceCompare(String S, String T) {
+            int i = S.length() - 1, j = T.length() - 1;
+            //定义 skip 表示当前待删除的字符的数量
+            int skipS = 0, skipT = 0;
+
+            while (i >= 0 || j >= 0) {
+                while (i >= 0) {
+                    if (S.charAt(i) == '#') {
+                        skipS++;
+                        i--;
+                    } else if (skipS > 0) {
+                        skipS--;
+                        i--;
+                    } else {
+                        break;
+                    }
+                }
+                while (j >= 0) {
+                    if (T.charAt(j) == '#') {
+                        skipT++;
+                        j--;
+                    } else if (skipT > 0) {
+                        skipT--;
+                        j--;
+                    } else {
+                        break;
+                    }
+                }
+                if (i >= 0 && j >= 0) {
+                    if (S.charAt(i) != T.charAt(j)) {
+                        return false;
+                    }
+                } else {
+                    if (i >= 0 || j >= 0) {
+                        return false;
+                    }
+                }
+                i--;
+                j--;
+            }
+            return true;
+        }
+    }
+
 }
