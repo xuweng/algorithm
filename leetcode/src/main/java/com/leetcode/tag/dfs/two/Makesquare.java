@@ -125,7 +125,9 @@ public class Makesquare {
                 return false;
             }
 
-            //倒序
+            // 倒序
+            // 倒序的话有点剪枝的思想，先排大的，最后再塞小的
+            // 倒序可以让程序减少做无用功，让其 在火柴长度大于正方形边长时可以直接退出
             Collections.reverse(Arrays.asList(nums));
 
             return dfs(nums, 0);
