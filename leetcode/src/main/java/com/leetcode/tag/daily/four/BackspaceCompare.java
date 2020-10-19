@@ -87,6 +87,9 @@ public class BackspaceCompare {
             //定义 skip 表示当前待删除的字符的数量
             int skipS = 0, skipT = 0;
 
+            // 统计#的个数
+            // 一个字符是否会被删掉，只取决于该字符后面的退格符，而与该字符前面的退格符无关。
+            // 因此当我们逆序地遍历字符串，就可以立即确定当前字符是否会被删掉。
             while (i >= 0 || j >= 0) {
                 while (i >= 0) {
                     if (S.charAt(i) == '#') {
