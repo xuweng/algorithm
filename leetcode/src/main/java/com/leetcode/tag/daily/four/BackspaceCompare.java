@@ -44,15 +44,27 @@ public class BackspaceCompare {
             return build(S).equals(build(T));
         }
 
+        /**
+         * 具体地，我们用栈处理遍历过程，每次我们遍历到一个字符：
+         * <p>
+         * 如果它是退格符，那么我们将栈顶弹出；
+         * <p>
+         * 如果它是普通字符，那么我们将其压入栈中。
+         *
+         * @param str
+         * @return
+         */
         public String build(String str) {
             StringBuilder ret = new StringBuilder();
             int length = str.length();
             for (int i = 0; i < length; ++i) {
                 char ch = str.charAt(i);
                 if (ch != '#') {
+                    //入栈
                     ret.append(ch);
                 } else {
                     if (ret.length() > 0) {
+                        //栈顶弹出
                         ret.deleteCharAt(ret.length() - 1);
                     }
                 }
