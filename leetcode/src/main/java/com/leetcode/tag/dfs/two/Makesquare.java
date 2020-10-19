@@ -161,6 +161,10 @@ public class Makesquare {
 
     /**
      * 方法二：动态规划 + 状态压缩
+     * <p>
+     * 递归树
+     * <p>
+     * 使用长度为 N 的二进制来表示动态规划中的每一个状态，如果二进制的第 k 位为 1，那么当前状态包含第 k 根火柴，否则不包含第 k 根火柴
      */
     class Solution2 {
         // The memoization cache to be used during recursion.
