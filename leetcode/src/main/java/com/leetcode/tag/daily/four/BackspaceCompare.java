@@ -20,10 +20,9 @@ public class BackspaceCompare {
                 return;
             }
             if (s.charAt(index) == '#') {
+                s.deleteCharAt(index);
                 if (index >= 1) {
-                    s.delete(index - 1, index);
-                } else {
-                    s.deleteCharAt(index);
+                    s.deleteCharAt(index - 1);
                 }
                 dfs(s, s.indexOf("#"));
             } else {
