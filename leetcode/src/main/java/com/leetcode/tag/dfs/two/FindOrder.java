@@ -46,6 +46,7 @@ public class FindOrder {
             }
             // 每次挑选一个「未搜索」的节点，开始进行深度优先搜索
             for (int i = 0; i < numCourses && valid; ++i) {
+                //未搜索
                 if (visited[i] == 0) {
                     dfs(i);
                 }
@@ -76,8 +77,11 @@ public class FindOrder {
          * @param u
          */
         public void dfs(int u) {
+            // 开始
             // 将节点标记为「搜索中」
             visited[u] = 1;
+            // 进行dfs
+
             // 搜索其相邻节点
             // 只要发现有环，立刻停止搜索
             for (int v : edges.get(u)) {
@@ -94,6 +98,7 @@ public class FindOrder {
                     return;
                 }
             }
+            // 回溯
             // 将节点标记为「已完成」
             visited[u] = 2;
             // 将节点入栈
