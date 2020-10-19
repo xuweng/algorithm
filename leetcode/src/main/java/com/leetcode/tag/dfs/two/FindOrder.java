@@ -57,6 +57,24 @@ public class FindOrder {
             return result;
         }
 
+        /**
+         * 节点有3种状态
+         * <p>
+         * 对于图中的任意一个节点，它在搜索的过程中有三种状态，即：
+         * <p>
+         * 「未搜索」：我们还没有搜索到这个节点；
+         * <p>
+         * 「搜索中」：我们搜索过这个节点，但还没有回溯到该节点，即该节点还没有入栈，还有相邻的节点没有搜索完成）；
+         * <p>
+         * 「已完成」：我们搜索过并且回溯过这个节点，即该节点已经入栈，并且所有该节点的相邻节点都出现在栈的更底部的位置，满足拓扑排序的要求。
+         * <p>
+         * 作者：LeetCode-Solution
+         * 链接：https://leetcode-cn.com/problems/course-schedule-ii/solution/ke-cheng-biao-ii-by-leetcode-solution/
+         * 来源：力扣（LeetCode）
+         * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+         *
+         * @param u
+         */
         public void dfs(int u) {
             // 将节点标记为「搜索中」
             visited[u] = 1;
