@@ -129,11 +129,13 @@ public class Makesquare {
         }
 
         private boolean dfs(int[] nums, int index) {
+            //越界统计.保证所有数据都选择.
             if (index >= nums.length) {
                 return (sums[0] == s && sums[1] == s && sums[2] == s && sums[3] == s);
             }
 
             for (int i = 0; i < 4; i++) {
+                //剪枝
                 if (sums[i] + nums[index] > s) {
                     continue;
                 }
