@@ -277,10 +277,7 @@ public class Makesquare {
 
         public boolean makesquare(int[] nums) {
             // 计算每条边的边长
-            int sum = 0;
-            for (int num : nums) {
-                sum = sum + num;
-            }
+            int sum = Arrays.stream(nums).sum();
 
             if (sum == 0 || sum % 4 != 0) {
                 return false;
@@ -290,12 +287,12 @@ public class Makesquare {
             // 降序排列，大的先上，这样剪枝可以剪多点
             // 升序降序都是1ms
             Arrays.sort(nums);
-            int L = 0, R = nums.length - 1;
-            while (L <= R) {
-                int t = nums[L];
-                nums[L] = nums[R];
+            int l = 0, R = nums.length - 1;
+            while (l <= R) {
+                int t = nums[l];
+                nums[l] = nums[R];
                 nums[R] = t;
-                L++;
+                l++;
                 R--;
             }
             return dfs(0, len, 0, 0, nums);
