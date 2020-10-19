@@ -93,6 +93,7 @@ public class FindOrder {
                     }
                 }
                 // 如果「搜索中」说明找到了环
+                // 因此是不存在拓扑排序的
                 else if (visited[v] == 1) {
                     valid = false;
                     return;
