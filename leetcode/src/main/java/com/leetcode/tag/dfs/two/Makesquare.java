@@ -258,4 +258,90 @@ public class Makesquare {
         }
     }
 
+    /**
+     * 这是一道经典的剪枝优化问题。
+     * <p>
+     * 从大到小枚举，每次剪枝去掉的分支会更多；
+     * 每条边内部的木棒长度规定成从大到小；
+     * 如果当前木棒拼接失败，则跳过接下来所有长度相同的木棒；
+     * 如果当前木棒拼接失败，且是当前边的第一个，则直接剪掉当前分支；
+     * 如果当前木棒拼接失败，且是当前边的最后一个，则直接剪掉当前分支；
+     * <p>
+     * 作者：GitKid
+     * 链接：https://leetcode-cn.com/problems/matchsticks-to-square/solution/java-1ms-tao-yong-hui-su-mo-ban-ji-zhi-de-jian-zhi/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        boolean[] flag;
+
+        public boolean makesquare(int[] nums) {
+            // 计算每条边的边长
+            int sum = 0;
+            for (int num : nums) {
+                sum = sum + num;
+            }
+
+            if (sum == 0 || sum % 4 != 0) {
+                return false;
+            }
+            int len = sum / 4;
+            flag = new boolean[nums.length];
+            // 降序排列，大的先上，这样剪枝可以剪多点
+            // 升序降序都是1ms
+            Arrays.sort(nums);
+            int L = 0, R = nums.length - 1;
+            while (L <= R) {
+                int t = nums[L];
+                nums[L] = nums[R];
+                nums[R] = t;
+                L++;
+                R--;
+            }
+            return dfs(0, len, 0, 0, nums);
+        }
+
+        // edge 表示当前是第几条边，总共四条边
+        // len 表示每条边应该的长度
+        // u 表示当前边已经到多少长度了
+        // start 认为规定一个遍历的顺序，防止重复
+        // nums[] 木棍的数组
+        boolean dfs(int edge, int len, int u, int start, int[] nums) {
+            if (edge == 4) {
+                return true;
+            }
+            // u 到达len，就可以换条边摆了
+            if (u == len) {
+                return dfs(edge + 1, len, 0, 0, nums);
+            }
+
+            for (int i = start; i < nums.length; i++) {
+                if (!flag[i] && u + nums[i] <= len) {
+                    flag[i] = true;
+                    if (dfs(edge, len, u + nums[i], i + 1, nums)) {
+                        return true;
+                    }
+                    flag[i] = false;
+
+                    // 能够走到这一步，说明这根火柴不行，否则已经return了
+                    // 相等的火柴也不行
+                    while (i + 1 < nums.length && nums[i + 1] == nums[i]) {
+                        i++;
+                    }
+
+                    // 如果这条火柴是边的第一条，那说明在这条边的任意一个位置都不行，那说明这一整个方案也不行，
+                    if (u == 0) {
+                        return false;
+                    }
+                    // 如果是最后一条，同理
+                    if (u + nums[i] == len) {
+                        return false;
+                    }
+                }
+            }
+            return false;
+        }
+
+    }
+
 }
