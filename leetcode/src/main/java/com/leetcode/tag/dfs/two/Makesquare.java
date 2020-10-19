@@ -134,7 +134,7 @@ public class Makesquare {
             }
 
             for (int i = 0; i < 4; i++) {
-                if (sums[i] + nums[index] >= s) {
+                if (sums[i] + nums[index] > s) {
                     continue;
                 }
                 sums[i] += nums[index];
