@@ -55,6 +55,7 @@ public class FindOrder {
                 return new int[0];
             }
             // 如果没有环，那么就有拓扑排序
+            // 在整个深度优先搜索的过程结束后，如果我们没有找到图中的环，那么栈中存储这所有的 n 个节点，从栈顶到栈底的顺序即为一种拓扑排序。
             return result;
         }
 
