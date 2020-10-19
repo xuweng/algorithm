@@ -110,4 +110,42 @@ public class Makesquare {
         }
     }
 
+    class Solution1 {
+        int[] sums = new int[4];
+        int s;
+
+        public boolean makesquare(int[] nums) {
+            if (nums == null || nums.length == 0) {
+                return false;
+            }
+            int sum = Arrays.stream(nums).sum();
+            s = sum / 4;
+            if (s * 4 != sum) {
+                //没有整除
+                return false;
+            }
+
+            return dfs(nums, 0);
+        }
+
+        private boolean dfs(int[] nums, int index) {
+            if (sums[0] == s && sums[1] == s && sums[2] == s && sums[3] == s) {
+                return true;
+            }
+            for (int i = 0; i < 4; i++) {
+                if (sums[i] + nums[index] >= s) {
+                    continue;
+                }
+                sums[i] += nums[index];
+
+                if (dfs(nums, index + 1)) {
+                    return true;
+                }
+
+                sums[i] -= nums[index];
+            }
+            return false;
+        }
+    }
+
 }
