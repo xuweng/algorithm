@@ -8,9 +8,11 @@ import java.util.List;
  * <p>
  * dfs
  * <p>
- * 并查集.并查集.并查集.
+ * 并查集.并查集.并查集.每个root.每个连通分量.
  * <p>
  * 本题是一道经典的「拓扑排序」问题。
+ * <p>
+ * 3种状态.拓扑排序.环.
  */
 public class FindOrder {
     /**
