@@ -19,10 +19,12 @@ public class EventualSafeNodes {
             visited = new int[graph.length];
             for (int i = 0; i < graph.length; i++) {
                 if (visited[i] == 1) {
+                    // 有环
                     continue;
                 }
                 dfs(graph, i);
                 if (visited[i] == 2) {
+                    // 访问完成
                     result.add(i);
                 }
             }
