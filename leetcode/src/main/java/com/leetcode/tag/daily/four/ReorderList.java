@@ -178,6 +178,7 @@ public class ReorderList {
                 deque.add(head);
                 head = head.next;
             }
+            //哑结点
             ListNode vh = new ListNode(0);
             while (!deque.isEmpty()) {
                 //从头出队
