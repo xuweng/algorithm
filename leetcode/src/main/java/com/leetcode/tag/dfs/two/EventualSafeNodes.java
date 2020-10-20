@@ -19,8 +19,7 @@ public class EventualSafeNodes {
         public List<Integer> eventualSafeNodes(int[][] graph) {
             visited = new boolean[graph.length];
             for (int i = 0; i < graph.length; i++) {
-                if (graph[i].length == 0) {
-                    result.add(i);
+                if (visited[i]) {
                     continue;
                 }
                 dfs(graph, i);
@@ -30,25 +29,20 @@ public class EventualSafeNodes {
             return result;
         }
 
-        private int dfs(int[][] graph, int i) {
+        private boolean dfs(int[][] graph, int i) {
             if (visited[i]) {
-                return 10000;
+                return true;
             }
             visited[i] = true;
-            if (graph[i].length == 0) {
-                // 回溯时机
-                visited[i] = false;
-                return 0;
-            }
-            int r = 10000;
             for (int j : graph[i]) {
-                r = Math.min(r, dfs(graph, j)) + 1;
-            }
-            if (r <= i) {
-                result.add(i);
+                if (dfs(graph, j)) {
+                    return true;
+                } else {
+                    visited[j] = false;
+                }
             }
             // visited[i] = false;
-            return r;
+            return false;
         }
     }
 }
