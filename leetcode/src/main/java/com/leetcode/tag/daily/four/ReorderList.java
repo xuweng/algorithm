@@ -15,7 +15,7 @@ public class ReorderList {
             ListNode p = head;
             List<ListNode> list = new ArrayList<>();
             while (p != null) {
-                list.add(p);
+                list.add(new ListNode(p.val));
                 p = p.next;
             }
 
