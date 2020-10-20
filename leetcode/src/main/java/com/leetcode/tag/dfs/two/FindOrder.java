@@ -132,6 +132,7 @@ public class FindOrder {
                     dfs(i);
                 }
             }
+            //有环
             if (!flag) {
                 return new int[0];
             }
