@@ -139,6 +139,14 @@ public class ReorderList {
             return prev;
         }
 
+        /**
+         * 将原链表的两端合并。
+         * <p>
+         * 因为两链表长度相差不超过 1，因此直接合并即可。
+         *
+         * @param l1
+         * @param l2
+         */
         public void mergeList(ListNode l1, ListNode l2) {
             ListNode l1Tmp;
             ListNode l2Tmp;
