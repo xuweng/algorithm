@@ -36,7 +36,7 @@ public class EventualSafeNodes {
             if (graph[i].length == 0) {
                 return 0;
             }
-            int r = 0;
+            int r = 10000;
             for (int j : graph[i]) {
                 r = Math.min(r, dfs(graph, j)) + 1;
             }
