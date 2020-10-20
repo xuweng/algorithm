@@ -34,6 +34,7 @@ public class EventualSafeNodes {
             }
             visited[i] = true;
             if (graph[i].length == 0) {
+                // 回溯时机
                 visited[i] = false;
                 return 0;
             }
