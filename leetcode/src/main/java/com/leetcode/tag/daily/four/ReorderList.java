@@ -1,6 +1,7 @@
 package com.leetcode.tag.daily.four;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -160,6 +161,38 @@ public class ReorderList {
                 l2.next = l1;
                 l2 = l2Tmp;
             }
+        }
+    }
+
+    /**
+     * 双端队列
+     */
+    class Solution4 {
+        public void reorderList(ListNode head) {
+            if (head == null) {
+                return;
+            }
+            //双端队列
+            LinkedList<ListNode> deque = new LinkedList<>();
+            while (head != null) {
+                deque.add(head);
+                head = head.next;
+            }
+            ListNode vh = new ListNode(0);
+            while (!deque.isEmpty()) {
+                //从头出队
+                ListNode prev = deque.pollFirst();
+                vh.next = prev;
+                //从尾出队
+                ListNode next = deque.pollLast();
+                prev.next = next;
+                if (next == null) {
+                    vh = prev;
+                    return;
+                }
+                vh = next;
+            }
+            vh.next = null;
         }
     }
 
