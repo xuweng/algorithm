@@ -44,7 +44,7 @@ public class EventualSafeNodes {
             if (r <= i) {
                 result.add(i);
             }
-            visited[i] = false;
+            // visited[i] = false;
             return r;
         }
     }
