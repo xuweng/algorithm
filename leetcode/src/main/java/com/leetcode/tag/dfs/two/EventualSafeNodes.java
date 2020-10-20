@@ -13,15 +13,16 @@ import java.util.List;
 public class EventualSafeNodes {
     class Solution {
         List<Integer> result = new ArrayList<>();
-        int[] visited;
+        boolean[] visited;
 
         public List<Integer> eventualSafeNodes(int[][] graph) {
-            visited = new int[graph.length];
+            visited = new boolean[graph.length];
             for (int i = 0; i < graph.length; i++) {
-                if (visited[i] == 0) {
-                    dfs(graph, i);
+                if (visited[i]) {
+                    continue;
                 }
-                if (visited[i] == 0) {
+                dfs(graph, i);
+                if (!visited[i]) {
                     result.add(i);
                 }
             }
@@ -30,16 +31,16 @@ public class EventualSafeNodes {
         }
 
         private boolean dfs(int[][] graph, int i) {
-            if (visited[i] == 1) {
+            if (visited[i]) {
                 return true;
             }
-            visited[i] = 1;
+            visited[i] = true;
             for (int j : graph[i]) {
                 if (dfs(graph, j)) {
                     return true;
                 }
             }
-            visited[i] = 0;
+            visited[i] = false;
             return false;
         }
     }
