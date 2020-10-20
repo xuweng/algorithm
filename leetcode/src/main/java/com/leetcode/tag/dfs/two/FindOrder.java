@@ -144,14 +144,14 @@ public class FindOrder {
         }
 
         private void dfs(int i) {
-            if (!flag) {
-                return;
-            }
             visited[i] = 1;
             if (map.containsKey(i)) {
                 for (Integer integer : map.get(i)) {
-                    if (visited[integer] == 0 && flag) {
+                    if (visited[integer] == 0) {
                         dfs(integer);
+                        if (!flag) {
+                            return;
+                        }
                     } else if (visited[integer] == 1) {
                         // 有环
                         flag = false;
