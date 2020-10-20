@@ -1,7 +1,6 @@
 package com.leetcode.tag.dfs.two;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -23,9 +22,11 @@ public class EventualSafeNodes {
                     continue;
                 }
                 dfs(graph, i);
+                if (!visited[i]) {
+                    result.add(i);
+                }
             }
 
-            Collections.sort(result);
             return result;
         }
 
