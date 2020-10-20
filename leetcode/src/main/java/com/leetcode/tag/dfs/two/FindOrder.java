@@ -432,6 +432,7 @@ public class FindOrder {
                     }
                 }
             }
+            // 结点i的所有分支都dfs后才算完成.
             visited[i] = 2;
             result[index--] = i;
             return false;
