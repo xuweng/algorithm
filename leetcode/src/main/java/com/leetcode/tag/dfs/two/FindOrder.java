@@ -193,6 +193,7 @@ public class FindOrder {
                 ++indeg[info[0]];
             }
 
+            // 队列只保存入度为 0的结点
             Queue<Integer> queue = new LinkedList<>();
             // 将所有入度为 0 的节点放入队列中
             for (int i = 0; i < numCourses; ++i) {
