@@ -416,6 +416,9 @@ public class FindOrder {
             if (visited[i] == 1) {
                 return true;
             }
+            if (visited[i] == 2) {
+                return false;
+            }
             visited[i] = 1;
             if (map.containsKey(i)) {
                 for (Integer j : map.get(i)) {
