@@ -18,7 +18,7 @@ public class EventualSafeNodes {
         public List<Integer> eventualSafeNodes(int[][] graph) {
             visited = new int[graph.length];
             for (int i = 0; i < graph.length; i++) {
-                if (visited[i] != 0) {
+                if (visited[i] == 1) {
                     continue;
                 }
                 dfs(graph, i);
