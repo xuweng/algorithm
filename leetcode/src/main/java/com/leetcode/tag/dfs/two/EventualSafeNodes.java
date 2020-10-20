@@ -42,6 +42,7 @@ public class EventualSafeNodes {
 
         private boolean dfs(int[][] graph, int i) {
             if (visited[i] == 1) {
+                // 有环
                 return true;
             }
             if (visited[i] == 2) {
