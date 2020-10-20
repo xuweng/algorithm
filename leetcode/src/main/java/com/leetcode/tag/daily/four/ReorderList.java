@@ -15,8 +15,10 @@ public class ReorderList {
             ListNode p = head;
             List<ListNode> list = new ArrayList<>();
             while (p != null) {
-                list.add(new ListNode(p.val));
+                list.add(p);
+                ListNode pre = p;
                 p = p.next;
+                pre.next = null;
             }
 
             dfs(list, 0, list.size() - 1);
