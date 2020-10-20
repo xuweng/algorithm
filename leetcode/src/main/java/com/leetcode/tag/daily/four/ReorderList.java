@@ -74,6 +74,8 @@ public class ReorderList {
     /**
      * 方法二：寻找链表中点 + 链表逆序 + 合并链表
      * <p>
+     * 注意到目标链表即为将原链表的左半端和反转后的右半端合并后的结果。
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/reorder-list/solution/zhong-pai-lian-biao-by-leetcode-solution/
      * 来源：力扣（LeetCode）
@@ -91,6 +93,18 @@ public class ReorderList {
             mergeList(head, l2);
         }
 
+        /**
+         * 2个指针
+         * <p>
+         * 快慢指针
+         * <p>
+         * 找到原链表的中点（参考「876. 链表的中间结点」）。
+         * <p>
+         * 我们可以使用快慢指针来 O(N) 地找到链表的中间节点。
+         *
+         * @param head
+         * @return
+         */
         public ListNode middleNode(ListNode head) {
             ListNode slow = head;
             ListNode fast = head;
@@ -101,6 +115,18 @@ public class ReorderList {
             return slow;
         }
 
+        /**
+         * 3个指针.
+         * <p>
+         * pre->cur->next
+         * <p>
+         * 将原链表的右半端反转（参考「206. 反转链表」）。
+         * <p>
+         * 我们可以使用迭代法实现链表的反转。
+         *
+         * @param head
+         * @return
+         */
         public ListNode reverseList(ListNode head) {
             ListNode prev = null;
             ListNode curr = head;
