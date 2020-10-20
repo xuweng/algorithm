@@ -144,6 +144,9 @@ public class FindOrder {
         }
 
         private void dfs(int i) {
+            if (!flag) {
+                return;
+            }
             visited[i] = 1;
             if (map.containsKey(i)) {
                 for (Integer integer : map.get(i)) {
