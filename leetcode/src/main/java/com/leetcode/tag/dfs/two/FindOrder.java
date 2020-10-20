@@ -389,7 +389,7 @@ public class FindOrder {
 
     class Solution7 {
         Map<Integer, List<Integer>> map = new HashMap<>();
-        boolean[] visited;
+        int[] visited;
         int[] result;
         int index;
 
@@ -397,14 +397,11 @@ public class FindOrder {
             for (int[] prerequisite : prerequisites) {
                 map.computeIfAbsent(prerequisite[1], k -> new ArrayList<>()).add(prerequisite[0]);
             }
-            visited = new boolean[numCourses];
+            visited = new int[numCourses];
             index = numCourses - 1;
             result = new int[numCourses];
 
             for (int i = 0; i < numCourses; i++) {
-                if (visited[i]) {
-                    continue;
-                }
                 if (dfs(i)) {
                     return new int[0];
                 }
@@ -413,10 +410,10 @@ public class FindOrder {
         }
 
         private boolean dfs(int i) {
-            if (visited[i]) {
+            if (visited[i] == 1) {
                 return true;
             }
-            visited[i] = true;
+            visited[i] = 1;
             if (map.containsKey(i)) {
                 for (Integer j : map.get(i)) {
                     if (dfs(j)) {
@@ -424,8 +421,7 @@ public class FindOrder {
                     }
                 }
             }
-            // 不用回溯
-            // visited[i] = false;
+            visited[i] = 2;
             result[index--] = i;
             return false;
         }
