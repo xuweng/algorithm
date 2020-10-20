@@ -149,6 +149,7 @@ public class FindOrder {
                 for (Integer integer : map.get(i)) {
                     if (visited[integer] == 0) {
                         dfs(integer);
+                        //这里return效率会提高.
                         if (!flag) {
                             return;
                         }
