@@ -61,6 +61,8 @@ public class EventualSafeNodes {
     }
 
     /**
+     * 对于一个节点 u，如果我们从 u 开始任意行走能够走到一个环里，那么 u 就不是一个安全的节点
+     * <p>
      * 方法一：拓扑排序
      * <p>
      * 作者：LeetCode
