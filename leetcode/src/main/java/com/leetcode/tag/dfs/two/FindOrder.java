@@ -402,6 +402,9 @@ public class FindOrder {
             result = new int[numCourses];
 
             for (int i = 0; i < numCourses; i++) {
+                if (visited[i] == 2) {
+                    continue;
+                }
                 if (dfs(i)) {
                     return new int[0];
                 }
