@@ -24,8 +24,7 @@ public class EventualSafeNodes {
                 }
                 if (visited[i] == 0) {
                     dfs(graph, i);
-                }
-                if (visited[i] == 2) {
+                } else {
                     // 访问完成
                     result.add(i);
                 }
