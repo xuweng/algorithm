@@ -389,6 +389,7 @@ public class FindOrder {
 
     class Solution7 {
         Map<Integer, List<Integer>> map = new HashMap<>();
+        // 一定是3个状态
         int[] visited;
         int[] result;
         int index;
@@ -414,9 +415,12 @@ public class FindOrder {
 
         private boolean dfs(int i) {
             if (visited[i] == 1) {
+                // 有环
                 return true;
             }
             if (visited[i] == 2) {
+                // 此条件必须
+                // 已经访问完成
                 return false;
             }
             visited[i] = 1;
