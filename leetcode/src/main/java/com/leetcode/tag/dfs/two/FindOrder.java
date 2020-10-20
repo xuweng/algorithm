@@ -419,7 +419,7 @@ public class FindOrder {
                 return true;
             }
             if (visited[i] == 2) {
-                // 此条件必须
+                // 此条件必须.否则会重复添加已经访问完成的结点.导致数组越界.
                 // 已经访问完成
                 return false;
             }
