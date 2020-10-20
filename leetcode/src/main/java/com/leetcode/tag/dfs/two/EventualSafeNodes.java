@@ -1,7 +1,6 @@
 package com.leetcode.tag.dfs.two;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * 802. 找到最终的安全状态
@@ -11,6 +10,13 @@ import java.util.List;
  * 拓扑排序。拓扑排序。拓扑排序。拓扑排序.
  */
 public class EventualSafeNodes {
+    /**
+     * 区分环和访问完成的结点
+     * <p>
+     * 环是一种状态
+     * <p>
+     * 访问完成是一种状态
+     */
     class Solution {
         List<Integer> result = new ArrayList<>();
         int[] visited;
@@ -53,4 +59,59 @@ public class EventualSafeNodes {
             return false;
         }
     }
+
+    /**
+     * 方法一：拓扑排序
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/find-eventual-safe-states/solution/zhao-dao-zui-zhong-de-an-quan-zhuang-tai-by-leetco/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public List<Integer> eventualSafeNodes(int[][] G) {
+            int N = G.length;
+            boolean[] safe = new boolean[N];
+
+            List<Set<Integer>> graph = new ArrayList<>();
+            List<Set<Integer>> rgraph = new ArrayList<>();
+            for (int i = 0; i < N; ++i) {
+                graph.add(new HashSet<>());
+                rgraph.add(new HashSet<>());
+            }
+
+            Queue<Integer> queue = new LinkedList<>();
+
+            for (int i = 0; i < N; ++i) {
+                if (G[i].length == 0) {
+                    queue.offer(i);
+                }
+                for (int j : G[i]) {
+                    graph.get(i).add(j);
+                    rgraph.get(j).add(i);
+                }
+            }
+
+            while (!queue.isEmpty()) {
+                int j = queue.poll();
+                safe[j] = true;
+                for (int i : rgraph.get(j)) {
+                    graph.get(i).remove(j);
+                    if (graph.get(i).isEmpty()) {
+                        queue.offer(i);
+                    }
+                }
+            }
+
+            List<Integer> ans = new ArrayList<>();
+            for (int i = 0; i < N; ++i) {
+                if (safe[i]) {
+                    ans.add(i);
+                }
+            }
+
+            return ans;
+        }
+    }
+
 }
