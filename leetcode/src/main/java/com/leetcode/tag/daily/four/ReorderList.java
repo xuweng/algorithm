@@ -25,8 +25,11 @@ public class ReorderList {
         }
 
         private ListNode dfs(List<ListNode> list, int start, int end) {
-            if (start + 1 >= end) {
+            if (start == end) {
                 return list.get(start);
+            }
+            if (start > end) {
+                return null;
             }
             list.get(start).next = list.get(end);
             list.get(end).next = dfs(list, start + 1, end - 1);
