@@ -36,11 +36,11 @@ public class EventualSafeNodes {
             }
             visited[i] = true;
             for (int j : graph[i]) {
-                if (!dfs(graph, j)) {
-                    visited[j] = false;
+                if (dfs(graph, j)) {
+                    return true;
                 }
             }
-            // visited[i] = false;
+            visited[i] = false;
             return false;
         }
     }
