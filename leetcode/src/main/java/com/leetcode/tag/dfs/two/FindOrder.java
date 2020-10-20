@@ -206,7 +206,9 @@ public class FindOrder {
                 int u = queue.poll();
                 // 放入答案中
                 result[index++] = u;
+                //u的邻接结点
                 for (int v : edges.get(u)) {
+                    // 删除u.u的邻接结点的入度都-1.
                     --indeg[v];
                     // 如果相邻节点 v 的入度为 0，就可以选 v 对应的课程了
                     if (indeg[v] == 0) {
@@ -215,6 +217,7 @@ public class FindOrder {
                 }
             }
 
+            // 图中包含环
             if (index != numCourses) {
                 return new int[0];
             }
