@@ -120,10 +120,6 @@ public class FindOrder {
         boolean flag = true;
 
         public int[] findOrder(int numCourses, int[][] prerequisites) {
-            if (prerequisites == null || prerequisites.length == 0) {
-                return new int[0];
-            }
-
             index = numCourses - 1;
             visited = new int[numCourses];
             result = new int[numCourses];
