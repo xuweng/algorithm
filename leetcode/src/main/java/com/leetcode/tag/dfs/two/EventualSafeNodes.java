@@ -45,6 +45,7 @@ public class EventualSafeNodes {
                 return true;
             }
             if (visited[i] == 2) {
+                // 此条件必须
                 return false;
             }
             visited[i] = 1;
