@@ -29,7 +29,7 @@ public class EventualSafeNodes {
 
         private int dfs(int[][] graph, int i) {
             if (visited[i]) {
-                return Integer.MAX_VALUE - 1;
+                return 10000;
             }
             visited[i] = true;
             if (graph[i].length == 0) {
