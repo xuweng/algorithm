@@ -226,4 +226,50 @@ public class FindOrder {
         }
     }
 
+    class Solution4 {
+        int[] flag;//课程i=0表示尚未访问，=1表示此次dfs已经访问，=-1表示之前的dfs已访问
+        int[] path;//学习路线
+        int index;//path下一个节点的位置
+
+        public int[] findOrder(int numCourses, int[][] prerequisites) {
+            flag = new int[numCourses];
+            path = new int[numCourses];
+            index = numCourses - 1;
+            //邻接表 读入数据
+            List<List<Integer>> graph = new ArrayList<>(numCourses);
+            for (int i = 0; i < numCourses; i++) {
+                graph.add(new ArrayList<>());
+            }
+            for (int[] cp : prerequisites) {
+                graph.get(cp[1]).add(cp[0]);
+            }
+            //每个节点开始dfs 返回是否有环
+            for (int i = 0; i < numCourses; i++) {
+                if (hasCircle(i, graph)) {
+                    return new int[0];
+                }
+            }
+            return path;
+        }
+
+        public boolean hasCircle(int course, List<List<Integer>> graph) {
+            if (flag[course] == 1) {
+                return true;
+            }
+            if (flag[course] == -1) {
+                return false;
+            }
+
+            flag[course] = 1;
+            for (int after : graph.get(course)) {
+                if (hasCircle(after, graph)) {
+                    return true;
+                }
+            }
+            path[index--] = course;
+            flag[course] = -1;
+            return false;
+        }
+    }
+
 }
