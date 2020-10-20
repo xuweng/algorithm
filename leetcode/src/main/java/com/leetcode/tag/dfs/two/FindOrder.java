@@ -1,7 +1,9 @@
 package com.leetcode.tag.dfs.two;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 210. 课程表 II
@@ -107,6 +109,55 @@ public class FindOrder {
             visited[u] = 2;
             // 将节点入栈
             result[index--] = u;
+        }
+    }
+
+    class Solution1 {
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        int[] visited;
+        int[] result;
+        int index;
+        boolean flag = true;
+
+        public int[] findOrder(int numCourses, int[][] prerequisites) {
+            if (prerequisites == null || prerequisites.length == 0) {
+                return new int[0];
+            }
+
+            index = numCourses - 1;
+            visited = new int[numCourses];
+            result = new int[numCourses];
+            for (int[] prerequisite : prerequisites) {
+                map.computeIfAbsent(prerequisite[1], k -> new ArrayList<>()).add(prerequisite[0]);
+            }
+
+            for (int i = 0; i < numCourses && flag; i++) {
+                if (visited[i] == 0) {
+                    dfs(i);
+                }
+            }
+            if (!flag) {
+                return new int[0];
+            }
+
+            return result;
+        }
+
+        private void dfs(int i) {
+            visited[i] = 1;
+            if (map.containsKey(i)) {
+                for (Integer integer : map.get(i)) {
+                    if (visited[integer] == 0 && flag) {
+                        dfs(integer);
+                    } else if (visited[integer] == 1) {
+                        // 有环
+                        flag = false;
+                        return;
+                    }
+                }
+            }
+            visited[i] = 2;
+            result[index--] = i;
         }
     }
 
