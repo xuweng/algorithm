@@ -18,6 +18,10 @@ public class EventualSafeNodes {
         public List<Integer> eventualSafeNodes(int[][] graph) {
             visited = new boolean[graph.length];
             for (int i = 0; i < graph.length; i++) {
+                if (graph[i].length == 0) {
+                    result.add(i);
+                    continue;
+                }
                 if (visited[i]) {
                     continue;
                 }
