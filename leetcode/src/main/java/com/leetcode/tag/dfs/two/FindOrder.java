@@ -405,7 +405,9 @@ public class FindOrder {
                 if (visited[i]) {
                     continue;
                 }
-                dfs(i);
+                if (dfs(i)) {
+                    return new int[0];
+                }
             }
             return result;
         }
