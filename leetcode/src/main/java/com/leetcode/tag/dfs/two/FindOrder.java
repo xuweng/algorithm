@@ -386,4 +386,47 @@ public class FindOrder {
             return false;
         }
     }
+
+    class Solution7 {
+        Map<Integer, List<Integer>> map = new HashMap<>();
+        boolean[] visited;
+        int[] result;
+        int index;
+
+        public int[] findOrder(int numCourses, int[][] prerequisites) {
+            for (int[] prerequisite : prerequisites) {
+                map.computeIfAbsent(prerequisite[1], k -> new ArrayList<>()).add(prerequisite[0]);
+            }
+            visited = new boolean[numCourses];
+            index = numCourses - 1;
+            result = new int[numCourses];
+
+            for (int i = 0; i < numCourses; i++) {
+                if (visited[i]) {
+                    continue;
+                }
+                dfs(i);
+            }
+            return result;
+        }
+
+        private boolean dfs(int i) {
+            if (visited[i]) {
+                return true;
+            }
+            visited[i] = true;
+            if (map.containsKey(i)) {
+                for (Integer j : map.get(i)) {
+                    if (dfs(j)) {
+                        return true;
+                    }
+                }
+            }
+            // 不用回溯
+            // visited[i] = false;
+            result[index--] = i;
+            return false;
+        }
+
+    }
 }
