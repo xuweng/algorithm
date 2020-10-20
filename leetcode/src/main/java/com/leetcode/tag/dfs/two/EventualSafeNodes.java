@@ -22,9 +22,6 @@ public class EventualSafeNodes {
                     result.add(i);
                     continue;
                 }
-                if (visited[i]) {
-                    continue;
-                }
                 dfs(graph, i);
             }
 
@@ -46,6 +43,7 @@ public class EventualSafeNodes {
             if (r <= i) {
                 result.add(i);
             }
+            visited[i] = false;
             return r;
         }
     }
