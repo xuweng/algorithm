@@ -252,6 +252,15 @@ public class FindOrder {
             return path;
         }
 
+        /**
+         * 厉害
+         * <p>
+         * 通过返回值控制是否有环
+         *
+         * @param course
+         * @param graph
+         * @return
+         */
         public boolean hasCircle(int course, List<List<Integer>> graph) {
             if (flag[course] == 1) {
                 return true;
