@@ -37,11 +37,11 @@ public class EventualSafeNodes {
             visited[i] = true;
             for (int j : graph[i]) {
                 if (dfs(graph, j)) {
-                    // 有环直接返回.不回溯.
+                    // 有环直接返回.不回溯.visited不用重置.
                     return true;
                 }
             }
-            // 回溯
+            // 回溯.visited重置.
             visited[i] = false;
             return false;
         }
