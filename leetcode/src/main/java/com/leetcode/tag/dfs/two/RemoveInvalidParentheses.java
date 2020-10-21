@@ -351,4 +351,60 @@ public class RemoveInvalidParentheses {
             return left == 0;
         }
     }
+
+    class Solution5 {
+        public List<String> removeInvalidParentheses(String s) {
+            int left = 0, right = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == '(') {
+                    left++;
+                } else if (s.charAt(i) == ')') {
+                    if (left > 0) {
+                        left--;
+                    } else {
+                        right++;
+                    }
+                }
+            }
+            Set<String> res = new HashSet<>();
+            dfs(s, left, right, res);
+            return new ArrayList<>(res);
+        }
+
+        void dfs(String str, int left, int right, Set<String> set) {
+            if (left == 0 && right == 0) {
+                if (check(str)) {
+                    set.add(str);
+                }
+                return;
+            }
+            for (int i = 0; i < str.length(); i++) {
+                // 去重
+                if (i > 0 && str.charAt(i) == str.charAt(i - 1)) {
+                    continue;
+                }
+                String tmp = str.substring(0, i) + str.substring(i + 1);
+                //删除'('，直到不合法个数为0
+                if (str.charAt(i) == '(' && left > 0) {
+                    dfs(tmp, left - 1, right, set);
+                }
+                //删除')'，直到不合法个数为0
+                if (str.charAt(i) == ')' && right > 0) {
+                    dfs(tmp, left, right - 1, set);
+                }
+            }
+        }
+
+        boolean check(String s) {
+            int left = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == '(') {
+                    left++;
+                } else if (s.charAt(i) == ')' && left > 0) {
+                    left--;
+                }
+            }
+            return left == 0;
+        }
+    }
 }
