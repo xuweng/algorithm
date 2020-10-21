@@ -61,4 +61,49 @@ public class CountSubTrees {
         }
 
     }
+
+    /**
+     * 方法一：深度优先搜索
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/number-of-nodes-in-the-sub-tree-with-the-same-label/solution/zi-shu-zhong-biao-qian-xiang-tong-de-jie-dian-sh-3/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int[] countSubTrees(int n, int[][] edges, String labels) {
+            Map<Integer, List<Integer>> edgesMap = new HashMap<>();
+            for (int[] edge : edges) {
+                int node0 = edge[0], node1 = edge[1];
+                List<Integer> list0 = edgesMap.getOrDefault(node0, new ArrayList<>());
+                List<Integer> list1 = edgesMap.getOrDefault(node1, new ArrayList<>());
+                list0.add(node1);
+                list1.add(node0);
+                edgesMap.put(node0, list0);
+                edgesMap.put(node1, list1);
+            }
+            int[] counts = new int[n];
+            boolean[] visited = new boolean[n];
+            depthFirstSearch(0, counts, visited, edgesMap, labels);
+            return counts;
+        }
+
+        public int[] depthFirstSearch(int node, int[] counts, boolean[] visited, Map<Integer, List<Integer>> edgesMap, String labels) {
+            visited[node] = true;
+            int[] curCounts = new int[26];
+            curCounts[labels.charAt(node) - 'a']++;
+            List<Integer> nodesList = edgesMap.get(node);
+            for (int nextNode : nodesList) {
+                if (!visited[nextNode]) {
+                    int[] childCounts = depthFirstSearch(nextNode, counts, visited, edgesMap, labels);
+                    for (int i = 0; i < 26; i++) {
+                        curCounts[i] += childCounts[i];
+                    }
+                }
+            }
+            counts[node] = curCounts[labels.charAt(node) - 'a'];
+            return curCounts;
+        }
+    }
+
 }
