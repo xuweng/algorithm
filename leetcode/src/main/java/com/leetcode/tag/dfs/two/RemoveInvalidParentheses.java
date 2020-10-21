@@ -279,7 +279,7 @@ public class RemoveInvalidParentheses {
      */
     class Solution4 {
         public List<String> removeInvalidParentheses(String s) {
-            // 1.我们需要先找出不合法的左括号个数和右括号个数
+            // 1.我们需要先找出不合法的左括号个数和右括号个数.也是最小删除数量.
             int left = 0, right = 0;
             for (int i = 0; i < s.length(); i++) {
                 if (s.charAt(i) == '(') {
