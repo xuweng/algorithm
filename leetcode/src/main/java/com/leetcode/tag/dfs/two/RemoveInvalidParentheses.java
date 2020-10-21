@@ -369,7 +369,6 @@ public class RemoveInvalidParentheses {
                 }
             }
             Set<String> res = new HashSet<>();
-            res.add("");
 
             dfs(s, left, right, res);
 
@@ -381,9 +380,6 @@ public class RemoveInvalidParentheses {
                 if (check(str)) {
                     set.add(str);
                 }
-                return;
-            }
-            if (left == 0 || right == 0) {
                 return;
             }
             for (int i = 0; i < str.length(); i++) {
