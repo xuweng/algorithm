@@ -267,4 +267,73 @@ public class RemoveInvalidParentheses {
             return count == 0;
         }
     }
+
+    /**
+     * dfs
+     * <p>
+     * 在此题中，解题步骤如下：
+     * <p>
+     * 我们需要先找出不合法的左括号个数和右括号个数
+     * 利用dfs不断删除"（"或者"）"，直到不合法个数为0
+     * 检验删除后的括号串是否合法。
+     */
+    class Solution4 {
+        public List<String> removeInvalidParentheses(String s) {
+            // 1.我们需要先找出不合法的左括号个数和右括号个数
+            int left = 0, right = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == '(') {
+                    left++;
+                } else if (s.charAt(i) == ')') {
+                    if (left > 0) {
+                        left--;
+                    } else {
+                        right++;
+                    }
+                }
+            }
+            List<String> res = new ArrayList<>();
+            dfs(s, 0, left, right, res);
+            return res;
+        }
+
+        void dfs(String str, int idx, int left, int right, List<String> res) {
+            if (left == 0 && right == 0) {
+                if (check(str)) {
+                    res.add(str);
+                }
+                return;
+            }
+            for (int i = idx; i < str.length(); i++) {
+                if (i > idx && str.charAt(i) == str.charAt(i - 1)) {
+                    continue;
+                }
+                String tmp = str.substring(0, i) + str.substring(i + 1);
+                if (str.charAt(i) == '(' && left > 0) {
+                    dfs(tmp, i, left - 1, right, res);
+                }
+                if (str.charAt(i) == ')' && right > 0) {
+                    dfs(tmp, i, left, right - 1, res);
+                }
+            }
+        }
+
+        /**
+         * 厉害
+         *
+         * @param s
+         * @return
+         */
+        boolean check(String s) {
+            int left = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == '(') {
+                    left++;
+                } else if (s.charAt(i) == ')' && left > 0) {
+                    left--;
+                }
+            }
+            return left == 0;
+        }
+    }
 }
