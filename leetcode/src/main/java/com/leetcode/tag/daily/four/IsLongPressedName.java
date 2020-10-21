@@ -33,4 +33,32 @@ public class IsLongPressedName {
         }
     }
 
+    class Solution1 {
+        public boolean isLongPressedName(String name, String typed) {
+            if (name.length() == 0 || typed.length() == 0) {
+                return false;
+            }
+            int i = 0;
+            int j = 0;
+            while (i < name.length()) {
+                char ch = name.charAt(i);
+                int count = 0;
+                // 计数
+                while (i < name.length() && name.charAt(i) == ch) {
+                    count++;
+                    i++;
+                }
+                // 计数
+                while (j < typed.length() && typed.charAt(j) == ch) {
+                    count--;
+                    j++;
+                }
+                if (count > 0) {
+                    return false;
+                }
+            }
+            return j == typed.length();
+        }
+    }
+
 }
