@@ -5,7 +5,6 @@ package com.leetcode.tag.dfs.two;
  */
 public class MinDepth {
     class Solution {
-
         public int minDepth(TreeNode root) {
             if (root == null) {
                 return 0;
