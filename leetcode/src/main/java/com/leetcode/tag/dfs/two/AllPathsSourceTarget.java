@@ -19,18 +19,18 @@ public class AllPathsSourceTarget {
             if (graph == null || graph.length == 0) {
                 return result;
             }
-            dfs(0, graph.length - 1, graph, new LinkedList<>());
+            dfs(0, graph, new LinkedList<>());
 
             return result;
         }
 
-        private void dfs(int start, int end, int[][] graph, LinkedList<Integer> stack) {
+        private void dfs(int start, int[][] graph, LinkedList<Integer> stack) {
             stack.addLast(start);
-            if (start == end) {
+            if (start == graph.length - 1) {
                 result.add(new LinkedList<>(stack));
             } else {
                 for (Integer j : graph[start]) {
-                    dfs(j, end, graph, stack);
+                    dfs(j, graph, stack);
                 }
             }
             stack.removeLast();
