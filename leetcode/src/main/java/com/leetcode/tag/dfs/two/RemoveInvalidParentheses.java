@@ -1,9 +1,6 @@
 package com.leetcode.tag.dfs.two;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 301. 删除无效的括号
@@ -120,6 +117,78 @@ public class RemoveInvalidParentheses {
             this.reset();
             this.recurse(s, 0, 0, 0, new StringBuilder(), 0);
             return new ArrayList<>(this.validExpressions);
+        }
+    }
+
+    /**
+     * BFS
+     * <p>
+     * 利用BFS理解起来要远远比DFS要简单的多，因为这道题说的是删除最少的括号！！，
+     * <p>
+     * 如果我们每次只删除一个括号，然后观察被删除一个括号后是否合法，如果已经合法了，
+     * <p>
+     * 我们就不用继续删除了啊。因此我们并不需要将遍历进行到底，而是层层深入，一旦达到需求，就不再深入了。
+     * <p>
+     * 作者：allen-238
+     * 链接：https://leetcode-cn.com/problems/remove-invalid-parentheses/solution/bfsjian-dan-er-you-xiang-xi-de-pythonjiang-jie-by-/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public List<String> removeInvalidParentheses(String s) {
+            List<String> res = new ArrayList<>();
+            if (s == null || s.length() == 0) {
+                res.add("");
+                return res;
+            }
+            Deque<String> queue = new LinkedList<>();
+            HashMap<String, Boolean> help = new HashMap<>();
+            queue.add(s);
+            while (!queue.isEmpty()) {
+                for (String str : queue) {
+                    if (isValid(str)) {
+                        if (!help.containsKey(str)) res.add(str);
+                        help.put(str, true);
+                    }
+                }
+                if (!res.isEmpty()) {
+                    return res;
+                }
+                for (int k = queue.size() - 1; k >= 0; k--) {
+                    String str = queue.remove();
+                    for (int i = 0; i < str.length(); i++) {
+                        if (str.charAt(i) == '(' || str.charAt(i) == ')') {
+                            queue.add(str.substring(0, i) + str.substring(i + 1, str.length()));
+                        }
+                    }
+                }
+            }
+            res.add("");
+            return res;
+        }
+
+        /**
+         * 是否是正确的表达式
+         * <p>
+         * 厉害
+         *
+         * @param s
+         * @return
+         */
+        public boolean isValid(String s) {
+            int count = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == '(') {
+                    count++;
+                }
+                if (s.charAt(i) == ')') {
+                    count--;
+                }
+                if (count < 0) {
+                    return false;
+                }
+            }
+            return count == 0;
         }
     }
 }
