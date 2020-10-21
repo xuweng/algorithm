@@ -355,7 +355,7 @@ public class RemoveInvalidParentheses {
     }
 
     /**
-     * 超出时间限制
+     * 重复计算
      * <p>
      * ")()m)(((()((()(((("
      */
