@@ -19,9 +19,11 @@ public class IsLongPressedName {
             int i = 0, j = 0;
             while (j < typed.length()) {
                 if (i < name.length() && name.charAt(i) == typed.charAt(j)) {
+                    // 说明两个字符串存在一对匹配的字符，此时将 i,j 都加 1
                     i++;
                     j++;
                 } else if (j > 0 && typed.charAt(j) == typed.charAt(j - 1)) {
+                    // 说明存在一次长按键入，此时只将 j 加 1。
                     j++;
                 } else {
                     return false;
