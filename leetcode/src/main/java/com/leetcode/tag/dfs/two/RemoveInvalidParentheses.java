@@ -430,8 +430,8 @@ public class RemoveInvalidParentheses {
             for (int i = 0; i < s.length(); i++) {
                 if (s.charAt(i) == '(') {
                     left++;
-                } else {
-                    if (s.charAt(i) == ')') {
+                } else if (s.charAt(i) == ')') {
+                    if (left > 0) {
                         left--;
                     } else {
                         right++;
