@@ -6,6 +6,10 @@ import java.util.List;
 
 /**
  * 797. 所有可能的路径
+ * <p>
+ * 所有从 0 到 n-1 的路径
+ * <p>
+ * 搞懂题意.搞懂题意.搞懂题意.
  */
 public class AllPathsSourceTarget {
     class Solution {
@@ -15,19 +19,18 @@ public class AllPathsSourceTarget {
             if (graph == null || graph.length == 0) {
                 return result;
             }
-            dfs(0, graph, new LinkedList<>());
+            dfs(0, graph.length - 1, graph, new LinkedList<>());
 
             return result;
         }
 
-        private void dfs(int i, int[][] graph, LinkedList<Integer> stack) {
-            stack.addLast(i);
-            if (graph[i].length == 0) {
-                // 叶子结点
+        private void dfs(int start, int end, int[][] graph, LinkedList<Integer> stack) {
+            stack.addLast(start);
+            if (start == end) {
                 result.add(new LinkedList<>(stack));
             } else {
-                for (Integer j : graph[i]) {
-                    dfs(j, graph, stack);
+                for (Integer j : graph[start]) {
+                    dfs(j, end, graph, stack);
                 }
             }
             stack.removeLast();
