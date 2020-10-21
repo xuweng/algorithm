@@ -13,6 +13,9 @@ import java.util.Map;
  * 越来越熟练.越来越熟练.越来越熟练.
  */
 public class CountSubTrees {
+    /**
+     * 算法错误
+     */
     class Solution {
         Map<Integer, List<Integer>> map = new HashMap<>();
         int[] result;
@@ -38,6 +41,7 @@ public class CountSubTrees {
             int count = 1;
             for (Integer j : map.get(i)) {
                 if (labels.charAt(i) == labels.charAt(j)) {
+                    // 不能只比较一个结点.需要比较子树的所有结点.
                     count += dfs(j, labels);
                 } else {
                     dfs(j, labels);
