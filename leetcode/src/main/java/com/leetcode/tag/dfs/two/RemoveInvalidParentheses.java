@@ -297,6 +297,13 @@ public class RemoveInvalidParentheses {
             return res;
         }
 
+        /**
+         * @param str
+         * @param idx
+         * @param left  left为需要删除的左括号的数量
+         * @param right right为需要删除右括号的数量
+         * @param res
+         */
         void dfs(String str, int idx, int left, int right, List<String> res) {
             if (left == 0 && right == 0) {
                 if (check(str)) {
@@ -305,13 +312,17 @@ public class RemoveInvalidParentheses {
                 return;
             }
             for (int i = idx; i < str.length(); i++) {
+                // 去重
                 if (i > idx && str.charAt(i) == str.charAt(i - 1)) {
                     continue;
                 }
+                // 删除第i个数据
                 String tmp = str.substring(0, i) + str.substring(i + 1);
+                //删除'('，直到不合法个数为0
                 if (str.charAt(i) == '(' && left > 0) {
                     dfs(tmp, i, left - 1, right, res);
                 }
+                //删除')'，直到不合法个数为0
                 if (str.charAt(i) == ')' && right > 0) {
                     dfs(tmp, i, left, right - 1, res);
                 }
@@ -319,6 +330,8 @@ public class RemoveInvalidParentheses {
         }
 
         /**
+         * 检验合法性
+         * <p>
          * 厉害
          *
          * @param s
