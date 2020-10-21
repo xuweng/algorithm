@@ -164,6 +164,7 @@ public class RemoveInvalidParentheses {
                         if (str.charAt(i) == '(' || str.charAt(i) == ')') {
                             // 删除第i个数据
                             // 添加删除后的字符串
+                            // 也许会添加重复字符串
                             queue.offer(str.substring(0, i) + str.substring(i + 1));
                         }
                     }
