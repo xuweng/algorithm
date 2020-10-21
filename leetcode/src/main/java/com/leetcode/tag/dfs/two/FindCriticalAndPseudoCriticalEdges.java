@@ -13,6 +13,8 @@ public class FindCriticalAndPseudoCriticalEdges {
     /**
      * 最小生成树Kruskal算法， 并查集
      * <p>
+     * 每一次找权值最小的边时，将权值相同的归为一组。每一次添加边时，将边的两个节点通过并查集合并在一个集合中
+     * <p>
      * 作者：ClawnJ
      * 链接：https://leetcode-cn.com/problems/find-critical-and-pseudo-critical-edges-in-minimum-spanning-tree/solution/javabao-li-shuang-bai-zui-xiao-sheng-cheng-shu-kru/
      * 来源：力扣（LeetCode）
