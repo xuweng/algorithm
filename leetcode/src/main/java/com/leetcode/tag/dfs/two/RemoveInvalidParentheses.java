@@ -369,7 +369,10 @@ public class RemoveInvalidParentheses {
                 }
             }
             Set<String> res = new HashSet<>();
+            res.add("");
+
             dfs(s, left, right, res);
+
             return new ArrayList<>(res);
         }
 
