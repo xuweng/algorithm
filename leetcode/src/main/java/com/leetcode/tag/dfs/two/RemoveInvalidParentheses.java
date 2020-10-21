@@ -423,4 +423,57 @@ public class RemoveInvalidParentheses {
             return left == 0;
         }
     }
+
+    class Solution6 {
+        public List<String> removeInvalidParentheses(String s) {
+            int left = 0, right = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == '(') {
+                    left++;
+                } else {
+                    if (s.charAt(i) == ')') {
+                        left--;
+                    } else {
+                        right++;
+                    }
+                }
+            }
+
+            List<String> result = new ArrayList<>();
+
+            dfs(s, 0, left, right, result);
+
+            return result;
+        }
+
+        private void dfs(String s, int index, int left, int right, List<String> result) {
+            if (left == 0 && right == 0) {
+                if (check(s)) {
+                    result.add(s);
+                }
+                return;
+            }
+            for (int i = index; i < s.length(); i++) {
+                String str = s.substring(0, i) + s.substring(i + 1);
+                if (s.charAt(i) == '(' && left > 0) {
+                    dfs(str, i, left - 1, right, result);
+                }
+                if (s.charAt(i) == ')' && right > 0) {
+                    dfs(str, i, left, right - 1, result);
+                }
+            }
+        }
+
+        boolean check(String s) {
+            int left = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == '(') {
+                    left++;
+                } else if (s.charAt(i) == ')' && left > 0) {
+                    left--;
+                }
+            }
+            return left == 0;
+        }
+    }
 }
