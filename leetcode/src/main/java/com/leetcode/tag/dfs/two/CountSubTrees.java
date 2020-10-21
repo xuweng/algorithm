@@ -33,23 +33,24 @@ public class CountSubTrees {
             return result;
         }
 
-        private int dfs(int i, String labels) {
+        private int[] dfs(int i, String labels) {
             if (!map.containsKey(i)) {
                 result[i] = 1;
-                return 1;
+                int[] ints = new int[26];
+                ints[labels.charAt(i) - 'a'] = 1;
+                return ints;
             }
-            int count = 1;
+            int[] a = new int[26];
             for (Integer j : map.get(i)) {
-                if (labels.charAt(i) == labels.charAt(j)) {
-                    // 不能只比较一个结点.需要比较子树的所有结点.
-                    count += dfs(j, labels);
-                } else {
-                    dfs(j, labels);
+                int[] ints = dfs(j, labels);
+                for (int k = 0; k < ints.length; k++) {
+                    a[k] += ints[k];
                 }
             }
-            result[i] = count;
+            a[labels.charAt(i) - 'a']++;
+            result[i] = a[labels.charAt(i)];
 
-            return count;
+            return a;
         }
 
     }
