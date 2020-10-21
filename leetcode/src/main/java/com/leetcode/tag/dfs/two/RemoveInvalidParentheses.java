@@ -454,6 +454,10 @@ public class RemoveInvalidParentheses {
                 return;
             }
             for (int i = index; i < s.length(); i++) {
+                // 去重
+                if (i > index && s.charAt(i) == s.charAt(i - 1)) {
+                    continue;
+                }
                 String str = s.substring(0, i) + s.substring(i + 1);
                 if (s.charAt(i) == '(' && left > 0) {
                     dfs(str, i, left - 1, right, result);
