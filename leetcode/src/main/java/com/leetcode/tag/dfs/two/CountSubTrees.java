@@ -25,15 +25,17 @@ public class CountSubTrees {
                 return new int[0];
             }
             result = new int[n];
+            // 构建无向图
             for (int[] edge : edges) {
                 map.computeIfAbsent(edge[0], k -> new ArrayList<>()).add(edge[1]);
+                map.computeIfAbsent(edge[1], k -> new ArrayList<>()).add(edge[0]);
             }
-            dfs(0, labels);
+            dfs(0, labels, -1);
 
             return result;
         }
 
-        private int[] dfs(int i, String labels) {
+        private int[] dfs(int i, String labels, int parent) {
             int index = labels.charAt(i) - 'a';
             if (!map.containsKey(i)) {
                 result[i] = 1;
@@ -43,7 +45,10 @@ public class CountSubTrees {
             }
             int[] a = new int[26];
             for (Integer j : map.get(i)) {
-                int[] ints = dfs(j, labels);
+                if (j == parent) {
+                    continue;
+                }
+                int[] ints = dfs(j, labels, i);
                 for (int k = 0; k < ints.length; k++) {
                     a[k] += ints[k];
                 }
