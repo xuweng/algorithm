@@ -354,6 +354,11 @@ public class RemoveInvalidParentheses {
         }
     }
 
+    /**
+     * 超出时间限制
+     * <p>
+     * ")()m)(((()((()(((("
+     */
     class Solution5 {
         public List<String> removeInvalidParentheses(String s) {
             int left = 0, right = 0;
