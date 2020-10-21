@@ -374,13 +374,18 @@ public class RemoveInvalidParentheses {
                 }
             }
             Set<String> res = new HashSet<>();
+            Set<String> visited = new HashSet<>();
 
-            dfs(s, left, right, res);
+            dfs(s, left, right, res, visited);
 
             return new ArrayList<>(res);
         }
 
-        void dfs(String str, int left, int right, Set<String> set) {
+        void dfs(String str, int left, int right, Set<String> set, Set<String> visited) {
+            if (visited.contains(str)) {
+                return;
+            }
+            visited.add(str);
             if (left == 0 && right == 0) {
                 if (check(str)) {
                     set.add(str);
@@ -397,11 +402,11 @@ public class RemoveInvalidParentheses {
                 String tmp = str.substring(0, i) + str.substring(i + 1);
                 //删除'('，直到不合法个数为0
                 if (str.charAt(i) == '(' && left > 0) {
-                    dfs(tmp, left - 1, right, set);
+                    dfs(tmp, left - 1, right, set, visited);
                 }
                 //删除')'，直到不合法个数为0
                 if (str.charAt(i) == ')' && right > 0) {
-                    dfs(tmp, left, right - 1, set);
+                    dfs(tmp, left, right - 1, set, visited);
                 }
             }
         }
