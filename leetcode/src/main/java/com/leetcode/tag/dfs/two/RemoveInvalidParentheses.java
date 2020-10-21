@@ -322,10 +322,12 @@ public class RemoveInvalidParentheses {
                 String tmp = str.substring(0, i) + str.substring(i + 1);
                 //删除'('，直到不合法个数为0
                 if (str.charAt(i) == '(' && left > 0) {
+                    // i不变?
                     dfs(tmp, i, left - 1, right, res);
                 }
                 //删除')'，直到不合法个数为0
                 if (str.charAt(i) == ')' && right > 0) {
+                    // i不变?
                     dfs(tmp, i, left, right - 1, res);
                 }
             }
