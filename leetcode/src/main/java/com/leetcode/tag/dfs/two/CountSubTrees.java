@@ -38,6 +38,7 @@ public class CountSubTrees {
         private int[] dfs(int i, String labels, int parent) {
             int index = labels.charAt(i) - 'a';
             if (!map.containsKey(i)) {
+                // 叶子结点
                 result[i] = 1;
                 int[] ints = new int[26];
                 ints[index] = 1;
