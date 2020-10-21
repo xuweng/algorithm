@@ -141,6 +141,7 @@ public class RemoveInvalidParentheses {
                 res.add("");
                 return res;
             }
+            // 队列保存每层数据
             Deque<String> queue = new LinkedList<>();
             HashMap<String, Boolean> help = new HashMap<>();
             queue.offer(s);
@@ -193,6 +194,70 @@ public class RemoveInvalidParentheses {
                 }
                 if (count < 0) {
                     return false;
+                }
+            }
+            return count == 0;
+        }
+    }
+
+    class Solution3 {
+        public List<String> removeInvalidParentheses(String s) {
+            List<String> list = new ArrayList<>();
+            if (s == null || s.length() == 0) {
+                list.add("");
+                return list;
+            }
+            Deque<String> deque = new LinkedList<>();
+            Set<String> set = new HashSet<>();
+            deque.offer(s);
+            boolean flag = false;
+            while (!deque.isEmpty()) {
+                int len = deque.size();
+                // 当前层
+                while (len-- > 0) {
+                    String curr = deque.poll();
+                    if (isVaild(curr)) {
+                        list.add(curr);
+                        flag = true;
+                    }
+                    if (flag) {
+                        continue;
+                    }
+                    for (int i = 0; i < curr.length(); i++) {
+                        if (curr.charAt(i) == '(' || curr.charAt(i) == ')') {
+                            String str = "";
+                            if (i == curr.length() - 1) {
+                                // 删除最后一个数据
+                                str = curr.substring(0, curr.length() - 1);
+                            } else {
+                                str = curr.substring(0, i) + curr.substring(i + 1);
+                            }
+                            // set去重
+                            if (set.add(str)) {
+                                deque.offer(str);
+                            }
+                        }
+                    }
+                }
+                if (flag) {
+                    return list;
+                }
+            }
+            list.add("");
+            return list;
+        }
+
+        public boolean isVaild(String s) {
+            int count = 0;
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == '(') {
+                    count++;
+                }
+                if (s.charAt(i) == ')') {
+                    if (count <= 0) {
+                        return false;
+                    }
+                    count--;
                 }
             }
             return count == 0;
