@@ -46,6 +46,8 @@ public class RemoveInvalidParentheses {
         }
 
         /**
+         * 对当前字符分类讨论
+         *
          * @param s
          * @param index        索引
          * @param leftCount    表示我们到目前为止添加到表达式中的左括号的数目
@@ -105,6 +107,7 @@ public class RemoveInvalidParentheses {
                     // 左括号数量加1
                     this.recurse(s, index + 1, leftCount + 1, rightCount, expression, removedCount);
                 } else if (rightCount < leftCount) {
+                    // 右括号数量加1
                     // For a closing parenthesis, only recurse if right < left
                     this.recurse(s, index + 1, leftCount, rightCount + 1, expression, removedCount);
                 }
