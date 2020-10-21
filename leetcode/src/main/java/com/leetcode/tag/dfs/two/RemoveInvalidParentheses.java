@@ -143,22 +143,26 @@ public class RemoveInvalidParentheses {
             }
             Deque<String> queue = new LinkedList<>();
             HashMap<String, Boolean> help = new HashMap<>();
-            queue.add(s);
+            queue.offer(s);
             while (!queue.isEmpty()) {
                 for (String str : queue) {
                     if (isValid(str)) {
-                        if (!help.containsKey(str)) res.add(str);
+                        // 合法
+                        if (!help.containsKey(str)) {
+                            res.add(str);
+                        }
                         help.put(str, true);
                     }
                 }
                 if (!res.isEmpty()) {
+                    // 满足最小删除直接返回
                     return res;
                 }
-                for (int k = queue.size() - 1; k >= 0; k--) {
-                    String str = queue.remove();
+                for (int k = queue.size(); k > 0; k--) {
+                    String str = queue.poll();
                     for (int i = 0; i < str.length(); i++) {
                         if (str.charAt(i) == '(' || str.charAt(i) == ')') {
-                            queue.add(str.substring(0, i) + str.substring(i + 1, str.length()));
+                            queue.offer(str.substring(0, i) + str.substring(i + 1));
                         }
                     }
                 }
