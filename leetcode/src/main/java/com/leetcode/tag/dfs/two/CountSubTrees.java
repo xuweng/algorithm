@@ -34,10 +34,11 @@ public class CountSubTrees {
         }
 
         private int[] dfs(int i, String labels) {
+            int index = labels.charAt(i) - 'a';
             if (!map.containsKey(i)) {
                 result[i] = 1;
                 int[] ints = new int[26];
-                ints[labels.charAt(i) - 'a'] = 1;
+                ints[index] = 1;
                 return ints;
             }
             int[] a = new int[26];
@@ -47,8 +48,8 @@ public class CountSubTrees {
                     a[k] += ints[k];
                 }
             }
-            a[labels.charAt(i) - 'a']++;
-            result[i] = a[labels.charAt(i)];
+            a[index]++;
+            result[i] = a[index];
 
             return a;
         }
