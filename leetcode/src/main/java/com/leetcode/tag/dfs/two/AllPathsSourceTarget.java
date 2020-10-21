@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class AllPathsSourceTarget {
     class Solution {
-        List<List<Integer>> result = new ArrayList<>();
+        List<List<Integer>> result = new LinkedList<>();
 
         public List<List<Integer>> allPathsSourceTarget(int[][] graph) {
             if (graph == null || graph.length == 0) {
