@@ -387,6 +387,8 @@ public class RemoveInvalidParentheses {
                 }
                 return;
             }
+            // 从0开始遍历
+            // 从index开始遍历
             for (int i = 0; i < str.length(); i++) {
                 // 去重
                 if (i > 0 && str.charAt(i) == str.charAt(i - 1)) {
