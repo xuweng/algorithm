@@ -36,7 +36,8 @@ public class RemoveInvalidParentheses {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution {
-        private Set<String> validExpressions = new HashSet<>();
+        private final Set<String> validExpressions = new HashSet<>();
+        // 删除的最小数量
         private int minimumRemoved;
 
         private void reset() {
@@ -44,6 +45,14 @@ public class RemoveInvalidParentheses {
             this.minimumRemoved = Integer.MAX_VALUE;
         }
 
+        /**
+         * @param s
+         * @param index        索引
+         * @param leftCount    表示我们到目前为止添加到表达式中的左括号的数目
+         * @param rightCount   表示我们到目前为止添加到表达式中的右括号的数目
+         * @param expression   正确的表达式
+         * @param removedCount 删除括号的数量
+         */
         private void recurse(
                 String s,
                 int index,
@@ -51,56 +60,51 @@ public class RemoveInvalidParentheses {
                 int rightCount,
                 StringBuilder expression,
                 int removedCount) {
-
+            // 终止条件
             // If we have reached the end of string.
             if (index == s.length()) {
-
+                // 表达式正确
                 // If the current expression is valid.
                 if (leftCount == rightCount) {
-
                     // If the current count of removed parentheses is <= the current minimum count
                     if (removedCount <= this.minimumRemoved) {
-
+                        // 答案
                         // Convert StringBuilder to a String. This is an expensive operation.
                         // So we only perform this when needed.
                         String possibleAnswer = expression.toString();
-
                         // If the current count beats the overall minimum we have till now
                         if (removedCount < this.minimumRemoved) {
+                            // 清空
                             this.validExpressions.clear();
+                            // 删除的最小数量
                             this.minimumRemoved = removedCount;
                         }
                         this.validExpressions.add(possibleAnswer);
                     }
                 }
+                return;
+            }
+            char currentCharacter = s.charAt(index);
+            int length = expression.length();
+            // If the current character is neither an opening bracket nor a closing one,
+            // simply recurse further by adding it to the expression StringBuilder
+            if (currentCharacter != '(' && currentCharacter != ')') {
+                expression.append(currentCharacter);
+                this.recurse(s, index + 1, leftCount, rightCount, expression, removedCount);
+                expression.deleteCharAt(length);
             } else {
-
-                char currentCharacter = s.charAt(index);
-                int length = expression.length();
-
-                // If the current character is neither an opening bracket nor a closing one,
-                // simply recurse further by adding it to the expression StringBuilder
-                if (currentCharacter != '(' && currentCharacter != ')') {
-                    expression.append(currentCharacter);
-                    this.recurse(s, index + 1, leftCount, rightCount, expression, removedCount);
-                    expression.deleteCharAt(length);
-                } else {
-
-                    // Recursion where we delete the current character and move forward
-                    this.recurse(s, index + 1, leftCount, rightCount, expression, removedCount + 1);
-                    expression.append(currentCharacter);
-
-                    // If it's an opening parenthesis, consider it and recurse
-                    if (currentCharacter == '(') {
-                        this.recurse(s, index + 1, leftCount + 1, rightCount, expression, removedCount);
-                    } else if (rightCount < leftCount) {
-                        // For a closing parenthesis, only recurse if right < left
-                        this.recurse(s, index + 1, leftCount, rightCount + 1, expression, removedCount);
-                    }
-
-                    // Undoing the append operation for other recursions.
-                    expression.deleteCharAt(length);
+                // Recursion where we delete the current character and move forward
+                this.recurse(s, index + 1, leftCount, rightCount, expression, removedCount + 1);
+                expression.append(currentCharacter);
+                // If it's an opening parenthesis, consider it and recurse
+                if (currentCharacter == '(') {
+                    this.recurse(s, index + 1, leftCount + 1, rightCount, expression, removedCount);
+                } else if (rightCount < leftCount) {
+                    // For a closing parenthesis, only recurse if right < left
+                    this.recurse(s, index + 1, leftCount, rightCount + 1, expression, removedCount);
                 }
+                // Undoing the append operation for other recursions.
+                expression.deleteCharAt(length);
             }
         }
 
