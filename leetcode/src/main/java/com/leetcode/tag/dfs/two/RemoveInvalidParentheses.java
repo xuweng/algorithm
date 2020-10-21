@@ -380,6 +380,9 @@ public class RemoveInvalidParentheses {
                 }
                 return;
             }
+            if (left == 0 || right == 0) {
+                return;
+            }
             for (int i = 0; i < str.length(); i++) {
                 // 去重
                 if (i > 0 && str.charAt(i) == str.charAt(i - 1)) {
