@@ -84,20 +84,25 @@ public class RemoveInvalidParentheses {
                 }
                 return;
             }
+            // 当前字符
             char currentCharacter = s.charAt(index);
             int length = expression.length();
             // If the current character is neither an opening bracket nor a closing one,
             // simply recurse further by adding it to the expression StringBuilder
             if (currentCharacter != '(' && currentCharacter != ')') {
+                // 普通字符
+                // 直接添加到表达式
                 expression.append(currentCharacter);
                 this.recurse(s, index + 1, leftCount, rightCount, expression, removedCount);
                 expression.deleteCharAt(length);
             } else {
+                // '(' 或者 ')'
                 // Recursion where we delete the current character and move forward
                 this.recurse(s, index + 1, leftCount, rightCount, expression, removedCount + 1);
                 expression.append(currentCharacter);
                 // If it's an opening parenthesis, consider it and recurse
                 if (currentCharacter == '(') {
+                    // 左括号数量加1
                     this.recurse(s, index + 1, leftCount + 1, rightCount, expression, removedCount);
                 } else if (rightCount < leftCount) {
                     // For a closing parenthesis, only recurse if right < left
