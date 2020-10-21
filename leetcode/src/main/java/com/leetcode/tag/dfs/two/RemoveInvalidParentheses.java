@@ -200,6 +200,9 @@ public class RemoveInvalidParentheses {
         }
     }
 
+    /**
+     * bfs
+     */
     class Solution3 {
         public List<String> removeInvalidParentheses(String s) {
             List<String> list = new ArrayList<>();
@@ -207,6 +210,7 @@ public class RemoveInvalidParentheses {
                 list.add("");
                 return list;
             }
+            // 队列保存当前层
             Deque<String> deque = new LinkedList<>();
             Set<String> set = new HashSet<>();
             deque.offer(s);
