@@ -48,6 +48,7 @@ public class PartitionLabels {
             // 双指针
             int start = 0, end = 0;
             for (int i = 0; i < length; i++) {
+                // 指向最远下标
                 end = Math.max(end, last[S.charAt(i) - 'a']);
                 if (i == end) {
                     partition.add(end - start + 1);
