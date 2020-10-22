@@ -28,6 +28,14 @@ public class ClosedIsland {
             return result;
         }
 
+        /**
+         * visited[row][col] == 2 访问完成应该返回true还是false?
+         *
+         * @param grid
+         * @param row
+         * @param col
+         * @return
+         */
         private boolean dfs(int[][] grid, int row, int col) {
             if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length || visited[row][col] == 2) {
                 return false;
