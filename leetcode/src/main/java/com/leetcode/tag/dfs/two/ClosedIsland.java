@@ -44,4 +44,48 @@ public class ClosedIsland {
             return result;
         }
     }
+
+    /**
+     * dfs
+     * <p>
+     * 作者：liuchuan1992
+     * 链接：https://leetcode-cn.com/problems/number-of-closed-islands/solution/dfsjie-jue-by-liuchuan1992/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int closedIsland(int[][] grid) {
+            int rows = grid.length;
+            int cols = grid[0].length;
+            int res = 0;
+            for (int i = 1; i < rows; i++) {
+                for (int j = 1; j < cols; j++) {
+                    if (grid[i][j] == 0) {
+                        if (dfs(grid, i, j)) {
+                            res++;
+                        }
+                    }
+                }
+            }
+            return res;
+        }
+
+        private boolean dfs(int[][] grid, int i, int j) {
+            int rows = grid.length;
+            int cols = grid[0].length;
+            if (i < 0 || j < 0 || i >= rows || j >= cols) {
+                return false;
+            }
+            if (grid[i][j] == 1) {
+                return true;
+            }
+            grid[i][j] = 1;
+            boolean up = dfs(grid, i - 1, j);
+            boolean down = dfs(grid, i + 1, j);
+            boolean left = dfs(grid, i, j - 1);
+            boolean right = dfs(grid, i, j + 1);
+            return up && down && left && right;
+        }
+    }
+
 }
