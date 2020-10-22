@@ -93,6 +93,7 @@ public class ClosedIsland {
             // 修改原数组
             grid[row][col] = 1;
             boolean[] result = new boolean[rows.length];
+            // 保证上下左右4个方向都有dfs
             for (int i = 0; i < rows.length; i++) {
                 result[i] = dfs(grid, row + rows[i], col + cols[i]);
             }
