@@ -6,7 +6,9 @@ import java.util.List;
 /**
  * 763. 划分字母区间
  * <p>
- * 十分钟.十分钟.十分钟.十分钟
+ * 十分钟.十分钟.十分钟.十分钟.
+ * <p>
+ * 用示例来理解代码.用示例来理解代码.用示例来理解代码.
  */
 public class PartitionLabels {
     /**
@@ -43,6 +45,7 @@ public class PartitionLabels {
                 last[S.charAt(i) - 'a'] = i;
             }
             List<Integer> partition = new ArrayList<>();
+            // 双指针
             int start = 0, end = 0;
             for (int i = 0; i < length; i++) {
                 end = Math.max(end, last[S.charAt(i) - 'a']);
