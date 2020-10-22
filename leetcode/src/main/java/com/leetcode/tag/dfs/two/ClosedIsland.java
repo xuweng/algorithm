@@ -29,10 +29,10 @@ public class ClosedIsland {
         }
 
         private boolean dfs(int[][] grid, int row, int col) {
-            if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length) {
+            if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length || visited[row][col] == 2) {
                 return false;
             }
-            if (visited[row][col] == 1 || visited[row][col] == 2 || grid[row][col] == 1) {
+            if (visited[row][col] == 1 || grid[row][col] == 1) {
                 return true;
             }
             visited[row][col] = 1;
