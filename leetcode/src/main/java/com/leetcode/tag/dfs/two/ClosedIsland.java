@@ -32,7 +32,7 @@ public class ClosedIsland {
             if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length) {
                 return false;
             }
-            if (visited[row][col] == 1 || grid[row][col] == 1) {
+            if (visited[row][col] == 1 || visited[row][col] == 2 || grid[row][col] == 1) {
                 return true;
             }
             visited[row][col] = 1;
