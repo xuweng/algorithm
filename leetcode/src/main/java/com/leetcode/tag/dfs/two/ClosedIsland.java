@@ -53,6 +53,53 @@ public class ClosedIsland {
         }
     }
 
+    class Solution2 {
+        int[] rows = {-1, 1, 0, 0};
+        int[] cols = {0, 0, -1, 1};
+
+        public int closedIsland(int[][] grid) {
+            if (grid == null || grid.length == 0) {
+                return 0;
+            }
+            int result = 0;
+            for (int i = 0; i < grid.length; i++) {
+                for (int j = 0; j < grid[0].length; j++) {
+                    if (grid[i][j] == 1) {
+                        continue;
+                    }
+                    if (dfs(grid, i, j)) {
+                        result++;
+                    }
+                }
+            }
+            return result;
+        }
+
+        /**
+         * visited[row][col] == 2 访问完成应该返回true还是false?
+         *
+         * @param grid
+         * @param row
+         * @param col
+         * @return
+         */
+        private boolean dfs(int[][] grid, int row, int col) {
+            if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length) {
+                return false;
+            }
+            if (grid[row][col] == 1) {
+                return true;
+            }
+            // 修改原数组
+            grid[row][col] = 1;
+            boolean result = true;
+            for (int i = 0; i < rows.length; i++) {
+                result = result && dfs(grid, row + rows[i], col + cols[i]);
+            }
+            return result;
+        }
+    }
+
     /**
      * dfs
      * <p>
