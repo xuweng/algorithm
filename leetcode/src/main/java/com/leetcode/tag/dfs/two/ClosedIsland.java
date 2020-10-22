@@ -92,15 +92,15 @@ public class ClosedIsland {
             }
             // 修改原数组
             grid[row][col] = 1;
-            //            boolean result = true;
-            //            for (int i = 0; i < rows.length; i++) {
-            //                result = result && dfs(grid, row + rows[i], col + cols[i]);
-            //            }
-            //            return result;
-            boolean up = dfs(grid, row - 1, col);
-            boolean down = dfs(grid, row + 1, col);
-            boolean left = dfs(grid, row, col - 1);
-            boolean right = dfs(grid, row, col + 1);
+            //                        boolean result = true;
+            //                        for (int i = 0; i < rows.length; i++) {
+            //                            result = result && dfs(grid, row + rows[i], col + cols[i]);
+            //                        }
+            //                        return result;
+            boolean up = dfs(grid, row + rows[0], col + cols[0]);
+            boolean down = dfs(grid, row + rows[1], col + cols[1]);
+            boolean left = dfs(grid, row + rows[2], col + cols[2]);
+            boolean right = dfs(grid, row + rows[3], col + cols[3]);
             return up && down && left && right;
         }
     }
