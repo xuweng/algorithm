@@ -11,7 +11,7 @@ public class IsPalindrome {
     class Solution {
         public boolean isPalindrome(ListNode head) {
             if (head == null) {
-                return false;
+                return true;
             }
             List<Integer> list = new ArrayList<>();
             while (head != null) {
