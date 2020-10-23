@@ -147,7 +147,15 @@ public class IsPalindrome {
             return result;
         }
 
+        /**
+         * 反转后半部分链表
+         *
+         * @param head
+         * @return
+         */
         private ListNode reverseList(ListNode head) {
+            // 3个指针
+            // pre cur next
             ListNode prev = null;
             ListNode curr = head;
             while (curr != null) {
