@@ -90,6 +90,7 @@ public class IsPalindrome {
             if (!recursivelyCheck(currentNode.next)) {
                 return false;
             }
+            // 回溯
             if (currentNode.val != frontPointer.val) {
                 return false;
             }
