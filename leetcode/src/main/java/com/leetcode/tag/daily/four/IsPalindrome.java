@@ -70,6 +70,38 @@ public class IsPalindrome {
         }
     }
 
+    /**
+     * 方法二：递归
+     * <p>
+     * 如果使用递归反向迭代节点，同时使用递归函数外的变量向前迭代，就可以判断链表是否为回文。
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/palindrome-linked-list/solution/hui-wen-lian-biao-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        private ListNode frontPointer;
+
+        private boolean recursivelyCheck(ListNode currentNode) {
+            if (currentNode != null) {
+                if (!recursivelyCheck(currentNode.next)) {
+                    return false;
+                }
+                if (currentNode.val != frontPointer.val) {
+                    return false;
+                }
+                frontPointer = frontPointer.next;
+            }
+            return true;
+        }
+
+        public boolean isPalindrome(ListNode head) {
+            frontPointer = head;
+            return recursivelyCheck(head);
+        }
+    }
+
     class ListNode {
         int val;
         ListNode next;
