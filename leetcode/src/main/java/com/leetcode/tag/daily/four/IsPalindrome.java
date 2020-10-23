@@ -22,12 +22,16 @@ public class IsPalindrome {
         }
 
         private boolean dfs(List<Integer> list, int start, int end) {
-            if (start == end) {
-                return true;
-            }
             if (start > end) {
                 return false;
             }
+            if (start == end) {
+                return true;
+            }
+            if (start + 1 == end) {
+                return Objects.equals(list.get(start), list.get(end));
+            }
+
             return Objects.equals(list.get(start), list.get(end)) && dfs(list, start + 1, end - 1);
         }
     }
