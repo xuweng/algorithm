@@ -175,6 +175,7 @@ public class IsPalindrome {
         private ListNode endOfFirstHalf(ListNode head) {
             ListNode fast = head;
             ListNode slow = head;
+            // 注意条件
             while (fast.next != null && fast.next.next != null) {
                 fast = fast.next.next;
                 slow = slow.next;
