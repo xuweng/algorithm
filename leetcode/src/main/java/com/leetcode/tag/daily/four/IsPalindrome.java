@@ -36,6 +36,40 @@ public class IsPalindrome {
         }
     }
 
+    /**
+     * 方法一：将值复制到数组中后用双指针法
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/palindrome-linked-list/solution/hui-wen-lian-biao-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public boolean isPalindrome(ListNode head) {
+            List<Integer> vales = new ArrayList<>();
+
+            // 将链表的值复制到数组中
+            ListNode currentNode = head;
+            while (currentNode != null) {
+                vales.add(currentNode.val);
+                currentNode = currentNode.next;
+            }
+
+            // 使用双指针判断是否回文
+            int front = 0;
+            int back = vales.size() - 1;
+            while (front < back) {
+                // 这里判断
+                if (!vales.get(front).equals(vales.get(back))) {
+                    return false;
+                }
+                front++;
+                back--;
+            }
+            return true;
+        }
+    }
+
     class ListNode {
         int val;
         ListNode next;
