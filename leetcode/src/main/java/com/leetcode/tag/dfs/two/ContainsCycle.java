@@ -107,6 +107,13 @@ public class ContainsCycle {
         }
     }
 
+    /**
+     * dfs
+     * <p>
+     * 图的dfs会一直向下dfs,不会向上dfs
+     * <p>
+     * 矩阵的dfs会上下左右4个方向的dfs
+     */
     class Solution1 {
         int[] rows = {-1, 1, 0, 0};
         int[] cols = {0, 0, -1, 1};
