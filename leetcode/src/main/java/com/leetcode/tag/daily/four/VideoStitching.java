@@ -51,13 +51,19 @@ public class VideoStitching {
      */
     class Solution1 {
         public int videoStitching(int[][] clips, int T) {
+            // 对于每一个位置 i，我们记录以其为左端点的子区间中最远的右端点，记为 maxn[i]
             int[] maxn = new int[T];
-            int last = 0, ret = 0, pre = 0;
             for (int[] clip : clips) {
                 if (clip[0] < T) {
                     maxn[clip[0]] = Math.max(maxn[clip[0]], clip[1]);
                 }
             }
+
+            // 当枚举到位置 i 时，记左端点不大于 i 的所有子区间的最远右端点为 last
+            // last 就代表了当前能覆盖到的最远的右端点
+            int last = 0;
+            int ret = 0;
+            int pre = 0;
             for (int i = 0; i < T; i++) {
                 last = Math.max(last, maxn[i]);
                 if (i == last) {
