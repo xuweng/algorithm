@@ -27,7 +27,7 @@ public class NumsSameConsecDiff {
             }
             for (int i = 0; i <= 9; i++) {
                 if (pre == -1) {
-                    if (i == 0) {
+                    if (i == 0 && n > 1) {
                         continue;
                     }
                 } else {
