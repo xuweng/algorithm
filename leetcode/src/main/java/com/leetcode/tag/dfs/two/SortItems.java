@@ -81,6 +81,8 @@ public class SortItems {
         }
 
         /**
+         * bfs
+         * <p>
          * 拓扑排序代码
          *
          * @param graph     待排序的图
@@ -89,7 +91,9 @@ public class SortItems {
          */
         private SortResult topologicalSort(Map<Integer, ? extends Sortable> graph, Map<Integer, Integer> inDegrees) {
             List<Sortable> list = new ArrayList<>();
+            // 队列保存入度为0的数据
             Queue<Sortable> queue = new LinkedList<>();
+            // 入度为0
             for (Map.Entry<Integer, Integer> entry : inDegrees.entrySet()) {
                 if (entry.getValue() == 0) {
                     queue.offer(graph.get(entry.getKey()));
@@ -102,8 +106,10 @@ public class SortItems {
                     for (Sortable s : sortable.next) {
                         int inDegree = inDegrees.get(s.ID);
                         if (inDegree == 1) {
+                            // 入度为0入队
                             queue.offer(s);
                         }
+                        // 邻接顶点入度-1.
                         inDegrees.put(s.ID, inDegree - 1);
                     }
                     list.add(sortable);
