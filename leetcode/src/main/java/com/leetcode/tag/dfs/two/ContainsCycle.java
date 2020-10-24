@@ -41,11 +41,13 @@ public class ContainsCycle {
                 for (int j = 0; j < n; ++j) {
                     if (i > 0 && grid[i][j] == grid[i - 1][j]) {
                         if (!uf.findAndUnite(i * n + j, (i - 1) * n + j)) {
+                            // 两个点都在同一个集合.不用合并.
                             return true;
                         }
                     }
                     if (j > 0 && grid[i][j] == grid[i][j - 1]) {
                         if (!uf.findAndUnite(i * n + j, i * n + j - 1)) {
+                            // 两个点都在同一个集合.不用合并.
                             return true;
                         }
                     }
@@ -87,6 +89,13 @@ public class ContainsCycle {
             --setCount;
         }
 
+        /**
+         * 是否合并
+         *
+         * @param x
+         * @param y
+         * @return
+         */
         public boolean findAndUnite(int x, int y) {
             int parentX = findset(x);
             int parentY = findset(y);
