@@ -107,4 +107,47 @@ public class ContainsCycle {
         }
     }
 
+    class Solution1 {
+        int[] rows = {-1, 1, 0, 0};
+        int[] cols = {0, 0, -1, 1};
+        int[][] visited;
+
+        public boolean containsCycle(char[][] grid) {
+            if (grid == null || grid.length == 0) {
+                return false;
+            }
+            visited = new int[grid.length][grid[0].length];
+            for (int i = 0; i < grid.length; i++) {
+                for (int j = 0; j < grid[0].length; j++) {
+                    if (visited[i][j] == 2) {
+                        continue;
+                    }
+                    if (dfs(grid, i, j, -1, -1, 0)) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private boolean dfs(char[][] grid, int row, int col, int parentR, int parentC, int path) {
+            if (visited[row][col] == 1) {
+                return path >= 4;
+            }
+            visited[row][col] = 1;
+            for (int i = 0; i < rows.length; i++) {
+                int r = row + rows[i];
+                int c = col + cols[i];
+                if (r < 0 || r >= grid.length || c < 0 || c >= grid[0].length || grid[row][col] != grid[r][c] || (r == parentR && c == parentC)) {
+                    continue;
+                }
+                if (dfs(grid, r, c, row, col, path + 1)) {
+                    return true;
+                }
+            }
+            visited[row][col] = 2;
+            return false;
+        }
+    }
+
 }
