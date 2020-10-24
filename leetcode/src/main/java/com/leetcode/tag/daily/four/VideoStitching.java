@@ -67,6 +67,7 @@ public class VideoStitching {
             // last 就代表了当前能覆盖到的最远的右端点
             int last = 0;
             int ret = 0;
+            // 前一个最远位置
             int pre = 0;
             for (int i = 0; i < T; i++) {
                 last = Math.max(last, maxn[i]);
@@ -75,6 +76,7 @@ public class VideoStitching {
                 }
                 if (i == pre) {
                     ret++;
+                    // 更新前一个最远位置
                     pre = last;
                 }
             }
