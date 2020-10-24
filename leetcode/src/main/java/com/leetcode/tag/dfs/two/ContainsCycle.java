@@ -23,7 +23,7 @@ public class ContainsCycle {
      * <p>
      * 那么 grid 中的一个环就对应着我们构造出的图中的一个环
      * <p>
-     * 构造图.点和边.
+     * 构造图.点和边.构造图.点和边.构造图.点和边.构造图.点和边.
      * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/detect-cycles-in-2d-grid/solution/er-wei-wang-ge-tu-zhong-tan-ce-huan-by-leetcode-so/
