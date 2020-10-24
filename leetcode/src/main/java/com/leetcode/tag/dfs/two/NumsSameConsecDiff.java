@@ -40,4 +40,36 @@ public class NumsSameConsecDiff {
             }
         }
     }
+
+    class Solution1 {
+        public int[] numsSameConsecDiff(int n, int k) {
+            List<Integer> ans = new ArrayList<>();
+            dfs(ans, 0, n, k, 0, 0);
+
+            if (n == 1) {
+                ans.add(0);
+            }
+            return ans.stream().mapToInt(an -> an).toArray();
+        }
+
+        public void dfs(List<Integer> ans, int index, int n, int k, int end, int num) {
+            if (index == n) {
+                ans.add(num);
+                return;
+            }
+            if (index == 0) {
+                for (int i = 1; i <= 9; i++) {
+                    dfs(ans, index + 1, n, k, i, i);
+                }
+            } else {
+                if (end >= k) {
+                    dfs(ans, index + 1, n, k, end - k, num * 10 + end - k);
+                }
+                if (k != 0 && end + k <= 9) {
+                    dfs(ans, index + 1, n, k, end + k, num * 10 + end + k);
+                }
+            }
+        }
+
+    }
 }
