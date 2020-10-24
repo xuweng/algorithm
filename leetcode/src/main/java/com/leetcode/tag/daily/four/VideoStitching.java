@@ -6,6 +6,10 @@ import java.util.Arrays;
  * 1024. 视频拼接
  * <p>
  * 搞懂题意.搞懂题目.搞懂题目.搞懂题目.
+ * <p>
+ * 十分钟.十分钟.十分钟
+ * <p>
+ * 用示例来理解代码.用示例来理解代码.用示例来理解代码.
  */
 public class VideoStitching {
     /**
