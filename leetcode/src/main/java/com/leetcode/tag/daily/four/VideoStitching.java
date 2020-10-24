@@ -14,6 +14,10 @@ import java.util.Arrays;
  * 示例.画图.
  * <p>
  * 示例.画图.示例.画图.示例.画图.示例.画图.
+ * <p>
+ * 不看图不行.
+ * <p>
+ * 区间覆盖.
  */
 public class VideoStitching {
     /**
