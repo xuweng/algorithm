@@ -61,13 +61,17 @@ public class SortItems {
         public int[] sortItems(int n, int m, int[] group, List<List<Integer>> beforeItems) {
             initialize(n, m, group, beforeItems);
             SortResult sortedGroups = topologicalSort(groups, groupInDegrees);  // 首先进行项目组的拓扑排序
-            if (!sortedGroups.success) return new int[0];
+            if (!sortedGroups.success) {
+                return new int[0];
+            }
             int[] ans = new int[n];
             int curr = 0;
             for (Sortable s1 : sortedGroups.result) {                           // 再对每组中的项目进行拓扑排序
                 Group g = (Group) s1;
                 SortResult sortedItems = topologicalSort(g.items, g.itemInDegrees);
-                if (!sortedItems.success) return new int[0];
+                if (!sortedItems.success) {
+                    return new int[0];
+                }
                 for (Sortable s2 : sortedItems.result) {
                     Item item = (Item) s2;
                     ans[curr++] = item.ID;
