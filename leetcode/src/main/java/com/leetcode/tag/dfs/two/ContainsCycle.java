@@ -13,7 +13,7 @@ import java.util.Arrays;
  * <p>
  * dp.dp.dp.dp.dp.dp.dp.dp.dp.
  * <p>
- * dp.用已经计算的推导没有计算的..
+ * dp.用已经计算的推导没有计算的..找到之前已经计算过的.
  */
 public class ContainsCycle {
     /**
