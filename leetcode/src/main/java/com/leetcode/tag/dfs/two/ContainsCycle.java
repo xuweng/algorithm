@@ -25,6 +25,8 @@ public class ContainsCycle {
      * <p>
      * 构造图.点和边.构造图.点和边.构造图.点和边.构造图.点和边.
      * <p>
+     * 常用的判断无向图中是否有环的方法有深度优先搜索和广度优先搜索，但这里我们会介绍一种基于并查集的判断方法。
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/detect-cycles-in-2d-grid/solution/er-wei-wang-ge-tu-zhong-tan-ce-huan-by-leetcode-so/
      * 来源：力扣（LeetCode）
