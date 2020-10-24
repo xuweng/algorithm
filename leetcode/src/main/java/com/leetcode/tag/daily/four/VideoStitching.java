@@ -10,6 +10,10 @@ import java.util.Arrays;
  * 十分钟.十分钟.十分钟
  * <p>
  * 用示例来理解代码.用示例来理解代码.用示例来理解代码.
+ * <p>
+ * 示例.画图.
+ * <p>
+ * 示例.画图.示例.画图.示例.画图.示例.画图.
  */
 public class VideoStitching {
     /**
