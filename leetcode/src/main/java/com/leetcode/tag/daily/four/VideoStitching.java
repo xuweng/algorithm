@@ -29,6 +29,7 @@ public class VideoStitching {
             // 由于我们希望子区间的数目尽可能少，因此可以将所有 dp[i] 的初始值设为一个大整数
             Arrays.fill(dp, Integer.MAX_VALUE - 1);
             dp[0] = 0;
+            // 枚举所有的子区间来依次计算出所有的 dp 值
             for (int i = 1; i <= T; i++) {
                 for (int[] clip : clips) {
                     if (clip[0] < i && i <= clip[1]) {
@@ -37,6 +38,37 @@ public class VideoStitching {
                 }
             }
             return dp[T] == Integer.MAX_VALUE - 1 ? -1 : dp[T];
+        }
+    }
+
+    /**
+     * 方法二：贪心
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/video-stitching/solution/shi-pin-pin-jie-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int videoStitching(int[][] clips, int T) {
+            int[] maxn = new int[T];
+            int last = 0, ret = 0, pre = 0;
+            for (int[] clip : clips) {
+                if (clip[0] < T) {
+                    maxn[clip[0]] = Math.max(maxn[clip[0]], clip[1]);
+                }
+            }
+            for (int i = 0; i < T; i++) {
+                last = Math.max(last, maxn[i]);
+                if (i == last) {
+                    return -1;
+                }
+                if (i == pre) {
+                    ret++;
+                    pre = last;
+                }
+            }
+            return ret;
         }
     }
 
