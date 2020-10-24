@@ -19,6 +19,12 @@ public class ContainsCycle {
     /**
      * 方法一：并查集
      * <p>
+     * 将其中的每个位置看成一个节点，任意两个上下左右相邻且值相同的节点之间有一条无向边
+     * <p>
+     * 那么 grid 中的一个环就对应着我们构造出的图中的一个环
+     * <p>
+     * 构造图.点和边.
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/detect-cycles-in-2d-grid/solution/er-wei-wang-ge-tu-zhong-tan-ce-huan-by-leetcode-so/
      * 来源：力扣（LeetCode）
