@@ -1,5 +1,6 @@
 package com.leetcode.tag.contest;
 
+import com.leetcode.tag.contest.one.GetFolderNames;
 import org.junit.Test;
 
 public class GetFolderNamesTest {
