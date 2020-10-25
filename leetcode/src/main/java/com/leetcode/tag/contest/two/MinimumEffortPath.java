@@ -32,6 +32,7 @@ public class MinimumEffortPath {
                 }
                 dfs(heights, r, c, endR, endC, Math.max(cha, Math.abs(heights[r][c] - heights[row][col])));
             }
+            visited[row][col] = false;
 
         }
     }
