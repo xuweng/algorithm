@@ -161,6 +161,7 @@ public class MinimumEffortPath {
             //二分查找搜索最小值
             while (left < right) {
                 int mid = (left + right) >>> 1;
+                // 每次dfs都是new visited？
                 if (!dfs(0, 0, mid, heights, new boolean[heights.length][heights[0].length])) {
                     left = mid + 1;
                 } else {
