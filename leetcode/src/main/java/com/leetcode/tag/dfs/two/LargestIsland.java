@@ -56,6 +56,7 @@ public class LargestIsland {
         public int check(int[][] grid, int r0, int c0) {
             int N = grid.length;
             Stack<Integer> stack = new Stack<>();
+            // 保存每个访问的结点
             Set<Integer> seen = new HashSet<>();
             // 保证每个点都不一样
             stack.push(r0 * N + c0);
