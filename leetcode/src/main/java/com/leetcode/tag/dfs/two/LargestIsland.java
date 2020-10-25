@@ -57,6 +57,7 @@ public class LargestIsland {
             int N = grid.length;
             Stack<Integer> stack = new Stack<>();
             Set<Integer> seen = new HashSet<>();
+            // 保证每个点都不一样
             stack.push(r0 * N + c0);
             seen.add(r0 * N + c0);
 
