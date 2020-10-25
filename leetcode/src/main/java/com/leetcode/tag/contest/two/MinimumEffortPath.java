@@ -64,6 +64,7 @@ public class MinimumEffortPath {
                 return meno[row][col];
             }
             if (row == endR && col == endC) {
+                meno[row][col] = heights[row][col];
                 return heights[row][col];
             }
             visited[row][col] = true;
