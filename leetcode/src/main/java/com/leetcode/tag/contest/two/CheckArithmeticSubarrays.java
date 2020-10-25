@@ -11,7 +11,16 @@ public class CheckArithmeticSubarrays {
         public List<Boolean> checkArithmeticSubarrays(int[] nums, int[] l, int[] r) {
             List<Boolean> result = new ArrayList<>();
             for (int i = 0; i < l.length; i++) {
-                result.add(check(nums, l[i], r[i]));
+                result.add(check(get(nums, l[i], r[i]), l[i], r[i]));
+            }
+            return result;
+        }
+
+        public int[] get(int[] nums, int l, int r) {
+            int[] result = new int[r - l + 1];
+            int index = 0;
+            for (int i = l; i <= r; i++) {
+                result[index++] = nums[i];
             }
             return result;
         }
