@@ -45,6 +45,14 @@ public class LargestIsland {
             return hasZero ? ans : N * N;
         }
 
+        /**
+         * 用栈dfs
+         *
+         * @param grid
+         * @param r0
+         * @param c0
+         * @return
+         */
         public int check(int[][] grid, int r0, int c0) {
             int N = grid.length;
             Stack<Integer> stack = new Stack<>();
