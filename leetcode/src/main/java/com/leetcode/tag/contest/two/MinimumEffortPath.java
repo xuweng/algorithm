@@ -19,11 +19,11 @@ public class MinimumEffortPath {
         }
 
         public void dfs(int[][] heights, int row, int col, int endR, int endC, int cha) {
-            visited[row][col] = true;
             if (row == endR && col == endC) {
                 result = Math.min(result, cha);
                 return;
             }
+            visited[row][col] = true;
             for (int i = 0; i < rows.length; i++) {
                 int r = row + rows[i];
                 int c = col + cols[i];
