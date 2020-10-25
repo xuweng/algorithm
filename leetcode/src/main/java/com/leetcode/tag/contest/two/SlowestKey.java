@@ -9,7 +9,7 @@ public class SlowestKey {
             int[] ints = new int[26];
             ints[keysPressed.charAt(0) - 'a'] = releaseTimes[0];
             for (int i = 1; i < keysPressed.length(); i++) {
-                ints[keysPressed.charAt(i) - 'a'] = releaseTimes[i] - releaseTimes[i - 1];
+                ints[keysPressed.charAt(i) - 'a'] = Math.max(releaseTimes[i] - releaseTimes[i - 1], ints[keysPressed.charAt(i) - 'a']);
             }
             char c = 'a';
             int max = 0;
