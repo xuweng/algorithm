@@ -144,6 +144,7 @@ public class LargestIsland {
          * @return
          */
         public int dfs(int r, int c, int index) {
+            // 连通块大小
             int ans = 1;
             grid[r][c] = index;
             for (Integer move : neighbors(r, c)) {
