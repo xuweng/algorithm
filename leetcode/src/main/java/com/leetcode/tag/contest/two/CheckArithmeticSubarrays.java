@@ -1,6 +1,7 @@
 package com.leetcode.tag.contest.two;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -22,6 +23,7 @@ public class CheckArithmeticSubarrays {
             for (int i = l; i <= r; i++) {
                 result[index++] = nums[i];
             }
+            Arrays.sort(result);
             return result;
         }
 
