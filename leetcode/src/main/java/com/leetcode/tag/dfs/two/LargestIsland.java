@@ -101,6 +101,7 @@ public class LargestIsland {
             N = grid.length;
 
             int index = 2;
+            // 保存每个编号的路径
             int[] area = new int[N * N + 2];
             for (int r = 0; r < N; ++r) {
                 for (int c = 0; c < N; ++c) {
