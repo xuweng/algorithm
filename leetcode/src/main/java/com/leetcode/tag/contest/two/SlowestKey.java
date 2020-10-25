@@ -4,7 +4,7 @@ package com.leetcode.tag.contest.two;
  * 5546. 按键持续时间最长的键
  */
 public class SlowestKey {
-    class Solution {
+    static class Solution {
         public char slowestKey(int[] releaseTimes, String keysPressed) {
             int[] ints = new int[26];
             ints[keysPressed.charAt(0) - 'a'] = releaseTimes[0];
