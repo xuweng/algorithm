@@ -96,14 +96,16 @@ public class MinimumEffortPath {
      */
     class Solution2 {
         int[][] dirs = {{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+        boolean[][] visited;
 
         public int minimumEffortPath(int[][] heights) {
             int left = 0;
             int right = 1000000;
+            visited = new boolean[heights.length][heights[0].length];
             //二分查找搜索最小值
             while (left < right) {
                 int mid = (left + right) >>> 1;
-                if (!dfs(0, 0, mid, heights, new boolean[heights.length][heights[0].length])) {
+                if (!dfs(0, 0, mid, heights)) {
                     left = mid + 1;
                 } else {
                     right = mid;
@@ -119,10 +121,9 @@ public class MinimumEffortPath {
          * @param y
          * @param max
          * @param h
-         * @param visited
          * @return
          */
-        boolean dfs(int x, int y, int max, int[][] h, boolean[][] visited) {
+        boolean dfs(int x, int y, int max, int[][] h) {
             if (x == h.length - 1 && y == h[0].length - 1) {
                 // 到达终点
                 return true;
@@ -135,10 +136,11 @@ public class MinimumEffortPath {
                         || Math.abs(h[nx][ny] - h[x][y]) > max) {
                     continue;
                 }
-                if (dfs(nx, ny, max, h, visited)) {
+                if (dfs(nx, ny, max, h)) {
                     return true;
                 }
             }
+            visited[x][y] = false;
             return false;
         }
 
