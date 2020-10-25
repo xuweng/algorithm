@@ -66,11 +66,13 @@ public class LargestIsland {
                 int r = code / N, c = code % N;
                 for (int k = 0; k < 4; ++k) {
                     int nr = r + dr[k], nc = c + dc[k];
-                    if (!seen.contains(nr * N + nc) && 0 <= nr && nr < N &&
-                            0 <= nc && nc < N && grid[nr][nc] == 1) {
-                        stack.push(nr * N + nc);
-                        seen.add(nr * N + nc);
+                    // 是否访问和越界
+                    if (seen.contains(nr * N + nc) || 0 > nr || nr >= N ||
+                            0 > nc || nc >= N || grid[nr][nc] != 1) {
+                        continue;
                     }
+                    stack.push(nr * N + nc);
+                    seen.add(nr * N + nc);
                 }
             }
 
