@@ -12,7 +12,7 @@ public class CheckArithmeticSubarrays {
         public List<Boolean> checkArithmeticSubarrays(int[] nums, int[] l, int[] r) {
             List<Boolean> result = new ArrayList<>();
             for (int i = 0; i < l.length; i++) {
-                result.add(check(get(nums, l[i], r[i]), l[i], r[i]));
+                result.add(check(get(nums, l[i], r[i])));
             }
             return result;
         }
@@ -27,12 +27,12 @@ public class CheckArithmeticSubarrays {
             return result;
         }
 
-        public boolean check(int[] nums, int l, int r) {
-            if (l >= r) {
+        public boolean check(int[] nums) {
+            if (nums.length <= 1) {
                 return false;
             }
-            int cha = nums[l + 1] - nums[l];
-            for (int i = l + 1; i <= r; i++) {
+            int cha = nums[1] - nums[0];
+            for (int i = 1; i < nums.length; i++) {
                 if (nums[i] - nums[i - 1] != cha) {
                     return false;
                 }
