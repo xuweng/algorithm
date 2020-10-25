@@ -4,7 +4,7 @@ package com.leetcode.tag.contest.two;
  * 5548. 最小体力消耗路径
  */
 public class MinimumEffortPath {
-    class Solution {
+    static class Solution {
         int[] rows = {-1, 1, 0, 0};
         int[] cols = {0, 0, -1, 1};
         boolean[][] visited;
