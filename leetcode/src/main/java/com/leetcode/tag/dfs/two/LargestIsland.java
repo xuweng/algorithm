@@ -110,6 +110,7 @@ public class LargestIsland {
                 }
             }
 
+            // 格子为1的最大路径
             int ans = 0;
             for (int x : area) {
                 ans = Math.max(ans, x);
