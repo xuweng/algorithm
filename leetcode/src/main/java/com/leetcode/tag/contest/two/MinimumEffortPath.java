@@ -40,6 +40,9 @@ public class MinimumEffortPath {
         }
     }
 
+    /**
+     * dfs如何缓存
+     */
     class Solution1 {
         int[] rows = {-1, 1, 0, 0};
         int[] cols = {0, 0, -1, 1};
