@@ -115,18 +115,17 @@ public class LargestIsland {
             }
             for (int r = 0; r < N; ++r) {
                 for (int c = 0; c < N; ++c) {
+                    // 处理为0
                     if (grid[r][c] == 0) {
                         Set<Integer> seen = new HashSet<>();
+                        // 4个连通块累加
                         for (Integer move : neighbors(r, c)) {
                             if (grid[move / N][move % N] > 1) {
                                 seen.add(grid[move / N][move % N]);
                             }
                         }
 
-                        int bns = 1;
-                        for (int i : seen) {
-                            bns += area[i];
-                        }
+                        int bns = 1 + seen.stream().mapToInt(i -> i).map(i -> area[i]).sum();
                         ans = Math.max(ans, bns);
                     }
                 }
