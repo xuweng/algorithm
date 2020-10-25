@@ -15,17 +15,14 @@ public class MinimumEffortPath {
             visited = new boolean[heights.length][heights[0].length];
             memo = new int[heights.length][heights[0].length];
 
-            dfs(heights, 0, 0, heights.length - 1, heights[0].length - 1);
+            dfs(heights, 0, 0);
 
             return result;
         }
 
-        public void dfs(int[][] heights, int row, int col, int endR, int endC) {
+        public void dfs(int[][] heights, int row, int col) {
             if (memo[row][col] != 0) {
                 return;
-            }
-            if (row == endR && col == endC) {
-                memo[row][col] = heights[endR][endC];
             }
 
             visited[row][col] = true;
@@ -35,7 +32,7 @@ public class MinimumEffortPath {
                 if (r < 0 || r >= heights.length || c < 0 || c >= heights[0].length || visited[r][c]) {
                     continue;
                 }
-                dfs(heights, r, c, endR, endC);
+                dfs(heights, r, c);
                 result = Math.min(result, Math.abs(heights[r][c] - heights[row][col]));
             }
 
