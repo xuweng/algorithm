@@ -145,4 +145,51 @@ public class MinimumEffortPath {
         }
 
     }
+
+    /**
+     * dp
+     * <p>
+     * 作者：LittleFlea
+     * 链接：https://leetcode-cn.com/problems/path-with-minimum-effort/solution/zhi-guan-chu-li-dong-tai-gui-hua-fan-fu-chu-li-zhi/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        public int minimumEffortPath(int[][] heights) {
+            int[][] dp = new int[heights.length][heights[0].length];
+            for (int i = 0; i < heights.length; i++) {
+                for (int j = 0; j < heights[0].length; j++) {
+                    dp[i][j] = Integer.MAX_VALUE;
+                }
+            }
+            dp[0][0] = 0;
+            while (true) {
+                boolean flag = false;
+                for (int i = 0; i < heights.length; i++) {
+                    for (int j = 0; j < heights[i].length; j++) {
+                        int pre = dp[i][j];
+                        if (i - 1 >= 0) {
+                            dp[i][j] = Math.min(dp[i][j], Math.max(Math.abs(heights[i][j] - heights[i - 1][j]), dp[i - 1][j]));
+                        }
+                        if (i + 1 < heights.length) {
+                            dp[i][j] = Math.min(dp[i][j], Math.max(Math.abs(heights[i][j] - heights[i + 1][j]), dp[i + 1][j]));
+                        }
+                        if (j - 1 >= 0) {
+                            dp[i][j] = Math.min(dp[i][j], Math.max(Math.abs(heights[i][j] - heights[i][j - 1]), dp[i][j - 1]));
+                        }
+                        if (j + 1 < heights[0].length) {
+                            dp[i][j] = Math.min(dp[i][j], Math.max(Math.abs(heights[i][j] - heights[i][j + 1]), dp[i][j + 1]));
+                        }
+                        if (pre != dp[i][j]) {
+                            flag = true;
+                        }
+                    }
+                }
+                if (!flag) {
+                    return dp[heights.length - 1][heights[0].length - 1];
+                }
+            }
+        }
+
+    }
 }
