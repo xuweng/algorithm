@@ -8,7 +8,7 @@ import java.util.List;
  * 5547. 等差子数组
  */
 public class CheckArithmeticSubarrays {
-    class Solution {
+    static class Solution {
         public List<Boolean> checkArithmeticSubarrays(int[] nums, int[] l, int[] r) {
             List<Boolean> result = new ArrayList<>();
             for (int i = 0; i < l.length; i++) {
