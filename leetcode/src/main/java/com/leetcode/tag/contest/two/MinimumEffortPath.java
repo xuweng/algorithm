@@ -13,7 +13,7 @@ public class MinimumEffortPath {
         public int minimumEffortPath(int[][] heights) {
             visited = new boolean[heights.length][heights[0].length];
 
-            dfs(heights, 0, 0, heights.length - 1, heights[0].length - 1, Integer.MIN_VALUE);
+            dfs(heights, 0, 0, heights.length - 1, heights[0].length - 1, 0);
 
             return result;
         }
