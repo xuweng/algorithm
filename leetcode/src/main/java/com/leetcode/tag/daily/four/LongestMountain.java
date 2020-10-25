@@ -22,15 +22,18 @@ public class LongestMountain {
             if (n == 0) {
                 return 0;
             }
+            // 从左侧山脚到山顶的序列是严格单调递增
             int[] left = new int[n];
             for (int i = 1; i < n; ++i) {
                 left[i] = A[i - 1] < A[i] ? left[i - 1] + 1 : 0;
             }
+            // 山顶到右侧山脚的序列是严格单调递减
             int[] right = new int[n];
             for (int i = n - 2; i >= 0; --i) {
                 right[i] = A[i + 1] < A[i] ? right[i + 1] + 1 : 0;
             }
 
+            // 只有当 left[i] 和 right[i] 均大于 0 时，A[i] 才能作为山顶，并且山脉的长度为 left[i] + right[i] + 1。
             int ans = 0;
             for (int i = 0; i < n; ++i) {
                 if (left[i] > 0 && right[i] > 0) {
