@@ -28,6 +28,7 @@ public class LargestIsland {
             int N = grid.length;
 
             int ans = 0;
+            // 是否有0
             boolean hasZero = false;
             for (int r = 0; r < N; ++r) {
                 for (int c = 0; c < N; ++c) {
