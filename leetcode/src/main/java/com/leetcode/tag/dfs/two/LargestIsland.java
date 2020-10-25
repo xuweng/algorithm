@@ -148,8 +148,7 @@ public class LargestIsland {
             grid[r][c] = index;
             for (Integer move : neighbors(r, c)) {
                 if (grid[move / N][move % N] == 1) {
-                    // 邻接顶点编号为index
-                    grid[move / N][move % N] = index;
+                    // 邻接顶点为1才编号
                     ans += dfs(move / N, move % N, index);
                 }
             }
