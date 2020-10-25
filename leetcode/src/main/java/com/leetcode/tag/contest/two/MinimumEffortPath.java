@@ -19,6 +19,9 @@ public class MinimumEffortPath {
             int result = Integer.MAX_VALUE;
             for (int[] ints : memo) {
                 for (int i : ints) {
+                    if (i == 0) {
+                        continue;
+                    }
                     result = Math.min(result, i);
                 }
             }
