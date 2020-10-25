@@ -14,21 +14,22 @@ public class MinimumEffortPath {
             visited = new boolean[heights.length][heights[0].length];
             memo = new int[heights.length][heights[0].length];
 
-            dfs(heights, 0, 0);
+            dfs(heights, 0, 0, heights.length - 1, heights[0].length - 1);
 
             int result = Integer.MAX_VALUE;
             for (int[] ints : memo) {
                 for (int i : ints) {
-                    if (i == 0) {
-                        continue;
-                    }
                     result = Math.min(result, i);
                 }
             }
             return result;
         }
 
-        public int dfs(int[][] heights, int row, int col) {
+        public int dfs(int[][] heights, int row, int col, int endR, int endC) {
+            if (row == endR && col == endC) {
+                memo[row][col] = heights[endR][endC];
+                return memo[row][col];
+            }
             if (memo[row][col] != 0) {
                 return memo[row][col];
             }
@@ -40,7 +41,7 @@ public class MinimumEffortPath {
                 if (r < 0 || r >= heights.length || c < 0 || c >= heights[0].length || visited[r][c]) {
                     continue;
                 }
-                int d = dfs(heights, row + rows[i], col + cols[i]);
+                int d = dfs(heights, row + rows[i], col + cols[i], endR, endC);
                 result = Math.max(result, Math.abs(d - heights[row][col]));
             }
 
