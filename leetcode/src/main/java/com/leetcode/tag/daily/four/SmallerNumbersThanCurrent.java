@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  * 十分钟.十分钟.十分钟
  */
 public class SmallerNumbersThanCurrent {
-    class Solution {
+    static class Solution {
         public int[] smallerNumbersThanCurrent(int[] nums) {
             if (nums == null || nums.length == 0) {
                 return new int[0];
