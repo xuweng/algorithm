@@ -21,8 +21,6 @@ public class SmallerNumbersThanCurrent {
             for (int i = 1; i < list.size(); i++) {
                 if (list.get(i) > list.get(i - 1)) {
                     result[list.get(i)] = i;
-                } else {
-                    result[list.get(i)] = result[list.get(i) - 1];
                 }
             }
             for (int i = 0; i < nums.length; i++) {
