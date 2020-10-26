@@ -12,7 +12,7 @@ public class GetWinner {
      * <p>
      * 找不到规律。根据题意用蛮力法。
      */
-    class Solution {
+    public class Solution {
         /**
          * 超出时间限制
          *
