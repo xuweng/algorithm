@@ -23,18 +23,25 @@ public class NetworkDelayTime {
         Map<Integer, List<Integer[]>> map = new HashMap<>();
         int count;
         int max;
+        boolean[] visited;
 
         public int networkDelayTime(int[][] times, int N, int K) {
             for (int[] time : times) {
                 map.computeIfAbsent(time[0], k -> new ArrayList<>()).add(new Integer[]{time[1], time[2]});
             }
+            visited = new boolean[N + 1];
+
             dfs(K, 0);
 
             return N == count ? max : -1;
         }
 
         private void dfs(int K, int num) {
+            if (visited[K]) {
+                return;
+            }
             count++;
+            visited[K] = true;
             if (!map.containsKey(K)) {
                 max = Math.max(max, num);
                 return;
