@@ -15,6 +15,8 @@ import java.util.Map;
  * 有向图.无向图.
  * <p>
  * 有向图.无向图.
+ * <p>
+ * 有向图和无向图都有环.
  */
 public class NetworkDelayTime {
     class Solution {
