@@ -37,9 +37,9 @@ public class NetworkDelayTime {
         }
 
         private void dfs(int K, int num) {
-            if (visited[K]) {
-                return;
-            }
+            //            if (visited[K]) {
+            //                return;
+            //            }
             count++;
             visited[K] = true;
             if (!map.containsKey(K)) {
@@ -47,6 +47,9 @@ public class NetworkDelayTime {
                 return;
             }
             for (Integer[] integers : map.get(K)) {
+                if (visited[integers[0]]) {
+                    continue;
+                }
                 dfs(integers[0], num + integers[1]);
             }
         }
