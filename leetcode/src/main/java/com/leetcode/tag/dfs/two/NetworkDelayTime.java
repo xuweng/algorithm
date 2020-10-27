@@ -46,11 +46,16 @@ public class NetworkDelayTime {
                 max = Math.max(max, num);
                 return;
             }
+            int size = 0;
             for (Integer[] integers : map.get(K)) {
                 if (visited[integers[0]]) {
+                    size++;
                     continue;
                 }
                 dfs(integers[0], num + integers[1]);
+            }
+            if (size == map.get(K).size()) {
+                max = Math.max(max, num);
             }
         }
     }
