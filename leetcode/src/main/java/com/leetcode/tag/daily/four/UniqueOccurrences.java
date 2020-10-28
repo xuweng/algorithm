@@ -1,8 +1,9 @@
 package com.leetcode.tag.daily.four;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Set;
 
 /**
  * 1207. 独一无二的出现次数
@@ -17,13 +18,8 @@ public class UniqueOccurrences {
             for (int i : arr) {
                 map.put(i, map.getOrDefault(i, 0) + 1);
             }
-            AtomicBoolean result = new AtomicBoolean(false);
-            map.forEach((k, v) -> {
-                if (v == 1) {
-                    result.set(true);
-                }
-            });
-            return result.get();
+            Set<Integer> set = new HashSet<>(map.values());
+            return set.size() == map.size();
         }
     }
 }
