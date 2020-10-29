@@ -41,6 +41,13 @@ public class SumNumbers {
             return dfs(root, 0);
         }
 
+        /**
+         * 先序+后序
+         *
+         * @param root
+         * @param prevSum
+         * @return
+         */
         public int dfs(TreeNode root, int prevSum) {
             if (root == null) {
                 return 0;
@@ -68,6 +75,8 @@ public class SumNumbers {
                 return 0;
             }
             int sum = 0;
+            // 一个队列
+            // 两个队列
             Queue<TreeNode> nodeQueue = new LinkedList<>();
             Queue<Integer> numQueue = new LinkedList<>();
             nodeQueue.offer(root);
