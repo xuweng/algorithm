@@ -120,6 +120,10 @@ public class NetworkDelayTime {
     /**
      * 方法二：迪杰斯特拉最短路径算法（Dijkstra's）[Accepted]
      * <p>
+     * https://blog.csdn.net/qq_35644234/article/details/60870719
+     * <p>
+     * 看图理解算法.看图理解算法.看图理解算法.
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/network-delay-time/solution/wang-luo-yan-chi-shi-jian-by-leetcode/
      * 来源：力扣（LeetCode）
