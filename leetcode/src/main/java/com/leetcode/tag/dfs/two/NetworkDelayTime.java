@@ -100,13 +100,18 @@ public class NetworkDelayTime {
 
         public void dfs(Map<Integer, List<int[]>> graph, int node, int elapsed) {
             if (elapsed >= dist.get(node)) {
+                // 遇到环会退出
+                // 遇到长路径会退出
                 return;
             }
+            // dist[node] 记录的是信号最早到达 node 的时间
+            // 短路径会覆盖
             dist.put(node, elapsed);
-            if (graph.containsKey(node)) {
-                for (int[] info : graph.get(node)) {
-                    dfs(graph, info[1], elapsed + info[0]);
-                }
+            if (!graph.containsKey(node)) {
+                return;
+            }
+            for (int[] info : graph.get(node)) {
+                dfs(graph, info[1], elapsed + info[0]);
             }
         }
     }
