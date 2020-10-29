@@ -1,5 +1,8 @@
 package com.leetcode.tag.daily.four;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * 129. 求根到叶子节点数字之和
  */
@@ -48,6 +51,45 @@ public class SumNumbers {
             }
             return dfs(root.left, sum) + dfs(root.right, sum);
 
+        }
+    }
+
+    /**
+     * 方法二：广度优先搜索
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/sum-root-to-leaf-numbers/solution/qiu-gen-dao-xie-zi-jie-dian-shu-zi-zhi-he-by-leetc/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public int sumNumbers(TreeNode root) {
+            if (root == null) {
+                return 0;
+            }
+            int sum = 0;
+            Queue<TreeNode> nodeQueue = new LinkedList<>();
+            Queue<Integer> numQueue = new LinkedList<>();
+            nodeQueue.offer(root);
+            numQueue.offer(root.val);
+            while (!nodeQueue.isEmpty()) {
+                TreeNode node = nodeQueue.poll();
+                int num = numQueue.poll();
+                TreeNode left = node.left, right = node.right;
+                if (left == null && right == null) {
+                    sum += num;
+                } else {
+                    if (left != null) {
+                        nodeQueue.offer(left);
+                        numQueue.offer(num * 10 + left.val);
+                    }
+                    if (right != null) {
+                        nodeQueue.offer(right);
+                        numQueue.offer(num * 10 + right.val);
+                    }
+                }
+            }
+            return sum;
         }
     }
 
