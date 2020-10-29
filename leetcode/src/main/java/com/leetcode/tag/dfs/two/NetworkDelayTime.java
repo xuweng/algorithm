@@ -91,6 +91,7 @@ public class NetworkDelayTime {
             int ans = 0;
             for (int cand : dist.values()) {
                 if (cand == Integer.MAX_VALUE) {
+                    // 只要有一个无法广播就return
                     return -1;
                 }
                 ans = Math.max(ans, cand);
