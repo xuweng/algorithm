@@ -144,6 +144,7 @@ public class NetworkDelayTime {
             dist.put(K, 0);
             boolean[] seen = new boolean[N + 1];
 
+            // Dijkstra's 算法是每次扩展一个距离最短的点，更新与其相邻点的距离。
             while (true) {
                 int candNode = -1;
                 int candDist = Integer.MAX_VALUE;
@@ -160,6 +161,7 @@ public class NetworkDelayTime {
                 seen[candNode] = true;
                 if (graph.containsKey(candNode)) {
                     for (int[] info : graph.get(candNode)) {
+                        // 保留最短路径
                         dist.put(info[0],
                                 Math.min(dist.get(info[0]), dist.get(candNode) + info[1]));
                     }
