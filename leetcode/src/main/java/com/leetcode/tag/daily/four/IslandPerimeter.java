@@ -57,10 +57,9 @@ public class IslandPerimeter {
             int ans = 0;
             for (int i = 0; i < n; ++i) {
                 for (int j = 0; j < m; ++j) {
-                    if (grid[i][j] == 0) {
-                        continue;
+                    if (grid[i][j] == 1) {
+                        ans += dfs(i, j, grid, n, m);
                     }
-                    ans += dfs(i, j, grid, n, m);
                 }
             }
             return ans;
