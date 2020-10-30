@@ -27,11 +27,11 @@ public class NetworkDelayTime {
             dfs(K, 0);
 
             int result = 0;
-            for (int i : dist) {
-                if (i == Integer.MAX_VALUE) {
+            for (int j = 1, distLength = dist.length; j < distLength; j++) {
+                if (dist[j] == Integer.MAX_VALUE) {
                     return -1;
                 }
-                result = Math.max(result, i);
+                result = Math.max(result, dist[j]);
             }
             return result;
         }
