@@ -66,7 +66,10 @@ public class IslandPerimeter {
         }
 
         public int dfs(int x, int y, int[][] grid, int n, int m) {
+            // 递归终止条件
             if (x < 0 || x >= n || y < 0 || y >= m || grid[x][y] == 0) {
+                // 返回1
+                // 不是返回0
                 return 1;
             }
             if (grid[x][y] == 2) {
