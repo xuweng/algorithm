@@ -38,6 +38,8 @@ public class NetworkDelayTime {
 
         private void dfs(int i, int dis) {
             if (dis >= dist[i]) {
+                // 关键
+                // 遇到环或者长路径
                 return;
             }
             dist[i] = dis;
