@@ -11,6 +11,7 @@ public class NumEnclaves {
     class Solution {
         int[] rows = {-1, 1, 0, 0};
         int[] cols = {0, 0, -1, 1};
+        boolean flag;
 
         public int numEnclaves(int[][] A) {
             if (A == null || A.length == 0) {
@@ -20,7 +21,9 @@ public class NumEnclaves {
             for (int i = 0; i < A.length; i++) {
                 for (int j = 0; j < A[0].length; j++) {
                     if (A[i][j] == 1) {
-                        result += dfs(A, i, j);
+                        int d = dfs(A, i, j);
+                        result = flag ? 0 : result + d;
+                        flag = false;
                     }
                 }
             }
@@ -36,15 +39,14 @@ public class NumEnclaves {
             for (int i = 0; i < rows.length; i++) {
                 int r = row + rows[i];
                 int c = col + cols[i];
-                if (r < 0 || r >= A.length || c < 0 || c >= A[0].length || A[r][c] == 3) {
-                    result = 0;
-                    break;
+                if (r < 0 || r >= A.length || c < 0 || c >= A[0].length) {
+                    flag = true;
+                    continue;
                 }
                 if (A[r][c] == 1) {
                     result += dfs(A, r, c);
                 }
             }
-            A[row][col] = 3;
             return result;
         }
     }
