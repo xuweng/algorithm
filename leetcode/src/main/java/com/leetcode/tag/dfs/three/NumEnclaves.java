@@ -36,10 +36,12 @@ public class NumEnclaves {
             for (int i = 0; i < rows.length; i++) {
                 int r = row + rows[i];
                 int c = col + cols[i];
-                if (r < 0 || r >= A.length || c < 0 || c >= A[0].length || A[r][c] == 2) {
+                if (r < 0 || r >= A.length || c < 0 || c >= A[0].length) {
                     return 0;
                 }
-                result += dfs(A, r, c);
+                if (A[r][c] == 1) {
+                    result += dfs(A, r, c);
+                }
             }
             return result;
         }
