@@ -39,7 +39,7 @@ public class NumEnclaves {
                 if (r < 0 || r >= A.length || c < 0 || c >= A[0].length || A[r][c] == 2) {
                     return 0;
                 }
-                result += dfs(A, row + rows[i], col + cols[i]);
+                result += dfs(A, r, c);
             }
             return result;
         }
