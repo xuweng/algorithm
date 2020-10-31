@@ -11,7 +11,6 @@ public class NumEnclaves {
     class Solution {
         int[] rows = {-1, 1, 0, 0};
         int[] cols = {0, 0, -1, 1};
-        int[][] visited;
 
         public int numEnclaves(int[][] A) {
             if (A == null || A.length == 0) {
