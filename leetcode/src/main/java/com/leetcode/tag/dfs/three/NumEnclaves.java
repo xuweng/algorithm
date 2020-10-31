@@ -36,7 +36,7 @@ public class NumEnclaves {
             for (int i = 0; i < rows.length; i++) {
                 int r = row + rows[i];
                 int c = col + cols[i];
-                if (r < 0 || r >= A.length || c < 0 || c >= A[0].length || A[row][col] == 3) {
+                if (r < 0 || r >= A.length || c < 0 || c >= A[0].length || A[r][c] == 3) {
                     result = 0;
                     break;
                 }
