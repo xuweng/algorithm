@@ -6,6 +6,8 @@ package com.leetcode.tag.dfs.three;
  * 学到什么东西.学到什么东西.学到什么东西.学到什么东西.
  * <p>
  * 有向图.无向图.环.缓存.
+ * <p>
+ * 状态:未dfs.dfs中.已经dfs.
  */
 public class NumEnclaves {
     class Solution {
