@@ -28,20 +28,18 @@ public class NumEnclaves {
         }
 
         private int dfs(int[][] A, int row, int col) {
-            if (row < 0 || row >= A.length || col < 0 || col >= A[0].length || A[row][col] == 2) {
-                return Integer.MAX_VALUE;
-            }
             if (A[row][col] == 0) {
                 return 0;
             }
             A[row][col] = 2;
             int result = 1;
             for (int i : rows) {
-                int d = dfs(A, row + rows[i], col + cols[i]);
-                if (d == Integer.MAX_VALUE) {
+                int r = row + rows[i];
+                int c = col + cols[i];
+                if (r < 0 || r >= A.length || c < 0 || c >= A[0].length || A[r][c] == 2) {
                     return 0;
                 }
-                result += d;
+                result += dfs(A, row + rows[i], col + cols[i]);
             }
             return result;
         }
