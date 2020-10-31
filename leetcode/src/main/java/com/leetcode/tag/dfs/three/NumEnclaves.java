@@ -122,4 +122,42 @@ public class NumEnclaves {
         }
     }
 
+    class Solution2 {
+        public int numEnclaves(int[][] A) {
+            int row = A.length, col = A[0].length, count = 0;
+            if (col == 0) {
+                return 0;
+            }
+            for (int i = 0; i < row; i++) {
+                dfs(A, i, 0);
+                dfs(A, i, col - 1);
+            }
+            for (int j = 0; j < col; j++) {
+                dfs(A, 0, j);
+                dfs(A, row - 1, j);
+
+            }
+            for (int[] ints : A) {
+                for (int j = 0; j < col; j++) {
+                    count += ints[j];
+                }
+            }
+            return count;
+        }
+
+        public void dfs(int[][] A, int x, int y) {
+            if (x < 0 || x >= A.length || y < 0 || y >= A[0].length) {
+                return;
+            }
+            if (A[x][y] == 0) {
+                return;
+            }
+            A[x][y] = 0;
+            dfs(A, x + 1, y);
+            dfs(A, x - 1, y);
+            dfs(A, x, y + 1);
+            dfs(A, x, y - 1);
+        }
+    }
+
 }
