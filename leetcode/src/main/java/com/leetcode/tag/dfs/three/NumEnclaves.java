@@ -24,7 +24,7 @@ public class NumEnclaves {
                 for (int j = 0; j < A[0].length; j++) {
                     if (A[i][j] == 1) {
                         int d = dfs(A, i, j);
-                        result = flag ? 0 : result + d;
+                        result = flag ? result : result + d;
                         flag = false;
                     }
                 }
