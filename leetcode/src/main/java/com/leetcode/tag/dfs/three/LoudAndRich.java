@@ -14,7 +14,7 @@ import java.util.Arrays;
  * <p>
  * 缓存.
  * <p>
- * 有向图.无向图.环.缓存.
+ * 有向图.无向图.环.缓存.初始化.
  */
 public class LoudAndRich {
     /**
