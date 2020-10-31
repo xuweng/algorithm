@@ -52,4 +52,74 @@ public class NumEnclaves {
             return result;
         }
     }
+
+    /**
+     * 作者：TheWayshower
+     * 链接：https://leetcode-cn.com/problems/number-of-enclaves/solution/java-xian-ba-suo-you-he-bian-jie-xiang-jie-de-lu-d/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        int row, col;
+        int[][] A;
+
+        public int numEnclaves(int[][] A) {
+            if (A == null || A.length == 0) {
+                return 0;
+            }
+            this.A = A;
+            this.row = A.length;
+            this.col = A[0].length;
+
+            // 淹没所有和边界相接的陆地
+            for (int i = 0; i < row; i++) {
+                // 第1列
+                dfs(i, 0);
+                // 最后1列
+                dfs(i, col - 1);
+            }
+            for (int i = 0; i < col; i++) {
+                // 第1行
+                dfs(0, i);
+                // 最后1行
+                dfs(row - 1, i);
+            }
+            // 统计剩下的飞陆
+            int count = 0;
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < col; j++) {
+                    if (A[i][j] == 1) {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+
+        /**
+         * 把此大陆淹没，即把 1 变成 0
+         *
+         * @param r,c DFS 起点
+         */
+        public void dfs(int r, int c) {
+            if (A[r][c] == 0) {
+                return;
+            }
+
+            A[r][c] = 0;
+            if (r > 0) {
+                dfs(r - 1, c);
+            }
+            if (c > 0) {
+                dfs(r, c - 1);
+            }
+            if (r < row - 1) {
+                dfs(r + 1, c);
+            }
+            if (c < col - 1) {
+                dfs(r, c + 1);
+            }
+        }
+    }
+
 }
