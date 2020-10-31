@@ -8,6 +8,8 @@ import java.util.*;
  * 状态.状态.状态.状态.
  * <p>
  * 十分钟看答案.十分钟看答案.十分钟看答案.十分钟看答案.
+ * <p>
+ * Trie + DFS
  */
 public class FindAllConcatenatedWordsInADict {
     /**
@@ -28,7 +30,7 @@ public class FindAllConcatenatedWordsInADict {
         public List<String> findAllConcatenatedWordsInADict(String[] words) {
             TrieNode root = new TrieNode();
             for (String word : words) {
-                if (!word.equals("")) {  // 题目描述有问题, 应该补充上连接词至少由两个非空单词组成, 否则如果 words 包含空串, 那么 words 中的其它所有字符串都是连接词. 这里加上特判就可以了.
+                if (!"".equals(word)) {  // 题目描述有问题, 应该补充上连接词至少由两个非空单词组成, 否则如果 words 包含空串, 那么 words 中的其它所有字符串都是连接词. 这里加上特判就可以了.
                     root.add(word);
                 }
             }
