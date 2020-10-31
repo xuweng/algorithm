@@ -1,9 +1,6 @@
 package com.leetcode.tag.dfs.three;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 472. 连接词
@@ -81,5 +78,52 @@ public class FindAllConcatenatedWordsInADict {
             }
             node.isWord = true;
         }
+    }
+
+    /**
+     * dfs
+     * <p>
+     * 作者：hundanLi
+     * 链接：https://leetcode-cn.com/problems/concatenated-words/solution/shen-du-you-xian-sou-suo-qian-zhui-shu-by-hundanli/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        private Set<String> dict = new HashSet<>();
+
+        public List<String> findAllConcatenatedWordsInADict(String[] words) {
+            dict.addAll(Arrays.asList(words));
+            List<String> ans = new ArrayList<>(words.length);
+            for (String word : words) {
+                if (dfs(word, 0, 0)) {
+                    ans.add(word);
+                }
+            }
+            return ans;
+        }
+
+
+        /**
+         * 深度优先搜索
+         *
+         * @param word 要拼接的字符串
+         * @param idx  下标
+         * @param cnt  拼接的字符串个数
+         * @return
+         */
+        private boolean dfs(String word, int idx, int cnt) {
+            if (idx == word.length()) {
+                return cnt > 1;
+            }
+            for (int i = idx; i < word.length(); i++) {
+                if (dict.contains(word.substring(idx, i + 1))) {
+                    if (dfs(word, i + 1, cnt + 1)) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
     }
 }
