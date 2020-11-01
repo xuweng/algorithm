@@ -72,6 +72,7 @@ public class WordBreak {
                     wordBreaks.add(wordBreak);
                 }
             }
+            // 使用哈希表存储字符串 s 的每个下标和从该下标开始的部分可以组成的句子列表,不需要重复计算
             map.put(index, wordBreaks);
             return map.get(index);
         }
