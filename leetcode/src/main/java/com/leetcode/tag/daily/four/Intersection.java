@@ -1,6 +1,7 @@
 package com.leetcode.tag.daily.four;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -22,4 +23,52 @@ public class Intersection {
             return result.stream().mapToInt(Integer::intValue).toArray();
         }
     }
+
+    /**
+     * 方法一：两个集合
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/intersection-of-two-arrays/solution/liang-ge-shu-zu-de-jiao-ji-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int[] intersection(int[] nums1, int[] nums2) {
+            Set<Integer> set1 = new HashSet<>();
+            Set<Integer> set2 = new HashSet<>();
+            for (int num : nums1) {
+                set1.add(num);
+            }
+            for (int num : nums2) {
+                set2.add(num);
+            }
+            return getIntersection(set1, set2);
+        }
+
+        /**
+         * @param set1 小集合
+         * @param set2 大集合
+         * @return
+         */
+        public int[] getIntersection(Set<Integer> set1, Set<Integer> set2) {
+            if (set1.size() > set2.size()) {
+                // 厉害
+                return getIntersection(set2, set1);
+            }
+            Set<Integer> intersectionSet = new HashSet<>();
+            // 遍历小集合
+            for (int num : set1) {
+                if (set2.contains(num)) {
+                    intersectionSet.add(num);
+                }
+            }
+            int[] intersection = new int[intersectionSet.size()];
+            int index = 0;
+            for (int num : intersectionSet) {
+                intersection[index++] = num;
+            }
+            return intersection;
+        }
+    }
+
 }
