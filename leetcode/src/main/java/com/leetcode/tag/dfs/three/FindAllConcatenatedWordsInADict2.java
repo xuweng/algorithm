@@ -1,22 +1,24 @@
 package com.leetcode.tag.dfs.three;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * 472. 连接词
  */
 public class FindAllConcatenatedWordsInADict2 {
     class Solution {
-        Set<String> set = new HashSet<>();
+        Set<String> set;
 
         public List<String> findAllConcatenatedWordsInADict(String[] words) {
             List<String> result = new ArrayList<>();
             if (words == null || words.length == 0) {
                 return result;
             }
+            set = Arrays.stream(words).collect(Collectors.toSet());
             for (String word : words) {
                 if (dfs(word, 0, 0)) {
                     result.add(word);
