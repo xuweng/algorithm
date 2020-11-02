@@ -1,5 +1,8 @@
 package com.leetcode.tag.dfs.three;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 /**
  * 1020. 飞地的数量
  */
@@ -28,15 +31,7 @@ public class NumEnclaves2 {
                     dfs(A, i, A[0].length - 1);
                 }
             }
-            int result = 0;
-            for (int i = 0; i < A.length; i++) {
-                for (int j = 0; j < A[0].length; j++) {
-                    if (A[i][j] == 1) {
-                        result++;
-                    }
-                }
-            }
-            return result;
+            return Arrays.stream(A).mapToInt(ints -> (int) IntStream.range(0, A[0].length).filter(j -> ints[j] == 1).count()).sum();
         }
 
         private void dfs(int[][] A, int row, int col) {
