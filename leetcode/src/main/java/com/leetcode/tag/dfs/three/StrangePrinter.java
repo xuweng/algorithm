@@ -71,9 +71,12 @@ public class StrangePrinter {
                 dp[i][i] = 1;
             }
             for (int len = 2; len <= n; len++) {
+                // 枚举i
                 for (int i = 0; i + len - 1 < n; i++) {
                     int j = i + len - 1;
                     dp[i][j] = dp[i + 1][j] + 1;
+                    // i,k,j
+                    // 枚举k
                     for (int k = i + 1; k <= j; k++) {
                         if (s.charAt(i) == s.charAt(k)) {
                             dp[i][j] = Math.min(dp[i][j], dp[i][k - 1] + dp[k + 1][j]);
