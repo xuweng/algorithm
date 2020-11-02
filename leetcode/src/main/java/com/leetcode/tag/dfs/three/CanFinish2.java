@@ -22,7 +22,7 @@ public class CanFinish2 {
                 map.computeIfAbsent(prerequisite[1], k -> new ArrayList<>()).add(prerequisite[0]);
             }
             for (int i = 0; i < numCourses; i++) {
-                if (dfs(i)) {
+                if (visited[i] == 0 && dfs(i)) {
                     return false;
                 }
             }
