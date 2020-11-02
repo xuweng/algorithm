@@ -32,6 +32,7 @@ public class PacificAtlantic {
             for (int[] d : direction) {
                 int r = row + d[0];
                 int c = col + d[1];
+                // 剪枝
                 if (!inArea(r, c) || matrix[row][col] > matrix[r][c] || tmp[r][c] == 1) {
                     continue;
                 }
