@@ -61,4 +61,47 @@ public class Intersection {
         }
     }
 
+    /**
+     * 方法二：排序 + 双指针
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/intersection-of-two-arrays/solution/liang-ge-shu-zu-de-jiao-ji-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public int[] intersection(int[] nums1, int[] nums2) {
+            Arrays.sort(nums1);
+            Arrays.sort(nums2);
+            int length1 = nums1.length, length2 = nums2.length;
+            int[] intersection = new int[length1 + length2];
+            //pre 表示上一次加入答案数组的元素
+            int pre = 0;
+            int index1 = 0, index2 = 0;
+            while (index1 < length1 && index2 < length2) {
+                int num1 = nums1[index1], num2 = nums2[index2];
+                if (num1 == num2) {
+                    // 如果两个数字相等
+                    // 且该数字不等于 pre
+
+                    // 去重
+                    // 保证加入元素的唯一性
+                    if (pre == 0 || num1 != intersection[pre - 1]) {
+                        intersection[pre++] = num1;
+                    }
+                    // 一起移动
+                    index1++;
+                    index2++;
+                } else if (num1 < num2) {
+                    // 如果两个数字不相等，则将指向较小数字的指针右移一位
+                    index1++;
+                } else {
+                    // 如果两个数字不相等，则将指向较小数字的指针右移一位
+                    index2++;
+                }
+            }
+            return Arrays.copyOfRange(intersection, 0, pre);
+        }
+    }
+
 }
