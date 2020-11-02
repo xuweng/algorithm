@@ -1,7 +1,6 @@
 package com.leetcode.tag.daily.four;
 
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -34,14 +33,9 @@ public class Intersection {
      */
     class Solution1 {
         public int[] intersection(int[] nums1, int[] nums2) {
-            Set<Integer> set1 = new HashSet<>();
-            Set<Integer> set2 = new HashSet<>();
-            for (int num : nums1) {
-                set1.add(num);
-            }
-            for (int num : nums2) {
-                set2.add(num);
-            }
+            Set<Integer> set1 = Arrays.stream(nums1).boxed().collect(Collectors.toSet());
+            Set<Integer> set2 = Arrays.stream(nums2).boxed().collect(Collectors.toSet());
+
             return getIntersection(set1, set2);
         }
 
@@ -55,13 +49,9 @@ public class Intersection {
                 // 厉害
                 return getIntersection(set2, set1);
             }
-            Set<Integer> intersectionSet = new HashSet<>();
+            Set<Integer> intersectionSet = set1.stream().mapToInt(num -> num)
+                    .filter(set2::contains).boxed().collect(Collectors.toSet());
             // 遍历小集合
-            for (int num : set1) {
-                if (set2.contains(num)) {
-                    intersectionSet.add(num);
-                }
-            }
             int[] intersection = new int[intersectionSet.size()];
             int index = 0;
             for (int num : intersectionSet) {
