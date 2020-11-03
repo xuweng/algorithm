@@ -10,6 +10,9 @@ public class FloodFill {
         boolean[][] visited;
 
         public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+            if (image[sr][sc] == newColor) {
+                return image;
+            }
             visited = new boolean[image.length][image[0].length];
 
             dfs(image, sr, sc, newColor, image[sr][sc]);
