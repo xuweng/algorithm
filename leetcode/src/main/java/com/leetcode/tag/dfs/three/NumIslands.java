@@ -113,6 +113,7 @@ public class NumIslands {
                 count = 0;
                 int m = grid.length;
                 int n = grid[0].length;
+                // 二维转一维
                 parent = new int[m * n];
                 rank = new int[m * n];
                 for (int i = 0; i < m; ++i) {
