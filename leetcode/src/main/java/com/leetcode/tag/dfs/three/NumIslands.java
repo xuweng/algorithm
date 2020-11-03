@@ -105,6 +105,7 @@ public class NumIslands {
      */
     class Solution2 {
         class UnionFind {
+            // 连通分量的数目
             int count;
             int[] parent;
             int[] rank;
@@ -114,6 +115,7 @@ public class NumIslands {
                 int m = grid.length;
                 int n = grid[0].length;
                 // 二维转一维
+                // 一个坐标是一个结点
                 parent = new int[m * n];
                 rank = new int[m * n];
                 for (int i = 0; i < m; ++i) {
@@ -137,17 +139,19 @@ public class NumIslands {
             public void union(int x, int y) {
                 int rootx = find(x);
                 int rooty = find(y);
-                if (rootx != rooty) {
-                    if (rank[rootx] > rank[rooty]) {
-                        parent[rooty] = rootx;
-                    } else if (rank[rootx] < rank[rooty]) {
-                        parent[rootx] = rooty;
-                    } else {
-                        parent[rooty] = rootx;
-                        rank[rootx] += 1;
-                    }
-                    --count;
+                if (rootx == rooty) {
+                    return;
                 }
+                if (rank[rootx] > rank[rooty]) {
+                    parent[rooty] = rootx;
+                } else if (rank[rootx] < rank[rooty]) {
+                    parent[rootx] = rooty;
+                } else {
+                    parent[rooty] = rootx;
+                    rank[rootx] += 1;
+                }
+                // 连通分量减少
+                --count;
             }
 
             public int getCount() {
@@ -162,7 +166,6 @@ public class NumIslands {
 
             int nr = grid.length;
             int nc = grid[0].length;
-            int numIslands = 0;
             UnionFind uf = new UnionFind(grid);
             for (int r = 0; r < nr; ++r) {
                 for (int c = 0; c < nc; ++c) {
