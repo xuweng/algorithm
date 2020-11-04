@@ -68,6 +68,7 @@ public class RemoveStones {
         public int removeStones(int[][] stones) {
             DSU dsu = new DSU(20000);
 
+            // 对于一个坐标为 (i, j) 的石子来说，需要把行 i 和列 j 合并，因为并查集是一维的，用 j+10000 来代替 j
             for (int[] stone : stones) {
                 dsu.union(stone[0], stone[1] + 10000);
             }
