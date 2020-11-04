@@ -20,9 +20,9 @@ public class MissingNumber {
             if (nums[mid] != mid) {
                 return mid;
             } else if (nums[mid] - nums[low] == mid - low) {
-                return bs(nums, mid, high);
+                return bs(nums, mid + 1, high);
             } else {
-                return bs(nums, low, mid);
+                return bs(nums, low, mid - 1);
             }
         }
     }
