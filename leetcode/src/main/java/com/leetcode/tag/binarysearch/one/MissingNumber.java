@@ -13,7 +13,7 @@ public class MissingNumber {
         }
 
         private int bs(int[] nums, int low, int high) {
-            if (low >= high) {
+            if (low > high) {
                 return high + 1;
             }
             int mid = low + (high - low) / 2;
