@@ -4,7 +4,7 @@ package com.leetcode.tag.binarysearch.one;
  * 剑指 Offer 53 - II. 0～n-1中缺失的数字
  */
 public class MissingNumber {
-    class Solution {
+    static class Solution {
         public int missingNumber(int[] nums) {
             if (nums == null || nums.length == 0) {
                 return -1;
