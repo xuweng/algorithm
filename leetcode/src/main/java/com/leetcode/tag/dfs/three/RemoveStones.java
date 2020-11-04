@@ -74,6 +74,7 @@ public class RemoveStones {
 
             Set<Integer> seen = new HashSet<>();
             for (int[] stone : stones) {
+                // 保存顶点的root
                 seen.add(dsu.find(stone[0]));
             }
 
@@ -91,6 +92,12 @@ public class RemoveStones {
             }
         }
 
+        /**
+         * 查询root
+         *
+         * @param x
+         * @return
+         */
         public int find(int x) {
             if (parent[x] != x) {
                 parent[x] = find(parent[x]);
