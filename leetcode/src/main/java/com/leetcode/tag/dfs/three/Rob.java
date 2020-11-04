@@ -1,11 +1,19 @@
 package com.leetcode.tag.dfs.three;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 337. 打家劫舍 III
  */
 public class Rob {
     class Solution {
+        Map<TreeNode, Integer> memo = new HashMap<>();
+
         public int rob(TreeNode root) {
+            if (memo.containsKey(root)) {
+                return memo.get(root);
+            }
             if (root == null) {
                 return 0;
             }
@@ -22,8 +30,9 @@ public class Rob {
                 cur += rob(root.right.left);
                 cur += rob(root.right.right);
             }
+            memo.put(root, Math.max(cur, left + right));
 
-            return Math.max(cur, left + right);
+            return memo.get(root);
         }
     }
 
