@@ -17,8 +17,8 @@ public class Rob2 {
             if (root == null) {
                 return new int[]{0, 0};
             }
-            int[] left = dfs(root);
-            int[] right = dfs(root);
+            int[] left = dfs(root.left);
+            int[] right = dfs(root.right);
 
             int select = root.val + left[1] + right[1];
             int notSelect = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
