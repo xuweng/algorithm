@@ -12,6 +12,14 @@ public class MissingNumber {
             return bs(nums, 0, nums.length - 1);
         }
 
+        /**
+         * 注意边界条件
+         *
+         * @param nums
+         * @param low
+         * @param high
+         * @return
+         */
         private int bs(int[] nums, int low, int high) {
             if (low > high) {
                 return high + 1;
@@ -20,6 +28,9 @@ public class MissingNumber {
             if (nums[mid] != mid) {
                 return mid;
             } else if (nums[mid] - nums[low] == mid - low) {
+                // 栈溢出
+                // (1,2)
+                // bs(nums, mid, high);
                 return bs(nums, mid + 1, high);
             } else {
                 return bs(nums, low, mid - 1);
