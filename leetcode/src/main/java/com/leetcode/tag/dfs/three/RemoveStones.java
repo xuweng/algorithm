@@ -20,22 +20,24 @@ public class RemoveStones {
      */
     class Solution {
         public int removeStones(int[][] stones) {
-            int N = stones.length;
+            int n = stones.length;
 
             // graph[i][0] = the length of the 'list' graph[i][1:]
-            int[][] graph = new int[N][N];
-            for (int i = 0; i < N; ++i)
-                for (int j = i + 1; j < N; ++j)
+            int[][] graph = new int[n][n];
+            for (int i = 0; i < n; ++i) {
+                for (int j = i + 1; j < n; ++j) {
                     if (stones[i][0] == stones[j][0] || stones[i][1] == stones[j][1]) {
                         graph[i][++graph[i][0]] = j;
                         graph[j][++graph[j][0]] = i;
                     }
+                }
+            }
 
             int ans = 0;
-            boolean[] seen = new boolean[N];
-            for (int i = 0; i < N; ++i)
+            boolean[] seen = new boolean[n];
+            for (int i = 0; i < n; ++i) {
                 if (!seen[i]) {
-                    Stack<Integer> stack = new Stack();
+                    Stack<Integer> stack = new Stack<>();
                     stack.push(i);
                     seen[i] = true;
                     ans--;
@@ -51,6 +53,7 @@ public class RemoveStones {
                         }
                     }
                 }
+            }
 
             return ans;
         }
