@@ -50,6 +50,16 @@ public class Rob {
             return Math.max(rootStatus[0], rootStatus[1]);
         }
 
+        /**
+         * 厉害
+         * <p>
+         * 厉害
+         * <p>
+         * 厉害
+         *
+         * @param node
+         * @return
+         */
         public int[] dfs(TreeNode node) {
             if (node == null) {
                 return new int[]{0, 0};
