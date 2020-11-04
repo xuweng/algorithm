@@ -11,6 +11,13 @@ public class SearchMatrix {
             }
             int[] array = new int[matrix.length * matrix[0].length];
 
+            int index = 0;
+            for (int[] ints : matrix) {
+                for (int anInt : ints) {
+                    array[index++] = anInt;
+                }
+            }
+
             return bs(array, 0, array.length - 1, target);
         }
 
