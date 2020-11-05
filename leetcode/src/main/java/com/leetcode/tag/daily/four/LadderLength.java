@@ -24,8 +24,8 @@ public class LadderLength {
                 max = Math.max(max, count);
                 return;
             }
-            List<String> strings = getList(beginWord, wordList);
             set.add(beginWord);
+            List<String> strings = getList(beginWord, wordList);
             for (String string : strings) {
                 dfs(string, endWord, wordList, count + 1);
             }
@@ -33,7 +33,7 @@ public class LadderLength {
         }
 
         private List<String> getList(String beginWord, List<String> wordList) {
-            return wordList.stream().filter(s -> check(beginWord, s) && !set.contains(beginWord)).collect(Collectors.toList());
+            return wordList.stream().filter(s -> check(beginWord, s) && !set.contains(s)).collect(Collectors.toList());
         }
 
         private boolean check(String s, String s1) {
