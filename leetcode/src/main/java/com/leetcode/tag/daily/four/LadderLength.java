@@ -24,8 +24,8 @@ public class LadderLength {
                 max = Math.max(max, count);
                 return;
             }
-            set.add(beginWord);
             List<String> strings = getList(beginWord, wordList);
+            set.add(beginWord);
             for (String string : strings) {
                 dfs(string, endWord, wordList, count + 1);
             }
