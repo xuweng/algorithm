@@ -20,6 +20,14 @@ public class LadderLength {
             return min == Integer.MAX_VALUE ? 0 : min;
         }
 
+        /**
+         * 重复计算
+         *
+         * @param beginWord
+         * @param endWord
+         * @param wordList
+         * @param count
+         */
         private void dfs(String beginWord, String endWord, List<String> wordList, int count) {
             if (beginWord.equals(endWord)) {
                 min = Math.min(min, count);
