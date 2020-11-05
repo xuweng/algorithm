@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
  * 127. 单词接龙
  */
 public class LadderLength {
-    class Solution {
+    static class Solution {
         int max;
         Set<String> set = new HashSet<>();
 
