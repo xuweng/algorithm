@@ -21,14 +21,15 @@ public class LadderLength {
         }
 
         private void dfs(String beginWord, String endWord, List<String> wordList, int count) {
-            if (memo.contains(beginWord)) {
-                return;
-            }
-            memo.add(beginWord);
             if (beginWord.equals(endWord)) {
                 min = Math.min(min, count);
                 return;
             }
+            if (memo.contains(beginWord)) {
+                return;
+            }
+            memo.add(beginWord);
+
             set.add(beginWord);
             List<String> strings = getList(beginWord, wordList);
             for (String string : strings) {
