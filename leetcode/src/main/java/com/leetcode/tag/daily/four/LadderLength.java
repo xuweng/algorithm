@@ -10,18 +10,18 @@ import java.util.stream.Collectors;
  */
 public class LadderLength {
     static class Solution {
-        int max;
+        int min = Integer.MAX_VALUE;
         Set<String> set = new HashSet<>();
 
         public int ladderLength(String beginWord, String endWord, List<String> wordList) {
             dfs(beginWord, endWord, wordList, 1);
 
-            return max;
+            return min;
         }
 
         private void dfs(String beginWord, String endWord, List<String> wordList, int count) {
             if (beginWord.equals(endWord)) {
-                max = Math.max(max, count);
+                min = Math.min(min, count);
                 return;
             }
             set.add(beginWord);
