@@ -1,9 +1,9 @@
 package com.leetcode.tag.daily.four;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * 127. 单词接龙
@@ -36,14 +36,7 @@ public class LadderLength {
         }
 
         private List<String> getList(String beginWord, List<String> wordList) {
-            List<String> list = new ArrayList<>();
-            for (int i = 0; i < wordList.size(); i++) {
-                String s = wordList.get(i);
-                if (check(beginWord, s) && !set.contains(beginWord)) {
-                    list.add(s);
-                }
-            }
-            return list;
+            return wordList.stream().filter(s -> check(beginWord, s) && !set.contains(beginWord)).collect(Collectors.toList());
         }
 
         private boolean check(String s, String s1) {
