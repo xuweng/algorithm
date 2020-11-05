@@ -29,7 +29,7 @@ public class LadderLength {
             for (String string : strings) {
                 dfs(string, endWord, wordList, count + 1);
             }
-            //            set.remove(beginWord);
+            set.remove(beginWord);
         }
 
         private List<String> getList(String beginWord, List<String> wordList) {
