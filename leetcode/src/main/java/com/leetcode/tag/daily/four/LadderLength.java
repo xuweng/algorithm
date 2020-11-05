@@ -12,6 +12,7 @@ public class LadderLength {
     static class Solution {
         int min = Integer.MAX_VALUE;
         Set<String> set = new HashSet<>();
+        Set<String> memo = new HashSet<>();
 
         public int ladderLength(String beginWord, String endWord, List<String> wordList) {
             dfs(beginWord, endWord, wordList, 1);
@@ -20,6 +21,10 @@ public class LadderLength {
         }
 
         private void dfs(String beginWord, String endWord, List<String> wordList, int count) {
+            if (memo.contains(beginWord)) {
+                return;
+            }
+            memo.add(beginWord);
             if (beginWord.equals(endWord)) {
                 min = Math.min(min, count);
                 return;
