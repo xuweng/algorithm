@@ -16,7 +16,7 @@ public class LadderLength {
         public int ladderLength(String beginWord, String endWord, List<String> wordList) {
             dfs(beginWord, endWord, wordList, 1);
 
-            return min;
+            return min == Integer.MAX_VALUE ? 0 : min;
         }
 
         private void dfs(String beginWord, String endWord, List<String> wordList, int count) {
