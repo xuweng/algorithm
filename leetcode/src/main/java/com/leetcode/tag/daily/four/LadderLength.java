@@ -11,12 +11,9 @@ import java.util.stream.Collectors;
 public class LadderLength {
     class Solution {
         int max;
-        boolean[] visited;
         Set<String> set = new HashSet<>();
 
         public int ladderLength(String beginWord, String endWord, List<String> wordList) {
-            visited = new boolean[wordList.size()];
-
             dfs(beginWord, endWord, wordList, 1);
 
             return max;
