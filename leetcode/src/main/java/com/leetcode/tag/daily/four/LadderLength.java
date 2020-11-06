@@ -152,10 +152,12 @@ public class LadderLength {
 
             set.add(beginWord);
             List<String> strings = getList(beginWord, wordList);
+            // beginWord到endWord的最小距离
             int result = Integer.MAX_VALUE;
             for (String string : strings) {
                 int d = dfs(string, endWord, wordList, count + 1);
                 if (d == Integer.MAX_VALUE) {
+                    // 到不了终点
                     continue;
                 }
                 result = Math.min(result, d + 1);
