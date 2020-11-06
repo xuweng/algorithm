@@ -212,6 +212,7 @@ public class LadderLength {
             int beginId = wordId.get(beginWord);
             disBegin[beginId] = 0;
             //从 beginWord 开始
+            // 保存每层结点
             Queue<Integer> queBegin = new LinkedList<>();
             queBegin.offer(beginId);
 
@@ -220,6 +221,7 @@ public class LadderLength {
             int endId = wordId.get(endWord);
             disEnd[endId] = 0;
             //从 endWord 开始
+            // 保存每层结点
             Queue<Integer> queEnd = new LinkedList<>();
             queEnd.offer(endId);
 
