@@ -143,7 +143,7 @@ public class LadderLength {
                 return 0;
             }
             if (memo.containsKey(beginWord)) {
-                if (memo.get(beginWord) != Integer.MAX_VALUE) {
+                if (!Objects.equals(memo.get(beginWord), Integer.MAX_VALUE)) {
                     min = Math.min(min, count + memo.get(beginWord));
                 }
                 return memo.get(beginWord);
