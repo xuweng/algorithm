@@ -144,7 +144,7 @@ public class LadderLength {
                 return 0;
             }
             if (memo.containsKey(beginWord)) {
-                if (!Objects.equals(memo.get(beginWord), Integer.MAX_VALUE)) {
+                if (memo.get(beginWord) != Integer.MAX_VALUE) {
                     min = Math.min(min, count + memo.get(beginWord));
                 }
                 return memo.get(beginWord);
@@ -154,7 +154,11 @@ public class LadderLength {
             List<String> strings = getList(beginWord, wordList);
             int result = Integer.MAX_VALUE;
             for (String string : strings) {
-                result = Math.min(result, dfs(string, endWord, wordList, count + 1) + 1);
+                int d = dfs(string, endWord, wordList, count + 1);
+                if (d == Integer.MAX_VALUE) {
+                    continue;
+                }
+                result = Math.min(result, d + 1);
             }
             set.remove(beginWord);
             memo.put(beginWord, result);
