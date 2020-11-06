@@ -118,7 +118,7 @@ public class LadderLength {
         }
     }
 
-    class Solution2 {
+    static class Solution2 {
         int min = Integer.MAX_VALUE;
         Set<String> set = new HashSet<>();
         Map<String, Integer> memo = new HashMap<>();
