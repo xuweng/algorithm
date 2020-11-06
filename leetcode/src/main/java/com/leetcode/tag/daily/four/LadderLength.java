@@ -84,6 +84,7 @@ public class LadderLength {
         private void dfs(String beginWord, String endWord, List<String> wordList, int count) {
             if (beginWord.equals(endWord)) {
                 min = Math.min(min, count);
+                memo.put(beginWord, min);
                 return;
             }
             if (memo.containsKey(beginWord) && memo.get(beginWord) <= count) {
