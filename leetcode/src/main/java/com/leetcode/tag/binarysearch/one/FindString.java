@@ -64,6 +64,8 @@ public class FindString {
                 // 处理mid空格
                 int mid = left + (right - left) / 2;
                 while (mid < right && words[mid].isEmpty()) {
+                    // mid++?
+                    // 不是mid--?
                     mid++;
                 }
 
