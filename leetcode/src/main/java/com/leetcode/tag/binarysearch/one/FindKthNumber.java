@@ -6,6 +6,12 @@ import java.util.PriorityQueue;
 
 /**
  * 668. 乘法表中第k小的数
+ * <p>
+ * 排序
+ * <p>
+ * 堆
+ * <p>
+ * 二分
  */
 public class FindKthNumber {
     /**
