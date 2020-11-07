@@ -6,14 +6,14 @@ package com.leetcode.tag.binarysearch.one;
 public class MySqrt {
     class Solution {
         public int mySqrt(int x) {
-            return bs(x, 0, x);
+            return (int) bs(x, 0, x);
         }
 
-        private int bs(int x, int left, int right) {
+        private long bs(int x, long left, long right) {
             if (left > right) {
                 return right;
             }
-            int mid = left + (right - left) / 2;
+            long mid = left + (right - left) / 2;
             if (mid * mid == x) {
                 return mid;
             } else if (mid * mid > x) {
