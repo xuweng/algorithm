@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 /**
  * 927. 三等分
+ * <p>
+ * 经典题目.经典题目.经典题目.经典题目.经典题目.
  */
 public class ThreeEqualParts {
     /**
