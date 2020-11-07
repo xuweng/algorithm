@@ -74,6 +74,8 @@ public class FindKthNumber {
     }
 
     /**
+     * 矩阵二分
+     * <p>
      * 方法三：二分搜索[通过]
      * <p>
      * 关键点是对什么进行二分？
