@@ -74,7 +74,7 @@ public class MissingNumber {
         }
 
         private int bs(int[] nums, int left, int right) {
-            if (left >= right) {
+            if (left > right) {
                 return left;
             }
             int mid = left + (right - left) / 2;
