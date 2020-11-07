@@ -11,7 +11,7 @@ public class MySqrt {
 
         private int bs(int x, int left, int right) {
             if (left > right) {
-                return left;
+                return right;
             }
             int mid = left + (right - left) / 2;
             if (mid * mid == x) {
