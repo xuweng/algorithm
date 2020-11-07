@@ -44,7 +44,8 @@ public class MajorityChecker {
      * @return
      */
     public int query(int left, int right, int threshold) {
-        //当数据量小的时候，使用暴力搜索法
+        //当数据量小的时候，使用暴力搜索法.厉害.
+        //厉害.厉害.厉害.厉害.
         if (right - left <= 50) {
             map.clear();
             for (int i = left; i <= right; i++) {
