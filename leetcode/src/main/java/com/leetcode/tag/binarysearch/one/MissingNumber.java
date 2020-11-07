@@ -79,11 +79,10 @@ public class MissingNumber {
             }
             int mid = left + (right - left) / 2;
             if (nums[mid] == mid) {
-                bs(nums, mid + 1, right);
+                return bs(nums, mid + 1, right);
             } else {
-                bs(nums, left, mid - 1);
+                return bs(nums, left, mid - 1);
             }
-            return -1;
         }
     }
 
