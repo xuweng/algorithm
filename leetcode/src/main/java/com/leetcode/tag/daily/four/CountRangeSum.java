@@ -78,6 +78,8 @@ public class CountRangeSum {
     /**
      * 方法二：线段树
      * <p>
+     * 父结点区间包含子结点区间
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/count-of-range-sum/solution/qu-jian-he-de-ge-shu-by-leetcode-solution/
      * 来源：力扣（LeetCode）
