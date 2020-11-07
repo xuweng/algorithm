@@ -397,4 +397,25 @@ public class CountRangeSum {
         }
     }
 
+    class Solution4 {
+        public int countRangeSum(int[] nums, int lower, int upper) {
+            if (nums == null || nums.length == 0) {
+                return 0;
+            }
+            int count = 0;
+            for (int i = 0; i < nums.length; i++) {
+                long sum = 0;
+                for (int j = i; j < nums.length; j++) {
+                    // 相加会导致大数溢出
+                    // 相乘会导致大数溢出
+                    sum += nums[j];
+                    if (sum >= lower && sum <= upper) {
+                        count++;
+                    }
+                }
+            }
+            return count;
+        }
+    }
+
 }
