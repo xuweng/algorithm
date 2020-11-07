@@ -27,7 +27,19 @@ public class FindString {
             if (left > right) {
                 return -1;
             }
+            // 处理left空格
+            while (left <= right && words[left].isEmpty()) {
+                left++;
+            }
+            // 处理right空格
+            while (left <= right && words[right].isEmpty()) {
+                right--;
+            }
+            // 处理mid空格
             int mid = left + (right - left) / 2;
+            while (mid < right && words[mid].isEmpty()) {
+                mid++;
+            }
             if (words[mid].equals(s)) {
                 return mid;
             } else if (words[mid].compareTo(s) < 0) {
