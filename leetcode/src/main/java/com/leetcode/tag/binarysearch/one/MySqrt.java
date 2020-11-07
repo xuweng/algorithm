@@ -10,6 +10,7 @@ public class MySqrt {
         }
 
         private long bs(int x, long left, long right) {
+            // 越界才是递归终止条件
             if (left > right) {
                 return right;
             }
@@ -23,4 +24,27 @@ public class MySqrt {
             }
         }
     }
+
+    /**
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/sqrtx/solution/x-de-ping-fang-gen-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int mySqrt(int x) {
+            int left = 0, right = x, ans = -1;
+            while (left <= right) {
+                int mid = left + (right - left) / 2;
+                if ((long) mid * mid <= x) {
+                    ans = mid;
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+            return ans;
+        }
+    }
+
 }
