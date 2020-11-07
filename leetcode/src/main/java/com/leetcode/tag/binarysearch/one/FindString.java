@@ -37,4 +37,44 @@ public class FindString {
             }
         }
     }
+
+    /**
+     * 二分搜索+线性查找
+     * <p>
+     * 作者：MufengYe
+     * 链接：https://leetcode-cn.com/problems/sparse-array-search-lcci/solution/er-fen-sou-suo-xian-xing-cha-zhao-by-mufengye/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public int findString(String[] words, String S) {
+            if (words == null || words.length == 0) {
+                return -1;
+            }
+            int left = 0, right = words.length - 1;
+            while (left <= right) {
+                // 处理空格
+                while (left <= right && words[left].isEmpty()) {
+                    left++;
+                }
+                while (left <= right && words[right].isEmpty()) {
+                    right--;
+                }
+                int mid = left + (right - left) / 2;
+                while (mid < right && words[mid].isEmpty()) {
+                    mid++;
+                }
+
+                // bs
+                if (words[mid].equals(S)) {
+                    return mid;
+                } else if (words[mid].compareTo(S) > 0) {
+                    right = mid - 1;
+                } else {
+                    left = mid + 1;
+                }
+            }
+            return -1;
+        }
+    }
 }
