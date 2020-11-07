@@ -65,4 +65,26 @@ public class MissingNumber {
         }
     }
 
+    class Solution2 {
+        public int missingNumber(int[] nums) {
+            if (nums == null || nums.length == 0) {
+                return -1;
+            }
+            return bs(nums, 0, nums.length - 1);
+        }
+
+        private int bs(int[] nums, int left, int right) {
+            if (left >= right) {
+                return left;
+            }
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == mid) {
+                bs(nums, mid + 1, right);
+            } else {
+                bs(nums, left, mid - 1);
+            }
+            return -1;
+        }
+    }
+
 }
