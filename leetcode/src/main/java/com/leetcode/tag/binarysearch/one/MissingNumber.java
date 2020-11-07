@@ -2,6 +2,10 @@ package com.leetcode.tag.binarysearch.one;
 
 /**
  * 剑指 Offer 53 - II. 0～n-1中缺失的数字
+ * <p>
+ * 排序数组中的搜索问题，首先想到 二分法 解决
+ * <p>
+ * 排序数组使用双指针也是高频选项
  */
 public class MissingNumber {
     static class Solution {
@@ -37,4 +41,28 @@ public class MissingNumber {
             }
         }
     }
+
+    /**
+     * 二分法
+     * <p>
+     * 作者：jyd
+     * 链接：https://leetcode-cn.com/problems/que-shi-de-shu-zi-lcof/solution/mian-shi-ti-53-ii-0n-1zhong-que-shi-de-shu-zi-er-f/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int missingNumber(int[] nums) {
+            int left = 0, right = nums.length - 1;
+            while (left <= right) {
+                int mid = (left + right) / 2;
+                if (nums[mid] == mid) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+            return left;
+        }
+    }
+
 }
