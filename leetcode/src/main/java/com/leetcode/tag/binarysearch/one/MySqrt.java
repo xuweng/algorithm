@@ -12,6 +12,7 @@ public class MySqrt {
         private long bs(int x, long left, long right) {
             // 越界才是递归终止条件
             if (left > right) {
+                // 取较小值
                 return right;
             }
             long mid = left + (right - left) / 2;
