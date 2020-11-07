@@ -76,6 +76,16 @@ public class FindKthNumber {
     /**
      * 方法三：二分搜索[通过]
      * <p>
+     * 关键点是对什么进行二分？
+     * <p>
+     * 第一种是对坐标(x,y)进行二分。二分后(x/2,y/2)
+     * <p>
+     * 第二种是直接对数字(m*n)二分
+     * <p>
+     * 第一次二分，数字为v = (m*n)/2
+     * <p>
+     * 第二次二分，数字为v = (m*n)/4
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/kth-smallest-number-in-multiplication-table/solution/cheng-fa-biao-zhong-di-kxiao-de-shu-by-leetcode/
      * 来源：力扣（LeetCode）
