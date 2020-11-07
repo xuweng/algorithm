@@ -53,13 +53,15 @@ public class FindString {
             }
             int left = 0, right = words.length - 1;
             while (left <= right) {
-                // 处理空格
+                // 处理left空格
                 while (left <= right && words[left].isEmpty()) {
                     left++;
                 }
+                // 处理right空格
                 while (left <= right && words[right].isEmpty()) {
                     right--;
                 }
+                // 处理mid空格
                 int mid = left + (right - left) / 2;
                 while (mid < right && words[mid].isEmpty()) {
                     mid++;
