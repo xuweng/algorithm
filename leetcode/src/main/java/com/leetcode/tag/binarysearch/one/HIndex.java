@@ -52,6 +52,26 @@ public class HIndex {
         }
     }
 
+    class Solution3 {
+        public int hIndex(int[] citations) {
+            return bs(citations, 0, citations.length - 1);
+        }
+
+        private int bs(int[] citations, int left, int right) {
+            if (left > right) {
+                return citations.length - left;
+            }
+            int mid = left + (right - left) / 2;
+            if (citations[mid] == citations.length - mid) {
+                return citations.length - mid;
+            } else if (citations[mid] < citations.length - mid) {
+                return bs(citations, mid + 1, right);
+            } else {
+                return bs(citations, left, mid - 1);
+            }
+        }
+    }
+
     class Solution2 {
         public int hIndex(int[] citations) {
             int n = citations.length;
