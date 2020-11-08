@@ -193,9 +193,11 @@ public class MaxProfit2 {
                 // 卖股票才算交易.
                 dp[i][0][1] = Math.max(dp[i - 1][0][1], dp[i - 1][0][0] - prices[i]);
 
+                // 前i-1天有股票,没有交易;第i天卖股票,交易次数+1。
                 dp[i][1][0] = Math.max(dp[i - 1][1][0], dp[i - 1][0][1] + prices[i]);
                 dp[i][1][1] = Math.max(dp[i - 1][1][1], dp[i - 1][1][0] - prices[i]);
 
+                // 前i-1天有股票,有1次交易;第i天卖股票,交易次数+1。
                 dp[i][2][0] = Math.max(dp[i - 1][2][0], dp[i - 1][1][1] + prices[i]);
             }
 
