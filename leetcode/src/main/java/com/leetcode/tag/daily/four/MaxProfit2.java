@@ -1,5 +1,8 @@
 package com.leetcode.tag.daily.four;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 123. 买卖股票的最佳时机 III
  */
@@ -56,6 +59,70 @@ public class MaxProfit2 {
             }
             //最终结果就是三个变量中的最大值
             return Math.max(Math.max(a, b), c);
+        }
+    }
+
+    /**
+     * 递归+记忆化
+     * <p>
+     * 作者：wang_ni_ma
+     * 链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/solution/wu-chong-shi-xian-xiang-xi-tu-jie-123mai-mai-gu-pi/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int maxProfit(int[] prices) {
+            if (prices == null || prices.length == 0) {
+                return 0;
+            }
+            int n = prices.length;
+            //用一个哈希表缓存重复的调用
+            Map<Key, Integer> map = new HashMap<>();
+            return dfs(map, prices, 0, 0, 0);
+        }
+
+        private int dfs(Map<Key, Integer> map, int[] prices, int index, int status, int k) {
+            Key key = new Key(index, status, k);
+            if (map.containsKey(key)) {
+                return map.get(key);
+            }
+            if (index == prices.length || k == 2) {
+                return 0;
+            }
+            int a, b = 0, c = 0;
+            a = dfs(map, prices, index + 1, status, k);
+            if (status == 1) {
+                b = dfs(map, prices, index + 1, 0, k + 1) + prices[index];
+            } else {
+                c = dfs(map, prices, index + 1, 1, k) - prices[index];
+            }
+            map.put(key, Math.max(Math.max(a, b), c));
+            return map.get(key);
+        }
+
+        //Key对象封装了index、status、交易次数，作为map的key
+        private class Key {
+            final int index;
+            final int status;
+            final int k;
+
+            Key(int index, int status, int k) {
+                this.index = index;
+                this.status = status;
+                this.k = k;
+            }
+
+            //这里需要实现自定义的equals和hashCode函数
+            @Override
+            public int hashCode() {
+                return this.index + this.status + this.k;
+            }
+
+            @Override
+            public boolean equals(Object obj) {
+                Key other = (Key) obj;
+                return index == other.index && status == other.status && k == other.k;
+            }
         }
     }
 
