@@ -131,4 +131,20 @@ public class MaxProfit {
         }
     }
 
+    class Solution5 {
+        public int maxProfit(int[] prices) {
+            if (prices == null || prices.length == 0) {
+                return 0;
+            }
+            int[][] dpMax = new int[prices.length][2];
+            dpMax[0][0] = 0;
+            dpMax[0][1] = -prices[0];
+            for (int i = 1; i < prices.length; i++) {
+                dpMax[i][0] = Math.max(dpMax[i - 1][0], dpMax[i - 1][1] + prices[i]);
+                dpMax[i][1] = Math.max(dpMax[i - 1][0] - prices[i], dpMax[i - 1][1]);
+            }
+            return dpMax[dpMax.length - 1][0];
+        }
+    }
+
 }
