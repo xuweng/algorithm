@@ -19,10 +19,21 @@ public class MaxProfit2 {
         }
 
         /**
+         * 如果状态是是买入:
+         * <p>
+         * 那么可以保持不动
+         * 或者马上卖掉
+         * <p>
+         * 如果状态是卖出:
+         * <p>
+         * 可以保持不动(等待更好的股价出现，暂时不买)
+         * 或者立马再买一股
+         * 同时将count数+1，表示交易过一次了
+         *
          * @param prices
-         * @param index  下标
-         * @param status
-         * @param k      交易次数
+         * @param index  下标 用来表示当前是哪一天
+         * @param status 用来表示当前状态是买入、还是卖出
+         * @param k      交易次数 用来表示交易了几次
          * @return 最大利润
          */
         private int dfs(int[] prices, int index, int status, int k) {
