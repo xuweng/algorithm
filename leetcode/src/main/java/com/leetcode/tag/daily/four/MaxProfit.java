@@ -4,6 +4,9 @@ package com.leetcode.tag.daily.four;
  * 122. 买卖股票的最佳时机 II
  */
 public class MaxProfit {
+    /**
+     * 只计算递增区间
+     */
     class Solution {
         public int maxProfit(int[] prices) {
             if (prices == null || prices.length == 0) {
