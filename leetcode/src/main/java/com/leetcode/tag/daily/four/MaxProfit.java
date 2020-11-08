@@ -121,6 +121,7 @@ public class MaxProfit {
             int ans = 0;
             int n = prices.length;
             for (int i = 1; i < n; ++i) {
+                // 这个计算厉害.负数转为0.
                 ans += Math.max(0, prices[i] - prices[i - 1]);
             }
             return ans;
