@@ -12,7 +12,7 @@ public class MaxProfit1 {
             int result = 0;
             for (int i = 0; i < prices.length; i++) {
                 for (int j = i + 1; j < prices.length; j++) {
-                    result = Math.max(result, prices[i] - prices[i - 1]);
+                    result = Math.max(result, prices[j] - prices[i]);
                 }
             }
             return result;
