@@ -80,4 +80,31 @@ public class MaxProfit {
         }
     }
 
+    /**
+     * 滚动数组
+     * <p>
+     * 每一天的状态只与前一天的状态有关，而与更早的状态都无关，因此我们不必存储这些无关的状态
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/solution/mai-mai-gu-piao-de-zui-jia-shi-ji-ii-by-leetcode-s/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        public int maxProfit(int[] prices) {
+            int n = prices.length;
+            // 没股票
+            int dp0 = 0;
+            // 有股票
+            int dp1 = -prices[0];
+            for (int i = 1; i < n; ++i) {
+                int newDp0 = Math.max(dp0, dp1 + prices[i]);
+                int newDp1 = Math.max(dp1, dp0 - prices[i]);
+                dp0 = newDp0;
+                dp1 = newDp1;
+            }
+            return dp0;
+        }
+    }
+
 }
