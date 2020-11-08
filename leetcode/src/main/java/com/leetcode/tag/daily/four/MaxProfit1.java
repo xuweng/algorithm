@@ -2,6 +2,10 @@ package com.leetcode.tag.daily.four;
 
 /**
  * 121. 买卖股票的最佳时机
+ * <p>
+ * 这个题本质就是要求某个数与其右边最大的数的差值
+ * <p>
+ * 这符合了单调栈的应用场景 当你需要高效率查询某个位置左右两侧比他大（或小）的数的位置的时候
  */
 public class MaxProfit1 {
     class Solution {
