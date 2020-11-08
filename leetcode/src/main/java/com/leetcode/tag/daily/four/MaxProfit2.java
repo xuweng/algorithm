@@ -156,9 +156,11 @@ public class MaxProfit2 {
                 dp[i][0][0] = dp[i - 1][0][0];
                 //处理第一次买入、第一次卖出
                 dp[i][0][1] = Math.max(dp[i - 1][0][1], dp[i - 1][0][0] - prices[i]);
+                // 第一次卖出(前一天的交易次数为0)
                 dp[i][1][0] = Math.max(dp[i - 1][1][0], dp[i - 1][0][1] + prices[i]);
                 //处理第二次买入、第二次卖出
                 dp[i][1][1] = Math.max(dp[i - 1][1][1], dp[i - 1][1][0] - prices[i]);
+                // 第二次卖出(前一天的交易次数为1)
                 dp[i][2][0] = Math.max(dp[i - 1][2][0], dp[i - 1][1][1] + prices[i]);
             }
             //返回最大值
