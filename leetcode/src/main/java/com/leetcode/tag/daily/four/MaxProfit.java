@@ -93,6 +93,7 @@ public class MaxProfit {
     class Solution3 {
         public int maxProfit(int[] prices) {
             int n = prices.length;
+            // 只保留前一天
             // 没股票
             int dp0 = 0;
             // 有股票
