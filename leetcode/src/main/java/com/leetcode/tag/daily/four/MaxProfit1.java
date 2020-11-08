@@ -26,6 +26,8 @@ public class MaxProfit1 {
     /**
      * 方法二：一次遍历
      * <p>
+     * 计算每个递增区间.每个递增区间的最大差值.
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/solution/121-mai-mai-gu-piao-de-zui-jia-shi-ji-by-leetcode-/
      * 来源：力扣（LeetCode）
