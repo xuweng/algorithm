@@ -30,6 +30,22 @@ public class MaxProfit {
         }
     }
 
+    class Solution1 {
+        public int maxProfit(int[] prices) {
+            if (prices == null || prices.length == 0) {
+                return 0;
+            }
+            int[][] dpMax = new int[prices.length][2];
+            dpMax[0][0] = 0;
+            dpMax[0][1] = -prices[0];
+            for (int i = 1; i < prices.length; i++) {
+                dpMax[i][0] = Math.max(dpMax[i - 1][0], dpMax[i - 1][1]);
+                dpMax[i][1] = Math.max(dpMax[i - 1][0] - prices[i], dpMax[i - 1][1]);
+            }
+            return Math.max(dpMax[prices.length - 1][0], dpMax[prices.length - 1][1]);
+        }
+    }
+
     /**
      * 方法一：动态规划
      * <p>
@@ -48,7 +64,7 @@ public class MaxProfit {
      * 来源：力扣（LeetCode）
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
-    class Solution1 {
+    class Solution2 {
         public int maxProfit(int[] prices) {
             int n = prices.length;
             int[][] dp = new int[n][2];
