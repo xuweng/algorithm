@@ -74,6 +74,8 @@ public class MaxProfit {
                 dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
                 dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
             }
+            // 由于全部交易结束后，持有股票的收益一定低于不持有股票的收益
+            // 因此这时候 dp[n−1][0] 的收益必然是大于dp[n−1][1] 的，最后的答案即为 dp[n−1][0]
             return dp[n - 1][0];
         }
     }
