@@ -13,9 +13,13 @@ public class ShortestSubarray {
             if (A == null || A.length == 0) {
                 return -1;
             }
-            int result = -1;
+            int result = Integer.MAX_VALUE;
             for (int i = 0; i < A.length; i++) {
                 int sum = A[i];
+                if (sum >= K) {
+                    result = Math.min(result, 1);
+                    break;
+                }
                 for (int j = i + 1; j < A.length; j++) {
                     sum += A[j];
                     if (sum >= K) {
@@ -24,7 +28,7 @@ public class ShortestSubarray {
                     }
                 }
             }
-            return result;
+            return result == Integer.MAX_VALUE ? -1 : result;
         }
     }
 }
