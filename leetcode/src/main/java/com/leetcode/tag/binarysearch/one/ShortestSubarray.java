@@ -65,7 +65,8 @@ public class ShortestSubarray {
                     deque.removeLast();
                 }
                 //如果 P[y] >= P[x0] + K，则将队首元素移除
-                while (!deque.isEmpty() && p[y] >= p[deque.getFirst()] + K) {
+                while (!deque.isEmpty() && p[y] - p[deque.getFirst()] >= K) {
+                    // [first,y]的区间和>=K
                     ans = Math.min(ans, y - deque.removeFirst());
                 }
 
