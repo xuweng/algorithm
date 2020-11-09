@@ -40,6 +40,10 @@ public class ShortestSubarray {
     /**
      * 方法一：滑动窗口
      * <p>
+     * right入队.left出队.
+     * <p>
+     * right扩展.left收缩.
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/shortest-subarray-with-sum-at-least-k/solution/he-zhi-shao-wei-k-de-zui-duan-zi-shu-zu-by-leetcod/
      * 来源：力扣（LeetCode）
