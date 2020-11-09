@@ -207,4 +207,30 @@ public class MaxProfit2 {
         }
     }
 
+    class Solution4 {
+        public int maxProfit(int[] prices) {
+            if (prices == null || prices.length == 0) {
+                return 0;
+            }
+            int[][][] dpMax = new int[prices.length][3][2];
+            dpMax[0][0][0] = 0;
+            dpMax[0][0][1] = -prices[0];
+            dpMax[0][1][0] = 0;
+            dpMax[0][1][1] = -prices[0];
+            dpMax[0][2][0] = 0;
+            dpMax[0][2][1] = -prices[0];
+            for (int i = 1; i < prices.length; i++) {
+                dpMax[i][0][0] = dpMax[i - 1][0][0];
+                dpMax[i][0][1] = Math.max(dpMax[i - 1][0][1], dpMax[i - 1][0][0] - prices[0]);
+
+                dpMax[i][1][0] = Math.max(dpMax[i - 1][1][0], dpMax[i - 1][0][1] + prices[i]);
+                dpMax[i][1][1] = Math.max(dpMax[i - 1][1][1], dpMax[i - 1][1][0] - prices[i]);
+
+                dpMax[i][2][0] = Math.max(dpMax[i - 1][2][0], dpMax[i - 1][1][1] + prices[i]);
+                // 前i-1天已经交易2次，第i天不能再买入股票
+                // dpMax[i][2][0] = Math.max(dpMax[i - 1][2][0], dpMax[i - 1][2][0] - prices[i]);
+            }
+            return Math.max(Math.max(dpMax[dpMax.length - 1][0][0], dpMax[dpMax.length - 1][1][0]), dpMax[dpMax.length - 1][2][0]);
+        }
+    }
 }
