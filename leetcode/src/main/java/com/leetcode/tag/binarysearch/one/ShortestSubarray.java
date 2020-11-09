@@ -1,5 +1,8 @@
 package com.leetcode.tag.binarysearch.one;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
 /**
  * 862. 和至少为 K 的最短子数组
  * <p>
@@ -31,4 +34,43 @@ public class ShortestSubarray {
             return result == Integer.MAX_VALUE ? -1 : result;
         }
     }
+
+    /**
+     * 方法一：滑动窗口
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/shortest-subarray-with-sum-at-least-k/solution/he-zhi-shao-wei-k-de-zui-duan-zi-shu-zu-by-leetcod/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int shortestSubarray(int[] A, int K) {
+            int n = A.length;
+            //用数组 P 表示数组 A 的前缀和
+            long[] p = new long[n + 1];
+            for (int i = 0; i < n; ++i) {
+                p[i + 1] = p[i] + (long) A[i];
+            }
+
+            // Want smallest y-x with p[y] - p[x] >= K
+            int ans = n + 1; // n+1 is impossible
+            //双端队列
+            Deque<Integer> deque = new LinkedList<>(); //opt(y) candidates, as indices of p
+
+            for (int y = 0; y < p.length; ++y) {
+                // Want opt(y) = largest x with p[x] <= p[y] - K;
+                while (!deque.isEmpty() && p[y] <= p[deque.getLast()]) {
+                    deque.removeLast();
+                }
+                while (!deque.isEmpty() && p[y] >= p[deque.getFirst()] + K) {
+                    ans = Math.min(ans, y - deque.removeFirst());
+                }
+
+                deque.addLast(y);
+            }
+
+            return ans < n + 1 ? ans : -1;
+        }
+    }
+
 }
