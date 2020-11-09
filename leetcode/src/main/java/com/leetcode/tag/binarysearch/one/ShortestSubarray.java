@@ -9,6 +9,8 @@ import java.util.LinkedList;
  * 买股票:交易次数不会改变
  * <p>
  * 卖股票:交易次数+1
+ * <p>
+ * 线段树.树状数组.
  */
 public class ShortestSubarray {
     class Solution {
