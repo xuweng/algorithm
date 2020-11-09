@@ -1,5 +1,8 @@
 package com.leetcode.tag.binarysearch.one;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 718. 最长重复子数组
  * <p>
@@ -72,6 +75,75 @@ public class FindLength {
                     k = 0;
                 }
                 ret = Math.max(ret, k);
+            }
+            return ret;
+        }
+    }
+
+    /**
+     * 方法三：二分查找 + 哈希
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/zui-chang-zhong-fu-zi-shu-zu-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        int mod = 1000000009;
+        int base = 113;
+
+        public int findLength(int[] A, int[] B) {
+            int left = 1, right = Math.min(A.length, B.length) + 1;
+            while (left < right) {
+                int mid = (left + right) >> 1;
+                if (check(A, B, mid)) {
+                    left = mid + 1;
+                } else {
+                    right = mid;
+                }
+            }
+            return left - 1;
+        }
+
+        public boolean check(int[] A, int[] B, int len) {
+            long hashA = 0;
+            for (int i = 0; i < len; i++) {
+                hashA = (hashA * base + A[i]) % mod;
+            }
+            //使用哈希表分别存储这两个数组的所有长度为 len 的子数组的哈希值
+            Set<Long> bucketA = new HashSet<>();
+            bucketA.add(hashA);
+            long mult = qPow(base, len - 1);
+            for (int i = len; i < A.length; i++) {
+                hashA = ((hashA - A[i - len] * mult % mod + mod) % mod * base + A[i]) % mod;
+                bucketA.add(hashA);
+            }
+            long hashB = 0;
+            for (int i = 0; i < len; i++) {
+                hashB = (hashB * base + B[i]) % mod;
+            }
+            //如果两序列存在相同的哈希值，则认为两序列存在相同的子数组
+            if (bucketA.contains(hashB)) {
+                return true;
+            }
+            for (int i = len; i < B.length; i++) {
+                hashB = ((hashB - B[i - len] * mult % mod + mod) % mod * base + B[i]) % mod;
+                if (bucketA.contains(hashB)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // 使用快速幂计算 x^n % mod 的值
+        public long qPow(long x, long n) {
+            long ret = 1;
+            while (n != 0) {
+                if ((n & 1) != 0) {
+                    ret = ret * x % mod;
+                }
+                x = x * x % mod;
+                n >>= 1;
             }
             return ret;
         }
