@@ -55,13 +55,16 @@ public class ShortestSubarray {
             // Want smallest y-x with p[y] - p[x] >= K
             int ans = n + 1; // n+1 is impossible
             //双端队列
+            //存放了下标 x：x0, x1, ... 满足 P[x0], P[x1], ... 单调递增
             Deque<Integer> deque = new LinkedList<>(); //opt(y) candidates, as indices of p
 
             for (int y = 0; y < p.length; ++y) {
+                //我们遇到了一个新的下标 y 时，我们会在队尾移除若干元素，直到 P[x0], P[x1], ..., P[y] 单调递增
                 // Want opt(y) = largest x with p[x] <= p[y] - K;
                 while (!deque.isEmpty() && p[y] <= p[deque.getLast()]) {
                     deque.removeLast();
                 }
+                //如果 P[y] >= P[x0] + K，则将队首元素移除
                 while (!deque.isEmpty() && p[y] >= p[deque.getFirst()] + K) {
                     ans = Math.min(ans, y - deque.removeFirst());
                 }
