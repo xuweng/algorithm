@@ -2,6 +2,8 @@ package com.leetcode.tag.daily.five;
 
 /**
  * 31. 下一个排列
+ * <p>
+ * 看图.看图.看图
  */
 public class NextPermutation {
     /**
