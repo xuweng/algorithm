@@ -35,6 +35,8 @@ public class LengthOfLIS2 {
     }
 
     /**
+     * 方法二：贪心 + 二分查找
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/longest-increasing-subsequence/solution/zui-chang-shang-sheng-zi-xu-lie-by-leetcode-soluti/
      * 来源：力扣（LeetCode）
@@ -46,6 +48,7 @@ public class LengthOfLIS2 {
             if (n == 0) {
                 return 0;
             }
+            // 希望每次在上升子序列最后加上的那个数尽可能的小
             int[] d = new int[n + 1];
             d[len] = nums[0];
             for (int i = 1; i < n; ++i) {
