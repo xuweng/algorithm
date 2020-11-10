@@ -6,6 +6,10 @@ import java.util.Map;
 
 /**
  * 1590. 使数组和能被 P 整除
+ * <p>
+ * 前缀和
+ * <p>
+ * 区间和
  */
 public class MinSubarray {
     /**
