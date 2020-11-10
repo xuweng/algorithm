@@ -49,10 +49,13 @@ public class LengthOfLIS2 {
             int[] d = new int[n + 1];
             d[len] = nums[0];
             for (int i = 1; i < n; ++i) {
+                // nums[i]一定要放入d
                 if (nums[i] > d[len]) {
+                    // nums[i]放入d的末尾
                     d[++len] = nums[i];
                 } else {
-                    // 二分查找第一个比i大的数据
+                    // nums[i]放入d的中间
+                    // 在 d 数组中二分查找，找到第一个比 nums[i] 小的数 d[k]
                     int l = 1, r = len, pos = 0; // 如果找不到说明所有的数都比 nums[i] 大，此时要更新 d[1]，所以这里将 pos 设为 0
                     while (l <= r) {
                         int mid = (l + r) >> 1;
