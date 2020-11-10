@@ -25,6 +25,8 @@ public class ShipWithinDays {
     class Solution {
         public int shipWithinDays(int[] weights, int D) {
             int lo = 0, hi = Integer.MAX_VALUE;
+            // 这里low和high不是下标.是值.
+            // 下标二分.值二分.
             while (lo < hi) {
                 int mid = lo + (hi - lo) / 2;
                 if (canShip(weights, D, mid)) {
