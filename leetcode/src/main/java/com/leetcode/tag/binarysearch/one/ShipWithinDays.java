@@ -40,8 +40,8 @@ public class ShipWithinDays {
          * 判断在最低承载力为K的情形下能否在D天内送达所有包裹
          *
          * @param weights
-         * @param D
-         * @param K
+         * @param D       能否在D天内送达所有包裹
+         * @param K       最低承载力为K
          * @return
          */
         private boolean canShip(int[] weights, int D, int K) {
