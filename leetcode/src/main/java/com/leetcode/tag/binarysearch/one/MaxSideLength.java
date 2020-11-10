@@ -69,11 +69,7 @@ public class MaxSideLength {
                     h = mid - 1;
                 }
             }
-            if (help(h, threshold)) {
-                return h;
-            } else {
-                return l;
-            }
+            return help(h, threshold) ? h : l;
         }
 
         public boolean help(int k, int threshold) {
