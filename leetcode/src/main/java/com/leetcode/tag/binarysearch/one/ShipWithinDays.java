@@ -8,6 +8,8 @@ package com.leetcode.tag.binarysearch.one;
  * 树状数组
  * <p>
  * 前缀和
+ * <p>
+ * 贪心:尽可能小.尽可能多.
  */
 public class ShipWithinDays {
     /**
