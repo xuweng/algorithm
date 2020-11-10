@@ -61,6 +61,7 @@ public class LengthOfLIS2 {
                     // 在 d 数组中二分查找，找到第一个比 nums[i] 小的数 d[k]
                     int l = 1, r = len, pos = 0; // 如果找不到说明所有的数都比 nums[i] 大，此时要更新 d[1]，所以这里将 pos 设为 0
                     while (l <= r) {
+                        // 假设mid在各个位置
                         int mid = (l + r) >> 1;
                         if (d[mid] < nums[i]) {
                             pos = mid;
