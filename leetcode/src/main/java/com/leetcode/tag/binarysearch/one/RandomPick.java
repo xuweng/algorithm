@@ -1,9 +1,6 @@
 package com.leetcode.tag.binarysearch.one;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -37,6 +34,41 @@ public class RandomPick {
 
         public int pick() {
             return w.get(r.nextInt(w.size()));
+        }
+    }
+
+    /**
+     * 方法三：黑名单映射 [通过]
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/random-pick-with-blacklist/solution/hei-ming-dan-zhong-de-sui-ji-shu-by-leetcode-2/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        Map<Integer, Integer> m;
+        Random r;
+        int wlen;
+
+        public Solution1(int n, int[] b) {
+            m = new HashMap<>();
+            r = new Random();
+            wlen = n - b.length;
+            Set<Integer> w = IntStream.range(wlen, n).boxed().collect(Collectors.toSet());
+            for (int x : b) {
+                w.remove(x);
+            }
+            Iterator<Integer> wi = w.iterator();
+            for (int x : b) {
+                if (x < wlen) {
+                    m.put(x, wi.next());
+                }
+            }
+        }
+
+        public int pick() {
+            int k = r.nextInt(wlen);
+            return m.getOrDefault(k, k);
         }
     }
 
