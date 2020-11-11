@@ -35,14 +35,23 @@ public class MinDays {
             return min;
         }
 
-        // 返回等待day天，有多少组连续的k天<=day  这里用的贪心
+        /**
+         * 返回等待day天，有多少组连续的k天<=day  这里用的贪心
+         *
+         * @param arr
+         * @param day
+         * @param k
+         * @return
+         */
         private int getCount(int[] arr, int day, int k) {
             int re = 0;
             int count = 0;
             for (int j : arr) {
                 if (j <= day) {
+                    // 连续自增
                     count++;
                 } else {
+                    // 不连续置0
                     count = 0;
                 }
                 //  连续的k朵花🌼开了
