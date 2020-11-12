@@ -70,4 +70,21 @@ public class SortArrayByParityII {
         }
     }
 
+    class Solution2 {
+        public int[] sortArrayByParityII(int[] A) {
+            int[] ans = new int[A.length];
+            int i = 0, j = 1;
+            for (int x : A) {
+                if (x % 2 == 0) {
+                    ans[i] = x;
+                    i += 2;
+                } else {
+                    ans[j] = x;
+                    j += 2;
+                }
+            }
+            return ans;
+        }
+    }
+
 }
