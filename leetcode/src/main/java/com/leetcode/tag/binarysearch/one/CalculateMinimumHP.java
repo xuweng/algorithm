@@ -139,6 +139,10 @@ public class CalculateMinimumHP {
     }
 
     /**
+     * 这道题的dp是倒序的，这点很重要，为什么不能像【最小路径和】一样是正序的？
+     * <p>
+     * 这道题由于有“加血”的过程，只能依赖后面的值判断需要的血量
+     * <p>
      * 作者：fakerleet
      * 链接：https://leetcode-cn.com/problems/dungeon-game/solution/cong-hui-su-dao-ji-yi-hua-sou-suo-dao-dong-tai-gui/
      * 来源：力扣（LeetCode）
