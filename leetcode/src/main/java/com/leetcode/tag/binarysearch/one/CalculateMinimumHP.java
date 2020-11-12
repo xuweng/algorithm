@@ -93,6 +93,7 @@ public class CalculateMinimumHP {
      * 递归优化：记忆化搜索
      */
     class Solution2 {
+        //memory 已经就是动态规划的思想
         int[][] memory;
 
         public int calculateMinimumHP(int[][] dungeon) {
