@@ -156,7 +156,7 @@ public class CalculateMinimumHP {
             int rowSize = dungeon.length;
             int colSize = dungeon[0].length;
             int[][] dp = new int[rowSize][colSize];
-            // 设置最后一个值。
+            // 先设置最后一个值。
             dp[rowSize - 1][colSize - 1] = Math.max(0, -dungeon[rowSize - 1][colSize - 1]);
 
             // 设置最后一列的值
