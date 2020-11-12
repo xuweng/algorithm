@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 /**
  * 174. 地下城游戏
+ * <p>
+ * 初始化。计算顺序。dp。dfs+记忆化。
  */
 public class CalculateMinimumHP {
     /**
