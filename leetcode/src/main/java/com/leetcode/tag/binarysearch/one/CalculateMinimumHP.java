@@ -186,4 +186,29 @@ public class CalculateMinimumHP {
 
     }
 
+    class Solution5 {
+        public int calculateMinimumHP(int[][] dungeon) {
+            return dfs(dungeon, dungeon.length, dungeon[0].length, 0, 0);
+        }
+
+        private int dfs(int[][] dungeon, int m, int n, int i, int j) {
+            // 到达终点，递归终止。
+            if (i == m - 1 && j == n - 1) {
+                return Math.max(1 - dungeon[i][j], 1);
+            }
+            // 最后一行，只能向右搜索。
+            if (i == m - 1) {
+                return Math.max(dfs(dungeon, m, n, i, j + 1) - dungeon[i][j], 1);
+            }
+            // 最后一列，只能向下搜索。
+            if (j == n - 1) {
+                return Math.max(dfs(dungeon, m, n, i + 1, j) - dungeon[i][j], 1);
+            }
+            // 向下搜索 + 向右搜索，得到(i, j)点的后续路径所要求的最低血量 Math.min(dfs(i + 1, j), dfs(i, j + 1))，
+            // 又因为(i, j)点本身提供血量dungeon[i][j], 因此从(i, j)开始所需的最低血量为 Math.min(dfs(i + 1, j), dfs(i, j + 1)) - dungeon[i][j]
+            // 因为骑士的血量不能小于1，因此要和1取个max。
+            return Math.max(Math.min(dfs(dungeon, m, n, i + 1, j), dfs(dungeon, m, n, i, j + 1)) - dungeon[i][j], 1);
+        }
+    }
+
 }
