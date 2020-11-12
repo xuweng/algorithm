@@ -56,6 +56,7 @@ public class SortArrayByParityII {
                         //奇数下标j
                         j += 2;
                     }
+                    // 此时j是偶数.i是奇数.
                     swap(A, i, j);
                 }
             }
