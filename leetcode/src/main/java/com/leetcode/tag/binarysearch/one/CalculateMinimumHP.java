@@ -89,4 +89,51 @@ public class CalculateMinimumHP {
 
     }
 
+    /**
+     * 递归优化：记忆化搜索
+     */
+    class Solution2 {
+        int[][] memory;
+
+        public int calculateMinimumHP(int[][] dungeon) {
+            if (dungeon == null || dungeon.length == 0 || dungeon[0].length == 0) {
+                return 0;
+            }
+            memory = new int[dungeon.length][dungeon[0].length];
+            // 初始化为-1，便于区别是否计算过结果了。
+            for (int[] ints : memory) {
+                Arrays.fill(ints, -1);
+            }
+            // 最低的耗血量为 + 1；就是骑士的救公主的最低血量。
+            return dfs(0, 0, dungeon) + 1;
+        }
+
+        public int dfs(int rowIndex, int colIndex, int[][] dungeon) {
+            if (rowIndex >= dungeon.length || colIndex >= dungeon[0].length) {
+                return Integer.MAX_VALUE;
+            }
+            // 不为-1就是计算过了，直接返回结果。
+            if (memory[rowIndex][colIndex] != -1) {
+                return memory[rowIndex][colIndex];
+            }
+            // 退出条件
+            if (rowIndex == dungeon.length - 1 && colIndex == dungeon[0].length - 1) {
+                // 最后一格
+                // 如果最后一个大于等于0，就返还0。
+                //如果最后一个小于零，就返回负的值。
+                return dungeon[rowIndex][colIndex] >= 0 ? 0 : -dungeon[rowIndex][colIndex];
+            }
+            //  右边格子的最优解，也就是最低的耗血量
+            int rightMin = dfs(rowIndex, colIndex + 1, dungeon);
+            //  下边格子的最优解
+            int downMin = dfs(rowIndex + 1, colIndex, dungeon);
+            // f(i,j) = min(f(i+1, j), f(i, j+1)) - dungeon[i][j]
+            int needMin = Math.min(rightMin, downMin) - dungeon[rowIndex][colIndex];
+
+            memory[rowIndex][colIndex] = Math.max(needMin, 0);
+            return memory[rowIndex][colIndex];
+        }
+
+    }
+
 }
