@@ -22,6 +22,7 @@ public class OddEvenList {
             ListNode evenHead = head.next;
             ListNode odd = head, even = evenHead;
             while (even != null && even.next != null) {
+                // odd和even交替指向
                 odd.next = even.next;
                 odd = odd.next;
                 even.next = odd.next;
