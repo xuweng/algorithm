@@ -34,7 +34,7 @@ public class CalculateMinimumHP2 {
                 }
             }
 
-            return dp[0][0];
+            return dp[0][0] + 1;
         }
     }
 }
