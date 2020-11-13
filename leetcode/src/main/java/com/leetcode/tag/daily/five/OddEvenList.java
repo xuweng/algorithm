@@ -15,7 +15,9 @@ public class OddEvenList {
             if (head == null) {
                 return null;
             }
+            // 奇数节点
             // head------------old
+            // 偶数节点
             // evenHead--------even
             ListNode evenHead = head.next;
             ListNode odd = head, even = evenHead;
