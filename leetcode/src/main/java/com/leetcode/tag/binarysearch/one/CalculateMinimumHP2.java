@@ -27,8 +27,8 @@ public class CalculateMinimumHP2 {
                 dp[i][col] = Math.max(v, 0);
             }
 
-            for (int i = row - 1; i >= 0; i++) {
-                for (int j = col - 1; j >= 0; j++) {
+            for (int i = row - 1; i >= 0; i--) {
+                for (int j = col - 1; j >= 0; j--) {
                     int v = Math.min(dp[i + 1][j], dp[i][j + 1]) - dungeon[i][j];
                     dp[i][j] = Math.max(v, 0);
                 }
