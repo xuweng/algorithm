@@ -44,6 +44,7 @@ public class Search {
                     }
                 } else if (nums[left] == nums[mid]) {                      // 如果左值等于中值，可能是已经找到了目标，也可能是遇到了重复值
                     if (nums[left] != target) {                            // 如果左值不等于目标，说明还没找到，需要逐一清理重复值。
+                        //                        对重复元素逐个排除
                         left++;
                     } else {                                               // 如果左值等于目标，说明已经找到最左边的目标值
                         right = left;                                      // 将右边界移动到left，循环结束
