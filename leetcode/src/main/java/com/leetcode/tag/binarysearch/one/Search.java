@@ -5,6 +5,8 @@ package com.leetcode.tag.binarysearch.one;
  */
 public class Search {
     /**
+     * 旋转一次和旋转多次没有任何区别, 最终还是只有一个旋转点, 以及不多于 2 个的有序区间
+     * <p>
      * 作者：armeria-program
      * 链接：https://leetcode-cn.com/problems/search-rotate-array-lcci/solution/er-fen-fa-by-armeria-program/
      * 来源：力扣（LeetCode）
