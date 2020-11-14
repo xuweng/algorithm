@@ -31,12 +31,14 @@ public class Search {
             while (left < right) {                                         // 循环结束条件left==right
                 int mid = left + (right - left) / 2;
                 if (nums[left] < nums[mid]) {                              // 如果左值小于中值，说明左边区间升序
+                    // mid在左升序区间
                     if (nums[left] <= target && target <= nums[mid]) {     // 如果目标在左边的升序区间中，右边界移动到mid
                         right = mid;
                     } else {                                               // 否则目标在右半边，左边界移动到mid+1
                         left = mid + 1;
                     }
                 } else if (nums[left] > nums[mid]) {                       // 如果左值大于中值，说明左边不是升序，右半边升序
+                    // mid在右升序区间
                     if (nums[left] <= target || target <= nums[mid]) {     // 如果目标在左边，右边界移动到mid
                         right = mid;
                     } else {                                               // 否则目标在右半边，左边界移动到mid+1
