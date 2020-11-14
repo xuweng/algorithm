@@ -7,6 +7,15 @@ public class Search {
     /**
      * 旋转一次和旋转多次没有任何区别, 最终还是只有一个旋转点, 以及不多于 2 个的有序区间
      * <p>
+     * 此题相比于无重复元素的普通旋转数组搜索问题来说，增加了两个点：
+     * 1.多次旋转而不是一次旋转，但其实多次旋转与一次旋转效果是相同的，因此可以忽略这一变化；
+     * 2.有重复元素，这是比较难的一个点；
+     * <p>
+     * 作者：notegeek
+     * 链接：https://leetcode-cn.com/problems/search-rotate-array-lcci/solution/er-fen-cha-zhao-pai-chu-mu-biao-shu-wei-yu-wu-xu-q/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * <p>
      * 作者：armeria-program
      * 链接：https://leetcode-cn.com/problems/search-rotate-array-lcci/solution/er-fen-fa-by-armeria-program/
      * 来源：力扣（LeetCode）
