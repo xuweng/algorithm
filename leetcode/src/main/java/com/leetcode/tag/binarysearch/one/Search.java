@@ -22,6 +22,13 @@ public class Search {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution {
+        /**
+         * 先搞清楚mid在哪个区间.然后再判断target.
+         *
+         * @param nums
+         * @param target
+         * @return
+         */
         public int search(int[] nums, int target) {
             int left = 0;
             int right = nums.length - 1;
