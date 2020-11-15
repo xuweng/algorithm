@@ -27,10 +27,12 @@ public class RemoveKdigits {
             int length = num.length();
             for (int i = 0; i < length; ++i) {
                 char digit = num.charAt(i);
+                // 删除单调栈比当前元素大的元素
                 while (!deque.isEmpty() && k > 0 && deque.peekLast() > digit) {
                     deque.pollLast();
                     k--;
                 }
+                // 当前元素入栈
                 deque.offerLast(digit);
             }
 
