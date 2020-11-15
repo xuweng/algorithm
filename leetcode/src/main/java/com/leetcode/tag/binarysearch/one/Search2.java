@@ -20,6 +20,16 @@ public class Search2 {
             return bs(arr, target, 0, arr.length - 1);
         }
 
+        /**
+         * [2, 1, 2, 2, 2]
+         * 2
+         *
+         * @param arr
+         * @param target
+         * @param low
+         * @param high
+         * @return
+         */
         private int bs(int[] arr, int target, int low, int high) {
             if (low > high) {
                 return -1;
