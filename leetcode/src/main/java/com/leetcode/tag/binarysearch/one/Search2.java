@@ -50,6 +50,7 @@ public class Search2 {
                 return bs(arr, target, mid + 1, high);
             } else {
                 // low和mid相等。不能确定mid在哪个区间。
+                // 不能排除一半，只能排除1个元素。
                 return arr[low] == target ? low : bs(arr, target, low + 1, high);
             }
         }
