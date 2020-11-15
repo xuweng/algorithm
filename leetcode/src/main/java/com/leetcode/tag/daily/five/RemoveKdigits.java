@@ -5,6 +5,12 @@ import java.util.LinkedList;
 
 /**
  * 402. 移掉K位数字
+ * <p>
+ * https://leetcode-cn.com/problems/remove-k-digits/solution/yi-zhao-chi-bian-li-kou-si-dao-ti-ma-ma-zai-ye-b-5/
+ * <p>
+ * 这四道题都是删除或者保留若干个字符，使得剩下的数字最小（或最大）或者字典序最小（或最大）.
+ * <p>
+ * 而解决问题的前提是要有一定数学前提。而基于这个数学前提，我们贪心地删除栈中相邻的字符
  */
 public class RemoveKdigits {
     /**
