@@ -30,6 +30,7 @@ public class RemoveKdigits {
          * @return
          */
         public String removeKdigits(String num, int k) {
+            // 双端队列当作栈
             Deque<Character> deque = new LinkedList<>();
             int length = num.length();
             for (int i = 0; i < length; ++i) {
@@ -40,7 +41,7 @@ public class RemoveKdigits {
                     deque.pollLast();
                     k--;
                 }
-                // 当前元素入栈
+                // 当前元素入栈。相等也会入栈。
                 deque.offerLast(digit);
             }
 
@@ -53,7 +54,10 @@ public class RemoveKdigits {
             StringBuilder ret = new StringBuilder();
             boolean leadingZero = true;
             while (!deque.isEmpty()) {
+                // 取第一个元素
                 char digit = deque.pollFirst();
+                // 如果num包含0.单调栈的第一个元素是0.
+                // 首字母不能为0
                 if (leadingZero && digit == '0') {
                     continue;
                 }
