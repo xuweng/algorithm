@@ -12,7 +12,7 @@ package com.leetcode.tag.binarysearch.one;
  * 思维缜密。思维缜密。思维缜密。思维缜密。思维缜密。思维缜密。思维缜密。
  */
 public class Search2 {
-    class Solution {
+    static class Solution {
         public int search(int[] arr, int target) {
             if (arr == null || arr.length == 0) {
                 return -1;
