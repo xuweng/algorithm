@@ -57,7 +57,7 @@ public class RemoveKdigits {
                 // 取第一个元素
                 char digit = deque.pollFirst();
                 // 如果num包含0.单调栈的第一个元素是0.
-                // 首字母不能为0.最左边连续字符的不能为0。
+                // 首字母不能为0.最左边的连续字符不能为0。
                 if (leadingZero && digit == '0') {
                     continue;
                 }
