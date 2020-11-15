@@ -26,7 +26,8 @@ public class Search2 {
             }
             int mid = low + (high - low) / 2;
             if (arr[mid] == target) {
-                return mid;
+                //若有多个相同元素，返回索引值最小的一个。
+                return mid == low ? low : bs(arr, target, low, mid - 1);
             }
             if (arr[low] < arr[mid]) {
                 // mid在左区间
@@ -42,12 +43,8 @@ public class Search2 {
                 }
                 return bs(arr, target, mid + 1, high);
             } else {
-                // low和mid相等
-                if (arr[low] == target) {
-                    return low;
-                } else {
-                    return bs(arr, target, low + 1, high);
-                }
+                // low和mid相等.
+                return arr[low] == target ? low : bs(arr, target, low + 1, high);
             }
         }
     }
