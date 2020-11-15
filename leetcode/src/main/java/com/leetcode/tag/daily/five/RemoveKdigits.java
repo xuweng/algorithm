@@ -34,6 +34,8 @@ public class RemoveKdigits {
                 deque.offerLast(digit);
             }
 
+            // 此时单调栈数据单调递增
+            // 删除次数不够。从尾部开始删除单调栈数据。
             for (int i = 0; i < k; ++i) {
                 deque.pollLast();
             }
