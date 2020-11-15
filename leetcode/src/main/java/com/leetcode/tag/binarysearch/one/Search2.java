@@ -49,7 +49,7 @@ public class Search2 {
                 }
                 return bs(arr, target, mid + 1, high);
             } else {
-                // low和mid相等.
+                // low和mid相等。不能确定mid在哪个区间。
                 return arr[low] == target ? low : bs(arr, target, low + 1, high);
             }
         }
