@@ -21,6 +21,10 @@ public class ReconstructQueue {
      * <p>
      * 按照数对的元素 1 降序排序，按照数对的元素 2 升序排序
      * <p>
+     * 本题有两个维度，h和k，看到这种题目一定要想如何确定一个维度，然后在按照另一个维度重新排列。
+     * <p>
+     * 如果两个维度一起考虑一定会顾此失彼。
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/queue-reconstruction-by-height/solution/gen-ju-shen-gao-zhong-jian-dui-lie-by-leetcode-sol/
      * 来源：力扣（LeetCode）
