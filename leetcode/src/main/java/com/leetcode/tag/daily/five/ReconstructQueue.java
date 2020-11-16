@@ -14,6 +14,10 @@ import java.util.Arrays;
  * 特定算法。特定算法。特定算法。特定算法。特定算法。特定算法。
  * <p>
  * 特定算法。特定算法。特定算法。特定算法。特定算法。特定算法。
+ * <p>
+ * 知道算法步骤。不知道why?
+ * <p>
+ * 知道算法步骤。不知道why?
  */
 public class ReconstructQueue {
     /**
