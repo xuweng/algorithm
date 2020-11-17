@@ -18,13 +18,18 @@ public class FindLength {
                 return 0;
             }
             int[][] dp = new int[A.length][B.length];
-            dp[0][0] = A[0] == B[0] ? 1 : 0;
-            for (int i = 1; i < A.length; i++) {
-                for (int j = 1; j < B.length; j++) {
-                    dp[i][j] = A[i] == B[j] ? dp[i - 1][j - 1] + 1 : 0;
+            int result = 0;
+            for (int i = 0; i < A.length; i++) {
+                for (int j = 0; j < B.length; j++) {
+                    if (i == 0 || j == 0) {
+                        dp[i][j] = A[i] == B[j] ? 1 : 0;
+                    } else {
+                        dp[i][j] = A[i] == B[j] ? dp[i - 1][j - 1] + 1 : 0;
+                    }
+                    result = Math.max(result, dp[i][j]);
                 }
             }
-            return dp[A.length - 1][B.length - 1];
+            return result;
         }
     }
 }
