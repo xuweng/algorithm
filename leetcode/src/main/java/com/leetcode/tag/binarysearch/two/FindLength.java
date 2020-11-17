@@ -13,6 +13,17 @@ package com.leetcode.tag.binarysearch.two;
  */
 public class FindLength {
     class Solution {
+        /**
+         * 脑里跑一下代码
+         * <p>
+         * 注意数组越界
+         * <p>
+         * 注意初始化
+         *
+         * @param A
+         * @param B
+         * @return
+         */
         public int findLength(int[] A, int[] B) {
             if (A == null || A.length == 0 || B == null || B.length == 0) {
                 return 0;
