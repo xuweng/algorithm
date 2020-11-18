@@ -10,7 +10,9 @@ package com.leetcode.tag.binarysearch.two;
 public class LengthOfLIS {
     class Solution {
         /**
-         * 不连续
+         * 连续:f(i)只需要看f(i-1)
+         * <p>
+         * 不连续:f(1)、f(2).....f(i-1)
          *
          * @param nums
          * @return
