@@ -2,6 +2,12 @@ package com.leetcode.tag.binarysearch.two;
 
 /**
  * 174. 地下城游戏
+ * <p>
+ * 连续。不连续。
+ * <p>
+ * 连续。不连续。
+ * <p>
+ * 连续。不连续。
  */
 public class CalculateMinimumHP {
     class Solution {
