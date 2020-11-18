@@ -15,12 +15,12 @@ public class CalculateMinimumHP {
             dp[row][col] = Math.max(0, -dungeon[row][col]);
 
             //最后一行
-            for (int i = col; i >= 0; i--) {
+            for (int i = col - 1; i >= 0; i--) {
                 int d = dp[row][i + 1] - dungeon[row][i];
                 dp[row][i] = Math.max(0, d);
             }
             //最后一列
-            for (int i = row; i >= 0; i--) {
+            for (int i = row - 1; i >= 0; i--) {
                 int d = dp[i + 1][col] - dungeon[i][col];
                 dp[row][i] = Math.max(0, d);
             }
