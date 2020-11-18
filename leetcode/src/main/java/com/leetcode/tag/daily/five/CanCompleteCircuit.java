@@ -43,4 +43,38 @@ public class CanCompleteCircuit {
         }
     }
 
+    /**
+     * 看图。看图。看图。
+     * <p>
+     * 解法一 暴力解法
+     * <p>
+     * 作者：windliang
+     * 链接：https://leetcode-cn.com/problems/gas-station/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by--30/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int canCompleteCircuit(int[] gas, int[] cost) {
+            int n = gas.length;
+            //考虑从每一个点出发
+            for (int i = 0; i < n; i++) {
+                int j = i;
+                int remain = gas[i];
+                //当前剩余的油能否到达下一个点
+                while (remain - cost[j] >= 0) {
+                    //减去花费的加上新的点的补给
+                    remain = remain - cost[j] + gas[(j + 1) % n];
+                    j = (j + 1) % n;
+                    //j 回到了 i
+                    if (j == i) {
+                        return i;
+                    }
+                }
+            }
+            //任何点都不可以
+            return -1;
+        }
+
+    }
+
 }
