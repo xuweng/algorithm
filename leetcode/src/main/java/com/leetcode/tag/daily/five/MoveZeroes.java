@@ -2,6 +2,10 @@ package com.leetcode.tag.daily.five;
 
 /**
  * 283. 移动零
+ * <p>
+ * 看图。
+ * <p>
+ * 指向0，指向非0
  */
 public class MoveZeroes {
     /**
