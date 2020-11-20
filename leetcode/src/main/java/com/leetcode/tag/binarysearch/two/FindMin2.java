@@ -11,6 +11,14 @@ public class FindMin2 {
             return bs(nums, 0, nums.length - 1);
         }
 
+        /**
+         * 取nums[low]还是nums[high]?
+         *
+         * @param nums
+         * @param low
+         * @param high
+         * @return
+         */
         private int bs(int[] nums, int low, int high) {
             if (low > high) {
                 return -1;
