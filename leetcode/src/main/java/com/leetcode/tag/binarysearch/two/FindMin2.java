@@ -25,7 +25,7 @@ public class FindMin2 {
             }
             int mid = low + (high - low) / 2;
             if (low == mid) {
-                return nums[low];
+                return Math.min(nums[low], nums[high]);
             }
             if (nums[mid] > nums[high]) {
                 return bs(nums, mid + 1, high);
