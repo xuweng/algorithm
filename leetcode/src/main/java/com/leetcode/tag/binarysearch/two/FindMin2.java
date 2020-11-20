@@ -28,11 +28,7 @@ public class FindMin2 {
                 //low+1==high
                 return Math.min(nums[low], nums[high]);
             }
-            if (nums[mid] > nums[high]) {
-                return bs(nums, mid + 1, high);
-            } else {
-                return bs(nums, low, mid);
-            }
+            return nums[mid] > nums[high] ? bs(nums, mid + 1, high) : bs(nums, low, mid);
         }
     }
 }
