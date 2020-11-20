@@ -34,6 +34,7 @@ public class InsertionSortList {
                     while (prev.next.val <= curr.val) {
                         prev = prev.next;
                     }
+                    //假设curr插入头结点.curr最小.此时pre没有移动，此时pre就是哑结点.
                     lastSorted.next = curr.next;
                     //插入curr.链表插入.
                     curr.next = prev.next;
