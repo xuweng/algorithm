@@ -17,7 +17,7 @@ public class InsertionSortList {
             if (head == null) {
                 return head;
             }
-            //哑节点
+            //哑节点。插入头结点。
             //引入哑节点是为了便于在 head 节点之前插入节点
             ListNode dummyHead = new ListNode(0);
             dummyHead.next = head;
