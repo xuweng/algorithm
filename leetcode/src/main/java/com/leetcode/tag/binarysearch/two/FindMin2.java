@@ -6,7 +6,7 @@ package com.leetcode.tag.binarysearch.two;
  * 头结点。头结点。头结点。头结点
  */
 public class FindMin2 {
-    class Solution {
+    static class Solution {
         public int findMin(int[] nums) {
             return bs(nums, 0, nums.length - 1);
         }
