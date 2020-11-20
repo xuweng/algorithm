@@ -16,10 +16,13 @@ public class FindMin2 {
                 return -1;
             }
             int mid = low + (high - low) / 2;
-            if (nums[low] > nums[mid]) {
-                return bs(nums, low, mid);
-            } else {
+            if (low == mid) {
+                return low;
+            }
+            if (nums[mid] > nums[high]) {
                 return bs(nums, mid + 1, high);
+            } else {
+                return bs(nums, low, mid);
             }
         }
     }
