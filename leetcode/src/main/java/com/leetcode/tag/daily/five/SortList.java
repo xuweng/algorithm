@@ -52,6 +52,8 @@ public class SortList {
         }
 
         /**
+         * 重点
+         * <p>
          * 将两个排序后的子链表合并
          *
          * @param head1
@@ -74,6 +76,8 @@ public class SortList {
                 }
                 temp = temp.next;
             }
+            // 如果是数组.剩余元素都要复制.
+            // 链表直接改变指针指向.厉害.
             if (temp1 != null) {
                 temp.next = temp1;
             } else if (temp2 != null) {
