@@ -4,6 +4,8 @@ package com.leetcode.tag.binarysearch.two;
  * 153. 寻找旋转排序数组中的最小值
  * <p>
  * 头结点。头结点。头结点。头结点
+ * <p>
+ * 重复元素：排除high、直接线性查找
  */
 public class FindMin2 {
     static class Solution {
