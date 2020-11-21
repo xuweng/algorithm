@@ -1,0 +1,98 @@
+package com.leetcode.tag.daily.five;
+
+/**
+ * 148. 排序链表
+ * <p>
+ * 时间复杂度是 O(nlogn) 的排序算法包括归并排序、堆排序和快速排序（快速排序的最差时间复杂度是  O(n^2) )
+ * <p>
+ * 最适合链表的排序算法是归并排序。
+ */
+public class SortList {
+    /**
+     * 方法一：自顶向下归并排序
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/sort-list/solution/pai-xu-lian-biao-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution {
+        public ListNode sortList(ListNode head) {
+            return sortList(head, null);
+        }
+
+        public ListNode sortList(ListNode head, ListNode tail) {
+            if (head == null) {
+                return head;
+            }
+            if (head.next == tail) {
+                head.next = null;
+                return head;
+            }
+            //寻找链表的中点可以使用快慢指针的做法
+            ListNode slow = head, fast = head;
+            while (fast != tail) {
+                slow = slow.next;
+                fast = fast.next;
+                if (fast != tail) {
+                    fast = fast.next;
+                }
+            }
+            ListNode mid = slow;
+            //对两个子链表分别排序。
+            ListNode list1 = sortList(head, mid);
+            //对两个子链表分别排序。
+            ListNode list2 = sortList(mid, tail);
+            ListNode sorted = merge(list1, list2);
+            return sorted;
+        }
+
+        /**
+         * 将两个排序后的子链表合并
+         *
+         * @param head1
+         * @param head2
+         * @return
+         */
+        public ListNode merge(ListNode head1, ListNode head2) {
+            ListNode dummyHead = new ListNode(0);
+            ListNode temp = dummyHead, temp1 = head1, temp2 = head2;
+            while (temp1 != null && temp2 != null) {
+                //每次只需要移动较小指针
+                if (temp1.val <= temp2.val) {
+                    temp.next = temp1;
+                    //移动temp1指针
+                    temp1 = temp1.next;
+                } else {
+                    temp.next = temp2;
+                    //移动temp2指针
+                    temp2 = temp2.next;
+                }
+                temp = temp.next;
+            }
+            if (temp1 != null) {
+                temp.next = temp1;
+            } else if (temp2 != null) {
+                temp.next = temp2;
+            }
+            return dummyHead.next;
+        }
+    }
+
+    class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+    }
+}
