@@ -99,6 +99,8 @@ public class SortList {
                 node = node.next;
             }
             ListNode dummyHead = new ListNode(0, head);
+            //初始时1subLength=1，每个长度为 1 的子链表都是有序的
+            //如果每个长度为 subLength 的子链表已经有序，合并两个长度为 subLength 的有序子链表，得到长度为subLength×2 的子链表，一定也是有序的。
             for (int subLength = 1; subLength < length; subLength <<= 1) {
                 ListNode prev = dummyHead, curr = dummyHead.next;
                 while (curr != null) {
