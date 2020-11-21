@@ -1,5 +1,9 @@
 package com.leetcode.tag.daily.five;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+
 /**
  * 148. 排序链表
  * <p>
@@ -149,6 +153,25 @@ public class SortList {
                 temp.next = temp2;
             }
             return dummyHead.next;
+        }
+    }
+
+    class Solution2 {
+        public ListNode sortList(ListNode head) {
+            if (head == null) {
+                return null;
+            }
+            List<ListNode> list = new ArrayList<>();
+            while (head != null) {
+                list.add(head);
+                head = head.next;
+            }
+            list.sort(Comparator.comparingInt(n -> n.val));
+            for (int i = 1; i < list.size(); i++) {
+                list.get(i - 1).next = list.get(i);
+            }
+            list.get(list.size() - 1).next = null;
+            return list.get(0);
         }
     }
 
