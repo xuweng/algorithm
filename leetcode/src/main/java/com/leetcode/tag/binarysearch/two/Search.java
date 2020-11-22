@@ -14,6 +14,8 @@ public class Search {
                 return -1;
             }
             int mid = low + (high - low) / 2;
+            // 这里和low比较
+            // 不是和high比较
             if (arr[low] < arr[mid]) {
                 if (arr[low] <= target && target <= arr[mid]) {
                     return bs(arr, target, low, mid);
@@ -25,7 +27,7 @@ public class Search {
                 }
                 return bs(arr, target, mid + 1, high);
             } else {
-                return arr[low] == target ? low : bs(arr, target, low, high - 1);
+                return arr[low] == target ? low : bs(arr, target, low + 1, high);
             }
         }
     }
