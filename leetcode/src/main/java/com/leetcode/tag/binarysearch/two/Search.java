@@ -27,6 +27,9 @@ public class Search {
                 }
                 return bs(arr, target, mid + 1, high);
             } else {
+                // 重复元素
+                // 和low比较。排除low.
+                // 和high比较。排除high.
                 return arr[low] == target ? low : bs(arr, target, low + 1, high);
             }
         }
