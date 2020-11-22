@@ -35,7 +35,7 @@ public class IsAnagram {
     }
 
     /**
-     * c
+     * 方法二：哈希表
      * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/valid-anagram/solution/you-xiao-de-zi-mu-yi-wei-ci-by-leetcode-solution/
@@ -47,6 +47,7 @@ public class IsAnagram {
             if (s.length() != t.length()) {
                 return false;
             }
+            // 计数
             int[] table = new int[26];
             for (int i = 0; i < s.length(); i++) {
                 table[s.charAt(i) - 'a']++;
