@@ -26,7 +26,9 @@ public class FindMinArrowShots {
             if (points.length == 0) {
                 return 0;
             }
+            // 右端点升序
             Arrays.sort(points, Comparator.comparingInt(point -> point[1]));
+            // 右端点
             int pos = points[0][1];
             int ans = 1;
             for (int[] balloon : points) {
