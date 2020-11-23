@@ -32,6 +32,7 @@ public class FindMinArrowShots {
             int pos = points[0][1];
             int ans = 1;
             for (int[] balloon : points) {
+                // 左端点比pos大
                 if (balloon[0] > pos) {
                     pos = balloon[1];
                     ++ans;
