@@ -14,7 +14,7 @@ public class FindMinArrowShots {
      * <p>
      * 为了方便在一次遍历中识别重合，先排序。是按区间左端还是右端排升序呢？
      * <p>
-     * 按右端升序。
+     * 按右端升序。多看一下。慢慢理解。
      * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/minimum-number-of-arrows-to-burst-balloons/solution/yong-zui-shao-shu-liang-de-jian-yin-bao-qi-qiu-1-2/
