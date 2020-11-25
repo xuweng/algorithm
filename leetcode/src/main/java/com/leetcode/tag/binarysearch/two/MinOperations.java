@@ -124,6 +124,7 @@ public class MinOperations {
             }
             //sum2=区间[l,r]和
             //sum2=rem?
+            // 同向双指针
             int l = 0, r = 0, rem = sum - x, sum2 = 0, max = 0;
             while (l < n && r < n) {
                 // 右指针先移动.扩大窗口.
