@@ -126,6 +126,7 @@ public class MinOperations {
             //sum2=rem?
             int l = 0, r = 0, rem = sum - x, sum2 = 0, max = 0;
             while (l < n && r < n) {
+                // 右指针先移动.扩大窗口.
                 while (r < n && sum2 <= rem) {
                     sum2 += nums[r];
                     r++;
@@ -133,6 +134,7 @@ public class MinOperations {
                 if (sum2 - nums[r - 1] == rem) {
                     max = Math.max(max, r - 1 - l);
                 }
+                // 移动左指针.缩小窗口.
                 while (l < r && sum2 > rem) {
                     sum2 -= nums[l];
                     l++;
