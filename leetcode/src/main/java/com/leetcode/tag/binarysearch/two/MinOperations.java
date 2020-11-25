@@ -100,4 +100,50 @@ public class MinOperations {
         }
     }
 
+    /**
+     * 双指针，反向考虑
+     * <p>
+     * 判断从nums两头减数字能否等于x, 相当于判断数组nums是否有子数组和恰好等于数组总和sum-x，并求取最大长度。
+     * <p>
+     * 用双指针或者滑动窗口遍历数组计算最长和为sum-x的子数组长度。
+     * <p>
+     * 作者：maxatom
+     * 链接：https://leetcode-cn.com/problems/minimum-operations-to-reduce-x-to-zero/solution/shuang-zhi-zhen-fan-xiang-kao-lu-by-maxatom/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public int minOperations(int[] nums, int x) {
+            int n = nums.length;
+            int sum = Arrays.stream(nums).sum();
+            if (sum < x) {
+                return -1;
+            }
+            if (sum == x) {
+                return n;
+            }
+            //sum2=区间[l,r]和
+            //sum2=rem?
+            int l = 0, r = 0, rem = sum - x, sum2 = 0, max = 0;
+            while (l < n && r < n) {
+                while (r < n && sum2 <= rem) {
+                    sum2 += nums[r];
+                    r++;
+                }
+                if (sum2 - nums[r - 1] == rem) {
+                    max = Math.max(max, r - 1 - l);
+                }
+                while (l < r && sum2 > rem) {
+                    sum2 -= nums[l];
+                    l++;
+                }
+                if (sum2 == rem) {
+                    max = Math.max(max, r - l);
+                }
+            }
+            return max == 0 ? -1 : n - max;
+        }
+
+    }
+
 }
