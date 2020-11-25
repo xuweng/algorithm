@@ -5,6 +5,8 @@ import java.util.Map;
 
 /**
  * 1658. 将 x 减到 0 的最小操作数
+ * <p>
+ * 多看。多思考。
  */
 public class MinOperations {
     /**
