@@ -62,4 +62,42 @@ public class MinOperations {
             return cur != Integer.MAX_VALUE ? cur : -1;
         }
     }
+
+    /**
+     * 滑动窗口
+     * <p>
+     * 作者：electrobikeman-nanning
+     * 链接：https://leetcode-cn.com/problems/minimum-operations-to-reduce-x-to-zero/solution/shi-yong-hua-dong-chuang-kou-zhao-zhong-jian-zui-c/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int minOperations(int[] nums, int x) {
+            // 使用滑动窗口找中间最长的片段使得sum(片段)=sum(nums)-x
+            int maxPart = -1;
+            int sum = Arrays.stream(nums).sum();
+            int currentSum = 0;
+            int left = 0;
+            int right = 0;
+            while (left < nums.length) {
+                // 右指针移动扩大窗口
+                // 左指针移动缩小窗口
+                // 如果右边未到尽头，不断先向右探测片段，如果大于目标sum-x则左边移动直到结束
+                if (right < nums.length) {
+                    currentSum += nums[right++];
+                }
+                while (currentSum > sum - x && left < nums.length) {
+                    currentSum -= nums[left++];
+                }
+                if (currentSum == sum - x) {
+                    maxPart = Math.max(maxPart, right - left);
+                }
+                if (right == nums.length) {
+                    left++;
+                }
+            }
+            return maxPart == -1 ? -1 : nums.length - maxPart;
+        }
+    }
+
 }
