@@ -1,5 +1,6 @@
 package com.leetcode.tag.binarysearch.two;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +17,11 @@ public class MinOperations {
      */
     class Solution {
         public int minOperations(int[] nums, int x) {
+            //判断总和
+            int sum = Arrays.stream(nums).sum();
+            if (sum < x) {
+                return -1;
+            }
             int n = nums.length;
             //左部分和
             Map<Integer, Integer> l_presum = new HashMap<>();
@@ -41,6 +47,7 @@ public class MinOperations {
             int l_steps = l_presum.getOrDefault(x, Integer.MAX_VALUE);
             int r_steps = r_presum.getOrDefault(x, Integer.MAX_VALUE);
 
+            //比较只取左边和只取右边满足条件的步长
             int cur = Math.min(l_steps, r_steps);
 
             for (int left : l_presum.keySet()) {
