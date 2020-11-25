@@ -22,12 +22,14 @@ public class SortString {
 
             StringBuilder ret = new StringBuilder();
             while (ret.length() < s.length()) {
+                // 顺序
                 for (int i = 0; i < 26; i++) {
                     if (num[i] > 0) {
                         ret.append((char) (i + 'a'));
                         num[i]--;
                     }
                 }
+                // 倒序
                 for (int i = 25; i >= 0; i--) {
                     if (num[i] > 0) {
                         ret.append((char) (i + 'a'));
