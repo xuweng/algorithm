@@ -17,7 +17,9 @@ public class MinOperations {
     class Solution {
         public int minOperations(int[] nums, int x) {
             int n = nums.length;
+            //左部分和
             Map<Integer, Integer> l_presum = new HashMap<>();
+            //右部分和
             Map<Integer, Integer> r_presum = new HashMap<>();
             int l_sum = 0;
             for (int i = 0; i < n; i++) {
@@ -36,10 +38,8 @@ public class MinOperations {
                 r_presum.put(r_sum, n - i);
             }
 
-            int l_steps, r_steps;
-
-            l_steps = l_presum.getOrDefault(x, Integer.MAX_VALUE);
-            r_steps = r_presum.getOrDefault(x, Integer.MAX_VALUE);
+            int l_steps = l_presum.getOrDefault(x, Integer.MAX_VALUE);
+            int r_steps = r_presum.getOrDefault(x, Integer.MAX_VALUE);
 
             int cur = Math.min(l_steps, r_steps);
 
