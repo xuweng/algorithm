@@ -64,6 +64,8 @@ public class MaximumGap {
     /**
      * 方法二：基于桶的算法
      * <p>
+     * 后一个桶的最小值与前一个桶的最大值之差作为两个桶的间距
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/maximum-gap/solution/zui-da-jian-ju-by-leetcode-solution/
      * 来源：力扣（LeetCode）
