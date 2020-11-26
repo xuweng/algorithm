@@ -32,6 +32,7 @@ public class MaximumGap {
             int[] buf = new int[n];
             int maxVal = Arrays.stream(nums).max().getAsInt();
 
+            //基数排序
             while (maxVal >= exp) {
                 //0到9的桶子
                 int[] cnt = new int[10];
@@ -51,6 +52,7 @@ public class MaximumGap {
                 exp *= 10;
             }
 
+            // 相邻最大距离
             int ret = 0;
             for (int i = 1; i < n; i++) {
                 ret = Math.max(ret, nums[i] - nums[i - 1]);
