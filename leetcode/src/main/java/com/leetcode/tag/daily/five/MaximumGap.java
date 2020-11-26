@@ -17,6 +17,8 @@ public class MaximumGap {
     class Solution {
         /**
          * 最高位优先(Most Significant Digit first)法，简称MSD法
+         * <p>
+         * 最低位优先(Least Significant Digit first)法，简称LSD法
          *
          * @param nums
          * @return
