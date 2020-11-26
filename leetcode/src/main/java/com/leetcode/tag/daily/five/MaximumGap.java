@@ -103,6 +103,7 @@ public class MaximumGap {
                     continue;
                 }
                 if (prev != -1) {
+                    //后一个桶的最小值与前一个桶的最大值之差作为两个桶的间距
                     ret = Math.max(ret, bucket[i][0] - bucket[prev][1]);
                 }
                 prev = i;
