@@ -41,6 +41,7 @@ public class ReversePairs {
             int n2 = reversePairsRecursive(nums, mid + 1, right);
             int ret = n1 + n2;
 
+            // 计算[left,right]
             // 首先统计下标对的数量
             int i = left;
             int j = mid + 1;
