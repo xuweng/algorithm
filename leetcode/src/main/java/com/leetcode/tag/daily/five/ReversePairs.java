@@ -49,6 +49,7 @@ public class ReversePairs {
                 while (j <= right && (long) nums[i] > 2 * (long) nums[j]) {
                     j++;
                 }
+                //why?
                 ret += j - mid - 1;
                 i++;
             }
