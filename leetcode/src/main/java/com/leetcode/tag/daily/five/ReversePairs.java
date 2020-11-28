@@ -56,6 +56,7 @@ public class ReversePairs {
                 }
                 //why?
                 // 的确是j-mid。求j移动的次数.
+                // 如果nums[i]>2*nums[j]，比nums[i]还大的数，且在nums[j]左边，就一定是翻转对
                 ret += j - mid - 1;
                 i++;
             }
