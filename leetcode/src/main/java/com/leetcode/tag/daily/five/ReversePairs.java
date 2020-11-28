@@ -1,5 +1,10 @@
 package com.leetcode.tag.daily.five;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+
 /**
  * 493. 翻转对
  */
@@ -73,6 +78,70 @@ public class ReversePairs {
             }
             System.arraycopy(sorted, 0, nums, left, sorted.length);
             return ret;
+        }
+    }
+
+    /**
+     * 方法二：树状数组
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/reverse-pairs/solution/fan-zhuan-dui-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int reversePairs(int[] nums) {
+            Set<Long> allNumbers = new TreeSet<>();
+            for (int x : nums) {
+                allNumbers.add((long) x);
+                allNumbers.add((long) x * 2);
+            }
+            // 利用哈希表进行离散化
+            Map<Long, Integer> values = new HashMap<>();
+            int idx = 0;
+            for (long x : allNumbers) {
+                values.put(x, idx);
+                idx++;
+            }
+
+            int ret = 0;
+            BIT bit = new BIT(values.size());
+            for (int num : nums) {
+                int left = values.get((long) num * 2), right = values.size() - 1;
+                ret += bit.query(right + 1) - bit.query(left + 1);
+                bit.update(values.get((long) num) + 1, 1);
+            }
+            return ret;
+        }
+    }
+
+    static class BIT {
+        int[] tree;
+        int n;
+
+        public BIT(int n) {
+            this.n = n;
+            this.tree = new int[n + 1];
+        }
+
+        public static int lowbit(int x) {
+            return x & (-x);
+        }
+
+        public void update(int x, int d) {
+            while (x <= n) {
+                tree[x] += d;
+                x += lowbit(x);
+            }
+        }
+
+        public int query(int x) {
+            int ans = 0;
+            while (x != 0) {
+                ans += tree[x];
+                x -= lowbit(x);
+            }
+            return ans;
         }
     }
 
