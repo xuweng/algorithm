@@ -61,6 +61,22 @@ public class ReversePairs {
                 i++;
             }
 
+            //            i := start   // i 指向左序列的开头
+            //            j := mid + 1 // j 指向右序列的开头
+            //            for i <= mid && j <= end { // i扫描左序列，j扫描右序列
+            //                if nums[i] > 2*nums[j] {
+            //                    count += mid - i + 1 // i到mid，都能和j构成翻转对
+            //                    j++                  // 考察下一个j，为它找i
+            //                } else {                 // 当前i不满足，考察下一个i
+            //                    i++
+            //                }
+            //            }
+            //
+            //            作者：xiao_ben_zhu
+            //            链接：https://leetcode-cn.com/problems/reverse-pairs/solution/shou-hua-tu-jie-yi-bu-yi-bu-jie-xi-gui-bing-pai-xu/
+            //            来源：力扣（LeetCode）
+            //            著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
             // 随后合并两个排序数组
             int[] sorted = new int[right - left + 1];
             int p1 = left, p2 = mid + 1;
