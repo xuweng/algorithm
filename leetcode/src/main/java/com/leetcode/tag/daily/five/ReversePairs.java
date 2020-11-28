@@ -55,6 +55,7 @@ public class ReversePairs {
                     j++;
                 }
                 //why?
+                // 的确是j-mid。求j移动的次数.
                 ret += j - mid - 1;
                 i++;
             }
