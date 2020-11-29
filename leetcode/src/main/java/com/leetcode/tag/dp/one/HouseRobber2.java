@@ -1,4 +1,4 @@
-package com.leetcode.tag.dp;
+package com.leetcode.tag.dp.one;
 
 /**
  * 213. 打家劫舍 II

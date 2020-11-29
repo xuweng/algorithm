@@ -1,4 +1,4 @@
-package com.leetcode.tag.dp;
+package com.leetcode.tag.dp.one;
 
 /**
  * 312. 戳气球

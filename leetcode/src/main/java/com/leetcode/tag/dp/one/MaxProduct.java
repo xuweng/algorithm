@@ -1,4 +1,4 @@
-package com.leetcode.tag.dp;
+package com.leetcode.tag.dp.one;
 
 /**
  * 152. 乘积最大子数组
