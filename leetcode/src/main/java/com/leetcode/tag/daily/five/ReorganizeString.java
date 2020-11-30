@@ -9,6 +9,8 @@ public class ReorganizeString {
     /**
      * 方法一：基于最大堆的贪心算法
      * <p>
+     * 一个字符出现最多次数就是全部相邻
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/reorganize-string/solution/zhong-gou-zi-fu-chuan-by-leetcode-solution/
      * 来源：力扣（LeetCode）
