@@ -49,9 +49,11 @@ public class ReorganizeString {
                 int index1 = letter1 - 'a', index2 = letter2 - 'a';
                 counts[index1]--;
                 counts[index2]--;
+                // 重新入堆
                 if (counts[index1] > 0) {
                     queue.offer(letter1);
                 }
+                // 重新入堆
                 if (counts[index2] > 0) {
                     queue.offer(letter2);
                 }
