@@ -2,6 +2,10 @@ package com.leetcode.tag.daily.five;
 
 /**
  * 34. 在排序数组中查找元素的第一个和最后一个位置
+ * <p>
+ * 脑里跑代码.脑里跑代码.脑里跑代码.脑里跑代码.
+ * <p>
+ * 脑里跑代码.脑里跑代码.脑里跑代码.
  */
 public class SearchRange {
     /**
@@ -13,6 +17,7 @@ public class SearchRange {
     class Solution {
         public int[] searchRange(int[] nums, int target) {
             int leftIdx = binarySearch(nums, target, true);
+            // 记得-1
             int rightIdx = binarySearch(nums, target, false) - 1;
             if (leftIdx <= rightIdx && rightIdx < nums.length && nums[leftIdx] == target && nums[rightIdx] == target) {
                 return new int[]{leftIdx, rightIdx};
