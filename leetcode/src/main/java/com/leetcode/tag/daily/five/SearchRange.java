@@ -26,6 +26,9 @@ public class SearchRange {
                 int mid = (left + right) / 2;
                 if (nums[mid] > target || (lower && nums[mid] >= target)) {
                     right = mid - 1;
+                    // 不断记录记录mid.最后一个就是答案.
+                    // lower.相等.
+                    // 非lower.>.
                     ans = mid;
                 } else {
                     left = mid + 1;
