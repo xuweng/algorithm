@@ -10,7 +10,11 @@ import java.util.Set;
  * <p>
  * 由于需要将数组分割成一个或多个由连续整数组成的子序列，因此只要知道子序列的最后一个数字和子序列的长度，就能确定子序列。
  * <p>
- * 最后一个数-长度
+ * 子序列:最后一个数--长度
+ * <p>
+ * 如果存在多个子序列以 x-1 结尾，应该将 x 加入其中的哪一个子序列？由于题目要求每个子序列的长度至少为 3，
+ * <p>
+ * 显然应该让最短的子序列尽可能长，因此应该将 x 加入其中最短的子序列。
  */
 public class IsPossible {
     /**
@@ -23,6 +27,7 @@ public class IsPossible {
      */
     class Solution {
         public boolean isPossible(int[] nums) {
+            //因此堆顶的元素即为最小的子序列长度。
             Map<Integer, PriorityQueue<Integer>> map = new HashMap<>();
             for (int x : nums) {
                 if (!map.containsKey(x)) {
