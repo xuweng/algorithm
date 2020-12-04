@@ -55,11 +55,12 @@ public class IsPossible {
      */
     class Solution1 {
         public boolean isPossible(int[] nums) {
+            //第一个哈希表存储数组中的每个数字的剩余次数
             Map<Integer, Integer> countMap = new HashMap<>();
+            //第二个哈希表存储数组中的每个数字作为结尾的子序列的数量。
             Map<Integer, Integer> endMap = new HashMap<>();
             for (int x : nums) {
-                int count = countMap.getOrDefault(x, 0) + 1;
-                countMap.put(x, count);
+                countMap.put(x, countMap.getOrDefault(x, 0) + 1);
             }
             for (int x : nums) {
                 int count = countMap.getOrDefault(x, 0);
