@@ -4,6 +4,8 @@ import java.util.*;
 
 /**
  * 621. 任务调度器
+ * <p>
+ * 贪心算法
  */
 public class LeastInterval {
     /**
