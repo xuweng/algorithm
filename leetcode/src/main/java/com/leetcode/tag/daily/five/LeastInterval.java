@@ -6,6 +6,8 @@ import java.util.*;
  * 621. 任务调度器
  * <p>
  * 贪心算法
+ * <p>
+ * 题感 题感 题感 题感 题感 题感 题感 题感 题感 题感 题感 题感
  */
 public class LeastInterval {
     /**
