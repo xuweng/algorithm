@@ -38,5 +38,40 @@ public class Generate {
             return ret;
         }
     }
+    //
+    //    class Solution1 {
+    //        public List<List<Integer>> generate(int numRows) {
+    //            List<List<Integer>> res = new ArrayList<>();
+    //            if (numRows == 0) {
+    //                return res;
+    //            }
+    //            res.add(new ArrayList<>() {{
+    //                add(1);
+    //            }});
+    //            if (numRows == 1) {
+    //                return res;
+    //            }
+    //            res.add(new ArrayList<>() {{
+    //                add(1);
+    //                add(1);
+    //            }});
+    //            if (numRows == 2) {
+    //                return res;
+    //            }
+    //            List<Integer> preRow = res.get(1);
+    //            for (int i = 3; i <= numRows; i++) {
+    //                List<Integer> list = new ArrayList<>() {{
+    //                    add(1);
+    //                }};
+    //                for (int j = 1; j < i - 1; j++) {
+    //                    list.add(preRow.get(j) + preRow.get(j - 1));
+    //                }
+    //                list.add(1);
+    //                preRow = list;
+    //                res.add(list);
+    //            }
+    //            return res;
+    //        }
+    //    }
 
 }
