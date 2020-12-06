@@ -2,6 +2,8 @@ package com.leetcode.tag.contest.two;
 
 /**
  * 5619. 最小不兼容性
+ * <p>
+ * 聪明的策略 聪明的策略 聪明的策略 聪明的策略 聪明的策略
  */
 public class MinimumIncompatibility {
     class Solution {
