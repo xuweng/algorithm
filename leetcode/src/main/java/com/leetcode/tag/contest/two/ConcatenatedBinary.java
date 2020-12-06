@@ -10,7 +10,7 @@ public class ConcatenatedBinary {
             for (int i = 1; i <= n; i++) {
                 result.append(Integer.toBinaryString(i));
             }
-            return (int) (Integer.valueOf(result.toString(), 2) % (Math.pow(10, 9) + 7));
+            return (int) (Long.valueOf(result.toString(), 2) % (Math.pow(10, 9) + 7));
         }
     }
 }
