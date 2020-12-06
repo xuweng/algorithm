@@ -4,7 +4,7 @@ package com.leetcode.tag.contest.two;
  * 5617. 设计 Goal 解析器
  */
 public class Interpret {
-    class Solution {
+    static class Solution {
         public String interpret(String command) {
             if (command == null || command.isEmpty()) {
                 return command;
