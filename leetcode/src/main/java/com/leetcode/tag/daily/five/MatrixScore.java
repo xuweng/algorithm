@@ -21,6 +21,7 @@ public class MatrixScore {
 
             for (int j = 1; j < n; j++) {
                 int nOnes = 0;
+                // 遍历每行
                 for (int[] ints : A) {
                     if (ints[0] == 1) {
                         nOnes += ints[j];
