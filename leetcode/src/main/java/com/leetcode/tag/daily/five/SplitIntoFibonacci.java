@@ -10,6 +10,10 @@ public class SplitIntoFibonacci {
     /**
      * 方法一：回溯 + 剪枝
      * <p>
+     * 递归树 递归树 递归树 递归树
+     * <p>
+     * dp矩阵 dp矩阵 dp矩阵 dp矩阵
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/split-array-into-fibonacci-sequence/solution/jiang-shu-zu-chai-fen-cheng-fei-bo-na-qi-ts6c/
      * 来源：力扣（LeetCode）
