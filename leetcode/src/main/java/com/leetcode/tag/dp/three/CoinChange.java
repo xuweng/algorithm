@@ -21,6 +21,10 @@ public class CoinChange {
     class Solution {
         /**
          * 子问题无解?子问题无解？子问题无解?子问题无解?
+         * <p>
+         * 搞清楚状态。搞清楚状态。搞清楚状态。搞清楚状态。
+         * <p>
+         * 前i。前j。前i。前j。前i。前j。
          *
          * @param coins
          * @param amount
