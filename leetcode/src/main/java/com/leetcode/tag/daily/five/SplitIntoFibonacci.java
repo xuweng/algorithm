@@ -81,7 +81,9 @@ public class SplitIntoFibonacci {
                 if (digit[index] == '0' && i > index) {
                     break;
                 }
-                //截取字符串转化为数字
+                // 截取字符串转化为数字
+                // 这里是index到i+1
+                // index是第一个字符
                 long num = subDigit(digit, index, i + 1);
                 //如果截取的数字大于int的最大值，则终止截取
                 if (num > Integer.MAX_VALUE) {
