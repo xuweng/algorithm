@@ -32,4 +32,33 @@ public class UniquePaths {
         }
     }
 
+    class Solution1 {
+        int m;
+        int n;
+        int[][] meno;
+
+        public int uniquePaths(int m, int n) {
+            this.m = m;
+            this.n = n;
+            meno = new int[m + 1][n + 1];
+
+            return back(1, 1);
+        }
+
+        private int back(int row, int col) {
+            if (row > m || col > n) {
+                return 0;
+            }
+            if (row == m && col == n) {
+                return 1;
+            }
+            if (meno[row][col] != 0) {
+                return meno[row][col];
+            }
+            int result = back(row + 1, col) + back(row, col + 1);
+            meno[row][col] = result;
+            return result;
+        }
+    }
+
 }
