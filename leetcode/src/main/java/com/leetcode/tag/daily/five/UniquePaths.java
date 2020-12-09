@@ -14,7 +14,7 @@ public class UniquePaths {
             this.m = m;
             this.n = n;
 
-            back(0, 0);
+            back(1, 1);
             return result;
         }
 
