@@ -4,7 +4,7 @@ package com.leetcode.tag.daily.five;
  * 62. 不同路径
  */
 public class UniquePaths {
-    class Solution {
+    static class Solution {
         int result;
 
         int m;
