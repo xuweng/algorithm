@@ -40,7 +40,7 @@ public class UniquePaths {
         public int uniquePaths(int m, int n) {
             this.m = m;
             this.n = n;
-            meno = new int[m][n];
+            meno = new int[m + 1][n + 1];
 
             return back(1, 1);
         }
