@@ -1,9 +1,6 @@
 package com.leetcode.tag.backtracking.two;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * 46. 全排列
@@ -34,6 +31,37 @@ public class Permute {
                 set.add(num);
                 back(nums);
                 set.remove(num);
+            }
+        }
+    }
+
+    class Solution1 {
+        List<List<Integer>> result = new ArrayList<>();
+        Deque<Integer> deque = new LinkedList<>();
+        boolean[] used;
+
+        public List<List<Integer>> permute(int[] nums) {
+            used = new boolean[nums.length];
+
+            back(nums);
+
+            return result;
+        }
+
+        private void back(int[] nums) {
+            if (nums.length == deque.size()) {
+                result.add(new ArrayList<>(deque));
+                return;
+            }
+            for (int i = 0; i < nums.length; i++) {
+                if (used[i]) {
+                    continue;
+                }
+                used[i] = true;
+                deque.push(nums[i]);
+                back(nums);
+                deque.pop();
+                used[i] = false;
             }
         }
     }
