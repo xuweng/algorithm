@@ -1,5 +1,6 @@
 package com.leetcode.tag.backtracking;
 
+import com.leetcode.tag.backtracking.one.CombinationSum3;
 import org.junit.Test;
 
 public class CombinationSum3Test {

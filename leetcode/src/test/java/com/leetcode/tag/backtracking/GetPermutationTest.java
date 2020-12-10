@@ -1,5 +1,6 @@
 package com.leetcode.tag.backtracking;
 
+import com.leetcode.tag.backtracking.one.GetPermutation;
 import org.junit.Test;
 
 public class GetPermutationTest {
