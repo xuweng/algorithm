@@ -9,7 +9,7 @@ import java.util.Set;
  * 46. 全排列
  */
 public class Permute {
-    class Solution {
+    static class Solution {
         Set<Integer> set = new HashSet<>();
         List<List<Integer>> result = new ArrayList<>();
 
