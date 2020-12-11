@@ -31,6 +31,7 @@ public class PredictPartyVictory {
             }
             while (!radiant.isEmpty() && !dire.isEmpty()) {
                 int radiantIndex = radiant.poll(), direIndex = dire.poll();
+                //这里 n 是给定的字符串 senate 的长度,增加 n 之后再重新放回队列，即表示该议员会参与下一轮的投票。
                 if (radiantIndex < direIndex) {
                     radiant.offer(radiantIndex + n);
                 } else {
