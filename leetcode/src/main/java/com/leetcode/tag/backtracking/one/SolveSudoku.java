@@ -161,7 +161,7 @@ public class SolveSudoku {
    * 作者：LeetCode 链接：https://leetcode-cn.com/problems/sudoku-solver/solution/jie-shu-du-by-leetcode/
    * 来源：力扣（LeetCode） 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
    */
-  static class Solution {
+  public static class Solution {
     // box size
     int n = 3;
     // row size
