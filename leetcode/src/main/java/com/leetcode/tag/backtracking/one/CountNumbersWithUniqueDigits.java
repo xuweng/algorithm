@@ -44,7 +44,7 @@ public class CountNumbersWithUniqueDigits {
     return result;
   }
 
-  static class S {
+  public static class S {
     public int countNumbersWithUniqueDigits(int n) {
       if (n == 1) {
         return 10;

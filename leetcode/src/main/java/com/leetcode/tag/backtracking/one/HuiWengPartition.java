@@ -98,7 +98,7 @@ public class HuiWengPartition {
     return b && isHui(s, low + 1, high - 1);
   }
 
-  static class Solution {
+  public static class Solution {
     private List<String> temp = new ArrayList<>();
     private List<List<String>> res = new ArrayList<>();
 

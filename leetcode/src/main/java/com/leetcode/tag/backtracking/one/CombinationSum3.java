@@ -58,7 +58,7 @@ public class CombinationSum3 {
     }
   }
 
-  static class Solution {
+  public static class Solution {
     List<List<Integer>> ans = new ArrayList<>();
     int k = 0, n = 0;
 
