@@ -107,7 +107,7 @@ public class WiggleMaxLength {
             // 从索引1开始
             for (int i = 1; i < nums.length; i++) {
                 // 只需要和i-1比较?
-                // up和down交错
+                // up和down交错.摆动序列.
                 if (nums[i] > nums[i - 1]) {
                     up = down + 1;
                 } else if (nums[i] < nums[i - 1]) {
