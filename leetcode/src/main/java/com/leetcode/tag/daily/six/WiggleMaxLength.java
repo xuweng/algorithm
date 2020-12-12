@@ -16,6 +16,8 @@ public class WiggleMaxLength {
             if (n < 2) {
                 return n;
             }
+            //up[i] 表示以前 i 个元素中的某一个为结尾的最长的「上升摆动序列」的长度。
+            //down[i] 表示以前 i 个元素中的某一个为结尾的最长的「下降摆动序列」的长度。
             int[] up = new int[n];
             int[] down = new int[n];
             up[0] = down[0] = 1;
