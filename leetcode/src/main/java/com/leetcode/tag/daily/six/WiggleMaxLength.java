@@ -5,6 +5,8 @@ package com.leetcode.tag.daily.six;
  */
 public class WiggleMaxLength {
     /**
+     * 方法一：动态规划
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/wiggle-subsequence/solution/bai-dong-xu-lie-by-leetcode-solution-yh2m/
      * 来源：力扣（LeetCode）
@@ -34,6 +36,33 @@ public class WiggleMaxLength {
                 }
             }
             return Math.max(up[n - 1], down[n - 1]);
+        }
+    }
+
+    /**
+     * 方法二：优化的动态规划
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/wiggle-subsequence/solution/bai-dong-xu-lie-by-leetcode-solution-yh2m/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int wiggleMaxLength(int[] nums) {
+            int n = nums.length;
+            if (n < 2) {
+                return n;
+            }
+            //仅需要前一个状态来进行转移，所以我们维护两个变量
+            int up = 1, down = 1;
+            for (int i = 1; i < n; i++) {
+                if (nums[i] > nums[i - 1]) {
+                    up = Math.max(up, down + 1);
+                } else if (nums[i] < nums[i - 1]) {
+                    down = Math.max(up + 1, down);
+                }
+            }
+            return Math.max(up, down);
         }
     }
 
