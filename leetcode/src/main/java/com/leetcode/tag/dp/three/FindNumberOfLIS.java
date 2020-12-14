@@ -78,11 +78,13 @@ public class FindNumberOfLIS {
                 for (int i = 0; i < j; ++i) {
                     if (nums[i] < nums[j]) {
                         // 多了一个判断
+                        // 第一次找到某个长度
                         if (lengths[i] >= lengths[j]) {
                             // 更新j
                             lengths[j] = lengths[i] + 1;
                             counts[j] = counts[i];
                         } else if (lengths[i] + 1 == lengths[j]) {
+                            // 再次找到某个长度
                             counts[j] += counts[i];
                         }
                     }
