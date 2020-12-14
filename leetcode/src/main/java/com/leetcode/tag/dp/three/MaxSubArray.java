@@ -28,4 +28,26 @@ public class MaxSubArray {
             return max;
         }
     }
+
+    /**
+     * 记住常见题型 记住常见dp状态定义
+     * <p>
+     * 简洁代码 简洁代码 简洁代码
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/maximum-subarray/solution/zui-da-zi-xu-he-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int maxSubArray(int[] nums) {
+            int pre = 0, maxAns = nums[0];
+            for (int x : nums) {
+                pre = Math.max(pre + x, x);
+                maxAns = Math.max(maxAns, pre);
+            }
+            return maxAns;
+        }
+    }
+
 }
