@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 /**
  * 49. 字母异位词分组
@@ -22,11 +23,7 @@ public class GroupAnagrams {
         }
 
         private int get(String s) {
-            int sum = 0;
-            for (int i = 0; i < s.length(); i++) {
-                sum += s.charAt(i);
-            }
-            return sum;
+            return IntStream.range(0, s.length()).map(s::charAt).sum();
         }
     }
 }
