@@ -18,7 +18,7 @@ public class GroupAnagrams {
             for (String str : strs) {
                 map.computeIfAbsent(get(str), v -> new ArrayList<>()).add(str);
             }
-            return (List<List<String>>) map.values();
+            return new ArrayList<>(map.values());
         }
 
         private int get(String s) {
