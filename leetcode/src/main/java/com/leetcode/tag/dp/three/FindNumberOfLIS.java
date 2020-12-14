@@ -109,4 +109,40 @@ public class FindNumberOfLIS {
         }
     }
 
+    /**
+     * 写一遍 跑一遍 跑一遍
+     */
+    class Solution2 {
+        public int findNumberOfLIS(int[] nums) {
+            if (nums == null || nums.length == 0) {
+                return 0;
+            }
+            int[] length = new int[nums.length];
+            Arrays.fill(length, 1);
+            int[] count = new int[nums.length];
+            Arrays.fill(count, 1);
+            int max = 0;
+            for (int i = 0; i < nums.length; i++) {
+                for (int j = 0; j < i; j++) {
+                    if (nums[j] < nums[i]) {
+                        if (length[j] >= length[i]) {
+                            length[i] = length[j] + 1;
+                            count[i] = count[j];
+                        } else if (length[j] + 1 == length[i]) {
+                            count[i] += count[j];
+                        }
+                    }
+                }
+                max = Math.max(max, length[i]);
+            }
+            int result = 0;
+            for (int i : count) {
+                if (i == max) {
+                    result++;
+                }
+            }
+            return result;
+        }
+    }
+
 }
