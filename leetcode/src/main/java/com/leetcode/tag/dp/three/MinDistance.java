@@ -3,7 +3,7 @@ package com.leetcode.tag.dp.three;
 /**
  * 72. 编辑距离
  * <p>
- * 初始化 计算顺序
+ * 初始化 计算顺序 分类讨论
  */
 public class MinDistance {
     class Solution {
