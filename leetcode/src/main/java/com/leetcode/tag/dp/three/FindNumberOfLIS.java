@@ -28,6 +28,7 @@ public class FindNumberOfLIS {
                         dp[i] = Math.max(dp[i], dp[j] + 1);
                     }
                 }
+                // 错误
                 if (dp[i] == max) {
                     result++;
                 } else if (dp[i] > max) {
