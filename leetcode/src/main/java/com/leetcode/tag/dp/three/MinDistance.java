@@ -2,6 +2,8 @@ package com.leetcode.tag.dp.three;
 
 /**
  * 72. 编辑距离
+ * <p>
+ * 初始化 计算顺序
  */
 public class MinDistance {
     class Solution {
@@ -21,13 +23,16 @@ public class MinDistance {
             // 状态定义 状态定义 状态定义
             int[][] dp = new int[word1.length() + 1][word2.length() + 1];
 
+            // 初始化0行
             for (int i = 1; i <= word2.length(); i++) {
                 dp[0][i] = i;
             }
+            // 初始化0列
             for (int i = 1; i <= word1.length(); i++) {
                 dp[i][0] = i;
             }
 
+            // 从1行1列开始dp
             for (int i = 1; i <= word1.length(); i++) {
                 for (int j = 1; j <= word2.length(); j++) {
                     if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
