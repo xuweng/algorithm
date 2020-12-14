@@ -6,6 +6,8 @@ package com.leetcode.tag.dp.three;
  * 脑里按照示例跑一遍代码
  * <p>
  * 自己写一遍 自己写一笔 自己写一遍 自己写一遍 自己写一遍 自己写一遍
+ * <p>
+ * 记住常见dp状态定义 记住常见dp状态定义 记住常见dp状态定义
  */
 public class MaxSubArray {
     class Solution {
