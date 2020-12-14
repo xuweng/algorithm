@@ -16,6 +16,8 @@ import java.util.Arrays;
  * 十分钟看答案 十分钟看答案 十分钟看答案 十分钟看答案
  * <p>
  * 十分钟看答案 十分钟看答案 十分钟看答案 十分钟看答案
+ * <p>
+ * 最长递增子序列(LIS):Longest Increasing Subsequence(LIS):LongestIncreasingSubsequence
  */
 public class FindNumberOfLIS {
     class Solution {
