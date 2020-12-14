@@ -44,10 +44,7 @@ public class GroupAnagrams {
             for (String str : strs) {
                 char[] array = str.toCharArray();
                 Arrays.sort(array);
-                String key = new String(array);
-                List<String> list = map.getOrDefault(key, new ArrayList<>());
-                list.add(str);
-                map.put(key, list);
+                map.computeIfAbsent(new String(array), v -> new ArrayList<>()).add(str);
             }
             return new ArrayList<>(map.values());
         }
