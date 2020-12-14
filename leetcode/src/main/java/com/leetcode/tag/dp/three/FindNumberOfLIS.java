@@ -69,6 +69,7 @@ public class FindNumberOfLIS {
             int[] lengths = new int[N]; //lengths[i] = length of longest ending in nums[i]
             // 以及具有该长度的序列的 count[i]
             int[] counts = new int[N]; //count[i] = number of longest ending in nums[i]
+            // 初始化为1.初始化为1.初始化为1.
             Arrays.fill(counts, 1);
 
             for (int j = 0; j < N; ++j) {
