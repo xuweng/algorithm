@@ -95,10 +95,11 @@ public class FindNumberOfLIS {
                 }
             }
 
-            int longest = 0, ans = 0;
+            int longest = 0;
             for (int length : lengths) {
                 longest = Math.max(longest, length);
             }
+            int ans = 0;
             for (int i = 0; i < N; ++i) {
                 if (lengths[i] == longest) {
                     ans += counts[i];
