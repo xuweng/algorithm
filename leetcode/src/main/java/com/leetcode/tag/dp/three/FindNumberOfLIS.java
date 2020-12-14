@@ -66,14 +66,18 @@ public class FindNumberOfLIS {
             if (N <= 1) {
                 return N;
             }
+            //最长递增子序列(LIS):Longest Increasing Subsequence(LIS):LongestIncreasingSubsequence
             // 以 nums[i] 结尾的序列
             // 我们知道最长序列的长度 length[i]
+            // 以nums[i]结尾的LIS长度
             int[] lengths = new int[N]; //lengths[i] = length of longest ending in nums[i]
             // 以及具有该长度的序列的 count[i]
+            // 以nums[i]结尾的LIS的组合的个数
             int[] counts = new int[N]; //count[i] = number of longest ending in nums[i]
             // 初始化为1.初始化为1.初始化为1.
             Arrays.fill(counts, 1);
 
+            //若要LIS成立，我们只要考虑nums[i] < nums[j]的情况，其他情况则不考虑
             for (int j = 0; j < N; ++j) {
                 for (int i = 0; i < j; ++i) {
                     if (nums[i] < nums[j]) {
