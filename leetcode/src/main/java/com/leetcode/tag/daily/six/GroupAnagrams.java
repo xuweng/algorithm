@@ -24,7 +24,7 @@ public class GroupAnagrams {
         private int get(String s) {
             int sum = 0;
             for (int i = 0; i < s.length(); i++) {
-                sum += s.charAt(i) - 'a';
+                sum += s.charAt(i);
             }
             return sum;
         }
