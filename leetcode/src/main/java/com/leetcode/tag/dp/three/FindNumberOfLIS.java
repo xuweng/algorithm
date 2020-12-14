@@ -136,9 +136,9 @@ public class FindNumberOfLIS {
                 max = Math.max(max, length[i]);
             }
             int result = 0;
-            for (int i : count) {
-                if (i == max) {
-                    result++;
+            for (int i = 0; i < nums.length; i++) {
+                if (length[i] == max) {
+                    result += count[i];
                 }
             }
             return result;
