@@ -15,7 +15,7 @@ public class MinDistance {
          * @return
          */
         public int minDistance(String word1, String word2) {
-            if (word1 == null || word2 == null || word1.isEmpty() || word2.isEmpty()) {
+            if (word1 == null || word2 == null) {
                 return 0;
             }
             // 状态定义 状态定义 状态定义
