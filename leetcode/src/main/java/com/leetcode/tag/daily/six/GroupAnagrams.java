@@ -1,6 +1,7 @@
 package com.leetcode.tag.daily.six;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /**
@@ -85,6 +86,27 @@ public class GroupAnagrams {
                 map.computeIfAbsent(sb.toString(), v -> new ArrayList<>()).add(str);
             }
             return new ArrayList<>(map.values());
+        }
+    }
+
+    /**
+     * groupingBy
+     * <p>
+     * 作者：sweetiee
+     * 链接：https://leetcode-cn.com/problems/group-anagrams/solution/kan-wo-yi-ju-hua-ac-zi-mu-yi-wei-ci-fen-yrnis/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        public List<List<String>> groupAnagrams(String[] strs) {
+            return new ArrayList<>(Arrays.stream(strs)
+                    .collect(Collectors.groupingBy(str -> {
+                        // 返回 str 排序后的结果。
+                        // 按排序后的结果来grouping by，算子类似于 sql 里的 group by。
+                        char[] array = str.toCharArray();
+                        Arrays.sort(array);
+                        return new String(array);
+                    })).values());
         }
     }
 
