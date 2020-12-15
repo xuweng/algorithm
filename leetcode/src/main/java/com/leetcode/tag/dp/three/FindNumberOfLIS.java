@@ -155,6 +155,8 @@ public class FindNumberOfLIS {
             }
             int[] lengths = new int[nums.length];
             int[] counts = new int[nums.length];
+            Arrays.fill(lengths, 1);
+            Arrays.fill(counts, 1);
             int max = 0;
             for (int i = 0; i < nums.length; i++) {
                 for (int j = 0; j < i; j++) {
