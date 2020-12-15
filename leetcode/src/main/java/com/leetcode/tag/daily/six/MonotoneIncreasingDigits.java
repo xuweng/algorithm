@@ -32,4 +32,31 @@ public class MonotoneIncreasingDigits {
         }
     }
 
+    /**
+     * 作者：sweetiee
+     * 链接：https://leetcode-cn.com/problems/monotone-increasing-digits/solution/jian-dan-tan-xin-shou-ba-shou-jiao-xue-k-a0mp/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int monotoneIncreasingDigits(int N) {
+            char[] arr = (N + "").toCharArray();
+            int max = -1, idx = -1;
+            for (int i = 0; i < arr.length - 1; i++) {
+                if (max < arr[i]) {
+                    max = arr[i];
+                    idx = i;
+                }
+                if (arr[i] > arr[i + 1]) {
+                    arr[idx] -= 1;
+                    for (int j = idx + 1; j < arr.length; j++) {
+                        arr[j] = '9';
+                    }
+                    break;
+                }
+            }
+            return Integer.parseInt(new String(arr));
+        }
+    }
+
 }
