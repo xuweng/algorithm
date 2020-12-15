@@ -145,4 +145,38 @@ public class FindNumberOfLIS {
         }
     }
 
+    /**
+     * 举例子 举例子 举例子 举例子 举例子 举例子
+     */
+    class Solution3 {
+        public int findNumberOfLIS(int[] nums) {
+            if (nums == null || nums.length == 0) {
+                return 0;
+            }
+            int[] lengths = new int[nums.length];
+            int[] counts = new int[nums.length];
+            int max = 0;
+            for (int i = 0; i < nums.length; i++) {
+                for (int j = 0; j < i; j++) {
+                    if (nums[j] < nums[i]) {
+                        if (lengths[j] >= lengths[i]) {
+                            lengths[i] = lengths[j] + 1;
+                            counts[i] = counts[j];
+                        } else if (lengths[j] + 1 == lengths[i]) {
+                            counts[i] += counts[j];
+                        }
+                    }
+                }
+                max = Math.max(max, lengths[i]);
+            }
+            int result = 0;
+            for (int i = 0; i < nums.length; i++) {
+                if (lengths[i] == max) {
+                    result += counts[i];
+                }
+            }
+            return result;
+        }
+    }
+
 }
