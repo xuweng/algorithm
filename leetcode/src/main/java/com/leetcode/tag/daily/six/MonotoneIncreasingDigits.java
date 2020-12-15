@@ -49,6 +49,7 @@ public class MonotoneIncreasingDigits {
                 }
                 if (arr[i] > arr[i + 1]) {
                     arr[idx] -= 1;
+                    // 低位变为9
                     for (int j = idx + 1; j < arr.length; j++) {
                         arr[j] = '9';
                     }
