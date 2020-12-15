@@ -59,4 +59,42 @@ public class MonotoneIncreasingDigits {
         }
     }
 
+    /**
+     * 举例子 举例子 举例子 举例子 举例子
+     * <p>
+     * 例子：数字 1101 最大单调递增数为 999
+     * 从低位向高位遍历，到0时发现前面有一个1>0，这里将后两位置为99，同时向高位“借位”，前两位变成11-1=10；此时num = 1099
+     * 继续遍历又发现1>0，重复上述步骤得到结果999
+     * <p>
+     * 时间复杂度O(logN)
+     * 空间复杂度O(1)
+     * <p>
+     * 作者：bei-ye-qing-yang
+     * 链接：https://leetcode-cn.com/problems/monotone-increasing-digits/solution/java-ologn-bu-xu-yao-zhuan-zi-fu-chuan-b-b7lk/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public int monotoneIncreasingDigits(int N) {
+            int res = 0;
+            // 倍数
+            int seed = 1;
+            while (N > 0) {
+                int num = N % 10;
+                N /= 10;
+                int high = N % 10;
+                if (high > num) {
+                    // 高位大于低位，将低位全部置为9，高位数字-1
+                    res = seed * 10 - 1;
+                    N -= 1;
+                } else {
+                    res = num * seed + res;
+                }
+                seed *= 10;
+            }
+            return res;
+        }
+
+    }
+
 }
