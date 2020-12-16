@@ -10,6 +10,8 @@ public class WordPattern {
     /**
      * 方法一：哈希表
      * <p>
+     * 用示例理解代码 用示例理解代码 用示例理解代码 用示例理解代码
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/word-pattern/solution/dan-ci-gui-lu-by-leetcode-solution-6vqv/
      * 来源：力扣（LeetCode）
