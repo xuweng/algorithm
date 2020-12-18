@@ -60,6 +60,7 @@ public class FindTheDifference {
                 char ch = t.charAt(i);
                 cnt[ch - 'a']--;
                 if (cnt[ch - 'a'] < 0) {
+                    //当发现某个字符计数值为负数时，说明该字符在字符串 t 中出现的次数大于在字符串 s 中出现的次数
                     return ch;
                 }
             }
