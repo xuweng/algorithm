@@ -2,6 +2,8 @@ package com.leetcode.tag.daily.six;
 
 /**
  * 136. 只出现一次的数字
+ * <p>
+ * 把偶数次数都删除 把偶数次数都删除 把偶数次数都删除
  */
 public class SingleNumber {
     /**
