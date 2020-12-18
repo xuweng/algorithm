@@ -68,4 +68,28 @@ public class FindTheDifference {
         }
     }
 
+    /**
+     * 方法二：求和
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/find-the-difference/solution/zhao-bu-tong-by-leetcode-solution-mtqf/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        public char findTheDifference(String s, String t) {
+            int as = 0, at = 0;
+            //将字符串 s 中每个字符的 ASCII 码的值求和
+            for (int i = 0; i < s.length(); ++i) {
+                as += s.charAt(i);
+            }
+            for (int i = 0; i < t.length(); ++i) {
+                at += t.charAt(i);
+            }
+            //两者的差值
+            return (char) (at - as);
+        }
+    }
+
+
 }
