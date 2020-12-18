@@ -18,6 +18,8 @@ public class SingleNumber {
          * 任何数和其自身做异或运算，
          * 异或运算满足交换律和结合律，
          * <p>
+         * 根据性质 3
+         * <p>
          * 作者：LeetCode-Solution
          * 链接：https://leetcode-cn.com/problems/single-number/solution/zhi-chu-xian-yi-ci-de-shu-zi-by-leetcode-solution/
          * 来源：力扣（LeetCode）
