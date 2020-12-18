@@ -38,4 +38,33 @@ public class FindTheDifference {
             return t.charAt(0);
         }
     }
+
+    /**
+     * 方法一：计数
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/find-the-difference/solution/zhao-bu-tong-by-leetcode-solution-mtqf/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public char findTheDifference(String s, String t) {
+            int[] cnt = new int[26];
+            //首先遍历字符串 s，对其中的每个字符都将计数值加 1
+            for (int i = 0; i < s.length(); ++i) {
+                char ch = s.charAt(i);
+                cnt[ch - 'a']++;
+            }
+            //遍历字符串 t，对其中的每个字符都将计数值减 1
+            for (int i = 0; i < t.length(); ++i) {
+                char ch = t.charAt(i);
+                cnt[ch - 'a']--;
+                if (cnt[ch - 'a'] < 0) {
+                    return ch;
+                }
+            }
+            return ' ';
+        }
+    }
+
 }
