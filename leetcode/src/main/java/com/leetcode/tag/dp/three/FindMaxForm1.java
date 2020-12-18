@@ -122,8 +122,11 @@ public class FindMaxForm1 {
                 for (int j = 0; j <= m; j++) {
                     for (int k = 0; k <= n; k++) {
                         if (cnt[0] > j || cnt[1] > k) {
+                            //如果你不能把这第 i 个物品装入背包（等同于容量不足，装不下去）
                             dp[i][j][k] = dp[i - 1][j][k];
                         } else {
+                            //如果你可以把这第 i 个物品装入了背包(此时背包容量是充足的，因此要选择装或者不装)
+                            // Max函数里的两个式子，分别是装和不装strs[i]的字符串数量
                             dp[i][j][k] = Math.max(dp[i - 1][j][k], dp[i - 1][j - cnt[0]][k - cnt[1]] + 1);
                         }
                     }
