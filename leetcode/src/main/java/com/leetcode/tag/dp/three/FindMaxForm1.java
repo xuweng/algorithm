@@ -47,4 +47,42 @@ public class FindMaxForm1 {
             return 0;
         }
     }
+
+    /**
+     * 方法一：动态规划
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/ones-and-zeroes/solution/yi-he-ling-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int findMaxForm(String[] strs, int m, int n) {
+            int[][] dp = new int[m + 1][n + 1];
+            for (String s : strs) {
+                int[] count = countzeroesones(s);
+                for (int zeroes = m; zeroes >= count[0]; zeroes--) {
+                    for (int ones = n; ones >= count[1]; ones--) {
+                        dp[zeroes][ones] = Math.max(1 + dp[zeroes - count[0]][ones - count[1]], dp[zeroes][ones]);
+                    }
+                }
+            }
+            return dp[m][n];
+        }
+
+        /**
+         * 01计数 01计数 01计数 01计数
+         *
+         * @param s
+         * @return
+         */
+        public int[] countzeroesones(String s) {
+            int[] c = new int[2];
+            for (int i = 0; i < s.length(); i++) {
+                c[s.charAt(i) - '0']++;
+            }
+            return c;
+        }
+    }
+
 }
