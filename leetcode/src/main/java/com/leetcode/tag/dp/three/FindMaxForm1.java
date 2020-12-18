@@ -58,6 +58,7 @@ public class FindMaxForm1 {
      */
     class Solution1 {
         public int findMaxForm(String[] strs, int m, int n) {
+            //用 dp(i, j) 表示使用 i 个 0 和 j 个 1，最多能拼出的字符串数目
             int[][] dp = new int[m + 1][n + 1];
             for (String s : strs) {
                 int[] count = countzeroesones(s);
