@@ -101,4 +101,48 @@ public class FindMaxForm1 {
         }
     }
 
+    /**
+     * 作者：dong-men
+     * 链接：https://leetcode-cn.com/problems/ones-and-zeroes/solution/dong-tai-gui-hua-0-1bei-bao-wen-ti-labuladongdong-/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public int findMaxForm(String[] strs, int m, int n) {
+            int strsNum = strs.length;
+            //dp[i][j][k]的定义如下：
+            //若只使用前i个物品，当背包容量为j个0，k个1时，能够容纳的最多字符串数。
+            int[][][] dp = new int[strsNum + 1][m + 1][n + 1];
+
+            // base case为dp[0][..][..] = 0, dp[..][0][0] = 0。
+            // 因为如果不使用任何一个字符串，则背包能装的字符串数就为0；如果背包对0，1的容量都为0，它能装的字符串数也为0。
+            for (int i = 1; i <= strsNum; i++) {
+                int[] cnt = count(strs[i - 1]);
+
+                for (int j = 0; j <= m; j++) {
+                    for (int k = 0; k <= n; k++) {
+                        if (cnt[0] > j || cnt[1] > k) {
+                            dp[i][j][k] = dp[i - 1][j][k];
+                        } else {
+                            dp[i][j][k] = Math.max(dp[i - 1][j][k], dp[i - 1][j - cnt[0]][k - cnt[1]] + 1);
+                        }
+                    }
+                }
+            }
+
+            return dp[strsNum][m][n];
+        }
+
+
+        // cnt[0] = zeroNums, cnt[1] = oneNums
+        public int[] count(String str) {
+            int[] cnt = new int[2];
+            for (char c : str.toCharArray()) {
+                cnt[c - '0']++;
+            }
+            return cnt;
+        }
+    }
+
+
 }
