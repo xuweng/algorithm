@@ -57,6 +57,21 @@ public class FindMaxForm1 {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution1 {
+        /**
+         * 这道题和经典的背包问题很类似，不同的是在背包问题中，我们只有一种容量，而在这道题中，
+         * <p>
+         * 我们有 0 和 1 两种容量。每个物品（字符串）需要分别占用 0 和 1 的若干容量，并且所有物品的价值均为 1。因此我们可以使用二维的动态规划。
+         * <p>
+         * 作者：LeetCode
+         * 链接：https://leetcode-cn.com/problems/ones-and-zeroes/solution/yi-he-ling-by-leetcode/
+         * 来源：力扣（LeetCode）
+         * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+         *
+         * @param strs
+         * @param m
+         * @param n
+         * @return
+         */
         public int findMaxForm(String[] strs, int m, int n) {
             //用 dp(i, j) 表示使用 i 个 0 和 j 个 1，最多能拼出的字符串数目
             int[][] dp = new int[m + 1][n + 1];
