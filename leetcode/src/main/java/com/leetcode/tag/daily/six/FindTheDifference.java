@@ -91,5 +91,32 @@ public class FindTheDifference {
         }
     }
 
+    /**
+     * 方法三：位运算
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/find-the-difference/solution/zhao-bu-tong-by-leetcode-solution-mtqf/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution4 {
+        /**
+         * 如果将两个字符串拼接成一个字符串，则问题转换成求字符串中出现奇数次的字符
+         *
+         * @param s
+         * @param t
+         * @return
+         */
+        public char findTheDifference(String s, String t) {
+            int ret = 0;
+            for (int i = 0; i < s.length(); ++i) {
+                ret ^= s.charAt(i);
+            }
+            for (int i = 0; i < t.length(); ++i) {
+                ret ^= t.charAt(i);
+            }
+            return (char) ret;
+        }
+    }
 
 }
