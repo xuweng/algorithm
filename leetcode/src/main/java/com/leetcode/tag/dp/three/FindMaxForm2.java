@@ -10,8 +10,10 @@ public class FindMaxForm2 {
                 return 0;
             }
             int[][][] dp = new int[strs.length + 1][m + 1][n + 1];
+            // 从1开始.因为i-1.
             for (int i = 1; i <= strs.length; i++) {
                 int[] c = count(strs[i - 1]);
+                // 从0开始.j和k可以只有一个为0.
                 for (int j = 0; j <= m; j++) {
                     for (int k = 0; k <= n; k++) {
                         if (j < c[0] || k < c[1]) {
