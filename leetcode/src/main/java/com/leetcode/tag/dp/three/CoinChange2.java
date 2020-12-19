@@ -11,14 +11,14 @@ public class CoinChange2 {
             }
             int[] dp = new int[amount + 1];
             for (int i = 1; i <= amount; i++) {
-                dp[i] = Integer.MIN_VALUE;
+                dp[i] = Integer.MAX_VALUE;
                 for (int coin : coins) {
-                    if ((coin <= i) && (dp[i - coin] != Integer.MIN_VALUE)) {
-                        dp[i] = Math.max(dp[i], dp[i - coin] + 1);
+                    if ((coin <= i) && (dp[i - coin] != Integer.MAX_VALUE)) {
+                        dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                     }
                 }
             }
-            return dp[amount] == Integer.MIN_VALUE ? -1 : dp[amount];
+            return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
         }
     }
 }
