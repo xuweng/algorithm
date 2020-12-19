@@ -4,7 +4,7 @@ package com.leetcode.tag.dp.three;
  * 474. 一和零
  */
 public class FindMaxForm2 {
-    class Solution {
+    static class Solution {
         public int findMaxForm(String[] strs, int m, int n) {
             if (strs == null || strs.length == 0) {
                 return 0;
