@@ -22,7 +22,7 @@ public class FindMaxForm2 {
                     }
                 }
             }
-            return dp[dp.length][m][n];
+            return dp[strs.length][m][n];
         }
 
         private int[] count(String s) {
