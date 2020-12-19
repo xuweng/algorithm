@@ -13,7 +13,7 @@ public class CoinChange2 {
             for (int i = 1; i <= amount; i++) {
                 dp[i] = Integer.MIN_VALUE;
                 for (int coin : coins) {
-                    if (coin <= i && dp[i - coin] != Integer.MIN_VALUE) {
+                    if ((coin <= i) && (dp[i - coin] != Integer.MIN_VALUE)) {
                         dp[i] = Math.max(dp[i], dp[i - coin] + 1);
                     }
                 }
