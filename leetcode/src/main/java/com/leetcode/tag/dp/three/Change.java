@@ -16,6 +16,14 @@ public class Change {
             return back(amount, coins, 0);
         }
 
+        /**
+         * 一定要start,只需要从start开始递归
+         *
+         * @param amount
+         * @param coins
+         * @param start
+         * @return
+         */
         private int back(int amount, int[] coins, int start) {
             if (amount <= 0) {
                 return 0;
