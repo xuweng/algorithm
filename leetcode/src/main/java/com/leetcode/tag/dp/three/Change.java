@@ -19,22 +19,15 @@ public class Change {
         }
 
         private int back(int amount, int[] coins) {
-            if (amount == 0) {
+            if (amount <= 0) {
                 return 0;
-            }
-            if (amount < 0) {
-                return Integer.MAX_VALUE;
             }
             int result = 0;
             for (int coin : coins) {
                 if (coin > amount) {
-                    return Integer.MAX_VALUE;
+                    return 0;
                 }
-                int b = back(amount - coin, coins);
-                if (b == Integer.MAX_VALUE) {
-                    continue;
-                }
-                result += b + 1;
+                result += back(amount - coin, coins) + 1;
             }
             return result;
         }
