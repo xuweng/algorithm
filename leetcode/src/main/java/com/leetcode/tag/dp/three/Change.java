@@ -8,7 +8,10 @@ import java.util.Arrays;
 public class Change {
     class Solution {
         public int change(int amount, int[] coins) {
-            if (coins == null || coins.length == 0) {
+            if (coins == null) {
+                return 0;
+            }
+            if (coins.length == 0 && amount == 0) {
                 return 0;
             }
             Arrays.sort(coins);
