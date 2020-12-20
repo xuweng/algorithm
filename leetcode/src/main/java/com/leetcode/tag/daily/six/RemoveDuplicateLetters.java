@@ -4,6 +4,11 @@ package com.leetcode.tag.daily.six;
  * 316. 去除重复字母
  */
 public class RemoveDuplicateLetters {
+    /**
+     * 算法错误 算法错误 算法错误 算法错误
+     * <p>
+     * 返回结果的字典序最小
+     */
     class Solution {
         public String removeDuplicateLetters(String s) {
             if (s == null || s.isEmpty()) {
@@ -25,6 +30,8 @@ public class RemoveDuplicateLetters {
 
     /**
      * 方法一：贪心 + 栈
+     * <p>
+     * 看视频 看视频 看视频 看视频 看视频 看视频 看视频 看视频 看视频 看视频 看视频
      * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/remove-duplicate-letters/solution/qu-chu-zhong-fu-zi-mu-by-leetcode-soluti-vuso/
