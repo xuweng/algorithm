@@ -16,7 +16,7 @@ public class FindMaxForm3 {
                 int[] c = count(strs[i - 1]);
                 for (int j = 0; j <= m; j++) {
                     for (int k = 0; k <= n; k++) {
-                        if (j > c[0] || k > c[1]) {
+                        if (j < c[0] || k < c[1]) {
                             dp[i][j][k] = dp[i - 1][j][k];
                         } else {
                             dp[i][j][k] = Math.max(dp[i - 1][j][k], dp[i - 1][j - c[0]][k - c[1]]);
