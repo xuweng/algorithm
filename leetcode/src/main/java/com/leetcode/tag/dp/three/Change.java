@@ -6,7 +6,7 @@ import java.util.Arrays;
  * 518. 零钱兑换 II
  */
 public class Change {
-    class Solution {
+    static class Solution {
         int[] meno;
 
         public int change(int amount, int[] coins) {
