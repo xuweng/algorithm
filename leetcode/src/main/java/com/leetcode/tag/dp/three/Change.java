@@ -25,7 +25,10 @@ public class Change {
          * @return
          */
         private int back(int amount, int[] coins, int start) {
-            if (amount <= 0) {
+            if (amount == 0) {
+                return 1;
+            }
+            if (amount < 0) {
                 return 0;
             }
             int result = 0;
@@ -34,7 +37,7 @@ public class Change {
                 if (coin > amount) {
                     return 0;
                 }
-                result += back(amount - coin, coins, start) + 1;
+                result += back(amount - coin, coins, start);
             }
             return result;
         }
