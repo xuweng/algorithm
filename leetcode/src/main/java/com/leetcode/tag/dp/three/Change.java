@@ -7,6 +7,8 @@ import java.util.Arrays;
  */
 public class Change {
     class Solution {
+        int[] meno;
+
         public int change(int amount, int[] coins) {
             if (coins == null) {
                 return 0;
@@ -15,6 +17,8 @@ public class Change {
                 return 1;
             }
             Arrays.sort(coins);
+
+            meno = new int[amount + 1];
 
             return back(amount, coins, 0);
         }
@@ -34,6 +38,9 @@ public class Change {
             if (amount < 0) {
                 return 0;
             }
+            if (meno[amount] != 0) {
+                return meno[amount];
+            }
             int result = 0;
             for (int i = start; i < coins.length; i++) {
                 if (coins[i] > amount) {
@@ -43,7 +50,8 @@ public class Change {
                 // 注意递归的start是i
                 result += back(amount - coins[i], coins, i);
             }
-            return result;
+            meno[amount] = result;
+            return meno[amount];
         }
     }
 }
