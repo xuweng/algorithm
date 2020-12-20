@@ -37,8 +37,10 @@ public class Change {
             int result = 0;
             for (int i = start; i < coins.length; i++) {
                 if (coins[i] > amount) {
+                    // 注意不是return
                     break;
                 }
+                // 注意递归的start是i
                 result += back(amount - coins[i], coins, i);
             }
             return result;
