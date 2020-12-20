@@ -34,10 +34,7 @@ public class Change {
             int result = 0;
             for (int i = start; i < coins.length; i++) {
                 int coin = coins[i];
-                if (coin > amount) {
-                    return 0;
-                }
-                result += back(amount - coin, coins, start);
+                result += back(amount - coin, coins, i);
             }
             return result;
         }
