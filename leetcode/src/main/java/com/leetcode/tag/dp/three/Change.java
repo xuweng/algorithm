@@ -20,11 +20,15 @@ public class Change {
 
             meno = new int[amount + 1];
 
-            return back(amount, coins, 0);
+            int back = back(amount, coins, 0);
+
+            return back;
         }
 
         /**
          * 一定要start,只需要从start开始递归
+         * <p>
+         * 缓存错误
          *
          * @param amount
          * @param coins
