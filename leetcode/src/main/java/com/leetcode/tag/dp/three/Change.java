@@ -13,19 +13,20 @@ public class Change {
             }
             Arrays.sort(coins);
 
-            return back(amount, coins);
+            return back(amount, coins, 0);
         }
 
-        private int back(int amount, int[] coins) {
+        private int back(int amount, int[] coins, int start) {
             if (amount <= 0) {
                 return 0;
             }
             int result = 0;
-            for (int coin : coins) {
+            for (int i = start; i < coins.length; i++) {
+                int coin = coins[i];
                 if (coin > amount) {
                     return 0;
                 }
-                result += back(amount - coin, coins) + 1;
+                result += back(amount - coin, coins, start) + 1;
             }
             return result;
         }
