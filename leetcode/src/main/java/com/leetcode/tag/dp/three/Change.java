@@ -33,8 +33,7 @@ public class Change {
             }
             int result = 0;
             for (int i = start; i < coins.length; i++) {
-                int coin = coins[i];
-                result += back(amount - coin, coins, i);
+                result += back(amount - coins[i], coins, i);
             }
             return result;
         }
