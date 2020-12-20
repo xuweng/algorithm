@@ -12,7 +12,7 @@ public class Change {
                 return 0;
             }
             if (coins.length == 0 && amount == 0) {
-                return 0;
+                return 1;
             }
             Arrays.sort(coins);
 
