@@ -13,9 +13,7 @@ public class Change {
             }
             Arrays.sort(coins);
 
-            int back = back(amount, coins);
-
-            return back == Integer.MAX_VALUE ? 0 : back;
+            return back(amount, coins);
         }
 
         private int back(int amount, int[] coins) {
