@@ -1,7 +1,7 @@
 package com.leetcode.tag.daily.six;
 
-import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.LinkedList;
 import java.util.stream.Collectors;
 
 /**
@@ -84,7 +84,7 @@ public class RemoveDuplicateLetters {
                 lastInx[chars[i] - 'a'] = i;
             }
             // 栈保存无重复,字典序更小的
-            Deque<Character> stack = new ArrayDeque<>();
+            Deque<Character> stack = new LinkedList<>();
             //某一个字符是否在栈中出现
             boolean[] visited = new boolean[26];
             for (int i = 0; i < chars.length; i++) {
