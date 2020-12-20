@@ -16,7 +16,7 @@ public class RemoveDuplicateLetters {
             StringBuilder result = new StringBuilder();
             for (int i = 0; i < chars.length; i++) {
                 if (chars[i] != 0) {
-                    result.append(i + 'a');
+                    result.append((char) (i + 'a'));
                 }
             }
             return result.toString();
