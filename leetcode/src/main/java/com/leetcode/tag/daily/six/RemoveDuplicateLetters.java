@@ -94,7 +94,7 @@ public class RemoveDuplicateLetters {
                 }
                 // 当前字符在栈顶元素之前，且栈顶元素在后面还有
                 while (!stack.isEmpty() && stack.peekLast() > chars[i] && lastInx[stack.peekLast() - 'a'] > i) {
-                    // i后面还要更小的字符
+                    // i后面还有更小的字符
                     // 移除栈顶元素
                     Character c = stack.removeLast();
                     //表示该字符没有在栈中出现
