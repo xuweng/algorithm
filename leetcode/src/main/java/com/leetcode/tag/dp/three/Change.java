@@ -1,5 +1,7 @@
 package com.leetcode.tag.dp.three;
 
+import java.util.Arrays;
+
 /**
  * 518. 零钱兑换 II
  */
@@ -9,6 +11,7 @@ public class Change {
             if (coins == null || coins.length == 0) {
                 return 0;
             }
+            Arrays.sort(coins);
 
             return back(amount, coins);
         }
@@ -17,9 +20,13 @@ public class Change {
             int result = 0;
             for (int coin : coins) {
                 if (coin > amount) {
+                    return Integer.MAX_VALUE;
+                }
+                int b = back(amount - coin, coins);
+                if (b == Integer.MAX_VALUE) {
                     continue;
                 }
-                result += back(amount - coin, coins) + 1;
+                result += b + 1;
             }
             return result;
         }
