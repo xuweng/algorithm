@@ -83,6 +83,7 @@ public class RemoveDuplicateLetters {
                 // 记录每个元素最后一次出现的位置
                 lastInx[chars[i] - 'a'] = i;
             }
+            // 栈保存无重复,字典序更小的
             Deque<Character> stack = new ArrayDeque<>();
             //某一个字符是否在栈中出现
             boolean[] visited = new boolean[26];
