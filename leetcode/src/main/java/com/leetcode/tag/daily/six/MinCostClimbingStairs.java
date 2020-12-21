@@ -101,4 +101,27 @@ public class MinCostClimbingStairs {
         }
     }
 
+    /**
+     * 注意到当 i≥2 时，dp[i] 只和 dp[i−1] 与 dp[i−2] 有关
+     * <p>
+     * 因此可以使用滚动数组的思想，将空间复杂度优化到 O(1)。
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/min-cost-climbing-stairs/solution/shi-yong-zui-xiao-hua-fei-pa-lou-ti-by-l-ncf8/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution4 {
+        public int minCostClimbingStairs(int[] cost) {
+            int n = cost.length;
+            int prev = 0, curr = 0;
+            for (int i = 2; i <= n; i++) {
+                int next = Math.min(curr + cost[i - 1], prev + cost[i - 2]);
+                prev = curr;
+                curr = next;
+            }
+            return curr;
+        }
+    }
+
 }
