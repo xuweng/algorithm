@@ -28,6 +28,7 @@ public class ClimbStairs {
             if (meno[n] != 0) {
                 return meno[n];
             }
+            // 两个子问题n-1和n-2很接近，肯定会有很多重复子问题
             meno[n] = back(n - 1) + back(n - 2);
             return meno[n];
         }
