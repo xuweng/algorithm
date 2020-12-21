@@ -12,6 +12,12 @@ public class ClimbStairs {
             return (int) back(n);
         }
 
+        /**
+         * n最大为45.超过会大数溢出.
+         *
+         * @param n
+         * @return
+         */
         private long back(int n) {
             if (n < 0) {
                 return 0;
