@@ -167,4 +167,54 @@ public class Change {
         }
     }
 
+    /**
+     * 作者：xu-zhou-geng
+     * 链接：https://leetcode-cn.com/problems/coin-change-2/solution/ling-qian-dui-huan-iihe-pa-lou-ti-wen-ti-dao-di-yo/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution4 {
+        /**
+         * 正确的子问题定义应该是，problem(k,i) = problem(k-1, i) + problem(k, i-k)
+         * <p>
+         * 即前k个硬币凑齐金额i的组合数等于前k-1个硬币凑齐金额i的组合数加上在原来i-k的基础上使用硬币的组合数。
+         * <p>
+         * 说的更加直白一点，那就是用前k的硬币凑齐金额i，要分为两种情况开率，一种是没有用前k-1个硬币就凑齐了，
+         * <p>
+         * 一种是前面已经凑到了i-k，现在就差第k个硬币了。
+         *
+         * @param amount
+         * @param coins
+         * @return
+         */
+        public int change(int amount, int[] coins) {
+            int K = coins.length + 1;
+            int I = amount + 1;
+            int[][] DP = new int[K][I];
+            //初始化数组
+            for (int k = 0; k < K; k++) {
+                for (int i = 0; i < I; i++) {
+                    DP[k][i] = 0;
+                }
+            }
+            //初始化基本状态
+            for (int k = 0; k < coins.length + 1; k++) {
+                DP[k][0] = 1;
+            }
+            for (int k = 1; k <= coins.length; k++) {
+                for (int i = 1; i <= amount; i++) {
+                    if (i >= coins[k - 1]) {
+                        DP[k][i] = DP[k][i - coins[k - 1]] + DP[k - 1][i];
+                    } else {
+                        DP[k][i] = DP[k - 1][k];
+                    }
+                }
+            }
+            return DP[coins.length][amount];
+        }
+    }
+
+    ;
+
+
 }
