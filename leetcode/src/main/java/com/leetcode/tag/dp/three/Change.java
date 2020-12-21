@@ -138,4 +138,33 @@ public class Change {
         }
     }
 
+    /**
+     * 结果是排列数，而不是组合数
+     * <p>
+     * 也就是代码会把1,2和2,1当做两种情况
+     * <p>
+     * 作者：xu-zhou-geng
+     * 链接：https://leetcode-cn.com/problems/coin-change-2/solution/ling-qian-dui-huan-iihe-pa-lou-ti-wen-ti-dao-di-yo/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        public int change(int amount, int[] coins) {
+            int[] dp = new int[amount + 1];
+            dp[0] = 1;
+            //枚举金额
+            for (int j = 1; j <= amount; j++) {
+                //枚举硬币
+                for (int coin : coins) {
+                    if (j < coin) {
+                        // coin不能大于amount
+                        continue;
+                    }
+                    dp[j] += dp[j - coin];
+                }
+            }
+            return dp[amount];
+        }
+    }
+
 }
