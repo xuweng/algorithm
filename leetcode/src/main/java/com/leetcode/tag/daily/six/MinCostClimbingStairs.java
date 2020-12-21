@@ -4,7 +4,7 @@ package com.leetcode.tag.daily.six;
  * 746. 使用最小花费爬楼梯
  */
 public class MinCostClimbingStairs {
-    class Solution {
+    static class Solution {
         int[] meno;
 
         public int minCostClimbingStairs(int[] cost) {
