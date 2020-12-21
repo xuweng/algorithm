@@ -13,7 +13,7 @@ public class MinCostClimbingStairs {
             }
             meno = new int[cost.length];
 
-            return back(cost, cost.length);
+            return back(cost, cost.length - 1);
         }
 
         private int back(int[] cost, int start) {
