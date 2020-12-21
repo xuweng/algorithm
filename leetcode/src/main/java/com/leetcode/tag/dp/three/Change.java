@@ -113,4 +113,29 @@ public class Change {
             return result;
         }
     }
+
+    /**
+     * 方法：动态规划
+     * <p>
+     * 十分钟看答案 十分钟看答案 十分钟看答案 十分钟 十分钟 十分钟
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/coin-change-2/solution/ling-qian-dui-huan-ii-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public int change(int amount, int[] coins) {
+            int[] dp = new int[amount + 1];
+            dp[0] = 1;
+
+            for (int coin : coins) {
+                for (int x = coin; x < amount + 1; ++x) {
+                    dp[x] += dp[x - coin];
+                }
+            }
+            return dp[amount];
+        }
+    }
+
 }
