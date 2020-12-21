@@ -177,6 +177,8 @@ public class Change {
      */
     class Solution4 {
         /**
+         * 不仅记录金额i，还要记录k
+         * <p>
          * 正确的子问题定义应该是，problem(k,i) = problem(k-1, i) + problem(k, i-k)
          * <p>
          * 状态数组就是DP[k][i], 即前k个硬币凑齐金额i的组合数。
