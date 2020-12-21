@@ -37,7 +37,7 @@ public class MinCostClimbingStairs {
             if (meno2[start] != 0) {
                 return meno2[start];
             }
-            int result = cost[start] + Math.min(back1(cost, start + 1), back1(cost, start + 2));
+            int result = cost[start] + Math.min(back2(cost, start + 1), back2(cost, start + 2));
             meno2[start] = result;
             return meno2[start];
         }
