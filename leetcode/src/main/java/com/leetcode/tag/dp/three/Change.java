@@ -58,4 +58,49 @@ public class Change {
             return meno[amount];
         }
     }
+
+    class Solution1 {
+        public int change(int amount, int[] coins) {
+            if (coins == null) {
+                return 0;
+            }
+            if (coins.length == 0 && amount == 0) {
+                return 1;
+            }
+            Arrays.sort(coins);
+
+            int back = back(amount, coins, 0);
+
+            return back;
+        }
+
+        /**
+         * 一定要start,只需要从start开始递归
+         * <p>
+         * 缓存错误
+         *
+         * @param amount
+         * @param coins
+         * @param start
+         * @return
+         */
+        private int back(int amount, int[] coins, int start) {
+            if (amount == 0) {
+                return 1;
+            }
+            if (amount < 0) {
+                return 0;
+            }
+            int result = 0;
+            for (int i = start; i < coins.length; i++) {
+                if (coins[i] > amount) {
+                    // 注意不是return
+                    break;
+                }
+                // 注意递归的start是i
+                result += back(amount - coins[i], coins, i);
+            }
+            return result;
+        }
+    }
 }
