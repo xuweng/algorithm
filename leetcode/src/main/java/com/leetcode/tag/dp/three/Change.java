@@ -168,6 +168,8 @@ public class Change {
     }
 
     /**
+     * 1维状态数组不够 用2维，3维，4维
+     * <p>
      * 作者：xu-zhou-geng
      * 链接：https://leetcode-cn.com/problems/coin-change-2/solution/ling-qian-dui-huan-iihe-pa-lou-ti-wen-ti-dao-di-yo/
      * 来源：力扣（LeetCode）
@@ -176,6 +178,8 @@ public class Change {
     class Solution4 {
         /**
          * 正确的子问题定义应该是，problem(k,i) = problem(k-1, i) + problem(k, i-k)
+         * <p>
+         * 状态数组就是DP[k][i], 即前k个硬币凑齐金额i的组合数。
          * <p>
          * 即前k个硬币凑齐金额i的组合数等于前k-1个硬币凑齐金额i的组合数加上在原来i-k的基础上使用硬币的组合数。
          * <p>
