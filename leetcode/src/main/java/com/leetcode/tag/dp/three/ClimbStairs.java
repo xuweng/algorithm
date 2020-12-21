@@ -5,14 +5,14 @@ package com.leetcode.tag.dp.three;
  */
 public class ClimbStairs {
     class Solution {
-        int[] meno;
+        long[] meno;
 
         public int climbStairs(int n) {
-            meno = new int[n + 1];
-            return back(n);
+            meno = new long[n + 1];
+            return (int) back(n);
         }
 
-        private int back(int n) {
+        private long back(int n) {
             if (n < 0) {
                 return 0;
             }
