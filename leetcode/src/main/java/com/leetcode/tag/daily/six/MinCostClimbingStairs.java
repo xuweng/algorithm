@@ -42,4 +42,30 @@ public class MinCostClimbingStairs {
             return meno2[start];
         }
     }
+
+    class Solution1 {
+        int[] meno;
+
+        public int minCostClimbingStairs(int[] cost) {
+            if (cost == null || cost.length == 0) {
+                return 0;
+            }
+            meno = new int[cost.length];
+
+            return Math.min(back(cost, 0), back(cost, 1));
+        }
+
+        private int back(int[] cost, int start) {
+            if (start >= cost.length) {
+                return 0;
+            }
+            if (meno[start] != 0) {
+                return meno[start];
+            }
+            int result = cost[start] + Math.min(back(cost, start + 1), back(cost, start + 2));
+            meno[start] = result;
+            return meno[start];
+        }
+
+    }
 }
