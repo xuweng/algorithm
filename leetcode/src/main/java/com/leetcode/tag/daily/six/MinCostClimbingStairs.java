@@ -13,19 +13,14 @@ public class MinCostClimbingStairs {
             }
             meno = new int[cost.length];
 
-            return back(cost, cost.length - 1);
+            return Math.min(back(cost, 0), back(cost, 1));
         }
 
         private int back(int[] cost, int start) {
-            if (start == 0 || start == 1) {
-                return cost[start];
+            if (start >= cost.length) {
+                return 0;
             }
-            if (meno[start] != 0) {
-                return meno[start];
-            }
-            int b = Math.min(back(cost, start - 1), back(cost, start - 2) + cost[start]);
-            meno[start] = b;
-            return meno[start];
+            return cost[start] + Math.min(back(cost, start + 1), back(cost, start + 2));
         }
     }
 }
