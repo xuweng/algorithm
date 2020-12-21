@@ -82,6 +82,11 @@ public class Change {
         /**
          * 一定要start,只需要从start开始递归
          * <p>
+         * 500
+         * [3,5,7,8,9,10,11]
+         * <p>
+         * amount越大，递归树越高
+         * <p>
          * 缓存错误
          *
          * @param amount
