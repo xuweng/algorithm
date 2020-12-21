@@ -59,6 +59,11 @@ public class Change {
         }
     }
 
+    /**
+     * 缓存错误答案
+     * <p>
+     * 继续递归计算
+     */
     class Solution1 {
         public int change(int amount, int[] coins) {
             if (coins == null) {
