@@ -78,4 +78,27 @@ public class MinCostClimbingStairs {
         }
 
     }
+
+    /**
+     * 方法一：动态规划
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/min-cost-climbing-stairs/solution/shi-yong-zui-xiao-hua-fei-pa-lou-ti-by-l-ncf8/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        public int minCostClimbingStairs(int[] cost) {
+            int n = cost.length;
+            //dp[i] 表示达到下标 i 的最小花费。
+            int[] dp = new int[n + 1];
+            //可以选择下标 0 或 1 作为初始阶梯
+            dp[0] = dp[1] = 0;
+            for (int i = 2; i <= n; i++) {
+                dp[i] = Math.min(dp[i - 1] + cost[i - 1], dp[i - 2] + cost[i - 2]);
+            }
+            return dp[n];
+        }
+    }
+
 }
