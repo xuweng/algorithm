@@ -59,6 +59,12 @@ public class ClimbStairs {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution2 {
+        /**
+         * 随着 n 的不断增大 O(n) 可能已经不能满足我们的需要了，我们可以用「矩阵快速幂」的方法把算法加速到 O(logn)。
+         *
+         * @param n
+         * @return
+         */
         public int climbStairs(int n) {
             int p, q = 0, r = 1;
             for (int i = 1; i <= n; ++i) {
