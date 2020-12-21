@@ -44,6 +44,9 @@ public class MinCostClimbingStairs {
     }
 
     class Solution1 {
+        /**
+         * 一个缓存就够
+         */
         int[] meno;
 
         public int minCostClimbingStairs(int[] cost) {
@@ -55,6 +58,13 @@ public class MinCostClimbingStairs {
             return Math.min(back(cost, 0), back(cost, 1));
         }
 
+        /**
+         * 表示从start跳到终点
+         *
+         * @param cost
+         * @param start
+         * @return
+         */
         private int back(int[] cost, int start) {
             if (start >= cost.length) {
                 return 0;
