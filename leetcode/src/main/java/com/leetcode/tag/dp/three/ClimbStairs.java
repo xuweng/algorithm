@@ -76,4 +76,27 @@ public class ClimbStairs {
         }
     }
 
+    /**
+     * 将一维数组降维成点
+     * <p>
+     * 如果我们把问题泛化，不再是固定的1，2，而是任意给定台阶数，例如1,2,5呢？
+     */
+    class Solution3 {
+        public int climbStairs(int n) {
+            int[] dp = new int[n + 1];
+            int[] steps = {1, 2};
+            dp[0] = 1;
+            for (int i = 1; i <= n; i++) {
+                for (int step : steps) {
+                    if (i < step) {
+                        continue;
+                    }
+                    dp[i] += dp[i - step];
+                }
+            }
+
+            return dp[n];
+        }
+    }
+
 }
