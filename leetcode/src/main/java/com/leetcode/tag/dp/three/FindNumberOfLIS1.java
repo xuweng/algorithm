@@ -27,7 +27,7 @@ public class FindNumberOfLIS1 {
                 }
             }
             int max = 0;
-            for (int num : nums) {
+            for (int num : dp) {
                 max = Math.max(max, num);
             }
             int result = 0;
