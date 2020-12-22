@@ -4,7 +4,7 @@ package com.leetcode.tag.dp.three;
  * 673. 最长递增子序列的个数
  */
 public class FindNumberOfLIS1 {
-    class Solution {
+    static class Solution {
         public int findNumberOfLIS(int[] nums) {
             if (nums == null || nums.length == 0) {
                 return 0;
