@@ -1,5 +1,7 @@
 package com.leetcode.tag.dp.three;
 
+import java.util.Arrays;
+
 /**
  * 673. 最长递增子序列的个数
  */
@@ -11,8 +13,8 @@ public class FindNumberOfLIS1 {
             }
             int[] dp = new int[nums.length];
             int[] c = new int[nums.length];
-            dp[0] = 1;
-            c[0] = 1;
+            Arrays.fill(dp, 1);
+            Arrays.fill(c, 1);
             for (int i = 1; i < nums.length; i++) {
                 for (int j = 0; j < i; j++) {
                     if (nums[j] >= nums[i]) {
