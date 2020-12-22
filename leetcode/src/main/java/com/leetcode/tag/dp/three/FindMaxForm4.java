@@ -17,7 +17,7 @@ public class FindMaxForm4 {
                         if (j < c[0] || k < c[1]) {
                             dp[i][j][k] = dp[i - 1][j][k];
                         } else {
-                            dp[i][j][k] = dp[i - 1][j - c[0]][k - c[1]] + 1;
+                            dp[i][j][k] = Math.max(dp[i - 1][j][k], dp[i - 1][j - c[0]][k - c[1]] + 1);
                         }
                     }
                 }
