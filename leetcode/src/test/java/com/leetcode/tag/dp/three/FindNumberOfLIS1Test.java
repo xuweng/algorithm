@@ -7,7 +7,8 @@ class FindNumberOfLIS1Test {
 
     @Test
     void findNumberOfLIS() {
-        int[] nums = {1, 3, 5, 4, 7};
+        //        int[] nums = {1, 3, 5, 4, 7};
+        int[] nums = {2, 2, 2, 2, 2};
 
         solution.findNumberOfLIS(nums);
     }
