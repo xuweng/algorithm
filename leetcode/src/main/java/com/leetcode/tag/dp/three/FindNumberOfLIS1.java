@@ -11,9 +11,7 @@ public class FindNumberOfLIS1 {
             }
             int[] dp = new int[nums.length];
             int[] c = new int[nums.length];
-            dp[0] = 1;
-            c[0] = 1;
-            for (int i = 1; i < nums.length; i++) {
+            for (int i = 0; i < nums.length; i++) {
                 for (int j = 0; j < i; j++) {
                     if (dp[j] > dp[i]) {
                         continue;
