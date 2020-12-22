@@ -15,6 +15,7 @@ public class FindNumberOfLIS1 {
             int[] c = new int[nums.length];
             Arrays.fill(dp, 1);
             Arrays.fill(c, 1);
+            int max = 0;
             for (int i = 1; i < nums.length; i++) {
                 for (int j = 0; j < i; j++) {
                     if (nums[j] >= nums[i]) {
@@ -27,15 +28,12 @@ public class FindNumberOfLIS1 {
                         c[i] += c[j];
                     }
                 }
-            }
-            int max = 0;
-            for (int num : dp) {
-                max = Math.max(max, num);
+                max = Math.max(max, dp[i]);
             }
             int result = 0;
-            for (int i : c) {
-                if (i == max) {
-                    result++;
+            for (int i = 0; i < nums.length; i++) {
+                if (dp[i] == max) {
+                    result += c[i];
                 }
             }
             return result;
