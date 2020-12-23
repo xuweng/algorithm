@@ -19,6 +19,10 @@ public class CombinationSum2 {
         }
 
         private void back(int[] candidates, int target, int start) {
+            if (target == 0) {
+                result.add(new ArrayList<>(deque));
+                return;
+            }
             for (int i = start; i < candidates.length && candidates[i] <= target; i++) {
                 deque.push(candidates[i]);
                 back(candidates, target - candidates[i], i + 1);
