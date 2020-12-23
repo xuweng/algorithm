@@ -1,8 +1,6 @@
 package com.leetcode.tag.daily.six;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 387. 字符串中的第一个唯一字符
@@ -86,6 +84,45 @@ public class FirstUniqChar {
                 first = -1;
             }
             return first;
+        }
+    }
+
+    /**
+     * 方法三：队列
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/first-unique-character-in-a-string/solution/zi-fu-chuan-zhong-de-di-yi-ge-wei-yi-zi-x9rok/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        public int firstUniqChar(String s) {
+            Map<Character, Integer> position = new HashMap<>();
+            Queue<Pair> queue = new LinkedList<>();
+            int n = s.length();
+            for (int i = 0; i < n; ++i) {
+                char ch = s.charAt(i);
+                if (position.containsKey(ch)) {
+                    position.put(ch, -1);
+                    while (!queue.isEmpty() && position.get(queue.peek().ch) == -1) {
+                        queue.poll();
+                    }
+                } else {
+                    position.put(ch, i);
+                    queue.offer(new Pair(ch, i));
+                }
+            }
+            return queue.isEmpty() ? -1 : queue.poll().pos;
+        }
+
+        class Pair {
+            char ch;
+            int pos;
+
+            Pair(char ch, int pos) {
+                this.ch = ch;
+                this.pos = pos;
+            }
         }
     }
 
