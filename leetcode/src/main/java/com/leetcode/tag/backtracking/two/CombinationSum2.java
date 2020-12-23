@@ -24,6 +24,9 @@ public class CombinationSum2 {
                 return;
             }
             for (int i = start; i < candidates.length && candidates[i] <= target; i++) {
+                if (i > start && candidates[i] == candidates[i - 1]) {
+                    continue;
+                }
                 deque.push(candidates[i]);
                 back(candidates, target - candidates[i], i + 1);
                 deque.pop();
