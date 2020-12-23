@@ -1,5 +1,6 @@
 package com.leetcode.tag.daily.six;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -33,4 +34,29 @@ public class FirstUniqChar {
             return -1;
         }
     }
+
+    /**
+     * 方法一：使用哈希表存储频数
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/first-unique-character-in-a-string/solution/zi-fu-chuan-zhong-de-di-yi-ge-wei-yi-zi-x9rok/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int firstUniqChar(String s) {
+            Map<Character, Integer> frequency = new HashMap<>();
+            for (int i = 0; i < s.length(); ++i) {
+                char ch = s.charAt(i);
+                frequency.put(ch, frequency.getOrDefault(ch, 0) + 1);
+            }
+            for (int i = 0; i < s.length(); ++i) {
+                if (frequency.get(s.charAt(i)) == 1) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+    }
+
 }
