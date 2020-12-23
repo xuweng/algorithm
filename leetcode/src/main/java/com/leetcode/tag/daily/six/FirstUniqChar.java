@@ -1,7 +1,7 @@
 package com.leetcode.tag.daily.six;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * 387. 字符串中的第一个唯一字符
@@ -9,7 +9,7 @@ import java.util.TreeMap;
 public class FirstUniqChar {
     static class Solution {
         public int firstUniqChar(String s) {
-            Map<Character, Integer> map = new TreeMap<>();
+            Map<Character, Integer> map = new LinkedHashMap<>();
             for (int i = 0; i < s.length(); i++) {
                 map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0) + 1);
             }
