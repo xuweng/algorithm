@@ -9,6 +9,9 @@ import java.util.Map;
 public class FirstUniqChar {
     static class Solution {
         public int firstUniqChar(String s) {
+            if (s == null || s.isEmpty()) {
+                return -1;
+            }
             Map<Character, Integer> map = new LinkedHashMap<>();
             for (int i = 0; i < s.length(); i++) {
                 map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0) + 1);
