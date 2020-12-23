@@ -14,7 +14,7 @@ public class Combine {
         Deque<Integer> deque = new LinkedList<>();
 
         public List<List<Integer>> combine(int n, int k) {
-            back(n, k, 0);
+            back(n, k, 1);
 
             return result;
         }
