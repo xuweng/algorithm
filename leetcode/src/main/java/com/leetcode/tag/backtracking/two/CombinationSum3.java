@@ -14,7 +14,7 @@ public class CombinationSum3 {
         Deque<Integer> deque = new LinkedList<>();
 
         public List<List<Integer>> combinationSum3(int k, int n) {
-            back(k, n, 0);
+            back(k, n, 1);
 
             return result;
         }
