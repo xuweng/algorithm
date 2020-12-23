@@ -59,4 +59,34 @@ public class FirstUniqChar {
         }
     }
 
+    /**
+     * 方法二：使用哈希表存储索引
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/first-unique-character-in-a-string/solution/zi-fu-chuan-zhong-de-di-yi-ge-wei-yi-zi-x9rok/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public int firstUniqChar(String s) {
+            Map<Character, Integer> position = new HashMap<>();
+            int n = s.length();
+            for (int i = 0; i < n; ++i) {
+                char ch = s.charAt(i);
+                position.put(ch, position.containsKey(ch) ? -1 : i);
+            }
+            int first = n;
+            for (Map.Entry<Character, Integer> entry : position.entrySet()) {
+                int pos = entry.getValue();
+                if (pos != -1 && pos < first) {
+                    first = pos;
+                }
+            }
+            if (first == n) {
+                first = -1;
+            }
+            return first;
+        }
+    }
+
 }
