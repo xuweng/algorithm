@@ -20,7 +20,7 @@ public class MaxTurbulenceSize {
                 if (arr[i] > arr[i - 1]) {
                     dp[i] = dp1[i - 1] + 1;
                     dp1[i] = 1;
-                } else {
+                } else if (arr[i] < arr[i - 1]) {
                     dp1[i] = dp[i - 1] + 1;
                     dp[i] = 1;
                 }
