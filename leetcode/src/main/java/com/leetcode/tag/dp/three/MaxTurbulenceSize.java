@@ -23,6 +23,9 @@ public class MaxTurbulenceSize {
                 } else if (arr[i] < arr[i - 1]) {
                     dp1[i] = dp[i - 1] + 1;
                     dp[i] = 1;
+                } else {
+                    dp[i] = 1;
+                    dp1[i] = 1;
                 }
                 max = Math.max(max, Math.max(dp[i], dp1[i]));
             }
