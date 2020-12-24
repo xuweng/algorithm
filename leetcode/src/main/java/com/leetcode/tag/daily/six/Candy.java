@@ -24,6 +24,7 @@ public class Candy {
          */
         public int candy(int[] ratings) {
             int n = ratings.length;
+            //左规则
             int[] left = new int[n];
             for (int i = 0; i < n; i++) {
                 if (i > 0 && ratings[i] > ratings[i - 1]) {
@@ -32,6 +33,7 @@ public class Candy {
                     left[i] = 1;
                 }
             }
+            //右规则
             int right = 0, ret = 0;
             for (int i = n - 1; i >= 0; i--) {
                 if (i < n - 1 && ratings[i] > ratings[i + 1]) {
