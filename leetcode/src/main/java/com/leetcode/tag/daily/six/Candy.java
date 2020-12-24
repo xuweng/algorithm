@@ -41,6 +41,8 @@ public class Candy {
                 } else {
                     right = 1;
                 }
+                // 累加
+                // 至少需要准备多少颗糖果
                 ret += Math.max(left[i], right);
             }
             return ret;
