@@ -42,6 +42,12 @@ public class MaxTurbulenceSize {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution1 {
+        /**
+         * 这些交替的比较符会形成若干个连续的块
+         *
+         * @param A
+         * @return
+         */
         public int maxTurbulenceSize(int[] A) {
             int N = A.length;
             int ans = 1;
