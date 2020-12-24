@@ -67,4 +67,26 @@ public class MaxTurbulenceSize {
         }
     }
 
+    class Solution2 {
+        int maxTurbulenceSize(int[] A) {
+            int n = A.length;
+            // dp[i][0]表示以第i个元素结尾且是下降的最长的长度
+            // dp[i][1]表示以第i个元素结尾且是上升的最长的长度
+            int[][] dp = new int[n][2];
+            dp[0][0] = dp[0][1] = 1;
+            int ans = 1;
+            for (int i = 1; i < n; ++i) {
+                dp[i][0] = dp[i][1] = 1;
+                if (A[i] > A[i - 1]) {
+                    dp[i][1] = dp[i - 1][0] + 1;
+                } else if (A[i] < A[i - 1]) {
+                    dp[i][0] = dp[i - 1][1] + 1;
+                }
+                ans = Math.max(ans, Math.max(dp[i][0], dp[i][1]));
+            }
+
+            return ans;
+        }
+    }
+
 }
