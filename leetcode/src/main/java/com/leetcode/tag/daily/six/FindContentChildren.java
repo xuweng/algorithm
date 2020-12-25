@@ -29,4 +29,31 @@ public class FindContentChildren {
             return result;
         }
     }
+
+    /**
+     * 方法一：排序 + 贪心算法
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/assign-cookies/solution/fen-fa-bing-gan-by-leetcode-solution-50se/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int findContentChildren(int[] g, int[] s) {
+            Arrays.sort(g);
+            Arrays.sort(s);
+            int numOfChildren = g.length, numOfCookies = s.length;
+            int count = 0;
+            for (int i = 0, j = 0; i < numOfChildren && j < numOfCookies; i++, j++) {
+                while (j < numOfCookies && g[i] > s[j]) {
+                    j++;
+                }
+                if (j < numOfCookies) {
+                    count++;
+                }
+            }
+            return count;
+        }
+    }
+
 }
