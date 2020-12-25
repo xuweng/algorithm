@@ -20,6 +20,7 @@ public class FindContentChildren {
                 while (index < s.length) {
                     if (s[index] >= j) {
                         result++;
+                        break;
                     }
                     index++;
                 }
