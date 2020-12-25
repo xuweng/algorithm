@@ -17,12 +17,8 @@ public class FindContentChildren {
             int result = 0;
             int index = 0;
             for (int j : g) {
-                if (index < s.length) {
-                    if (s[index++] < j) {
-                        break;
-                    } else {
-                        result++;
-                    }
+                if (index < s.length && s[index++] >= j) {
+                    result++;
                 }
             }
             return result;
