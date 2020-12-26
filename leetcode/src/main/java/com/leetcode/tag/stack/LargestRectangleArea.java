@@ -85,6 +85,7 @@ public class LargestRectangleArea {
             int n = heights.length;
             int[] left = new int[n];
             int[] right = new int[n];
+            // 如果数组已经递增.右边界初始化为n
             Arrays.fill(right, n);
 
             // 单调递增栈
