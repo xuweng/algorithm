@@ -87,6 +87,7 @@ public class LargestRectangleArea {
             int[] right = new int[n];
             Arrays.fill(right, n);
 
+            // 单调递增栈
             Stack<Integer> monoStack = new Stack<>();
             for (int i = 0; i < n; ++i) {
                 while (!monoStack.isEmpty() && heights[monoStack.peek()] >= heights[i]) {
