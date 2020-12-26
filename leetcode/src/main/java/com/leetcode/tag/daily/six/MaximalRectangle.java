@@ -46,7 +46,9 @@ public class MaximalRectangle {
                     int width = left[i][j];
                     int area = width;
                     // 第i行和i上面的所有行比较
+                    // 自下往上计算
                     for (int k = i - 1; k >= 0; k--) {
+                        // 不断更新最小值
                         width = Math.min(width, left[k][j]);
                         area = Math.max(area, (i - k + 1) * width);
                     }
