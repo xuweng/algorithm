@@ -17,9 +17,9 @@ public class LargestRectangleArea {
                     left++;
                     leftIndex--;
                 }
-                int rightIndex = i - 1;
+                int rightIndex = i + 1;
                 int right = 0;
-                while (rightIndex >= 0 && heights[rightIndex] >= heights[i]) {
+                while (rightIndex < heights.length && heights[rightIndex] >= heights[i]) {
                     right++;
                     rightIndex++;
                 }
