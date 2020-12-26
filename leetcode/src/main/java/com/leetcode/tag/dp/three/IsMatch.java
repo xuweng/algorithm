@@ -13,6 +13,9 @@ public class IsMatch {
                 return s.isEmpty();
             }
 
+            // 先比较第一个字符
+            // 再比较*
+            // 最后比较.
             boolean firstMatch = !s.isEmpty() && (s.charAt(0) == p.charAt(0) || p.charAt(0) == '.');
 
             // p第1个字符是否是*
