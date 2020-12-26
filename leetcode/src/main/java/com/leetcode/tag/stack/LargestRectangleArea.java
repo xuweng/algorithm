@@ -90,6 +90,7 @@ public class LargestRectangleArea {
             // 单调递增栈
             Stack<Integer> monoStack = new Stack<>();
             for (int i = 0; i < n; ++i) {
+                // i是最大值,记录i的最近两侧
                 while (!monoStack.isEmpty() && heights[monoStack.peek()] >= heights[i]) {
                     right[monoStack.peek()] = i;
                     monoStack.pop();
