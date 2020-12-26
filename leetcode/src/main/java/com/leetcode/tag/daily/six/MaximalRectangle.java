@@ -1,7 +1,7 @@
 package com.leetcode.tag.daily.six;
 
 /**
- * 85. 最大矩形
+ * 85. 最大矩形85. 最大矩形
  */
 public class MaximalRectangle {
     /**
@@ -17,6 +17,7 @@ public class MaximalRectangle {
                 return 0;
             }
             int n = matrix[0].length;
+            //left[i][j] 为矩阵第 i 行第 j 列元素的左边连续 1 的数量。
             int[][] left = new int[m][n];
 
             for (int i = 0; i < m; i++) {
