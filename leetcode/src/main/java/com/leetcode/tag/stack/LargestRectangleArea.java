@@ -95,11 +95,11 @@ public class LargestRectangleArea {
             for (int i = 0; i < n; ++i) {
                 // i是最大值,记录i的最近两侧
                 while (!monoStack.isEmpty() && heights[monoStack.peek()] >= heights[i]) {
-                    // 栈顶的右侧
+                    // 栈顶的右侧是i
                     right[monoStack.peek()] = i;
                     monoStack.pop();
                 }
-                // i的左侧
+                // 递增,i的左侧是栈顶
                 left[i] = (monoStack.isEmpty() ? -1 : monoStack.peek());
                 monoStack.push(i);
             }
