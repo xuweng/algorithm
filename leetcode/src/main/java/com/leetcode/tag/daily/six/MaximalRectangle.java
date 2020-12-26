@@ -5,6 +5,12 @@ package com.leetcode.tag.daily.six;
  */
 public class MaximalRectangle {
     /**
+     * 看动画 看动画 看动画 看动画
+     * <p>
+     * 栈顶的右侧是i
+     * <p>
+     * i的左侧是栈顶
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/maximal-rectangle/solution/zui-da-ju-xing-by-leetcode-solution-bjlu/
      * 来源：力扣（LeetCode）
