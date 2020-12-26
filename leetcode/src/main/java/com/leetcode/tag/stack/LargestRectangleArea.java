@@ -75,6 +75,8 @@ public class LargestRectangleArea {
     /**
      * 方法二：单调栈 + 常数优化
      * <p>
+     * 看图 看图 看图 看图
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/largest-rectangle-in-histogram/solution/zhu-zhuang-tu-zhong-zui-da-de-ju-xing-by-leetcode-/
      * 来源：力扣（LeetCode）
