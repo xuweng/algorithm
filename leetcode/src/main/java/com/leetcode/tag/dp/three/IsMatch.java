@@ -6,7 +6,22 @@ package com.leetcode.tag.dp.three;
 public class IsMatch {
     class Solution {
         public boolean isMatch(String s, String p) {
-            return true;
+            if (p == null) {
+                return s == null;
+            }
+            if (p.isEmpty()) {
+                return s.isEmpty();
+            }
+
+            boolean firstMatch = !s.isEmpty() && (s.charAt(0) == p.charAt(0) || p.charAt(0) == '.');
+
+            // p第1个字符是否是*
+            boolean pNext = p.length() >= 2 && p.charAt(1) == '*';
+            if (pNext) {
+                return isMatch(s, p.substring(2)) || (firstMatch && isMatch(s.substring(1), p));
+            } else {
+                return firstMatch && isMatch(s.substring(1), p.substring(1));
+            }
         }
     }
 }
