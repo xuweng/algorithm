@@ -22,9 +22,9 @@ public class IsMatch1 {
 
                 if (!s.isEmpty() && s.charAt(0) != p.charAt(1)) {
                     return isMatch(s.substring(1), p);
-                } else {
-                    return isMatch(s, p.substring(1)) || (!s.isEmpty() && isMatch(s.substring(1), p));
                 }
+
+                return isMatch(s, p.substring(1)) || (!s.isEmpty() && isMatch(s.substring(1), p));
             }
 
             return false;
