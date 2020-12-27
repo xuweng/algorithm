@@ -11,6 +11,9 @@ public class IsMatch {
             if (p == null || p.isEmpty()) {
                 return Objects.equals(s, p);
             }
+            if (s == null || s.isEmpty()) {
+                return true;
+            }
             boolean first = s.charAt(0) == p.charAt(0) || p.charAt(0) == '.';
 
             boolean next = p.length() > 1 && p.charAt(1) == '*';
