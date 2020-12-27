@@ -58,6 +58,8 @@ public class IsMatch {
                             f[i][j] = f[i][j] || f[i - 1][j];
                         }
                     } else {
+                        //如果 p 的第 j 个字符是一个小写字母，那么我们必须在 s 中匹配一个相同的小写字母
+                        //只要 p[j] 是 . ，那么 p[j] 一定成功匹配 s 中的任意一个小写字母
                         if (matches(s, p, i, j)) {
                             f[i][j] = f[i - 1][j - 1];
                         }
