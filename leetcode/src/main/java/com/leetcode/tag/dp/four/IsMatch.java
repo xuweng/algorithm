@@ -8,11 +8,8 @@ import java.util.Objects;
 public class IsMatch {
     class Solution {
         public boolean isMatch(String s, String p) {
-            if (p == null || p.isEmpty()) {
-                return Objects.equals(s, p);
-            }
-            if (s == null || s.isEmpty()) {
-                return true;
+            if (p == null || s == null || p.isEmpty()) {
+                return Objects.equals(p, s);
             }
             boolean first = s.charAt(0) == p.charAt(0) || p.charAt(0) == '.';
 
