@@ -7,10 +7,20 @@ import java.util.Objects;
  */
 public class IsMatch {
     class Solution {
+        /**
+         * 边界条件判断
+         * <p>
+         * 为空的边界条件判断
+         *
+         * @param s
+         * @param p
+         * @return
+         */
         public boolean isMatch(String s, String p) {
             if (p == null || s == null || p.isEmpty()) {
                 return Objects.equals(p, s);
             }
+            // s非空
             boolean first = !s.isEmpty() && (s.charAt(0) == p.charAt(0) || p.charAt(0) == '.');
 
             boolean next = p.length() > 1 && p.charAt(1) == '*';
