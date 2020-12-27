@@ -13,13 +13,13 @@ public class IsMatch1 {
             if (first) {
                 return isMatch(s.substring(1), p.substring(1));
             }
-                if (p.charAt(0) == '*') {
-                    if (p.length() > 1 && s.charAt(0) != p.charAt(1)) {
-                        return isMatch(s.substring(1), p);
-                    } else {
-                        return isMatch(s, p.substring(1));
-                    }
+            if (p.charAt(0) == '*') {
+                if (p.length() > 1 && s.charAt(0) != p.charAt(1)) {
+                    return isMatch(s.substring(1), p);
+                } else {
+                    return isMatch(s, p.substring(1));
                 }
+            }
 
             return false;
         }
