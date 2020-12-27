@@ -25,7 +25,6 @@ public class IsMatch1 {
                 } else {
                     return isMatch(s, p.substring(1));
                 }
-
             }
 
             return false;
