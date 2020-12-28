@@ -6,6 +6,9 @@ package com.leetcode.tag.dp.four;
 public class MaxProfit {
     class Solution {
         public int maxProfit(int k, int[] prices) {
+            if (prices == null || prices.length == 0) {
+                return 0;
+            }
             int n = prices.length;
             k = Math.min(k, n / 2);
 
