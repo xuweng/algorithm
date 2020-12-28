@@ -13,6 +13,7 @@ public class MaxProfit2 {
             k = Math.min(k, n / 2);
             int[][][] dp = new int[n][2][k + 1];
             dp[0][1][0] = -prices[0];
+            // 不合法状态
             for (int i = 1; i <= k; i++) {
                 dp[0][0][i] = dp[0][1][i] = Integer.MIN_VALUE / 2;
             }
