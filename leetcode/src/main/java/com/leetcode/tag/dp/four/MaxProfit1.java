@@ -9,7 +9,7 @@ public class MaxProfit1 {
             if (prices == null || prices.length == 0) {
                 return 0;
             }
-            int[][][] dp = new int[prices.length][2][1];
+            int[][][] dp = new int[prices.length][2][2];
             dp[0][0][0] = -prices[0];
 
             int max = 0;
