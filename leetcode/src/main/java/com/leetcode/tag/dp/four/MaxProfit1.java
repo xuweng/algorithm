@@ -11,6 +11,7 @@ public class MaxProfit1 {
             }
             int[][][] dp = new int[prices.length][2][2];
             dp[0][1][0] = -prices[0];
+            dp[0][1][1] = Integer.MIN_VALUE / 2;
 
             int max = 0;
             for (int i = 1; i < prices.length; i++) {
