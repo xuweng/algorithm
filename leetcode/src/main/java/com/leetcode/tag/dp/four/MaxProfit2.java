@@ -11,11 +11,11 @@ public class MaxProfit2 {
             }
             int n = prices.length;
             k = Math.max(k, n / 2);
-            int[][][] dp = new int[prices.length][2][k + 1];
+            int[][][] dp = new int[n][2][k + 1];
             dp[0][1][0] = -prices[0];
 
             int max = 0;
-            for (int i = 1; i < prices.length; i++) {
+            for (int i = 1; i < n; i++) {
                 dp[i][0][0] = dp[i - 1][0][0];
                 dp[i][1][0] = Math.max(dp[i - 1][1][0], dp[i - 1][0][0] - prices[i]);
                 for (int j = 1; j <= k; j++) {
