@@ -26,6 +26,7 @@ public class MaxProfit2 {
                     dp[i][0][j] = Math.max(dp[i - 1][0][j], dp[i - 1][1][j - 1] + prices[i]);
                     // 有股票
                     dp[i][1][j] = Math.max(dp[i - 1][1][j], dp[i - 1][0][j] - prices[i]);
+                    // 最大利润是没有股票
                     max = Math.max(max, dp[i][0][j]);
                 }
             }
