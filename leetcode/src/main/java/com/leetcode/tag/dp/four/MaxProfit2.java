@@ -10,7 +10,7 @@ public class MaxProfit2 {
                 return 0;
             }
             int n = prices.length;
-            k = Math.max(k, n / 2);
+            k = Math.min(k, n / 2);
             int[][][] dp = new int[n][2][k + 1];
             dp[0][1][0] = -prices[0];
 
