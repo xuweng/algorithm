@@ -4,6 +4,9 @@ package com.leetcode.tag.dp.four;
  * 321. 拼接最大数
  */
 public class MaxNumber {
+    /**
+     * 选中i?前i?
+     */
     class Solution {
         public int[] maxNumber(int[] nums1, int[] nums2, int k) {
             int[][][] dp = new int[nums1.length + 1][nums2.length + 1][k + 1];
