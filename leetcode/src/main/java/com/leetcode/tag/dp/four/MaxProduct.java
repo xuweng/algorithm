@@ -23,6 +23,9 @@ public class MaxProduct {
                 } else if (nums[i] > 0) {
                     dp[i][0] = dp[i - 1][0];
                     dp[i][1] = Math.max(nums[i], dp[i - 1][1] * nums[i]);
+                } else {
+                    dp[i][0] = 0;
+                    dp[i][1] = 0;
                 }
                 max = Math.max(max, Math.max(dp[i][0], dp[i][1]));
             }
