@@ -13,7 +13,7 @@ public class MaxProduct {
             dp[0][0] = nums[0] > 0 ? 1 : nums[0];
             dp[0][1] = nums[0] > 0 ? nums[0] : 1;
 
-            int max = Integer.MIN_VALUE;
+            int max = nums[0];
             for (int i = 1; i < nums.length; i++) {
                 dp[i][0] = Integer.MIN_VALUE;
                 dp[i][1] = Integer.MIN_VALUE;
