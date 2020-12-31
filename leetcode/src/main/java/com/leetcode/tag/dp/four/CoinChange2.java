@@ -17,7 +17,7 @@ public class CoinChange2 {
                 dp[i] = Integer.MAX_VALUE;
                 for (int coin : coins) {
                     if (i >= coin && dp[i - coin] != Integer.MAX_VALUE) {
-                        dp[i] = Math.min(dp[i], dp[i - coin]);
+                        dp[i] = Math.min(dp[i], dp[i - coin] + 1);
                     }
                 }
             }
