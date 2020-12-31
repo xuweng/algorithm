@@ -13,7 +13,7 @@ public class EraseOverlapIntervals {
             }
             Arrays.sort(intervals, (o1, o2) -> o1[1] == o2[1] ? o1[0] - o2[0] : o1[1] - o2[1]);
 
-            int result = 1;
+            int result = 0;
             int last = intervals[0][1];
             for (int i = 1; i < intervals.length; i++) {
                 if (intervals[i][0] < last) {
