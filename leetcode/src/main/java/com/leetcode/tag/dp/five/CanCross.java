@@ -24,7 +24,7 @@ public class CanCross {
                     }
                 }
             }
-            // 在这里返回厉害
+            // 在这里返回厉害 叶子结点
             return ind == stones.length - 1;
         }
     }
