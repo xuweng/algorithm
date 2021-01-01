@@ -27,7 +27,7 @@ public class Rob4 {
             dp[start] = nums[0];
             dp[start + 1] = Math.max(nums[0], nums[1]);
 
-            for (int i = start; i <= end; i++) {
+            for (int i = start + 2; i <= end; i++) {
                 dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i]);
             }
 
