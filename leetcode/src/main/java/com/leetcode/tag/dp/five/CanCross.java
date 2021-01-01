@@ -16,6 +16,8 @@ public class CanCross {
         }
 
         /**
+         * 从f(i) 能不能跳到 f(i+1....length).
+         *
          * @param stones
          * @param index    位置
          * @param jumpsize
