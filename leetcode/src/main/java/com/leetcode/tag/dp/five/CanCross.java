@@ -24,6 +24,7 @@ public class CanCross {
                     }
                 }
             }
+            // 在这里返回厉害
             return ind == stones.length - 1;
         }
     }
