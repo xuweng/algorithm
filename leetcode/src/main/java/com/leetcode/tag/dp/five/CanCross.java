@@ -29,6 +29,7 @@ public class CanCross {
                 int gap = stones[i] - stones[index];
                 if (gap >= jumpsize - 1 && gap <= jumpsize + 1) {
                     if (canCross(stones, i, gap)) {
+                        // 只要找到一个答案就返回
                         return true;
                     }
                 }
