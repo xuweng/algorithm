@@ -27,9 +27,9 @@ public class CanCross {
             for (int i = index + 1; i < stones.length; i++) {
                 // index+1和index的距离
                 int gap = stones[i] - stones[index];
-                // 升序剪枝
+                // 剪枝
                 if (gap < jumpsize - 1 || gap > jumpsize + 1) {
-                    break;
+                    continue;
                 }
                 if (canCross(stones, i, gap)) {
                     // 只要找到一个答案就返回
