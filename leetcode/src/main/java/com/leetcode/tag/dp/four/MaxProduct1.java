@@ -10,6 +10,8 @@ public class MaxProduct1 {
                 return 0;
             }
             int[][] dp = new int[nums.length][2];
+            // 不合理状态初始化为0
+            // 股票不合理状态初始化为I
             dp[0][0] = Math.min(nums[0], 0);
             dp[0][1] = Math.max(nums[0], 0);
 
