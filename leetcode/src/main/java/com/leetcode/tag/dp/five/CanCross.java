@@ -15,9 +15,16 @@ public class CanCross {
             return canCross(stones, 0, 0);
         }
 
-        public boolean canCross(int[] stones, int ind, int jumpsize) {
-            for (int i = ind + 1; i < stones.length; i++) {
-                int gap = stones[i] - stones[ind];
+        /**
+         * @param stones
+         * @param index    位置
+         * @param jumpsize
+         * @return
+         */
+        public boolean canCross(int[] stones, int index, int jumpsize) {
+            for (int i = index + 1; i < stones.length; i++) {
+                // index+1和index的距离
+                int gap = stones[i] - stones[index];
                 if (gap >= jumpsize - 1 && gap <= jumpsize + 1) {
                     if (canCross(stones, i, gap)) {
                         return true;
@@ -25,7 +32,7 @@ public class CanCross {
                 }
             }
             // 在这里返回厉害 叶子结点
-            return ind == stones.length - 1;
+            return index == stones.length - 1;
         }
     }
 
