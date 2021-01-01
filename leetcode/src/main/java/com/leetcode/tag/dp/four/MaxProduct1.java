@@ -25,7 +25,7 @@ public class MaxProduct1 {
                     dp[i][1] = Math.max(nums[i], dp[i - 1][1] * nums[i]);
                 }
 
-                max = Math.max(max, Math.max(dp[i][0], dp[i][1]));
+                max = Math.max(max, dp[i][1]);
             }
 
             return max;
