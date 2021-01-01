@@ -27,11 +27,13 @@ public class CanCross {
             for (int i = index + 1; i < stones.length; i++) {
                 // index+1和index的距离
                 int gap = stones[i] - stones[index];
-                if (gap >= jumpsize - 1 && gap <= jumpsize + 1) {
-                    if (canCross(stones, i, gap)) {
-                        // 只要找到一个答案就返回
-                        return true;
-                    }
+                // 升序剪枝
+                if (gap < jumpsize - 1 || gap > jumpsize + 1) {
+                    break;
+                }
+                if (canCross(stones, i, gap)) {
+                    // 只要找到一个答案就返回
+                    return true;
                 }
             }
             // 在这里返回厉害 叶子结点
