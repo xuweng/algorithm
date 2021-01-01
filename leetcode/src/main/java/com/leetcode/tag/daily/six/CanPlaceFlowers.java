@@ -25,6 +25,11 @@ public class CanPlaceFlowers {
                             flowerbed[i] = 1;
                         }
                     }
+                } else if (i == flowerbed.length - 1) {
+                    if (flowerbed[i] == 0 && flowerbed[i - 1] == 0) {
+                        result++;
+                        flowerbed[i] = 1;
+                    }
                 } else {
                     if (flowerbed[i] == 0 && flowerbed[i - 1] == 0 && i + 1 < flowerbed.length && flowerbed[i + 1] == 0) {
                         result++;
