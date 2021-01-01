@@ -19,9 +19,9 @@ public class MaxProduct1 {
                 dp[i][1] = Integer.MIN_VALUE;
                 if (nums[i] < 0) {
                     dp[i][0] = Math.min(nums[i], dp[i - 1][1] * nums[i]);
-                    dp[i][1] = Math.max(1, dp[i - 1][0] * nums[i]);
+                    dp[i][1] = dp[i - 1][0] * nums[i];
                 } else if (nums[i] > 0) {
-                    dp[i][0] = Math.min(1, dp[i - 1][0] * nums[i]);
+                    dp[i][0] = dp[i - 1][0] * nums[i];
                     dp[i][1] = dp[i - 1][1] * nums[i];
                 } else {
                     dp[i][0] = dp[i][1] = 0;
