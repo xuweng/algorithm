@@ -15,6 +15,7 @@ public class MaxProduct1 {
 
             int max = nums[0];
             for (int i = 1; i < nums.length; i++) {
+                // 初始化为1
                 dp[i][0] = 1;
                 dp[i][1] = 1;
                 if (nums[i] < 0) {
