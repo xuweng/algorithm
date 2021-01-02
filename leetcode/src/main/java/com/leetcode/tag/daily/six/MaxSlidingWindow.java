@@ -54,7 +54,7 @@ public class MaxSlidingWindow {
             for (int i = k; i < n; ++i) {
                 pq.offer(new int[]{nums[i], i});
                 while (pq.peek()[1] <= i - k) {
-                    // 下标在窗口外。出堆。
+                    // 下标在窗口外。堆顶出堆。
                     pq.poll();
                 }
                 // 计算下标
@@ -77,6 +77,7 @@ public class MaxSlidingWindow {
     class Solution2 {
         public int[] maxSlidingWindow(int[] nums, int k) {
             int n = nums.length;
+            //在队列中，这些下标按照从小到大的顺序被存储，并且它们在数组 nums 中对应的值是严格单调递减的
             Deque<Integer> deque = new LinkedList<>();
             for (int i = 0; i < k; ++i) {
                 while (!deque.isEmpty() && nums[i] >= nums[deque.peekLast()]) {
