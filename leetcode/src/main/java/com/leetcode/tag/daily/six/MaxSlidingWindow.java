@@ -14,8 +14,7 @@ public class MaxSlidingWindow {
             }
             List<Integer> result = new ArrayList<>();
             for (int i = 0; i <= nums.length - k; i++) {
-                int max = max(nums, i, i + k);
-                result.add(max);
+                result.add(max(nums, i, i + k));
             }
 
             return result.stream().mapToInt(integer -> integer).toArray();
