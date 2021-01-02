@@ -156,7 +156,7 @@ public class MaxSlidingWindow {
      */
     static class Solution4 {
         public int[] maxSlidingWindow(int[] nums, int k) {
-            if (nums == null || nums.length == 0) {
+            if (nums == null || nums.length == 0 || k > nums.length) {
                 return new int[0];
             }
             // 双端队列
