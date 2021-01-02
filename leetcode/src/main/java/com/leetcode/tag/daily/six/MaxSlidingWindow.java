@@ -56,7 +56,7 @@ public class MaxSlidingWindow {
             for (int i = k; i < n; ++i) {
                 pq.offer(new int[]{nums[i], i});
                 while (pq.peek()[1] <= i - k) {
-                    // 窗口外。出堆。
+                    // 下标在窗口外。出堆。
                     pq.poll();
                 }
                 // 计算下标
