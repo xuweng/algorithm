@@ -9,6 +9,7 @@ public class MaxProfit {
             if (k == 0 || prices == null || prices.length == 0) {
                 return 0;
             }
+            k = Math.min(k, prices.length / 2);
             int[][][] dp = new int[prices.length][2][k + 1];
             dp[0][1][0] = -prices[0];
             for (int i = 1; i <= k; i++) {
