@@ -8,6 +8,9 @@ import java.util.PriorityQueue;
  * 239. 滑动窗口最大值
  */
 public class MaxSlidingWindow {
+    /**
+     * O(nk)
+     */
     class Solution {
         public int[] maxSlidingWindow(int[] nums, int k) {
             if (nums == null || nums.length == 0) {
