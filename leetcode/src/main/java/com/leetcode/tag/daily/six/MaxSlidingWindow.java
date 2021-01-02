@@ -151,4 +151,32 @@ public class MaxSlidingWindow {
         }
     }
 
+    /**
+     * 自测
+     */
+    class Solution4 {
+        public int[] maxSlidingWindow(int[] nums, int k) {
+            if (nums == null || nums.length == 0) {
+                return new int[0];
+            }
+            // 双端队列
+            Deque<Integer> deque = new LinkedList<>();
+            int[] result = new int[nums.length - k + 1];
+            for (int i = 0; i < nums.length; i++) {
+                if (!deque.isEmpty() && nums[deque.peekLast()] <= nums[i]) {
+                    deque.pollLast();
+                }
+                deque.offerLast(i);
+                while (deque.peekFirst() <= i - k) {
+                    deque.pollFirst();
+                }
+                if (i + 1 >= k) {
+                    result[i + 1 - k] = nums[deque.peekFirst()];
+                }
+            }
+
+            return result;
+        }
+    }
+
 }
