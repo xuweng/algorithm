@@ -82,7 +82,7 @@ public class MaxSlidingWindow {
             // 代码模板
             for (int i = 0; i < k; ++i) {
                 while (!deque.isEmpty() && nums[i] >= nums[deque.peekLast()]) {
-                    // 保持单调递减。nums[i]入队.
+                    // 保持单调递减。i入队.下标入队。
                     deque.pollLast();
                 }
                 deque.offerLast(i);
@@ -96,8 +96,9 @@ public class MaxSlidingWindow {
                 }
                 deque.offerLast(i);
                 // 队首是最大值。保证最大值在窗口内。
+                // 队列保存下标才能判断是否在窗口内。
                 while (deque.peekFirst() <= i - k) {
-                    // 队首不在窗口内出队。
+                    // 队首不在窗口内出队。下标出队。
                     deque.pollFirst();
                 }
                 ans[i - k + 1] = nums[deque.peekFirst()];
