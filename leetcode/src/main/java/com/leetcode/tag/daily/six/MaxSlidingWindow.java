@@ -94,6 +94,7 @@ public class MaxSlidingWindow {
                     deque.pollLast();
                 }
                 deque.offerLast(i);
+                // 队首是最大值。保证最大值在窗口内。
                 while (deque.peekFirst() <= i - k) {
                     deque.pollFirst();
                 }
