@@ -1,8 +1,6 @@
 package com.leetcode.tag.daily.six;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * 239. 滑动窗口最大值
@@ -65,5 +63,43 @@ public class MaxSlidingWindow {
             return ans;
         }
     }
+
+    /**
+     * 最值 堆 优先队列
+     * <p>
+     * 方法二：单调队列
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/sliding-window-maximum/solution/hua-dong-chuang-kou-zui-da-zhi-by-leetco-ki6m/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public int[] maxSlidingWindow(int[] nums, int k) {
+            int n = nums.length;
+            Deque<Integer> deque = new LinkedList<>();
+            for (int i = 0; i < k; ++i) {
+                while (!deque.isEmpty() && nums[i] >= nums[deque.peekLast()]) {
+                    deque.pollLast();
+                }
+                deque.offerLast(i);
+            }
+
+            int[] ans = new int[n - k + 1];
+            ans[0] = nums[deque.peekFirst()];
+            for (int i = k; i < n; ++i) {
+                while (!deque.isEmpty() && nums[i] >= nums[deque.peekLast()]) {
+                    deque.pollLast();
+                }
+                deque.offerLast(i);
+                while (deque.peekFirst() <= i - k) {
+                    deque.pollFirst();
+                }
+                ans[i - k + 1] = nums[deque.peekFirst()];
+            }
+            return ans;
+        }
+    }
+
 
 }
