@@ -154,7 +154,7 @@ public class MaxSlidingWindow {
     /**
      * 自测
      */
-    class Solution4 {
+    static class Solution4 {
         public int[] maxSlidingWindow(int[] nums, int k) {
             if (nums == null || nums.length == 0) {
                 return new int[0];
