@@ -169,6 +169,7 @@ public class MaxSlidingWindow {
                 deque.offerLast(i);
                 // 滑动窗口 [i-k,i] 左边界是i-k，右边界是i
                 while (deque.peekFirst() <= i - k) {
+                    // 下标小于左边界出队
                     deque.pollFirst();
                 }
                 if (i + 1 >= k) {
