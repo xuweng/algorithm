@@ -79,6 +79,7 @@ public class MaxSlidingWindow {
             int n = nums.length;
             //在队列中，这些下标按照从小到大的顺序被存储，并且它们在数组 nums 中对应的值是严格单调递减的
             Deque<Integer> deque = new LinkedList<>();
+            // 代码模板
             for (int i = 0; i < k; ++i) {
                 while (!deque.isEmpty() && nums[i] >= nums[deque.peekLast()]) {
                     // 保持单调递减。nums[i]入队.
