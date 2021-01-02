@@ -172,6 +172,7 @@ public class MaxSlidingWindow {
                     // 下标小于左边界出队
                     deque.pollFirst();
                 }
+                // 满足一个窗口才计算
                 if (i + 1 >= k) {
                     result[i + 1 - k] = nums[deque.peekFirst()];
                 }
