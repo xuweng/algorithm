@@ -45,6 +45,8 @@ public class MaxSlidingWindow {
     class Solution1 {
         public int[] maxSlidingWindow(int[] nums, int k) {
             int n = nums.length;
+            //判断堆顶元素与滑动窗口的位置关系
+            //存储二元组 (num,index)，表示元素num 在数组中的下标为index
             PriorityQueue<int[]> pq = new PriorityQueue<>((pair1, pair2) -> pair1[0] != pair2[0] ? pair2[0] - pair1[0] : pair2[1] - pair1[1]);
             for (int i = 0; i < k; ++i) {
                 pq.offer(new int[]{nums[i], i});
