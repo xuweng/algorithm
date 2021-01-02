@@ -2,6 +2,8 @@ package com.leetcode.tag.dp.five;
 
 /**
  * 403. 青蛙过河
+ * <p>
+ * 注意下标 注意转移方程 注意不合理状态
  */
 public class CanCross {
     /**
