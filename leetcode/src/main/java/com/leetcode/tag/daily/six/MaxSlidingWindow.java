@@ -67,7 +67,7 @@ public class MaxSlidingWindow {
     /**
      * 最值 堆 优先队列
      * <p>
-     * 方法二：单调队列
+     * 方法二：单调递减队列 + 双端队列
      * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/sliding-window-maximum/solution/hua-dong-chuang-kou-zui-da-zhi-by-leetco-ki6m/
