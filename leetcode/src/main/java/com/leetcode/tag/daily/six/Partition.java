@@ -45,6 +45,37 @@ public class Partition {
         }
     }
 
+    /**
+     * 方法一：模拟
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/partition-list/solution/fen-ge-lian-biao-by-leetcode-solution-7ade/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public ListNode partition(ListNode head, int x) {
+            // smallHead 和 largeHead 分别为两个链表的哑节点
+            ListNode small = new ListNode(0);
+            ListNode smallHead = small;
+            ListNode large = new ListNode(0);
+            ListNode largeHead = large;
+            while (head != null) {
+                if (head.val < x) {
+                    small.next = head;
+                    small = small.next;
+                } else {
+                    large.next = head;
+                    large = large.next;
+                }
+                head = head.next;
+            }
+            large.next = null;
+            small.next = largeHead.next;
+            return smallHead.next;
+        }
+    }
+
     static class ListNode {
         int val;
         ListNode next;
