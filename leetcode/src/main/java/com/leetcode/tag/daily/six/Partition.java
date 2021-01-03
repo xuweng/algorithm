@@ -9,27 +9,37 @@ public class Partition {
             if (head == null) {
                 return null;
             }
-            ListNode min = new ListNode(0);
-            ListNode max = new ListNode(0);
+            ListNode min = null;
+            ListNode minLast = null;
+            ListNode max = null;
+            ListNode maxLast = null;
 
             ListNode p = head;
-            ListNode last = null;
             while (p != null) {
                 if (p.val < x) {
-                    min.next = p;
-                    last = p;
+                    if (min == null) {
+                        min = p;
+                        minLast = p;
+                    } else {
+                        minLast.next = p;
+                    }
                 } else {
-                    max.next = p;
+                    if (max == null) {
+                        max = p;
+                        maxLast = p;
+                    } else {
+                        maxLast.next = p;
+                    }
                 }
 
                 p = p.next;
             }
 
-            if (last != null) {
-                last.next = max.next;
+            if (minLast != null) {
+                minLast.next = max;
             }
 
-            return min.next == null ? max.next : min.next;
+            return min == null ? max : min;
         }
     }
 
