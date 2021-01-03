@@ -2,6 +2,8 @@ package com.leetcode.tag.dp.five;
 
 /**
  * 337. 打家劫舍 III
+ * <p>
+ * 计算顺序 初始化
  */
 public class Rob3 {
     class Solution {
