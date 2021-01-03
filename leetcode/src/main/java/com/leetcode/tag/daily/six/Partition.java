@@ -16,20 +16,21 @@ public class Partition {
 
             ListNode p = head;
             while (p != null) {
+                ListNode listNode = new ListNode(p.val);
                 if (p.val < x) {
                     if (min == null) {
-                        min = p;
+                        min = listNode;
                     } else {
-                        minLast.next = p;
+                        minLast.next = listNode;
                     }
-                    minLast = p;
+                    minLast = listNode;
                 } else {
                     if (max == null) {
-                        max = p;
+                        max = listNode;
                     } else {
-                        maxLast.next = p;
+                        maxLast.next = listNode;
                     }
-                    maxLast = p;
+                    maxLast = listNode;
                 }
 
                 p = p.next;
