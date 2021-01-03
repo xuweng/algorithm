@@ -21,6 +21,7 @@ public class MaximumUnits {
                     truckSize = truckSize - boxType[0];
                 } else {
                     max += truckSize * boxType[1];
+                    break;
                 }
             }
 
