@@ -16,6 +16,7 @@ public class Partition {
 
             ListNode p = head;
             while (p != null) {
+                // 防止链表有环,创建新结点
                 ListNode listNode = new ListNode(p.val);
                 if (p.val < x) {
                     if (min == null) {
