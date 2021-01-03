@@ -48,6 +48,8 @@ public class Partition {
     /**
      * 方法一：模拟
      * <p>
+     * 模拟 哑结点 切断引用
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/partition-list/solution/fen-ge-lian-biao-by-leetcode-solution-7ade/
      * 来源：力扣（LeetCode）
