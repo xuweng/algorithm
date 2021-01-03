@@ -57,16 +57,17 @@ public class Partition {
         public ListNode partition(ListNode head, int x) {
             // smallHead 和 largeHead 分别为两个链表的哑节点
             ListNode small = new ListNode(0);
+            // 不会改变哑结点
             ListNode smallHead = small;
             ListNode large = new ListNode(0);
             ListNode largeHead = large;
             while (head != null) {
                 if (head.val < x) {
                     small.next = head;
-                    small = small.next;
+                    small = head;
                 } else {
                     large.next = head;
-                    large = large.next;
+                    large = head;
                 }
                 head = head.next;
             }
