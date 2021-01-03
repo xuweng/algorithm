@@ -19,7 +19,7 @@ public class Rob3 {
             int[] right = myRob(root.right);
 
             int[] result = new int[2];
-            result[0] = Math.max(left[0], right[0]) + Math.max(right[0], right[1]);
+            result[0] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
             result[1] = root.val + left[0] + right[0];
 
             return result;
