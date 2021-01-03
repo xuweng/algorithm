@@ -71,6 +71,7 @@ public class Partition {
                 }
                 head = head.next;
             }
+            //large 的 next 指针置空，这是因为当前节点复用的是原链表的节点，而其 next 指针可能指向一个小于 x 的节点，我们需要切断这个引用
             large.next = null;
             small.next = largeHead.next;
             return smallHead.next;
