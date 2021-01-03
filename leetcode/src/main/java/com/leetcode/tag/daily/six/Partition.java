@@ -4,7 +4,7 @@ package com.leetcode.tag.daily.six;
  * 86. 分隔链表
  */
 public class Partition {
-    class Solution {
+    static class Solution {
         public ListNode partition(ListNode head, int x) {
             if (head == null) {
                 return null;
@@ -43,7 +43,7 @@ public class Partition {
         }
     }
 
-    class ListNode {
+    static class ListNode {
         int val;
         ListNode next;
 
