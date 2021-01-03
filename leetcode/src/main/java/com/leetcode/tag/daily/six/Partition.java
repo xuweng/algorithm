@@ -29,7 +29,7 @@ public class Partition {
                 last.next = max.next;
             }
 
-            return min.next;
+            return min.next == null ? max.next : min.next;
         }
     }
 
