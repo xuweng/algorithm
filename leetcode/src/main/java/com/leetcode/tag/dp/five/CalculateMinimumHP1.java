@@ -3,7 +3,7 @@ package com.leetcode.tag.dp.five;
 /**
  * 174. 地下城游戏
  */
-public class CcalculateMinimumHP {
+public class CalculateMinimumHP1 {
     class Solution {
         public int calculateMinimumHP(int[][] dungeon) {
             if (dungeon == null || dungeon.length == 0) {
@@ -14,25 +14,24 @@ public class CcalculateMinimumHP {
             int[][] dp = new int[row + 1][col + 1];
 
             dp[row][col] = Math.max(0, -dungeon[row][col]);
-            // 最后一行
             for (int i = col - 1; i >= 0; i--) {
-                int m = dungeon[row][i] - dp[row][i + 1];
-                dp[row][i] = Math.max(0, -m);
+                int max = dungeon[row][i] - dp[row][i + 1];
+                dp[row][i] = Math.max(0, -max);
             }
-            // 最后一列
             for (int i = row - 1; i >= 0; i--) {
-                int m = dungeon[i][col] - dp[i + 1][col];
-                dp[i][col] = Math.max(0, -m);
+                int max = dungeon[i][col] - dp[i + 1][col];
+                dp[i][col] = Math.max(0, -max);
             }
+
             for (int i = row - 1; i >= 0; i--) {
                 for (int j = col - 1; j >= 0; j--) {
-                    int min = Math.min(dp[i][j + 1], dp[i + 1][j]);
-                    int m = dungeon[i][j] - min;
-                    dp[i][j] = Math.max(0, -m);
+                    int min = Math.min(dungeon[i + 1][j], dungeon[i][j + 1]);
+                    int max = dungeon[i][j] - min;
+                    dp[i][j] = Math.max(0, -max);
                 }
             }
 
-            return dp[0][0] + 1;
+            return dp[0][0];
         }
     }
 }
