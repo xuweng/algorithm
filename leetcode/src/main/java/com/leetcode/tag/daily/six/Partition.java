@@ -19,17 +19,17 @@ public class Partition {
                 if (p.val < x) {
                     if (min == null) {
                         min = p;
-                        minLast = p;
                     } else {
                         minLast.next = p;
                     }
+                    minLast = p;
                 } else {
                     if (max == null) {
                         max = p;
-                        maxLast = p;
                     } else {
                         maxLast.next = p;
                     }
+                    maxLast = p;
                 }
 
                 p = p.next;
