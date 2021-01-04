@@ -12,7 +12,7 @@ public class IsMatch2 {
             boolean first = !s.isEmpty() && (s.charAt(0) == p.charAt(0) || p.charAt(0) == '.');
             boolean next = p.length() > 1 && p.charAt(1) == '*';
             if (next) {
-                return isMatch(s, p.substring(2)) || (first || isMatch(s.substring(1), p));
+                return isMatch(s, p.substring(2)) || (first && isMatch(s.substring(1), p));
             } else {
                 return first && isMatch(s.substring(1), p.substring(1));
             }
