@@ -15,6 +15,7 @@ public class LargeGroupPositions {
 
             List<List<Integer>> result = new ArrayList<>();
             int preIndex = 0;
+            s += "#";
             for (int i = 1; i < s.length(); i++) {
                 if (s.charAt(i) != s.charAt(preIndex)) {
                     int count = i - preIndex;
