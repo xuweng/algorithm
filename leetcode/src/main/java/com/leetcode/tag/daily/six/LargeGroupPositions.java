@@ -1,6 +1,7 @@
 package com.leetcode.tag.daily.six;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -31,6 +32,33 @@ public class LargeGroupPositions {
             }
 
             return result;
+        }
+    }
+
+    /**
+     * 方法一：一次遍历
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/positions-of-large-groups/solution/jiao-da-fen-zu-de-wei-zhi-by-leetcode-so-fi3n/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public List<List<Integer>> largeGroupPositions(String s) {
+            List<List<Integer>> ret = new ArrayList<>();
+            int n = s.length();
+            int num = 1;
+            for (int i = 0; i < n; i++) {
+                if (i == n - 1 || s.charAt(i) != s.charAt(i + 1)) {
+                    if (num >= 3) {
+                        ret.add(Arrays.asList(i - num + 1, i));
+                    }
+                    num = 1;
+                } else {
+                    num++;
+                }
+            }
+            return ret;
         }
     }
 }
