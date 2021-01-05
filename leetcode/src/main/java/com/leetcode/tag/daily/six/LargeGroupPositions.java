@@ -1,6 +1,7 @@
 package com.leetcode.tag.daily.six;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -28,6 +29,7 @@ public class LargeGroupPositions {
                     houIndex = i;
                 }
             }
+            Collections.reverse(result);
 
             return result;
         }
