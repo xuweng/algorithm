@@ -1,7 +1,6 @@
 package com.leetcode.tag.daily.six;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -15,21 +14,20 @@ public class LargeGroupPositions {
             }
 
             List<List<Integer>> result = new ArrayList<>();
-            int houIndex = s.length() - 1;
-            for (int i = s.length() - 2; i >= 0; i--) {
-                if (s.charAt(i) != s.charAt(houIndex)) {
-                    int count = houIndex - i;
+            int preIndex = 0;
+            for (int i = 1; i < s.length(); i++) {
+                if (s.charAt(i) != s.charAt(preIndex)) {
+                    int count = i - preIndex;
                     if (count >= 3) {
                         List<Integer> list = new ArrayList<>();
-                        list.add(i + 1);
-                        list.add(houIndex);
+                        list.add(preIndex);
+                        list.add(i - 1);
 
                         result.add(list);
                     }
-                    houIndex = i;
+                    preIndex = i;
                 }
             }
-            Collections.reverse(result);
 
             return result;
         }
