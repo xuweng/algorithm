@@ -20,7 +20,8 @@ public class LargeGroupPositions {
                     int count = houIndex - i;
                     if (count >= 3) {
                         List<Integer> list = new ArrayList<>();
-                        list.add(i + 1, houIndex);
+                        list.add(i + 1);
+                        list.add(houIndex);
 
                         result.add(list);
                     }
