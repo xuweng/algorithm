@@ -22,7 +22,7 @@ public class CoinChange3 {
                 }
             }
 
-            return dp[amount];
+            return dp[amount] == Integer.MAX_VALUE ? -1 : dp[amount];
         }
     }
 }
