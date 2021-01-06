@@ -27,6 +27,7 @@ public class MaxEnvelopes {
         }
 
         public int lengthOfLIS(int[] nums) {
+            // 保存单调递增序列
             int[] dp = new int[nums.length];
             int len = 0;
             for (int num : nums) {
@@ -34,6 +35,7 @@ public class MaxEnvelopes {
                 if (i < 0) {
                     i = -(i + 1);
                 }
+                // 替换
                 dp[i] = num;
                 if (i == len) {
                     len++;
