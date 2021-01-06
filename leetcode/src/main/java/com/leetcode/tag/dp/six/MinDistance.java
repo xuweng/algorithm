@@ -10,12 +10,15 @@ public class MinDistance {
             int col = word2.length();
             int[][] dp = new int[row + 1][col + 1];
 
+            // 初始化
             // 第1行
             for (int i = 1; i <= col; i++) {
+                // 插入
                 dp[0][i] = i;
             }
             // 第1列
             for (int i = 1; i <= row; i++) {
+                // 删除
                 dp[i][0] = i;
             }
             for (int i = 1; i <= row; i++) {
