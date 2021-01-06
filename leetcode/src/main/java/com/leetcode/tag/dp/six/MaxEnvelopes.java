@@ -19,6 +19,8 @@ public class MaxEnvelopes {
     class Solution {
         public int maxEnvelopes(int[][] envelopes) {
             // sort on increasing in first dimension and decreasing in second
+            // 重点
+            // 二维转一维
             // 按 w 进行升序排序，若 w 相同则按 h 降序排序
             Arrays.sort(envelopes, (arr1, arr2) -> arr1[0] == arr2[0] ? arr2[1] - arr1[1] : arr1[0] - arr2[0]);
             // extract the second dimension and run LIS
