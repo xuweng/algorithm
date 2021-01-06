@@ -16,7 +16,7 @@ public class MinDistance {
             }
             // 第1列
             for (int i = 1; i <= row; i++) {
-                dp[1][0] = i;
+                dp[i][0] = i;
             }
             for (int i = 1; i <= row; i++) {
                 for (int j = 1; j <= col; j++) {
