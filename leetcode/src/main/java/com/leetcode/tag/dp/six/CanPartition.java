@@ -36,4 +36,33 @@ public class CanPartition {
             return dp[nums.length][sum];
         }
     }
+
+    class Solution1 {
+        /**
+         * 0-1 背包问题
+         *
+         * @param W
+         * @param N
+         * @param wt
+         * @param val
+         * @return
+         */
+        int knapsack(int W, int N, int[] wt, int[] val) {
+            // vector 全填入 0，base case 已初始化
+            int[][] dp = new int[W + 1][N + 1];
+            for (int i = 1; i <= N; i++) {
+                for (int w = 1; w <= W; w++) {
+                    if (w < wt[i - 1]) {
+                        // 当前背包容量装不下，只能选择不装入背包
+                        dp[i][w] = dp[i - 1][w];
+                    } else {
+                        // 装入或者不装入背包，择优
+                        dp[i][w] = Math.max(dp[i - 1][w], dp[i - 1][w - wt[i - 1]] + val[i - 1]);
+                    }
+                }
+            }
+
+            return dp[N][W];
+        }
+    }
 }
