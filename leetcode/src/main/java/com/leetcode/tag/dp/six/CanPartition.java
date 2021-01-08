@@ -41,15 +41,15 @@ public class CanPartition {
         /**
          * 0-1 背包问题
          *
-         * @param W
-         * @param N
-         * @param wt
-         * @param val
+         * @param W   重量为W的背包
+         * @param N   N个物品
+         * @param wt  第i个物品的重量为wt[i]
+         * @param val 第i个物品的价值为val[i]
          * @return
          */
         int knapsack(int W, int N, int[] wt, int[] val) {
             // vector 全填入 0，base case 已初始化
-            int[][] dp = new int[W + 1][N + 1];
+            int[][] dp = new int[N + 1][W + 1];
             for (int i = 1; i <= N; i++) {
                 for (int w = 1; w <= W; w++) {
                     if (w < wt[i - 1]) {
