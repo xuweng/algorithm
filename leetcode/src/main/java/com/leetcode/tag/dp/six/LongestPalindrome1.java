@@ -87,11 +87,11 @@ public class LongestPalindrome1 {
             int i = left;
             int j = right;
             while (i >= 0 && j < len) {
-                if (s.charAt(i) == s.charAt(j)) {
+                if (s.charAt(i) != s.charAt(j)) {
+                    break;
+                } else {
                     i--;
                     j++;
-                } else {
-                    break;
                 }
             }
             // 这里要小心，跳出 while 循环时，恰好满足 s.charAt(i) != s.charAt(j)，因此不能取 i，不能取 j
