@@ -39,11 +39,14 @@ public class LongestPalindrome {
             for (char c : s.toCharArray()) {
                 arr[c]++;
             }
+            //字符次数为奇数的个数
             int count = 0;
             for (int i : arr) {
-                // 统计字符次数为偶数的个数
+                // 偶数为0
+                // 统计字符次数为奇数的个数
                 count += (i % 2);
             }
+            // 1个奇数字符+所有偶数字符
             return count == 0 ? s.length() : (s.length() - count + 1);
         }
     }
