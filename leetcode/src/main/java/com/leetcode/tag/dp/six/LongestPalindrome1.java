@@ -7,6 +7,8 @@ public class LongestPalindrome1 {
     /**
      * 方法一：暴力匹配 （Brute Force）
      * <p>
+     * 时间复杂度：O(N^3)，这里 NN 是字符串的长度，枚举字符串的左边界、右边界，然后继续验证子串是否是回文子串
+     * <p>
      * 作者：liweiwei1419
      * 链接：https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zhong-xin-kuo-san-dong-tai-gui-hua-by-liweiwei1419/
      * 来源：力扣（LeetCode）
