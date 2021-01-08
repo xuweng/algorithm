@@ -69,6 +69,10 @@ public class LongestPalindrome1 {
             String res = s.substring(0, 1);
             // 中心位置枚举到 len - 2 即可
             for (int i = 0; i < len - 1; i++) {
+                //1、如果传入重合的索引编码，进行中心扩散，此时得到的回文子串的长度是奇数；
+                //2、如果传入相邻的索引编码，进行中心扩散，此时得到的回文子串的长度是偶数。
+                // 输入 i i 奇数
+                // 输入 i i+1 偶数
                 String oddStr = centerSpread(s, i, i);
                 String evenStr = centerSpread(s, i, i + 1);
                 String maxLenStr = oddStr.length() > evenStr.length() ? oddStr : evenStr;
