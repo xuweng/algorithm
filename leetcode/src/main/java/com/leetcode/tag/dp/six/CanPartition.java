@@ -18,8 +18,9 @@ public class CanPartition {
             }
             sum = sum / 2;
             boolean[][] dp = new boolean[nums.length + 1][sum + 1];
-            // base case
+            // 重点 base case
             for (int i = 0; i <= nums.length; i++) {
+                //因为背包没有空间的时候，就相当于装满了
                 dp[i][0] = true;
             }
             for (int i = 1; i <= nums.length; i++) {
