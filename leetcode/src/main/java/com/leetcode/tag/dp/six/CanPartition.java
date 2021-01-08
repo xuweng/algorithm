@@ -12,6 +12,10 @@ public class CanPartition {
                 return false;
             }
             int sum = Arrays.stream(nums).sum();
+            // 和为奇数时，不可能划分成两个和相等的集合
+            if (sum % 2 != 0) {
+                return false;
+            }
             sum = sum / 2;
             boolean[][] dp = new boolean[nums.length + 1][sum + 1];
             for (int i = 1; i <= nums.length; i++) {
