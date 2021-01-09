@@ -16,7 +16,7 @@ public class MinDistance2 {
                 dp[0][i] = i;
             }
             for (int i = 1; i <= row; i++) {
-                for (int j = 1; j < col; j++) {
+                for (int j = 1; j <= col; j++) {
                     if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
                         dp[i][j] = dp[i - 1][j - 1];
                     } else {
