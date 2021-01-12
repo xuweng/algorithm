@@ -44,7 +44,7 @@ public class FindOrder {
             if (map.containsKey(i)) {
                 List<Integer> list = map.get(i);
                 for (Integer integer : list) {
-                    if (dfs(i)) {
+                    if (dfs(integer)) {
                         return true;
                     }
                 }
