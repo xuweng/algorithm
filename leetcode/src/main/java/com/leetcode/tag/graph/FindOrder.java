@@ -19,10 +19,11 @@ public class FindOrder {
 
         public int[] findOrder(int numCourses, int[][] prerequisites) {
             for (int[] prerequisite : prerequisites) {
-                map.computeIfAbsent(prerequisite[1], v -> new ArrayList<>()).add(prerequisite[0]);
+                map.computeIfAbsent(prerequisite[0], v -> new ArrayList<>()).add(prerequisite[1]);
             }
             visited = new int[numCourses];
             result = new int[numCourses];
+            index = numCourses - 1;
             for (int i = 0; i < numCourses; i++) {
                 if (visited[i] == 0 && dfs(i)) {
                     return new int[0];
@@ -40,7 +41,6 @@ public class FindOrder {
                 return false;
             }
             visited[i] = 1;
-            result[index++] = i;
             if (map.containsKey(i)) {
                 List<Integer> list = map.get(i);
                 for (Integer integer : list) {
@@ -50,6 +50,7 @@ public class FindOrder {
                 }
             }
             visited[i] = 2;
+            result[index--] = i;
             return false;
         }
     }
