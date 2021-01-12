@@ -19,7 +19,7 @@ public class FindOrder {
 
         public int[] findOrder(int numCourses, int[][] prerequisites) {
             for (int[] prerequisite : prerequisites) {
-                map.computeIfAbsent(prerequisite[0], v -> new ArrayList<>()).add(prerequisite[1]);
+                map.computeIfAbsent(prerequisite[1], v -> new ArrayList<>()).add(prerequisite[0]);
             }
             visited = new int[numCourses];
             result = new int[numCourses];
