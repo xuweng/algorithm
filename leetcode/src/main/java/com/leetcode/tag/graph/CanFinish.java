@@ -36,7 +36,12 @@ public class CanFinish {
          */
         private boolean dfs(int i) {
             if (visited[i] == 1) {
+                // 有环
                 return true;
+            }
+            if (visited[i] == 2) {
+                // 已经dfs完成
+                return false;
             }
             visited[i] = 1;
             if (map.containsKey(i)) {
