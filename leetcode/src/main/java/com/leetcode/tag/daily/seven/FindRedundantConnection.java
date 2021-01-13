@@ -93,7 +93,7 @@ public class FindRedundantConnection {
             if (map.containsKey(i)) {
                 List<Integer> list = map.get(i);
                 for (Integer integer : list) {
-                    if (i == integer) {
+                    if (visited[integer] == 1) {
                         continue;
                     }
                     if (dfs(i, integer)) {
