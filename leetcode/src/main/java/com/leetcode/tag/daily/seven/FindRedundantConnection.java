@@ -80,6 +80,15 @@ public class FindRedundantConnection {
             return result;
         }
 
+        /**
+         * 判断是否有环错误
+         * <p>
+         * 无向图本来就有环
+         *
+         * @param parent
+         * @param i
+         * @return
+         */
         private boolean dfs(int parent, int i) {
             if (visited[i] == 1) {
                 result[0] = parent;
