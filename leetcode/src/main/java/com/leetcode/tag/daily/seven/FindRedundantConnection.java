@@ -91,6 +91,9 @@ public class FindRedundantConnection {
             if (map.containsKey(i)) {
                 List<Integer> list = map.get(i);
                 for (Integer integer : list) {
+                    if (i == integer) {
+                        continue;
+                    }
                     if (dfs(integer)) {
                         return true;
                     }
