@@ -66,6 +66,7 @@ public class FindRedundantConnection {
             }
             visited = new int[edges.length + 1];
             result = new int[2];
+            //无向 图
             for (int[] edge : edges) {
                 map.computeIfAbsent(edge[0], v -> new ArrayList<>()).add(edge[1]);
                 map.computeIfAbsent(edge[1], v -> new ArrayList<>()).add(edge[0]);
