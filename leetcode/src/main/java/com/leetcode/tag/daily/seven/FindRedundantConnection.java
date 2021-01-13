@@ -55,7 +55,7 @@ public class FindRedundantConnection {
         }
     }
 
-    class Solution1 {
+    static class Solution1 {
         Map<Integer, List<Integer>> map = new HashMap<>();
         int[] visited;
         int[] result;
