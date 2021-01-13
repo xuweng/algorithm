@@ -71,16 +71,17 @@ public class FindRedundantConnection {
                 map.computeIfAbsent(edge[1], v -> new ArrayList<>()).add(edge[0]);
             }
             for (int i = 1; i <= edges.length; i++) {
-                if (visited[i] == 0 && dfs(i)) {
-                    result[0] = i;
+                if (visited[i] == 0 && dfs(-1, i)) {
+                    return result;
                 }
             }
 
             return result;
         }
 
-        private boolean dfs(int i) {
+        private boolean dfs(int parent, int i) {
             if (visited[i] == 1) {
+                result[0] = parent;
                 result[1] = i;
                 return true;
             }
@@ -94,7 +95,7 @@ public class FindRedundantConnection {
                     if (i == integer) {
                         continue;
                     }
-                    if (dfs(integer)) {
+                    if (dfs(i, integer)) {
                         return true;
                     }
                 }
