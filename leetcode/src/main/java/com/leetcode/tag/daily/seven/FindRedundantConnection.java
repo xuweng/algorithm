@@ -22,7 +22,6 @@ public class FindRedundantConnection {
 
     class UF {
         int[] parent;
-        int n;
 
         public UF(int n) {
             parent = new int[n];
