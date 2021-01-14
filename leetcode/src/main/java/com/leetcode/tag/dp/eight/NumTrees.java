@@ -2,6 +2,8 @@ package com.leetcode.tag.dp.eight;
 
 /**
  * 96. 不同的二叉搜索树
+ * <p>
+ * 求最值 求和
  */
 public class NumTrees {
     class Solution {
