@@ -37,6 +37,8 @@ public class PrefixesDivBy5 {
     class Solution1 {
         public List<Boolean> prefixesDivBy5(int[] A) {
             List<Boolean> list = new ArrayList<>();
+            //考虑到数组 A 可能很长
+            //只需要保留余数
             int prefix = 0;
             for (int j : A) {
                 prefix = ((prefix << 1) + j) % 5;
