@@ -6,7 +6,7 @@ package com.leetcode.tag.dp.eight;
 public class MaxProfit2 {
     class Solution {
         public int maxProfit(int k, int[] prices) {
-            if (prices == null) {
+            if (prices == null || prices.length == 0) {
                 return 0;
             }
             k = Math.min(k, prices.length / 2);
