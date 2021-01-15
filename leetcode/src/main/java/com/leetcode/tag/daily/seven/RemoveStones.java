@@ -24,6 +24,7 @@ public class RemoveStones {
             UnionFind unionFind = new UnionFind();
 
             for (int[] stone : stones) {
+                // 二维转一维
                 // 下面这三种写法任选其一
                 // unionFind.union(~stone[0], stone[1]);
                 // unionFind.union(stone[0] - 10001, stone[1]);
