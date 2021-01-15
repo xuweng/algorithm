@@ -72,4 +72,57 @@ public class RemoveStones {
         }
     }
 
+    /**
+     * 方法1.按点合并
+     */
+    class Solution1 {
+        int[] p = new int[1000];
+        int count;
+
+        int find(int x) {
+            if (x != p[x]) {
+                p[x] = find(p[x]);
+            }
+            return p[x];
+        }
+
+        /**
+         * 简洁代码
+         *
+         * @param x
+         * @param y
+         */
+        void union(int x, int y) {
+            int rootX = find(x);
+            int rootY = find(y);
+
+            if (rootX == rootY) {
+                return;
+            }
+            p[rootX] = rootY;
+            count--;
+        }
+
+        public int removeStones(int[][] stones) {
+            // 初始化
+            int n = stones.length;
+            count = n;
+            for (int i = 0; i < n; i++) {
+                p[i] = i;
+            }
+
+            // 遍历所有石头
+            for (int i = 0; i < n; i++) {
+                for (int j = i + 1; j < n; j++) {
+                    // 同一列或者同一行 合并
+                    if (stones[i][0] == stones[j][0] || stones[i][1] == stones[j][1]) {
+                        union(i, j);
+                    }
+                }
+            }
+
+            return n - count;
+        }
+    }
+
 }
