@@ -6,6 +6,8 @@ import java.util.Map;
 /**
  * 947. 移除最多的同行或同列石头
  * <p>
+ * 题目说的是返回“可以移除的石子的最大数量”
+ * <p>
  * 并查集
  */
 public class RemoveStones {
