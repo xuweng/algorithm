@@ -19,7 +19,7 @@ public class CalculateMinimumHP2 {
                 dp[row][i] = Math.max(0, -m);
             }
             for (int i = col - 1; i >= 0; i--) {
-                int m = dungeon[i + 1][col] - dp[i + 1][col];
+                int m = dungeon[i][col] - dp[i + 1][col];
                 dp[i][col] = Math.max(0, -m);
             }
             for (int i = row - 1; i >= 0; i--) {
