@@ -3,7 +3,7 @@ package com.leetcode.tag.dp.eight;
 /**
  * 72. 编辑距离
  */
-public class MnDistance1 {
+public class MinDistance1 {
     class Solution {
         public int minDistance(String word1, String word2) {
             int[][] dp = new int[word1.length() + 1][word2.length() + 1];
