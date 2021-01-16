@@ -20,7 +20,7 @@ public class MaxProduct {
                     dp[i][1] = dp[i - 1][0] * nums[i];
                 } else {
                     dp[i][0] = dp[i - 1][0] * nums[i];
-                    dp[i][0] = Math.max(nums[i], dp[i - 1][1] * nums[i]);
+                    dp[i][1] = Math.max(nums[i], dp[i - 1][1] * nums[i]);
                 }
 
                 max = Math.max(max, dp[i][1]);
