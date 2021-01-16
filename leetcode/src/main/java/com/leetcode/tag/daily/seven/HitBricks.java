@@ -23,7 +23,9 @@ public class HitBricks {
             // 第 1 步：把 grid 中的砖头全部击碎，通常算法问题不能修改输入数据，这一步非必需，可以认为是一种答题规范
             int[][] copy = new int[rows][cols];
             for (int i = 0; i < rows; i++) {
-                if (cols >= 0) System.arraycopy(grid[i], 0, copy[i], 0, cols);
+                if (cols >= 0) {
+                    System.arraycopy(grid[i], 0, copy[i], 0, cols);
+                }
             }
 
             // 把 copy 中的砖头全部击碎
