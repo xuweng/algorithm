@@ -124,6 +124,9 @@ public class HitBricks {
             return x * cols + y;
         }
 
+        /**
+         * 学习uf
+         */
         class UnionFind {
 
             /**
@@ -131,6 +134,8 @@ public class HitBricks {
              */
             private int[] parent;
             /**
+             * 维护size 维护size 维护size
+             * <p>
              * 以当前结点为根结点的子树的结点总数
              */
             private int[] size;
