@@ -1,6 +1,8 @@
 package com.leetcode.tag.contest.two;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 5243. 同积元组
@@ -106,4 +108,38 @@ public class TupleSameProduct {
         }
 
     }
+
+    /**
+     * 类似两数之和
+     * <p>
+     * 模拟题意 只能理解题意或者debug 不一定通过所有测试用例
+     * <p>
+     * 利用hashmap存储两数的乘积，后续找到相同乘积的数量，取出两个的排列数量，再乘以8即可
+     * <p>
+     * 作者：hu-li-hu-wai
+     * 链接：https://leetcode-cn.com/problems/tuple-with-same-product/solution/shuang-bai-hashmaplei-si-liang-shu-zhi-h-57qp/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        public int tupleSameProduct(int[] nums) {
+            Map<Integer, Integer> multiplyMap = new HashMap<>();
+            int n = nums.length;
+            for (int i = 0; i < n; i++) {
+                for (int j = i + 1; j < n; j++) {
+                    int multiply = nums[i] * nums[j];
+                    multiplyMap.put(multiply, multiplyMap.getOrDefault(multiply, 0) + 1);
+                }
+            }
+            int res = 0;
+            for (int value : multiplyMap.values()) {
+                if (value > 1) {
+                    //取出两个的排列数量，再乘以8
+                    res += value * (value - 1) * 8 / 2;
+                }
+            }
+            return res;
+        }
+    }
+
 }
