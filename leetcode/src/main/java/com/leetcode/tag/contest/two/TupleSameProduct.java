@@ -6,7 +6,7 @@ import java.util.Arrays;
  * 5243. 同积元组
  */
 public class TupleSameProduct {
-    class Solution {
+    static class Solution {
         public int tupleSameProduct(int[] nums) {
             if (nums == null || nums.length == 0) {
                 return 0;
@@ -22,9 +22,13 @@ public class TupleSameProduct {
                         int p1 = nums[j] * nums[end];
                         if (p == p1) {
                             result++;
+                            j++;
+                            end--;
+                        } else if (p1 < p) {
+                            j++;
+                        } else {
+                            end--;
                         }
-                        j++;
-                        end--;
                     }
                 }
             }
