@@ -156,7 +156,6 @@ public class TupleSameProduct {
             int res = 0;
             for (int value : multiplyMap.values()) {
                 if (value >= 2) {
-                    //取出两个的排列数量，再乘以8
                     res += sum(value);
                 }
             }
