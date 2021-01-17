@@ -56,6 +56,7 @@ public class LargestSubmatrix {
                 for (int j = m - 1; j >= 0; j--) {
                     //更新矩形的最大高度
                     int height = ints[j];
+                    // 面积=宽*高
                     //更新最大面积
                     res = Math.max(res, height * (m - j));
                 }
