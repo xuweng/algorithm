@@ -3,6 +3,7 @@ package com.leetcode.tag.contest.two;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.IntStream;
 
 /**
  * 5243. 同积元组
@@ -142,4 +143,28 @@ public class TupleSameProduct {
         }
     }
 
+    static class Solution4 {
+        public int tupleSameProduct(int[] nums) {
+            Map<Integer, Integer> multiplyMap = new HashMap<>();
+            int n = nums.length;
+            for (int i = 0; i < n; i++) {
+                for (int j = i + 1; j < n; j++) {
+                    int multiply = nums[i] * nums[j];
+                    multiplyMap.put(multiply, multiplyMap.getOrDefault(multiply, 0) + 1);
+                }
+            }
+            int res = 0;
+            for (int value : multiplyMap.values()) {
+                if (value >= 2) {
+                    //取出两个的排列数量，再乘以8
+                    res += sum(value);
+                }
+            }
+            return res * 8;
+        }
+
+        private int sum(int n) {
+            return IntStream.range(1, n).sum();
+        }
+    }
 }

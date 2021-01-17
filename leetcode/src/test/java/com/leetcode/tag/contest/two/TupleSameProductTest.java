@@ -11,4 +11,13 @@ class TupleSameProductTest {
 
         solution.tupleSameProduct(nums);
     }
+
+    @Test
+    void solution4() {
+        TupleSameProduct.Solution4 solution = new TupleSameProduct.Solution4();
+
+        int[] nums = {2, 3, 4, 6, 8, 12};
+
+        solution.tupleSameProduct(nums);
+    }
 }
