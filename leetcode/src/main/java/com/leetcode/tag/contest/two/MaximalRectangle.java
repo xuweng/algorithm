@@ -16,21 +16,23 @@ public class MaximalRectangle {
             int[][] ints = new int[matrix.length][matrix[0].length];
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix[0].length; j++) {
-                    ints[i][j] = Integer.parseInt(String.valueOf(matrix[i][j]));
-                }
-            }
-
-            for (int i = 0; i < ints.length; i++) {
-                for (int j = 1; j < ints[0].length; j++) {
-                    if (ints[i][j] == 1) {
-                        ints[i][j] = ints[i][j - 1] + 1;
+                    if (j == 0) {
+                        ints[i][j] = Integer.parseInt(String.valueOf(matrix[i][j]));
+                    } else {
+                        if (matrix[i][j] == '1') {
+                            ints[i][j] = ints[i][j - 1] + 1;
+                        }
                     }
+
                 }
             }
 
             int max = 0;
             for (int i = 0; i < ints.length; i++) {
                 for (int j = 0; j < ints[0].length; j++) {
+                    if (ints[i][j] == 0) {
+                        continue;
+                    }
                     int height = 1;
                     int min = ints[i][j];
                     for (int k = i; k >= 0; k--) {
