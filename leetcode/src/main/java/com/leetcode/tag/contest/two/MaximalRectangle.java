@@ -20,18 +20,15 @@ public class MaximalRectangle {
                 }
             }
 
-            int max = ints[0][0];
             for (int i = 0; i < ints.length; i++) {
                 for (int j = 1; j < ints[0].length; j++) {
                     if (ints[i][j] == 1) {
-                        if (i == 0) {
-                            max = 1;
-                        }
                         ints[i][j] = ints[i][j - 1] + 1;
                     }
                 }
             }
 
+            int max = 0;
             for (int i = 0; i < ints.length; i++) {
                 for (int j = 0; j < ints[0].length; j++) {
                     int height = 1;
