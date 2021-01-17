@@ -14,17 +14,18 @@ public class TupleSameProduct {
             Arrays.sort(nums);
             int result = 0;
             for (int i = 0; i < nums.length; i++) {
-                int p = nums[i] * nums[nums.length - 1];
-                int end = nums.length - 2;
-                int j = i + 1;
-                while (j <= end) {
-                    int p1 = nums[j] * nums[end];
-                    if (p == p1) {
-                        result++;
-                        break;
+                for (int k = i + 3; k < nums.length; k++) {
+                    int p = nums[i] * nums[k];
+                    int end = k - 1;
+                    int j = i + 1;
+                    while (j < end) {
+                        int p1 = nums[j] * nums[end];
+                        if (p == p1) {
+                            result++;
+                        }
+                        j++;
+                        end--;
                     }
-                    j++;
-                    end--;
                 }
             }
 
