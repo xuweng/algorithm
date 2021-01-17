@@ -52,6 +52,7 @@ public class LargestSubmatrix {
             int res = 0;
             for (int[] ints : matrix) {
                 //遍历每一行，对每一行进行排序
+                // 排序作用，每行升序
                 Arrays.sort(ints);
                 for (int j = m - 1; j >= 0; j--) {
                     //更新矩形的最大高度
