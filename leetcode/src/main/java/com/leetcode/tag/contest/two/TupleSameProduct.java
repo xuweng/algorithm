@@ -166,4 +166,33 @@ public class TupleSameProduct {
             return IntStream.range(1, n).sum();
         }
     }
+
+    /**
+     * 简洁代码
+     */
+    class Solution5 {
+        // 目标是计算两个数的积，在不同的数组是否重复出现
+        public int tupleSameProduct(int[] nums) {
+            if (nums == null || nums.length == 0) {
+                return 0;
+            }
+            Map<Integer, Integer> map = new HashMap<>();
+            int len = nums.length;
+            int ans = 0;
+            for (int i = 0; i < len - 1; i++) {
+                for (int j = i + 1; j < len; j++) { // 遍历 获得两两组合的积，并且不会出现重复
+                    int mutil = nums[i] * nums[j]; // 计算两两的积
+                    if (map.containsKey(mutil)) { // 如果积已经存在map
+                        // 这里累加也可以
+                        ans += map.get(mutil); // 结果加上value，因为重复出现2次以上，组合会增多，不能只加1
+                        map.put(mutil, map.get(mutil) + 1); // 出现次数加1
+                    } else { // 未出现在map
+                        map.put(mutil, 1); // 次数加1
+                    }
+                }
+            }
+            return ans * 8; // 相同数字的四元组，能够组合成2的4次方，也就是8次
+        }
+    }
+
 }
