@@ -2,6 +2,8 @@ package com.leetcode.tag.contest.two;
 
 /**
  * 5655. 重新排列后的最大子矩阵
+ * <p>
+ * 数学思维 问题转换 问题转换 问题转换 问题转换
  */
 public class LargestSubmatrix {
     class Solution {
