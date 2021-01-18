@@ -2,6 +2,8 @@ package com.leetcode.tag.dp.nine;
 
 /**
  * 174. 地下城游戏
+ * <p>
+ * 并查集 并查集 并查集 并查集
  */
 public class CalculateMinimumHP2 {
     class Solution {
@@ -18,7 +20,7 @@ public class CalculateMinimumHP2 {
                 int m = dungeon[row][i] - dp[row][i + 1];
                 dp[row][i] = Math.max(0, -m);
             }
-            for (int i = row - 1; i > 0; i--) {
+            for (int i = row - 1; i >= 0; i--) {
                 int m = dungeon[i][col] - dp[i + 1][col];
                 dp[i][col] = Math.max(0, -m);
             }
