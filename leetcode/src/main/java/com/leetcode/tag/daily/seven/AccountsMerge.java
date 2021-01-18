@@ -6,6 +6,8 @@ import java.util.*;
  * 721. 账户合并
  * <p>
  * 方法一：哈希表 + 并查集
+ * <p>
+ * 看图 举例子 看图 举例子
  */
 public class AccountsMerge {
     class Solution {
