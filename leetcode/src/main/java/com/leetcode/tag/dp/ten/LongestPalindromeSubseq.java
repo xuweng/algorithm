@@ -16,7 +16,7 @@ public class LongestPalindromeSubseq {
             for (int i = s.length() - 2; i >= 0; i--) {
                 for (int j = i + 1; j < s.length(); j++) {
                     if (s.charAt(i) == s.charAt(j)) {
-                        dp[i][j] = dp[i + 1][j - 1];
+                        dp[i][j] = dp[i + 1][j - 1] + 2;
                     } else {
                         dp[i][j] = Math.max(dp[i][j - 1], dp[i + 1][j]);
                     }
