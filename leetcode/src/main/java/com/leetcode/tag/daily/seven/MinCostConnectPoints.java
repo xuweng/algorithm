@@ -14,6 +14,8 @@ public class MinCostConnectPoints {
     /**
      * 方法一：Kruskal}Kruskal 算法
      * <p>
+     * 该算法的基本思想是从小到大加入边，是一个贪心算法。
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/min-cost-to-connect-all-points/solution/lian-jie-suo-you-dian-de-zui-xiao-fei-yo-kcx7/
      * 来源：力扣（LeetCode）
@@ -29,6 +31,7 @@ public class MinCostConnectPoints {
                     edges.add(new Edge(dist(points, i, j), i, j));
                 }
             }
+            //将图 G={V,E} 中的所有边按照长度由小到大进行排序，等长的边可以按任意顺序
             edges.sort(Comparator.comparingInt(edge -> edge.len));
             int ret = 0, num = 1;
             for (Edge edge : edges) {
@@ -49,6 +52,9 @@ public class MinCostConnectPoints {
         }
     }
 
+    /**
+     * 使用并查集维护连通性
+     */
     class DisjointSetUnion {
         int[] f;
         int[] rank;
