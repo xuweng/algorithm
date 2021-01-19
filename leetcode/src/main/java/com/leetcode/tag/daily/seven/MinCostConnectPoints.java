@@ -9,10 +9,12 @@ import java.util.List;
  * 1584. 连接所有点的最小费用
  * <p>
  * 最小生成树
+ * <p>
+ * 任意两点之间有且仅有一条简单路径只有树，且这棵树包含 n 个节点。我们称这棵树为给定的图的生成树，其中总权值最小的生成树，我们称其为最小生成树。
  */
 public class MinCostConnectPoints {
     /**
-     * 方法一：Kruskal}Kruskal 算法
+     * 方法一：Kruskal 算法
      * <p>
      * 该算法的基本思想是从小到大加入边，是一个贪心算法。
      * <p>
