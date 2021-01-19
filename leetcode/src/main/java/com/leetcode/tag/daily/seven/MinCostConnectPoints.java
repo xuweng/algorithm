@@ -39,6 +39,7 @@ public class MinCostConnectPoints {
             for (Edge edge : edges) {
                 int len = edge.len, x = edge.x, y = edge.y;
                 if (dsu.unionSet(x, y)) {
+                    // 只有没有连接过的顶点才能连接
                     // 连接成功 计算
                     ret += len;
                     num++;
