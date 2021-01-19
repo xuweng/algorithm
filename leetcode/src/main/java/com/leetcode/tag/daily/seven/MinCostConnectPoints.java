@@ -2,11 +2,13 @@ package com.leetcode.tag.daily.seven;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
  * 1584. 连接所有点的最小费用
+ * <p>
+ * 最小生成树
  */
 public class MinCostConnectPoints {
     /**
@@ -21,13 +23,13 @@ public class MinCostConnectPoints {
         public int minCostConnectPoints(int[][] points) {
             int n = points.length;
             DisjointSetUnion dsu = new DisjointSetUnion(n);
-            List<Edge> edges = new ArrayList<Edge>();
+            List<Edge> edges = new ArrayList<>();
             for (int i = 0; i < n; i++) {
                 for (int j = i + 1; j < n; j++) {
                     edges.add(new Edge(dist(points, i, j), i, j));
                 }
             }
-            Collections.sort(edges, (edge1, edge2) -> edge1.len - edge2.len);
+            edges.sort(Comparator.comparingInt(edge -> edge.len));
             int ret = 0, num = 1;
             for (Edge edge : edges) {
                 int len = edge.len, x = edge.x, y = edge.y;
