@@ -23,7 +23,7 @@ public class LongestPalindromeSubseq2 {
                 }
             }
 
-            return dp[0][s.length()];
+            return dp[0][s.length() - 1];
         }
     }
 }
