@@ -20,7 +20,7 @@ public class LastStoneWeightII {
                     if (j < stones[i - 1]) {
                         dp[i][j] = dp[i - 1][j];
                     } else {
-                        dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - stones[i - 1]] + stones[i]);
+                        dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - stones[i - 1]] + stones[i - 1]);
                     }
                 }
             }
