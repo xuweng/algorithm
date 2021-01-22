@@ -18,7 +18,7 @@ public class MinDistance {
                     if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
                         dp[i][j] = dp[i - 1][j - 1];
                     } else {
-                        dp[i][j] = Math.min(dp[i - 1][j - 1], Math.max(dp[i][j - 1], dp[i - 1][j])) + 1;
+                        dp[i][j] = Math.min(dp[i - 1][j - 1], Math.min(dp[i][j - 1], dp[i - 1][j])) + 1;
                     }
                 }
             }
