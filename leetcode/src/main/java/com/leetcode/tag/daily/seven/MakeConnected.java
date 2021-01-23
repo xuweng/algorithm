@@ -38,6 +38,7 @@ public class MakeConnected {
             }
 
             used = new boolean[n];
+            // 连通分量个数
             int ans = 0;
             for (int i = 0; i < n; ++i) {
                 if (!used[i]) {
