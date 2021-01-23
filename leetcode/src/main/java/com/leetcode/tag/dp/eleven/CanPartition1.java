@@ -23,7 +23,7 @@ public class CanPartition1 {
                 dp[i][0] = true;
             }
             for (int i = 1; i <= nums.length; i++) {
-                for (int j = 1; j < sum; j++) {
+                for (int j = 1; j <= sum; j++) {
                     if (j < nums[i - 1]) {
                         dp[i][j] = dp[i - 1][j];
                     } else {
