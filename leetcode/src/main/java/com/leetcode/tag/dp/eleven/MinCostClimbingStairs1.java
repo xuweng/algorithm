@@ -17,7 +17,7 @@ public class MinCostClimbingStairs1 {
                 dp[i] = Math.min(dp[i - 2], dp[i - 1]) + cost[i];
             }
 
-            return Math.max(dp[cost.length - 2], dp[cost.length - 1]);
+            return Math.min(dp[cost.length - 2], dp[cost.length - 1]);
         }
     }
 }
