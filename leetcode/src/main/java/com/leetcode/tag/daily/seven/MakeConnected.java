@@ -41,10 +41,11 @@ public class MakeConnected {
             // 连通分量个数
             int ans = 0;
             for (int i = 0; i < n; ++i) {
-                if (!used[i]) {
-                    dfs(i);
-                    ++ans;
+                if (used[i]) {
+                    continue;
                 }
+                dfs(i);
+                ++ans;
             }
 
             return ans - 1;
