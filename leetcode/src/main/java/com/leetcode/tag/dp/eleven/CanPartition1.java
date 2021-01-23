@@ -17,6 +17,7 @@ public class CanPartition1 {
             if (sum % 2 != 0) {
                 return false;
             }
+            sum = sum / 2;
             boolean[][] dp = new boolean[nums.length + 1][sum + 1];
             for (int i = 0; i <= nums.length; i++) {
                 dp[i][0] = true;
