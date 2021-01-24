@@ -108,6 +108,7 @@ public class KthLargestValue {
             //从i=1;j=1开始遍历,省去判断边界问题
             for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= m; j++) {
+                    // 这3个状态真是厉害
                     dp[i][j] = dp[i - 1][j - 1] ^ dp[i - 1][j] ^ dp[i][j - 1] ^ ma[i - 1][j - 1];
                     p.offer(dp[i][j]);
                 }
