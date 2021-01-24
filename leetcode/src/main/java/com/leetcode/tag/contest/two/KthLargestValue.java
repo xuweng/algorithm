@@ -46,7 +46,7 @@ public class KthLargestValue {
                 }
             } else {
                 for (int i = 0; i <= col; i++) {
-                    meno[row][col] = meno[row - 1][col] ^ matrix[row][col];
+                    meno[row][col] = meno[row - 1][col] ^ matrix[row][i];
                 }
             }
 
