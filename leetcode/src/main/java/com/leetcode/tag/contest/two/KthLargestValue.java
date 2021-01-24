@@ -32,8 +32,7 @@ public class KthLargestValue {
                     if (i == 0 && j == 0) {
                         continue;
                     }
-                    int v = pre ^ matrix[i][j];
-                    pre = v;
+                    pre = pre ^ matrix[i][j];
                 }
             }
 
