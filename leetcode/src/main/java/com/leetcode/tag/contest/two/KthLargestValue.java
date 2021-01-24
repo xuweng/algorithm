@@ -1,9 +1,6 @@
 package com.leetcode.tag.contest.two;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * 5663. 找出第 K 大的异或坐标值
@@ -51,4 +48,45 @@ public class KthLargestValue {
             return meno[row][col];
         }
     }
+
+    /**
+     * dp+优先队列
+     * <p>
+     * 作者：rational-irrationality
+     * 链接：https://leetcode-cn.com/problems/find-kth-largest-xor-coordinate-value/solution/java-dong-tai-gui-hua-you-xian-dui-lie-b-2acz/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int kthLargestValue(int[][] matrix, int k) {
+            int row = matrix.length;
+            int col = matrix[0].length;
+            int[][] dp = new int[row][col];
+            dp[0][0] = matrix[0][0];
+
+            PriorityQueue<Integer> priorityQueue = new PriorityQueue<>((a, b) -> (b - a));
+            priorityQueue.offer(matrix[0][0]);
+            for (int i = 1; i < col; i++) {
+                dp[0][i] = dp[0][i - 1] ^ matrix[0][i];
+                priorityQueue.offer(dp[0][i]);
+            }
+            for (int i = 1; i < row; i++) {
+                dp[i][0] = dp[i - 1][0] ^ matrix[i][0];
+                priorityQueue.offer(dp[i][0]);
+            }
+            for (int i = 1; i < row; i++) {
+                for (int j = 1; j < col; j++) {
+                    dp[i][j] = dp[i - 1][j] ^ dp[i][j - 1] ^ matrix[i][j];
+                    priorityQueue.offer(dp[i][j]);
+                }
+            }
+            while (k > 1) {
+                priorityQueue.poll();
+                k--;
+            }
+            return priorityQueue.poll();
+
+        }
+    }
+
 }
