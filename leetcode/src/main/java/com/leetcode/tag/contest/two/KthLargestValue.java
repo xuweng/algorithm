@@ -36,22 +36,21 @@ public class KthLargestValue {
         }
 
         private int zheng(int[][] matrix, int row, int col) {
-            int v = 0;
             if (row == 0) {
                 for (int i = 1; i <= col; i++) {
-                    v = meno[row][i - 1] ^ matrix[row][i];
+                    meno[row][col] = meno[row][i - 1] ^ matrix[row][i];
                 }
             } else if (col == 0) {
                 for (int i = 1; i <= row; i++) {
-                    v = meno[i - 1][col] ^ matrix[i][col];
+                    meno[row][col] = meno[i - 1][col] ^ matrix[i][col];
                 }
             } else {
                 for (int i = 1; i <= col; i++) {
-                    v = meno[row - 1][col] ^ matrix[row][col];
+                    meno[row][col] = meno[row - 1][col] ^ matrix[row][col];
                 }
             }
 
-            return v;
+            return meno[row][col];
         }
     }
 }
