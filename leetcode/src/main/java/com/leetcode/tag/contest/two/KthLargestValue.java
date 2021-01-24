@@ -91,4 +91,34 @@ public class KthLargestValue {
         }
     }
 
+    /**
+     * Java 动态规划，优先队列
+     * <p>
+     * 作者：rational-irrationality
+     * 链接：https://leetcode-cn.com/problems/find-kth-largest-xor-coordinate-value/solution/java-dong-tai-gui-hua-you-xian-dui-lie-b-2acz/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public int kthLargestValue(int[][] ma, int k) {
+            int n = ma.length;
+            int m = ma[0].length;
+            int[][] dp = new int[n + 1][m + 1];
+            PriorityQueue<Integer> p = new PriorityQueue<>((a, b) -> (b - a));
+            //从i=1;j=1开始遍历,省去判断边界问题
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= m; j++) {
+                    dp[i][j] = dp[i - 1][j - 1] ^ dp[i - 1][j] ^ dp[i][j - 1] ^ ma[i - 1][j - 1];
+                    p.offer(dp[i][j]);
+                }
+            }
+            while (k > 1) {
+                p.poll();
+                k--;
+            }
+            return p.poll();
+
+        }
+    }
+
 }
