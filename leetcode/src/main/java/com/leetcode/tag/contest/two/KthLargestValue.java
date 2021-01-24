@@ -50,6 +50,8 @@ public class KthLargestValue {
     }
 
     /**
+     * dp方程错误
+     * <p>
      * dp+优先队列
      * <p>
      * 作者：rational-irrationality
