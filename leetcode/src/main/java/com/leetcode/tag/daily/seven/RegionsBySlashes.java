@@ -2,6 +2,10 @@ package com.leetcode.tag.daily.seven;
 
 /**
  * 959. 由斜杠划分区域
+ * <p>
+ * 转换成岛屿个数
+ * <p>
+ * 知识联系 知识联系 知识联系 知识联系 知识联系 知识联系 知识联系
  */
 public class RegionsBySlashes {
     /**
