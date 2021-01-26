@@ -13,6 +13,12 @@ public class NumEquivDominoPairs {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution {
+        /**
+         * 为了使得「等价」更易于比较，我们都让较小的数排在前面。例如：让 [1, 4] 拼成 14，让 [4, 1] 也拼成 14
+         *
+         * @param dominoes
+         * @return
+         */
         public int numEquivDominoPairs(int[][] dominoes) {
             int[] num = new int[100];
             int ret = 0;
