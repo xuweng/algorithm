@@ -3,6 +3,8 @@ package com.leetcode.tag.daily.seven;
 /**
  * 1457. 二叉树中的伪回文路径
  * <p>
+ * 状态压缩
+ * <p>
  * 把两个有序整数用一个整数表示，其实是比较常见的「状态压缩」
  */
 public class PseudoPalindromicPaths {
