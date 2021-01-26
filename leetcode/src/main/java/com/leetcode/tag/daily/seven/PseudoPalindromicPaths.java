@@ -42,6 +42,9 @@ public class PseudoPalindromicPaths {
         }
     }
 
+    /**
+     * 回文 异或运算
+     */
     class Solution1 {
         int res = 0;
 
