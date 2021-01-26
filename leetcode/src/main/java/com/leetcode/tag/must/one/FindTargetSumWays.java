@@ -74,6 +74,10 @@ public class FindTargetSumWays {
     class Solution2 {
         /**
          * 用 dp[i][j] 表示用数组中的前 i 个元素，组成和为 j 的方案数
+         * <p>
+         * dp方程
+         * <p>
+         * dp[i][j] = dp[i - 1][j - nums[i]] + dp[i - 1][j + nums[i]]
          *
          * @param nums
          * @param S
