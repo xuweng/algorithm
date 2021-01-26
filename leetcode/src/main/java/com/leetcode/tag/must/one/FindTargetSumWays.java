@@ -22,9 +22,10 @@ public class FindTargetSumWays {
                     int s = 0;
                     if (j >= nums[i - 1]) {
                         s += dp[i - 1][j - nums[i - 1]];
-                    }
-                    if (j + nums[i - 1] <= S) {
+                    } else if (j + nums[i - 1] <= S) {
                         s += dp[i - 1][j + nums[i - 1]];
+                    } else {
+                        s = dp[i - 1][j];
                     }
                     dp[i][j] = s;
                 }
