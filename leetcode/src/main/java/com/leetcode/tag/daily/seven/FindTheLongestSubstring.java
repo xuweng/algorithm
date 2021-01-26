@@ -17,6 +17,12 @@ public class FindTheLongestSubstring {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution {
+        /**
+         * pre[i][k] 表示在字符串前 i 个字符中，第 k 个元音字母一共出现的次数
+         *
+         * @param s
+         * @return
+         */
         public int findTheLongestSubstring(String s) {
             int n = s.length();
             int[] pos = new int[1 << 5];
