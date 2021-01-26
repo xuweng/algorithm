@@ -16,12 +16,14 @@ public class FindTargetSumWays {
             int[][] dp = new int[nums.length + 1][S + 1];
             for (int i = 1; i <= nums.length; i++) {
                 for (int j = 1; j <= S; j++) {
+                    int s = 0;
                     if (j >= nums[i - 1]) {
-                        dp[i][j] = dp[i - 1][j - nums[i - 1]] + 1;
+                        s += dp[i - 1][j - nums[i - 1]] + 1;
                     }
                     if (j + nums[i - 1] <= S) {
-                        dp[i][j] = dp[i - 1][j + nums[i - 1]] + 1;
+                        s += dp[i - 1][j + nums[i - 1]] + 1;
                     }
+                    dp[i][j] = s;
                 }
             }
 
