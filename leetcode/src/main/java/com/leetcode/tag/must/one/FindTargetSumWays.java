@@ -18,10 +18,10 @@ public class FindTargetSumWays {
                 for (int j = 1; j <= S; j++) {
                     int s = 0;
                     if (j >= nums[i - 1]) {
-                        s += dp[i - 1][j - nums[i - 1]] + 1;
+                        s += dp[i - 1][j - nums[i - 1]];
                     }
                     if (j + nums[i - 1] <= S) {
-                        s += dp[i - 1][j + nums[i - 1]] + 1;
+                        s += dp[i - 1][j + nums[i - 1]];
                     }
                     dp[i][j] = s;
                 }
