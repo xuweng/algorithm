@@ -97,7 +97,9 @@ public class MaxNumEdgesToRemove {
             }
             // y合并到x 小并查集合并到大并查集
             parent[y] = x;
+            // x数量增加
             size[x] += size[y];
+            // 连通分量减少
             --setCount;
             return true;
         }
