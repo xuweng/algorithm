@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 /**
  * 1579. 保证图可完全遍历
+ * <p>
+ * 目标 重点
+ * <p>
+ * 并查集 数量 连通分量
  */
 public class MaxNumEdgesToRemove {
     /**
