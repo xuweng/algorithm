@@ -23,9 +23,12 @@ public class MinCharacters {
             for (char c : b.toCharArray()) {
                 bc[c - 'a']++;
             }
+            // 输入：a = "aba", b = "caa"
+            // 3) 将 a 变为 "aaa" 并将 b 变为 "aaa"，2 次操作，满足 a 和 b 由同一个字母组成。
             //第三个条件，修改字符最少，改成同一个字符
             int ans = a.length() + b.length();
             for (int i = 0; i < 26; i++) {
+                // 模拟 模拟 模拟
                 ans = Math.min(ans, a.length() + b.length() - ac[i] - bc[i]);
             }
             return Math.min(ans, Math.min(smaller(ac, bc), smaller(bc, ac)));
