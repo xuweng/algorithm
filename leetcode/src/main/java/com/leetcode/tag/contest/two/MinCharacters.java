@@ -29,6 +29,7 @@ public class MinCharacters {
             int ans = a.length() + b.length();
             for (int i = 0; i < 26; i++) {
                 // 模拟 模拟 模拟
+                // 变成a，b相同字母最多的字符串
                 ans = Math.min(ans, a.length() + b.length() - ac[i] - bc[i]);
             }
             return Math.min(ans, Math.min(smaller(ac, bc), smaller(bc, ac)));
