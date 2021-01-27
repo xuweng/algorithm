@@ -86,13 +86,16 @@ public class MaxNumEdgesToRemove {
             x = findset(x);
             y = findset(y);
             if (x == y) {
+                // 不用合并
                 return false;
             }
             if (size[x] < size[y]) {
                 int temp = x;
                 x = y;
+                // y是数量小并查集
                 y = temp;
             }
+            // y合并到x 小并查集合并到大并查集
             parent[y] = x;
             size[x] += size[y];
             --setCount;
