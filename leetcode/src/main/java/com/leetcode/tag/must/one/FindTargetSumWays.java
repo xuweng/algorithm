@@ -1,5 +1,7 @@
 package com.leetcode.tag.must.one;
 
+import java.util.Arrays;
+
 /**
  * 494. 目标和
  * <p>
@@ -97,6 +99,33 @@ public class FindTargetSumWays {
                 }
             }
             return S > 1000 ? 0 : dp[nums.length - 1][S + 1000];
+        }
+    }
+
+    class Solution3 {
+        public int findTargetSumWays(int[] nums, int S) {
+            if (nums == null || nums.length == 0) {
+                return 0;
+            }
+            int sum = Arrays.stream(nums).sum();
+            if (S > sum) {
+                return 0;
+            }
+            // 加法 + 减法 = sum
+            // 加法 - 减法 = S
+            // 加法 = （sum + S）/ 2
+            int size = (sum + S) / 2;
+            if (size % 2 != 0) {
+                return 0;
+            }
+            int[] dp = new int[size + 1];
+            for (int num : nums) {
+                for (int i = size; i >= num; i--) {
+                    dp[i] += dp[i - num];
+                }
+            }
+
+            return dp[size];
         }
     }
 
