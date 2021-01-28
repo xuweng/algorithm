@@ -16,12 +16,17 @@ public class PivotIndex {
      */
     class Solution {
         public int pivotIndex(int[] nums) {
+            //全部元素之和
             int total = Arrays.stream(nums).sum();
+            //左侧元素之和为 sum
             int sum = 0;
             for (int i = 0; i < nums.length; ++i) {
+                //左右侧元素相等即为 sum = total - nums[i] - sum
+                //即 2 × sum + nums[i] = total
                 if (2 * sum + nums[i] == total) {
                     return i;
                 }
+                //左侧元素之和为 sum
                 sum += nums[i];
             }
             return -1;
