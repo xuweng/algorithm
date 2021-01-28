@@ -119,6 +119,7 @@ public class FindTargetSumWays {
                 return 0;
             }
             int[] dp = new int[size + 1];
+            dp[0] = 1;
             for (int num : nums) {
                 for (int i = size; i >= num; i--) {
                     dp[i] += dp[i - num];
