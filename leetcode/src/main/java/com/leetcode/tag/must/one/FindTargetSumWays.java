@@ -114,10 +114,10 @@ public class FindTargetSumWays {
             // 加法 + 减法 = sum
             // 加法 - 减法 = S
             // 加法 = （sum + S）/ 2
-            int size = (sum + S) / 2;
-            if (size % 2 != 0) {
+            if ((sum + S) % 2 != 0) {
                 return 0;
             }
+            int size = (sum + S) / 2;
             int[] dp = new int[size + 1];
             dp[0] = 1;
             for (int num : nums) {
