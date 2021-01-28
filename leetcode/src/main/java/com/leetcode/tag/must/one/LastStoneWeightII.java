@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 /**
  * 1049. 最后一块石头的重量 II
+ * <p>
+ * 求和 求最值
  */
 public class LastStoneWeightII {
     class Solution {
