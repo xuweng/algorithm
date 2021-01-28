@@ -6,7 +6,7 @@ package com.leetcode.tag.must.one;
 public class Change {
     class Solution {
         public int change(int amount, int[] coins) {
-            if (coins == null || coins.length == 0) {
+            if (coins == null) {
                 return 0;
             }
             int[] dp = new int[amount + 1];
