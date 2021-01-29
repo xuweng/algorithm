@@ -192,9 +192,11 @@ public class MinimumEffortPath {
         public int minimumEffortPath(int[][] heights) {
             int m = heights.length;
             int n = heights[0].length;
+            // 优先队列
             PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(edge -> edge[2]));
             pq.offer(new int[]{0, 0, 0});
 
+            // 距离表
             int[] dist = new int[m * n];
             Arrays.fill(dist, Integer.MAX_VALUE);
             dist[0] = 0;
