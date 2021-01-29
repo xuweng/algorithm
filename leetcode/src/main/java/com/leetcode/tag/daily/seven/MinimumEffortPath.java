@@ -106,6 +106,8 @@ public class MinimumEffortPath {
     /**
      * 方法二：并查集
      * <p>
+     * https://leetcode-cn.com/problems/path-with-minimum-effort/solution/duo-tu-xiang-xi-fen-xi-jie-ti-si-lu-fen-7z89x/
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/path-with-minimum-effort/solution/zui-xiao-ti-li-xiao-hao-lu-jing-by-leetc-3q2j/
      * 来源：力扣（LeetCode）
