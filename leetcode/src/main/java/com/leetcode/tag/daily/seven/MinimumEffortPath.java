@@ -120,6 +120,7 @@ public class MinimumEffortPath {
             List<int[]> edges = new ArrayList<>();
             for (int i = 0; i < m; ++i) {
                 for (int j = 0; j < n; ++j) {
+                    //把二维左边转成了一维，即第 i 行第 j 列映射成了 i * N + j
                     int id = i * n + j;
                     if (i > 0) {
                         edges.add(new int[]{id - n, id, Math.abs(heights[i][j] - heights[i - 1][j])});
