@@ -10,6 +10,8 @@ import java.util.*;
  * 看懂题目 看懂题目 看懂题目
  * <p>
  * 差值的绝对值转化为权重 图论问题 有权图
+ * <p>
+ * 并查集作用： 判断两点是否连通 连通性
  */
 public class MinimumEffortPath {
     class Solution {
