@@ -136,7 +136,9 @@ public class MinimumEffortPath {
             int ans = 0;
             for (int[] edge : edges) {
                 int x = edge[0], y = edge[1], v = edge[2];
+                // 连接x，y
                 uf.unite(x, y);
+                // 判断最左上，最右下是否连接
                 if (uf.connected(0, m * n - 1)) {
                     ans = v;
                     break;
