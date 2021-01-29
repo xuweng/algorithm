@@ -199,7 +199,7 @@ public class MinimumEffortPath {
     }
 
     /**
-     * Dijkstra 算法
+     * Dijkstra 算法 单源最短路径
      * <p>
      * bfs+优先队列
      */
@@ -213,7 +213,7 @@ public class MinimumEffortPath {
             PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(edge -> edge[2]));
             pq.offer(new int[]{0, 0, 0});
 
-            // 距离表
+            // 距离表 保存路径最大权重
             int[] dist = new int[m * n];
             Arrays.fill(dist, Integer.MAX_VALUE);
             dist[0] = 0;
