@@ -115,6 +115,8 @@ public class MinimumEffortPath {
         public int minimumEffortPath(int[][] heights) {
             int m = heights.length;
             int n = heights[0].length;
+            //edges[i] 是个 [边的第一个顶点，边的第二个顶点,边的权重] 三元组
+            //需要对边的权重排序
             List<int[]> edges = new ArrayList<>();
             for (int i = 0; i < m; ++i) {
                 for (int j = 0; j < n; ++j) {
