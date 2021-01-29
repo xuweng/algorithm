@@ -4,6 +4,12 @@ import java.util.*;
 
 /**
  * 1631. 最小体力消耗路径
+ * <p>
+ * https://leetcode-cn.com/problems/path-with-minimum-effort/solution/duo-tu-xiang-xi-fen-xi-jie-ti-si-lu-fen-7z89x/
+ * <p>
+ * 看懂题目 看懂题目 看懂题目
+ * <p>
+ * 差值的绝对值转化为权重 图论问题 有权图
  */
 public class MinimumEffortPath {
     class Solution {
