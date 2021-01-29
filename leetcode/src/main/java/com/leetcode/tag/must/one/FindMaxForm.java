@@ -36,6 +36,9 @@ public class FindMaxForm {
         }
     }
 
+    /**
+     * 滚动数组代码很简洁
+     */
     class Solution1 {
         public int findMaxForm(String[] strs, int m, int n) {
             if (strs == null || strs.length == 0) {
