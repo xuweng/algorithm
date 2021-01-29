@@ -200,6 +200,8 @@ public class MinimumEffortPath {
 
     /**
      * Dijkstra 算法
+     * <p>
+     * bfs+优先队列
      */
     class Solution3 {
         int[][] dirs = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
