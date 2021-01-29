@@ -64,7 +64,9 @@ public class MinimumEffortPath {
             int n = heights[0].length;
             int left = 0, right = 999999, ans = 0;
             while (left <= right) {
+                // 二分
                 int mid = (left + right) / 2;
+                // bfs
                 Queue<int[]> queue = new LinkedList<>();
                 queue.offer(new int[]{0, 0});
                 boolean[] seen = new boolean[m * n];
@@ -81,6 +83,7 @@ public class MinimumEffortPath {
                         }
                     }
                 }
+                // 二分
                 if (seen[m * n - 1]) {
                     ans = mid;
                     right = mid - 1;
@@ -104,7 +107,7 @@ public class MinimumEffortPath {
         public int minimumEffortPath(int[][] heights) {
             int m = heights.length;
             int n = heights[0].length;
-            List<int[]> edges = new ArrayList<int[]>();
+            List<int[]> edges = new ArrayList<>();
             for (int i = 0; i < m; ++i) {
                 for (int j = 0; j < n; ++j) {
                     int id = i * n + j;
@@ -116,11 +119,7 @@ public class MinimumEffortPath {
                     }
                 }
             }
-            Collections.sort(edges, new Comparator<int[]>() {
-                public int compare(int[] edge1, int[] edge2) {
-                    return edge1[2] - edge2[2];
-                }
-            });
+            edges.sort(Comparator.comparingInt(edge -> edge[2]));
 
             UnionFind uf = new UnionFind(m * n);
             int ans = 0;
@@ -170,6 +169,7 @@ public class MinimumEffortPath {
                 x = y;
                 y = temp;
             }
+            // y连接到x
             parent[y] = x;
             size[x] += size[y];
             --setCount;
