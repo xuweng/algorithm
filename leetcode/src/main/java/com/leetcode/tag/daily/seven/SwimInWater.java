@@ -23,6 +23,7 @@ public class SwimInWater {
             int right = N * N - 1;
             while (left < right) {
                 // left + right 不会溢出
+                // 二维矩阵，这里mid是值，不是下标
                 int mid = (left + right) / 2;
                 boolean[][] visited = new boolean[N][N];
                 if (grid[0][0] <= mid && dfs(grid, 0, 0, visited, mid)) {
