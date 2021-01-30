@@ -48,6 +48,8 @@ public class SwimInWater {
 
         /**
          * 使用深度优先遍历得到从 (x, y) 开始向四个方向的所有小于等于 threshold 且与 (x, y) 连通的结点
+         * <p>
+         * 连接所有<=threshold的结点
          *
          * @param grid
          * @param x
@@ -62,6 +64,7 @@ public class SwimInWater {
                 int newX = x + direction[0];
                 int newY = y + direction[1];
                 // 边界 没有访问 附加条件
+                // grid[newX][newY] <= threshold
                 if (inArea(newX, newY) && !visited[newX][newY] && grid[newX][newY] <= threshold) {
                     if (newX == N - 1 && newY == N - 1) {
                         return true;
