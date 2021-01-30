@@ -7,6 +7,10 @@ import java.util.Queue;
 
 /**
  * 778. 水位上升的泳池中游泳
+ * <p>
+ * 看懂题目 看懂题目 看懂题目
+ * <p>
+ * 差值 权重
  */
 public class SwimInWater {
     /**
