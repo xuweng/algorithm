@@ -63,6 +63,7 @@ public class SwimInWater {
             for (int[] direction : DIRECTIONS) {
                 int newX = x + direction[0];
                 int newY = y + direction[1];
+                // 判断邻接结点
                 // 边界 没有访问 附加条件
                 // grid[newX][newY] <= threshold
                 if (inArea(newX, newY) && !visited[newX][newY] && grid[newX][newY] <= threshold) {
