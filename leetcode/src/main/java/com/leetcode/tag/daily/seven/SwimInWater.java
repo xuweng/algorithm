@@ -186,6 +186,7 @@ public class SwimInWater {
 
             boolean[][] visited = new boolean[n][n];
             // distTo[i][j] 表示：到顶点 [i, j] 须要等待的最少的时间
+            // 路径最大权重 路径最大高度
             int[][] distTo = new int[n][n];
             for (int[] row : distTo) {
                 Arrays.fill(row, n * n);
