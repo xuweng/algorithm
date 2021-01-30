@@ -114,6 +114,7 @@ public class SwimInWater {
                 for (int[] direction : DIRECTIONS) {
                     int newX = x + direction[0];
                     int newY = y + direction[1];
+                    // 连接grid[newX][newY] <= i的结点
                     if (inArea(newX, newY) && grid[newX][newY] <= i) {
                         unionFind.union(index[i], getIndex(newX, newY));
                     }
