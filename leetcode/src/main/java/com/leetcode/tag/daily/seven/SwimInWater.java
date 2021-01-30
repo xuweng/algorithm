@@ -215,7 +215,7 @@ public class SwimInWater {
                     int newY = currentY + direction[1];
                     if (inArea(newX, newY, n) && !visited[newX][newY] &&
                             Math.max(distTo[currentX][currentY], grid[newX][newY]) < distTo[newX][newY]) {
-                        // 更新距离表
+                        // 更新距离表 更新较小距离
                         distTo[newX][newY] = Math.max(distTo[currentX][currentY], grid[newX][newY]);
                         minHeap.offer(new int[]{newX, newY});
                     }
