@@ -38,6 +38,7 @@ public class SwimInWater {
                 boolean[][] visited = new boolean[N][N];
                 if (grid[0][0] <= mid && dfs(grid, 0, 0, visited, mid)) {
                     // mid 可以，尝试 mid 小一点是不是也可以呢？下一轮搜索的区间 [left, mid]
+                    // 这里是闭区间
                     right = mid;
                 } else {
                     left = mid + 1;
