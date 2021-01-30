@@ -62,6 +62,7 @@ public class SwimInWater {
                         return true;
                     }
 
+                    // 找到一个就返回
                     if (dfs(grid, newX, newY, visited, threshold)) {
                         return true;
                     }
