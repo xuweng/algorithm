@@ -34,6 +34,7 @@ public class SwimInWater {
                 // left + right 不会溢出
                 // 二维矩阵，这里mid是值，不是下标
                 int mid = (left + right) / 2;
+                // 这里visited是一次性 一次dfs一个visited
                 boolean[][] visited = new boolean[N][N];
                 if (grid[0][0] <= mid && dfs(grid, 0, 0, visited, mid)) {
                     // mid 可以，尝试 mid 小一点是不是也可以呢？下一轮搜索的区间 [left, mid]
