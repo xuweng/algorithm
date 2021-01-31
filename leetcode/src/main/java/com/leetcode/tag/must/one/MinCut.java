@@ -6,7 +6,7 @@ package com.leetcode.tag.must.one;
 public class MinCut {
     class Solution {
         public int minCut(String s) {
-            if (s == null || s.isEmpty()) {
+            if (s == null || s.length() <= 1) {
                 return 0;
             }
             int[] dp = new int[s.length()];
@@ -14,6 +14,10 @@ public class MinCut {
                 dp[i] = i;
             }
             for (int i = 1; i < s.length(); i++) {
+                if (isHui(s, 0, i)) {
+                    dp[i] = 0;
+                    continue;
+                }
                 for (int j = 0; j < i; j++) {
                     if (isHui(s, j + 1, i)) {
                         dp[i] = Math.min(dp[i], dp[j] + 1);
