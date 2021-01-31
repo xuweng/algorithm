@@ -21,7 +21,6 @@ public class MinCut {
                 }
             }
 
-
             return dp[s.length() - 1];
         }
 
