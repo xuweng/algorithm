@@ -19,6 +19,7 @@ public class NumSimilarGroups {
             int n = strs.length;
             int m = strs[0].length();
             f = new int[n];
+            // 初始化parent
             for (int i = 0; i < n; i++) {
                 f[i] = i;
             }
@@ -30,6 +31,7 @@ public class NumSimilarGroups {
                         continue;
                     }
                     if (check(strs[i], strs[j], m)) {
+                        // 连接相似字符串
                         f[fi] = fj;
                     }
                 }
