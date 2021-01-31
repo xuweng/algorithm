@@ -19,6 +19,12 @@ public class Partition {
             return result;
         }
 
+        /**
+         * index 是层次
+         *
+         * @param s
+         * @param index
+         */
         private void back(String s, int index) {
             if (index >= s.length()) {
                 result.add(new ArrayList<>(deque));
