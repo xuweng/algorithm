@@ -14,6 +14,7 @@ public class MinCut {
                 dp[i] = i;
             }
             for (int i = 1; i < s.length(); i++) {
+                // [0,i]是回文串 不用切割
                 if (isHui(s, 0, i)) {
                     dp[i] = 0;
                     continue;
