@@ -2,6 +2,8 @@ package com.leetcode.tag.daily.seven;
 
 /**
  * 839. 相似字符串组
+ * <p>
+ * 字符串分组 连通个数
  */
 public class NumSimilarGroups {
     /**
