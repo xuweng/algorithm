@@ -72,4 +72,83 @@ public class NumSimilarGroups {
         }
     }
 
+    class Solution1 {
+        public int numSimilarGroups(String[] strs) {
+            int n = strs.length;
+            int m = strs[0].length();
+
+            UF uf = new UF(n);
+
+            for (int i = 0; i < n; i++) {
+                for (int j = i + 1; j < n; j++) {
+                    if (check(strs[i], strs[j], m)) {
+                        // 连接相似字符串
+                        uf.union(i, j);
+                    }
+                }
+            }
+            // 连通分量数量
+            return uf.count;
+        }
+
+        class UF {
+            private int[] parent;
+            private int count;
+
+            UF(int n) {
+                parent = new int[n];
+                count = n;
+
+                for (int i = 0; i < parent.length; i++) {
+                    parent[i] = i;
+                }
+            }
+
+            private int find(int i) {
+                if (parent[i] != i) {
+                    parent[i] = find(parent[i]);
+                }
+
+                return parent[i];
+            }
+
+            private boolean isConnect(int i, int j) {
+                return find(i) == find(j);
+            }
+
+            private boolean union(int i, int j) {
+                int rootI = find(i);
+                int rootJ = find(j);
+
+                if (rootI == rootJ) {
+                    return false;
+                }
+                parent[rootI] = rootJ;
+                count--;
+
+                return true;
+            }
+        }
+
+        /**
+         * 是否只有2个字符不同
+         *
+         * @param a
+         * @param b
+         * @param len
+         * @return
+         */
+        public boolean check(String a, String b, int len) {
+            int num = 0;
+            for (int i = 0; i < len; i++) {
+                if (a.charAt(i) != b.charAt(i)) {
+                    num++;
+                    if (num > 2) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+    }
 }
