@@ -13,7 +13,7 @@ public class MinCut {
             for (int i = 0; i < s.length(); i++) {
                 dp[i] = i;
             }
-            for (int i = 0; i < s.length(); i++) {
+            for (int i = 1; i < s.length(); i++) {
                 for (int j = 0; j < i; j++) {
                     if (isHui(s, j + 1, i)) {
                         dp[i] = Math.min(dp[i], dp[j] + 1);
