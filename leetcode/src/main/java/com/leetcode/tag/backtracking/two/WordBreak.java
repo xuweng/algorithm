@@ -16,6 +16,8 @@ public class WordBreak {
         public List<String> wordBreak(String s, List<String> wordDict) {
             set = new HashSet<>(wordDict);
 
+            back(s, 0);
+
             return result;
         }
 
@@ -34,6 +36,7 @@ public class WordBreak {
                     continue;
                 }
                 deque.offerLast(i == s.length() - 1 ? substring : substring + " ");
+                // 下一层递归
                 back(s, i + 1);
                 deque.pollLast();
             }
