@@ -24,8 +24,9 @@ public class WordBreak {
                     continue;
                 }
                 for (int j = 0; j < i; j++) {
-                    if (collect.contains(s.substring(j + 1, i + 1))) {
-                        dp[i] = dp[i] || dp[j];
+                    if (dp[j] && collect.contains(s.substring(j + 1, i + 1))) {
+                        dp[i] = true;
+                        break;
                     }
                 }
             }
