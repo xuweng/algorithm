@@ -21,6 +21,15 @@ public class WordBreak {
             return result;
         }
 
+        /**
+         * 超出时间限制
+         * <p>
+         * "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+         * ["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"]
+         *
+         * @param s
+         * @param index
+         */
         private void back(String s, int index) {
             if (index >= s.length()) {
                 StringBuilder stringBuilder = new StringBuilder();
