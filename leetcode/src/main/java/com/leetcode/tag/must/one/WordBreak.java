@@ -35,6 +35,10 @@ public class WordBreak {
     }
 
     /**
+     * 不仅考虑子问题，还要考虑剩余问题
+     * <p>
+     * f(i)：考虑 f(j) 和 i-j
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/word-break/solution/dan-ci-chai-fen-by-leetcode-solution/
      * 来源：力扣（LeetCode）
