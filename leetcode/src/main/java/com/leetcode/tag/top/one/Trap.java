@@ -125,6 +125,7 @@ public class Trap {
             // 使用栈来存储条形块的索引下标
             Deque<Integer> stack = new LinkedList<>();
             while (current < height.length) {
+                // 小数出栈 大数入栈
                 while (!stack.isEmpty() && height[current] > height[stack.peek()]) {
                     int top = stack.pop();
                     if (stack.isEmpty()) {
@@ -138,5 +139,40 @@ public class Trap {
             }
             return ans;
         }
+    }
+
+    /**
+     * 方法 4：使用双指针
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/trapping-rain-water/solution/jie-yu-shui-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution4 {
+        public int trap(int[] height) {
+            int left = 0, right = height.length - 1;
+            int ans = 0;
+            int leftMax = 0, rightMax = 0;
+            while (left < right) {
+                if (height[left] < height[right]) {
+                    if (height[left] >= leftMax) {
+                        leftMax = height[left];
+                    } else {
+                        ans += (leftMax - height[left]);
+                    }
+                    ++left;
+                } else {
+                    if (height[right] >= rightMax) {
+                        rightMax = height[right];
+                    } else {
+                        ans += (rightMax - height[right]);
+                    }
+                    --right;
+                }
+            }
+            return ans;
+        }
+
     }
 }
