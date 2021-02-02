@@ -121,7 +121,7 @@ public class Trap {
     class Solution3 {
         public int trap(int[] height) {
             int ans = 0, current = 0;
-            // 单调递增栈
+            // 单调递减栈
             // 使用栈来存储条形块的索引下标
             Deque<Integer> stack = new LinkedList<>();
             while (current < height.length) {
