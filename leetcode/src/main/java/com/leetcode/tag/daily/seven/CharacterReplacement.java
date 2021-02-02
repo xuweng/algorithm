@@ -16,6 +16,7 @@ public class CharacterReplacement {
         public int characterReplacement(String s, int k) {
             int[] num = new int[26];
             int n = s.length();
+            //重复字符出现次数的历史最大值
             int maxn = 0;
             int left = 0, right = 0;
             // 枚举字符串中的每一个位置作为右端点
