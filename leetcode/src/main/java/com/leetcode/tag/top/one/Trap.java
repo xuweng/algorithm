@@ -1,5 +1,8 @@
 package com.leetcode.tag.top.one;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
 /**
  * 42. 接雨水
  * <p>
@@ -105,5 +108,33 @@ public class Trap {
             return ans;
         }
 
+    }
+
+    /**
+     * 方法 3：栈的应用
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/trapping-rain-water/solution/jie-yu-shui-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution3 {
+        public int trap(int[] height) {
+            int ans = 0, current = 0;
+            Deque<Integer> stack = new LinkedList<>();
+            while (current < height.length) {
+                while (!stack.isEmpty() && height[current] > height[stack.peek()]) {
+                    int top = stack.pop();
+                    if (stack.isEmpty()) {
+                        break;
+                    }
+                    int distance = current - stack.peek() - 1;
+                    int boundedHeight = Math.min(height[current], height[stack.peek()]) - height[top];
+                    ans += distance * boundedHeight;
+                }
+                stack.push(current++);
+            }
+            return ans;
+        }
     }
 }
