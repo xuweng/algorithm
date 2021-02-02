@@ -26,7 +26,7 @@ public class CharacterReplacement {
                 if (right - left + 1 - maxn > k) {
                     num[s.charAt(left) - 'A']--;
 
-                    // 收缩窗口
+                    // 收缩窗口 直到不满足条件
                     left++;
                 }
                 // 扩大窗口
