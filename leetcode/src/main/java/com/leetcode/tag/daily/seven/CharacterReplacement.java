@@ -48,9 +48,12 @@ public class CharacterReplacement {
             while (right < len) {
                 record[arr[right] - 'A']++;
                 historyMax = Math.max(historyMax, record[arr[right] - 'A']);
+                // 扩张
                 right++;
                 while (right - left > historyMax + k) {
                     record[arr[left] - 'A']--;
+
+                    // 收缩
                     left++;
                 }
             }
