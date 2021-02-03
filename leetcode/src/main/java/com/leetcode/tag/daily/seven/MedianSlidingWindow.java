@@ -7,6 +7,13 @@ import java.util.PriorityQueue;
 
 /**
  * 480. 滑动窗口中位数
+ * <p>
+ * 大顶堆---小值
+ * <p>
+ * 小顶堆---大值
+ * <p>
+ * 大顶堆----》小顶堆
+ * 小顶堆----》大顶堆
  */
 public class MedianSlidingWindow {
     /**
