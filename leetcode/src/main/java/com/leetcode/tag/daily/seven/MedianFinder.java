@@ -34,7 +34,10 @@ public class MedianFinder {
 
     public void addNum(int num) {
         count += 1;
+        // 先加入最大堆
         maxheap.offer(num);
+        // 再把最大堆的堆顶元素加入最小堆 保证最小堆的元素都>最大堆
+
         // 最小堆存放最大堆的堆顶元素
         minheap.add(maxheap.poll());
         // 如果两个堆合起来的元素个数是奇数，小顶堆要拿出堆顶元素给大顶堆
