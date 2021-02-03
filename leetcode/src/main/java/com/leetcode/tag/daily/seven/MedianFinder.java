@@ -20,8 +20,8 @@ public class MedianFinder {
      * 最大堆的堆顶元素，小于或者等于最小堆的堆顶元素
      * 最大堆的元素个数或者与最小堆的元素个数相等，或者多 1 相等就是偶数，多1就是奇数
      */
-    private PriorityQueue<Integer> maxheap;
-    private PriorityQueue<Integer> minheap;
+    private final PriorityQueue<Integer> maxheap;
+    private final PriorityQueue<Integer> minheap;
 
     /**
      * initialize your data structure here.
@@ -35,9 +35,11 @@ public class MedianFinder {
     public void addNum(int num) {
         count += 1;
         maxheap.offer(num);
+        // 最小堆存放最大堆的堆顶元素
         minheap.add(maxheap.poll());
         // 如果两个堆合起来的元素个数是奇数，小顶堆要拿出堆顶元素给大顶堆
         if ((count & 1) != 0) {
+            // 最大堆存放最小堆的最小值
             maxheap.add(minheap.poll());
         }
     }
