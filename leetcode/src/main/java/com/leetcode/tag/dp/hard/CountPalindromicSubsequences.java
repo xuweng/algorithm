@@ -25,14 +25,20 @@ public class CountPalindromicSubsequences {
                     for (int k = 0; k < 4; ++k) {
                         char c = (char) ('a' + k);
                         if (j == i) {
-                            if (S.charAt(i) == c) dp[k][i][j] = 1;
-                            else dp[k][i][j] = 0;
+                            if (S.charAt(i) == c) {
+                                dp[k][i][j] = 1;
+                            } else {
+                                dp[k][i][j] = 0;
+                            }
                         } else { // j > i
-                            if (S.charAt(i) != c) dp[k][i][j] = dp[k][i + 1][j];
-                            else if (S.charAt(j) != c) dp[k][i][j] = dp[k][i][j - 1];
-                            else { // S[i] == S[j] == c
-                                if (j == i + 1) dp[k][i][j] = 2; // "aa" : {"a", "aa"}
-                                else { // length is > 2
+                            if (S.charAt(i) != c) {
+                                dp[k][i][j] = dp[k][i + 1][j];
+                            } else if (S.charAt(j) != c) {
+                                dp[k][i][j] = dp[k][i][j - 1];
+                            } else { // S[i] == S[j] == c
+                                if (j == i + 1) {
+                                    dp[k][i][j] = 2; // "aa" : {"a", "aa"}
+                                } else { // length is > 2
                                     dp[k][i][j] = 2;
                                     for (int m = 0; m < 4; ++m) { // count each one within subwindows [i+1][j-1]
                                         dp[k][i][j] += dp[m][i + 1][j - 1];
