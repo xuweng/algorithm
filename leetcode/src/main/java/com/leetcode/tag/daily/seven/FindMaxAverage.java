@@ -4,7 +4,7 @@ package com.leetcode.tag.daily.seven;
  * 643. 子数组最大平均数 I
  */
 public class FindMaxAverage {
-    class Solution {
+    static class Solution {
         public double findMaxAverage(int[] nums, int k) {
             double sum = 0;
             double result = Double.MIN_VALUE;
