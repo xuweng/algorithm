@@ -6,8 +6,8 @@ package com.leetcode.tag.daily.seven;
 public class FindMaxAverage {
     class Solution {
         public double findMaxAverage(int[] nums, int k) {
-            int sum = 0;
-            int result = Integer.MIN_VALUE;
+            double sum = 0;
+            double result = Double.MIN_VALUE;
             for (int i = 0; i < nums.length; i++) {
                 sum += i >= k ? nums[i] - nums[i - k] : nums[i];
 
