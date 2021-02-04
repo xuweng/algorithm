@@ -22,6 +22,21 @@ public class NumSquares {
         }
     }
 
+    class Solution2 {
+        public int numSquares(int n) {
+            int[] minDp = new int[n + 1];
+            minDp[1] = 1;
+            for (int i = 2; i <= n; i++) {
+                minDp[i] = Integer.MAX_VALUE;
+                for (int j = 1; j * j <= i; j++) {
+                    minDp[i] = Math.min(minDp[i], minDp[i - j * j] + 1);
+                }
+            }
+
+            return minDp[n];
+        }
+    }
+
     /**
      * 方法二：动态规划
      * <p>
