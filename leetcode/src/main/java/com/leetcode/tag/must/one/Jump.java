@@ -2,6 +2,10 @@ package com.leetcode.tag.must.one;
 
 /**
  * 45. 跳跃游戏 II
+ * <p>
+ * dp:枚举所有子问题
+ * <p>
+ * 贪心:局部最优,选择最优子问题
  */
 public class Jump {
     class Solution {
