@@ -11,8 +11,9 @@ public class Jump {
             }
             int[] dp = new int[nums.length];
             for (int i = 1; i < nums.length; i++) {
+                dp[i] = Integer.MAX_VALUE;
                 for (int j = 0; j < i; j++) {
-                    if (nums[j] >= i - j) {
+                    if (dp[j] != Integer.MAX_VALUE && nums[j] >= i - j) {
                         dp[i] = Math.min(dp[i], dp[j] + 1);
                     }
                 }
