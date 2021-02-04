@@ -13,4 +13,9 @@ class FindMaxAverageTest {
         solution.findMaxAverage(nums, k);
     }
 
+    @Test
+    void test() {
+        System.out.println(-1 / (double) 1);
+    }
+
 }

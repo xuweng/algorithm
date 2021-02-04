@@ -6,13 +6,13 @@ package com.leetcode.tag.daily.seven;
 public class FindMaxAverage {
     static class Solution {
         public double findMaxAverage(int[] nums, int k) {
-            double sum = 0;
-            double result = Double.MIN_VALUE;
+            int sum = 0;
+            double result = Integer.MIN_VALUE;
             for (int i = 0; i < nums.length; i++) {
                 sum += i >= k ? nums[i] - nums[i - k] : nums[i];
 
                 if (i >= k - 1) {
-                    result = Math.max(result, sum / k);
+                    result = Math.max(result, sum / (double) k);
                 }
             }
 
