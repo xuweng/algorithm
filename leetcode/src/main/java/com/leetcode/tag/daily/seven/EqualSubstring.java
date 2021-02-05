@@ -28,6 +28,21 @@ public class EqualSubstring {
             return maxLength;
         }
 
+        /**
+         * 由于 diff 的的每个元素都是非负的，因此 accDiff 是递增的，对于每个下标 j，
+         * <p>
+         * 可以通过在 accDiff 内进行二分查找的方法找到符合要求的最小的下标 k。
+         * <p>
+         * 作者：LeetCode-Solution
+         * 链接：https://leetcode-cn.com/problems/get-equal-substrings-within-budget/solution/jin-ke-neng-shi-zi-fu-chuan-xiang-deng-b-higz/
+         * 来源：力扣（LeetCode）
+         * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+         *
+         * @param accDiff
+         * @param endIndex
+         * @param target
+         * @return
+         */
         public int binarySearch(int[] accDiff, int endIndex, int target) {
             int low = 0, high = endIndex;
             while (low < high) {
