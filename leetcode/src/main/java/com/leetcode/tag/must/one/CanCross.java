@@ -9,6 +9,8 @@ import java.util.Set;
  */
 public class CanCross {
     /**
+     * 不能计数i-j，不能判断后部分，只能从0到j推导，只能判断前部分
+     * <p>
      * 方法五 动态规划 【通过】
      * <p>
      * 作者：LeetCode
