@@ -57,4 +57,36 @@ public class EqualSubstring {
         }
     }
 
+    /**
+     * 方法二：双指针
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/get-equal-substrings-within-budget/solution/jin-ke-neng-shi-zi-fu-chuan-xiang-deng-b-higz/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int equalSubstring(String s, String t, int maxCost) {
+            int n = s.length();
+            int[] diff = new int[n];
+            for (int i = 0; i < n; i++) {
+                diff[i] = Math.abs(s.charAt(i) - t.charAt(i));
+            }
+
+            int maxLength = 0;
+            int start = 0, end = 0;
+            int sum = 0;
+            while (end < n) {
+                sum += diff[end];
+                while (sum > maxCost) {
+                    sum -= diff[start];
+                    start++;
+                }
+                maxLength = Math.max(maxLength, end - start + 1);
+                end++;
+            }
+            return maxLength;
+        }
+    }
+
 }
