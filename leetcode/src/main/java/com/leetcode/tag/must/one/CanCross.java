@@ -27,7 +27,9 @@ public class CanCross {
             }
             map.get(0).add(0);
             for (int stone : stones) {
+                // 枚举跳到stone的步数
                 for (int k : map.get(stone)) {
+                    // 枚举stone可以跳到下一个石头的位置
                     for (int step = k - 1; step <= k + 1; step++) {
                         if (step > 0 && map.containsKey(stone + step)) {
                             // 存在stone + step这个石头
