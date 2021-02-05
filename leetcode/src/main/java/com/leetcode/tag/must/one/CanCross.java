@@ -30,6 +30,7 @@ public class CanCross {
                         if (step > 0 && map.containsKey(stone + step)) {
                             // 存在stone + step这个石头
                             // 跳到stone + step这个石头的步数是step
+                            // 可以有多个石头跳到stone + step，用set去重
                             map.get(stone + step).add(step);
                         }
                     }
