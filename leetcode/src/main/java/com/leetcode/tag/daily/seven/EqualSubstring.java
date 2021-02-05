@@ -89,4 +89,24 @@ public class EqualSubstring {
         }
     }
 
+    /**
+     * 滑动窗口
+     */
+    class Solution2 {
+        public int equalSubstring(String s, String t, int maxCost) {
+            int left = 0;   // 窗口左边界
+            int cost = 0;   // 当前窗口消耗
+            // i作为窗口右边界
+            for (int i = 0; i < s.length(); i++) {
+                cost += Math.abs(s.charAt(i) - t.charAt(i));
+                // 如果当前窗口消耗大于总开销，则左边界++，移动窗口
+                if (cost > maxCost) {
+                    cost -= Math.abs(s.charAt(left) - t.charAt(left));
+                    left++;
+                }
+            }
+            return s.length() - left;
+        }
+    }
+
 }
