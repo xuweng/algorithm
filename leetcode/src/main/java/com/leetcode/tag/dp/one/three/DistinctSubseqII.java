@@ -27,14 +27,17 @@ public class DistinctSubseqII {
             for (int i = 0; i < N; ++i) {
                 int x = S.charAt(i) - 'a';
                 dp[i + 1] = dp[i] * 2 % MOD;
-                if (last[x] >= 0)
+                if (last[x] >= 0) {
                     dp[i + 1] -= dp[last[x]];
+                }
                 dp[i + 1] %= MOD;
                 last[x] = i;
             }
 
             dp[N]--;
-            if (dp[N] < 0) dp[N] += MOD;
+            if (dp[N] < 0) {
+                dp[N] += MOD;
+            }
             return dp[N];
         }
     }
