@@ -16,12 +16,11 @@ public class MaxScore {
         public int maxScore(int[] cardPoints, int k) {
             int n = cardPoints.length;
             // 滑动窗口大小为 n-k
+            // 只能从开头和末尾拿 k 张卡牌，所以最后剩下的必然是连续的 n−k 张卡牌。
             int windowSize = n - k;
+            // 求出剩余卡牌点数之和的最小值
             // 选前 n-k 个作为初始值
-            int sum = 0;
-            for (int i = 0; i < windowSize; ++i) {
-                sum += cardPoints[i];
-            }
+            int sum = Arrays.stream(cardPoints, 0, windowSize).sum();
             int minSum = sum;
             for (int i = windowSize; i < n; ++i) {
                 // 滑动窗口每向右移动一格，增加从右侧进入窗口的元素值，并减少从左侧离开窗口的元素值
