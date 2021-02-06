@@ -9,6 +9,10 @@ package com.leetcode.tag.dp.one.three;
  */
 public class KInversePairs {
     /**
+     * 动态规划
+     * <p>
+     * 灵活使用 灵活使用 灵活使用
+     * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/k-inverse-pairs-array/solution/kge-ni-xu-dui-shu-zu-by-leetcode/
      * 来源：力扣（LeetCode）
