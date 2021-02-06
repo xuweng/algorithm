@@ -11,7 +11,14 @@ public class KInversePairs {
     /**
      * 动态规划
      * <p>
+     * i和j的关系?
+     * <p>
      * 灵活使用 灵活使用 灵活使用
+     * <p>
+     * 输入: n = 3, k = 1
+     * 数组 [1,3,2] 和 [2,1,3] 都有 1 个逆序对。
+     * <p>
+     * i=3,i-1没有,3插入中间；i-1有1个,3插入最后一个.
      * <p>
      * 作者：LeetCode
      * 链接：https://leetcode-cn.com/problems/k-inverse-pairs-array/solution/kge-ni-xu-dui-shu-zu-by-leetcode/
