@@ -22,15 +22,19 @@ public class DistinctSubseqII {
             dp[0] = 1;
 
             int[] last = new int[26];
+            // 初始化-1
             Arrays.fill(last, -1);
 
             for (int i = 0; i < N; ++i) {
                 int x = S.charAt(i) - 'a';
                 dp[i + 1] = dp[i] * 2 % MOD;
                 if (last[x] >= 0) {
+                    // 存在
                     dp[i + 1] -= dp[last[x]];
                 }
                 dp[i + 1] %= MOD;
+                // 记录字符出现的下标
+                // key----字符 value----下标
                 last[x] = i;
             }
 
