@@ -7,6 +7,10 @@ public class MatrixReshape {
     /**
      * 方法一：二维数组的一维表示
      * <p>
+     * 将二维数组 nums 映射成一个一维数组；
+     * <p>
+     * 将这个一维数组映射回 r 行 c 列的二维数组。
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/reshape-the-matrix/solution/zhong-su-ju-zhen-by-leetcode-solution-gt0g/
      * 来源：力扣（LeetCode）
