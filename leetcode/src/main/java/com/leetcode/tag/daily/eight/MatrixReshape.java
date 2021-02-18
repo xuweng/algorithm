@@ -13,6 +13,19 @@ public class MatrixReshape {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution {
+        /**
+         * flatten 操作
+         * <p>
+         * (i,j)→i×n+j
+         * <p>
+         * i=x / n
+         * j=x % n
+         *
+         * @param nums
+         * @param r
+         * @param c
+         * @return
+         */
         public int[][] matrixReshape(int[][] nums, int r, int c) {
             int m = nums.length;
             int n = nums[0].length;
