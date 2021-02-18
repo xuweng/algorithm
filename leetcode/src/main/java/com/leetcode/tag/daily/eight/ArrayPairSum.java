@@ -8,6 +8,10 @@ import java.util.Arrays;
  * 思路清晰 思路清晰 思路清晰
  * <p>
  * 图bfs dfs 计数
+ * <p>
+ * 模拟---理解题意----理解代码
+ * <p>
+ * 归纳总结
  */
 public class ArrayPairSum {
     /**
