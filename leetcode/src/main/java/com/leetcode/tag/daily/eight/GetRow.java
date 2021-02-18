@@ -26,8 +26,10 @@ public class GetRow {
                 List<Integer> row = new ArrayList<>();
                 for (int j = 0; j <= i; ++j) {
                     if (j == 0 || j == i) {
+                        // 边界
                         row.add(1);
                     } else {
+                        // 非边界
                         row.add(C.get(i - 1).get(j - 1) + C.get(i - 1).get(j));
                     }
                 }
