@@ -62,6 +62,8 @@ public class MinSwapsCouples {
     /**
      * 方法二：广度优先搜索
      * <p>
+     * 图bfs dfs 遍历每个顶点 对每个顶点bfs dfs
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/couples-holding-hands/solution/qing-lu-qian-shou-by-leetcode-solution-bvzr/
      * 来源：力扣（LeetCode）
