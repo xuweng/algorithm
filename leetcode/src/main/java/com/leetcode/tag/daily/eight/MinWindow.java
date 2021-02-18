@@ -110,7 +110,7 @@ public class MinWindow {
 
             int left = 0, right = 0;
             int valid = 0;
-            // 记录最小覆盖字串的起始索引及长度
+            // 记录最小覆盖字串的起始索引
             int start = 0;
             // 记录最小覆盖字串长度
             int len = Integer.MAX_VALUE;
