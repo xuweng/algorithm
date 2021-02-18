@@ -2,6 +2,8 @@ package com.leetcode.tag.daily.eight;
 
 /**
  * 995. K 连续位的最小翻转次数
+ * <p>
+ * 模拟理解题意 理解思路
  */
 public class MinKBitFlips {
     /**
@@ -13,6 +15,13 @@ public class MinKBitFlips {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution {
+        /**
+         * 对于每个位置开始的长度为k的翻转
+         *
+         * @param A
+         * @param K
+         * @return
+         */
         public int minKBitFlips(int[] A, int K) {
             int count = 0;
             for (int i = 0; i < A.length; i++) {
