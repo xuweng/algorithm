@@ -49,6 +49,8 @@ public class CheckInclusion {
      * <p>
      * 每次窗口滑动时，只统计了一进一出两个字符，却比较了整个cnt1和cnt2
      * <p>
+     * 可以用一个变量 diff 来记录cnt1和cnt2不同值的个数，这样判断cnt1和cnt2是否相等就转换成了判断diff 是否为 0.
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/permutation-in-string/solution/zi-fu-chuan-de-pai-lie-by-leetcode-solut-7k7u/
      * 来源：力扣（LeetCode）
@@ -75,6 +77,7 @@ public class CheckInclusion {
                 return true;
             }
             for (int i = n; i < m; ++i) {
+                //每次窗口滑动，记一进一出两个字符为 x 和 y.
                 int x = s2.charAt(i) - 'a', y = s2.charAt(i - n) - 'a';
                 if (x == y) {
                     continue;
