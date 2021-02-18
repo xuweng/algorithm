@@ -109,6 +109,8 @@ public class CheckInclusion {
     /**
      * 方法二：双指针
      * <p>
+     * 动态滑动窗口
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/permutation-in-string/solution/zi-fu-chuan-de-pai-lie-by-leetcode-solut-7k7u/
      * 来源：力扣（LeetCode）
@@ -130,6 +132,7 @@ public class CheckInclusion {
                 ++cnt[x];
                 while (cnt[x] > 0) {
                     --cnt[s2.charAt(left) - 'a'];
+                    // 收缩
                     ++left;
                 }
                 if (right - left + 1 == n) {
