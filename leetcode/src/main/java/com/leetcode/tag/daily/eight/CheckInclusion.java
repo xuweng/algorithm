@@ -23,6 +23,7 @@ public class CheckInclusion {
                 return false;
             }
             int[] cnt1 = new int[26];
+            //使用一个固定长度为 n 的滑动窗口来维护cnt2
             int[] cnt2 = new int[26];
             for (int i = 0; i < n; ++i) {
                 ++cnt1[s1.charAt(i) - 'a'];
@@ -32,6 +33,7 @@ public class CheckInclusion {
                 return true;
             }
             for (int i = n; i < m; ++i) {
+                //滑动窗口每向右滑动一次，就多统计一次进入窗口的字符，少统计一次离开窗口的字符
                 ++cnt2[s2.charAt(i) - 'a'];
                 --cnt2[s2.charAt(i - n) - 'a'];
                 if (Arrays.equals(cnt1, cnt2)) {
