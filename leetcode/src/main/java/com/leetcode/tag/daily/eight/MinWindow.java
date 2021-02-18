@@ -116,6 +116,7 @@ public class MinWindow {
             int len = Integer.MAX_VALUE;
             while (right < s.length()) {
                 char c = s.charAt(right);
+                // 扩张
                 right++;
                 window.put(c, window.getOrDefault(c, 0) + 1);
                 if (window.get(c).equals(need.get(c))) {
@@ -131,6 +132,7 @@ public class MinWindow {
                     }
 
                     char c1 = s.charAt(left);
+                    // 收缩
                     left++;
                     if (window.get(c1).equals(need.get(c1))) {
                         valid--;
