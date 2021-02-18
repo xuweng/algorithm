@@ -42,4 +42,41 @@ public class MinKBitFlips {
         }
     }
 
+    /**
+     * 方法一：差分数组
+     * <p>
+     * 每次都模拟了以i开始长度为K的翻转，但这样效率便受限于K值了，而很明显，一次翻转是对【i,i+K-1】区间的数都进行了改变，
+     * <p>
+     * 而对于区间操作，有一种常见的方法——差分（前缀和的逆运用，对区间两端进行操作以代替区间内操作）
+     * <p>
+     * 作者：yxiaojian
+     * 链接：https://leetcode-cn.com/problems/minimum-number-of-k-consecutive-bit-flips/solution/k-lian-xu-wei-de-zui-xiao-fan-zhuan-ci-s-dseq/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/minimum-number-of-k-consecutive-bit-flips/solution/k-lian-xu-wei-de-zui-xiao-fan-zhuan-ci-s-bikk/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int minKBitFlips(int[] A, int K) {
+            int n = A.length;
+            int[] diff = new int[n + 1];
+            int ans = 0, revCnt = 0;
+            for (int i = 0; i < n; ++i) {
+                revCnt += diff[i];
+                if ((A[i] + revCnt) % 2 == 0) {
+                    if (i + K > n) {
+                        return -1;
+                    }
+                    ++ans;
+                    ++revCnt;
+                    --diff[i + K];
+                }
+            }
+            return ans;
+        }
+    }
+
 }
