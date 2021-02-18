@@ -23,6 +23,8 @@ public class MinKBitFlips {
                     return -1;
                 }
                 for (int j = i; j < i + K; j++) {
+                    // 异或 翻转
+                    // 0^1=1 1^1=0
                     A[j] ^= 1;
                 }
                 count++;
