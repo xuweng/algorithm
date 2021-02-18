@@ -12,6 +12,8 @@ import java.util.Map;
  */
 public class MinSwapsCouples {
     /**
+     * 方法一：并查集
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/couples-holding-hands/solution/qing-lu-qian-shou-by-leetcode-solution-bvzr/
      * 来源：力扣（LeetCode）
@@ -35,6 +37,7 @@ public class MinSwapsCouples {
             Map<Integer, Integer> map = new HashMap<>();
             for (int i = 0; i < tot; i++) {
                 int fx = getf(f, i);
+                // 统计每个连通分量的元素个数
                 map.put(fx, map.getOrDefault(fx, 0) + 1);
             }
 
