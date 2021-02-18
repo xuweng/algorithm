@@ -97,4 +97,34 @@ public class MinKBitFlips {
         }
     }
 
+    /**
+     * 方法二：滑动窗口
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/minimum-number-of-k-consecutive-bit-flips/solution/k-lian-xu-wei-de-zui-xiao-fan-zhuan-ci-s-bikk/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public int minKBitFlips(int[] A, int K) {
+            int n = A.length;
+            int ans = 0, revCnt = 0;
+            for (int i = 0; i < n; ++i) {
+                if (i >= K && A[i - K] > 1) {
+                    revCnt ^= 1;
+                    A[i - K] -= 2; // 复原数组元素，若允许修改数组 A，则可以省略
+                }
+                if (A[i] == revCnt) {
+                    if (i + K > n) {
+                        return -1;
+                    }
+                    ++ans;
+                    revCnt ^= 1;
+                    A[i] += 2;
+                }
+            }
+            return ans;
+        }
+    }
+
 }
