@@ -61,4 +61,89 @@ public class MinWindow {
         }
     }
 
+    class Solution1 {
+        public String minWindow(String s, String t) {
+            char[] chars = s.toCharArray(), chart = t.toCharArray();
+            int n = chars.length, m = chart.length;
+
+            int[] hash = new int[128];
+            for (char ch : chart) {
+                hash[ch]--;
+            }
+
+            String res = "";
+            for (int i = 0, j = 0, cnt = 0; i < n; i++) {
+                hash[chars[i]]++;
+                if (hash[chars[i]] <= 0) {
+                    cnt++;
+                }
+                while (cnt == m && hash[chars[j]] > 0) {
+                    hash[chars[j++]]--;
+                }
+                if (cnt == m) {
+                    if ("".equals(res) || res.length() > i - j + 1) {
+                        res = s.substring(j, i + 1);
+                    }
+                }
+            }
+            return res;
+        }
+    }
+
+    /**
+     * 容易理解 框架
+     * <p>
+     * 滑动窗口
+     * <p>
+     * 作者：zhi-zhao-22
+     * 链接：https://leetcode-cn.com/problems/minimum-window-substring/solution/labuladongde-suan-fa-xiao-chao-javaban-b-glhm/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public String minWindow(String s, String t) {
+            HashMap<Character, Integer> need = new HashMap<>();
+            HashMap<Character, Integer> window = new HashMap<>();
+            for (char c : t.toCharArray()) {
+                need.put(c, need.getOrDefault(c, 0) + 1);
+            }
+
+            int left = 0, right = 0;
+            int valid = 0;
+            // 记录最小覆盖字串的起始索引及长度
+            int start = 0, len = Integer.MAX_VALUE;
+            while (right < s.length()) {
+                char c = s.charAt(right);
+                right++;
+                // 判断取出的字符是否在字串中
+                if (need.containsKey(c)) {
+                    window.put(c, window.getOrDefault(c, 0) + 1);
+                    if (window.get(c).equals(need.get(c))) {
+                        valid++;
+                    }
+                }
+
+                // 判断是否需要收缩（已经找到合适的覆盖串）
+                while (valid == need.size()) {
+                    if (right - left < len) {
+                        start = left;
+                        len = right - left;
+                    }
+
+                    char c1 = s.charAt(left);
+                    left++;
+                    if (need.containsKey(c1)) {
+                        if (window.get(c1).equals(need.get(c1))) {
+                            valid--;
+                        }
+                        window.put(c1, window.getOrDefault(c1, 0) - 1);
+                    }
+
+                }
+            }
+
+            return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len);
+        }
+    }
+
 }
