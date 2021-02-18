@@ -38,11 +38,7 @@ public class MinSwapsCouples {
                 map.put(fx, map.getOrDefault(fx, 0) + 1);
             }
 
-            int ret = 0;
-            for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
-                ret += entry.getValue() - 1;
-            }
-            return ret;
+            return map.values().stream().mapToInt(integer -> integer - 1).sum();
         }
 
         public int getf(int[] f, int x) {
