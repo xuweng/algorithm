@@ -5,6 +5,8 @@ import java.util.Arrays;
 /**
  * 567. 字符串的排列
  * <p>
+ * 定长滑动窗口 动态滑动窗口
+ * <p>
  * 暂时跳过
  */
 public class CheckInclusion {
