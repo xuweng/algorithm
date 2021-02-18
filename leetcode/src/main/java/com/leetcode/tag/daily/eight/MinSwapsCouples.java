@@ -92,17 +92,20 @@ public class MinSwapsCouples {
                 if (visited[i]) {
                     continue;
                 }
+                // 从i开始bfs
                 Queue<Integer> queue = new LinkedList<>();
                 visited[i] = true;
                 queue.offer(i);
+                // 连通分量元素个数
                 int cnt = 0;
 
                 while (!queue.isEmpty()) {
                     int x = queue.poll();
-                    cnt += 1;
+                    cnt++;
 
                     for (int y : graph[x]) {
                         if (!visited[y]) {
+                            // 邻接顶点入队
                             visited[y] = true;
                             queue.offer(y);
                         }
