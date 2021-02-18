@@ -71,4 +71,26 @@ public class GetRow {
         }
     }
 
+    /**
+     * 当前行第 i 项的计算只与上一行第 i−1 项及第 i 项有关
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/pascals-triangle-ii/solution/yang-hui-san-jiao-ii-by-leetcode-solutio-shuk/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public List<Integer> getRow(int rowIndex) {
+            List<Integer> row = new ArrayList<>();
+            row.add(1);
+            for (int i = 1; i <= rowIndex; ++i) {
+                row.add(0);
+                for (int j = i; j > 0; --j) {
+                    row.set(j, row.get(j) + row.get(j - 1));
+                }
+            }
+            return row;
+        }
+    }
+
 }
