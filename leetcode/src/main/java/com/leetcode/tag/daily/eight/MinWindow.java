@@ -126,7 +126,7 @@ public class MinWindow {
                 // 判断是否需要收缩（已经找到合适的覆盖串）
                 while (valid == need.size()) {
                     if (right - left < len) {
-                        // 更新最下长度
+                        // 更新最小长度
                         start = left;
                         len = right - left;
                     }
