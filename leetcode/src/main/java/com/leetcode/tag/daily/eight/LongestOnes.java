@@ -23,6 +23,7 @@ public class LongestOnes {
 
             int ans = 0;
             for (int right = 0; right < n; ++right) {
+                //前缀和数组是一个单调递增的数组
                 int left = binarySearch(P, P[right + 1] - K);
                 ans = Math.max(ans, right - left + 1);
             }
