@@ -15,6 +15,7 @@ public class LongestOnes {
     class Solution {
         public int longestOnes(int[] A, int K) {
             int n = A.length;
+            //前缀和 区间和
             int[] P = new int[n + 1];
             for (int i = 1; i <= n; ++i) {
                 P[i] = P[i - 1] + (1 - A[i - 1]);
