@@ -5,6 +5,8 @@ import java.util.Arrays;
 /**
  * 1547. 切棍子的最小成本
  * <p>
+ * 区间动态规划
+ * <p>
  * 模拟理解 模拟理解 模拟理解
  */
 public class MinCost {
