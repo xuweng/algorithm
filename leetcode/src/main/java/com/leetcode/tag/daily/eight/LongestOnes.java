@@ -101,6 +101,7 @@ public class LongestOnes {
                         zeros--;
                     }
                 }
+                // 区间长度
                 res = Math.max(res, right - left + 1);
                 // 扩容
                 right++;
