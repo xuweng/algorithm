@@ -95,8 +95,6 @@ public class LongestOnes {
                 if (A[right] == 0) {
                     zeros++;
                 }
-                // 扩容
-                right++;
                 while (zeros > K) {
                     // 收缩
                     if (A[left++] == 0) {
@@ -104,6 +102,8 @@ public class LongestOnes {
                     }
                 }
                 res = Math.max(res, right - left + 1);
+                // 扩容
+                right++;
             }
             return res;
         }
