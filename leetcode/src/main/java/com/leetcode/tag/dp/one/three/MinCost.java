@@ -29,6 +29,7 @@ public class MinCost {
             int[][] f = new int[m + 2][m + 2];
             for (int i = m; i >= 1; --i) {
                 for (int j = i; j <= m; ++j) {
+                    //  较小值初始化 较大值初始化
                     f[i][j] = i == j ? 0 : Integer.MAX_VALUE;
                     for (int k = i; k <= j; ++k) {
                         f[i][j] = Math.min(f[i][j], f[i][k - 1] + f[k + 1][j]);
