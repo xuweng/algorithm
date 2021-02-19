@@ -36,6 +36,7 @@ public class MinCost {
                     f[i][j] += newCuts[j + 1] - newCuts[i - 1];
                 }
             }
+            // 闭区间 不是开区间
             return f[1][m];
         }
     }
