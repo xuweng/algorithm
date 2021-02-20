@@ -21,6 +21,9 @@ public class PredictTheWinner {
             if (start == end) {
                 return nums[start] * turn;
             }
+            // turn 当前符合
+            // -turn 下一层递归符号
+            // + - + - + -....
             int scoreStart = nums[start] * turn + total(nums, start + 1, end, -turn);
             int scoreEnd = nums[end] * turn + total(nums, start, end - 1, -turn);
             return Math.max(scoreStart * turn, scoreEnd * turn) * turn;
