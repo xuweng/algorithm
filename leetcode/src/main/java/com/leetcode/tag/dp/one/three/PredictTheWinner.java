@@ -17,6 +17,15 @@ public class PredictTheWinner {
             return total(nums, 0, nums.length - 1, 1) >= 0;
         }
 
+        /**
+         * 计算一个总分，即先手得分与后手得分之差
+         *
+         * @param nums
+         * @param start
+         * @param end
+         * @param turn
+         * @return 先手得分与后手得分之差
+         */
         public int total(int[] nums, int start, int end, int turn) {
             if (start == end) {
                 return nums[start] * turn;
@@ -24,8 +33,12 @@ public class PredictTheWinner {
             // turn 当前符合
             // -turn 下一层递归符号
             // + - + - + -....
+
+            //先手得分与后手得分之差
             int scoreStart = nums[start] * turn + total(nums, start + 1, end, -turn);
+            //先手得分与后手得分之差
             int scoreEnd = nums[end] * turn + total(nums, start, end - 1, -turn);
+            // 选择最大的差
             return Math.max(scoreStart * turn, scoreEnd * turn) * turn;
         }
     }
