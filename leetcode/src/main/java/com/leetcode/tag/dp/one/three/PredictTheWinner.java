@@ -77,4 +77,29 @@ public class PredictTheWinner {
         }
     }
 
+    /**
+     * 滚动数组
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/predict-the-winner/solution/yu-ce-ying-jia-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution2 {
+        public boolean PredictTheWinner(int[] nums) {
+            int length = nums.length;
+            int[] dp = new int[length];
+            for (int i = 0; i < length; i++) {
+                dp[i] = nums[i];
+            }
+            for (int i = length - 2; i >= 0; i--) {
+                for (int j = i + 1; j < length; j++) {
+                    // dp[i][j] = Math.max(nums[i] - dp[i + 1][j], nums[j] - dp[i][j - 1]);
+                    dp[j] = Math.max(nums[i] - dp[j], nums[j] - dp[j - 1]);
+                }
+            }
+            return dp[length - 1] >= 0;
+        }
+    }
+
 }
