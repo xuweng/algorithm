@@ -43,4 +43,38 @@ public class PredictTheWinner {
         }
     }
 
+    /**
+     * 方法二：动态规划
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/predict-the-winner/solution/yu-ce-ying-jia-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public boolean PredictTheWinner(int[] nums) {
+            int length = nums.length;
+            // 只能选择i或者j
+            // dp[i][j] 表示当数组剩下的部分为下标 i 到下标 j 时，当前玩家与另一个玩家的分数之差的最大值，
+            // 注意当前玩家不一定是先手
+            int[][] dp = new int[length][length];
+            // i≤j
+            // 当 i=j 时
+            for (int i = 0; i < length; i++) {
+                //当 i=j 时，只剩一个数字，当前玩家只能拿取这个数字
+                dp[i][i] = nums[i];
+            }
+            // 当 i<j 时
+            // 遍历顺序
+            for (int i = length - 2; i >= 0; i--) {
+                for (int j = i + 1; j < length; j++) {
+                    //当前玩家与另一个玩家的分数之差的最大值
+                    dp[i][j] = Math.max(nums[i] - dp[i + 1][j], nums[j] - dp[i][j - 1]);
+                }
+            }
+            // 结果
+            return dp[0][length - 1] >= 0;
+        }
+    }
+
 }
