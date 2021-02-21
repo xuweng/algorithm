@@ -19,7 +19,7 @@ public class StoneGame1 {
                 }
             }
 
-            return dp[0][piles.length] > 0;
+            return dp[0][piles.length - 1] > 0;
         }
     }
 }
