@@ -1,5 +1,7 @@
 package com.leetcode.tag.daily.eight;
 
+import java.util.TreeMap;
+
 /**
  * 1438. 绝对差不超过限制的最长连续子数组
  */
@@ -38,4 +40,35 @@ public class LongestSubarray {
             return max - min;
         }
     }
+
+    /**
+     * 方法一：滑动窗口 + 有序集合
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/longest-continuous-subarray-with-absolute-diff-less-than-or-equal-to-limit/solution/jue-dui-chai-bu-chao-guo-xian-zhi-de-zui-5bki/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int longestSubarray(int[] nums, int limit) {
+            TreeMap<Integer, Integer> map = new TreeMap<>();
+            int n = nums.length;
+            int left = 0, right = 0;
+            int ret = 0;
+            while (right < n) {
+                map.put(nums[right], map.getOrDefault(nums[right], 0) + 1);
+                while (map.lastKey() - map.firstKey() > limit) {
+                    map.put(nums[left], map.get(nums[left]) - 1);
+                    if (map.get(nums[left]) == 0) {
+                        map.remove(nums[left]);
+                    }
+                    left++;
+                }
+                ret = Math.max(ret, right - left + 1);
+                right++;
+            }
+            return ret;
+        }
+    }
+
 }
