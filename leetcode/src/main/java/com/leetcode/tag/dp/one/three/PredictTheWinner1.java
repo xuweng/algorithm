@@ -19,6 +19,7 @@ public class PredictTheWinner1 {
                 }
             }
 
+            //如果大于或等于 0，则先手得分大于或等于后手得分，因此先手成为赢家，否则后手成为赢家
             return dp[0][nums.length - 1] >= 0;
         }
     }
