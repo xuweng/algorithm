@@ -19,7 +19,7 @@ public class PredictTheWinner1 {
                 }
             }
 
-            return dp[0][nums.length - 1] > 0;
+            return dp[0][nums.length - 1] >= 0;
         }
     }
 }
