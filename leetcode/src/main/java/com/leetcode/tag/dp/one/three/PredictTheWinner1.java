@@ -23,4 +23,24 @@ public class PredictTheWinner1 {
             return dp[0][nums.length - 1] >= 0;
         }
     }
+
+    class Solution1 {
+        public boolean PredictTheWinner(int[] nums) {
+            if (nums == null || nums.length == 0) {
+                return false;
+            }
+            int[] dp = new int[nums.length];
+            for (int i = 0; i < nums.length; i++) {
+                dp[i] = nums[i];
+            }
+            for (int i = nums.length - 2; i >= 0; i--) {
+                for (int j = i + 1; j < nums.length; j++) {
+                    dp[j] = Math.max(nums[i] - dp[j], nums[j] - dp[j - 1]);
+                }
+            }
+
+            //如果大于或等于 0，则先手得分大于或等于后手得分，因此先手成为赢家，否则后手成为赢家
+            return dp[nums.length - 1] >= 0;
+        }
+    }
 }
