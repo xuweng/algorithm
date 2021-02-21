@@ -16,7 +16,7 @@ public class RemoveDuplicates {
                 }
             }
 
-            return left;
+            return left + 1;
         }
     }
 }
