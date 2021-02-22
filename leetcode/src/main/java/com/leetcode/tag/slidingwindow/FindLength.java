@@ -65,6 +65,17 @@ public class FindLength {
     /**
      * 方法二：滑动窗口
      * <p>
+     * 枚举 A 和 B 所有的对齐方式。
+     * <p>
+     * 对齐的方式有两类：第一类为 A 不变，B 的首元素与 A 中的某个元素对齐；
+     * <p>
+     * 第二类为 B 不变，A 的首元素与 B 中的某个元素对齐
+     * <p>
+     * 作者：LeetCode-Solution
+     * 链接：https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/zui-chang-zhong-fu-zi-shu-zu-by-leetcode-solution/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/solution/zui-chang-zhong-fu-zi-shu-zu-by-leetcode-solution/
      * 来源：力扣（LeetCode）
@@ -74,11 +85,13 @@ public class FindLength {
         public int findLength(int[] A, int[] B) {
             int n = A.length, m = B.length;
             int ret = 0;
+            //第一类为 A 不变，B 的首元素与 A 中的某个元素对齐
             for (int i = 0; i < n; i++) {
                 int len = Math.min(m, n - i);
                 int maxlen = maxLength(A, B, i, 0, len);
                 ret = Math.max(ret, maxlen);
             }
+            //第二类为 B 不变，A 的首元素与 B 中的某个元素对齐
             for (int i = 0; i < m; i++) {
                 int len = Math.min(n, m - i);
                 int maxlen = maxLength(A, B, 0, i, len);
