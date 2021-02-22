@@ -51,6 +51,9 @@ public class FindLength {
                 for (int j = m; j >= 1; j--) {
                     if (A[i - 1] == B[j - 1]) {
                         dp[j] = dp[j - 1] + 1;
+                    } else {
+                        // 必须置0
+                        dp[j] = 0;
                     }
                     ans = Math.max(ans, dp[j]);
                 }
