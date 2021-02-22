@@ -14,12 +14,15 @@ public class FindLength {
      */
     class Solution {
         public int findLength(int[] A, int[] B) {
-            int n = A.length, m = B.length;
-            int[][] dp = new int[n + 1][m + 1];
+            int n = A.length;
+            int m = B.length;
+            int[][] dp = new int[n + 1][m + 1]; // dp[i][j]表示A的前i项与B的前j项的最长重复子数组长度
             int ans = 0;
-            for (int i = n - 1; i >= 0; i--) {
-                for (int j = m - 1; j >= 0; j--) {
-                    dp[i][j] = A[i] == B[j] ? dp[i + 1][j + 1] + 1 : 0;
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= m; j++) {
+                    if (A[i - 1] == B[j - 1]) {
+                        dp[i][j] = dp[i - 1][j - 1] + 1;
+                    }
                     ans = Math.max(ans, dp[i][j]);
                 }
             }
