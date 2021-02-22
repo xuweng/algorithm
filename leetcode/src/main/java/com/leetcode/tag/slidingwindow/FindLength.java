@@ -34,6 +34,13 @@ public class FindLength {
      * 滚动数组
      */
     class Solution1 {
+        /**
+         * 子数组 不是子序列
+         *
+         * @param A
+         * @param B
+         * @return
+         */
         public int findLength(int[] A, int[] B) {
             int n = A.length;
             int m = B.length;
