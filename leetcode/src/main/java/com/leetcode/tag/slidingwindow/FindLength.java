@@ -47,7 +47,7 @@ public class FindLength {
             int[] dp = new int[m + 1];
             int ans = 0;
             for (int i = 1; i <= n; i++) {
-                for (int j = 1; j <= m; j++) {
+                for (int j = m; j >= 1; j--) {
                     if (A[i - 1] == B[j - 1]) {
                         dp[j] = dp[j - 1] + 1;
                     }
