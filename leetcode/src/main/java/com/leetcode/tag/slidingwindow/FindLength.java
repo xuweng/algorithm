@@ -37,7 +37,7 @@ public class FindLength {
         public int findLength(int[] A, int[] B) {
             int n = A.length;
             int m = B.length;
-            int[] dp = new int[m + 1]; // dp[i][j]表示A的前i项与B的前j项的最长重复子数组长度
+            int[] dp = new int[m + 1];
             int ans = 0;
             for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= m; j++) {
