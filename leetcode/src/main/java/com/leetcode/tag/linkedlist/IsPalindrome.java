@@ -9,9 +9,6 @@ public class IsPalindrome {
         ListNode pre;
 
         public boolean isPalindrome(ListNode head) {
-            if (head == null) {
-                return false;
-            }
             pre = head;
 
             back(head);
