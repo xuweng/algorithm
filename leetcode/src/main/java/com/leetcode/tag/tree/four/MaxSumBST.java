@@ -5,7 +5,7 @@ package com.leetcode.tag.tree.four;
  */
 public class MaxSumBST {
     class Solution {
-        int result = Integer.MIN_VALUE;
+        int result;
 
         public int maxSumBST(TreeNode root) {
             int[] bst = bst(root);
