@@ -34,6 +34,8 @@ public class LongestValidParentheses {
      * <p>
      * 方法一：动态规划
      * <p>
+     * https://leetcode-cn.com/problems/longest-valid-parentheses/solution/dong-tai-gui-hua-si-lu-xiang-jie-c-by-zhanganan042/
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/longest-valid-parentheses/solution/zui-chang-you-xiao-gua-hao-by-leetcode-solution/
      * 来源：力扣（LeetCode）
@@ -42,6 +44,7 @@ public class LongestValidParentheses {
     class Solution1 {
         public int longestValidParentheses(String s) {
             int maxans = 0;
+            //定义 dp[i] 表示以下标 i 字符结尾的最长有效括号的长度
             int[] dp = new int[s.length()];
             for (int i = 1; i < s.length(); i++) {
                 if (s.charAt(i) == ')') {
