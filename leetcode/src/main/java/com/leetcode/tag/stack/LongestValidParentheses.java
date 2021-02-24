@@ -30,7 +30,7 @@ public class LongestValidParentheses {
     }
 
     /**
-     * 子序列 字串
+     * 子序列 字串 相等 配匹
      * <p>
      * 方法一：动态规划
      * <p>
