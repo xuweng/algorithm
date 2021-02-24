@@ -31,7 +31,7 @@ public class GenerateParenthesis {
                 for (String s : deque) {
                     temp.append(s);
                 }
-                result.add(temp.toString());
+                result.add(temp.reverse().toString());
 
                 return;
             }
