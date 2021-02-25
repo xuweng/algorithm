@@ -18,12 +18,13 @@ public class MinFallingPathSum {
         }
 
         private int dfs(int[][] matrix, int row, int col) {
-            if (row == 0) {
-                return matrix[row][col];
-            }
             if (row < 0 || col < 0) {
                 return Integer.MAX_VALUE;
             }
+            if (row == 0) {
+                return matrix[row][col];
+            }
+
             int min1 = dfs(matrix, row - 1, col - 1);
             int min2 = dfs(matrix, row - 1, col);
             int min3 = dfs(matrix, row - 1, col + 1);
