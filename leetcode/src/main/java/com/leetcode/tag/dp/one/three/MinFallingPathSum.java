@@ -86,7 +86,7 @@ public class MinFallingPathSum {
 
                         dp[i][j] = Math.min(min1, Math.min(min2, min3)) + matrix[i][j];
                     }
-                    if (i == matrix.length - 1 && j == matrix[0].length - 1) {
+                    if (i == matrix.length - 1) {
                         min = Math.min(min, dp[i][j]);
                     }
                 }
