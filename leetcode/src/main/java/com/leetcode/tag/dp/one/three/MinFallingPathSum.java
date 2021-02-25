@@ -11,7 +11,7 @@ public class MinFallingPathSum {
             }
             int min = Integer.MAX_VALUE;
             for (int i = 0; i < matrix[0].length; i++) {
-                min = Math.max(min, dfs(matrix, matrix.length - 1, i));
+                min = Math.min(min, dfs(matrix, matrix.length - 1, i));
             }
 
             return min;
