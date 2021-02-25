@@ -28,7 +28,7 @@ public class MinFallingPathSum {
             int min1 = dfs(matrix, row - 1, col - 1);
             int min2 = dfs(matrix, row - 1, col);
             int min3 = dfs(matrix, row - 1, col + 1);
-            return min1 + min2 + min3;
+            return Math.min(min1, Math.min(min2, min3)) + matrix[row][col];
         }
     }
 }
