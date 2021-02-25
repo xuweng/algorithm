@@ -80,9 +80,9 @@ public class MinFallingPathSum {
                     if (i == 0) {
                         dp[i][j] = matrix[i][j];
                     } else {
-                        int min1 = (j >= 1) ? dp[i - 1][j - 1] : 0;
+                        int min1 = (j >= 1) ? dp[i - 1][j - 1] : Integer.MAX_VALUE;
                         int min2 = dp[i - 1][j];
-                        int min3 = (j < matrix[0].length - 1) ? dp[i - 1][j + 1] : 0;
+                        int min3 = (j < matrix[0].length - 1) ? dp[i - 1][j + 1] : Integer.MAX_VALUE;
 
                         dp[i][j] = Math.min(min1, Math.min(min2, min3)) + matrix[i][j];
                     }
