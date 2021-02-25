@@ -5,6 +5,12 @@ package com.leetcode.tag.must.one;
  */
 public class LongestValidParentheses {
     class Solution {
+        /**
+         * dp 下标越界判断
+         *
+         * @param s
+         * @return
+         */
         public int longestValidParentheses(String s) {
             if (s == null || s.isEmpty()) {
                 return 0;
