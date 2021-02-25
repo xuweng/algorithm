@@ -18,7 +18,7 @@ public class MinFallingPathSum {
         }
 
         private int dfs(int[][] matrix, int row, int col) {
-            if (row < 0 || col < 0) {
+            if (row < 0 || row >= matrix.length || col < 0 || col >= matrix[0].length) {
                 return Integer.MAX_VALUE;
             }
             if (row == 0) {
