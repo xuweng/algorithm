@@ -67,4 +67,32 @@ public class MinFallingPathSum {
             return meno[row][col];
         }
     }
+
+    class Solution2 {
+        public int minFallingPathSum(int[][] matrix) {
+            if (matrix == null || matrix.length == 0) {
+                return 0;
+            }
+            int min = Integer.MAX_VALUE;
+            int[][] dp = new int[matrix.length][matrix[0].length];
+            for (int i = 0; i < matrix[0].length; i++) {
+                for (int j = 0; j < matrix[0].length; j++) {
+                    if (i == 0) {
+                        dp[i][j] = matrix[i][j];
+                    } else {
+                        int min1 = (j >= 1) ? dp[i - 1][j - 1] : 0;
+                        int min2 = dp[i - 1][j];
+                        int min3 = (j < matrix[0].length - 1) ? dp[i - 1][j + 1] : 0;
+
+                        dp[i][j] = Math.min(min1, Math.min(min2, min3)) + matrix[i][j];
+                    }
+                    if (j == matrix[0].length - 1) {
+                        min = Math.min(min, dp[i][j]);
+                    }
+                }
+            }
+
+            return min;
+        }
+    }
 }
