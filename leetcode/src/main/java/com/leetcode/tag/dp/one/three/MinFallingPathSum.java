@@ -55,8 +55,8 @@ public class MinFallingPathSum {
             if (row == 0) {
                 return matrix[row][col];
             }
-            if (matrix[row][col] != 0) {
-                return matrix[row][col];
+            if (meno[row][col] != 0) {
+                return meno[row][col];
             }
 
             int min1 = dfs(matrix, row - 1, col - 1);
