@@ -59,6 +59,7 @@ public class FindSubstringInWraproundString {
                 // 判断字符是否连续 注意环形 za
                 // b-a-1=1-1=0 c-b-1=1-1=0 a-z-1=1-26-1=-26
                 if (i > 0 && (array[i] - array[i - 1] - 1) % 26 == 0) {
+                    // dp方程错误
                     dp[array[i] - 'a'] = Math.max(dp[array[i] - 'a'], dp[array[i - 1] - 'a'] + 1);
                 } else {
                     dp[array[i] - 'a'] = Math.max(dp[array[i] - 'a'], 1);
