@@ -9,6 +9,8 @@ public class FindSubstringInWraproundString {
     /**
      * 解法：动态规划
      * <p>
+     * 只需求出 p 中以每个字符结尾的最长连续子串的长度即可
+     * <p>
      * 作者：zyxwmj
      * 链接：https://leetcode-cn.com/problems/unique-substrings-in-wraparound-string/solution/dong-tai-gui-hua-java-by-zyxwmj-dn12/
      * 来源：力扣（LeetCode）
