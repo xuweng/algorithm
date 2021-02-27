@@ -9,6 +9,8 @@ import java.util.Arrays;
  */
 public class FindSubstringInWraproundString {
     /**
+     * 测试用例 bcabc
+     * <p>
      * 解法：动态规划
      * <p>
      * 只需求出 p 中以每个字符结尾的最长连续子串的长度即可
