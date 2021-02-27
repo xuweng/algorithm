@@ -1,5 +1,7 @@
 package com.leetcode.tag.dp.one.three;
 
+import java.util.Arrays;
+
 /**
  * 467. 环绕字符串中唯一的子字符串
  * <p>
@@ -36,12 +38,8 @@ public class FindSubstringInWraproundString {
                 // 只存储最长的连续长度
                 dp[array[i] - 'a'] = Math.max(dp[array[i] - 'a'], count);
             }
-            int result = 0;
             // 统计所有以每个字符结尾的最长连续子串的长度，就是唯一相等子串的个数
-            for (int i : dp) {
-                result += i;
-            }
-            return result;
+            return Arrays.stream(dp).sum();
         }
     }
 
