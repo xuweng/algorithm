@@ -29,7 +29,7 @@ public class FindSubstringInWraproundString {
             int count = 0;
             // 遍历 p 中的所有字符
             for (int i = 0; i < array.length; i++) {
-                // 判断字符是否连续 注意环形
+                // 判断字符是否连续 注意环形 za
                 // b-a-1=1-1=0 c-b-1=1-1=0 a-z-1=1-26-1=-26
                 if (i > 0 && (array[i] - array[i - 1] - 1) % 26 == 0) {
                     // 连续则自加
