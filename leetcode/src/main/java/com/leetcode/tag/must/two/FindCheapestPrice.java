@@ -12,12 +12,16 @@ public class FindCheapestPrice {
                 return -1;
             }
             int[][] dp = new int[n][K + 1];
+            for (int i = 0; i < dp.length; i++) {
+                if (i == src) {
+                    continue;
+                }
+                Arrays.fill(dp[i], Integer.MAX_VALUE);
+            }
             for (int[] flight : flights) {
                 if (flight[0] == src) {
                     dp[flight[1]][0] = flight[2];
-                    continue;
                 }
-                Arrays.fill(flight, Integer.MAX_VALUE);
             }
             for (int i = 1; i <= K; i++) {
                 for (int[] flight : flights) {
