@@ -56,12 +56,12 @@ public class FindSubstringInWraproundString {
             char[] array = p.toCharArray();
             // 遍历 p 中的所有字符
             for (int i = 0; i < array.length; i++) {
-                // 初始化
-                dp[array[i] - 'a'] = 1;
                 // 判断字符是否连续 注意环形 za
                 // b-a-1=1-1=0 c-b-1=1-1=0 a-z-1=1-26-1=-26
                 if (i > 0 && (array[i] - array[i - 1] - 1) % 26 == 0) {
                     dp[array[i] - 'a'] = Math.max(dp[array[i] - 'a'], dp[array[i - 1] - 'a'] + 1);
+                } else {
+                    dp[array[i] - 'a'] = Math.max(dp[array[i] - 'a'], 1);
                 }
             }
             // 统计所有以每个字符结尾的最长连续子串的长度，就是唯一相等子串的个数
