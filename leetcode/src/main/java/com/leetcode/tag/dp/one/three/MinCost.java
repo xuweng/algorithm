@@ -30,6 +30,8 @@ public class MinCost {
          * <p>
          * 对应的可以继续切割的位置为 cuts[i..k−1]；右侧部分的木棍为 cuts[k..j+1]，对应的可以继续切割的位置为 cuts[k+1..j]
          * <p>
+         * 即我们无论在哪里切第一刀，这一刀的成本都是木棍的长度 cuts[j+1]−cuts[i−1]。
+         * <p>
          * 作者：LeetCode-Solution
          * 链接：https://leetcode-cn.com/problems/minimum-cost-to-cut-a-stick/solution/qie-gun-zi-de-zui-xiao-cheng-ben-by-leetcode-solut/
          * 来源：力扣（LeetCode）
