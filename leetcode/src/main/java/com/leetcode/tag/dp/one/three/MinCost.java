@@ -53,6 +53,7 @@ public class MinCost {
             newCuts[m + 1] = n;
             //我们用 f[i][j] 表示在当前待切割的木棍的左端点为 cuts[i−1]，右端点为 cuts[j+1] 时，将木棍全部切开的最小总成本。
             int[][] f = new int[m + 2][m + 2];
+            // 区间dp遍历模板 对角线开始倒序遍历
             for (int i = m; i >= 1; --i) {
                 for (int j = i; j <= m; ++j) {
                     //  较小值初始化 较大值初始化
