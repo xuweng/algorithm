@@ -123,6 +123,7 @@ public class MinCost {
                 return cuts[j] - cuts[i];
             }
             int min = Integer.MAX_VALUE;
+            // 枚举切割点 (i,j) [i+1,j-1]
             for (int k = i + 1; k < j; k++) {
                 min = Math.min(min, dfs(cuts, i, k) + dfs(cuts, k, j));
             }
