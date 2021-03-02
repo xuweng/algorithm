@@ -107,12 +107,22 @@ public class NumMatrix {
                 sums = new int[m + 1][n + 1];
                 for (int i = 0; i < m; i++) {
                     for (int j = 0; j < n; j++) {
+                        //sums[i][j] 左上角是重叠区域
                         sums[i + 1][j + 1] = sums[i][j + 1] + sums[i + 1][j] - sums[i][j] + matrix[i][j];
                     }
                 }
             }
         }
 
+        /**
+         * sums[row1][col1] 左上角是重叠区域
+         *
+         * @param row1
+         * @param col1
+         * @param row2
+         * @param col2
+         * @return
+         */
         public int sumRegion(int row1, int col1, int row2, int col2) {
             return sums[row2 + 1][col2 + 1] - sums[row1][col2 + 1] - sums[row2 + 1][col1] + sums[row1][col1];
         }
