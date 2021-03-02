@@ -42,6 +42,7 @@ public class MinCost {
         public int minCost(int n, int[] cuts) {
             int m = cuts.length;
             Arrays.sort(cuts);
+            //在左侧添加 0，右侧添加 n
             int[] newCuts = new int[m + 2];
             newCuts[0] = 0;
             for (int i = 1; i <= m; ++i) {
