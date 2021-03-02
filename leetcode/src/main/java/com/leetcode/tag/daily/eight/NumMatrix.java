@@ -79,6 +79,17 @@ public class NumMatrix {
     class NumMatrix2 {
         int[][] sums;
 
+        /**
+         * 4个点
+         * <p>
+         * 1 1
+         * 1 1
+         * <p>
+         * 1 2
+         * 3 4
+         *
+         * @param matrix
+         */
         public NumMatrix2(int[][] matrix) {
             int m = matrix.length;
             if (m > 0) {
