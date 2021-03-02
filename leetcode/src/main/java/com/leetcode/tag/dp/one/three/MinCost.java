@@ -61,6 +61,9 @@ public class MinCost {
                     for (int k = i; k <= j; ++k) {
                         f[i][j] = Math.min(f[i][j], f[i][k - 1] + f[k + 1][j]);
                     }
+                    // 右端点 cuts[j+1]
+                    // 左端点 cuts[i−1]
+                    // 无论在哪里切第一刀，这一刀的成本都是木棍的长度 cuts[j+1]−cuts[i−1]
                     f[i][j] += newCuts[j + 1] - newCuts[i - 1];
                 }
             }
