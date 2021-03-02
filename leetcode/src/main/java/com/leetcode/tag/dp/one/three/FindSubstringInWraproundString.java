@@ -62,6 +62,7 @@ public class FindSubstringInWraproundString {
                 // b-a-1=1-1=0 c-b-1=1-1=0 a-z-1=1-26-1=-26
                 if (i > 0 && (array[i] - array[i - 1] - 1) % 26 == 0) {
                     // dp方程错误
+                    // array[i - 1] - 'a'] 前一个字符和当前字符连续 前一个字符的最长连续字串的长度和当前字符不连续
                     dp[array[i] - 'a'] = Math.max(dp[array[i] - 'a'], dp[array[i - 1] - 'a'] + 1);
                 } else {
                     dp[array[i] - 'a'] = Math.max(dp[array[i] - 'a'], 1);
