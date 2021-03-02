@@ -51,6 +51,8 @@ public class FindSubstringInWraproundString {
      * <p>
      * 测试用例 "cdefghefghi"
      * <p>
+     * 第一个h的最长长度是6 第二个h的最长长度Math.max(6,4)=6 正确是4
+     * <p>
      * dp
      */
     class Solution1 {
