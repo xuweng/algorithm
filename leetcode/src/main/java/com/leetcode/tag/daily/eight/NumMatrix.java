@@ -69,6 +69,8 @@ public class NumMatrix {
     }
 
     /**
+     * 定义 preSum[i][j] 表示 从 [0,0] 位置到 [i,j] 位置的子矩形所有元素之和 注意是矩形
+     * <p>
      * a+b a+c
      * <p>
      * d = a + (b-a) + (c-a) = b + c - a
