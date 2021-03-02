@@ -132,7 +132,7 @@ public class MinCost {
             }
             int min = Integer.MAX_VALUE;
             for (int k = i + 1; k < j; k++) {
-                min = Math.min(min, Math.min(dfs(cuts, i, k), dfs(cuts, k, j)));
+                min = Math.min(min, dfs(cuts, i, k) + dfs(cuts, k, j));
             }
             min += cuts[j] - cuts[i];
             return min;
