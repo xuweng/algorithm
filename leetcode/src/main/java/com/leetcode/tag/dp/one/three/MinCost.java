@@ -65,6 +65,7 @@ public class MinCost {
                 }
             }
             // 闭区间 不是开区间
+            // 左端点为0 右端点为n
             return f[1][m];
         }
     }
