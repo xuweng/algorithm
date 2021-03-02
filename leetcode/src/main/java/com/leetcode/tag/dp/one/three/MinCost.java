@@ -83,7 +83,7 @@ public class MinCost {
     }
 
     class Solution1 {
-        Map<Integer, Map<Integer, Integer>> map = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>();
 
         public int minCost(int n, int[] cuts) {
             int m = cuts.length;
@@ -108,20 +108,17 @@ public class MinCost {
          * @return
          */
         private int dfs(int[] cuts, int i, int j) {
+            if (map.containsKey(String.valueOf(i) + j)) {
+                return map.get(String.valueOf(i) + j);
+            }
+
             if (j - i == 1) {
-                Map<Integer, Integer> integerIntegerMap = new HashMap<>();
-                integerIntegerMap.put(j, 0);
-                map.put(i, integerIntegerMap);
+                map.put(String.valueOf(i) + j, 0);
                 // 不需要切割
                 return 0;
             }
-            if (map.containsKey(i) && map.get(i).containsKey(j)) {
-                return map.get(i).get(j);
-            }
             if (j - i == 2) {
-                Map<Integer, Integer> integerIntegerMap = new HashMap<>();
-                integerIntegerMap.put(j, cuts[j] - cuts[i]);
-                map.put(i, integerIntegerMap);
+                map.put(String.valueOf(i) + j, cuts[j] - cuts[i]);
                 // 只能中间切一刀
                 return cuts[j] - cuts[i];
             }
@@ -131,9 +128,7 @@ public class MinCost {
             }
             min += cuts[j] - cuts[i];
 
-            Map<Integer, Integer> integerIntegerMap = new HashMap<>();
-            integerIntegerMap.put(j, min);
-            map.put(i, integerIntegerMap);
+            map.put(String.valueOf(i) + j, min);
 
             return min;
         }
