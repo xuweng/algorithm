@@ -123,9 +123,11 @@ public class MinCost {
          */
         private int dfs(int[] cuts, int i, int j) {
             if (j - i == 1) {
+                // 不需要切割
                 return 0;
             }
             if (j - i == 2) {
+                // 只能中间切一刀
                 return cuts[j] - cuts[i];
             }
             int min = Integer.MAX_VALUE;
