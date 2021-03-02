@@ -57,6 +57,8 @@ public class FindSubstringInWraproundString {
      */
     class Solution1 {
         /**
+         * 求和 最值 重复求和
+         * <p>
          * 算法错误 重复计算
          *
          * @param p
