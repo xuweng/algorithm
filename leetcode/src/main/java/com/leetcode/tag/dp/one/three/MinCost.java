@@ -87,6 +87,7 @@ public class MinCost {
 
         public int minCost(int n, int[] cuts) {
             int m = cuts.length;
+            // 必须排序
             Arrays.sort(cuts);
             //在左侧添加 0，右侧添加 n
             int[] newCuts = new int[m + 2];
