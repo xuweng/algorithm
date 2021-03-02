@@ -109,6 +109,9 @@ public class MinCost {
          */
         private int dfs(int[] cuts, int i, int j) {
             if (j - i == 1) {
+                Map<Integer, Integer> integerIntegerMap = new HashMap<>();
+                integerIntegerMap.put(j, 0);
+                map.put(i, integerIntegerMap);
                 // 不需要切割
                 return 0;
             }
