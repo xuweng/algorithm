@@ -56,6 +56,12 @@ public class FindSubstringInWraproundString {
      * dp
      */
     class Solution1 {
+        /**
+         * 算法错误 重复计算
+         *
+         * @param p
+         * @return
+         */
         public int findSubstringInWraproundString(String p) {
             // 记录 p 中以每个字符结尾的最长连续子串的长度
             int[] dp = new int[p.length()];
