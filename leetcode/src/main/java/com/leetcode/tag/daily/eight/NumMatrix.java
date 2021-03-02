@@ -69,6 +69,10 @@ public class NumMatrix {
     }
 
     /**
+     * a+b a+c
+     * <p>
+     * d = a + (b-a) + (c-a) = b + c - a
+     * <p>
      * 方法二：二维前缀和
      * <p>
      * 作者：LeetCode-Solution
