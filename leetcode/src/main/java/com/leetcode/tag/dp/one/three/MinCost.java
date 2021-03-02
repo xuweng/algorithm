@@ -1,6 +1,8 @@
 package com.leetcode.tag.dp.one.three;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 1547. 切棍子的最小成本
@@ -81,24 +83,8 @@ public class MinCost {
     }
 
     class Solution1 {
-        /**
-         * 我们用 f[i][j] 表示在当前待切割的木棍的左端点为 cuts[i−1]，右端点为 cuts[j+1] 时，将木棍全部切开的最小总成本。
-         * <p>
-         * 如果第一刀的位置为 cuts[k]，其中 k∈[i,j]，那么我们会将待切割的木棍分成两部分，左侧部分的木棍为 cuts[i−1..k]，
-         * <p>
-         * 对应的可以继续切割的位置为 cuts[i..k−1]；右侧部分的木棍为 cuts[k..j+1]，对应的可以继续切割的位置为 cuts[k+1..j]
-         * <p>
-         * 即我们无论在哪里切第一刀，这一刀的成本都是木棍的长度 cuts[j+1]−cuts[i−1]。
-         * <p>
-         * 作者：LeetCode-Solution
-         * 链接：https://leetcode-cn.com/problems/minimum-cost-to-cut-a-stick/solution/qie-gun-zi-de-zui-xiao-cheng-ben-by-leetcode-solut/
-         * 来源：力扣（LeetCode）
-         * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
-         *
-         * @param n
-         * @param cuts
-         * @return
-         */
+        Map<Integer, Map<Integer, Integer>> map = new HashMap<>();
+
         public int minCost(int n, int[] cuts) {
             int m = cuts.length;
             Arrays.sort(cuts);
@@ -126,7 +112,13 @@ public class MinCost {
                 // 不需要切割
                 return 0;
             }
+            if (map.containsKey(i) && map.get(i).containsKey(j)) {
+                return map.get(i).get(j);
+            }
             if (j - i == 2) {
+                Map<Integer, Integer> integerIntegerMap = new HashMap<>();
+                integerIntegerMap.put(j, cuts[j] - cuts[i]);
+                map.put(i, integerIntegerMap);
                 // 只能中间切一刀
                 return cuts[j] - cuts[i];
             }
@@ -135,6 +127,11 @@ public class MinCost {
                 min = Math.min(min, dfs(cuts, i, k) + dfs(cuts, k, j));
             }
             min += cuts[j] - cuts[i];
+
+            Map<Integer, Integer> integerIntegerMap = new HashMap<>();
+            integerIntegerMap.put(j, min);
+            map.put(i, integerIntegerMap);
+
             return min;
         }
     }
