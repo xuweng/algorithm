@@ -13,12 +13,32 @@ import java.util.Arrays;
  */
 public class MinCost {
     /**
+     * 模拟理解 理解题意
+     * <p>
+     * 方法一：动态规划
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/minimum-cost-to-cut-a-stick/solution/qie-gun-zi-de-zui-xiao-cheng-ben-by-leetcode-solut/
      * 来源：力扣（LeetCode）
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution {
+        /**
+         * 我们用 f[i][j] 表示在当前待切割的木棍的左端点为 cuts[i−1]，右端点为 cuts[j+1] 时，将木棍全部切开的最小总成本。
+         * <p>
+         * 如果第一刀的位置为 cuts[k]，其中 k∈[i,j]，那么我们会将待切割的木棍分成两部分，左侧部分的木棍为 cuts[i−1..k]，
+         * <p>
+         * 对应的可以继续切割的位置为 cuts[i..k−1]；右侧部分的木棍为 cuts[k..j+1]，对应的可以继续切割的位置为 cuts[k+1..j]
+         * <p>
+         * 作者：LeetCode-Solution
+         * 链接：https://leetcode-cn.com/problems/minimum-cost-to-cut-a-stick/solution/qie-gun-zi-de-zui-xiao-cheng-ben-by-leetcode-solut/
+         * 来源：力扣（LeetCode）
+         * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+         *
+         * @param n
+         * @param cuts
+         * @return
+         */
         public int minCost(int n, int[] cuts) {
             int m = cuts.length;
             Arrays.sort(cuts);
@@ -28,6 +48,7 @@ public class MinCost {
                 newCuts[i] = cuts[i - 1];
             }
             newCuts[m + 1] = n;
+            //我们用 f[i][j] 表示在当前待切割的木棍的左端点为 cuts[i−1]，右端点为 cuts[j+1] 时，将木棍全部切开的最小总成本。
             int[][] f = new int[m + 2][m + 2];
             for (int i = m; i >= 1; --i) {
                 for (int j = i; j <= m; ++j) {
