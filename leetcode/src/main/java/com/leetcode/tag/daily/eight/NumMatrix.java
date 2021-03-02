@@ -27,7 +27,7 @@ public class NumMatrix {
     /**
      * 方法一：一维前缀和
      * <p>
-     * 前缀和统计一行
+     * 前缀和统计一行 换行重新开始统计
      * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/range-sum-query-2d-immutable/solution/er-wei-qu-yu-he-jian-suo-ju-zhen-bu-ke-b-2z5n/
