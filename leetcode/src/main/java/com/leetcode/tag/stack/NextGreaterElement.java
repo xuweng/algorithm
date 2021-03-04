@@ -56,6 +56,7 @@ public class NextGreaterElement {
             for (int num : nums) {
                 while (!stack.empty() && num > stack.peek()) {
                     // 小的出栈
+                    // 记录 栈顶元素 右边第一个大元素
                     map.put(stack.pop(), num);
                 }
                 // 大的入栈
