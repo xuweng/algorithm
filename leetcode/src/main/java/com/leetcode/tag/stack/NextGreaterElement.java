@@ -2,6 +2,7 @@ package com.leetcode.tag.stack;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 /**
  * 496. 下一个更大元素 I
@@ -36,4 +37,39 @@ public class NextGreaterElement {
             return -1;
         }
     }
+
+    /**
+     * 方法一：单调栈
+     * <p>
+     * 作者：LeetCode
+     * 链接：https://leetcode-cn.com/problems/next-greater-element-i/solution/xia-yi-ge-geng-da-yuan-su-i-by-leetcode/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int[] nextGreaterElement(int[] findNums, int[] nums) {
+            // 单调递减
+            Stack<Integer> stack = new Stack<>();
+            HashMap<Integer, Integer> map = new HashMap<>();
+            int[] res = new int[findNums.length];
+            // 正序遍历
+            for (int num : nums) {
+                while (!stack.empty() && num > stack.peek()) {
+                    // 小的出栈
+                    map.put(stack.pop(), num);
+                }
+                // 大的入栈
+                stack.push(num);
+            }
+            while (!stack.empty()) {
+                // 剩余单调递减
+                map.put(stack.pop(), -1);
+            }
+            for (int i = 0; i < findNums.length; i++) {
+                res[i] = map.get(findNums[i]);
+            }
+            return res;
+        }
+    }
+
 }
