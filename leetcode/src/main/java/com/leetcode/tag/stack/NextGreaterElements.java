@@ -16,6 +16,7 @@ public class NextGreaterElements {
         public int[] nextGreaterElements(int[] nums) {
             int[] res = new int[nums.length];
             Stack<Integer> stack = new Stack<>();
+            // 相当遍历两次nums
             for (int i = 2 * nums.length - 1; i >= 0; --i) {
                 while (!stack.empty() && nums[stack.peek()] <= nums[i % nums.length]) {
                     stack.pop();
