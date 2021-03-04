@@ -73,4 +73,24 @@ public class NextGreaterElement {
         }
     }
 
+    class Solution2 {
+        public int[] nextGreaterElement(int[] findNums, int[] nums) {
+            // 单调递减
+            Stack<Integer> stack = new Stack<>();
+            HashMap<Integer, Integer> map = new HashMap<>();
+            int[] res = new int[findNums.length];
+            for (int i = nums.length - 1; i >= 0; --i) {
+                while (!stack.empty() && nums[stack.peek()] <= nums[i]) {
+                    stack.pop();
+                }
+                map.put(nums[i], stack.empty() ? -1 : nums[stack.peek()]);
+
+                stack.push(i);
+            }
+            for (int i = 0; i < findNums.length; i++) {
+                res[i] = map.get(findNums[i]);
+            }
+            return res;
+        }
+    }
 }
