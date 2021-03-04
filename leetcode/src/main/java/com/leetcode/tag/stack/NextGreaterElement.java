@@ -78,7 +78,7 @@ public class NextGreaterElement {
             Stack<Integer> stack = new Stack<>();
             HashMap<Integer, Integer> map = new HashMap<>();
             int[] res = new int[findNums.length];
-            // 倒序遍历
+            //单调栈 倒序遍历 从左到右单调递增
             for (int i = nums.length - 1; i >= 0; --i) {
                 while (!stack.empty() && nums[stack.peek()] <= nums[i]) {
                     stack.pop();
