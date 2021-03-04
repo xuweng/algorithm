@@ -75,10 +75,10 @@ public class NextGreaterElement {
 
     class Solution2 {
         public int[] nextGreaterElement(int[] findNums, int[] nums) {
-            // 单调递减
             Stack<Integer> stack = new Stack<>();
             HashMap<Integer, Integer> map = new HashMap<>();
             int[] res = new int[findNums.length];
+            // 倒序遍历
             for (int i = nums.length - 1; i >= 0; --i) {
                 while (!stack.empty() && nums[stack.peek()] <= nums[i]) {
                     stack.pop();
