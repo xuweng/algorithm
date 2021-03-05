@@ -1,5 +1,7 @@
 package com.leetcode.tag.must.two;
 
+import java.util.Arrays;
+
 /**
  * 1547. 切棍子的最小成本
  */
@@ -9,6 +11,8 @@ public class MinCost {
             if (cuts == null || cuts.length == 0) {
                 return 0;
             }
+            Arrays.sort(cuts);
+
             int[] nCuts = new int[cuts.length + 2];
             for (int i = 0; i < cuts.length; i++) {
                 nCuts[i + 1] = cuts[i];
