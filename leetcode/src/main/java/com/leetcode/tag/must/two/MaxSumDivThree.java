@@ -1,5 +1,10 @@
 package com.leetcode.tag.must.two;
 
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
+import java.util.List;
+
 /**
  * 1262. 可被三整除的最大和
  */
@@ -30,6 +35,36 @@ public class MaxSumDivThree {
             }
 
             return dp[nums.length][0];
+        }
+    }
+
+    class Solution1 {
+        List<List<Integer>> list = new ArrayList<>();
+        Deque<Integer> deque = new LinkedList<>();
+
+        public int maxSumDivThree(int[] nums) {
+            back(nums, 0);
+
+            int max = 0;
+            for (List<Integer> integers : list) {
+                int sum = integers.stream().mapToInt(Integer::intValue).sum();
+
+                if (sum % 3 == 0) {
+                    max = Math.max(max, sum);
+                }
+            }
+
+            return max;
+        }
+
+        private void back(int[] nums, int start) {
+            list.add(new ArrayList<>(deque));
+
+            for (int i = start; i < nums.length; i++) {
+                deque.push(nums[start]);
+                back(nums, i + 1);
+                deque.pop();
+            }
         }
     }
 }
