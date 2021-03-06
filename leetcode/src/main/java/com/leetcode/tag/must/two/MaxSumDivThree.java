@@ -61,7 +61,7 @@ public class MaxSumDivThree {
             list.add(new ArrayList<>(deque));
 
             for (int i = start; i < nums.length; i++) {
-                deque.push(nums[start]);
+                deque.push(nums[i]);
                 back(nums, i + 1);
                 deque.pop();
             }
