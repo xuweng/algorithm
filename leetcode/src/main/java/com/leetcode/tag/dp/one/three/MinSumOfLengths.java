@@ -65,11 +65,11 @@ public class MinSumOfLengths {
     class Solution1 {
         public int minSumOfLengths(int[] arr, int target) {
             int n = arr.length;
-            // 当前以j结尾的满足条件的区间长度与i-1之前的最小的区间长度之和，这样就能满足两个窗口不重叠且长度之和最小
+            // 表示当前j以及j之前的满足条件的最小区间长度
             int[] dp = new int[n];
             // 注意不能设置为最大值，因为相加会溢出
             Arrays.fill(dp, Integer.MAX_VALUE / 2);
-
+            // 当前以j结尾的满足条件的区间长度与i-1之前的最小的区间长度之和，这样就能满足两个窗口不重叠且长度之和最小
             int ans = Integer.MAX_VALUE;
             int sum = 0;
             int left = 0;
