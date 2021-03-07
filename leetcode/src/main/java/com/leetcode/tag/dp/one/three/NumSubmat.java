@@ -32,6 +32,7 @@ public class NumSubmat {
             int ans = 0;
             for (int i = 0; i < n; ++i) {
                 for (int j = 0; j < m; ++j) {
+                    // 枚举子矩形的高 枚举行
                     int col = row[i][j];
                     for (int k = i; k >= 0 && col != 0; --k) {
                         col = Math.min(col, row[k][j]);
