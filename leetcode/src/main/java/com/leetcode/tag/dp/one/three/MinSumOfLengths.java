@@ -75,7 +75,7 @@ public class MinSumOfLengths {
             int left = 0;
             for (int i = 0; i < n; i++) {
                 sum += arr[i];
-                while (left <= i && sum > target) {
+                while (left < i && sum > target) {
                     sum -= arr[left++];
                 }
                 // 找到满足条件的一个区间 [left,i]
