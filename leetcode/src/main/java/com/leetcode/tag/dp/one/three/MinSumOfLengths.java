@@ -20,7 +20,7 @@ public class MinSumOfLengths {
                 for (int j = i; j >= 0 && sum < target; j--) {
                     sum += arr[j];
                     if (sum == target) {
-                        queue.offer(j - i + 1);
+                        queue.offer(i - j + 1);
                     }
                 }
             }
