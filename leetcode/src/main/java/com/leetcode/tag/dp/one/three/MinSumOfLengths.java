@@ -13,6 +13,13 @@ public class MinSumOfLengths {
      * 算法错误
      * <p>
      * 两个互不重叠的子数组 会计算两个重叠的子数组
+     * <p>
+     * [2,1,3,3,2,3,1]
+     * 6
+     * <p>
+     * 2,1,3  2,3,1    6
+     * <p>
+     * 3,3    2,3,1    5
      */
     class Solution {
         public int minSumOfLengths(int[] arr, int target) {
