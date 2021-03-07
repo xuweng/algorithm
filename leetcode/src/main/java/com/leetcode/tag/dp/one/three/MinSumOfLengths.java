@@ -65,7 +65,7 @@ public class MinSumOfLengths {
     class Solution1 {
         public int minSumOfLengths(int[] arr, int target) {
             int n = arr.length;
-            // 表示当前j以及j之前的满足条件的最小区间长度
+            // 表示0到i之前的满足条件的最小区间长度
             int[] dp = new int[n];
             // 注意不能设置为最大值，因为相加会溢出
             Arrays.fill(dp, Integer.MAX_VALUE / 2);
@@ -83,9 +83,9 @@ public class MinSumOfLengths {
                     if (left != 0) {
                         ans = Math.min(ans, dp[left - 1] + i - left + 1);
                     }
-                }
-                if (i != 0) {
-                    dp[i] = Math.min(i - left + 1, dp[i - 1]);
+                    if (i != 0) {
+                        dp[i] = Math.min(i - left + 1, dp[i - 1]);
+                    }
                 }
             }
 
