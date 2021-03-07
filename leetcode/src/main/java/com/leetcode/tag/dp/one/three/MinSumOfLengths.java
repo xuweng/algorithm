@@ -78,15 +78,14 @@ public class MinSumOfLengths {
                 while (left <= i && sum > target) {
                     sum -= arr[left++];
                 }
-                // 找到满足条件的一个区间
+                // 找到满足条件的一个区间 [left,i]
                 if (sum == target) {
-                    dp[i] = i - left + 1;
                     if (left != 0) {
                         ans = Math.min(ans, dp[left - 1] + i - left + 1);
                     }
                 }
                 if (i != 0) {
-                    dp[i] = Math.min(dp[i], dp[i - 1]);
+                    dp[i] = Math.min(i - left + 1, dp[i - 1]);
                 }
             }
 
