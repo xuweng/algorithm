@@ -20,11 +20,13 @@ public class MinSumOfLengths {
                 return 0;
             }
             Queue<Integer> queue = new PriorityQueue<>();
+            boolean[] used = new boolean[arr.length];
             for (int i = 0; i < arr.length; i++) {
                 int sum = 0;
-                for (int j = i; j >= 0 && sum < target; j--) {
+                for (int j = i; j >= 0 && sum < target && !used[i]; j--) {
                     sum += arr[j];
                     if (sum == target) {
+                        used[i] = true;
                         queue.offer(i - j + 1);
                     }
                 }
