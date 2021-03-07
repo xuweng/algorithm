@@ -5,6 +5,8 @@ package com.leetcode.tag.dp.one.three;
  */
 public class NumSubmat {
     /**
+     * 从左到右统计1
+     * <p>
      * 方法一：枚举
      * <p>
      * 作者：LeetCode-Solution
@@ -44,6 +46,9 @@ public class NumSubmat {
         }
     }
 
+    /**
+     * 从上到下统计1
+     */
     class Solution1 {
         public int numSubmat(int[][] mat) {
             int row = mat.length;
