@@ -23,9 +23,9 @@ public class MinSumOfLengths {
             boolean[] used = new boolean[arr.length];
             for (int i = 0; i < arr.length; i++) {
                 int sum = 0;
-                for (int j = i; j >= 0 && sum < target && !used[i]; j--) {
+                for (int j = i; j >= 0 && sum < target; j--) {
                     sum += arr[j];
-                    if (sum == target) {
+                    if (sum == target && !used[j]) {
                         used[i] = true;
                         queue.offer(i - j + 1);
                     }
