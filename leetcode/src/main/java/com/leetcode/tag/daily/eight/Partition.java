@@ -1,8 +1,6 @@
 package com.leetcode.tag.daily.eight;
 
 import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -11,7 +9,7 @@ import java.util.List;
 public class Partition {
     class Solution {
         List<List<String>> list = new ArrayList<>();
-        Deque<String> deque = new LinkedList<>();
+        List<String> stack = new ArrayList<>();
 
         public List<List<String>> partition(String s) {
             if (s == null || s.isEmpty()) {
@@ -25,7 +23,7 @@ public class Partition {
 
         private void back(String s, int start) {
             if (start >= s.length()) {
-                list.add(new ArrayList<>(deque));
+                list.add(new ArrayList<>(stack));
 
                 return;
             }
@@ -35,9 +33,9 @@ public class Partition {
                     continue;
                 }
 
-                deque.push(substring);
+                stack.add(substring);
                 back(s, i + 1);
-                deque.pop();
+                stack.remove(stack.size() - 1);
             }
         }
 
