@@ -53,6 +53,8 @@ public class MinSumOfLengths {
     /**
      * 滑动窗口+动态规划
      * <p>
+     * 连续 滑动窗口 前缀和
+     * <p>
      * 作者：antione
      * 链接：https://leetcode-cn.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/solution/yi-ci-bian-li-hua-dong-chuang-kou-jia-dong-tai-gui/
      * 来源：力扣（LeetCode）
