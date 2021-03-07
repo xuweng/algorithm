@@ -17,7 +17,7 @@ public class MinSumOfLengths {
             Queue<Integer> queue = new PriorityQueue<>();
             for (int i = 0; i < arr.length; i++) {
                 int sum = 0;
-                for (int j = i; j >= 0 && sum <= target; j--) {
+                for (int j = i; j >= 0 && sum < target; j--) {
                     sum += arr[j];
                     if (sum == target) {
                         queue.offer(j - i + 1);
