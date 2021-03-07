@@ -16,6 +16,9 @@ public class MinElements {
                 int sum1 = 0;
                 int count = 0;
                 for (int j = -limit; j < 0; j++) {
+                    if (i == j) {
+                        return 1;
+                    }
                     count++;
                     sum1 += j;
                     if (sum1 == i) {
@@ -26,9 +29,11 @@ public class MinElements {
                 int sum1 = 0;
                 int count = 0;
                 for (int j = limit; j > 0; j--) {
+                    if (i == j) {
+                        return 1;
+                    }
                     count++;
                     sum1 += j;
-
                     if (sum1 == i) {
                         return count;
                     }
