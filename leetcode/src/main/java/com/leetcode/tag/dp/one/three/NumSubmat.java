@@ -44,4 +44,32 @@ public class NumSubmat {
         }
     }
 
+    class Solution1 {
+        public int numSubmat(int[][] mat) {
+            int row = mat.length;
+            int col = mat[0].length;
+
+            int res = 0;
+            //定义dp[i][j] 为第i行，从0~j的全部为1的个数
+            int[][] dp = new int[row][col];
+            for (int i = 0; i < row; i++) {
+                for (int j = 0; j < col; j++) {
+                    if (mat[i][j] == 0) {
+                        continue;
+                    }
+
+                    dp[i][j] = j == 0 ? 1 : dp[i][j - 1] + 1;
+                    int min = dp[i][j];
+                    for (int k = i; k >= 0 && mat[i][j] != 0; k--) {
+                        //依次往上找，与上一行的矩形个数为与上一行dp[i][j]的最小值
+                        min = Math.min(min, dp[k][j]);
+                        res += min;
+                    }
+                }
+            }
+
+            return res;
+        }
+    }
+
 }
