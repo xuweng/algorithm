@@ -51,6 +51,8 @@ public class MinSumOfLengths {
     }
 
     /**
+     * 双指针  滑动窗口
+     * <p>
      * 滑动窗口+动态规划
      * <p>
      * 连续 滑动窗口 前缀和
@@ -63,25 +65,29 @@ public class MinSumOfLengths {
     class Solution1 {
         public int minSumOfLengths(int[] arr, int target) {
             int n = arr.length;
+            // 当前以j结尾的满足条件的区间长度与i-1之前的最小的区间长度之和，这样就能满足两个窗口不重叠且长度之和最小
             int[] dp = new int[n];
             // 注意不能设置为最大值，因为相加会溢出
             Arrays.fill(dp, Integer.MAX_VALUE / 2);
 
             int ans = Integer.MAX_VALUE;
-            for (int i = 0, j = 0, sum = 0; j < n; j++) {
-                sum += arr[j];
-                while (i <= j && sum > target) {
-                    sum -= arr[i++];
+            int sum = 0;
+            int left = 0;
+            for (int i = 0; i < n; i++) {
+                sum += arr[i];
+                while (left <= i && sum > target) {
+                    sum -= arr[left++];
                 }
                 // 找到满足条件的一个区间
                 if (sum == target) {
-                    dp[j] = j - i + 1;
-                    if (i != 0) {
-                        ans = Math.min(ans, dp[i - 1] + j - i + 1);
+                    dp[i] = i - left + 1;
+                    if (left != 0) {
+                        ans = Math.min(ans, dp[left - 1] + i - left + 1);
                     }
                 }
-                if (j != 0)
-                    dp[j] = Math.min(dp[j], dp[j - 1]);
+                if (i != 0) {
+                    dp[i] = Math.min(dp[i], dp[i - 1]);
+                }
             }
 
             return ans > arr.length ? -1 : ans;
