@@ -9,6 +9,11 @@ import java.util.Queue;
  * 缩小矩阵
  */
 public class MinSumOfLengths {
+    /**
+     * 算法错误
+     * <p>
+     * 两个互不重叠的子数组 会计算两个重叠的子数组
+     */
     class Solution {
         public int minSumOfLengths(int[] arr, int target) {
             if (arr == null || arr.length == 0) {
