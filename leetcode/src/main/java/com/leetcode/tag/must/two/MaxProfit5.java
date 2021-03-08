@@ -14,6 +14,7 @@ public class MaxProfit5 {
             int[][][] dp = new int[prices.length][2][2];
             dp[0][1][0] = -prices[0];
 
+            // 先计算冷冻期状态 再计算有无股票状态
             for (int i = 1; i < prices.length; i++) {
                 // i是冷冻期
                 dp[i][0][1] = dp[i - 1][1][0] + prices[i];
