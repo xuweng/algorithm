@@ -11,7 +11,9 @@ public class MinCut {
             }
             int[] dp = new int[s.length()];
             for (int i = 0; i < s.length(); i++) {
+                dp[i] = Integer.MAX_VALUE;
                 if (is(s, 0, i)) {
+                    dp[i] = 0;
                     continue;
                 }
                 for (int j = 0; j < i; j++) {
