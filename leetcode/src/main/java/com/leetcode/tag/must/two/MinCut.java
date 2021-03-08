@@ -27,10 +27,12 @@ public class MinCut {
         }
 
         private boolean is(String s, int i, int j) {
-            for (int k = i; k <= j; k++) {
+            while (i <= j) {
                 if (s.charAt(i) != s.charAt(j)) {
                     return false;
                 }
+                i++;
+                j--;
             }
 
             return true;
