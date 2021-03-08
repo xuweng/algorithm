@@ -13,6 +13,7 @@ public class MaxProfit3 {
             int[][][] dp = new int[prices.length][2][k + 1];
             dp[0][1][0] = -prices[0];
             for (int i = 1; i <= k; i++) {
+                // 第0天没有交易次数
                 dp[0][0][i] = dp[0][1][i] = Integer.MIN_VALUE / 2;
             }
 
