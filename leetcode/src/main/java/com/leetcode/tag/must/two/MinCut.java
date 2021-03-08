@@ -11,6 +11,7 @@ public class MinCut {
             }
             int[] dp = new int[s.length()];
             for (int i = 0; i < s.length(); i++) {
+                // 求min需要初始化最大
                 dp[i] = Integer.MAX_VALUE;
                 if (is(s, 0, i)) {
                     dp[i] = 0;
