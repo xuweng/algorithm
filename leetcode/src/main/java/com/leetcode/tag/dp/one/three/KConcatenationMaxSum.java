@@ -13,7 +13,7 @@ public class KConcatenationMaxSum {
             }
             int result = 0;
             int max = 0;
-            int index = 2 * arr.length;
+            int index = Math.min(2, k) * arr.length;
             for (int i = 0; i < index; i++) {
                 int val = arr[i % arr.length];
 
