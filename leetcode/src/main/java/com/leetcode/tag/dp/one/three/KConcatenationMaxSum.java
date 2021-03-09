@@ -13,6 +13,7 @@ public class KConcatenationMaxSum {
             }
             int result = 0;
             int max = 0;
+            // k<2 不需要重复
             int index = Math.min(2, k) * arr.length;
             for (int i = 0; i < index; i++) {
                 int val = arr[i % arr.length];
@@ -26,6 +27,7 @@ public class KConcatenationMaxSum {
                 k--;
             }
 
+            // 必须%
             return result % 1000000007;
         }
     }
