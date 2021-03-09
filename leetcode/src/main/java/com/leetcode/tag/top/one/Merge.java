@@ -20,7 +20,7 @@ public class Merge {
                 int[] ints = list.get(list.size() - 1);
                 if (intervals[i][0] <= ints[1] && ints[1] < intervals[i][1]) {
                     ints[1] = intervals[i][1];
-                } else {
+                } else if (intervals[i][0] > ints[1]) {
                     list.add(intervals[i]);
                 }
             }
