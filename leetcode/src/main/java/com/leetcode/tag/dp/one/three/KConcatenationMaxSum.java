@@ -26,7 +26,7 @@ public class KConcatenationMaxSum {
                 k--;
             }
 
-            return result;
+            return result % 1000000007;
         }
     }
 }
