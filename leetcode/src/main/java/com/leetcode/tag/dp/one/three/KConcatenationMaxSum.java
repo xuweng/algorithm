@@ -12,9 +12,9 @@ public class KConcatenationMaxSum {
                 return 0;
             }
             int result = 0;
-            int max = Math.max(arr[0], 0);
+            int max = 0;
             int index = 2 * arr.length;
-            for (int i = 1; i < index; i++) {
+            for (int i = 0; i < index; i++) {
                 int val = arr[i % arr.length];
 
                 max = Math.max(max + val, val);
