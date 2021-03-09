@@ -18,7 +18,7 @@ public class Merge {
             list.add(intervals[0]);
             for (int i = 1; i < intervals.length; i++) {
                 int[] ints = list.get(list.size() - 1);
-                if (intervals[i][0] <= ints[1]) {
+                if (intervals[i][0] <= ints[1] && ints[1] < intervals[i][1]) {
                     ints[1] = intervals[i][1];
                 } else {
                     list.add(intervals[i]);
