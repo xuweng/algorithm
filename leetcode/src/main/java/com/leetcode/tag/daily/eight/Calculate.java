@@ -15,14 +15,20 @@ public class Calculate {
      */
     class Solution {
         public int calculate(String s) {
-            Deque<Integer> stack = new LinkedList<Integer>();
+            Deque<Integer> stack = new LinkedList<>();
             char preSign = '+';
             int num = 0;
             int n = s.length();
             for (int i = 0; i < n; ++i) {
+                // 处理数字
                 if (Character.isDigit(s.charAt(i))) {
+                    // "123456"
                     num = num * 10 + s.charAt(i) - '0';
                 }
+                // 2+2+2
+                // 2+2*2
+                // 前一个符号计算
+                // 处理符号
                 if (!Character.isDigit(s.charAt(i)) && s.charAt(i) != ' ' || i == n - 1) {
                     switch (preSign) {
                         case '+':
