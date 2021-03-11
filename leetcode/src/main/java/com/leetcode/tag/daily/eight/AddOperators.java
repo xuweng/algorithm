@@ -25,7 +25,6 @@ public class AddOperators {
 
             // Done processing all the digits in num
             if (index == nums.length()) {
-
                 // If the final value == target expected AND
                 // no operand is left unprocessed
                 if (value == this.target && currentOperand == 0) {
@@ -39,16 +38,15 @@ public class AddOperators {
             // Extending the current operand by one digit
             currentOperand = currentOperand * 10 + Character.getNumericValue(nums.charAt(index));
             String current_val_rep = Long.toString(currentOperand);
-            int length = nums.length();
 
             // To avoid cases where we have 1 + 05 or 1 * 05 since 05 won't be a
             // valid operand. Hence this check
             if (currentOperand > 0) {
-
                 // NO OP recursion
                 recurse(index + 1, previousOperand, currentOperand, value, ops);
             }
 
+            // +
             // ADDITION
             ops.add("+");
             ops.add(current_val_rep);
@@ -57,6 +55,7 @@ public class AddOperators {
             ops.remove(ops.size() - 1);
 
             if (ops.size() > 0) {
+                // -
                 // SUBTRACTION
                 ops.add("-");
                 ops.add(current_val_rep);
@@ -64,6 +63,7 @@ public class AddOperators {
                 ops.remove(ops.size() - 1);
                 ops.remove(ops.size() - 1);
 
+                // *
                 // MULTIPLICATION
                 ops.add("*");
                 ops.add(current_val_rep);
