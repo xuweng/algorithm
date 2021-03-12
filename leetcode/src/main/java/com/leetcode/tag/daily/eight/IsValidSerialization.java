@@ -20,7 +20,7 @@ public class IsValidSerialization {
             if (index >= split.length) {
                 return false;
             }
-            if ("#".equals(split[index])) {
+            if ("#".equals(split[index++])) {
                 return true;
             }
             index++;
