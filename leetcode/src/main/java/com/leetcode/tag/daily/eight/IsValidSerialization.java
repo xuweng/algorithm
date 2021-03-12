@@ -13,7 +13,7 @@ public class IsValidSerialization {
             }
             String[] split = preorder.split(",");
 
-            return dfs(split) && index == split.length - 1;
+            return dfs(split) && index == split.length;
         }
 
         private boolean dfs(String[] split) {
