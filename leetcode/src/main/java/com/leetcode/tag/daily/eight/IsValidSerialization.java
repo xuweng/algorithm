@@ -4,7 +4,7 @@ package com.leetcode.tag.daily.eight;
  * 331. 验证二叉树的前序序列化
  */
 public class IsValidSerialization {
-    class Solution {
+    static class Solution {
         int index;
 
         public boolean isValidSerialization(String preorder) {
