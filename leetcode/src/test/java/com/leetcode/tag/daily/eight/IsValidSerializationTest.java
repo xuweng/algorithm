@@ -9,6 +9,8 @@ class IsValidSerializationTest {
     void test() {
         String preorder = "9,3,4,#,#,1,#,#,2,#,6,#,#";
 
-        solution.isValidSerialization(preorder);
+        boolean validSerialization = solution.isValidSerialization(preorder);
+
+        System.out.println(validSerialization);
     }
 }
