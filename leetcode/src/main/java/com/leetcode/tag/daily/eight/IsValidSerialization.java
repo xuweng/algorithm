@@ -23,7 +23,6 @@ public class IsValidSerialization {
             if ("#".equals(split[index++])) {
                 return true;
             }
-            index++;
 
             return dfs(split) && dfs(split);
         }
