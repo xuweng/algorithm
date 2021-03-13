@@ -43,4 +43,45 @@ public class FindAnagrams {
             return ans;
         }
     }
+
+    /**
+     * 思路二：滑动窗口 + 双指针
+     * <p>
+     * 作者：edelweisskoko
+     * 链接：https://leetcode-cn.com/problems/find-all-anagrams-in-a-string/solution/438-zhao-dao-zi-fu-chuan-zhong-suo-you-z-nx6b/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public List<Integer> findAnagrams(String s, String p) {
+            int n = s.length(), m = p.length();
+            List<Integer> res = new ArrayList<>();
+            if (n < m) {
+                return res;
+            }
+
+            int[] pCnt = new int[26];
+            int[] sCnt = new int[26];
+
+            for (int i = 0; i < m; i++) {
+                pCnt[p.charAt(i) - 'a']++;
+            }
+
+            int left = 0;
+            for (int right = 0; right < n; right++) {
+                int curRight = s.charAt(right) - 'a';
+                sCnt[curRight]++;
+                while (sCnt[curRight] > pCnt[curRight]) {
+                    int curLeft = s.charAt(left) - 'a';
+                    sCnt[curLeft]--;
+                    left++;
+                }
+                if (right - left + 1 == m) {
+                    res.add(left);
+                }
+            }
+            return res;
+        }
+    }
+
 }
