@@ -19,7 +19,7 @@ public class Search4 {
                 if (nums[left] == nums[mid] && nums[mid] == nums[right]) {
                     right--;
                 } else if (nums[left] <= nums[mid]) {
-                    if (nums[left] <= target && target < nums[right]) {
+                    if (nums[left] <= target && target < nums[mid]) {
                         right = mid - 1;
                     } else {
                         left = mid + 1;
