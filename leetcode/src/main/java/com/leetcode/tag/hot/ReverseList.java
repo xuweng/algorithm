@@ -5,17 +5,21 @@ package com.leetcode.tag.hot;
  */
 public class ReverseList {
     class Solution {
+        ListNode node;
+
         public ListNode reverseList(ListNode head) {
             if (head == null) {
                 return null;
             }
             ListNode re = re(head);
             re.next = null;
-            return head;
+
+            return node;
         }
 
         private ListNode re(ListNode head) {
             if (head.next == null) {
+                node = head;
                 return head;
             }
             re(head.next).next = head;
