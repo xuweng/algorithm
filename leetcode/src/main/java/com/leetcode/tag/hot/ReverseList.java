@@ -28,6 +28,30 @@ public class ReverseList {
         }
     }
 
+    class Solution1 {
+        ListNode node;
+
+        public ListNode reverseList(ListNode head) {
+            if (head == null) {
+                return null;
+            }
+            re(head);
+
+            return node;
+        }
+
+        private ListNode re(ListNode head) {
+            if (head.next == null) {
+                node = head;
+                return head;
+            }
+            re(head.next).next = head;
+            head.next = null;
+
+            return head;
+        }
+    }
+
     class ListNode {
         int val;
         ListNode next;
