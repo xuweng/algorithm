@@ -34,6 +34,20 @@ public class HammingDistance {
      * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
     class Solution1 {
+        /**
+         * 这里采用右移位，每个位置都会被移动到最右边。移位后检查最右位的位是否为 1 即可。
+         * <p>
+         * 检查最右位是否为 1，可以使用取模运算（i % 2）或者 AND 操作（i & 1），这两个操作都会屏蔽最右位以外的其他位。
+         * <p>
+         * 作者：LeetCode
+         * 链接：https://leetcode-cn.com/problems/hamming-distance/solution/yi-ming-ju-chi-by-leetcode/
+         * 来源：力扣（LeetCode）
+         * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+         *
+         * @param x
+         * @param y
+         * @return
+         */
         public int hammingDistance(int x, int y) {
             int xor = x ^ y;
             int distance = 0;
