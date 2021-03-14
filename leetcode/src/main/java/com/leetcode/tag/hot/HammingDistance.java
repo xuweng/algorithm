@@ -52,9 +52,11 @@ public class HammingDistance {
             int xor = x ^ y;
             int distance = 0;
             while (xor != 0) {
+                //检查最右位的位是否为 1
                 if (xor % 2 == 1) {
                     distance += 1;
                 }
+                // 右移
                 xor = xor >> 1;
             }
             return distance;
