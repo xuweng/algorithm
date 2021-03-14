@@ -73,12 +73,14 @@ public class HammingDistance {
      */
     class Solution2 {
         public int hammingDistance(int x, int y) {
+            // 异或 同0 不同1
             int xor = x ^ y;
             int distance = 0;
             while (xor != 0) {
                 distance += 1;
                 // remove the rightmost bit of '1'
                 // 原数字 number 的最右边等于 1 的比特会被移除。
+                // 删除最右边的1
                 xor = xor & (xor - 1);
             }
             return distance;
