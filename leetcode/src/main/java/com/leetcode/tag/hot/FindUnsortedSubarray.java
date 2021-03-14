@@ -4,6 +4,8 @@ package com.leetcode.tag.hot;
  * 581. 最短无序连续子数组
  * <p>
  * 最值 最值 最值 最值 最值
+ * <p>
+ * 最值 区间
  */
 public class FindUnsortedSubarray {
     /**
@@ -28,6 +30,7 @@ public class FindUnsortedSubarray {
             for (int i = 0; i < nums.length; i++) {
                 for (int j = i; j <= nums.length; j++) {
                     int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE, prev = Integer.MIN_VALUE;
+                    // [i,j] 最值
                     for (int k = i; k < j; k++) {
                         min = Math.min(min, nums[k]);
                         max = Math.max(max, nums[k]);
@@ -35,6 +38,7 @@ public class FindUnsortedSubarray {
                     if ((i > 0 && nums[i - 1] > min) || (j < nums.length && nums[j] < max)) {
                         continue;
                     }
+                    // [0,i-1] 是否升序
                     int k = 0;
                     while (k < i && prev <= nums[k]) {
                         prev = nums[k];
@@ -43,14 +47,15 @@ public class FindUnsortedSubarray {
                     if (k != i) {
                         continue;
                     }
+                    // [j+1,n] 是否升序
                     k = j;
                     while (k < nums.length && prev <= nums[k]) {
                         prev = nums[k];
                         k++;
                     }
+                    // 更新结果
                     if (k == nums.length) {
                         res = Math.min(res, j - i);
-
                     }
                 }
             }
