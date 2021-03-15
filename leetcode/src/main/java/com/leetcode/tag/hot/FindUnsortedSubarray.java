@@ -1,5 +1,7 @@
 package com.leetcode.tag.hot;
 
+import java.util.Arrays;
+
 /**
  * 581. 最短无序连续子数组
  * <p>
@@ -63,4 +65,25 @@ public class FindUnsortedSubarray {
         }
     }
 
+    class Solution1 {
+        public int findUnsortedSubarray(int[] nums) {
+            if (nums == null || nums.length == 0) {
+                return -1;
+            }
+            int[] nums1 = new int[nums.length];
+            System.arraycopy(nums, 0, nums1, 0, nums.length);
+            Arrays.sort(nums1);
+
+            int min = Integer.MAX_VALUE;
+            int max = Integer.MIN_VALUE;
+            for (int i = 0; i < nums.length; i++) {
+                if (nums[i] != nums1[i]) {
+                    min = Math.min(min, i);
+                    max = Math.max(max, i);
+                }
+            }
+
+            return min == Integer.MAX_VALUE ? 0 : max - min + 1;
+        }
+    }
 }
