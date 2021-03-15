@@ -27,7 +27,7 @@ public class GenerateMatrix {
                 }
                 bottom++;
                 for (int j = bottom; j >= top; j--) {
-                    result[bottom][j] = i++;
+                    result[left][j] = i++;
                 }
                 left++;
             }
