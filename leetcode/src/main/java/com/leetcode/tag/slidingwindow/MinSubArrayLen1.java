@@ -10,10 +10,10 @@ public class MinSubArrayLen1 {
                 return 0;
             }
             int left = 0;
-            int right = nums.length - 1;
+            int right = 0;
             int sum = 0;
             int min = Integer.MAX_VALUE;
-            while (left <= right) {
+            while (right < nums.length) {
                 sum += nums[right++];
                 while (sum >= target) {
                     min = Math.min(min, right - left + 1);
