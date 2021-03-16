@@ -14,11 +14,13 @@ public class MinSubArrayLen1 {
             int sum = 0;
             int min = Integer.MAX_VALUE;
             while (right < nums.length) {
-                sum += nums[right++];
+                sum += nums[right];
                 while (sum >= target) {
                     min = Math.min(min, right - left + 1);
                     sum -= nums[left++];
                 }
+
+                right++;
             }
 
             return min;
