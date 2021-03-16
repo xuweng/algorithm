@@ -25,7 +25,7 @@ public class MinWindow1 {
                 if (window.get(c).equals(need.get(c))) {
                     valid++;
                 }
-                while (valid == t.length()) {
+                while (valid == need.size()) {
                     if (right - left < len) {
                         start = left;
                         len = right - left;
