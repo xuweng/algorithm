@@ -23,7 +23,7 @@ public class MinSubArrayLen1 {
                 right++;
             }
 
-            return min;
+            return min == Integer.MAX_VALUE ? 0 : min;
         }
     }
 }
