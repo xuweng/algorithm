@@ -25,6 +25,7 @@ public class MinWindow1 {
                 if (window.get(c).equals(need.get(c))) {
                     valid++;
                 }
+                // 注意是 need.size()
                 while (valid == need.size()) {
                     if (right - left < len) {
                         start = left;
@@ -35,6 +36,7 @@ public class MinWindow1 {
                     if (window.get(c1).equals(need.get(c1))) {
                         valid--;
                     }
+                    // 注意位置 放在这里
                     window.put(c1, window.getOrDefault(c1, 0) - 1);
                 }
             }
