@@ -39,7 +39,7 @@ public class MinWindow1 {
                 }
             }
 
-            return len == Integer.MAX_VALUE ? "" : s.substring(start, start + 1);
+            return len == Integer.MAX_VALUE ? "" : s.substring(start, start + len);
         }
     }
 }
