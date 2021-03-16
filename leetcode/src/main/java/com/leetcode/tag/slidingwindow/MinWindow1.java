@@ -32,10 +32,10 @@ public class MinWindow1 {
                     }
 
                     char c1 = s.charAt(left++);
-                    window.put(c1, window.getOrDefault(c1, 0) - 1);
                     if (window.get(c1).equals(need.get(c1))) {
                         valid--;
                     }
+                    window.put(c1, window.getOrDefault(c1, 0) - 1);
                 }
             }
 
