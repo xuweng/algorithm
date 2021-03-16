@@ -26,9 +26,9 @@ public class MinWindow1 {
                     valid++;
                 }
                 while (valid == t.length()) {
-                    if (right - left + 1 < len) {
+                    if (right - left < len) {
                         start = left;
-                        len = right - left + 1;
+                        len = right - left;
                     }
 
                     char c1 = s.charAt(left++);
