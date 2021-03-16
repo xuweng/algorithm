@@ -6,7 +6,7 @@ import java.util.HashMap;
  * 76. 最小覆盖子串
  */
 public class MinWindow1 {
-    class Solution {
+    static class Solution {
         public String minWindow(String s, String t) {
             HashMap<Character, Integer> need = new HashMap<>();
             HashMap<Character, Integer> window = new HashMap<>();
