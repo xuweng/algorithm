@@ -6,7 +6,7 @@ package com.leetcode.tag.some;
 public class Reverse {
     class Solution {
         public int reverse(int x) {
-            String s = String.valueOf(x);
+            String s = String.valueOf(Math.abs(x));
             int length = s.length() - 1;
             while (length >= 0 && s.charAt(length) == '0') {
                 length--;
@@ -16,7 +16,7 @@ public class Reverse {
                 temp.append(s.charAt(i));
             }
 
-            return Integer.parseInt(temp.toString());
+            return x < 0 ? -Integer.parseInt(temp.toString()) : Integer.parseInt(temp.toString());
         }
     }
 }
