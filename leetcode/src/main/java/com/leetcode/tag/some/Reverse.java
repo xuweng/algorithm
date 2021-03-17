@@ -8,7 +8,7 @@ public class Reverse {
         public int reverse(int x) {
             String s = String.valueOf(Math.abs(x));
             int length = s.length() - 1;
-            while (length >= 0 && s.charAt(length) == '0') {
+            while (length >= 1 && s.charAt(length) == '0') {
                 length--;
             }
             StringBuilder temp = new StringBuilder();
