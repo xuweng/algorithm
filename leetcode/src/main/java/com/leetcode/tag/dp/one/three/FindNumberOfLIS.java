@@ -22,7 +22,7 @@ public class FindNumberOfLIS {
                     }
                     if (dp[j] + 1 > dp[i]) {
                         dp[i] = dp[j] + 1;
-                        count[i] = dp[j];
+                        count[i] = count[j];
                     } else if (dp[j] + 1 == dp[i]) {
                         count[i] += count[j];
                     }
