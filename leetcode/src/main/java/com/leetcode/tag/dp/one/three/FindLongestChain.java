@@ -52,6 +52,9 @@ public class FindLongestChain {
         }
     }
 
+    /**
+     * 对第一个排序？对第二个排序？
+     */
     class Solution2 {
         public int findLongestChain(int[][] pairs) {
             Arrays.sort(pairs, Comparator.comparingInt(a -> a[1]));
