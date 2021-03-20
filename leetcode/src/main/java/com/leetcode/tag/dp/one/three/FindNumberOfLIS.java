@@ -31,9 +31,9 @@ public class FindNumberOfLIS {
             }
 
             int result = 0;
-            for (int j : count) {
-                if (j == max) {
-                    result++;
+            for (int i = 0; i < count.length; i++) {
+                if (dp[i] == max) {
+                    result += count[i];
                 }
             }
             return result;
