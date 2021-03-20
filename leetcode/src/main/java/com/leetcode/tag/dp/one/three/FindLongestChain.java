@@ -30,4 +30,22 @@ public class FindLongestChain {
             return max;
         }
     }
+
+    class Solution1 {
+        public int findLongestChain(int[][] pairs) {
+            if (pairs == null || pairs.length == 0) {
+                return 0;
+            }
+            int result = 0;
+            int cur = Integer.MIN_VALUE;
+            for (int[] pair : pairs) {
+                if (pair[0] > cur) {
+                    result++;
+                    cur = pair[1];
+                }
+            }
+
+            return result;
+        }
+    }
 }
