@@ -36,6 +36,8 @@ public class FindLongestChain {
             if (pairs == null || pairs.length == 0) {
                 return 0;
             }
+            Arrays.sort(pairs, Comparator.comparingInt(arr -> arr[0]));
+
             int result = 0;
             int cur = Integer.MIN_VALUE;
             for (int[] pair : pairs) {
