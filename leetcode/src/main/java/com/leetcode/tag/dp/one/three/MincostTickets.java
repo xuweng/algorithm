@@ -79,7 +79,7 @@ public class MincostTickets {
             for (int i = 1; i <= lastDay; i++) {
                 if (i == days[index]) {
                     // 包含 1 7 30 3种选择
-                    dp[i] = Math.min(costs[0], Math.min((i >= 7 ? dp[i - 7] : 0) + costs[1], (i >= 30 ? dp[i - 30] : 0) + costs[2]));
+                    dp[i] = Math.min(dp[i - 1] + costs[0], Math.min((i >= 7 ? dp[i - 7] : 0) + costs[1], (i >= 30 ? dp[i - 30] : 0) + costs[2]));
                     index++;
                 } else {
                     // 不包含 不用买票
