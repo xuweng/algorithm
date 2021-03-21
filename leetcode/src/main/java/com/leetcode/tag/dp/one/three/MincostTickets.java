@@ -67,7 +67,9 @@ public class MincostTickets {
             // 如果第 i 天需要通行证，dp[i] = min(dp[i - 1] + cost[0], dp[i - 7] + cost[1], dp[i - 30] + cost[2])
             // 如果第 i 天不需要通行证，dp[i] = dp[i - 1]
 
+            // 最后一天
             int lastDay = days[days.length - 1];
+            // 最大值 直达 到达 正序 倒序
             int[] dp = new int[lastDay + 1];
 
             int index = 0;
