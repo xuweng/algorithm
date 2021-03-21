@@ -29,6 +29,7 @@ public class Change {
                 return 0;
             }
             int[] dp = new int[amount + 1];
+            // 初始化
             dp[0] = 1;
 
             for (int coin : coins) {
