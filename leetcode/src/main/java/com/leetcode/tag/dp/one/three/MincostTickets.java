@@ -21,6 +21,7 @@ public class MincostTickets {
      */
     class Solution {
         int[] costs;
+        // Integer 缓存
         Integer[] memo;
         Set<Integer> dayset;
 
