@@ -29,6 +29,7 @@ public class FindCheapestPrice {
             for (int i = 1; i <= K; i++) {
                 for (int[] flight : flights) {
                     if (dp[flight[0]][i - 1] != Integer.MAX_VALUE) {
+                        // src可以到达flight[0] flight[0]换乘1次到达flight[1]
                         // 可以到达flight[0] 换成1次到达flight[1]
                         dp[flight[1]][i] = Math.min(dp[flight[1]][i], dp[flight[0]][i - 1] + flight[2]);
                     }
