@@ -60,6 +60,9 @@ public class MincostTickets {
         }
     }
 
+    /**
+     * 爬楼梯 跳石头
+     */
     class Solution1 {
         public int mincostTickets(int[] days, int[] costs) {
             // 子问题：dp[i] 表示到第 i 天结束时的最低消费
