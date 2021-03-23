@@ -22,4 +22,23 @@ public class StoneGame1 {
             return dp[0][piles.length - 1] > 0;
         }
     }
+
+    class Solution1 {
+        public boolean stoneGame(int[] piles) {
+            if (piles == null || piles.length == 0) {
+                return false;
+            }
+            int[] dp = new int[piles.length];
+            for (int i = 0; i < piles.length; i++) {
+                dp[i] = piles[i];
+            }
+            for (int i = piles.length - 2; i >= 0; i--) {
+                for (int j = i + 1; j < piles.length; j++) {
+                    dp[j] = Math.max(piles[i] - dp[j], piles[j] - dp[j - 1]);
+                }
+            }
+
+            return dp[piles.length - 1] > 0;
+        }
+    }
 }
