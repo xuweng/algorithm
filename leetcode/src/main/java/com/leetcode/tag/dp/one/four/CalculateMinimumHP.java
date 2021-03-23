@@ -29,7 +29,7 @@ public class CalculateMinimumHP {
                     int min = Math.min(dp[i][j + 1], dp[i + 1][j]);
                     int m = dungeon[i][j] - min;
 
-                    dp[i][j] = Math.min(-m, 0);
+                    dp[i][j] = Math.max(-m, 0);
                 }
             }
 
