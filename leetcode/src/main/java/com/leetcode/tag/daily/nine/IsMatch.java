@@ -7,7 +7,7 @@ public class IsMatch {
     class Solution {
         public boolean isMatch(String s, String p) {
             if (s.isEmpty()) {
-                return true;
+                return p.isEmpty();
             }
             boolean first = !p.isEmpty() && (s.charAt(0) == p.charAt(0) || p.charAt(0) == '.');
             boolean next = p.length() >= 2 && p.charAt(1) == '*';
