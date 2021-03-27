@@ -11,6 +11,7 @@ public class Rotate {
             }
             int[] result = new int[nums.length];
             for (int i = 0; i < nums.length; i++) {
+                // 越界取模
                 result[(i + k) % nums.length] = nums[i];
             }
 
