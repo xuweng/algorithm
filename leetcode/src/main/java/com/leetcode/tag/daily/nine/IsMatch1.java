@@ -7,6 +7,16 @@ public class IsMatch1 {
     /**
      * 方法一：动态规划
      * <p>
+     * 模式 p  中的任意一个字符都是独立的，即不会和前后的字符互相关联，形成一个新的匹配模式
+     * <p>
+     * 在给定的模式  p 中，只会有三种类型的字符出现：
+     * <p>
+     * 小写字母 a-z ，可以匹配对应的一个小写字母；
+     * <p>
+     * 问号 ? ，可以匹配任意一个小写字母；
+     * <p>
+     * 星号 * ，可以匹配任意字符串，可以为空，也就是匹配零或任意多个小写字母。
+     * <p>
      * 作者：LeetCode-Solution
      * 链接：https://leetcode-cn.com/problems/wildcard-matching/solution/tong-pei-fu-pi-pei-by-leetcode-solution/
      * 来源：力扣（LeetCode）
