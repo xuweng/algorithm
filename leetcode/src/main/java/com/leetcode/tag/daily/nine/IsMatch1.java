@@ -50,6 +50,7 @@ public class IsMatch1 {
                         // 如果我们使用这个星号，那么就会从 dp[i−1][j] 转移而来
                         dp[i][j] = dp[i][j - 1] || dp[i - 1][j];
                     } else if (p.charAt(j - 1) == '?' || s.charAt(i - 1) == p.charAt(j - 1)) {
+                        // 配匹1个
                         dp[i][j] = dp[i - 1][j - 1];
                     }
                 }
