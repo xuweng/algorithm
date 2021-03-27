@@ -38,6 +38,9 @@ public class IsMatch1 {
             for (int i = 1; i <= m; ++i) {
                 for (int j = 1; j <= n; ++j) {
                     if (p.charAt(j - 1) == '*') {
+                        // 号可以匹配零或任意多个小写字母，因此状态转移方程分为两种情况，即使用或不使用这个星号
+                        // 如果我们不使用这个星号，那么就会从 dp[i][j−1] 转移而来；
+                        // 如果我们使用这个星号，那么就会从 dp[i−1][j] 转移而来
                         dp[i][j] = dp[i][j - 1] || dp[i - 1][j];
                     } else if (p.charAt(j - 1) == '?' || s.charAt(i - 1) == p.charAt(j - 1)) {
                         dp[i][j] = dp[i - 1][j - 1];
