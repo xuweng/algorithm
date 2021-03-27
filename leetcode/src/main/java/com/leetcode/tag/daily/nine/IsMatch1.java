@@ -35,6 +35,7 @@ public class IsMatch1 {
             // dp[0][j] 需要分情况讨论：因为星号才能匹配空字符串，所以只有当模式 p 的前 j 个字符均为星号时，dp[0][j] 才为真。
             dp[0][0] = true;
             for (int i = 1; i <= n; ++i) {
+                // 连续*
                 if (p.charAt(i - 1) == '*') {
                     dp[0][i] = true;
                 } else {
