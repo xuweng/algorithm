@@ -14,7 +14,7 @@ public class Rotate {
                 result[(i + k) % nums.length] = nums[i];
             }
 
-            nums = result;
+            System.arraycopy(result, 0, nums, 0, nums.length);
         }
     }
 }
