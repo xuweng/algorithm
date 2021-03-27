@@ -37,6 +37,7 @@ public class IsMatch1 {
             for (int i = 1; i <= n; ++i) {
                 // 连续*
                 if (p.charAt(i - 1) == '*') {
+                    //只有星号才能匹配空字符串
                     dp[0][i] = true;
                 } else {
                     break;
