@@ -1,7 +1,7 @@
 package com.leetcode.tag.daily.nine;
 
 /**
- * 44. 通配符匹配
+ * 10. 正则表达式匹配
  */
 public class IsMatch {
     /**
