@@ -26,6 +26,7 @@ public class IsMatch1 {
         public boolean isMatch(String s, String p) {
             int m = s.length();
             int n = p.length();
+            //用  dp[i][j] 表示字符串 s  的前 i  个字符和模式 p 的前 j 个字符是否能匹配
             boolean[][] dp = new boolean[m + 1][n + 1];
             dp[0][0] = true;
             for (int i = 1; i <= n; ++i) {
