@@ -18,6 +18,8 @@ public class RotateRight {
             if (k % n == 0) {
                 return head;
             }
+            // 环
+            cur.next = head;
             // 新head的前驱节点
             int index = n - (k % n) - 1;
             for (int i = 0; i < index; i++) {
