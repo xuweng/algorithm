@@ -9,8 +9,10 @@ public class MirrorTree {
             if (root == null) {
                 return null;
             }
-            root.left = mirrorTree(root.right);
-            root.right = mirrorTree(root.left);
+            TreeNode left = mirrorTree(root.left);
+            TreeNode right = mirrorTree(root.right);
+            root.left = right;
+            right.right = left;
 
             return root;
         }

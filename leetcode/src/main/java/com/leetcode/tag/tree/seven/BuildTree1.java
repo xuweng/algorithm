@@ -8,6 +8,8 @@ import java.util.Map;
  */
 public class BuildTree1 {
     class Solution {
+        // 线性考虑
+        // root left right
         int preRootIndex;
         Map<Integer, Integer> map = new HashMap<>();
 
