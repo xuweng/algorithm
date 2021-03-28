@@ -21,14 +21,20 @@ public class NumDifferentIntegers {
             String s = new String(chars);
             String[] s1 = s.split(" ");
             Set<Integer> stringSet = new HashSet<>();
+            Set<String> strings = new HashSet<>();
             for (String s2 : s1) {
                 if (s2.isEmpty()) {
                     continue;
                 }
-                stringSet.add(Integer.parseInt(s2));
+                try {
+                    int i = Integer.parseInt(s2);
+                    stringSet.add(i);
+                } catch (Exception e) {
+                    strings.add(s2);
+                }
             }
 
-            return stringSet.size();
+            return stringSet.size() + strings.size();
         }
     }
 
