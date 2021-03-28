@@ -2,6 +2,8 @@ package com.leetcode.tag.must.three;
 
 /**
  * 174. 地下城游戏
+ * <p>
+ * 边界初始化 0值初始化
  */
 public class CalculateMinimumHP {
     class Solution {
