@@ -22,7 +22,7 @@ public class FindCheapestPrice {
             // 0值初始化
             for (int[] flight : flights) {
                 if (flight[0] == src) {
-                    dp[flight[1]][0] = flight[0];
+                    dp[flight[1]][0] = flight[2];
                 }
             }
             for (int i = 1; i <= K; i++) {
