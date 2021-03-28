@@ -12,7 +12,7 @@ public class MirrorTree {
             TreeNode left = mirrorTree(root.left);
             TreeNode right = mirrorTree(root.right);
             root.left = right;
-            right.right = left;
+            root.right = left;
 
             return root;
         }
