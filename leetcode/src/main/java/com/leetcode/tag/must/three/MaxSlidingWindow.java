@@ -33,7 +33,7 @@ public class MaxSlidingWindow {
     class Solution1 {
         public int[] maxSlidingWindow(int[] nums, int k) {
             if (nums == null || nums.length == 0) {
-                return new int[]{0};
+                return nums;
             }
             Deque<Integer> deque = new LinkedList<>();
             int[] result = new int[nums.length - k + 1];
