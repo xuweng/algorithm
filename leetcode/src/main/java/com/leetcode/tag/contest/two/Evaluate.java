@@ -28,7 +28,7 @@ public class Evaluate {
                     String substring = s.substring(left, right);
                     result.append(map.getOrDefault(substring, "?"));
 
-                    i = right + 1;
+                    i = right;
                 } else {
                     result.append(s.charAt(i));
                 }
