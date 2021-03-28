@@ -1,5 +1,6 @@
 package com.leetcode.tag.daily.nine;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,6 +12,7 @@ public class BSTIterator {
     Iterator<Integer> iterator;
 
     public BSTIterator(TreeNode root) {
+        list = new ArrayList<>();
         zhong(root);
         iterator = list.iterator();
     }
