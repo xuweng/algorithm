@@ -1,10 +1,13 @@
 package com.leetcode.tag.contest.two;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * 5713. 字符串中不同整数的数目
  */
 public class NumDifferentIntegers {
-    class Solution {
+    static class Solution {
         public int numDifferentIntegers(String word) {
             if (word == null || word.isEmpty()) {
                 return 0;
@@ -16,8 +19,23 @@ public class NumDifferentIntegers {
                 }
             }
             String s = new String(chars);
+            String[] s1 = s.split(" ");
+            Set<Integer> stringSet = new HashSet<>();
+            for (String s2 : s1) {
+                if (s2.isEmpty()) {
+                    continue;
+                }
+                stringSet.add(Integer.parseInt(s2));
+            }
 
-            return s.split(" ").length;
+            return stringSet.size();
         }
+    }
+
+    public static void main(String[] args) {
+        Solution s = new Solution();
+        String word = "a123bc34d8ef34";
+
+        s.numDifferentIntegers(word);
     }
 }
