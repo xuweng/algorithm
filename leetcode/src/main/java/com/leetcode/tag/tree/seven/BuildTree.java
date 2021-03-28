@@ -12,6 +12,7 @@ public class BuildTree {
      */
     class Solution {
         // 先序遍历下标
+        // 后序遍历下标
         int rootIndex;
         Map<Integer, Integer> map = new HashMap<>();
 
