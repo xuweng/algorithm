@@ -25,7 +25,7 @@ public class FindNumberOfLIS {
                     if (dp[i] < dp[j] + 1) {
                         dp[i] = dp[j] + 1;
                         c[i] = c[j];
-                    } else if (dp[i] == dp[j + 1]) {
+                    } else if (dp[i] == dp[j] + 1) {
                         c[i] += c[j];
                     }
                 }
