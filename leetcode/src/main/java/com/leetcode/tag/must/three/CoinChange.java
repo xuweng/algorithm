@@ -12,7 +12,9 @@ public class CoinChange {
                 return 0;
             }
             int[] dp = new int[amount + 1];
-            Arrays.fill(dp, Integer.MAX_VALUE);
+            // 初始化
+            // 注意初始化溢出
+            Arrays.fill(dp, Integer.MAX_VALUE / 2);
             dp[0] = 0;
 
             for (int coin : coins) {
@@ -21,7 +23,7 @@ public class CoinChange {
                 }
             }
 
-            return dp[amount] == Integer.MIN_VALUE ? -1 : dp[amount];
+            return dp[amount] == Integer.MAX_VALUE / 2 ? -1 : dp[amount];
         }
     }
 }
