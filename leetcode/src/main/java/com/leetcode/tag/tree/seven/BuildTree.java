@@ -30,6 +30,7 @@ public class BuildTree {
                 return null;
             }
             TreeNode root = new TreeNode(preorder[rootIndex]);
+            // root在中序遍历的下标
             int index = map.get(preorder[rootIndex++]);
             root.left = help(preorder, low, index - 1);
             root.right = help(preorder, index + 1, high);
