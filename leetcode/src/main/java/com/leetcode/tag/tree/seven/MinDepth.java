@@ -12,6 +12,7 @@ public class MinDepth {
             int left = minDepth(root.left);
             int right = minDepth(root.right);
             if (left == 0 || right == 0) {
+                // 单链表
                 return Math.max(left, right) + 1;
             }
 
