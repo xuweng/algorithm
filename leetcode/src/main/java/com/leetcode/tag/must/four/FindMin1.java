@@ -16,8 +16,10 @@ public class FindMin1 {
             while (left < right) {
                 int mid = left + (right - left) / 2;
                 if (nums[left] == nums[mid] && nums[mid] == nums[right]) {
+                    // 三者相等
                     right--;
                 } else if (nums[mid] <= nums[right]) {
+                    //nums[mid] = nums[right]
                     right = mid;
                 } else {
                     left = mid + 1;
