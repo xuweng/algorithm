@@ -15,6 +15,7 @@ public class BuildTree2 {
             for (int i = 0; i < inorder.length; i++) {
                 map.put(inorder[i], i);
             }
+            postRootIndex = postorder.length - 1;
 
             return dfs(inorder, postorder, 0, postorder.length - 1);
         }
@@ -25,7 +26,7 @@ public class BuildTree2 {
             }
 
             TreeNode root = new TreeNode(postorder[postRootIndex]);
-            Integer rootIndex = map.get(postorder[postRootIndex++]);
+            Integer rootIndex = map.get(postorder[postRootIndex--]);
             root.right = dfs(inorder, postorder, rootIndex + 1, high);
             root.left = dfs(inorder, postorder, low, rootIndex - 1);
 
