@@ -14,7 +14,7 @@ public class LongestPalindrome {
                 dp[i][i] = true;
             }
             int left = 0;
-            int right = s.length() - 1;
+            int right = 0;
             for (int i = s.length() - 2; i >= 0; i--) {
                 for (int j = i + 1; j < s.length(); j++) {
                     dp[i][j] = s.charAt(i) == s.charAt(j);
