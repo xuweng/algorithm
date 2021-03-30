@@ -1,4 +1,4 @@
-package com.leetcode.tag.must;
+package com.leetcode.tag.must.five;
 
 /**
  * 74. 搜索二维矩阵
