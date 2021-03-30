@@ -16,7 +16,7 @@ public class MaxProfit {
                 // 冷冻期
                 dp[i][0] = dp[i - 1][1] + prices[i];
                 // 不是冷冻期 有股票
-                dp[i][1] = Math.max(dp[i - 1][1], dp[i][2] - prices[i]);
+                dp[i][1] = Math.max(dp[i - 1][1], dp[i - 1][2] - prices[i]);
                 // 不是冷冻期 没有股票
                 dp[i][2] = Math.max(dp[i - 1][2], dp[i - 1][0]);
             }
