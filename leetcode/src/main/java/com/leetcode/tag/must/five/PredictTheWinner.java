@@ -14,7 +14,7 @@ public class PredictTheWinner {
                 dp[i][i] = nums[i];
             }
             for (int i = nums.length - 2; i >= 0; i--) {
-                for (int j = i; j < nums.length; j++) {
+                for (int j = i + 1; j < nums.length; j++) {
                     dp[i][j] = Math.max(nums[i] - dp[i + 1][j], nums[j] - dp[i][j - 1]);
                 }
             }
