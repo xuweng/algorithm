@@ -25,7 +25,7 @@ public class BuildTree {
                 return null;
             }
             TreeNode root = new TreeNode(postorder[postRootIndex]);
-            Integer integer = map.get(postorder[postRootIndex++]);
+            Integer integer = map.get(postorder[postRootIndex--]);
             root.right = dfs(inorder, postorder, integer + 1, high);
             root.left = dfs(inorder, postorder, low, integer - 1);
 
