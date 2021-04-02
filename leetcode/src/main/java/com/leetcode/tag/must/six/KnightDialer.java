@@ -81,6 +81,7 @@ public class KnightDialer {
                     }
                 }
             }
+            // 统计每个num
             int res = 0;
             for (int num = 0; num < 10; num++) {
                 res = (res + dp[N - 1][num]) % MOD;
