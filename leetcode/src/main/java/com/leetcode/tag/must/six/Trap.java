@@ -6,7 +6,7 @@ package com.leetcode.tag.must.six;
 public class Trap {
     class Solution {
         public int trap(int[] height) {
-            if (height == null) {
+            if (height == null || height.length == 0) {
                 return 0;
             }
             // 左最大值
