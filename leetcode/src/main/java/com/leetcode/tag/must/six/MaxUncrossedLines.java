@@ -8,6 +8,8 @@ package com.leetcode.tag.must.six;
  * 718. 最长重复子数组
  * <p>
  * 1143.最长公共子序列
+ * <p>
+ * 抽象思维 举一反三
  */
 public class MaxUncrossedLines {
     class Solution {
