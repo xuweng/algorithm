@@ -76,6 +76,7 @@ public class KnightDialer {
                 for (int num = 0; num < 10; num++) {
                     // num->path[num]
                     for (int arrive : path[num]) {
+                        // arrive->num
                         dp[time][num] = (dp[time][num] + dp[time - 1][arrive]) % MOD;
                     }
                 }
