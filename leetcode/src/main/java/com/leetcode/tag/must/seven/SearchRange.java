@@ -268,6 +268,9 @@ public class SearchRange {
 
         /**
          * 2 2
+         * <p>
+         * [1]
+         * 1
          *
          * @param nums
          * @param target
