@@ -6,7 +6,7 @@ package com.leetcode.tag.must.seven;
 public class MincostTickets {
     class Solution {
         public int mincostTickets(int[] days, int[] costs) {
-            if (days == null || costs == null) {
+            if (days == null || costs == null || days.length == 0) {
                 return 0;
             }
             int min = days[0];
