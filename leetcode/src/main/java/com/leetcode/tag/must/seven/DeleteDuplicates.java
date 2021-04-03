@@ -20,7 +20,7 @@ public class DeleteDuplicates {
                 }
             }
 
-            return cur;
+            return head;
         }
     }
 
