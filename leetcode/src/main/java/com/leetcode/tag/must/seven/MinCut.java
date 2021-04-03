@@ -30,7 +30,7 @@ public class MinCut {
                     continue;
                 }
                 for (int j = 0; j < i; j++) {
-                    if (is[j + 1][s.length() - 1]) {
+                    if (is[j + 1][i]) {
                         dp[i] = Math.min(dp[i], dp[j] + 1);
                     }
                 }
