@@ -140,6 +140,8 @@ public class SearchRange {
             while (left < right) {
                 int mid = left + (right - left) / 2;
                 if (nums[mid] == target) {
+                    // 2 2 target=2
+                    // nums[left]==nums[mid]==target left不变,死循环
                     left = mid;
                 } else if (nums[mid] < target) {
                     left = mid + 1;
