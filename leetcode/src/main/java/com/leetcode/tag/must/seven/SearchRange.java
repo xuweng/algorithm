@@ -142,7 +142,11 @@ public class SearchRange {
                 if (nums[mid] == target) {
                     // 2 2 target=2
                     // nums[left]==nums[mid]==target left不变,死循环
-                    left = mid;
+                    if (mid + 1 < nums.length && nums[mid + 1] == target) {
+                        left = mid + 1;
+                    } else {
+                        return mid;
+                    }
                 } else if (nums[mid] < target) {
                     left = mid + 1;
                 } else {
