@@ -223,6 +223,10 @@ public class SearchRange {
 
     /**
      * 2 2 只有两个数时,选择mid=0或者mid=1
+     * <p>
+     * 2 2
+     * left=mid right=mid 移动right left=right 退出循环
+     * left=mid left=mid left没有移动 死循环
      */
     class Solution4 {
         public int[] searchRange(int[] nums, int target) {
