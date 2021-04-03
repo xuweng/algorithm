@@ -6,7 +6,7 @@ package com.leetcode.tag.must.seven;
 public class Trap {
     class Solution {
         public int trap(int[] height) {
-            if (height == null) {
+            if (height == null || height.length == 0) {
                 return 0;
             }
             int[] left = new int[height.length];
