@@ -137,7 +137,7 @@ public class SearchRange {
         private int findLastPosition(int[] nums, int target) {
             int left = 0;
             int right = nums.length - 1;
-            while (left < right) {
+            while (left <= right) {
                 int mid = left + (right - left) / 2;
                 if (nums[mid] == target) {
                     // 2 2 target=2
