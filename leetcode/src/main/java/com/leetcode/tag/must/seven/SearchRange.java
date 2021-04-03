@@ -268,6 +268,13 @@ public class SearchRange {
 
         /**
          * 2 2
+         * 2 2 2
+         * 2 2 2 2
+         * <p>
+         * int left = 0;
+         * int right = nums.length 和 int right = nums.length-1的区别;
+         * nums.length是奇数没有区别 是偶数时mid有区别
+         * 偶数的mid时奇数的mid+1
          * <p>
          * [1]
          * 1
