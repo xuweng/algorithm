@@ -110,7 +110,7 @@ public class SearchRange {
                 return new int[]{-1, -1};
             }
 
-            int lastPosition = findLastPosition(nums, target, firstPosition);
+            int lastPosition = findLastPosition(nums, target);
             return new int[]{firstPosition, lastPosition};
         }
 
@@ -134,8 +134,8 @@ public class SearchRange {
             return -1;
         }
 
-        private int findLastPosition(int[] nums, int target, int firstPosition) {
-            int left = firstPosition + 1;
+        private int findLastPosition(int[] nums, int target) {
+            int left = 0;
             int right = nums.length - 1;
             while (left < right) {
                 int mid = left + (right - left) / 2;
@@ -147,10 +147,7 @@ public class SearchRange {
                     right = mid - 1;
                 }
             }
-            if (nums[left] == target) {
-                return left;
-            }
-            return firstPosition;
+            return left;
         }
     }
 }
