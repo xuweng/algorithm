@@ -36,7 +36,7 @@ public class CanPartitionKSubsets {
                     continue;
                 }
                 used[i] = true;
-                if (dfs(nums, k, s, s + nums[i], i + 1, used)) {
+                if (dfs(nums, k, s + nums[i], target, i + 1, used)) {
                     return true;
                 }
                 used[i] = false;
