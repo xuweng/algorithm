@@ -24,6 +24,7 @@ public class MinCut {
 
             int[] dp = new int[s.length()];
             for (int i = 0; i < s.length(); i++) {
+                // 初始化较大值
                 dp[i] = s.length();
                 if (is[0][i]) {
                     dp[i] = 0;
