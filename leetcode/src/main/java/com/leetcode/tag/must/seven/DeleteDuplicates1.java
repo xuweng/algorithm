@@ -10,7 +10,6 @@ public class DeleteDuplicates1 {
                 return null;
             }
             ListNode ya = new ListNode(-1, head);
-            ya.next = head;
             ListNode cur = ya;
             while (cur.next != null && cur.next.next != null) {
                 if (cur.next.val == cur.next.next.val) {
