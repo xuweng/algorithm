@@ -1,8 +1,6 @@
 package com.leetcode.tag.must.seven;
 
 import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -11,7 +9,7 @@ import java.util.List;
 public class Partition {
     class Solution {
         List<List<String>> result = new ArrayList<>();
-        Deque<String> deque = new LinkedList<>();
+        List<String> stack = new ArrayList<>();
 
         public List<List<String>> partition(String s) {
             if (s == null || s.isEmpty()) {
@@ -25,18 +23,16 @@ public class Partition {
 
         private void dfs(String s, int index) {
             if (index >= s.length()) {
-                List<String> list = new ArrayList<>(deque);
-
-                result.add(list);
+                result.add(new ArrayList<>(stack));
                 return;
             }
             for (int i = index; i < s.length(); i++) {
                 if (!is(s, index, i)) {
                     continue;
                 }
-                deque.push(s.substring(index, i + 1));
+                stack.add(s.substring(index, i + 1));
                 dfs(s, i + 1);
-                deque.pop();
+                stack.remove(stack.size() - 1);
             }
         }
 
