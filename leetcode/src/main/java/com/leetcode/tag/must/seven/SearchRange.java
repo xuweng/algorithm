@@ -276,6 +276,8 @@ public class SearchRange {
          * nums.length是奇数没有区别 是偶数时mid有区别
          * 偶数的mid时奇数的mid+1
          * <p>
+         * 奇数不变 偶数mid+1
+         * <p>
          * [1]
          * 1
          *
