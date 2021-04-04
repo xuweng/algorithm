@@ -20,12 +20,8 @@ public class FindingUsersActiveMinutes {
 
             int[] result = new int[k];
             Map<Integer, Integer> map1 = new HashMap<>();
-            map.forEach((key, v) -> {
-                map1.put(v.size(), map1.getOrDefault(v.size(), 0) + 1);
-            });
-            map1.forEach((ke, v) -> {
-                result[ke - 1] = v;
-            });
+            map.forEach((key, v) -> map1.put(v.size(), map1.getOrDefault(v.size(), 0) + 1));
+            map1.forEach((ke, v) -> result[ke - 1] = v);
             return result;
         }
     }
