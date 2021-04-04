@@ -51,10 +51,10 @@ public class MaxProfit {
                 dp[0][i] = dp[1][i] = Integer.MIN_VALUE / 2;
             }
             int max = 0;
-            for (int i = 1; i < prices.length; i++) {
+            for (int price : prices) {
                 for (int j = k; j >= 1; j--) {
-                    dp[0][j] = Math.max(dp[0][j], dp[1][j - 1] + prices[i]);
-                    dp[1][j] = Math.max(dp[1][j], dp[0][j] - prices[i]);
+                    dp[0][j] = Math.max(dp[0][j], dp[1][j - 1] + price);
+                    dp[1][j] = Math.max(dp[1][j], dp[0][j] - price);
 
                     max = Math.max(max, dp[0][j]);
                 }
