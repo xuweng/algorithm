@@ -26,9 +26,9 @@ public class Search1 {
                     }
                 } else {
                     if (nums[mid] < target && target <= nums[right]) {
-                        right = mid + 1;
+                        left = mid + 1;
                     } else {
-                        left = mid - 1;
+                        right = mid - 1;
                     }
                 }
             }
