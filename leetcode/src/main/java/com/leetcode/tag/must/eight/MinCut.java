@@ -23,6 +23,8 @@ public class MinCut {
             }
             int[] dp = new int[s.length()];
             for (int i = 0; i < s.length(); i++) {
+                // 最小值 较大值初始化
+                dp[i] = s.length();
                 if (is[0][i]) {
                     dp[i] = 0;
                     continue;
