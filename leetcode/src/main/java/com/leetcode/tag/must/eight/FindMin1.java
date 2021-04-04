@@ -22,7 +22,7 @@ public class FindMin1 {
                 }
             }
 
-            return -1;
+            return nums[left];
         }
     }
 }
