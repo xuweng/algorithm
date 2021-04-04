@@ -26,13 +26,13 @@ public class MinAbsoluteSumDiff {
             int sum = 0;
             for (int i = 0; i < nums1.length; i++) {
                 if (i == index) {
-                    sum += s;
+                    sum = (int) (sum % (Math.pow(10, 9) + 7) + s);
                 } else {
-                    sum += Math.abs(nums1[i] - nums2[i]);
+                    sum = (int) (sum % (Math.pow(10, 9) + 7)) + Math.abs(nums1[i] - nums2[i]);
                 }
             }
 
-            return (int) (sum % (Math.pow(10, 9) + 7));
+            return sum;
         }
     }
 }
