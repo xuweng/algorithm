@@ -6,7 +6,7 @@ package com.leetcode.tag.must.eight;
 public class SearchRange {
     class Solution {
         public int[] searchRange(int[] nums, int target) {
-            if (nums == null) {
+            if (nums == null || nums.length == 0) {
                 return new int[]{-1, -1};
             }
             int first = first(nums, target);
