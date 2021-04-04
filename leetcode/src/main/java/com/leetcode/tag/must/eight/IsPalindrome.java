@@ -15,6 +15,7 @@ public class IsPalindrome {
             int re = 0;
             while (x > re) {
                 re = re * 10 + x % 10;
+                x = x / 10;
             }
 
             return x == re || x == re / 10;
