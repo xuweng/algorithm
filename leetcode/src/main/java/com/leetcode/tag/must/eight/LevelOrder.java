@@ -28,8 +28,8 @@ public class LevelOrder {
                 result.add(new ArrayList<>());
             }
             result.get(depth).add(root.val);
-            dfs(root, depth + 1);
-            dfs(root, depth + 1);
+            dfs(root.left, depth + 1);
+            dfs(root.right, depth + 1);
         }
     }
 
