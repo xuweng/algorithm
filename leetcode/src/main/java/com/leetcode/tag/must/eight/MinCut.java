@@ -28,7 +28,7 @@ public class MinCut {
                     continue;
                 }
                 for (int j = 0; j < i; j++) {
-                    if (!is[j][i]) {
+                    if (!is[j + 1][i]) {
                         continue;
                     }
                     dp[i] = Math.min(dp[i], dp[j] + 1);
