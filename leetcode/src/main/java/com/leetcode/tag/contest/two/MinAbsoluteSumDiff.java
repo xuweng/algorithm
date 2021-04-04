@@ -32,7 +32,7 @@ public class MinAbsoluteSumDiff {
                 }
             }
 
-            return sum;
+            return (int) (sum % (Math.pow(10, 9) + 7));
         }
     }
 }
