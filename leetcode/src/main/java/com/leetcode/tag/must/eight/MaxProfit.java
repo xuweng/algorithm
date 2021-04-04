@@ -52,7 +52,7 @@ public class MaxProfit {
             }
             int max = 0;
             for (int i = 1; i < prices.length; i++) {
-                for (int j = 1; j <= k; j++) {
+                for (int j = k; j >= 1; j--) {
                     dp[0][j] = Math.max(dp[0][j], dp[1][j - 1] + prices[i]);
                     dp[1][j] = Math.max(dp[1][j], dp[0][j] - prices[i]);
 
