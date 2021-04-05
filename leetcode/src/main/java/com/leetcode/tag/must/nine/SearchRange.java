@@ -7,7 +7,7 @@ public class SearchRange {
     class Solution {
         public int[] searchRange(int[] nums, int target) {
             if (nums == null || nums.length == 0) {
-                return nums;
+                return new int[]{-1, -1};
             }
             int first = first(nums, target);
             if (first == -1) {
