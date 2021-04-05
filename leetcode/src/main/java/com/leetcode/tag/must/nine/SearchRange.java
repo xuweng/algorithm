@@ -6,7 +6,7 @@ package com.leetcode.tag.must.nine;
 public class SearchRange {
     class Solution {
         public int[] searchRange(int[] nums, int target) {
-            if (nums == null) {
+            if (nums == null || nums.length == 0) {
                 return nums;
             }
             int first = first(nums, target);
