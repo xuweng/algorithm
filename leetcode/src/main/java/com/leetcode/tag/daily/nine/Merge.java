@@ -50,4 +50,28 @@ public class Merge {
             }
         }
     }
+
+    /**
+     * 从后向前数组遍历
+     */
+    class Solution2 {
+        public void merge(int[] nums1, int m, int[] nums2, int n) {
+            //len1 指向 nums1 的有数字尾部
+            int len1 = m - 1;
+            //len2 指向 nums2 的有数字尾部
+            int len2 = n - 1;
+            // len 指向 nums1 的最末尾
+            int len = m + n - 1;
+            while (len1 >= 0 && len2 >= 0) {
+                // 注意--符号在后面，表示先进行计算再减1，这种缩写缩短了代码
+                if (nums1[len1] > nums2[len2]) {
+                    nums1[len--] = nums1[len1--];
+                } else {
+                    nums1[len--] = nums2[len2--];
+                }
+            }
+            // 表示将nums2数组从下标0位置开始，拷贝到nums1数组中，从下标0位置开始，长度为len2+1
+            System.arraycopy(nums2, 0, nums1, 0, len2 + 1);
+        }
+    }
 }
