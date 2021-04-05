@@ -70,6 +70,8 @@ public class Merge {
                     nums1[len--] = nums2[len2--];
                 }
             }
+            // 假设nums2都>nums1 nums2先全部复制 退出循环 就是结果
+            // 假设nums1都>nums2 nums1先全部复制 退出循环 剩下nums2再全部复制
             // 表示将nums2数组从下标0位置开始，拷贝到nums1数组中，从下标0位置开始，长度为len2+1
             System.arraycopy(nums2, 0, nums1, 0, len2 + 1);
         }
