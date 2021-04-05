@@ -16,7 +16,7 @@ public class MincostTickets {
             int[] dp = new int[max + 31];
             for (int i = max; i >= min; i--) {
                 if (i == days[index]) {
-                    int m = Math.min(days[i + 1] + costs[0], days[i + 7] + costs[1]);
+                    int m = Math.min(dp[i + 1] + costs[0], dp[i + 7] + costs[1]);
                     dp[i] = Math.min(m, dp[i + 30] + costs[2]);
 
                     index--;
