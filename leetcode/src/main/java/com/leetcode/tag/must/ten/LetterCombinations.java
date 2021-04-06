@@ -38,11 +38,9 @@ public class LetterCombinations {
                 result.add(temp);
                 return;
             }
-            for (int i = index; i < digits.length(); i++) {
-                String s = phoneMap.get(digits.charAt(i));
-                for (int j = 0; j < s.length(); j++) {
-                    dfs(digits, i + 1, temp + s.charAt(j));
-                }
+            String s = phoneMap.get(digits.charAt(index));
+            for (int i = 0; i < s.length(); i++) {
+                dfs(digits, index + 1, temp + s.charAt(i));
             }
         }
     }
