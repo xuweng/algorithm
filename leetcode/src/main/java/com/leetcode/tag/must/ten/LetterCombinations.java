@@ -41,7 +41,7 @@ public class LetterCombinations {
             for (int i = index; i < digits.length(); i++) {
                 String s = phoneMap.get(digits.charAt(i));
                 for (int j = 0; j < s.length(); j++) {
-                    dfs(digits, i + 1, temp + digits.charAt(j));
+                    dfs(digits, i + 1, temp + s.charAt(j));
                 }
             }
         }
