@@ -20,7 +20,7 @@ public class Rob1 {
 
             int[] dp = new int[2];
             dp[0] = Math.max(left[0], left[1]) + Math.max(right[0], right[1]);
-            dp[1] = left[0] + right[0];
+            dp[1] = left[0] + right[0] + root.val;
 
             return dp;
         }
