@@ -26,6 +26,10 @@ public class Permute {
         }
 
         private void dfs(int[] nums) {
+            if (deque.size() == nums.length) {
+                result.add(new ArrayList<>(deque));
+                return;
+            }
             for (int i = 0; i < nums.length; i++) {
                 if (used[i]) {
                     continue;
