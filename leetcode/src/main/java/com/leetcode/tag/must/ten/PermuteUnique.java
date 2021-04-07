@@ -37,7 +37,7 @@ public class PermuteUnique {
                     continue;
                 }
                 used[i] = true;
-                deque.push(i);
+                deque.push(nums[i]);
                 dfs(nums);
                 deque.pop();
                 used[i] = false;
