@@ -17,4 +17,23 @@ public class CuttingRope {
             return dp[n] % 1000000007;
         }
     }
+
+    /**
+     * 贪心
+     * <p>
+     * 核心思路是：尽可能把绳子分成长度为3的小段，这样乘积最大
+     */
+    class Solution1 {
+        public int cuttingRope(int n) {
+            if (n < 4) {
+                return n - 1;
+            }
+            long res = 1;
+            while (n > 4) {
+                res = res * 3 % 1000000007;
+                n -= 3;
+            }
+            return (int) (res * n % 1000000007);
+        }
+    }
 }
