@@ -23,6 +23,10 @@ public class FindTargetSumWays {
                 return 0;
             }
             int sum = Arrays.stream(nums).sum();
+            if (S > sum) {
+                // 防止内存溢出
+                return 0;
+            }
             int target = sum + S;
             if (target % 2 != 0) {
                 return 0;
