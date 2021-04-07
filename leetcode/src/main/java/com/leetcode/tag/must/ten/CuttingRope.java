@@ -14,7 +14,7 @@ public class CuttingRope {
                 }
             }
 
-            return dp[n];
+            return dp[n] % 1000000007;
         }
     }
 }
