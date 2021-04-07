@@ -13,7 +13,7 @@ public class Rob1 {
 
         private int[] myRob(TreeNode root) {
             if (root == null) {
-                return new int[]{};
+                return new int[]{0, 0};
             }
             int[] left = myRob(root.left);
             int[] right = myRob(root.right);
