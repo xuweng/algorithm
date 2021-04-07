@@ -23,7 +23,11 @@ public class FindTargetSumWays {
                 return 0;
             }
             int sum = Arrays.stream(nums).sum();
-            sum = (sum + S) / 2;
+            int target = sum + S;
+            if (target % 2 != 0) {
+                return 0;
+            }
+            sum = target / 2;
             int[] dp = new int[sum + 1];
             dp[0] = 1;
             for (int num : nums) {
