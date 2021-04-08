@@ -25,6 +25,7 @@ public class IsMatch {
                         // 删除*前和*
                         dp[i][j] = dp[i][j - 2];
                         if (s.charAt(i - 1) == p.charAt(j - 2) || p.charAt(j - 2) == '.') {
+                            // *前
                             dp[i][j] = dp[i][j - 2] || dp[i - 1][j];
                         } else if (s.charAt(i - 1) == p.charAt(j - 1) || p.charAt(j - 1) == '.') {
                             dp[i][j] = dp[i - 1][j - 1];
