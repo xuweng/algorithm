@@ -23,6 +23,7 @@ public class MaxCoins {
                 for (int j = i + 1; j < newNums.length; j++) {
                     // 不选择i j
                     for (int k = i + 1; k < j; k++) {
+                        // 选择k
                         dp[i][j] = Math.max(dp[i][j], dp[i][k] + dp[k][j] + newNums[i] * newNums[k] * newNums[j]);
                     }
                 }
