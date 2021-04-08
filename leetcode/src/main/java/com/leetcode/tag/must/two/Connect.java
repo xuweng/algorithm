@@ -13,14 +13,12 @@ public class Connect {
             }
             if (root.left != null) {
                 root.left.next = root.right;
-                connect(root.left);
             }
-            if (root.next != null) {
-                if (root.right != null) {
-                    root.right.next = root.next.left;
-                }
-                connect(root.right);
+            if (root.next != null && root.right != null) {
+                root.right.next = root.next.left;
             }
+            connect(root.left);
+            connect(root.right);
 
             return root;
         }
