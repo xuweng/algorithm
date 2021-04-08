@@ -4,6 +4,8 @@ package com.leetcode.tag.must.two;
  * 377. 组合总和 Ⅳ
  * <p>
  * 重复选择 排列
+ * <p>
+ * 正序 外循环
  */
 public class CombinationSum4 {
     class Solution {
