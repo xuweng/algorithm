@@ -12,10 +12,11 @@ public class BstToGst {
                 return null;
             }
             bstToGst(root.right);
-            bstToGst(root.left);
 
             root.val += pre;
             pre = root.val;
+
+            bstToGst(root.left);
 
             return root;
         }
