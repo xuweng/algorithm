@@ -9,7 +9,7 @@ package com.leetcode.tag.must.three;
  */
 public class KthSmallest {
     class Solution {
-        int count = 1;
+        int count;
         int result;
 
         public int kthSmallest(TreeNode root, int k) {
@@ -23,11 +23,11 @@ public class KthSmallest {
                 return;
             }
             dfs(root.left, k);
+            count++;
             if (count == k) {
                 result = root.val;
                 return;
             }
-            count++;
             dfs(root.right, k);
         }
     }
