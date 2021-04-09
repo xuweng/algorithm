@@ -11,12 +11,12 @@ public class ConvertBST {
             if (root == null) {
                 return null;
             }
-            convertBST(root.left);
+            convertBST(root.right);
 
             root.val += pre;
             pre = root.val;
 
-            convertBST(root.right);
+            convertBST(root.left);
 
             return root;
         }
