@@ -34,6 +34,7 @@ public class NthUglyNumber {
             for (int i = 2; i <= n; i++) {
                 int v2 = dp[p2] * 2, v3 = dp[p3] * 3, v5 = dp[p5] * 5;
                 dp[i] = Math.min(v2, Math.min(v3, v5));
+                // 3个if分开
                 if (dp[i] == v2) {
                     p2++;
                 }
