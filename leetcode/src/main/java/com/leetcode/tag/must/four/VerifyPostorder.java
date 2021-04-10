@@ -7,7 +7,7 @@ public class VerifyPostorder {
     class Solution {
         public boolean verifyPostorder(int[] postorder) {
             if (postorder == null || postorder.length == 0) {
-                return false;
+                return true;
             }
 
             return dfs(postorder, 0, postorder.length - 1);
