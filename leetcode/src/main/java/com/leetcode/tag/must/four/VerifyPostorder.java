@@ -21,8 +21,11 @@ public class VerifyPostorder {
             while (i >= low && postorder[i] >= postorder[high]) {
                 i--;
             }
-            if (i == high) {
-                return false;
+            while (i >= low) {
+                if (postorder[i] > postorder[high]) {
+                    return false;
+                }
+                i--;
             }
 
             return dfs(postorder, i + 1, high) && dfs(postorder, low, i);
