@@ -29,7 +29,7 @@ public class VerifyPostorder {
                 j--;
             }
 
-            return dfs(postorder, i + 1, high) && dfs(postorder, low, i);
+            return dfs(postorder, i + 1, high - 1) && dfs(postorder, low, i);
         }
     }
 }
