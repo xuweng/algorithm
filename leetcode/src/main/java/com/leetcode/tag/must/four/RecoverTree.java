@@ -32,7 +32,9 @@ public class RecoverTree {
 
             if (pre != null) {
                 if (pre.val > root.val) {
+                    // 记录第一个p1
                     p1 = p1 == null ? pre : p1;
+                    // 记录最后一个p2
                     p2 = root;
                 }
             }
