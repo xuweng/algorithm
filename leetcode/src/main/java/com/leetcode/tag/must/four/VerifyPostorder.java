@@ -21,6 +21,7 @@ public class VerifyPostorder {
             while (i >= low && postorder[i] >= postorder[high]) {
                 i--;
             }
+            // 左子树最后一个结点
             int j = i;
             while (j >= low) {
                 if (postorder[j] > postorder[high]) {
