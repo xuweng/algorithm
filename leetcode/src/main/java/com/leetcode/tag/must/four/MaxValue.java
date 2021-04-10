@@ -57,6 +57,7 @@ public class MaxValue {
             //3.更新处理root的 染色/不染色 的情况下的dp表
             //- 不染root
             int ml = Integer.MIN_VALUE, mr = Integer.MIN_VALUE;
+            // root不染色，那么只要返回 dp[0]，其值为左、右子树染色或不染色的最大值之和
             for (int i = 0; i <= k; i++) {
                 //- 分别取子节点的最大值
                 ml = Math.max(ml, l[i]);
@@ -64,6 +65,8 @@ public class MaxValue {
             }
             dp[0] = ml + mr;
             //- 染root
+            // 左子树染色 j 个，右子树染色 i - 1 - j 个时，加上 root.val 的和
+            // j i-j-1 减去root结点
             for (int i = 1; i <= k; i++) {
                 for (int j = 0; j < i; j++) {
                     //- 还需要染色 i - 1 个点，左子树 j 个，右子树 i-1-j 个
