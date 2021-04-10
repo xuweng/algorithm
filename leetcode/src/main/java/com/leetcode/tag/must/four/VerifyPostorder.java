@@ -30,6 +30,7 @@ public class VerifyPostorder {
                 j--;
             }
 
+            // dfs右子树 dfs左子树
             return dfs(postorder, i + 1, high - 1) && dfs(postorder, low, i);
         }
     }
