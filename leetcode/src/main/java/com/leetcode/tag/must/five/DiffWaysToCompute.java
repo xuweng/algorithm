@@ -27,9 +27,9 @@ public class DiffWaysToCompute {
                         }
                     }
                 }
-                if (result.isEmpty()) {
-                    result.add(Integer.parseInt(expression));
-                }
+            }
+            if (result.isEmpty()) {
+                result.add(Integer.parseInt(expression));
             }
             return result;
         }
