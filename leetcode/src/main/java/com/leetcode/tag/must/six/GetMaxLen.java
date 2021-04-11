@@ -5,6 +5,12 @@ package com.leetcode.tag.must.six;
  */
 public class GetMaxLen {
     class Solution {
+        /**
+         * 重点：判断i-1是否存在负数
+         *
+         * @param nums
+         * @return
+         */
         public int getMaxLen(int[] nums) {
             int length = nums.length;
             // positive[i] 表示以下标 i 结尾的乘积为正数的最长子数组长度
