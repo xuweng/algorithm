@@ -7,22 +7,28 @@ public class FindTheWinner {
     class Solution {
         public int findTheWinner(int n, int k) {
             boolean[] used = new boolean[n + 1];
-            int c = n;
-            while (c > 1) {
-                int i = 1;
-                while (i <= n) {
-                    int next = (i + k - 1) % (n + 1);
-                    if (used[next]) {
+            int i = 1;
+            int nu = n;
+            while (nu > 1) {
+                int c = 0;
+                int j = i % n + 1;
+                for (; j < used.length; j++) {
+                    if (used[i]) {
                         continue;
                     }
-                    used[next] = true;
-                    c--;
-                    i = (next + 1) % (n + 1);
+                    c++;
+                    if (c == k - 1) {
+                        break;
+                    }
                 }
+                used[j] = true;
+                nu--;
+                i = j % n + 1;
             }
-            for (int i = 1; i < used.length; i++) {
-                if (!used[i]) {
-                    return i;
+
+            for (int j = 1; j < used.length; j++) {
+                if (!used[j]) {
+                    return j;
                 }
             }
 
