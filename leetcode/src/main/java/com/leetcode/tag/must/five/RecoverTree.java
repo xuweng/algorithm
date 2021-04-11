@@ -27,7 +27,7 @@ public class RecoverTree {
             }
             dfs(root.left);
 
-            if (pre != null) {
+            if (pre != null && pre.val > root.val) {
                 // 记录第一个
                 p1 = p1 == null ? pre : p1;
                 // 记录最后一个
