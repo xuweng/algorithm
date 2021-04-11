@@ -23,10 +23,12 @@ public class GetMaxLen {
                     // 正数*正数=正数
                     positive[i] = positive[i - 1] + 1;
                     // 负数*正数=负数
+                    // negative[i - 1] == 0说明前面没有负数
                     negative[i] = negative[i - 1] == 0 ? 0 : negative[i - 1] + 1;
                 } else if (nums[i] < 0) {
                     // 当 nums[i]<0 时，之前的乘积乘以 nums[i] 会改变乘积的正负性
                     // 负数*负数=正数
+                    // negative[i - 1] == 0说明前面没有负数
                     positive[i] = negative[i - 1] == 0 ? 0 : negative[i - 1] + 1;
                     // 正数*负数=负数
                     negative[i] = positive[i - 1] + 1;
