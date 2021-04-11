@@ -13,6 +13,8 @@ public class RecoverTree {
             if (root == null) {
                 return;
             }
+            dfs(root);
+
             if (p1 == null || p2 == null) {
                 return;
             }
