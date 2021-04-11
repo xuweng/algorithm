@@ -15,7 +15,7 @@ public class FindTheWinner {
             }
             int start = 0;
             while (list.size() > 1) {
-                int id = (start + k - 1) % n;
+                int id = (start + k - 1) % list.size();
                 list.remove(id);
                 start = id;
             }
