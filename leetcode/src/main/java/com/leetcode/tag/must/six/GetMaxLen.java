@@ -19,13 +19,20 @@ public class GetMaxLen {
             int maxLength = positive[0];
             for (int i = 1; i < length; i++) {
                 if (nums[i] > 0) {
-                    //当  nums[i]>0 时，之前的乘积乘以  nums[i] 不会改变乘积的正负性
+                    // 当 nums[i]>0 时，之前的乘积乘以  nums[i] 不会改变乘积的正负性
+                    // 正数*正数=正数
                     positive[i] = positive[i - 1] + 1;
-                    negative[i] = negative[i - 1] > 0 ? negative[i - 1] + 1 : 0;
+                    // 负数*正数=负数
+                    negative[i] = negative[i - 1] == 0 ? 0 : negative[i - 1] + 1;
                 } else if (nums[i] < 0) {
-                    positive[i] = negative[i - 1] > 0 ? negative[i - 1] + 1 : 0;
+                    // 当 nums[i]<0 时，之前的乘积乘以 nums[i] 会改变乘积的正负性
+                    // 负数*负数=正数
+                    positive[i] = negative[i - 1] == 0 ? 0 : negative[i - 1] + 1;
+                    // 正数*负数=负数
                     negative[i] = positive[i - 1] + 1;
                 } else {
+                    //当 nums[i]=0 时，以下标 i 结尾的子数组的元素乘积一定为 0，
+                    // 因此有positive[i]=0 和negative[i]=0。
                     positive[i] = 0;
                     negative[i] = 0;
                 }
