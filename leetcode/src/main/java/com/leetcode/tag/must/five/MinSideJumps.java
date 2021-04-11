@@ -116,6 +116,7 @@ public class MinSideJumps {
                 }
             }
 
+            //这只青蛙从点 0 处跑道 2 出发，并想到达点 n 处的 任一跑道 ，请你返回 最少侧跳次数
             return Math.min(dp[n - 1][0], Math.min(dp[n - 1][1], dp[n - 1][2]));
         }
     }
