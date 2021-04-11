@@ -79,8 +79,12 @@ public class MinSideJumps {
     class Solution1 {
         public int minSideJumps(int[] obstacles) {
             int n = obstacles.length;
+            // 3个跑道 0 1 2
             int[][] dp = new int[n][3];
+            // 这只青蛙从点 0 处跑道 2 出发
+            // 2跑道到1跑道跳1次
             dp[0][0] = 1;
+            // 2跑道到3跑道跳1次
             dp[0][2] = 1;
 
             for (int i = 1; i < n; ++i) {
