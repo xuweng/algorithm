@@ -14,8 +14,10 @@ public class IsMatch1 {
             boolean[][] dp = new boolean[s.length() + 1][p.length() + 1];
             // 空初始化
             dp[0][0] = true;
-            for (int i = 2; i <= p.length(); i++) {
-                dp[0][i] = dp[0][i - 2];
+            for (int i = 1; i <= p.length(); i++) {
+                if (p.charAt(i - 1) == '*') {
+                    dp[0][i] = dp[0][i - 2];
+                }
             }
             for (int i = 1; i <= s.length(); i++) {
                 for (int j = 1; j <= p.length(); j++) {
