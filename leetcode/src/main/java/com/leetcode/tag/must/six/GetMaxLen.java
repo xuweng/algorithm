@@ -9,7 +9,7 @@ public class GetMaxLen {
             int length = nums.length;
             // positive[i] 表示以下标 i 结尾的乘积为正数的最长子数组长度
             int[] positive = new int[length];
-            // negative[i] 表示乘积为负数的最长子数组长度 不用以下标i结尾
+            // negative[i] 表示乘积为负数的最长子数组长度 以下标i结尾
             int[] negative = new int[length];
             if (nums[0] > 0) {
                 positive[0] = 1;
