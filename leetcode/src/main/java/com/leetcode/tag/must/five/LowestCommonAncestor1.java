@@ -16,6 +16,7 @@ public class LowestCommonAncestor1 {
                 return lowestCommonAncestor(root.right, p, q);
             }
 
+            // p==root||q==root
             return root;
         }
     }
