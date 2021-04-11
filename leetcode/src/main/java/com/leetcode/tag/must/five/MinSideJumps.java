@@ -78,6 +78,7 @@ public class MinSideJumps {
      */
     class Solution1 {
         public int minSideJumps(int[] obstacles) {
+            //obstacles[i] （取值范围从 0 到 3）表示在点 i 处的 obstacles[i] 跑道上有一个障碍
             int n = obstacles.length;
             // 3个跑道 0 1 2
             int[][] dp = new int[n][3];
@@ -89,14 +90,17 @@ public class MinSideJumps {
 
             for (int i = 1; i < n; ++i) {
                 if (obstacles[i] == 1) {
+                    // 1跑道有障碍
                     dp[i][0] = Integer.MAX_VALUE - 1;
                     dp[i][1] = Math.min(dp[i - 1][1], dp[i - 1][2] + 1);
                     dp[i][2] = Math.min(dp[i - 1][2], dp[i - 1][1] + 1);
                 } else if (obstacles[i] == 2) {
+                    // 2跑道有障碍
                     dp[i][1] = Integer.MAX_VALUE - 1;
                     dp[i][0] = Math.min(dp[i - 1][0], dp[i - 1][2] + 1);
                     dp[i][2] = Math.min(dp[i - 1][2], dp[i - 1][0] + 1);
                 } else if (obstacles[i] == 3) {
+                    // 3跑道有障碍
                     dp[i][2] = Integer.MAX_VALUE - 1;
                     dp[i][0] = Math.min(dp[i - 1][0], dp[i - 1][1] + 1);
                     dp[i][1] = Math.min(dp[i - 1][1], dp[i - 1][0] + 1);
