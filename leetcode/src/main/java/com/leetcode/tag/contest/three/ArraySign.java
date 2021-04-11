@@ -6,18 +6,21 @@ package com.leetcode.tag.contest.three;
 public class ArraySign {
     class Solution {
         public int arraySign(int[] nums) {
-            int c = 1;
+            int c = 0;
             for (int num : nums) {
-                c = c * num;
+                if (num < 0) {
+                    c++;
+                }
+                if (num == 0) {
+                    return 0;
+                }
             }
 
-            if (c > 0) {
+            if (c % 2 == 0) {
                 return 1;
             }
-            if (c < 0) {
-                return -1;
-            }
-            return 0;
+
+            return -1;
         }
     }
 }
