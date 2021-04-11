@@ -6,7 +6,7 @@ import java.util.Arrays;
  * 279. 完全平方数
  */
 public class NumSquares {
-    class Solution {
+    static class Solution {
         public int numSquares(int n) {
             int max = (int) Math.sqrt(n);
             // 构造硬币
