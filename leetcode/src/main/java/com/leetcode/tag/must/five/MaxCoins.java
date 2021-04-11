@@ -2,6 +2,8 @@ package com.leetcode.tag.must.five;
 
 /**
  * 312. 戳气球
+ * <p>
+ * 正序 外循环 倒序
  */
 public class MaxCoins {
     class Solution {
