@@ -120,4 +120,45 @@ public class MinSideJumps {
             return Math.min(dp[n - 1][0], Math.min(dp[n - 1][1], dp[n - 1][2]));
         }
     }
+
+    class Solution2 {
+        public int minSideJumps(int[] obstacles) {
+            //obstacles[i] （取值范围从 0 到 3）表示在点 i 处的 obstacles[i] 跑道上有一个障碍
+            int n = obstacles.length;
+            // 3个跑道 1 2 3
+            int[][] dp = new int[n][4];
+            // 这只青蛙从点 0 处跑道 2 出发
+            // 2跑道到1跑道跳1次
+            dp[0][1] = 1;
+            // 2跑道到3跑道跳1次
+            dp[0][3] = 1;
+
+            for (int i = 1; i < n; ++i) {
+                if (obstacles[i] == 1) {
+                    // i处1跑道有障碍
+                    dp[i][1] = Integer.MAX_VALUE - 1;
+                    dp[i][2] = Math.min(dp[i - 1][2], dp[i - 1][3] + 1);
+                    dp[i][3] = Math.min(dp[i - 1][3], dp[i - 1][2] + 1);
+                } else if (obstacles[i] == 2) {
+                    // i处2跑道有障碍
+                    dp[i][2] = Integer.MAX_VALUE - 1;
+                    dp[i][1] = Math.min(dp[i - 1][1], dp[i - 1][3] + 1);
+                    dp[i][3] = Math.min(dp[i - 1][3], dp[i - 1][1] + 1);
+                } else if (obstacles[i] == 3) {
+                    // i处3跑道有障碍
+                    dp[i][3] = Integer.MAX_VALUE - 1;
+                    dp[i][1] = Math.min(dp[i - 1][1], dp[i - 1][2] + 1);
+                    dp[i][2] = Math.min(dp[i - 1][2], dp[i - 1][1] + 1);
+                } else {
+                    // i处没有障碍
+                    dp[i][1] = Math.min(dp[i - 1][1], Math.min(dp[i - 1][2], dp[i - 1][3]) + 1);
+                    dp[i][2] = Math.min(dp[i - 1][2], Math.min(dp[i - 1][1], dp[i - 1][3]) + 1);
+                    dp[i][3] = Math.min(dp[i - 1][3], Math.min(dp[i - 1][1], dp[i - 1][2]) + 1);
+                }
+            }
+
+            //这只青蛙从点 0 处跑道 2 出发，并想到达点 n 处的 任一跑道 ，请你返回 最少侧跳次数
+            return Math.min(dp[n - 1][1], Math.min(dp[n - 1][2], dp[n - 1][3]));
+        }
+    }
 }
