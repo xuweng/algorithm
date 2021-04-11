@@ -61,4 +61,49 @@ public class MinSideJumps {
             return Arrays.stream(dp).min().orElse(-1);
         }
     }
+
+    /**
+     * 一共3条跑道，n个点，
+     * 1.如果跑道i当前位置k(0<=k<n)有石头，无论如何跳也到不了该处，dp[k][i]=Integer.MAX_VALUE-1（避免加1后超出int范围）；
+     * 2.如果当前位置没有石头，则跳到该点的方法为:
+     * <p>
+     * 同一跑道前一节点跳过来，dp[k][i]=dp[k-1][i],
+     * 其他两条跑道中没有石头的节点j跳过来，前一节点次数加1(侧跳一次),dp[k-1][j]+1.
+     * 取最小值dp[k]][i]=Math.min(dp[k-1][i],dp[k-1][j]+1)。
+     * <p>
+     * 作者：gao-he-jin
+     * 链接：https://leetcode-cn.com/problems/minimum-sideway-jumps/solution/javadong-tai-gui-hua-by-gao-he-jin-guw6/
+     * 来源：力扣（LeetCode）
+     * 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+     */
+    class Solution1 {
+        public int minSideJumps(int[] obstacles) {
+            int n = obstacles.length;
+            int[][] dp = new int[n][3];
+            dp[0][0] = 1;
+            dp[0][2] = 1;
+
+            for (int i = 1; i < n; ++i) {
+                if (obstacles[i] == 1) {
+                    dp[i][0] = Integer.MAX_VALUE - 1;
+                    dp[i][1] = Math.min(dp[i - 1][1], dp[i - 1][2] + 1);
+                    dp[i][2] = Math.min(dp[i - 1][2], dp[i - 1][1] + 1);
+                } else if (obstacles[i] == 2) {
+                    dp[i][1] = Integer.MAX_VALUE - 1;
+                    dp[i][0] = Math.min(dp[i - 1][0], dp[i - 1][2] + 1);
+                    dp[i][2] = Math.min(dp[i - 1][2], dp[i - 1][0] + 1);
+                } else if (obstacles[i] == 3) {
+                    dp[i][2] = Integer.MAX_VALUE - 1;
+                    dp[i][0] = Math.min(dp[i - 1][0], dp[i - 1][1] + 1);
+                    dp[i][1] = Math.min(dp[i - 1][1], dp[i - 1][0] + 1);
+                } else {
+                    dp[i][0] = Math.min(dp[i - 1][0], Math.min(dp[i - 1][1], dp[i - 1][2]) + 1);
+                    dp[i][1] = Math.min(dp[i - 1][1], Math.min(dp[i - 1][0], dp[i - 1][2]) + 1);
+                    dp[i][2] = Math.min(dp[i - 1][2], Math.min(dp[i - 1][0], dp[i - 1][1]) + 1);
+                }
+            }
+
+            return Math.min(dp[n - 1][0], Math.min(dp[n - 1][1], dp[n - 1][2]));
+        }
+    }
 }
