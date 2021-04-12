@@ -18,6 +18,7 @@ public class NumberOfArithmeticSlices1 {
             for (int i = 0; i < nums.length; i++) {
                 map.computeIfAbsent((long) nums[i], v -> new ArrayList<>()).add(i);
             }
+            // 个数 个数 个数
             int[][] dp = new int[nums.length][nums.length];
             int sum = 0;
             for (int i = 2; i < nums.length; i++) {
@@ -29,6 +30,7 @@ public class NumberOfArithmeticSlices1 {
                     List<Integer> list = map.get(key);
                     for (Integer k : list) {
                         if (k < j) {
+                            // 注意累加
                             dp[i][j] += dp[j][k] + 1;
                         }
                     }
