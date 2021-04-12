@@ -21,12 +21,7 @@ public class LargestNumber {
             // 拼接降序
             Arrays.sort(strings, (a, b) -> (b + a).compareTo(a + b));
 
-            StringBuilder stringBuilder = new StringBuilder();
-            for (int num : nums) {
-                stringBuilder.append(num);
-            }
-
-            return stringBuilder.toString();
+            return String.join("", strings);
         }
     }
 }
