@@ -15,12 +15,12 @@ public class LargestNumber {
             for (int i = 0; i < nums.length; i++) {
                 strings[i] = String.valueOf(nums[i]);
             }
-            if (strings[0].charAt(0) == '0') {
-                return "0";
-            }
             // 拼接降序
             Arrays.sort(strings, (a, b) -> (b + a).compareTo(a + b));
 
+            if (strings[0].charAt(0) == '0') {
+                return "0";
+            }
             return String.join("", strings);
         }
     }
