@@ -29,7 +29,7 @@ public class NumberOfArithmeticSlices1 {
                     List<Integer> list = map.get(key);
                     for (Integer k : list) {
                         if (k < j) {
-                            dp[i][j] = dp[j][k] + 1;
+                            dp[i][j] += dp[j][k] + 1;
                         }
                     }
                     sum += dp[i][j];
@@ -37,6 +37,52 @@ public class NumberOfArithmeticSlices1 {
             }
 
             return sum;
+        }
+    }
+
+    class Solution1 {
+        public int numberOfArithmeticSlices(int[] A) {
+            //--改进：以dp[i][j]表示以A[i]-A[j]为公差
+            //--得到：dp[i][j] = dp[j][k] + 1（A[i]-A[j] == A[j]-A[k]）
+            int[][] dp = new int[A.length][A.length];
+            int res = 0;
+            //k怎么得到：遍历前n个数或者用HashMap预处理
+            //--直接存储HashMap<A[i], i>的话，发现用例有重复 --> 用集合存储重复的A[i]
+            //--还要考虑i、j、k的大小关系：i > j > k
+
+            // 1, 1, 1, 2, 5, 7
+            // [2, 4, 6, 8, 10]
+            // [2, 2, 2, 2, 4, 6, 8, 10]
+            HashMap<Long, List<Integer>> checkup = new HashMap<>();
+            for (int i = 0; i < A.length; i++) {
+                // 保存下标
+                // v,index
+                checkup.computeIfAbsent((long) A[i], v -> new ArrayList<>()).add(i);
+            }
+            for (int i = 2; i < A.length; i++) {
+                for (int j = i - 1; j >= 0; j--) {
+                    // [2, 2, 2, 2, 4, 6, 8, 10]
+                    // [2, 2, 2, 2, 4, 6]
+                    // 计算key 计算下一个等差数字 2 * (long) A[j] 厉害
+                    long key = 2 * (long) A[j] - (long) A[i];
+                    if (!checkup.containsKey(key)) {
+                        continue;
+                    }
+                    // [2, 2, 2, 2]
+                    // 等差数字的索引集合
+                    List<Integer> list = checkup.get(key);
+                    for (int index : list) {
+                        // 或者排序
+                        // 必须index < j 才合法 index<j<i
+                        if (index < j) {
+                            //A[i]-A[j] == A[j]-A[index]
+                            dp[i][j] += dp[j][index] + 1;
+                        }
+                    }
+                    res += dp[i][j];
+                }
+            }
+            return res;
         }
     }
 }
