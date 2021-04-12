@@ -16,6 +16,7 @@ public class NumSquares {
             }
 
             int[] dp = new int[n + 1];
+            // 防止溢出
             Arrays.fill(dp, Integer.MAX_VALUE - 1);
             dp[0] = 0;
 
