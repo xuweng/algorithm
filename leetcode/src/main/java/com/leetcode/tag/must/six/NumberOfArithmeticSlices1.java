@@ -23,6 +23,7 @@ public class NumberOfArithmeticSlices1 {
             int sum = 0;
             for (int i = 2; i < nums.length; i++) {
                 for (int j = i - 1; j >= 0; j--) {
+                    // 计算key是重点
                     long key = 2 * (long) nums[j] - (long) nums[i];
                     if (!map.containsKey(key)) {
                         continue;
