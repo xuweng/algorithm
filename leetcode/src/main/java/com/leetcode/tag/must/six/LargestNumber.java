@@ -19,7 +19,7 @@ public class LargestNumber {
                 return "0";
             }
             // 拼接降序
-            Arrays.sort(strings, (b, a) -> (b + a).compareTo(a + b));
+            Arrays.sort(strings, (a, b) -> (b + a).compareTo(a + b));
 
             StringBuilder stringBuilder = new StringBuilder();
             for (int num : nums) {
