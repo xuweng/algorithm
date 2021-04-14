@@ -18,7 +18,9 @@ public class WordBreak {
     public class Solution {
         public boolean wordBreak(String s, List<String> wordDict) {
             Set<String> wordDictSet = new HashSet<>(wordDict);
+            // 长度为i是否合法 不是下标
             boolean[] dp = new boolean[s.length() + 1];
+            // 初始化
             dp[0] = true;
             for (int i = 1; i <= s.length(); i++) {
                 for (int j = 0; j < i; j++) {
