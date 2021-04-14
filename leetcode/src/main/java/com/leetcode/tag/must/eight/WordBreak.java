@@ -33,4 +33,32 @@ public class WordBreak {
             return dp[s.length()];
         }
     }
+
+    class Solution1 {
+        public boolean wordBreak(String s, List<String> wordDict) {
+            if (s == null) {
+                return false;
+            }
+            if (s.isEmpty()) {
+                return wordDict.isEmpty();
+            }
+            Set<String> collect = new HashSet<>(wordDict);
+            // 下标
+            boolean[] dp = new boolean[s.length()];
+            for (int i = 0; i < s.length(); i++) {
+                if (collect.contains(s.substring(0, i + 1))) {
+                    dp[i] = true;
+                    continue;
+                }
+                for (int j = 0; j < i; j++) {
+                    if (dp[j] && collect.contains(s.substring(j + 1, i + 1))) {
+                        dp[i] = true;
+                        break;
+                    }
+                }
+            }
+
+            return dp[s.length() - 1];
+        }
+    }
 }
