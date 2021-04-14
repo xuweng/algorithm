@@ -45,7 +45,7 @@ public class MinimumEffortPath {
             // 按照w升序
             list.sort(Comparator.comparingInt(a -> a[2]));
             int start = getIndex(0, 0);
-            int end = getIndex(row - 1, row - 1);
+            int end = getIndex(row - 1, col - 1);
 
             UF uf = new UF(row * col);
             for (int[] ints : list) {
