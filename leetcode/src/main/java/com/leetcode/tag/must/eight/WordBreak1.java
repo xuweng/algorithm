@@ -6,6 +6,9 @@ import java.util.*;
  * 140. 单词拆分 II
  */
 public class WordBreak1 {
+    /**
+     * dp+回溯
+     */
     public class Solution {
         public List<String> wordBreak(String s, List<String> wordDict) {
             // 为了快速判断一个单词是否在单词集合中，需要将它们加入哈希表
