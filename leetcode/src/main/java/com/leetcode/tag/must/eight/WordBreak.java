@@ -8,6 +8,13 @@ import java.util.Set;
  * 139. 单词拆分
  */
 public class WordBreak {
+    /**
+     * s1: s[0..j-1]
+     * <p>
+     * s2：s[j..i-1]
+     * <p>
+     * s1和s2都合法 整个字符串都合法
+     */
     public class Solution {
         public boolean wordBreak(String s, List<String> wordDict) {
             Set<String> wordDictSet = new HashSet<>(wordDict);
