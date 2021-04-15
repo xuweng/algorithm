@@ -17,7 +17,8 @@ public class CanPartition {
             }
             sum = sum / 2;
             boolean[] dp = new boolean[sum + 1];
-
+            // 初始化
+            dp[0] = true;
             for (int num : nums) {
                 for (int i = sum; i >= num; i--) {
                     dp[i] = dp[i] || dp[i - num];
