@@ -1,9 +1,6 @@
 package com.leetcode.tag.must.nine;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 1027. 最长等差数列
@@ -63,6 +60,35 @@ public class LongestArithSeqLength {
                     res = Math.max(res, cur + 2);
                     // 存入当前元素，某公差下的最长序列
                     map.get(i).put(A[i] - A[j], cur + 1);
+                }
+            }
+
+            return res;
+        }
+    }
+
+    /**
+     * 跟最长递增子序列（LIS）同一个模板
+     */
+    class Solution2 {
+        public int longestArithSeqLength(int[] A) {
+            int res = 0;
+
+            int len = A.length;
+            int[][] dp = new int[len][20002];
+            //由于差值有正有负，所以需要加上一个offset来保证所有的下标为正数
+            int offset = 10000;
+
+            for (int[] ints : dp) {
+                Arrays.fill(ints, 1);
+            }
+
+            for (int i = 1; i < len; i++) {
+                for (int j = 0; j < i; j++) {
+                    int sub = A[i] - A[j];
+                    //由于差值有正有负，所以需要加上一个offset来保证所有的下标为正数
+                    dp[i][sub + offset] = Math.max(dp[i][sub + offset], dp[j][sub + offset] + 1);
+                    res = Math.max(res, dp[i][sub + offset]);
                 }
             }
 
