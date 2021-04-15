@@ -5,9 +5,9 @@ import java.util.Arrays;
 /**
  * 322. 零钱兑换
  */
-public class Change {
+public class CoinChange {
     class Solution {
-        public int change(int amount, int[] coins) {
+        public int coinChange(int[] coins, int amount) {
             if (coins == null) {
                 return 0;
             }
