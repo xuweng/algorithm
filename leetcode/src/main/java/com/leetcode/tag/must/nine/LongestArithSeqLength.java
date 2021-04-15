@@ -69,6 +69,8 @@ public class LongestArithSeqLength {
 
     /**
      * 跟最长递增子序列（LIS）同一个模板
+     * <p>
+     * 1维:下标i结尾 2维:公差
      */
     class Solution2 {
         public int longestArithSeqLength(int[] A) {
