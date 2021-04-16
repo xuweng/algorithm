@@ -15,6 +15,8 @@ public class AddStrings {
             StringBuilder ans = new StringBuilder();
             //从末尾到开头逐位相加
             while (i >= 0 || j >= 0 || add != 0) {
+                //两个数字位数不同怎么处理
+                //统一在指针当前下标处于负数的时候返回 0，等价于对位数较短的数字进行了补零操作
                 int x = i >= 0 ? num1.charAt(i) - '0' : 0;
                 int y = j >= 0 ? num2.charAt(j) - '0' : 0;
                 int result = x + y + add;
