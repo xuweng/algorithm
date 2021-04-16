@@ -25,9 +25,14 @@ public class AddToArrayForm {
             }
             // k有剩余
             while (K > 0) {
-                res.add(K % 10);
+                int sum = K % 10 + jin;
+                res.add(sum % 10);
                 K /= 10;
+                jin = sum / 10;
             }
+            // 有进位
+            res.add(jin);
+
             Collections.reverse(res);
             return res;
         }
