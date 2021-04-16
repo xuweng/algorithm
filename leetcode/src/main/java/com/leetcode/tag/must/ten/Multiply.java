@@ -49,6 +49,7 @@ public class Multiply {
                 StringBuilder curr = new StringBuilder();
                 int add = 0;
                 for (int j = n - 1; j > i; j--) {
+                    //num2 除了最低位以外，其余的每一位的运算结果都需要补 0
                     curr.append(0);
                 }
                 int y = num2.charAt(i) - '0';
@@ -70,7 +71,7 @@ public class Multiply {
 
         public String addStrings(String num1, String num2) {
             int i = num1.length() - 1, j = num2.length() - 1, add = 0;
-            StringBuffer ans = new StringBuffer();
+            StringBuilder ans = new StringBuilder();
             while (i >= 0 || j >= 0 || add != 0) {
                 int x = i >= 0 ? num1.charAt(i) - '0' : 0;
                 int y = j >= 0 ? num2.charAt(j) - '0' : 0;
