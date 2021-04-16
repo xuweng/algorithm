@@ -31,7 +31,9 @@ public class AddToArrayForm {
                 jin = sum / 10;
             }
             // 有进位
-            res.add(jin);
+            if (jin > 0) {
+                res.add(jin);
+            }
 
             Collections.reverse(res);
             return res;
