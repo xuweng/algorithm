@@ -14,7 +14,7 @@ public class AddStrings {
             int add = 0;
             StringBuilder ans = new StringBuilder();
             //从末尾到开头逐位相加
-            while (i >= 0 || j >= 0 || add != 0) {
+            while (i >= 0 || j >= 0) {
                 //两个数字位数不同怎么处理
                 //统一在指针当前下标处于负数的时候返回 0，等价于对位数较短的数字进行了补零操作
                 int x = i >= 0 ? num1.charAt(i) - '0' : 0;
@@ -26,6 +26,10 @@ public class AddStrings {
                 add = result / 10;
                 i--;
                 j--;
+            }
+            if (add > 0) {
+                // 最后有进位
+                ans.append(add);
             }
             // 计算完以后的答案需要翻转过来
             ans.reverse();
