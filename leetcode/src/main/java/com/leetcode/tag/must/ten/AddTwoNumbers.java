@@ -16,6 +16,7 @@ public class AddTwoNumbers {
                     head = tail = new ListNode(sum % 10);
                 } else {
                     tail.next = new ListNode(sum % 10);
+                    tail = tail.next;
                 }
                 jin = sum / 10;
                 if (l1 != null) {
