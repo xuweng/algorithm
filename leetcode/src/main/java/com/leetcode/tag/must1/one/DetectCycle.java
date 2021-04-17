@@ -16,6 +16,7 @@ public class DetectCycle {
                 } else {
                     fast = fast.next.next;
                 }
+                // 移动fast后比较
                 if (slow == fast) {
                     ListNode p = head;
                     while (p != slow) {
