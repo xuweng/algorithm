@@ -23,7 +23,7 @@ public class LongestArithSeqLength {
                     int cha = A[i] - A[j];
                     dp[i][cha + offset] = Math.max(dp[i][cha + offset], dp[j][cha + offset] + 1);
 
-                    max = Math.max(max, dp[i][cha] + offset);
+                    max = Math.max(max, dp[i][cha + offset]);
                 }
             }
 
