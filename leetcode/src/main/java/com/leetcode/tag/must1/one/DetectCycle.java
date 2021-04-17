@@ -11,12 +11,15 @@ public class DetectCycle {
             }
             ListNode slow = head, fast = head;
             while (fast != null) {
+                // 移动slow
+                slow = slow.next;
                 if (fast.next == null) {
                     return null;
                 } else {
+                    // 移动fast
                     fast = fast.next.next;
                 }
-                // 移动fast后比较
+                // 移动后比较
                 if (slow == fast) {
                     ListNode p = head;
                     while (p != slow) {
@@ -25,9 +28,38 @@ public class DetectCycle {
                     }
                     return p;
                 }
-                slow = slow.next;
             }
 
+            return null;
+        }
+    }
+
+    public class Solution1 {
+        public ListNode detectCycle(ListNode head) {
+            if (head == null) {
+                return null;
+            }
+            // fast从head开始
+            ListNode slow = head, fast = head;
+            while (fast != null) {
+                slow = slow.next;
+                if (fast.next != null) {
+                    fast = fast.next.next;
+                } else {
+                    // 没有环
+                    return null;
+                }
+                if (fast == slow) {
+                    // 有环
+                    // ptr和slow一起走直到相遇
+                    ListNode ptr = head;
+                    while (ptr != slow) {
+                        ptr = ptr.next;
+                        slow = slow.next;
+                    }
+                    return ptr;
+                }
+            }
             return null;
         }
     }
