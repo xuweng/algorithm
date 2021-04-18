@@ -35,13 +35,15 @@ public class GetOrder {
             }
             //按入队时间排序
             taskList.sort(Comparator.comparingInt(t -> t.enqueueTime));
-            //利用最小堆获取下个要执行的任务
+            // 利用最小堆获取下个要执行的任务
             PriorityQueue<Task> minHeap = new PriorityQueue<>((t1, t2) -> {
                 if (t1.processingTime == t2.processingTime) {
                     //当执行时间相同时，根据id升序
+                    //如果多个任务具有同样的最短执行时间，则选择下标最小的任务开始执行
                     return t1.id - t2.id;
                 } else {
                     //当执行时间不同时，根据执行时间升序
+                    //CPU 将会选择 执行时间最短 的任务开始执行
                     return t1.processingTime - t2.processingTime;
                 }
             });
