@@ -1,5 +1,7 @@
 package com.leetcode.tag.must1.two;
 
+import java.util.Arrays;
+
 /**
  * 1027. 最长等差数列
  */
@@ -11,6 +13,10 @@ public class LongestArithSeqLength {
             }
             int offset = 10000;
             int[][] dp = new int[A.length][2 * offset];
+            // 初始化
+            for (int[] ints : dp) {
+                Arrays.fill(ints, 1);
+            }
             int max = 1;
             for (int i = 0; i < A.length; i++) {
                 for (int j = 0; j < i; j++) {
