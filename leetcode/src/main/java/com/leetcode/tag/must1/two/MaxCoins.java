@@ -9,7 +9,7 @@ public class MaxCoins {
             if (nums == null) {
                 return 0;
             }
-            int[] newNums = new int[nums.length];
+            int[] newNums = new int[nums.length + 2];
             newNums[0] = 1;
             newNums[newNums.length - 1] = 1;
 
