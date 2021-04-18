@@ -27,7 +27,8 @@ public class FindTargetSumWays {
             }
             int s = (sum + target) / 2;
             int[] dp = new int[s + 1];
-
+            // 初始化
+            dp[0] = 1;
             for (int num : nums) {
                 for (int i = s; i >= num; i--) {
                     dp[i] += dp[i - num];
