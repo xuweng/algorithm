@@ -25,7 +25,7 @@ public class MinCut {
             for (int i = 0; i < s.length(); i++) {
                 dp[i] = s.length();
                 if (is[0][i]) {
-                    dp[0] = 0;
+                    dp[i] = 0;
                     continue;
                 }
                 for (int j = 0; j < i; j++) {
