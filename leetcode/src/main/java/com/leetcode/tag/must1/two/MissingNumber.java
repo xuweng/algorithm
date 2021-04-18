@@ -26,4 +26,22 @@ public class MissingNumber {
             return 0;
         }
     }
+
+    class Solution1 {
+        public int missingNumber(int[] nums) {
+            if (nums == null) {
+                return 0;
+            }
+            int sum = 0;
+            int n = nums.length;
+            for (int i = 0; i <= n; i++) {
+                sum += i;
+            }
+            for (int num : nums) {
+                sum -= num;
+            }
+
+            return sum;
+        }
+    }
 }
