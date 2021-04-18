@@ -45,11 +45,15 @@ public class GetOrder {
                     return t1.processingTime - t2.processingTime;
                 }
             });
-            long now = 0;//当前时间，使用long防止int溢出
-            int i = 0;//taskList的坐标
+            //当前时间，使用long防止int溢出
+            long now = 0;
+            //taskList的坐标
+            int i = 0;
             int[] ret = new int[len];
-            int p = 0;//ret的坐标
-            while (i < len) {//taskList中还有任务没有放入堆时
+            //ret的坐标
+            int p = 0;
+            //taskList中还有任务没有放入堆时
+            while (i < len) {
                 //将所有入队时间<=当前时间的任务放入堆中
                 while (i < len && taskList.get(i).enqueueTime <= now) {
                     minHeap.offer(taskList.get(i));
@@ -58,7 +62,7 @@ public class GetOrder {
                 //当堆中没有任务，即当前cpu空闲
                 if (minHeap.isEmpty()) {
                     //当前时间置为任务队列taskList中入队时间最小的时间
-                    now = (long) taskList.get(i).enqueueTime;
+                    now = taskList.get(i).enqueueTime;
                     while (i < len && taskList.get(i).enqueueTime <= now) {
                         minHeap.offer(taskList.get(i));
                         i++;
