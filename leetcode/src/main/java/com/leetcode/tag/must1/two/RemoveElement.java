@@ -4,7 +4,7 @@ package com.leetcode.tag.must1.two;
  * 27. 移除元素
  */
 public class RemoveElement {
-    class Solution {
+    static class Solution {
         public int removeElement(int[] nums, int val) {
             if (nums == null) {
                 return 0;
