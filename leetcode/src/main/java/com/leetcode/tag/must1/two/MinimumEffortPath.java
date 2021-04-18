@@ -58,7 +58,7 @@ public class MinimumEffortPath {
         }
 
         int getIndex(int i, int j) {
-            return i * col - j;
+            return i * col + j;
         }
     }
 
