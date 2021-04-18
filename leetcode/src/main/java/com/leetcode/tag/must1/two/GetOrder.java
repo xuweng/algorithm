@@ -73,6 +73,7 @@ public class GetOrder {
                 //此时保证堆中有任务待执行，取出执行即可
                 Task task = minHeap.poll();
                 ret[p++] = task.id;
+                // 更新当前时间
                 now += task.processingTime;
             }
             //当任务列表taskList中的全部任务已经入堆
