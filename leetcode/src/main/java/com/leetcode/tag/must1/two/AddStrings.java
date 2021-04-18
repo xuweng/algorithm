@@ -14,7 +14,7 @@ public class AddStrings {
             int i = num1.length() - 1, j = num2.length() - 1;
             int jin = 0;
             StringBuilder stringBuilder = new StringBuilder();
-            while (i < num1.length() || j < num2.length()) {
+            while (i >= 0 || j >= 0) {
                 int v1 = i >= 0 ? num1.charAt(i) - '0' : 0;
                 int v2 = j >= 0 ? num2.charAt(j) - '0' : 0;
                 int sum = v1 + v2 + jin;
