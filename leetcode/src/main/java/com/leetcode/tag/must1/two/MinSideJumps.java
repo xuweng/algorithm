@@ -35,7 +35,7 @@ public class MinSideJumps {
                 }
             }
 
-            return Math.min(dp[dp.length - 1][1], Math.min(dp[dp.length - 1][2], dp[dp.length - 1][3]) + 1);
+            return Math.min(dp[dp.length - 1][1], Math.min(dp[dp.length - 1][2], dp[dp.length - 1][3]));
         }
     }
 }
