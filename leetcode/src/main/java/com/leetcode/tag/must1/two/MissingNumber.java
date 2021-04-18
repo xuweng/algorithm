@@ -1,5 +1,6 @@
 package com.leetcode.tag.must1.two;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,6 +43,14 @@ public class MissingNumber {
             }
 
             return sum;
+        }
+    }
+
+    class Solution2 {
+        public int missingNumber(int[] nums) {
+            int sum = Arrays.stream(nums).sum();
+
+            return nums.length * (nums.length + 1) / 2 - sum;
         }
     }
 }
