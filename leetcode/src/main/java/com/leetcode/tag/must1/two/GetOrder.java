@@ -1,9 +1,6 @@
 package com.leetcode.tag.must1.two;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
 
 /**
  * 5736. 单线程 CPU
@@ -82,6 +79,52 @@ public class GetOrder {
                 ret[p++] = minHeap.poll().id;
             }
             return ret;
+        }
+    }
+
+    class Solution1 {
+        public int[] getOrder(int[][] tasks) {
+            // 用于记录 任务开始时间从大到小的数组
+            Integer[] arr = new Integer[tasks.length];
+            for (int i = 0; i < arr.length; i++) {
+                arr[i] = i;
+            }
+            //这边是对 arr 按照任务开始时间从大到小的排序
+            Arrays.sort(arr, Comparator.comparingInt(a -> tasks[a][0]));
+            PriorityQueue<Integer> queue = new PriorityQueue<>((a, b) -> {
+                if (tasks[a][1] > tasks[b][1]) {
+                    //任务时间长的 放后面
+                    return 1;
+                } else if (tasks[a][1] == tasks[b][1]) {
+                    //当任务时间相同时，按照序号大小排序
+                    return a - b;
+                }
+                return -1;
+            });   //定义一个优先队列
+            int j = 0;
+            int i = 0;
+            int[] ans = new int[tasks.length];
+            //定义一个时间线 （这边卡了很久。。）
+            int time = tasks[arr[0]][0];
+            while (queue.isEmpty() || i < tasks.length) {
+                if (queue.isEmpty()) {
+                    //比如 用例 [[7,10],[7,12],[7,5],[7,4],[7,2]] 。
+                    int k = tasks[arr[i]][0];
+                    while (i < tasks.length && tasks[arr[i]][0] == k) {
+                        queue.add(arr[i++]);
+                    }
+                } else {
+                    int index = queue.poll();
+                    //时间线 time 要加上 任务执行后 时间线 走到哪了
+                    time += tasks[index][1];
+                    ans[j++] = index;
+                    while (i < tasks.length && tasks[arr[i]][0] <= time) {
+                        //把开始时间 小于time的都加入到队列
+                        queue.add(arr[i++]);
+                    }
+                }
+            }
+            return ans;
         }
     }
 }
