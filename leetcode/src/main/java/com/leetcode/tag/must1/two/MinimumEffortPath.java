@@ -23,16 +23,16 @@ public class MinimumEffortPath {
                 for (int j = 0; j < col; j++) {
                     // 下一行
                     if (i + 1 < row) {
-                        int a = heights[i][j];
-                        int b = heights[i + 1][j];
+                        int a = getIndex(i, j);
+                        int b = getIndex(i + 1, j);
                         int w = Math.abs(heights[i][j] - heights[i + 1][j]);
 
                         list.add(new int[]{a, b, w});
                     }
                     // 下一列
                     if (j + 1 < col) {
-                        int a = heights[i][j];
-                        int b = heights[i][j + 1];
+                        int a = getIndex(i, j);
+                        int b = getIndex(i, j + 1);
                         int w = Math.abs(heights[i][j] - heights[i][j + 1]);
 
                         list.add(new int[]{a, b, w});
