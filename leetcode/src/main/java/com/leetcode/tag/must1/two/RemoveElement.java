@@ -21,4 +21,24 @@ public class RemoveElement {
             return i;
         }
     }
+
+    class Solution1 {
+        public int removeElement(int[] nums, int val) {
+            if (nums == null) {
+                return 0;
+            }
+            int left = 0;
+            int right = 0;
+            while (right < nums.length) {
+                // 用if判断
+                if (nums[right] != val) {
+                    // 复制
+                    nums[left++] = nums[right];
+                }
+                right++;
+            }
+
+            return left;
+        }
+    }
 }
