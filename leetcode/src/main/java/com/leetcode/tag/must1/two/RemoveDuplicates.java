@@ -21,4 +21,24 @@ public class RemoveDuplicates {
             return i + 1;
         }
     }
+
+    class Solution1 {
+        public int removeDuplicates(int[] nums) {
+            if (nums == null || nums.length == 0) {
+                return 0;
+            }
+            int i = 0, j = 0;
+            while (j < nums.length) {
+                // 用if判断
+                if (nums[i] != nums[j]) {
+                    // 复制
+                    nums[++i] = nums[j];
+                }
+                j++;
+            }
+
+            return i + 1;
+        }
+    }
+
 }
