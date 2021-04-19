@@ -43,6 +43,13 @@ public class CanIWin {
             return backtraceWitMemo(state, desiredTotal);
         }
 
+        /**
+         * 玩家不能重复使用整数 每个数只能使用1次
+         *
+         * @param state
+         * @param desiredTotal
+         * @return
+         */
         private boolean backtraceWitMemo(int[] state, int desiredTotal) {
             //这里比较关键，如何表示这个唯一的状态，例如[2,3]和[3,2]都是"0011"，状态一样
             String key = Arrays.toString(state);
