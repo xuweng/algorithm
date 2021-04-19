@@ -150,6 +150,7 @@ public class CanIWin {
 
         private boolean dfs(int maxChoosableInteger, int desiredTotal, boolean[] used) {
             if (desiredTotal <= 0) {
+                // Arrays---->String当作key
                 map.put(Arrays.toString(used), false);
                 return false;
             }
