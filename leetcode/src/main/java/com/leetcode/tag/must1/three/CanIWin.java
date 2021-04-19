@@ -2,6 +2,7 @@ package com.leetcode.tag.must1.three;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 464. 我能赢吗
@@ -11,6 +12,8 @@ public class CanIWin {
      * 如果存在A走一步之后, B无论怎么走能还是A能赢的情况，那么就说A能稳赢（而不是所有的情况下）
      */
     public class Solution {
+        Map<String, Boolean> meno = new HashMap<>();
+
         /**
          * 记忆化回溯（也称为递归+备忘录），自顶向下
          * 采用记忆化后的时间复杂度为O(2^n)(如果不进行记忆的话，时间复杂度将是O(n!))，可以理解为已经缩成了只有一个分支了
@@ -29,41 +32,43 @@ public class CanIWin {
             if (maxChoosableInteger >= desiredTotal) {
                 return true;
             }
-            if ((1 + maxChoosableInteger) * maxChoosableInteger / 2 < desiredTotal) {
+            int sum = (1 + maxChoosableInteger) * maxChoosableInteger / 2;
+            if (sum < desiredTotal) {
                 //1,..maxChoosable数列总和都比目标和小
                 return false;
             }
-            //state[1]=1表示1被选了
+            //state[i]=1表示i被选了
             int[] state = new int[maxChoosableInteger + 1];
 
-            return backtraceWitMemo(state, desiredTotal, new HashMap<>());
+            return backtraceWitMemo(state, desiredTotal);
         }
 
-        private boolean backtraceWitMemo(int[] state, int desiredTotal, HashMap<String, Boolean> map) {
+        private boolean backtraceWitMemo(int[] state, int desiredTotal) {
             //这里比较关键，如何表示这个唯一的状态，例如[2,3]和[3,2]都是"0011"，状态一样
             String key = Arrays.toString(state);
-            if (map.containsKey(key)) {
+            if (meno.containsKey(key)) {
                 //如果已经记忆了这样下去的输赢结果,记忆是为了防止如[2,3]，[3,2]之后的[1,4,5,..]这个选择区间被重复计算
-                return map.get(key);
+                return meno.get(key);
             }
 
             for (int i = 1; i < state.length; i++) {
-                //如果这个数字i还没有被选中
-                if (state[i] == 0) {
-                    state[i] = 1;
-                    //如果当前选了i已经赢了或者选了i还没赢但是后面对方选择输了
-                    if (desiredTotal - i <= 0 || !backtraceWitMemo(state, desiredTotal - i, map)) {
-                        map.put(key, true);
-                        //在返回之前回溯
-                        state[i] = 0;
-                        return true;
-                    }
-                    //如果不能赢也要记得回溯
-                    state[i] = 0;
+                if (state[i] == 1) {
+                    //这个数字i被选中
+                    continue;
                 }
+                state[i] = 1;
+                //如果当前选了i已经赢了或者选了i还没赢但是后面对方选择输了
+                if (desiredTotal - i <= 0 || !backtraceWitMemo(state, desiredTotal - i)) {
+                    meno.put(key, true);
+                    //在返回之前回溯
+                    state[i] = 0;
+                    return true;
+                }
+                //如果不能赢也要记得回溯
+                state[i] = 0;
             }
             //如果都赢不了
-            map.put(key, false);
+            meno.put(key, false);
             return false;
         }
     }
