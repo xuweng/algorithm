@@ -97,7 +97,7 @@ public class CanIWin {
             }
             int[] state = new int[maxChoosableInteger + 1];  //state[1]=1表示1被选了
 
-            return backtraceWitMemo(state, desiredTotal, new HashMap<String, Boolean>());
+            return backtraceWitMemo(state, desiredTotal, new HashMap<>());
         }
 
         private boolean backtraceWitMemo(int[] state, int desiredTotal, HashMap<String, Boolean> map) {
