@@ -14,11 +14,14 @@ public class FindClosestElements {
      */
     class Solution {
         public List<Integer> findClosestElements(int[] arr, int k, int x) {
+            // 可以将数组中的元素按照与目标 x 的差的绝对值排序
             List<Integer> ret = Arrays.stream(arr).boxed()
                     .sorted((a, b) -> a.equals(b) ? 0 : Math.abs(a - x) - Math.abs(b - x))
                     .collect(Collectors.toList());
 
+            // 排好序后前 k 个元素就是我们需要的答案
             ret = ret.subList(0, k);
+
             Collections.sort(ret);
             return ret;
         }
