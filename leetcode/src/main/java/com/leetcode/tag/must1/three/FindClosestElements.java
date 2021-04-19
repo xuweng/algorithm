@@ -1,5 +1,6 @@
 package com.leetcode.tag.must1.three;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -68,6 +69,38 @@ public class FindClosestElements {
                 }
             }
             return ret.subList(low, high + 1);
+        }
+    }
+
+    /**
+     * 方法一：排除法（双指针）
+     * <p>
+     * 回溯 回溯 回溯 回溯
+     */
+    public class Solution2 {
+        public List<Integer> findClosestElements(int[] arr, int k, int x) {
+            int size = arr.length;
+
+            int left = 0;
+            int right = size - 1;
+
+            // 一个一个删，因为是有序数组，且返回的是连续升序子数组，所以 每一次删除的元素一定位于边界
+            // 删除元素的个数
+            int removeNums = size - k;
+            while (removeNums > 0) {
+                if (x - arr[left] <= arr[right] - x) {
+                    right--;
+                } else {
+                    left++;
+                }
+                removeNums--;
+            }
+
+            List<Integer> res = new ArrayList<>();
+            for (int i = left; i < left + k; i++) {
+                res.add(arr[i]);
+            }
+            return res;
         }
     }
 }
