@@ -124,4 +124,46 @@ public class CanIWin {
             return false;
         }
     }
+
+    class Solution2 {
+        Map<String, Boolean> map;
+
+        public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
+            map = new HashMap<>();
+            if (maxChoosableInteger >= desiredTotal) {
+                return true;
+            }
+            if (maxChoosableInteger * (maxChoosableInteger + 1) / 2 < desiredTotal) {
+                return false;
+            }
+            boolean[] used = new boolean[maxChoosableInteger + 1];
+
+            return dfs(maxChoosableInteger, desiredTotal, used);
+        }
+
+        private boolean dfs(int maxChoosableInteger, int desiredTotal, boolean[] used) {
+            if (desiredTotal <= 0) {
+                map.put(Arrays.toString(used), false);
+                return false;
+            }
+            if (map.containsKey(Arrays.toString(used))) {
+                return map.get(Arrays.toString(used));
+            }
+            for (int i = 1; i <= maxChoosableInteger; i++) {
+                if (used[i]) {
+                    continue;
+                }
+                used[i] = true;
+                boolean another = dfs(maxChoosableInteger, desiredTotal - i, used);
+                used[i] = false;
+                if (!another) {
+                    // 后手没有赢
+                    map.put(Arrays.toString(used), true);
+                    return true;
+                }
+            }
+            map.put(Arrays.toString(used), false);
+            return false;
+        }
+    }
 }
