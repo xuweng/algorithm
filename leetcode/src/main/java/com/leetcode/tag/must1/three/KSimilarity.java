@@ -33,19 +33,19 @@ public class KSimilarity {
                 int i = index + 1;
                 while (i < chars1.length) {
                     if (chars1[i] == chars[index]) {
-                        swap(chars, chars1, index, i);
+                        swap(chars1, index, i);
                         dfs(chars, chars1, index + 1, count + 1);
-                        swap(chars, chars1, index, i);
+                        swap(chars1, index, i);
                     }
                     i++;
                 }
             }
         }
 
-        void swap(char[] chars, char[] chars1, int i, int j) {
+        void swap(char[] chars, int i, int j) {
             char temp = chars[i];
-            chars[i] = chars1[j];
-            chars1[j] = temp;
+            chars[i] = chars[j];
+            chars[j] = temp;
         }
     }
 }
