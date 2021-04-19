@@ -49,13 +49,19 @@ public class FindClosestElements {
             if (index < 0) {
                 index = -index - 1;
             }
+            // low 等于 index 左边 k-1 个位置的索引
             int low = Math.max(0, index - k - 1);
+            // high 等于 index 右边 k-1 个位置的索引
             int high = Math.min(ret.size() - 1, index + k - 1);
 
+            // 需要的 k 个数字肯定在范围 [index-k-1, index+k-1] 里面
+            // 当且仅当 [low, high] 之间恰好有 k 个元素，循环终止
             while (high - low > k - 1) {
                 if ((x - ret.get(low)) <= (ret.get(high) - x)) {
+                    // 如果 low 小于 0 或者 low 对应的元素比 high 对应的元素更接近 x ，那么减小 high 索引
                     high--;
                 } else if ((x - ret.get(low)) > (ret.get(high) - x)) {
+                    // 如果 high 大于最后一个元素的索引 arr.size()-1 或者它比起 low 对应的元素更接近 x ，那么增加 low 索引
                     low++;
                 } else {
                     System.out.println("unhandled case: " + low + " " + high);
