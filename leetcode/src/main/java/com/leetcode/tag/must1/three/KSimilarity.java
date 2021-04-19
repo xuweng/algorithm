@@ -37,6 +37,7 @@ public class KSimilarity {
                         dfs(chars, chars1, index + 1, count + 1);
                         swap(chars, chars1, index, i);
                     }
+                    i++;
                 }
             }
         }
