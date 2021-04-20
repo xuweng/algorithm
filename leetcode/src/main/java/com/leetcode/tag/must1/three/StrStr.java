@@ -27,7 +27,7 @@ public class StrStr {
         }
 
         private int[] getNext(String needle) {
-            // 前i 最大前后缀
+            // 前i 最大前后缀的长度
             int[] next = new int[needle.length()];
             int j = 0;
             for (int i = 1; i < needle.length(); i++) {
