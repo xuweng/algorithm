@@ -48,7 +48,7 @@ public class GenerateMatrix {
                 for (int i = l; i <= r; i++) {
                     mat[t][i] = num++;
                 }
-                // 上边界--
+                // 上边界++
                 t++;
                 // 上到下
                 // top to bottom.

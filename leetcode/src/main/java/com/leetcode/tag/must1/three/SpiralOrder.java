@@ -43,14 +43,14 @@ public class SpiralOrder {
                 // 右边界--
                 right--;
                 // 右到左
-                for (int i = right; i <= left; i++) {
+                for (int i = right; i >= left; i--) {
                     list.add(matrix[bo][i]);
                     start++;
                 }
                 // 下边界--
                 bo--;
                 // 下到上
-                for (int i = bo; i <= top; i++) {
+                for (int i = bo; i >= top; i--) {
                     list.add(matrix[i][left]);
                     start++;
                 }
