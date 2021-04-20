@@ -35,7 +35,7 @@ public class SolveNQueens {
             if (i == n) {
                 List<String> list = new ArrayList<>();
                 for (char[] aChar : chars) {
-                    list.add(Arrays.toString(aChar));
+                    list.add(new String(aChar));
                 }
                 result.add(list);
                 return;
