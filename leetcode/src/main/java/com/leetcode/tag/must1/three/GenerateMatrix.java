@@ -69,7 +69,7 @@ public class GenerateMatrix {
                 for (int i = b; i >= t; i--) {
                     mat[i][l] = num++;
                 }
-                // 左边界--
+                // 左边界++
                 l++;
             }
             return mat;
