@@ -9,12 +9,13 @@ public class MySqrt {
             if (x < 0) {
                 return 1 / mySqrt(-x);
             }
-            int left = 0;
-            int right = x;
+            // 大数溢出
+            long left = 0;
+            long right = x;
             while (left <= right) {
-                int mid = left + (right - left) / 2;
+                long mid = left + (right - left) / 2;
                 if (x == mid * mid) {
-                    return mid;
+                    return (int) mid;
                 }
                 if (x > mid * mid) {
                     left = mid + 1;
@@ -23,7 +24,7 @@ public class MySqrt {
                 }
             }
 
-            return right;
+            return (int) right;
         }
     }
 }
