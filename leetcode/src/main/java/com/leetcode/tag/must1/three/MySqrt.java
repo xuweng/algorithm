@@ -31,12 +31,12 @@ public class MySqrt {
 
     class Solution1 {
         public int mySqrt(int x) {
-            int left = 0;
-            int right = x;
+            long left = 0;
+            long right = x;
             while (left <= right) {
-                int mid = left + (right - left) / 2;
+                long mid = left + (right - left) / 2;
                 if (x == mid * mid) {
-                    return mid;
+                    return (int) mid;
                 }
                 if (x > mid * mid) {
                     left = mid + 1;
@@ -45,7 +45,7 @@ public class MySqrt {
                 }
             }
 
-            return right;
+            return (int) right;
         }
     }
 }
