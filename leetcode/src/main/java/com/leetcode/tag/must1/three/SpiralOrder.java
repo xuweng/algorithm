@@ -29,28 +29,28 @@ public class SpiralOrder {
             int end = m * n;
             while (start <= end) {
                 // 左到右
-                for (int i = left; i <= right; i++) {
+                for (int i = left; i <= right && start <= end; i++) {
                     list.add(matrix[top][i]);
                     start++;
                 }
                 // 上边界++
                 top++;
                 // 上到下
-                for (int i = top; i <= bo; i++) {
+                for (int i = top; i <= bo && start <= end; i++) {
                     list.add(matrix[i][right]);
                     start++;
                 }
                 // 右边界--
                 right--;
                 // 右到左
-                for (int i = right; i >= left; i--) {
+                for (int i = right; i >= left && start <= end; i--) {
                     list.add(matrix[bo][i]);
                     start++;
                 }
                 // 下边界--
                 bo--;
                 // 下到上
-                for (int i = bo; i >= top; i--) {
+                for (int i = bo; i >= top && start <= end; i--) {
                     list.add(matrix[i][left]);
                     start++;
                 }
