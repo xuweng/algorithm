@@ -18,6 +18,7 @@ public class MySqrt {
                     return (int) mid;
                 }
                 if (x > mid * mid) {
+                    // left可能=mid left一般要改变
                     left = mid + 1;
                 } else {
                     right = mid - 1;
