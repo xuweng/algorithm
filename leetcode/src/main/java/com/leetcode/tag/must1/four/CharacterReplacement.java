@@ -20,6 +20,7 @@ public class CharacterReplacement {
                     left++;
                 }
                 result = Math.max(result, right - left + 1);
+                right++;
             }
 
             return result;
