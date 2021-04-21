@@ -24,8 +24,11 @@ public class NumDecodings {
 
     class Solution1 {
         public int numDecodings(String s) {
+            // f(i-2)
             int a = 0;
+            // f(i-1) 初始化
             int b = 1;
+            // f(i)
             int cur = 0;
 
             for (int i = 1; i <= s.length(); i++) {
@@ -36,6 +39,8 @@ public class NumDecodings {
                 if (i >= 2 && s.charAt(i - 2) != '0' && ((s.charAt(i - 2) - '0') * 10 + s.charAt(i - 1) - '0' <= 26)) {
                     cur += a;
                 }
+                a = b;
+                b = cur;
             }
 
             return cur;
