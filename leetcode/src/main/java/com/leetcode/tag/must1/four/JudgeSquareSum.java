@@ -6,7 +6,7 @@ package com.leetcode.tag.must1.four;
 public class JudgeSquareSum {
     class Solution {
         public boolean judgeSquareSum(int c) {
-            int left = 1;
+            int left = 0;
             int right = (int) Math.sqrt(c);
 
             while (left <= right) {
