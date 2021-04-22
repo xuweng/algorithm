@@ -21,6 +21,25 @@ public class GetKthFromEnd {
         }
     }
 
+    class Solution1 {
+        public ListNode getKthFromEnd(ListNode head, int k) {
+            ListNode former = head, latter = head;
+            // 移动k步
+            for (int i = 0; i < k; i++) {
+                if (former == null) {
+                    return null;
+                }
+                former = former.next;
+            }
+            // 一起移动
+            while (former != null) {
+                former = former.next;
+                latter = latter.next;
+            }
+            return latter;
+        }
+    }
+
     class ListNode {
         int val;
         ListNode next;
