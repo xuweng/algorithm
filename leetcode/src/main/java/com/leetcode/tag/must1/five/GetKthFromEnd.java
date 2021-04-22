@@ -12,7 +12,7 @@ public class GetKthFromEnd {
                 count++;
                 p = p.next;
             }
-            while (p != null) {
+            while (p != null && p.next != null) {
                 p = p.next;
                 head = head.next;
             }
