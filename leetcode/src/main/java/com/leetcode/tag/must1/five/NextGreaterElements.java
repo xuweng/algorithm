@@ -12,7 +12,7 @@ public class NextGreaterElements {
             Deque<Integer> deque = new LinkedList<>();
             int[] result = new int[nums.length];
 
-            for (int i = nums.length - 1; i >= 0; i--) {
+            for (int i = 2 * nums.length - 1; i >= 0; i--) {
                 int index = i % nums.length;
                 while (!deque.isEmpty() && deque.peekLast() <= nums[index]) {
                     deque.pollLast();
