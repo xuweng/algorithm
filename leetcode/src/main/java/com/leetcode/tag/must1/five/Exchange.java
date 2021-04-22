@@ -16,10 +16,13 @@ public class Exchange {
                 while (left < nums.length && nums[left] % 2 != 0) {
                     left++;
                 }
+                if (left == nums.length - 1) {
+                    break;
+                }
                 while (right >= 0 && nums[right] % 2 == 0) {
                     right--;
                 }
-                if (left == nums.length || right < 0 || left == right) {
+                if (right < 0 || left == right) {
                     break;
                 }
                 int temp = nums[left];
