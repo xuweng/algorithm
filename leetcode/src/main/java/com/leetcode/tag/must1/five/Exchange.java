@@ -19,11 +19,13 @@ public class Exchange {
                 while (right >= 0 && nums[right] % 2 == 0) {
                     right--;
                 }
-                if (left < nums.length && right >= 0 && left != right) {
-                    int temp = nums[left];
-                    nums[left] = nums[right];
-                    nums[right] = temp;
+                if (left == nums.length || right < 0 || left == right) {
+                    break;
                 }
+                int temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+
                 left++;
                 right--;
             }
