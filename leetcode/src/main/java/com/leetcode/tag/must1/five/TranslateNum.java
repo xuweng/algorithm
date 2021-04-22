@@ -20,4 +20,24 @@ public class TranslateNum {
             return dp[s.length()];
         }
     }
+
+    class Solution1 {
+        public int translateNum(int num) {
+            String s = String.valueOf(num);
+            int a = 0;
+            int b = 1;
+            int cur = 0;
+
+            for (int i = 1; i <= s.length(); i++) {
+                cur = b;
+                if (i >= 2 && s.charAt(i - 2) != '0' && ((s.charAt(i - 2) - '0') * 10 + s.charAt(i - 1) - '0' <= 25)) {
+                    cur += a;
+                }
+                a = b;
+                b = cur;
+            }
+
+            return cur;
+        }
+    }
 }
