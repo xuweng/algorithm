@@ -16,23 +16,38 @@ public class Exchange {
                 while (left < nums.length && nums[left] % 2 != 0) {
                     left++;
                 }
-                if (left == nums.length - 1) {
-                    break;
-                }
                 while (right >= 0 && nums[right] % 2 == 0) {
                     right--;
                 }
-                if (right < 0 || left == right) {
-                    break;
+                if (left < right) {
+                    int temp = nums[left];
+                    nums[left] = nums[right];
+                    nums[right] = temp;
                 }
-                int temp = nums[left];
-                nums[left] = nums[right];
-                nums[right] = temp;
-
-                left++;
-                right--;
             }
 
+            return nums;
+        }
+    }
+
+    class Solution1 {
+        //首尾双指针
+        public int[] exchange(int[] nums) {
+            int i = 0;
+            int j = nums.length - 1;
+            while (i < j) {
+                while ((nums[i] & 1) == 1 && i < j) {
+                    i++;
+                }
+                while ((nums[j] & 1) == 0 && j > 0) {
+                    j--;
+                }
+                if (i < j) {
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
+                }
+            }
             return nums;
         }
     }
