@@ -17,6 +17,7 @@ public class LongestOnes {
                     sum -= nums[left++];
                 }
                 result = Math.max(result, right - left + 1);
+                right++;
             }
 
             return result;
