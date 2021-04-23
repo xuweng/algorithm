@@ -29,6 +29,7 @@ public class MinStack {
 
     public void pop() {
         deque.pop();
+        min.pop();
     }
 
     public int top() {
