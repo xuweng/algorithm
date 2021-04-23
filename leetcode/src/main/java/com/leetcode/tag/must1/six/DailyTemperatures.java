@@ -15,7 +15,7 @@ public class DailyTemperatures {
                 while (!deque.isEmpty() && T[deque.peekLast()] <= T[i]) {
                     deque.pollLast();
                 }
-                result[i] = deque.isEmpty() ? 0 : T[deque.peekLast()];
+                result[i] = deque.isEmpty() ? 0 : deque.peekLast() - i;
                 deque.offerLast(i);
             }
 
