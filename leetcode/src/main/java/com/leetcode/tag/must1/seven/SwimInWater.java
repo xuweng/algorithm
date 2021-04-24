@@ -43,17 +43,15 @@ public class SwimInWater {
             int end = getIndex(row - 1, col - 1);
 
             UF uf = new UF(row * col);
-            int result = 0;
             for (int[] ints : list) {
                 int a = ints[0], b = ints[1], w = ints[2];
                 uf.union(a, b);
-                result += w;
                 if (uf.isConnect(start, end)) {
-                    return result;
+                    return w;
                 }
             }
 
-            return result;
+            return 0;
         }
 
         private int getIndex(int i, int j) {
