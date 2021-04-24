@@ -36,9 +36,9 @@ public class MedianFinder1 {
 
     public double findMedian() {
         if (count % 2 == 0) {
-            return (maxheap.peek() + minheap.peek()) / 2;
+            return (double) (maxheap.peek() + minheap.peek()) / 2;
         }
 
-        return maxheap.peek();
+        return (double) maxheap.peek();
     }
 }
