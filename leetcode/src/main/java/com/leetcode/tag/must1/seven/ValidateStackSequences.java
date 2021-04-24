@@ -36,7 +36,7 @@ public class ValidateStackSequences {
                 }
             }
 
-            return j == N;
+            return stack.isEmpty();
         }
     }
 }
