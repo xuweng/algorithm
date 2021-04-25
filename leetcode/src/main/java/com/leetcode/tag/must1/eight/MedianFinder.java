@@ -27,6 +27,8 @@ public class MedianFinder {
     }
 
     public void addNum(int num) {
+        count++;
+
         maxheap.offer(num);
         minheap.offer(maxheap.poll());
 
