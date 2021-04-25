@@ -11,7 +11,7 @@ public class IncreasingBST {
             if (root == null) {
                 return null;
             }
-            TreeNode result = findMin(root.left);
+            TreeNode result = findMin(root);
             dfs(root);
 
             return result;
