@@ -11,7 +11,7 @@ public class ValidateStackSequences {
         public boolean validateStackSequences(int[] pushed, int[] popped) {
             Deque<Integer> deque = new LinkedList<>();
             int i = 0;
-            for (int p : popped) {
+            for (int p : pushed) {
                 deque.push(p);
                 while (!deque.isEmpty() && deque.peek() == popped[i]) {
                     deque.pop();
