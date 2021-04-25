@@ -67,7 +67,9 @@ public class IncreasingBST {
         private TreeNode resNode;
 
         public TreeNode increasingBST(TreeNode root) {
+            // 亚结点
             TreeNode dummyNode = new TreeNode(-1);
+            // 亚结点开始遍历
             resNode = dummyNode;
 
             inorder(root);
