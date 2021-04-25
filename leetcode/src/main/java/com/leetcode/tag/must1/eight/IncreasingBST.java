@@ -5,20 +5,55 @@ package com.leetcode.tag.must1.eight;
  */
 public class IncreasingBST {
     class Solution {
+        TreeNode pre;
+
         public TreeNode increasingBST(TreeNode root) {
             if (root == null) {
                 return null;
             }
-            TreeNode left = increasingBST(root.left);
-            if (left == null) {
-                return increasingBST(root.right);
+            TreeNode result = findMin(root.left);
+            dfs(root);
+
+            return result;
+        }
+
+        void dfs(TreeNode root) {
+            if (root == null) {
+                return;
             }
-            TreeNode right = increasingBST(root.right);
+            dfs(root.left);
+            if (pre != null) {
+                pre.right = root;
+                root.left = null;
+            }
+            pre = root;
 
-            left.right = root;
-            root.right = right;
+            dfs(root.right);
+        }
 
-            return left;
+        TreeNode findMax(TreeNode root) {
+            if (root == null) {
+                return null;
+            }
+            TreeNode node = root;
+            while (node.right != null) {
+                node = node.right;
+            }
+
+            return node;
+        }
+
+
+        TreeNode findMin(TreeNode root) {
+            if (root == null) {
+                return null;
+            }
+            TreeNode node = root;
+            while (node.left != null) {
+                node = node.left;
+            }
+
+            return node;
         }
     }
 
