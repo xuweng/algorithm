@@ -18,7 +18,7 @@ public class FindDisappearedNumbers {
             List<Integer> result = new ArrayList<>();
             for (int i = 0; i < nums.length; i++) {
                 if (nums[i] != i + 1) {
-                    result.add(nums[i]);
+                    result.add(i + 1);
                 }
             }
 
