@@ -8,6 +8,8 @@ import java.util.Arrays;
  * 只有正数
  * <p>
  * 有负数
+ * <p>
+ * 如果方块中存在负权，如何求解？
  */
 public class MinPathSum {
     class Solution {
