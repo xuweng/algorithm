@@ -1,5 +1,7 @@
 package com.leetcode.tag.must1.nine;
 
+import java.util.Arrays;
+
 /**
  * 64. 最小路径和
  * <p>
@@ -37,7 +39,9 @@ public class MinPathSum {
             int n = grid[0].length;
 
             int[] dp = new int[n];
+            Arrays.fill(dp, Integer.MAX_VALUE);
             dp[0] = grid[0][0];
+
             for (int[] ints : grid) {
                 for (int j = 0; j < n; j++) {
                     if (j == 0) {
