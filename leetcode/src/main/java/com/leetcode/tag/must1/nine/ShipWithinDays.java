@@ -34,6 +34,8 @@ public class ShipWithinDays {
                     cur += weight;
                 }
                 if (need <= D) {
+                    // 最低运载能力
+                    // 满足条件 继续缩小right
                     // right=mid
                     right = mid;
                 } else {
