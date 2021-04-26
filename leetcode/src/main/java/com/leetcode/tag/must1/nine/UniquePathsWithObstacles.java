@@ -68,6 +68,7 @@ public class UniquePathsWithObstacles {
             int n = obstacleGrid[0].length;
 
             int[] dp = new int[n];
+            dp[0] = obstacleGrid[0][0] == 0 ? 1 : 0;
             for (int[] ints : obstacleGrid) {
                 for (int j = 0; j < n; j++) {
                     if (ints[j] == 1) {
