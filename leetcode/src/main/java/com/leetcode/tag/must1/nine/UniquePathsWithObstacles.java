@@ -75,7 +75,7 @@ public class UniquePathsWithObstacles {
                         dp[j] = 0;
                         continue;
                     }
-                    if (j > 0 && ints[j - 1] == 0) {
+                    if (j > 0) {
                         dp[j] += dp[j - 1];
                     }
                 }
