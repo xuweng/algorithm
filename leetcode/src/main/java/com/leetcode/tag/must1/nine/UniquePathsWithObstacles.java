@@ -49,7 +49,9 @@ public class UniquePathsWithObstacles {
                         dp[j] = 0;
                         continue;
                     }
-                    dp[j] = dp[j - 1] + dp[j];
+                    if (obstacleGrid[i][j - 1] == 0) {
+                        dp[j] += dp[j - 1];
+                    }
                 }
             }
 
