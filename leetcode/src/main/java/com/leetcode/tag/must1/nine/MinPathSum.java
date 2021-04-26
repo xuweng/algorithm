@@ -49,6 +49,7 @@ public class MinPathSum {
                     if (j == 0) {
                         dp[j] += +ints[j];
                     } else {
+                        // j-1代表本层左一个
                         dp[j] = Math.min(dp[j - 1], dp[j]) + ints[j];
                     }
                 }

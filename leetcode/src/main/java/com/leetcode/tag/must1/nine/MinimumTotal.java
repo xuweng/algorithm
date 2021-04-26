@@ -40,6 +40,7 @@ public class MinimumTotal {
                 List<Integer> list = triangle.get(i);
                 for (int j = list.size() - 1; j >= 0; j--) {
                     if (j > 0 && j < list.size() - 1) {
+                        // j-1代表上一层左一个
                         dp[j] = Math.min(dp[j], dp[j - 1]) + list.get(j);
                     } else if (j > 0) {
                         dp[j] = dp[j - 1] + list.get(j);
