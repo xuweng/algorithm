@@ -36,6 +36,7 @@ public class UniquePathsWithObstacles {
             int n = obstacleGrid[0].length;
 
             int[] dp = new int[n];
+            // 初始化0行
             for (int i = 0; i < n; i++) {
                 if (obstacleGrid[0][i] == 1) {
                     continue;
