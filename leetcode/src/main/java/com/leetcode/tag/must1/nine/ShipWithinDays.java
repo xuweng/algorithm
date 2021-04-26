@@ -21,8 +21,9 @@ public class ShipWithinDays {
             while (left < right) {
                 int mid = (left + right) / 2;
                 // need 为需要运送的天数
+                int need = 1;
                 // cur 为当前这一天已经运送的包裹重量之和
-                int need = 1, cur = 0;
+                int cur = 0;
                 for (int weight : weights) {
                     if (cur + weight > mid) {
                         ++need;
