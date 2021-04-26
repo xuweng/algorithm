@@ -46,4 +46,41 @@ public class ShipWithinDays {
             return left;
         }
     }
+
+    /**
+     * 下标二分
+     * <p>
+     * 数据范围二分
+     */
+    class Solution1 {
+        public int shipWithinDays(int[] weights, int D) {
+            int left = Arrays.stream(weights).max().getAsInt();
+            int right = Arrays.stream(weights).sum();
+
+            while (left < right) {
+                int mid = left + (right - left) / 2;
+                // 天数
+                int tian = 1;
+                int sum = 0;
+
+                for (int weight : weights) {
+                    if (sum + weight > mid) {
+                        // 下一天
+                        tian++;
+                        sum = 0;
+                    }
+                    sum += weight;
+                }
+                if (tian <= D) {
+                    // 满足条件
+                    // 缩小范围
+                    right = mid;
+                } else {
+                    left = mid + 1;
+                }
+            }
+
+            return left;
+        }
+    }
 }
