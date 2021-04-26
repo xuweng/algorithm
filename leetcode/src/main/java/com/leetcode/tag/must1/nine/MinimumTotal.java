@@ -34,8 +34,6 @@ public class MinimumTotal {
         public int minimumTotal(List<List<Integer>> triangle) {
             int m = triangle.size();
             int[] dp = new int[m];
-            // 没有初始化0行 初始化最大值
-            Arrays.fill(dp, Integer.MAX_VALUE);
             dp[0] = triangle.get(0).get(0);
 
             for (int i = 1; i < triangle.size(); i++) {
