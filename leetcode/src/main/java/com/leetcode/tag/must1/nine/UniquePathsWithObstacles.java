@@ -45,6 +45,7 @@ public class UniquePathsWithObstacles {
             for (int i = 1; i < m; i++) {
                 for (int j = 1; j < n; j++) {
                     if (obstacleGrid[i][j] == 1) {
+                        dp[j] = 0;
                         continue;
                     }
                     dp[j] = dp[j - 1] + dp[j];
