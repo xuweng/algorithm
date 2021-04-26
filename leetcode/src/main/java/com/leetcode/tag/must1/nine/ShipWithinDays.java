@@ -34,11 +34,13 @@ public class ShipWithinDays {
                     cur += weight;
                 }
                 if (need <= D) {
+                    // right=mid
                     right = mid;
                 } else {
                     left = mid + 1;
                 }
             }
+            // 最低运载能力
             return left;
         }
     }
