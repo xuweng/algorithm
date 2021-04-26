@@ -38,7 +38,7 @@ public class MinimumTotal {
 
             for (int i = 1; i < triangle.size(); i++) {
                 List<Integer> list = triangle.get(i);
-                for (int j = 0; j < list.size(); j++) {
+                for (int j = list.size() - 1; j >= 0; j--) {
                     if (j > 0 && j < list.size() - 1) {
                         dp[j] = Math.min(dp[j], dp[j - 1]) + list.get(j);
                     } else if (j > 0) {
