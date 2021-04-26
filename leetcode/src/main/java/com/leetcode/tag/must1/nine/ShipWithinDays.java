@@ -24,8 +24,10 @@ public class ShipWithinDays {
                 int need = 1;
                 // cur 为当前这一天已经运送的包裹重量之和
                 int cur = 0;
+                // 将连续的包裹都安排在同一天进行运送
                 for (int weight : weights) {
                     if (cur + weight > mid) {
+                        // 当这批包裹的重量大于运载能力 mid 时，我们就需要将最后一个包裹拿出来，安排在新的一天
                         ++need;
                         cur = 0;
                     }
