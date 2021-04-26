@@ -40,7 +40,7 @@ public class MinPathSum {
 
             int[] dp = new int[n];
             Arrays.fill(dp, Integer.MAX_VALUE);
-            dp[0] = grid[0][0];
+            dp[0] = 0;
 
             for (int[] ints : grid) {
                 for (int j = 0; j < n; j++) {
