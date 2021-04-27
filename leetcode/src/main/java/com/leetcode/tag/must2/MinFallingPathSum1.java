@@ -46,8 +46,8 @@ public class MinFallingPathSum1 {
                         dp[i][j] = arr[i][j];
                         if (j > 1) {
                             if (dp[i][index1] > dp[i][j]) {
-                                index1 = j;
                                 index2 = index1;
+                                index1 = j;
                             } else if (dp[i][index2] > dp[i][j]) {
                                 index2 = j;
                             }
@@ -61,8 +61,8 @@ public class MinFallingPathSum1 {
                     }
                     if (j > 1) {
                         if (dp[i][index1] > dp[i][j]) {
-                            index1 = j;
                             index2 = index1;
+                            index1 = j;
                         } else if (dp[i][index2] > dp[i][j]) {
                             index2 = j;
                         }
