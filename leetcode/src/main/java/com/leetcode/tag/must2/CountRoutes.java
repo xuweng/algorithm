@@ -19,7 +19,7 @@ public class CountRoutes {
                 Arrays.fill(ints, -1);
             }
 
-            return dfs(locations, start, finish, fuel);
+           return dfs(locations, start, finish, fuel);
         }
 
         private int dfs(int[] locations, int start, int finish, int fuel) {
@@ -27,6 +27,7 @@ public class CountRoutes {
                 return meno[start][finish];
             }
             if (start == finish && fuel >= 0) {
+                meno[start][finish] = 1;
                 return 1;
             }
             int need = Math.abs(locations[start] - locations[finish]);
