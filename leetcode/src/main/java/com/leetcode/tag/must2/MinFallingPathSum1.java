@@ -74,6 +74,60 @@ public class MinFallingPathSum1 {
         }
     }
 
+    /**
+     * 错误
+     */
+    class Solution2 {
+        public int minFallingPathSum(int[][] arr) {
+            int m = arr.length;
+            int[][] dp = new int[m][m];
+
+            // 最小值列
+            int index1 = 0;
+            // 次小值列
+            int index2 = 1;
+
+            for (int i = 0; i < m; i++) {
+                // 记录上一层
+                int i1 = index1;
+                int i2 = index2;
+                // 计算本层
+                index1 = 0;
+                index2 = 1;
+
+                for (int j = 0; j < m; j++) {
+                    if (i == 0) {
+                        dp[i][j] = arr[i][j];
+                        if (j > 1) {
+                            if (dp[i][index1] > dp[i][j]) {
+                                index2 = index1;
+                                index1 = j;
+                            } else if (dp[i][index2] > dp[i][j]) {
+                                index2 = j;
+                            }
+                        }
+                        continue;
+                    }
+                    if (j == i1) {
+                        dp[i][j] = dp[i - 1][i2] + arr[i][j];
+                    } else {
+                        dp[i][j] = dp[i - 1][i1] + arr[i][j];
+                    }
+                    if (j > 1) {
+                        if (dp[i][index1] > dp[i][j]) {
+                            index2 = index1;
+                            index1 = j;
+                        } else if (dp[i][index2] > dp[i][j]) {
+                            index2 = j;
+                        }
+                    }
+                }
+            }
+
+            return Arrays.stream(dp[m - 1]).min().getAsInt();
+        }
+    }
+
     class Solution1 {
         public int minFallingPathSum(int[][] arr) {
             int m = arr.length;
