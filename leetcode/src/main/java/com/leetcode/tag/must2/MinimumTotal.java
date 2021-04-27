@@ -16,7 +16,7 @@ public class MinimumTotal {
                 }
             }
 
-            return dp[1];
+            return dp[0];
         }
     }
 }
