@@ -148,4 +148,41 @@ public class CountRoutes {
             return f[pos][rest];
         }
     }
+
+    class Solution5 {
+        int mod = 1000000007;
+
+        public int countRoutes(int[] ls, int start, int end, int fuel) {
+            int n = ls.length;
+
+            // f[i][j] 代表从位置 i 出发，当前油量为 j 时，到达目的地的路径数
+            int[][] f = new int[n][fuel + 1];
+
+            // 对于本身位置就在目的地的状态，路径数为 1
+            for (int i = 0; i <= fuel; i++) {
+                f[end][i] = 1;
+            }
+
+            // 从状态转移方程可以发现 f[i][fuel]=f[i][fuel]+f[k][fuel-need]
+            // 在计算 f[i][fuel] 的时候依赖于 f[k][fuel-need]
+            // 其中 i 和 k 并无严格的大小关系
+            // 而 fuel 和 fuel-need 具有严格大小关系：fuel >= fuel-need
+            // 因此需要先从小到大枚举油量
+            for (int cur = 0; cur <= fuel; cur++) {
+                for (int i = 0; i < n; i++) {
+                    for (int k = 0; k < n; k++) {
+                        if (i == k) {
+                            continue;
+                        }
+                        int need = Math.abs(ls[i] - ls[k]);
+                        if (cur >= need) {
+                            f[i][cur] += f[k][cur - need];
+                            f[i][cur] %= mod;
+                        }
+                    }
+                }
+            }
+            return f[start][fuel];
+        }
+    }
 }
