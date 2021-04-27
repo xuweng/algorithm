@@ -6,11 +6,15 @@ import java.util.Arrays;
  * 1289. 下降路径最小和  II
  */
 public class MinFallingPathSum1 {
+    /**
+     * arr.length == arr[i].length
+     * <p>
+     * 正方形
+     */
     class Solution {
         public int minFallingPathSum(int[][] arr) {
             int m = arr.length;
-            int n = arr[0].length;
-            int[][] dp = new int[m][n];
+            int[][] dp = new int[m][m];
 
             // 最小值列
             int index1;
@@ -37,7 +41,7 @@ public class MinFallingPathSum1 {
                     index2 = 0;
                 }
 
-                for (int j = 0; j < n; j++) {
+                for (int j = 0; j < m; j++) {
                     if (i == 0) {
                         dp[i][j] = arr[i][j];
                         if (j > 1) {
