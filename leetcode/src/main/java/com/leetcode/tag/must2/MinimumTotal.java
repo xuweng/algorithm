@@ -12,7 +12,7 @@ public class MinimumTotal {
             int[] dp = new int[m + 1];
             for (int i = m; i >= 1; i--) {
                 for (int j = 0; j < i; j++) {
-                    dp[i] = Math.min(dp[i], dp[j + 1]) + triangle.get(i - 1).get(j);
+                    dp[j] = Math.min(dp[j], dp[j + 1]) + triangle.get(i - 1).get(j);
                 }
             }
 
