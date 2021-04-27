@@ -19,7 +19,7 @@ public class CountRoutes {
                 Arrays.fill(ints, -1);
             }
 
-           return dfs(locations, start, finish, fuel);
+            return dfs(locations, start, finish, fuel);
         }
 
         private int dfs(int[] locations, int start, int finish, int fuel) {
@@ -106,6 +106,46 @@ public class CountRoutes {
             }
             cache[u][fuel] = sum;
             return sum;
+        }
+    }
+
+    class Solution3 {
+        static final int MOD = 1000000007;
+        int[][] f;
+
+        public int countRoutes(int[] locations, int start, int finish, int fuel) {
+            f = new int[locations.length][fuel + 1];
+            for (int[] row : f) {
+                Arrays.fill(row, -1);
+            }
+            return dfs(locations, start, finish, fuel);
+        }
+
+        public int dfs(int[] locations, int pos, int finish, int rest) {
+            if (f[pos][rest] != -1) {
+                return f[pos][rest];
+            }
+
+            f[pos][rest] = 0;
+            if (Math.abs(locations[pos] - locations[finish]) > rest) {
+                return 0;
+            }
+
+            int n = locations.length;
+            for (int i = 0; i < n; ++i) {
+                if (pos != i) {
+                    int cost;
+                    if ((cost = Math.abs(locations[pos] - locations[i])) <= rest) {
+                        f[pos][rest] += dfs(locations, i, finish, rest - cost);
+                        f[pos][rest] %= MOD;
+                    }
+                }
+            }
+            if (pos == finish) {
+                f[pos][rest] += 1;
+                f[pos][rest] %= MOD;
+            }
+            return f[pos][rest];
         }
     }
 }
