@@ -159,6 +159,7 @@ public class CountRoutes {
             int[][] f = new int[n][fuel + 1];
 
             // 对于本身位置就在目的地的状态，路径数为 1
+            // 从0开始枚举
             for (int i = 0; i <= fuel; i++) {
                 f[end][i] = 1;
             }
