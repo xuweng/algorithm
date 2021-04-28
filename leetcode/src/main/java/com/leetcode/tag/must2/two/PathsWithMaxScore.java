@@ -65,6 +65,7 @@ public class PathsWithMaxScore {
                             max[i][j] += max[i + 1][j + 1];
                         }
                     }
+                    dp[i][j] %= mod;
                 }
             }
             return new int[]{Math.max(dp[0][0], 0), max[0][0]};
