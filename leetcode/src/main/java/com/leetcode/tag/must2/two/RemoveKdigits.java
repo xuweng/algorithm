@@ -40,21 +40,28 @@ public class RemoveKdigits {
                 deque.offerLast(digit);
             }
 
+            // 删除了 m 个数字且 m<k，这种情况下我们需要从序列尾部删除额外的 k-m 个数字
             for (int i = 0; i < k; ++i) {
                 // 还有剩余删除次数 不断删除栈顶元素
                 deque.pollLast();
             }
 
+            // 最终，从栈底到栈顶的答案序列即为最小数。
+            // 考虑到栈的特点是后进先出，如果通过栈实现，则需要将栈内元素依次弹出然后进行翻转才能得到最小数。
+            // 为了避免翻转操作，可以使用双端队列代替栈的实现。
             StringBuilder ret = new StringBuilder();
             boolean leadingZero = true;
             while (!deque.isEmpty()) {
+                // 队首出栈
                 char digit = deque.pollFirst();
+                // 最终的数字序列存在前导零，我们要删去前导零
                 if (leadingZero && digit == '0') {
                     continue;
                 }
                 leadingZero = false;
                 ret.append(digit);
             }
+            // 如果最终数字序列为空，我们应该返回 0
             return ret.length() == 0 ? "0" : ret.toString();
         }
     }
