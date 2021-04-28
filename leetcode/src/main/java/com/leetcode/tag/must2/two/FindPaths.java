@@ -42,6 +42,9 @@ public class FindPaths {
             if (i < 0 || i >= m || j < 0 || j >= n) {
                 return 1;
             }
+            if (meno[i][j][N] != -1) {
+                return meno[i][j][N];
+            }
             int sum = 0;
             for (int[] ints : rows) {
                 int nextI = i + ints[0];
