@@ -1,4 +1,4 @@
-package com.leetcode.tag.must2;
+package com.leetcode.tag.must2.one;
 
 /**
  * 62. 不同路径

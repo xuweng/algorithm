@@ -1,4 +1,4 @@
-package com.leetcode.tag.must2;
+package com.leetcode.tag.must2.one;
 
 /**
  * 938. 二叉搜索树的范围和

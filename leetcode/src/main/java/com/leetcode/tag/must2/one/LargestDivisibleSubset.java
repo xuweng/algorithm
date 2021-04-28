@@ -1,4 +1,4 @@
-package com.leetcode.tag.must2;
+package com.leetcode.tag.must2.one;
 
 import java.util.ArrayList;
 import java.util.Arrays;
