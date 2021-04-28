@@ -28,6 +28,7 @@ public class RemoveKdigits {
      */
     class Solution {
         public String removeKdigits(String num, int k) {
+            // 单调递增栈
             Deque<Character> deque = new LinkedList<>();
             int length = num.length();
             for (int i = 0; i < length; ++i) {
@@ -40,6 +41,7 @@ public class RemoveKdigits {
             }
 
             for (int i = 0; i < k; ++i) {
+                // 还有剩余删除次数 不断删除栈顶元素
                 deque.pollLast();
             }
 
