@@ -65,7 +65,7 @@ public class CountRoutes {
                         if (j == k) {
                             continue;
                         }
-                        int need = Math.abs(locations[i] - locations[j]);
+                        int need = Math.abs(locations[j] - locations[k]);
                         if (need > i) {
                             continue;
                         }
