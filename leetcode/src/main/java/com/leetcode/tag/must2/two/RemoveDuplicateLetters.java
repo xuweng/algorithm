@@ -40,6 +40,13 @@ public class RemoveDuplicateLetters {
         }
     }
 
+    /**
+     * 返回结果的字典序最小
+     * <p>
+     * 单调栈来维护去除「关键字符」后得到的字符串，单调栈满足栈底到栈顶的字符递增
+     * <p>
+     * 单调递增栈
+     */
     class Solution1 {
         public String removeDuplicateLetters(String s) {
             char[] chars = s.toCharArray();
@@ -49,6 +56,7 @@ public class RemoveDuplicateLetters {
                 // 记录每个元素最后一次出现的位置
                 lastInx[chars[i] - 'a'] = i;
             }
+            // 单调递增栈
             // 栈保存无重复,字典序更小的
             Deque<Character> stack = new LinkedList<>();
             //某一个字符是否在栈中出现
