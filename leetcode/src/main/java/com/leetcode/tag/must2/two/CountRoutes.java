@@ -30,6 +30,7 @@ public class CountRoutes {
                 meno[start][fuel] = 0;
                 return 0;
             }
+            // 当前位置在finish,有油量还能继续走
             int sum = start == finish ? 1 : 0;
             for (int i = 0; i < locations.length; i++) {
                 if (i == start) {
