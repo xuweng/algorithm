@@ -68,6 +68,7 @@ public class PathsWithMaxScore {
                     max[i][j] %= mod;
                 }
             }
+            // 负数表示不能到达
             return new int[]{Math.max(dp[0][0], 0), max[0][0]};
         }
     }
