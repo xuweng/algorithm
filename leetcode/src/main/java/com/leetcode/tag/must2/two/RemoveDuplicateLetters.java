@@ -71,7 +71,7 @@ public class RemoveDuplicateLetters {
                 // d只有一个，后面没有d，d不能删除
                 // 后面有c，b
                 // 当前字符在栈顶元素之前，且栈顶元素在后面还有
-                // 只有栈顶元素在当前i的后面还有才能删除栈顶元素
+                // 只有栈顶元素在当前i的后面还有才能删除栈顶元素 删除重复元素
                 while (!stack.isEmpty() && stack.peekLast() > chars[i] && lastInx[stack.peekLast() - 'a'] > i) {
                     // i后面出现栈顶元素.此条件必须.
                     // 移除栈顶元素
