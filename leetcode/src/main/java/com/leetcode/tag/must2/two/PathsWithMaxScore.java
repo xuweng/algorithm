@@ -43,7 +43,7 @@ public class PathsWithMaxScore {
                             max[i][j] += max[i + 1][j];
                         }
                     }
-                    dp[i][j] %= mod;
+                    max[i][j] %= mod;
                     // 右一列
                     if (j + 1 < n) {
                         if (dp[i][j] < cur + dp[i][j + 1]) {
@@ -54,7 +54,7 @@ public class PathsWithMaxScore {
                             max[i][j] += max[i][j + 1];
                         }
                     }
-                    dp[i][j] %= mod;
+                    max[i][j] %= mod;
                     // 右对角线
                     if (i + 1 < m && j + 1 < n) {
                         if (dp[i][j] < cur + dp[i + 1][j + 1]) {
@@ -65,7 +65,7 @@ public class PathsWithMaxScore {
                             max[i][j] += max[i + 1][j + 1];
                         }
                     }
-                    dp[i][j] %= mod;
+                    max[i][j] %= mod;
                 }
             }
             return new int[]{Math.max(dp[0][0], 0), max[0][0]};
