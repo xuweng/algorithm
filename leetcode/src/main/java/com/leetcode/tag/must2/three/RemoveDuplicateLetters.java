@@ -22,7 +22,7 @@ public class RemoveDuplicateLetters {
                     continue;
                 }
                 // i < ints[s.charAt(i) - 'a'] i的后面还有相等的字符，可以删除i
-                while (!deque.isEmpty() && deque.peekLast() > s.charAt(i) && i < ints[s.charAt(i) - 'a']) {
+                while (!deque.isEmpty() && deque.peekLast() > s.charAt(i) && i < ints[deque.peekLast() - 'a']) {
                     Character character = deque.pollLast();
                     visited[character - 'a'] = false;
                 }
