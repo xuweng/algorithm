@@ -153,7 +153,10 @@ public class CanCross {
 
             for (int i = 2; i < stones.length; i++) {
                 for (int j = 1; j < i; j++) {
+                    // 从位置 j 到位置 i 是需要步长为 k 的跳跃
                     int k = stones[i] - stones[j];
+                    // 从位置 j 发起的跳跃最多不超过 j + 1
+                    // 每次跳跃，下标至少增加 1，而步长最多增加 1
                     if (k > j + 1) {
                         continue;
                     }
