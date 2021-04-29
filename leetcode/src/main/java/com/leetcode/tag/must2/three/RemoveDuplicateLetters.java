@@ -21,7 +21,7 @@ public class RemoveDuplicateLetters {
                     // 重复出现
                     continue;
                 }
-                // i < ints[s.charAt(i) - 'a'] i的后面还有相等的字符，可以删除i
+                // i < ints[deque.peekLast() - 'a'] i的后面还有栈顶字符，可以删除栈顶元素
                 while (!deque.isEmpty() && deque.peekLast() > s.charAt(i) && i < ints[deque.peekLast() - 'a']) {
                     Character character = deque.pollLast();
                     visited[character - 'a'] = false;
