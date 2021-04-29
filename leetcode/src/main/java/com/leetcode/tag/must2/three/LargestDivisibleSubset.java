@@ -1,14 +1,18 @@
 package com.leetcode.tag.must2.three;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
  * 368. 最大整除子集
+ * <p>
+ * 可变参数 可变参数 可变参数
  */
 public class LargestDivisibleSubset {
     class Solution {
         public List<Integer> largestDivisibleSubset(int[] nums) {
+            Arrays.sort(nums);
             int[] dp = new int[nums.length];
             int[] back = new int[nums.length];
 
