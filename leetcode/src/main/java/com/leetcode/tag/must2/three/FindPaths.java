@@ -29,7 +29,7 @@ public class FindPaths {
                 return 0;
             }
             // 可以移出边界
-            if (startRow < 0 || startRow >= m || startColumn < 0 || startColumn > n) {
+            if (startRow < 0 || startRow >= m || startColumn < 0 || startColumn >= n) {
                 return 1;
             }
             if (meno[startRow][startColumn] != -1) {
