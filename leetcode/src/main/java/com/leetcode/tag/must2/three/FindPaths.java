@@ -25,7 +25,7 @@ public class FindPaths {
                 return 0;
             }
             // 上下左右不能移出边界
-            if (startRow - maxMove >= 0 && startRow + maxMove < m && startColumn - maxMove <= 0 && startColumn + maxMove < n) {
+            if (startRow - maxMove >= 0 && startRow + maxMove < m && startColumn - maxMove >= 0 && startColumn + maxMove < n) {
                 return 0;
             }
             // 可以移出边界
