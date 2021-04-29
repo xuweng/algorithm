@@ -151,6 +151,8 @@ public class CanCross {
             boolean[][] dp = new boolean[stones.length][stones.length];
             dp[1][1] = true;
 
+            // j---->i
+            // dp[j]已经计算，考虑[j,i]
             for (int i = 2; i < stones.length; i++) {
                 for (int j = 1; j < i; j++) {
                     // 从位置 j 到位置 i 是需要步长为 k 的跳跃
