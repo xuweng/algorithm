@@ -139,4 +139,35 @@ public class CanCross {
             return false;
         }
     }
+
+    class Solution3 {
+        public boolean canCross(int[] stones) {
+            if (stones[1] != 1) {
+                return false;
+            }
+            if (stones.length == 2) {
+                return true;
+            }
+            boolean[][] dp = new boolean[stones.length][stones.length];
+            dp[1][1] = true;
+
+            for (int i = 1; i < stones.length; i++) {
+                for (int j = 1; j < i; j++) {
+                    int k = stones[i] - stones[j];
+                    if (k > j) {
+                        continue;
+                    }
+                    dp[i][k] = dp[j][k - 1] || dp[j][k] || dp[j][k + 1];
+                }
+            }
+
+            for (int i = 0; i < stones.length; i++) {
+                if (dp[stones.length - 1][i]) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
 }
