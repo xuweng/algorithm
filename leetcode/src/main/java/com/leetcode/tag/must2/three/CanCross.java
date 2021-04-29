@@ -1,0 +1,51 @@
+package com.leetcode.tag.must2.three;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * 403. 青蛙过河
+ */
+public class CanCross {
+    class Solution {
+        public boolean canCross(int[] stones) {
+            if (stones[1] != 1) {
+                return false;
+            }
+            if (stones.length == 2) {
+                return true;
+            }
+            Map<Integer, Integer> stonesMap = new HashMap<>();
+            for (int i = 0; i < stones.length; i++) {
+                stonesMap.put(stones[i], i);
+            }
+            Map<Integer, Set<Integer>> map = new HashMap<>();
+            map.computeIfAbsent(1, v -> new HashSet<>()).add(1);
+            for (int i = 1; i < stones.length; i++) {
+                if (!map.containsKey(i)) {
+                    continue;
+                }
+                Set<Integer> set = map.get(i);
+                for (Integer j : set) {
+                    for (int step = j - 1; step <= j + 1; step++) {
+                        if (step == 0) {
+                            continue;
+                        }
+                        int next = stones[i] + step;
+                        if (stonesMap.containsKey(next)) {
+                            Integer index = stonesMap.get(next);
+                            if (index == stones.length - 1) {
+                                return true;
+                            }
+                            map.computeIfAbsent(index, v -> new HashSet<>()).add(step);
+                        }
+                    }
+                }
+            }
+
+            return false;
+        }
+    }
+}
