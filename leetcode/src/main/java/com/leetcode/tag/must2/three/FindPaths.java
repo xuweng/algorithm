@@ -17,7 +17,7 @@ public class FindPaths {
         int[][] ints = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
         public int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
-            meno = new int[m][n][];
+            meno = new int[m][n][maxMove + 1];
             for (int[][] ints1 : meno) {
                 for (int[] ints2 : ints1) {
                     Arrays.fill(ints2, -1);
