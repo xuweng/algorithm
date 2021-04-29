@@ -48,4 +48,45 @@ public class CanCross {
             return false;
         }
     }
+
+    class Solution1 {
+        Map<Integer, Integer> stonesMap = new HashMap<>();
+
+        public boolean canCross(int[] stones) {
+            if (stones[1] != 1) {
+                return false;
+            }
+            if (stones.length == 2) {
+                return true;
+            }
+            for (int i = 0; i < stones.length; i++) {
+                stonesMap.put(stones[i], i);
+            }
+
+            // 0---》1需要1步
+            return dfs(stones, 1, 1);
+        }
+
+        private boolean dfs(int[] stones, int index, int k) {
+            if (index == stones.length - 1) {
+                return true;
+            }
+            for (int i = k - 1; i <= k + 1; i++) {
+                if (i == 0) {
+                    continue;
+                }
+                int next = stones[index] + i;
+                if (!stonesMap.containsKey(next)) {
+                    continue;
+                }
+                Integer nextIndex = stonesMap.get(next);
+                // index--->nextIndex i步
+                if (dfs(stones, nextIndex, i)) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+    }
 }
