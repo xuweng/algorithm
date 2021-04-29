@@ -11,7 +11,7 @@ public class RemoveKdigits {
         public String removeKdigits(String num, int k) {
             Deque<Character> deque = new LinkedList<>();
             for (int i = 0; i < num.length(); i++) {
-                while (!deque.isEmpty() && k > 0 && deque.peekLast() >= num.charAt(i)) {
+                while (!deque.isEmpty() && k > 0 && deque.peekLast() > num.charAt(i)) {
                     deque.pollLast();
                     k--;
                 }
