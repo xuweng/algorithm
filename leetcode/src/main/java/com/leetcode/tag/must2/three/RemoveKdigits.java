@@ -31,7 +31,8 @@ public class RemoveKdigits {
                 stringBuilder.append(deque.pollFirst());
             }
 
-            return stringBuilder.toString();
+            // 剩余为空就是0。
+            return stringBuilder.length() == 0 ? "0" : stringBuilder.toString();
         }
     }
 }
