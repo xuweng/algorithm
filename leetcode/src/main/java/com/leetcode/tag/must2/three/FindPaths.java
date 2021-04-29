@@ -13,18 +13,30 @@ public class FindPaths {
      */
     class Solution {
         int mod = 1000000007;
-        int[][] meno;
+        int[][][] meno;
         int[][] ints = new int[][]{{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
         public int findPaths(int m, int n, int maxMove, int startRow, int startColumn) {
-            meno = new int[m][n];
-            for (int[] ints1 : meno) {
-                Arrays.fill(ints1, -1);
+            meno = new int[m][n][];
+            for (int[][] ints1 : meno) {
+                for (int[] ints2 : ints1) {
+                    Arrays.fill(ints2, -1);
+                }
             }
 
             return dfs(m, n, maxMove, startRow, startColumn);
         }
 
+        /**
+         * 可变参数
+         *
+         * @param m
+         * @param n
+         * @param maxMove
+         * @param startRow
+         * @param startColumn
+         * @return
+         */
         private int dfs(int m, int n, int maxMove, int startRow, int startColumn) {
             if (maxMove < 0) {
                 return 0;
@@ -37,8 +49,8 @@ public class FindPaths {
             if (startRow < 0 || startRow >= m || startColumn < 0 || startColumn >= n) {
                 return 1;
             }
-            if (meno[startRow][startColumn] != -1) {
-                return meno[startRow][startColumn];
+            if (meno[startRow][startColumn][maxMove] != -1) {
+                return meno[startRow][startColumn][maxMove];
             }
             int sum = 0;
             for (int[] anInt : ints) {
@@ -48,7 +60,7 @@ public class FindPaths {
                 sum += dfs(m, n, maxMove - 1, nextR, nextC);
                 sum %= mod;
             }
-            meno[startRow][startColumn] = sum;
+            meno[startRow][startColumn][maxMove] = sum;
             return sum;
         }
     }
