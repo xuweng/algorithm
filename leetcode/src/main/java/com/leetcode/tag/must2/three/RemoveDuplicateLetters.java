@@ -10,7 +10,7 @@ public class RemoveDuplicateLetters {
     class Solution {
         public String removeDuplicateLetters(String s) {
             Deque<Character> deque = new LinkedList<>();
-            int[] ints = new int[s.length()];
+            int[] ints = new int[26];
             for (int i = 0; i < s.length(); i++) {
                 // 字符最后出现的下标 为了删除重复
                 ints[s.charAt(i) - 'a'] = i;
