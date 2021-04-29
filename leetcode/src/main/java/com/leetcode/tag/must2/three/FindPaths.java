@@ -6,6 +6,11 @@ import java.util.Arrays;
  * 576. 出界的路径数
  */
 public class FindPaths {
+    /**
+     * 先枚举依赖
+     * <p>
+     * 先枚举步数 先枚举油量
+     */
     class Solution {
         int mod = 1000000007;
         int[][] meno;
