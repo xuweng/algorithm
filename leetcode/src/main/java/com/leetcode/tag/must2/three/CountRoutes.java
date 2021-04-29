@@ -54,4 +54,35 @@ public class CountRoutes {
             return sum;
         }
     }
+
+    class Solution1 {
+        int mod = 1000000007;
+
+        public int countRoutes(int[] locations, int start, int finish, int fuel) {
+            int[][] dp = new int[locations.length][fuel + 1];
+            // 初始化在finish
+            for (int i = 0; i <= fuel; i++) {
+                dp[finish][i] = 1;
+            }
+            // 先枚举油量
+            for (int f = 0; f <= fuel; f++) {
+                for (int i = 0; i < locations.length; i++) {
+                    for (int j = 0; j < locations.length; j++) {
+                        if (i == j) {
+                            continue;
+                        }
+                        int need = Math.abs(locations[i] - locations[j]);
+                        if (need > f) {
+                            continue;
+                        }
+                        dp[i][f] += dp[j][f - need];
+                        dp[i][f] %= mod;
+                    }
+                }
+            }
+
+            return dp[start][fuel];
+        }
+
+    }
 }
