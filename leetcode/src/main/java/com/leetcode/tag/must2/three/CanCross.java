@@ -21,6 +21,7 @@ public class CanCross {
             for (int i = 0; i < stones.length; i++) {
                 stonesMap.put(stones[i], i);
             }
+            // Set去重
             Map<Integer, Set<Integer>> map = new HashMap<>();
             map.computeIfAbsent(1, v -> new HashSet<>()).add(1);
             for (int i = 1; i < stones.length; i++) {
