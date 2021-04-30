@@ -15,7 +15,7 @@ public class CountRoutes {
         public int countRoutes(int[] locations, int start, int finish, int fuel) {
             meno = new int[locations.length][fuel + 1];
             for (int[] ints : meno) {
-                Arrays.fill(meno, -1);
+                Arrays.fill(ints, -1);
             }
 
             return dfs(locations, start, finish, fuel);
