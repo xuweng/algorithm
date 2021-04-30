@@ -1,6 +1,7 @@
 package com.leetcode.tag.must2.four;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -13,6 +14,8 @@ import java.util.List;
 public class LargestDivisibleSubset {
     class Solution {
         public List<Integer> largestDivisibleSubset(int[] nums) {
+            Arrays.sort(nums);
+
             int m = nums.length;
             int[] dp = new int[m];
             int[] back = new int[m];
