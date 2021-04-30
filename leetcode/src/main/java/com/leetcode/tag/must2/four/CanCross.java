@@ -66,6 +66,7 @@ public class CanCross {
             }
             boolean[][] dp = new boolean[stones.length][stones.length];
             dp[1][1] = true;
+            // 从2开始枚举
             for (int i = 2; i < stones.length; i++) {
                 for (int j = 1; j < i; j++) {
                     int k = stones[i] - stones[j];
