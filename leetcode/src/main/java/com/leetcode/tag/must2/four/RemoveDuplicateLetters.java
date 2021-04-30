@@ -20,8 +20,8 @@ public class RemoveDuplicateLetters {
                     continue;
                 }
                 while (!deque.isEmpty() && deque.peekLast() > s.charAt(i) && i < ints[deque.peekLast() - 'a']) {
-                    deque.pollLast();
-                    is[s.charAt(i) - 'a'] = false;
+                    Character character = deque.pollLast();
+                    is[character - 'a'] = false;
                 }
                 deque.offerLast(s.charAt(i));
                 is[s.charAt(i) - 'a'] = true;
