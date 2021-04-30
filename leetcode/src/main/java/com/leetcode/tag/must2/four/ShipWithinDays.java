@@ -10,7 +10,7 @@ import java.util.Arrays;
 public class ShipWithinDays {
     class Solution {
         public int shipWithinDays(int[] weights, int D) {
-            int left = 1;
+            int left = Arrays.stream(weights).max().getAsInt();
             int right = Arrays.stream(weights).sum();
             while (left < right) {
                 int mid = left + (right - left) / 2;
