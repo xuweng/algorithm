@@ -27,6 +27,8 @@ public class CanCross {
         }
 
         private boolean dfs(int[] stones, int i, int k) {
+            // k不知道多大，很大
+            // 用String拼接
             String key = i + "_" + k;
             if (meno.containsKey(key)) {
                 return meno.get(key);
