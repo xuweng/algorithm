@@ -28,12 +28,16 @@ public class CanCross {
 
         private boolean dfs(int[] stones, int i, int k) {
             String key = i + "_" + k;
+            if (meno.containsKey(key)) {
+                return meno.get(key);
+            }
             if (i == stones.length - 1) {
                 meno.put(key, true);
                 return true;
             }
             for (int step = k - 1; step <= k + 1; step++) {
                 if (step == 0) {
+                    // 必须 否则会一直在i位置 死循环
                     continue;
                 }
                 int next = stones[i] + step;
