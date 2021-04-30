@@ -31,7 +31,7 @@ public class PathsWithMaxScore {
                     if (chars[i][j] == 'X') {
                         continue;
                     }
-                    int cur = (i == 0 && j == 0) ? 0 : 1;
+                    int cur = (i == 0 && j == 0) ? 0 : chars[i][j] - '0';
                     // 下一行
                     if (i + 1 < m) {
                         if (dp[i][j] < cur + dp[i + 1][j]) {
