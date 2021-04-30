@@ -29,7 +29,7 @@ public class RemoveKdigits {
                 stringBuilder.append(deque.pollFirst());
             }
 
-            return stringBuilder.toString();
+            return stringBuilder.length() == 0 ? "0" : stringBuilder.toString();
         }
     }
 }
