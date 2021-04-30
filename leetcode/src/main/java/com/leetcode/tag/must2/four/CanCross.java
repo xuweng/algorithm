@@ -66,8 +66,8 @@ public class CanCross {
             }
             boolean[][] dp = new boolean[stones.length][stones.length];
             dp[1][1] = true;
-            for (int i = 0; i < stones.length; i++) {
-                for (int j = 0; j < i; j++) {
+            for (int i = 2; i < stones.length; i++) {
+                for (int j = 1; j < i; j++) {
                     int k = stones[i] - stones[j];
                     if (k > j + 1) {
                         // 最多j+1
