@@ -47,6 +47,7 @@ public class FindPaths {
                 int nextC = startColumn + anInt[1];
 
                 sum += dfs(m, n, maxMove - 1, nextR, nextC);
+                sum %= mod;
             }
             meno[startRow][startColumn][maxMove] = sum;
             return sum;
