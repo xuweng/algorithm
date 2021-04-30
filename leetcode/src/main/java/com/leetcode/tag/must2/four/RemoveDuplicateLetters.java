@@ -19,10 +19,12 @@ public class RemoveDuplicateLetters {
                 if (is[s.charAt(i) - 'a']) {
                     continue;
                 }
-                while (!deque.isEmpty() && deque.peekLast() > s.charAt(i) && i < ints[deque.peekLast()]) {
+                while (!deque.isEmpty() && deque.peekLast() > s.charAt(i) && i < ints[deque.peekLast() - 'a']) {
                     deque.pollLast();
+                    is[s.charAt(i) - 'a'] = false;
                 }
                 deque.offerLast(s.charAt(i));
+                is[s.charAt(i) - 'a'] = true;
             }
 
             StringBuilder stringBuilder = new StringBuilder();
