@@ -26,7 +26,7 @@ public class NumberOfArithmeticSlices1 {
                     List<Integer> list = map.get(key);
                     for (Integer k : list) {
                         // k<j<i
-                        dp[i][j] += dp[j][k];
+                        dp[i][j] += dp[j][k] + 1;
                     }
                     sum += dp[i][j];
                 }
