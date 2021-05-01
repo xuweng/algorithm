@@ -90,4 +90,37 @@ public class FirstUniqChar {
             return ' ';
         }
     }
+
+    class Solution4 {
+        public char firstUniqChar(String s) {
+            int target = s.length();
+            //找出第一个不重复的字符
+            for (int i = 'a'; i <= 'z'; i++) {
+                int index = s.indexOf(i);
+                if (index != -1 && index == s.lastIndexOf(i) && index < target) {
+                    target = index;
+                }
+            }
+            if (target == s.length()) {
+                return ' ';
+            }
+            return s.charAt(target);
+        }
+    }
+
+    class Solution5 {
+        public char firstUniqChar(String s) {
+            int count[] = new int[256];
+            char[] sc = s.toCharArray();
+            for (char c : sc) {
+                count[c]++;
+            }
+            for (char c : sc) {
+                if (count[c] == 1) {
+                    return c;
+                }
+            }
+            return ' ';
+        }
+    }
 }
