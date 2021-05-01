@@ -26,6 +26,9 @@ public class CountRoutes {
             if (fuel < 0) {
                 return 0;
             }
+            if (meno[start][fuel] != -1) {
+                return meno[start][fuel];
+            }
             int need = Math.abs(locations[start] - locations[finish]);
             if (need > fuel) {
                 meno[start][fuel] = 0;
