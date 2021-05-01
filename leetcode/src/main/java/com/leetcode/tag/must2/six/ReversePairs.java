@@ -243,12 +243,19 @@ public class ReversePairs {
         int count;
 
         public int reversePairs(int[] nums) {
+            if (nums.length < 2) {
+                return 0;
+            }
             merge(nums, 0, nums.length - 1);
 
             return count;
         }
 
         private int[] merge(int[] nums, int left, int right) {
+            if (left >= right) {
+                // 必须初始化nums[left]
+                return new int[]{nums[left]};
+            }
             int mid = (left + right) / 2;
             int[] mergeLeft = merge(nums, left, mid);
             int[] mergeRight = merge(nums, mid + 1, right);
@@ -261,6 +268,7 @@ public class ReversePairs {
                 if (mergeLeft[i] <= mergeRight[j]) {
                     result[r++] = mergeLeft[i++];
                 } else {
+                    // i后面都是
                     count += mergeLeft.length - i;
                     result[r++] = mergeRight[j++];
                 }
