@@ -161,6 +161,7 @@ public class ReversePairs {
             int res = mergeSort(l, m) + mergeSort(m + 1, r);
             // 合并阶段
             int i = l, j = m + 1;
+            // 辅助数组 tmp ，用于合并阶段暂存元素
             for (int k = l; k <= r; k++) {
                 tmp[k] = nums[k];
             }
