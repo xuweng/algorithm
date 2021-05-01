@@ -1,9 +1,6 @@
 package com.leetcode.tag.must2.six;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * 剑指 Offer 50. 第一个只出现一次的字符
@@ -59,6 +56,38 @@ public class FirstUniqChar {
                 this.ch = ch;
                 this.pos = pos;
             }
+        }
+    }
+
+    class Solution2 {
+        public char firstUniqChar(String s) {
+            HashMap<Character, Boolean> dic = new HashMap<>();
+            char[] sc = s.toCharArray();
+            for (char c : sc) {
+                dic.put(c, !dic.containsKey(c));
+            }
+            for (char c : sc) {
+                if (dic.get(c)) {
+                    return c;
+                }
+            }
+            return ' ';
+        }
+    }
+
+    class Solution3 {
+        public char firstUniqChar(String s) {
+            Map<Character, Boolean> dic = new LinkedHashMap<>();
+            char[] sc = s.toCharArray();
+            for (char c : sc) {
+                dic.put(c, !dic.containsKey(c));
+            }
+            for (Map.Entry<Character, Boolean> d : dic.entrySet()) {
+                if (d.getValue()) {
+                    return d.getKey();
+                }
+            }
+            return ' ';
         }
     }
 }
