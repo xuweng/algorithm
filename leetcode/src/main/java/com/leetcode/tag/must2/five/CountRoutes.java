@@ -61,7 +61,7 @@ public class CountRoutes {
                 dp[finish][i] = 1;
             }
 
-            for (int f = 0; f < fuel; f++) {
+            for (int f = 0; f <= fuel; f++) {
                 for (int i = 0; i < len; i++) {
                     for (int j = 0; j < len; j++) {
                         if (i == j) {
