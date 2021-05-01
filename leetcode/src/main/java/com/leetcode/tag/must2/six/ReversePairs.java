@@ -160,6 +160,7 @@ public class ReversePairs {
             int m = (l + r) / 2;
             // left区间+right区间+跨区间
             int res = mergeSort(l, m) + mergeSort(m + 1, r);
+            // left和right已经有序
             // 合并阶段
             int i = l, j = m + 1;
             // 辅助数组 tmp ，用于合并阶段暂存元素
@@ -176,9 +177,11 @@ public class ReversePairs {
                     // 当 tmp[i]≤tmp[j] 时： 添加左子数组当前元素 tmp[i]，并执行 i = i + 1
                     nums[k] = tmp[i++];
                 } else {
+                    // tmp[i] > tmp[j]
                     // 添加右子数组当前元素 tmp[j]，并执行 j = j + 1 ；此时构成 m - i + 1个「逆序对」，统计添加至 res
                     nums[k] = tmp[j++];
-                    res += m - i + 1; // 统计逆序对
+                    // 统计逆序对
+                    res += m - i + 1;
                 }
             }
             return res;
