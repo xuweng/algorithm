@@ -19,7 +19,7 @@ public class SmallestSubsequence {
                 if (is[s.charAt(i) - 'a']) {
                     continue;
                 }
-                while (!deque.isEmpty() && deque.peekLast() > s.charAt(i) && i < ints[deque.peekLast()]) {
+                while (!deque.isEmpty() && deque.peekLast() > s.charAt(i) && i < ints[deque.peekLast() - 'a']) {
                     Character character = deque.pollLast();
                     is[character - 'a'] = false;
                 }
