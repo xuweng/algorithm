@@ -8,6 +8,12 @@ package com.leetcode.tag.must2.six;
 public class SingleNumbers {
     /**
      * 方法一：分组异或
+     * <p>
+     * 可以把所有数字分成两组，使得：
+     * <p>
+     * 1.两个只出现一次的数字在不同的组中；
+     * <p>
+     * 2.相同的数字会被分到相同的组中。
      */
     class Solution {
         public int[] singleNumbers(int[] nums) {
