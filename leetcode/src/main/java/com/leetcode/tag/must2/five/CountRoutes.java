@@ -50,4 +50,34 @@ public class CountRoutes {
             return sum;
         }
     }
+
+    class Solution1 {
+        int mod = 1000000007;
+
+        public int countRoutes(int[] locations, int start, int finish, int fuel) {
+            int len = locations.length;
+            int[][] dp = new int[len][fuel + 1];
+            for (int i = 0; i <= fuel; i++) {
+                dp[finish][i] = 1;
+            }
+
+            for (int f = 0; f < fuel; f++) {
+                for (int i = 0; i < len; i++) {
+                    for (int j = 0; j < len; j++) {
+                        if (i == j) {
+                            continue;
+                        }
+                        int need = Math.abs(locations[i] - locations[j]);
+                        if (need > f) {
+                            continue;
+                        }
+                        dp[i][f] += dp[j][f - need];
+                        dp[i][f] %= mod;
+                    }
+                }
+            }
+
+            return dp[start][fuel];
+        }
+    }
 }
