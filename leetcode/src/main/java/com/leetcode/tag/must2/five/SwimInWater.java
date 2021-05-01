@@ -1,6 +1,7 @@
 package com.leetcode.tag.must2.five;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -35,6 +36,9 @@ public class SwimInWater {
                     }
                 }
             }
+            // 按照权重升序
+            list.sort(Comparator.comparing(a -> a[2]));
+
             int start = getIndex(0, 0);
             int end = getIndex(m - 1, n - 1);
             UF uf = new UF(m * n);
