@@ -166,10 +166,14 @@ public class ReversePairs {
             }
             for (int k = l; k <= r; k++) {
                 if (i == m + 1) {
+                    // 当 j = r + 1,代表左子数组已合并完，因此添加右子数组当前元素 tmp[j] ，并执行 j = j + 1
                     nums[k] = tmp[j++];
                 } else if (j == r + 1 || tmp[i] <= tmp[j]) {
+                    // 代表右子数组已合并完，因此添加左子数组当前元素 tmp[i]，并执行 i = i + 1
+                    // 当 tmp[i]≤tmp[j] 时： 添加左子数组当前元素 tmp[i]，并执行 i = i + 1
                     nums[k] = tmp[i++];
                 } else {
+                    // 添加右子数组当前元素 tmp[j]，并执行 j = j + 1 ；此时构成 m - i + 1个「逆序对」，统计添加至 res
                     nums[k] = tmp[j++];
                     res += m - i + 1; // 统计逆序对
                 }
