@@ -238,4 +238,41 @@ public class ReversePairs {
             return res;
         }
     }
+
+    class Solution5 {
+        int count;
+
+        public int reversePairs(int[] nums) {
+            merge(nums, 0, nums.length - 1);
+
+            return count;
+        }
+
+        private int[] merge(int[] nums, int left, int right) {
+            int mid = (left + right) / 2;
+            int[] mergeLeft = merge(nums, left, mid);
+            int[] mergeRight = merge(nums, mid + 1, right);
+            int[] result = new int[mergeLeft.length + mergeRight.length];
+
+            int i = left;
+            int j = mid + 1;
+            int r = 0;
+            while (i <= mid && j <= right) {
+                if (mergeLeft[i] <= mergeRight[j]) {
+                    result[r++] = mergeLeft[i++];
+                } else {
+                    count += mergeLeft.length - i;
+                    result[r++] = mergeRight[j++];
+                }
+            }
+            while (i <= mid) {
+                result[r++] = mergeLeft[i++];
+            }
+            while (j <= right) {
+                result[r++] = mergeRight[j++];
+            }
+
+            return result;
+        }
+    }
 }
