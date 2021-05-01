@@ -2,6 +2,10 @@ package com.leetcode.tag.must2.five;
 
 /**
  * 24. 两两交换链表中的节点
+ * <p>
+ * 可变参数 可变参数 可变参数
+ * <p>
+ * 可变参数 可变参数 可变参数
  */
 public class SwapPairs {
     class Solution {
