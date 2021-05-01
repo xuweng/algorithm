@@ -158,6 +158,7 @@ public class ReversePairs {
             }
             // 递归划分
             int m = (l + r) / 2;
+            // left区间+right区间+跨区间
             int res = mergeSort(l, m) + mergeSort(m + 1, r);
             // 合并阶段
             int i = l, j = m + 1;
