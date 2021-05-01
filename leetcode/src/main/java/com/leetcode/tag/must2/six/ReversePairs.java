@@ -166,6 +166,7 @@ public class ReversePairs {
             for (int k = l; k <= r; k++) {
                 tmp[k] = nums[k];
             }
+            // nums排序
             for (int k = l; k <= r; k++) {
                 if (i == m + 1) {
                     // 当 j = r + 1,代表左子数组已合并完，因此添加右子数组当前元素 tmp[j] ，并执行 j = j + 1
