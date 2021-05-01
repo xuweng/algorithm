@@ -29,7 +29,7 @@ public class MaxValue {
             dp[0] = lMax + rMax;
             for (int i = 1; i <= k; i++) {
                 for (int j = 0; j < i; j++) {
-                    dp[i] = Math.max(dp[i], dp[j] + dp[i - j - 1] + root.val);
+                    dp[i] = Math.max(dp[i], left[j] + right[i - j - 1] + root.val);
                 }
             }
 
