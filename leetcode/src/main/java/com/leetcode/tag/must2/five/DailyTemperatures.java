@@ -13,7 +13,7 @@ public class DailyTemperatures {
             int[] result = new int[T.length];
 
             for (int i = T.length - 1; i >= 0; i--) {
-                while (!deque.isEmpty() && T[deque.peekLast()] < T[i]) {
+                while (!deque.isEmpty() && T[deque.peekLast()] <= T[i]) {
                     deque.pollLast();
                 }
                 result[i] = deque.isEmpty() ? 0 : deque.peekLast() - i;
