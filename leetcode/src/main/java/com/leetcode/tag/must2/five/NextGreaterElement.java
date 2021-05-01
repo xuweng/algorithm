@@ -15,7 +15,7 @@ public class NextGreaterElement {
             Map<Integer, Integer> map = new HashMap<>();
 
             for (int i = nums2.length - 1; i >= 0; i--) {
-                while (!deque.isEmpty() && deque.peekLast() < nums2[i]) {
+                while (!deque.isEmpty() && deque.peekLast() <= nums2[i]) {
                     deque.pollLast();
                 }
                 map.put(nums2[i], deque.isEmpty() ? -1 : deque.peekLast());
