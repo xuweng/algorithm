@@ -261,8 +261,9 @@ public class ReversePairs {
             int[] mergeRight = merge(nums, mid + 1, right);
             int[] result = new int[mergeLeft.length + mergeRight.length];
 
-            int i = left;
-            int j = mid + 1;
+            // left和right都是新数组,下标从0开始
+            int i = 0;
+            int j = 0;
             int r = 0;
             while (i <= mid && j <= right) {
                 if (mergeLeft[i] <= mergeRight[j]) {
