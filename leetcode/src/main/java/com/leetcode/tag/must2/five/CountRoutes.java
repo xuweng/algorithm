@@ -46,7 +46,7 @@ public class CountRoutes {
                 sum += dfs(locations, i, finish, fuel - n);
                 sum %= mod;
             }
-
+            meno[start][fuel] = sum;
             return sum;
         }
     }
