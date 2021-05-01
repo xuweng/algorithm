@@ -188,4 +188,54 @@ public class ReversePairs {
         }
     }
 
+    /**
+     * 厉害
+     */
+    class Solution4 {
+        int count = 0;
+
+        public int reversePairs(int[] nums) {
+            int n = nums.length;
+            if (n < 2) {
+                return count;
+            }
+            mergeSort(nums, 0, n - 1);
+            return count;
+        }
+
+        private int[] mergeSort(int[] nums, int left, int right) {
+            if (left == right) {
+                return new int[]{nums[left]};
+            }
+            int mid = (left + right) / 2;
+            int[] leftArr = mergeSort(nums, left, mid);
+            int[] rightArr = mergeSort(nums, mid + 1, right);
+
+            // 创建新数组
+            int[] res = new int[leftArr.length + rightArr.length];
+            int l = 0;
+            int r = 0;
+            //res的下标
+            int i = 0;
+            // 合并
+            while (l < leftArr.length && r < rightArr.length) {
+                if (leftArr[l] <= rightArr[r]) {
+                    res[i++] = leftArr[l++];
+                } else {
+                    //左边数组l位置开始都可以和r位置组成逆序对
+                    count += leftArr.length - l;
+                    res[i++] = rightArr[r++];
+                }
+            }
+            // left有剩余
+            while (l < leftArr.length) {
+                res[i++] = leftArr[l++];
+            }
+            // right有剩余
+            while (r < rightArr.length) {
+                res[i++] = rightArr[r++];
+            }
+            return res;
+        }
+    }
 }
