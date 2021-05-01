@@ -265,7 +265,7 @@ public class ReversePairs {
             int i = 0;
             int j = 0;
             int r = 0;
-            while (i <= mid && j <= right) {
+            while (i < mergeLeft.length && j < mergeRight.length) {
                 if (mergeLeft[i] <= mergeRight[j]) {
                     result[r++] = mergeLeft[i++];
                 } else {
@@ -274,10 +274,10 @@ public class ReversePairs {
                     result[r++] = mergeRight[j++];
                 }
             }
-            while (i <= mid) {
+            while (i < mergeLeft.length) {
                 result[r++] = mergeLeft[i++];
             }
-            while (j <= right) {
+            while (j < mergeRight.length) {
                 result[r++] = mergeRight[j++];
             }
 
