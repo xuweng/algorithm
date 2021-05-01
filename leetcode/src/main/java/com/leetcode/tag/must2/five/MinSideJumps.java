@@ -9,8 +9,8 @@ public class MinSideJumps {
             int[][] dp = new int[obstacles.length][4];
             // 0-->1
             dp[0][1] = 1;
-            // 0->2
-            dp[0][2] = 1;
+            // 0-->3
+            dp[0][3] = 1;
 
             for (int i = 1; i < obstacles.length; i++) {
                 if (obstacles[i] == 1) {
