@@ -25,7 +25,7 @@ public class ReverseWords {
             List<String> wordList = Arrays.asList(s.split("\\s+"));
             // 用 reverse 将字符串数组进行反转；
             Collections.reverse(wordList);
-            // 使用 join 方法将字符串数组拼成一个字符串
+            // 使用 join 方法将字符串数组拼成一个字符串 拼接上空格
             return String.join(" ", wordList);
         }
     }
