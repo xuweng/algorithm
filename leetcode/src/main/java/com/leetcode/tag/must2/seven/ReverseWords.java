@@ -132,14 +132,13 @@ public class ReverseWords {
 
         public String getReverseWords(String s, int start) {
             int size = s.length();
-            int i = start;
             while (start < size && ' ' == s.charAt(start)) {
                 // 走到非空格
                 start++;
             }
             if (start == size) {
-                // 走完 返回最后一个单词
-                return s.substring(i, start);
+                // 走完
+                return null;
             }
             int end = start;
             while (end < size && ' ' != s.charAt(end)) {
@@ -150,6 +149,9 @@ public class ReverseWords {
             // 先递归处理[end,s.length]
             String reverseWords = getReverseWords(s, end);
             // 再处理[start,end]
+            if (reverseWords == null) {
+                return s.substring(start, end);
+            }
             return reverseWords + " " + s.substring(start, end);
         }
     }
