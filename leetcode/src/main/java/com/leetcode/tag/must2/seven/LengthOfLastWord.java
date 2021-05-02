@@ -24,6 +24,7 @@ public class LengthOfLastWord {
             if (s == null || s.length() == 0) {
                 return 0;
             }
+            s = s.trim();
             int count = 0;
             for (int i = s.length() - 1; i >= 0 && s.charAt(i) != ' '; i--) {
                 count++;
