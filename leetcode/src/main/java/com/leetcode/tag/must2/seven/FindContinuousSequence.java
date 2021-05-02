@@ -17,7 +17,7 @@ public class FindContinuousSequence {
             // 滑动窗口的右边界
             int right = 1;
             // 滑动窗口中数字的和
-            int sum = 0;
+            int sum = 1;
             List<int[]> res = new ArrayList<>();
 
             // 至少含有两个数,假设2个数
@@ -36,8 +36,8 @@ public class FindContinuousSequence {
                     left++;
                 } else {
                     // 记录结果
-                    int[] arr = new int[right - left];
-                    for (int k = left; k < right; k++) {
+                    int[] arr = new int[right - left + 1];
+                    for (int k = left; k <= right; k++) {
                         arr[k - left] = k;
                     }
                     res.add(arr);
