@@ -20,7 +20,7 @@ public class MaxQueue {
             return -1;
         }
 
-        return stack.peek();
+        return stack.pop();
     }
 
     public void push_back(int value) {
