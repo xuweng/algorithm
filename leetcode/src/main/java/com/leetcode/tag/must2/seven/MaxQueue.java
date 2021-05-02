@@ -21,16 +21,16 @@ public class MaxQueue {
             return -1;
         }
 
-        return stack.peek();
+        return stack.peekLast();
     }
 
     public void push_back(int value) {
         deque.offerLast(value);
 
         if (stack.isEmpty()) {
-            stack.push(value);
+            stack.offerLast(value);
         } else {
-            stack.push(stack.peek() > value ? stack.peek() : value);
+            stack.offerLast(stack.peekLast() > value ? stack.peekLast() : value);
         }
     }
 
@@ -38,7 +38,7 @@ public class MaxQueue {
         if (deque.isEmpty()) {
             return -1;
         }
-        stack.pop();
+        stack.pollFirst();
         return deque.pollFirst();
     }
 
