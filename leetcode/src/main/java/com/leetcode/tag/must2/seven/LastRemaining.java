@@ -27,4 +27,37 @@ public class LastRemaining {
             return list.get(0);
         }
     }
+
+    /**
+     * 方法一：数学 + 递归
+     * <p>
+     * 长度为 n 的序列会先删除第 m % n 个元素，然后剩下一个长度为 n - 1 的序列
+     */
+    class Solution1 {
+        public int lastRemaining(int n, int m) {
+            return f(n, m);
+        }
+
+        public int f(int n, int m) {
+            if (n == 1) {
+                return 0;
+            }
+            int x = f(n - 1, m);
+            // 长度为 n 的序列最后一个删除的元素，应当是从 m % n 开始数的第 x 个元素
+            return (m + x) % n;
+        }
+    }
+
+    /**
+     * 方法二：数学 + 迭代
+     */
+    class Solution2 {
+        public int lastRemaining(int n, int m) {
+            int f = 0;
+            for (int i = 2; i != n + 1; ++i) {
+                f = (m + f) % i;
+            }
+            return f;
+        }
+    }
 }
