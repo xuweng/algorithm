@@ -127,22 +127,20 @@ public class ReverseWords {
 
     class Solution2 {
         public String reverseWords(String s) {
-            StringBuilder sb = new StringBuilder();
+            return getReverseWords(s, 0);
 
-            getReverseWords(sb, s, 0, false);
-
-            return sb.toString();
         }
 
-        public void getReverseWords(StringBuilder sb, String s, int start, boolean flag) {
+        public String getReverseWords(String s, int start) {
             int size = s.length();
+            int i = start;
             while (start < size && ' ' == s.charAt(start)) {
                 // 走到非空格
                 start++;
             }
             if (start == size) {
-                // 走完
-                return;
+                // 走完 返回最后一个单词
+                return s.substring(i, start);
             }
             int end = start;
             while (end < size && ' ' != s.charAt(end)) {
@@ -151,12 +149,9 @@ public class ReverseWords {
             }
             // [start,end)是一个单词
             // 先递归处理[end,s.length]
-            getReverseWords(sb, s, end, true);
+            String reverseWords = getReverseWords(s, end);
             // 再处理[start,end]
-            sb.append(s, start, end);
-            if (flag) {
-                sb.append(' ');
-            }
+            return reverseWords + " " + s.substring(start, end);
         }
     }
 }
