@@ -37,7 +37,7 @@ public class ReversePairs {
                 } else {
                     // i后面都是
                     count += mergeLeft.length - i;
-                    result[j++] = mergeRight[j++];
+                    result[r++] = mergeRight[j++];
                 }
             }
             while (i < mergeLeft.length) {
