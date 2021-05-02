@@ -5,6 +5,8 @@ import java.util.LinkedList;
 
 /**
  * 面试题 03.02. 栈的最小值
+ * <p>
+ * 单调队列 单调栈 一一对应
  */
 public class MinStack {
     Deque<Integer> deque;
