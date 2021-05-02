@@ -36,6 +36,7 @@ public class FindContinuousSequence {
                     left++;
                 } else {
                     // 记录结果
+                    // 此时right在sum外
                     int[] arr = new int[right - left];
                     for (int k = left; k < right; k++) {
                         arr[k - left] = k;
