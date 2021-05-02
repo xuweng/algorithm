@@ -78,6 +78,15 @@ public class ReverseWords {
             return sb;
         }
 
+        /**
+         * 翻转字符串
+         * <p>
+         * 首尾两两交换
+         *
+         * @param sb
+         * @param left
+         * @param right
+         */
         public void reverse(StringBuilder sb, int left, int right) {
             while (left < right) {
                 char tmp = sb.charAt(left);
@@ -86,6 +95,11 @@ public class ReverseWords {
             }
         }
 
+        /**
+         * 翻转每个单词
+         *
+         * @param sb
+         */
         public void reverseEachWord(StringBuilder sb) {
             int n = sb.length();
             int start = 0, end = 0;
