@@ -168,6 +168,7 @@ public class ReverseWords {
             // 倒序遍历单词列表
             for (int i = strs.length - 1; i >= 0; i--) {
                 if ("".equals(strs[i])) {
+                    // 必须
                     // 遇到空单词则跳过
                     continue;
                 }
