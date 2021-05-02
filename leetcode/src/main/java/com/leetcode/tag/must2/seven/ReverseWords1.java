@@ -9,7 +9,7 @@ public class ReverseWords1 {
             String[] s1 = s.trim().split(" ");
             StringBuilder stringBuilder = new StringBuilder();
             for (int i = s1.length - 1; i >= 0; i--) {
-                if (" ".equals(s1[i])) {
+                if ("".equals(s1[i])) {
                     continue;
                 }
                 stringBuilder.append(s1[i]);
