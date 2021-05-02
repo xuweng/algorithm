@@ -9,28 +9,28 @@ import java.util.Queue;
  */
 public class MaxQueue {
     Deque<Integer> deque;
-    Deque<Integer> stack;
+    Deque<Integer> max;
 
     public MaxQueue() {
         deque = new LinkedList<>();
-        stack = new LinkedList<>();
+        max = new LinkedList<>();
     }
 
     public int max_value() {
-        if (stack.isEmpty()) {
+        if (max.isEmpty()) {
             return -1;
         }
 
-        return stack.peekLast();
+        return max.peekLast();
     }
 
     public void push_back(int value) {
         deque.offerLast(value);
 
-        if (stack.isEmpty()) {
-            stack.offerLast(value);
+        if (max.isEmpty()) {
+            max.offerLast(value);
         } else {
-            stack.offerLast(stack.peekLast() > value ? stack.peekLast() : value);
+            max.offerLast(max.peekLast() > value ? max.peekLast() : value);
         }
     }
 
@@ -38,7 +38,7 @@ public class MaxQueue {
         if (deque.isEmpty()) {
             return -1;
         }
-        stack.pollFirst();
+        max.pollFirst();
         return deque.pollFirst();
     }
 
