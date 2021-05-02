@@ -150,7 +150,9 @@ public class ReverseWords {
                 end++;
             }
             // [start,end)是一个单词
+            // 先递归处理[end,s.length]
             getReverseWords(sb, s, end, true);
+            // 再处理[start,end]
             sb.append(s, start, end);
             if (flag) {
                 sb.append(' ');
