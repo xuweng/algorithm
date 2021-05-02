@@ -172,10 +172,13 @@ public class ReverseWords {
                     continue;
                 }
                 // 将单词拼接至 StringBuilder
-                res.append(strs[i]).append(" ");
+                res.append(strs[i]);
+                if (i > 0) {
+                    res.append(" ");
+                }
             }
-            // 转化为字符串，删除尾部空格，并返回
-            return res.toString().trim();
+            // 转化为字符串
+            return res.toString();
         }
     }
 }
