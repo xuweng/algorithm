@@ -26,6 +26,7 @@ public class DicesProbability {
     class Solution1 {
         public double[] dicesProbability(int n) {
             // dp[i][j] ，表示投掷完 i 枚骰子后，点数 j 的出现次数
+            // i <= j <= 6*i
             // 最大点是6，最多点数 6*n
             int[][] dp = new int[n + 1][6 * n + 1];
             // 投掷完 第1 枚骰子后，它的可能点数分别为 1, 2, 3, ... , 6，并且每个点数出现的次数都是 1
