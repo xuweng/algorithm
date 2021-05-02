@@ -5,9 +5,15 @@ package com.leetcode.tag.must2.seven;
  */
 public class ConstructArr {
     /**
-     * 除去对角线
+     * 对角线
      */
     class Solution {
+        /**
+         * 计算矩阵的对角线的积
+         *
+         * @param a
+         * @return
+         */
         public int[] constructArr(int[] a) {
             if (a.length == 0) {
                 return new int[0];
