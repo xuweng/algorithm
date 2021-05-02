@@ -15,11 +15,15 @@ public class LeastBricks {
      */
     class Solution {
         public int leastBricks(List<List<Integer>> wall) {
+            // 间隙,间隙个数
             Map<Integer, Integer> cnt = new HashMap<>();
             for (List<Integer> widths : wall) {
                 int n = widths.size();
+                // 垂线不能通过砖墙的两个垂直边缘，所以砖墙两侧的边缘不应当被统计。只需要统计每行砖块中除了最右侧的砖块以外的其他砖块的右边缘即可
+                // 统计每行间隙 [0,n-2]
                 int sum = 0;
                 for (int i = 0; i < n - 1; i++) {
+                    // 累加得到间隙 边缘
                     sum += widths.get(i);
                     cnt.put(sum, cnt.getOrDefault(sum, 0) + 1);
                 }
@@ -28,6 +32,7 @@ public class LeastBricks {
             for (Map.Entry<Integer, Integer> entry : cnt.entrySet()) {
                 maxCnt = Math.max(maxCnt, entry.getValue());
             }
+            // 砖墙的高度 - 最大值
             return wall.size() - maxCnt;
         }
     }
