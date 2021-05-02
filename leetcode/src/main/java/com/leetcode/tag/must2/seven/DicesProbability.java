@@ -35,8 +35,8 @@ public class DicesProbability {
 
             for (int i = 2; i <= n; i++) {
                 // j 表示投掷完 i 枚骰子后的点数和
-                // j最小是 i, 每次都是1, i次
-                // 最大是  i*6，每次都是6，i次
+                // j 最小是 i, 每次都是1, i次
+                // j 最大是  i*6，每次都是6，i次
                 for (int j = i; j <= 6 * i; j++) {
                     for (int k = 1; k <= 6 && k <= j; k++) {
                         dp[i][j] += dp[i - 1][j - k];
