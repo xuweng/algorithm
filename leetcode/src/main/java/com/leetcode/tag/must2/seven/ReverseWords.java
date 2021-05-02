@@ -30,6 +30,13 @@ public class ReverseWords {
         }
     }
 
+    /**
+     * 1.去掉空格
+     * 2.反转这个字符串
+     * 3.反转每个单词
+     * <p>
+     * 两次反转 保证顺序和原来一样
+     */
     class Solution1 {
         public String reverseWords(String s) {
             StringBuilder sb = trimSpaces(s);
