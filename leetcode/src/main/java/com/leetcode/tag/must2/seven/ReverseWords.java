@@ -105,7 +105,7 @@ public class ReverseWords {
             int start = 0, end = 0;
 
             while (start < n) {
-                // 循环至单词的末尾
+                // 循环至单词的末尾 end=空格
                 while (end < n && sb.charAt(end) != ' ') {
                     ++end;
                 }
