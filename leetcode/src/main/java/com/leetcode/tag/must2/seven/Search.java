@@ -6,6 +6,9 @@ package com.leetcode.tag.must2.seven;
 public class Search {
     static class Solution {
         public int search(int[] nums, int target) {
+            if (nums == null || nums.length == 0) {
+                return 0;
+            }
             int left = getLeft(nums, target);
             if (left == -1) {
                 return 0;
