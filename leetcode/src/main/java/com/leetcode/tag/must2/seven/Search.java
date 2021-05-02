@@ -7,6 +7,9 @@ public class Search {
     class Solution {
         public int search(int[] nums, int target) {
             int left = getLeft(nums, target);
+            if (left == -1) {
+                return 0;
+            }
             int right = getRight(nums, target);
 
             return right - left + 1;
@@ -22,6 +25,10 @@ public class Search {
                 } else {
                     left = mid + 1;
                 }
+            }
+            // 搜索不到
+            if (nums[left] != target) {
+                return -1;
             }
 
             return right;
