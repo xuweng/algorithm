@@ -127,8 +127,8 @@ public class ReverseWords {
 
     class Solution2 {
         public String reverseWords(String s) {
-            if (s == null || s.trim().isEmpty()) {
-                return s;
+            if (s.trim().isEmpty()) {
+                return s.trim();
             }
 
             return getReverseWords(s, 0);
