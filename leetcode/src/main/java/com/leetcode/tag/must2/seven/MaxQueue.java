@@ -6,6 +6,12 @@ import java.util.Queue;
 
 /**
  * 剑指 Offer 59 - II. 队列的最大值
+ * <p>
+ * 队列和栈不一样 不能一一对应
+ * <p>
+ * 321 321 333
+ * <p>
+ * 312 333
  */
 public class MaxQueue {
     Deque<Integer> deque;
