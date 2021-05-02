@@ -5,6 +5,8 @@ import java.util.Map;
 
 /**
  * 146. LRU 缓存机制
+ * <p>
+ * 哈希表 + 双向链表
  */
 public class LRUCache extends LinkedHashMap<Integer, Integer> {
     private int capacity;
