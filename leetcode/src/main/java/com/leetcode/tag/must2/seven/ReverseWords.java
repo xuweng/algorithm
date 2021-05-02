@@ -124,4 +124,37 @@ public class ReverseWords {
             }
         }
     }
+
+    class Solution2 {
+        public String reverseWords(String s) {
+            StringBuilder sb = new StringBuilder();
+
+            getReverseWords(sb, s, 0, false);
+
+            return sb.toString();
+        }
+
+        public void getReverseWords(StringBuilder sb, String s, int start, boolean flag) {
+            int size = s.length();
+            while (start < size && ' ' == s.charAt(start)) {
+                // 走到非空格
+                start++;
+            }
+            if (start == size) {
+                // 走完
+                return;
+            }
+            int end = start;
+            while (end < size && ' ' != s.charAt(end)) {
+                // 走到空格
+                end++;
+            }
+            // [start,end)是一个单词
+            getReverseWords(sb, s, end, true);
+            sb.append(s, start, end);
+            if (flag) {
+                sb.append(' ');
+            }
+        }
+    }
 }
