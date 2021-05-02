@@ -128,7 +128,6 @@ public class ReverseWords {
     class Solution2 {
         public String reverseWords(String s) {
             return getReverseWords(s, 0);
-
         }
 
         public String getReverseWords(String s, int start) {
