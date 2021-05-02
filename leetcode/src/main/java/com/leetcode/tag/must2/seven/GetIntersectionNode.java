@@ -37,9 +37,14 @@ public class GetIntersectionNode {
          * @return
          */
         public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+            // lengthA + [headB,node] = lengthB + [headA,node]
+            // A,B走的路程相等
             ListNode A = headA, B = headB;
             while (A != B) {
+                // A,B相遇退出循环
+                // A走完换B
                 A = A != null ? A.next : headB;
+                // B走完环A
                 B = B != null ? B.next : headA;
             }
             return A;
