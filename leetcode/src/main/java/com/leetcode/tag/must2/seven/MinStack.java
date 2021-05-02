@@ -39,4 +39,35 @@ public class MinStack {
     public int getMin() {
         return min.peek();
     }
+
+    class MinStack1 {
+        Deque<Integer> xStack;
+        Deque<Integer> minStack;
+
+        public MinStack1() {
+            xStack = new LinkedList<>();
+            minStack = new LinkedList<>();
+            // 哨兵
+            minStack.push(Integer.MAX_VALUE);
+        }
+
+        public void push(int x) {
+            xStack.push(x);
+            // Math
+            minStack.push(Math.min(minStack.peek(), x));
+        }
+
+        public void pop() {
+            xStack.pop();
+            minStack.pop();
+        }
+
+        public int top() {
+            return xStack.peek();
+        }
+
+        public int getMin() {
+            return minStack.peek();
+        }
+    }
 }
