@@ -34,7 +34,7 @@ public class FindContinuousSequence1 {
                 }
             }
 
-            return (int[][]) result.toArray();
+            return result.toArray(new int[0][]);
         }
     }
 }
