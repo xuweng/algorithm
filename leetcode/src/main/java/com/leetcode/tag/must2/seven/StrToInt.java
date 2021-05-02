@@ -37,6 +37,8 @@ public class StrToInt {
                     // 非数字字符
                     break;
                 }
+                // 情况一：执行拼接 10×res ≥ 2147483650 越界
+                // 情况二：拼接后是 2147483648 或 2147483649 越界
                 if (res > bndry || res == bndry && c[j] > '7') {
                     // 判断数字越界时，要始终保持 res 在 int 类型的取值范围内
                     return sign == 1 ? Integer.MAX_VALUE : Integer.MIN_VALUE;
