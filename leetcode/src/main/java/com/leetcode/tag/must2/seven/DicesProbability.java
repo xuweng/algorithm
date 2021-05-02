@@ -39,7 +39,7 @@ public class DicesProbability {
                 // j 最大是  i*6，每次都是6，i次
                 for (int j = i; j <= 6 * i; j++) {
                     // 第i次是 1, 2, 3, ... , 6
-                    for (int k = 1; k <= 6 && k <= j; k++) {
+                    for (int k = 1; k <= 6 && i - 1 <= j - k; k++) {
                         dp[i][j] += dp[i - 1][j - k];
                     }
                 }
