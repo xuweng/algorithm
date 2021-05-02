@@ -23,7 +23,9 @@ public class StrToInt {
             if (c.length == 0) {
                 return 0;
             }
-            int res = 0, bndry = Integer.MAX_VALUE / 10;
+            int res = 0;
+            // 数字越界判断
+            int bndry = Integer.MAX_VALUE / 10;
             int i = 1;
             // 符号位
             int sign = 1;
