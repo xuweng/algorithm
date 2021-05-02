@@ -163,7 +163,7 @@ public class ReverseWords {
     class Solution3 {
         public String reverseWords(String s) {
             // 删除首尾空格，分割字符串
-            String[] strs = s.trim().split(" ");
+            String[] strs = s.split(" ");
             StringBuilder res = new StringBuilder();
             // 倒序遍历单词列表
             for (int i = strs.length - 1; i >= 0; i--) {
