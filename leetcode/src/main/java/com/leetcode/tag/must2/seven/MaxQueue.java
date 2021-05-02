@@ -2,6 +2,7 @@ package com.leetcode.tag.must2.seven;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * 剑指 Offer 59 - II. 队列的最大值
@@ -20,7 +21,7 @@ public class MaxQueue {
             return -1;
         }
 
-        return stack.pop();
+        return stack.peek();
     }
 
     public void push_back(int value) {
@@ -37,6 +38,7 @@ public class MaxQueue {
         if (deque.isEmpty()) {
             return -1;
         }
+        stack.pop();
         return deque.pollFirst();
     }
 
@@ -68,6 +70,45 @@ public class MaxQueue {
                 return -1;
             }
             return q[begin++];
+        }
+    }
+
+    /**
+     * 方法二：维护一个单调的双端队列
+     */
+    class MaxQueue2 {
+        Queue<Integer> q;
+        Deque<Integer> d;
+
+        public MaxQueue2() {
+            q = new LinkedList<>();
+            d = new LinkedList<>();
+        }
+
+        public int max_value() {
+            if (d.isEmpty()) {
+                return -1;
+            }
+            return d.peekFirst();
+        }
+
+        public void push_back(int value) {
+            while (!d.isEmpty() && d.peekLast() < value) {
+                d.pollLast();
+            }
+            d.offerLast(value);
+            q.offer(value);
+        }
+
+        public int pop_front() {
+            if (q.isEmpty()) {
+                return -1;
+            }
+            int ans = q.poll();
+            if (ans == d.peekFirst()) {
+                d.pollFirst();
+            }
+            return ans;
         }
     }
 }
