@@ -25,6 +25,7 @@ public class StrToInt {
             }
             int res = 0;
             // 数字越界判断
+            // bndry = 2147483647 / 10 = 214748364
             int bndry = Integer.MAX_VALUE / 10;
             int i = 1;
             // 符号位
