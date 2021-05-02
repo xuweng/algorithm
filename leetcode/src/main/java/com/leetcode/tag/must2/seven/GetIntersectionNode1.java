@@ -8,8 +8,8 @@ public class GetIntersectionNode1 {
         public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
             ListNode a = headA, b = headB;
             while (a != b) {
-                a = (a == null) ? b : a.next;
-                b = (b == null) ? a : b.next;
+                a = (a == null) ? headB : a.next;
+                b = (b == null) ? headA : b.next;
             }
 
             return a;
