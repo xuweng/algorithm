@@ -19,7 +19,7 @@ public class LastRemaining {
             }
             int i = 0;
             while (list.size() != 1) {
-                int index = (i + m) % list.size();
+                int index = (i + m - 1) % list.size();
                 list.remove(index);
                 i = index;
             }
