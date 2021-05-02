@@ -41,33 +41,33 @@ public class MinStack {
     }
 
     class MinStack1 {
-        Deque<Integer> xStack;
-        Deque<Integer> minStack;
+        Deque<Integer> deque;
+        Deque<Integer> min;
 
         public MinStack1() {
-            xStack = new LinkedList<>();
-            minStack = new LinkedList<>();
+            deque = new LinkedList<>();
+            min = new LinkedList<>();
             // 哨兵
-            minStack.push(Integer.MAX_VALUE);
+            min.push(Integer.MAX_VALUE);
         }
 
         public void push(int x) {
-            xStack.push(x);
+            deque.push(x);
             // Math
-            minStack.push(Math.min(minStack.peek(), x));
+            min.push(Math.min(min.peek(), x));
         }
 
         public void pop() {
-            xStack.pop();
-            minStack.pop();
+            deque.pop();
+            min.pop();
         }
 
         public int top() {
-            return xStack.peek();
+            return deque.peek();
         }
 
         public int getMin() {
-            return minStack.peek();
+            return min.peek();
         }
     }
 }
