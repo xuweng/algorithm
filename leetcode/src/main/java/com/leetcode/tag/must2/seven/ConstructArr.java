@@ -4,6 +4,9 @@ package com.leetcode.tag.must2.seven;
  * 剑指 Offer 66. 构建乘积数组
  */
 public class ConstructArr {
+    /**
+     * 除去对角线
+     */
     class Solution {
         public int[] constructArr(int[] a) {
             if (a.length == 0) {
