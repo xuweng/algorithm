@@ -3,6 +3,8 @@ package com.leetcode.tag.must2.eight;
 /**
  * 122. 买卖股票的最佳时机 II
  * <p>
+ * 1次 n次 k次
+ * <p>
  * 尽可能地完成更多的交易（多次买卖一支股票）
  * <p>
  * 单调递减栈 单调递减栈
