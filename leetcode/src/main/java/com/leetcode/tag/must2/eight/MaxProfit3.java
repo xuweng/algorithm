@@ -4,6 +4,10 @@ package com.leetcode.tag.must2.eight;
  * 188. 买卖股票的最佳时机 IV
  * <p>
  * 1次 2次 n次 k次
+ * <p>
+ * 溢出 溢出 溢出
+ * <p>
+ * 负数取模 负数取模 负数取模
  */
 public class MaxProfit3 {
     /**
@@ -16,6 +20,7 @@ public class MaxProfit3 {
             }
 
             int n = prices.length;
+            // n天最多只能进行 n/2 次交易
             k = Math.min(k, n / 2);
             int[][] buy = new int[n][k + 1];
             int[][] sell = new int[n][k + 1];
