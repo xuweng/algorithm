@@ -5,6 +5,14 @@ import java.util.Map;
 
 /**
  * 697. 数组的度
+ * <p>
+ * 正负 正负 正负
+ * <p>
+ * 溢出 溢出 溢出
+ * <p>
+ * 依赖 依赖 依赖
+ * <p>
+ * 最大值更新 重复最大值
  */
 public class FindShortestSubArray {
     /**
