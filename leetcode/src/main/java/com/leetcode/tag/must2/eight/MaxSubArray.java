@@ -28,7 +28,7 @@ public class MaxSubArray {
                 cur = Math.max(pre, 0) + nums[i];
                 pre = cur;
 
-                max = cur;
+                max = Math.max(max, cur);
             }
 
             return max;
