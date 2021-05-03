@@ -18,16 +18,23 @@ public class IsStraight {
             int max = 0, min = 14;
             for (int num : nums) {
                 if (num == 0) {
-                    continue; // 跳过大小王
+                    // 跳过大小王
+                    continue;
                 }
-                max = Math.max(max, num); // 最大牌
-                min = Math.min(min, num); // 最小牌
+                // 最大牌
+                max = Math.max(max, num);
+                // 最小牌
+                min = Math.min(min, num);
                 if (repeat.contains(num)) {
-                    return false; // 若有重复，提前返回 false
+                    // 除大小王外，所有牌 无重复
+                    // 若有重复，提前返回 false
+                    return false;
                 }
-                repeat.add(num); // 添加此牌至 Set
+                // 添加此牌至 Set
+                repeat.add(num);
             }
-            return max - min < 5; // 最大牌 - 最小牌 < 5 则可构成顺子
+            // 最大牌 - 最小牌 < 5 则可构成顺子
+            return max - min < 5;
         }
     }
 
