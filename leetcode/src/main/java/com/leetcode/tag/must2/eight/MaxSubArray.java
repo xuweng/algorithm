@@ -34,4 +34,42 @@ public class MaxSubArray {
             return max;
         }
     }
+
+    /**
+     * 方法二：分治
+     */
+    class Solution2 {
+        public class Status {
+            public int lSum, rSum, mSum, iSum;
+
+            public Status(int lSum, int rSum, int mSum, int iSum) {
+                this.lSum = lSum;
+                this.rSum = rSum;
+                this.mSum = mSum;
+                this.iSum = iSum;
+            }
+        }
+
+        public int maxSubArray(int[] nums) {
+            return getInfo(nums, 0, nums.length - 1).mSum;
+        }
+
+        public Status getInfo(int[] a, int left, int right) {
+            if (left == right) {
+                return new Status(a[left], a[left], a[left], a[left]);
+            }
+            int mid = (left + right) >> 1;
+            Status lSub = getInfo(a, left, mid);
+            Status rSub = getInfo(a, mid + 1, right);
+            return pushUp(lSub, rSub);
+        }
+
+        public Status pushUp(Status l, Status r) {
+            int iSum = l.iSum + r.iSum;
+            int lSum = Math.max(l.lSum, l.iSum + r.lSum);
+            int rSum = Math.max(r.rSum, r.iSum + l.rSum);
+            int mSum = Math.max(Math.max(l.mSum, r.mSum), l.rSum + r.lSum);
+            return new Status(lSum, rSum, mSum, iSum);
+        }
+    }
 }
