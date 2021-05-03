@@ -46,7 +46,7 @@ public class Trap {
                     if (stack.isEmpty()) {
                         break;
                     }
-                    // left < top < height[i]
+                    // height[left] < height[top] < height[i]
                     int left = stack.peek();
                     // 宽度
                     int currWidth = i - left - 1;
