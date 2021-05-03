@@ -1,7 +1,5 @@
 package com.leetcode.tag.must2.eight;
 
-import java.util.Arrays;
-
 /**
  * 188. 买卖股票的最佳时机 IV
  * <p>
@@ -63,7 +61,6 @@ public class MaxProfit3 {
             int[] sell = new int[k + 1];
 
             buy[0] = -prices[0];
-            sell[0] = 0;
             for (int i = 1; i <= k; ++i) {
                 buy[i] = sell[i] = Integer.MIN_VALUE / 2;
             }
@@ -74,10 +71,12 @@ public class MaxProfit3 {
                 for (int j = 1; j <= k; ++j) {
                     buy[j] = Math.max(buy[j], sell[j] - prices[i]);
                     sell[j] = Math.max(sell[j], buy[j - 1] + prices[i]);
+
+                    max = Math.max(max, sell[i]);
                 }
             }
 
-            return Arrays.stream(sell).max().getAsInt();
+            return max;
         }
     }
 }
