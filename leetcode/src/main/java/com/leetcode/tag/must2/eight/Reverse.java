@@ -8,6 +8,10 @@ public class Reverse {
         public int reverse(int x) {
             int rev = 0;
             while (x != 0) {
+                // Integer.MAX_VALUE = 2147483647
+                // Integer.MAX_VALUE / 10 = 214748364
+                // rev > 214748364,rev = 214748365,214748366,214748367,214748368,214748369
+                // 214748365 * 10 = 2147483650 > 2147483647
                 if (rev < Integer.MIN_VALUE / 10 || rev > Integer.MAX_VALUE / 10) {
                     return 0;
                 }
