@@ -12,6 +12,10 @@ public class MaxProduct {
      * 当前位置的最优解未必是由前一个位置的最优解转移得到的。
      * <p>
      * 可以根据正负性进行分类讨论
+     * <p>
+     * 正：前一个正，前一个负
+     * <p>
+     * 负：前一个负，前一个正
      */
     class Solution {
         public int maxProduct(int[] nums) {
