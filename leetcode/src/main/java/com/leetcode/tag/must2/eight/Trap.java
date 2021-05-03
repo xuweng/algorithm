@@ -41,7 +41,7 @@ public class Trap {
             int n = height.length;
             for (int i = 0; i < n; ++i) {
                 while (!stack.isEmpty() && height[i] > height[stack.peek()]) {
-                    // top最小
+                    // height[top]最小
                     int top = stack.pop();
                     if (stack.isEmpty()) {
                         break;
