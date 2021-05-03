@@ -30,13 +30,14 @@ public class FindShortestSubArray {
             int maxNum = 0, minLen = 0;
             for (Map.Entry<Integer, int[]> entry : map.entrySet()) {
                 int[] arr = entry.getValue();
+                // 任一元素出现频数的最大值
                 if (maxNum < arr[0]) {
                     maxNum = arr[0];
+                    // 遇到最大值就直接更新
                     minLen = arr[2] - arr[1] + 1;
                 } else if (maxNum == arr[0]) {
-                    if (minLen > arr[2] - arr[1] + 1) {
-                        minLen = arr[2] - arr[1] + 1;
-                    }
+                    // 多个重复的最大值,取最小值
+                    minLen = Math.min(minLen, arr[2] - arr[1] + 1);
                 }
             }
             return minLen;
