@@ -6,6 +6,9 @@ package com.leetcode.tag.must2.eight;
 public class Trap {
     class Solution {
         public int trap(int[] height) {
+            if (height.length == 0) {
+                return 0;
+            }
             int[] left = new int[height.length];
             left[0] = height[0];
             for (int i = 1; i < height.length; i++) {
