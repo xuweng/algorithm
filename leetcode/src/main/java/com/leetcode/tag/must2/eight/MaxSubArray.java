@@ -18,4 +18,20 @@ public class MaxSubArray {
             return max;
         }
     }
+
+    class Solution1 {
+        public int maxSubArray(int[] nums) {
+            int pre = nums[0];
+            int cur;
+            int max = nums[0];
+            for (int i = 1; i < nums.length; i++) {
+                cur = Math.max(pre, 0) + nums[i];
+                pre = cur;
+
+                max = cur;
+            }
+
+            return max;
+        }
+    }
 }
