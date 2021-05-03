@@ -22,6 +22,7 @@ public class MaxProfit3 {
 
             buy[0][0] = -prices[0];
             for (int i = 1; i <= k; ++i) {
+                // 设置不合法的状态 不合法状态转移不合法状态
                 buy[0][i] = sell[0][i] = Integer.MIN_VALUE / 2;
             }
 
