@@ -10,6 +10,10 @@ package com.leetcode.tag.must2.eight;
 public class FindNumberIn2DArray {
     class Solution {
         public boolean findNumberIn2DArray(int[][] matrix, int target) {
+            if (matrix.length == 0 || matrix[0].length == 0) {
+                return false;
+            }
+
             return fen(matrix, target, 0, matrix[0].length - 1);
         }
 
