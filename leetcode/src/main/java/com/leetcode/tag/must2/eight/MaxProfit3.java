@@ -79,4 +79,38 @@ public class MaxProfit3 {
             return max;
         }
     }
+
+    class Solution2 {
+        public int maxProfit(int k, int[] prices) {
+            if (prices.length == 0) {
+                return 0;
+            }
+
+            int n = prices.length;
+            k = Math.min(k, n / 2);
+            int[][] dp = new int[k + 1][2];
+
+            // 有股票
+            dp[0][1] = -prices[0];
+            for (int i = 1; i <= k; ++i) {
+                dp[i][0] = dp[i][1] = Integer.MIN_VALUE / 2;
+            }
+
+            int max = 0;
+            for (int i = 1; i < n; ++i) {
+                // 没有股票
+                dp[0][0] = Math.max(dp[0][0], dp[0][1] - prices[i]);
+                for (int j = 1; j <= k; ++j) {
+                    // 没有股票
+                    dp[j][0] = Math.max(dp[j][0], dp[j][1] + prices[i]);
+                    // 有股票
+                    dp[j][1] = Math.max(dp[j][1], dp[j][0] - prices[i]);
+
+                    max = Math.max(max, dp[j][0]);
+                }
+            }
+
+            return max;
+        }
+    }
 }
