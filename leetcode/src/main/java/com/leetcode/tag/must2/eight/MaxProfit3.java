@@ -102,7 +102,7 @@ public class MaxProfit3 {
                 dp[0][0] = Math.max(dp[0][0], dp[0][1] - prices[i]);
                 for (int j = 1; j <= k; ++j) {
                     // 没有股票
-                    dp[j][0] = Math.max(dp[j][0], dp[j][1] + prices[i]);
+                    dp[j][0] = Math.max(dp[j][0], dp[j - 1][1] + prices[i]);
                     // 有股票
                     dp[j][1] = Math.max(dp[j][1], dp[j][0] - prices[i]);
 
