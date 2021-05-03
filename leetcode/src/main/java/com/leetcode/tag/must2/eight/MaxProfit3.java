@@ -72,7 +72,7 @@ public class MaxProfit3 {
                     buy[j] = Math.max(buy[j], sell[j] - prices[i]);
                     sell[j] = Math.max(sell[j], buy[j - 1] + prices[i]);
 
-                    max = Math.max(max, sell[i]);
+                    max = Math.max(max, sell[j]);
                 }
             }
 
