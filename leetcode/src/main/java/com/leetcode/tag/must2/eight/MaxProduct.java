@@ -8,6 +8,11 @@ package com.leetcode.tag.must2.eight;
  * 溢出 溢出 溢出
  */
 public class MaxProduct {
+    /**
+     * 当前位置的最优解未必是由前一个位置的最优解转移得到的。
+     * <p>
+     * 可以根据正负性进行分类讨论
+     */
     class Solution {
         public int maxProduct(int[] nums) {
             int[] zhe = new int[nums.length];
