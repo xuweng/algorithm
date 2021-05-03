@@ -1,5 +1,8 @@
 package com.leetcode.tag.must2.eight;
 
+import java.util.Deque;
+import java.util.LinkedList;
+
 /**
  * 42. 接雨水
  */
@@ -27,6 +30,33 @@ public class Trap {
             }
 
             return result;
+        }
+    }
+
+    class Solution1 {
+        public int trap(int[] height) {
+            int ans = 0;
+            // 单调递减栈
+            Deque<Integer> stack = new LinkedList<>();
+            int n = height.length;
+            for (int i = 0; i < n; ++i) {
+                while (!stack.isEmpty() && height[i] > height[stack.peek()]) {
+                    // top最小
+                    int top = stack.pop();
+                    if (stack.isEmpty()) {
+                        break;
+                    }
+                    // left < top < height[i]
+                    int left = stack.peek();
+                    // 宽度
+                    int currWidth = i - left - 1;
+                    // 高度
+                    int currHeight = Math.min(height[left], height[i]) - height[top];
+                    ans += currWidth * currHeight;
+                }
+                stack.push(i);
+            }
+            return ans;
         }
     }
 }
