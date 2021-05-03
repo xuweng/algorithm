@@ -5,6 +5,12 @@ package com.leetcode.tag.must2.eight;
  */
 public class Reverse {
     class Solution {
+        /**
+         * x <= 1463847412
+         *
+         * @param x
+         * @return
+         */
         public int reverse(int x) {
             int rev = 0;
             while (x != 0) {
@@ -12,6 +18,7 @@ public class Reverse {
                 // Integer.MAX_VALUE / 10 = 214748364
                 // rev > 214748364,rev = 214748365,214748366,214748367,214748368,214748369
                 // 214748365 * 10 = 2147483650 > 2147483647
+                // rev = 214748364,x = 1463847412
                 if (rev < Integer.MIN_VALUE / 10 || rev > Integer.MAX_VALUE / 10) {
                     return 0;
                 }
