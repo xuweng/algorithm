@@ -37,7 +37,7 @@ public class MinCost {
                             // 房子已经上色
                             if (j == houses[i - 1]) {
                                 int temp = Integer.MAX_VALUE / 2;
-                                for (int i1 = 0; i1 <= n; i1++) {
+                                for (int i1 = 1; i1 <= n; i1++) {
                                     if (i1 != j) {
                                         temp = Math.min(temp, dp[i - 1][i1][k - 1]);
                                     }
