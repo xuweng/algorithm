@@ -26,7 +26,7 @@ public class MaxQueue {
         deque.offerLast(value);
         // 123456
         // 44444321
-        // 单调递增队列
+        // 单调递减队列
         while (!max.isEmpty() && max.peekLast() < value) {
             max.pollLast();
         }
