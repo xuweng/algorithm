@@ -5,6 +5,8 @@ import java.util.Map;
 
 /**
  * 146. LRU 缓存机制
+ * <p>
+ * 3个方法
  */
 public class LRUCache {
     int capacity;
@@ -59,7 +61,7 @@ public class LRUCache {
     }
 
     /**
-     * 移动node
+     * 1.移动node
      *
      * @param node
      */
@@ -71,7 +73,7 @@ public class LRUCache {
     }
 
     /**
-     * 删除node
+     * 2.删除node
      *
      * @param node
      */
@@ -82,7 +84,7 @@ public class LRUCache {
     }
 
     /**
-     * node放入head
+     * 3.node放入head
      *
      * @param node
      */
