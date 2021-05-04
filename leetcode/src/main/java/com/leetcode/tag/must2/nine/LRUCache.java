@@ -42,9 +42,14 @@ public class LRUCache {
         size++;
         Node node = new Node(key, value);
         if (size > capacity) {
-            deleteTail();
+            Node delete = tail.pre;
+            deleteNode(delete);
+            // 维护map
+            map.remove(delete.key);
         }
         addHead(node);
+        // 维护map
+        map.put(key, node);
     }
 
     private void deleteTail() {
