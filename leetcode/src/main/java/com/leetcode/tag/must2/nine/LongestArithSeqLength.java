@@ -15,10 +15,10 @@ public class LongestArithSeqLength {
             }
 
             int max = 1;
-            for (int i = 0; i < A.length; i++) {
+            for (int i = 1; i < A.length; i++) {
                 for (int j = 0; j < i; j++) {
                     int cha = A[i] - A[j];
-                    dp[i][cha + offset] = Math.max(dp[i][cha], dp[j][offset] + 1);
+                    dp[i][cha + offset] = Math.max(dp[i][cha + offset], dp[j][cha + offset] + 1);
 
                     max = Math.max(max, dp[i][cha + offset]);
                 }
