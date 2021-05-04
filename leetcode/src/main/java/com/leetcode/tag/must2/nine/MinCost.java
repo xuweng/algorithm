@@ -32,6 +32,7 @@ public class MinCost {
                                     temp = Math.min(temp, dp[i - 1][i1][k - 1]);
                                 }
                             }
+                            // min(不是新街区, 新街区)
                             dp[i][j][k] = Math.min(dp[i - 1][j][k], temp) + cost[i - 1][j - 1];
                         } else {
                             // 房子已经上色
@@ -42,6 +43,7 @@ public class MinCost {
                                         temp = Math.min(temp, dp[i - 1][i1][k - 1]);
                                     }
                                 }
+                                // min(不是新街区, 新街区)
                                 dp[i][j][k] = Math.min(dp[i - 1][j][k], temp);
                             } else {
                                 dp[i][j][k] = Integer.MAX_VALUE / 2;
@@ -56,6 +58,7 @@ public class MinCost {
                 result = Math.min(result, dp[m][i][target]);
             }
 
+            // -1
             return result == Integer.MAX_VALUE / 2 ? -1 : result;
         }
     }
