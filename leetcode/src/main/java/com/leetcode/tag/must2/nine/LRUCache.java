@@ -50,15 +50,15 @@ public class LRUCache {
         tail.pre = pre;
     }
 
+    private void moveToHead(Node node) {
+        deleteNode(node);
+        addHead(node);
+    }
+
     private void deleteNode(Node node) {
         Node pre = node.pre;
         pre.next = node.next;
         node.next.pre = pre;
-    }
-
-    private void moveToHead(Node node) {
-        deleteNode(node);
-        addHead(node);
     }
 
     private void addHead(Node node) {
