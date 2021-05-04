@@ -58,17 +58,34 @@ public class LRUCache {
         tail.pre = pre;
     }
 
+    /**
+     * 移动node
+     *
+     * @param node
+     */
     private void moveToHead(Node node) {
+        // 删除node
         deleteNode(node);
+        // node放入head
         addHead(node);
     }
 
+    /**
+     * 删除node
+     *
+     * @param node
+     */
     private void deleteNode(Node node) {
         Node pre = node.pre;
         pre.next = node.next;
         node.next.pre = pre;
     }
 
+    /**
+     * node放入head
+     *
+     * @param node
+     */
     private void addHead(Node node) {
         node.next = head.next;
         head.next.pre = node;
