@@ -56,7 +56,7 @@ public class MinCost {
                 result = Math.min(result, dp[m][i][target]);
             }
 
-            return result;
+            return result == Integer.MAX_VALUE / 2 ? -1 : result;
         }
     }
 }
