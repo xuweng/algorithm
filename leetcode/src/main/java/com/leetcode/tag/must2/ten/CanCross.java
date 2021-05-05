@@ -12,8 +12,11 @@ public class CanCross {
         Map<String, Boolean> memo = new HashMap<>();
 
         public boolean canCross(int[] stones) {
+            if (stones[1] != 1) {
+                return false;
+            }
             if (stones.length == 2) {
-                return stones[1] == 1;
+                return true;
             }
             for (int i = 0; i < stones.length; i++) {
                 map.put(stones[i], i);
