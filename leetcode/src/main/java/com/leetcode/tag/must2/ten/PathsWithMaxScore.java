@@ -35,7 +35,7 @@ public class PathsWithMaxScore {
                     if (i + 1 < m) {
                         if (dp[i][j] < cur + dp[i + 1][j]) {
                             dp[i][j] = cur + dp[i + 1][j];
-                            max[i][j] = dp[i + 1][j];
+                            max[i][j] = max[i + 1][j];
                         } else if (dp[i][j] == cur + dp[i + 1][j]) {
                             max[i][j] += max[i + 1][j];
                         }
@@ -45,7 +45,7 @@ public class PathsWithMaxScore {
                     if (j + 1 < m) {
                         if (dp[i][j] < cur + dp[i][j + 1]) {
                             dp[i][j] = cur + dp[i][j + 1];
-                            max[i][j] = dp[i][j + 1];
+                            max[i][j] = max[i][j + 1];
                         } else if (dp[i][j] == cur + dp[i][j + 1]) {
                             max[i][j] += max[i][j + 1];
                         }
@@ -55,7 +55,7 @@ public class PathsWithMaxScore {
                     if (i + 1 < m && j + 1 < m) {
                         if (dp[i][j] < cur + dp[i + 1][j + 1]) {
                             dp[i][j] = cur + dp[i + 1][j + 1];
-                            max[i][j] = dp[i + 1][j + 1];
+                            max[i][j] = max[i + 1][j + 1];
                         } else if (dp[i][j] == cur + dp[i + 1][j + 1]) {
                             max[i][j] += max[i + 1][j + 1];
                         }
