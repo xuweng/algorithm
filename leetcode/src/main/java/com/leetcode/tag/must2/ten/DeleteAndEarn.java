@@ -111,14 +111,15 @@ public class DeleteAndEarn {
             }
             int[] dp = new int[max + 1];
             dp[1] = all[1];
-            // 从小到大枚举 i+1根本不需要考虑
+            // 从小到大枚举 考虑i，i+1根本不需要考虑
             // 动态规划求解
             for (int i = 2; i <= max; ++i) {
                 // 不选择i 选择i-1，i-2和i就会删除  i-2,i-1,i
                 // 选择i   不能选择i-1,只能选择i-2，只会把i-3和i-1删除 i-1 i i+1
 
                 // 选择i-1，就不能选择i
-                // 选择i，就不能选择i-1
+                // 选择i，就不能选择i-1 i+1
+                // 不选择i，选择i-1
                 dp[i] = Math.max(dp[i - 1], dp[i - 2] + i * all[i]);
             }
             return dp[max];
