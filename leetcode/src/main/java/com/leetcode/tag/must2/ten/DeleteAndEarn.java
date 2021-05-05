@@ -111,12 +111,44 @@ public class DeleteAndEarn {
             }
             int[] dp = new int[max + 1];
             dp[1] = all[1];
-            dp[2] = Math.max(dp[1], all[2] * 2);
+            // 从小到大枚举 i+1根本不需要考虑
             // 动态规划求解
             for (int i = 2; i <= max; ++i) {
+                // 不选择i 选择i-1，i-2和i就会删除  i-2,i-1,i
+                // 选择i   不能选择i-1,只能选择i-2，只会把i-3和i-1删除 i-1 i i+1
+
+                // 选择i-1，就不能选择i
+                // 选择i，就不能选择i-1
                 dp[i] = Math.max(dp[i - 1], dp[i - 2] + i * all[i]);
             }
             return dp[max];
+        }
+    }
+
+    /**
+     * 当我们选择 nums[i] 的时候，比 nums[i-1],nums[i+1] 都不能被选择。
+     * <p>
+     * 如果我们将数组排好序，从前往后处理，其实只需要考虑“i”与“i-1”的「大小 & 选择」关系即可，
+     * <p>
+     * 这样处理完，显然每个数的「i-1/i+1」都会被考虑到。
+     */
+    class Solution3 {
+        int[] cnts = new int[10009];
+
+        public int deleteAndEarn(int[] nums) {
+            int n = nums.length;
+            int max = 0;
+            for (int x : nums) {
+                cnts[x]++;
+                max = Math.max(max, x);
+            }
+            // f[i][0] 代表「不选」数值 i；f[i][1] 代表「选择」数值 i
+            int[][] f = new int[max + 1][2];
+            for (int i = 1; i <= max; i++) {
+                f[i][1] = f[i - 1][0] + i * cnts[i];
+                f[i][0] = Math.max(f[i - 1][1], f[i - 1][0]);
+            }
+            return Math.max(f[max][0], f[max][1]);
         }
     }
 }
