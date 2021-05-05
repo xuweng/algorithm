@@ -120,6 +120,7 @@ public class DeleteAndEarn {
                 // 选择i-1，就不能选择i
                 // 选择i，就不能选择i-1 i+1
                 // 不选择i，选择i-1
+                // 相邻不能同时选择
                 dp[i] = Math.max(dp[i - 1], dp[i - 2] + i * all[i]);
             }
             return dp[max];
