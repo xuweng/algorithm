@@ -35,6 +35,9 @@ public class FindPaths {
             if (startRow < 0 || startRow >= m || startColumn < 0 || startColumn >= n) {
                 return 1;
             }
+            if (meno[startRow][startColumn][maxMove] != -1) {
+                return meno[startRow][startColumn][maxMove];
+            }
             int sum = 0;
             for (int[] anInt : ints) {
                 int nextR = startRow + anInt[0];
