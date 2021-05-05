@@ -36,6 +36,9 @@ public class CanCross {
                 return true;
             }
             for (int i = step - 1; i <= step + 1; i++) {
+                if (i == 0) {
+                    continue;
+                }
                 int next = stones[index] + i;
                 if (!map.containsKey(next)) {
                     continue;
