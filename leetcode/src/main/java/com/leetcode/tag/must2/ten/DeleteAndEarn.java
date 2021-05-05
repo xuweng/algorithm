@@ -111,6 +111,7 @@ public class DeleteAndEarn {
             }
             int[] dp = new int[max + 1];
             dp[1] = all[1];
+            // 不是枚举原数组，是枚举最大值
             // 从小到大枚举 考虑i，i+1根本不需要考虑
             // 动态规划求解
             for (int i = 2; i <= max; ++i) {
