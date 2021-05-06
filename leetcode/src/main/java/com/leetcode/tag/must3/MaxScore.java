@@ -12,12 +12,13 @@ public class MaxScore {
             int left = 0;
             int right = 0;
             int min = Integer.MAX_VALUE;
+            int sum = 0;
 
             while (right < cardPoints.length) {
-                no += cardPoints[right];
+                sum += cardPoints[right];
                 if (right >= no - 1) {
-                    min = Math.min(min, no);
-                    no -= cardPoints[left++];
+                    min = Math.min(min, sum);
+                    sum -= cardPoints[left++];
                 }
                 right++;
             }
