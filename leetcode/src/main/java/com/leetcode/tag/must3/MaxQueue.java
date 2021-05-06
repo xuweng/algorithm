@@ -24,7 +24,7 @@ public class MaxQueue {
 
     public void push_back(int value) {
         deque.offerLast(value);
-        // 单调递减队列
+        // 单调递减队列 max.peekLast() = value?
         while (!max.isEmpty() && max.peekLast() < value) {
             max.pollLast();
         }
