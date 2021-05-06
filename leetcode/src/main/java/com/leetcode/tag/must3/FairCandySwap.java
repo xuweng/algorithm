@@ -6,6 +6,12 @@ import java.util.stream.Collectors;
 
 /**
  * 888. 公平的糖果棒交换
+ * <p>
+ * 并查集 环 连通分量
+ * <p>
+ * 滑动窗口 固定长度
+ * <p>
+ * 哨兵 合并
  */
 public class FairCandySwap {
     class Solution {
