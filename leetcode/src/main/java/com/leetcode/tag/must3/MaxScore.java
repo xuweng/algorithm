@@ -8,6 +8,12 @@ import java.util.Arrays;
 public class MaxScore {
     class Solution {
         public int maxScore(int[] cardPoints, int k) {
+            if (cardPoints == null) {
+                return 0;
+            }
+            if (cardPoints.length == k) {
+                return Arrays.stream(cardPoints).sum();
+            }
             int no = cardPoints.length - k;
             int left = 0;
             int right = 0;
