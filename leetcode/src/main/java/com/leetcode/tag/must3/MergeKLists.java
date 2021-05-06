@@ -6,6 +6,9 @@ package com.leetcode.tag.must3;
 public class MergeKLists {
     class Solution {
         public ListNode mergeKLists(ListNode[] lists) {
+            if (lists == null || lists.length == 0) {
+                return null;
+            }
             return merge(lists, 0, lists.length - 1);
         }
 
