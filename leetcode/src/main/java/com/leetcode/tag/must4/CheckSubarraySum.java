@@ -91,6 +91,7 @@ public class CheckSubarraySum {
                 }
 
                 if (map.containsKey(sum)) {
+                    // 子数组大小至少为 2
                     if (i - map.get(sum) > 1) {
                         return true;
                     }
