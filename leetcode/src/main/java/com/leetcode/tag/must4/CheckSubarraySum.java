@@ -72,6 +72,12 @@ public class CheckSubarraySum {
     /**
      * 移动指针 移动指针 移动指针
      * <p>
+     * 使用sum表示前缀和根据题目要求，(sum[j] - sum[i]) % k = 0
+     * <p>
+     * sum[j] % k = sum[i] % k
+     * <p>
+     * 子数组[i, j - 1]的和sum[j] - sum[i]是k的n倍，那么sum[j] % k = sum[i] % k
+     * <p>
      * 根据求解 1. 两数之和 的经验，我们可以在遍历的过程当中记录已经出现的信息，这样就可以通过一次遍历完成计算
      */
     public class Solution3 {
@@ -99,6 +105,29 @@ public class CheckSubarraySum {
                     map.put(sum, i);
                 }
 
+            }
+            return false;
+        }
+    }
+
+    class Solution4 {
+        public boolean checkSubarraySum(int[] nums, int k) {
+            int sum = 0;
+            // 键为 preSum % k, 值为索引，当然要特殊处理k == 0的情况
+            Map<Integer, Integer> map = new HashMap<>();
+            map.put(0, -1);
+            for (int i = 0; i < nums.length; i++) {
+                sum += nums[i];
+                int temp = k == 0 ? sum : sum % k;
+                // 出现相同的键，如果子数组长度少于2， 不需要更新值。
+                if (map.containsKey(temp)) {
+                    // 子数组要求长度至少为2。
+                    if (i - map.get(temp) > 1) {
+                        return true;
+                    }
+                    continue;
+                }
+                map.put(temp, i);
             }
             return false;
         }
