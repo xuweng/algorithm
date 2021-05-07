@@ -96,15 +96,14 @@ public class CheckSubarraySum {
             map.put(0, -1);
             for (int i = 0; i < len; i++) {
                 sum += nums[i];
-                sum = sum % k;
 
-                if (map.containsKey(sum)) {
+                if (map.containsKey(sum % k)) {
                     // 子数组大小至少为 2
-                    if (i - map.get(sum) > 1) {
+                    if (i - map.get(sum % k) > 1) {
                         return true;
                     }
                 } else {
-                    map.put(sum, i);
+                    map.put(sum % k, i);
                 }
 
             }
