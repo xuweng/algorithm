@@ -84,6 +84,8 @@ public class CheckSubarraySum {
         public boolean checkSubarraySum(int[] nums, int k) {
             int sum = 0;
 
+            // (sum[j] - sum[i]) % k = 0
+            // sum[j] % k = sum[i] % k
             // key：区间 [0..i] 里所有元素的和 % k
             // value：下标 i
             Map<Integer, Integer> map = new HashMap<>();
