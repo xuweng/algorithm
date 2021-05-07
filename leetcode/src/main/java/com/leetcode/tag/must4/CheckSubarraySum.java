@@ -90,6 +90,8 @@ public class CheckSubarraySum {
             int len = nums.length;
             for (int i = 0; i < len; i++) {
                 sum += nums[i];
+                sum = sum % k;
+
                 if (map.containsKey(sum)) {
                     // 子数组大小至少为 2
                     if (i - map.get(sum) > 1) {
