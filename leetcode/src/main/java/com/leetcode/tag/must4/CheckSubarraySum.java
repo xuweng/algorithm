@@ -92,6 +92,7 @@ public class CheckSubarraySum {
             Map<Integer, Integer> map = new HashMap<>();
             int len = nums.length;
             // 必须
+            // [1,1] 1
             // sum[i]=[0,i] sum[i]%k==0 i-(-1)=2
             map.put(0, -1);
             for (int i = 0; i < len; i++) {
