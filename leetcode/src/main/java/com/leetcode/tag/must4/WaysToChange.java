@@ -17,6 +17,7 @@ public class WaysToChange {
             for (int coin : coins) {
                 for (int i = coin; i <= n; i++) {
                     dp[i] += dp[i - coin];
+                    dp[i] %= 1000000007;
                 }
             }
 
