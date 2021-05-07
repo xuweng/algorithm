@@ -15,20 +15,21 @@ public class MatrixBlockSum {
             int[][] sum = new int[m + 1][n + 1];
             for (int i = 1; i <= m; i++) {
                 for (int j = 1; j <= n; j++) {
+                    // 上 + 左 - 公共
                     sum[i][j] = sum[i - 1][j] + sum[i][j - 1] - sum[i - 1][j - 1] + mat[i - 1][j - 1];
                 }
             }
             int[][] res = new int[m][n];
             for (int i = 0; i < m; i++) {
                 for (int j = 0; j < n; j++) {
-                    //大框upper的x、y
-                    int ux = Math.min(i + K + 1, m);
-                    int uy = Math.min(j + K + 1, n);
-                    //小框down的x、y
-                    int dx = Math.max(i - K, 0);
-                    int dy = Math.max(j - K, 0);
-                    //与计算前缀和一样，sum[ux][dy] 与 sum[dx][uy]分别为横条和竖条的面积
-                    res[i][j] = sum[ux][uy] - sum[ux][dy] - sum[dx][uy] + sum[dx][dy];
+                    // 右下角
+                    int rx = Math.min(i + K, m - 1);
+                    int ry = Math.min(j + K, n - 1);
+                    // 左上角
+                    int lx = Math.max(i - K, 0);
+                    int ly = Math.max(j - K, 0);
+                    // -左-上+公共
+                    res[i][j] = sum[rx + 1][ry + 1] - sum[rx + 1][ly] - sum[lx][ry + 1] + sum[lx][ly];
                 }
             }
             return res;
