@@ -9,6 +9,8 @@ import java.util.Queue;
  * 一个配匹完 移动指针 移动指针 移动指针
  * <p>
  * 一个配匹完 一个配匹完 一个配匹完
+ * <p>
+ * &&&&& 配匹 配匹 配匹 起点 访问 边界
  */
 public class MovingCount {
     class Solution {
