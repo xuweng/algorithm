@@ -29,6 +29,7 @@ public class IsSubStructure {
          * @return
          */
         public boolean recur(TreeNode A, TreeNode B) {
+            // b==null a==null 是关键
             // 只要b==null b配匹完
             if (B == null) {
                 return true;
