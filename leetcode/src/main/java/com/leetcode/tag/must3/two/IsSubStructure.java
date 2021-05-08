@@ -30,6 +30,7 @@ public class IsSubStructure {
          */
         public boolean recur(TreeNode A, TreeNode B) {
             if (B == null) {
+                // 只要b==null b配匹完
                 return true;
             }
             if (A == null || A.val != B.val) {
