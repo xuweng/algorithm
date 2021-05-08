@@ -20,8 +20,11 @@ public class MovingCount {
             // 向右和向下的方向数组
             int[] dx = {0, 1};
             int[] dy = {1, 0};
+            // 是否访问
             boolean[][] vis = new boolean[m][n];
+            // 起点入队
             queue.offer(new int[]{0, 0});
+            // 起点已经访问
             vis[0][0] = true;
             int ans = 1;
             while (!queue.isEmpty()) {
