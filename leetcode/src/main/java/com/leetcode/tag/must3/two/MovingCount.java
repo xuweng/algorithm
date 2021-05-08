@@ -28,8 +28,10 @@ public class MovingCount {
                 int[] cell = queue.poll();
                 int x = cell[0], y = cell[1];
                 for (int i = 0; i < 2; ++i) {
+                    // 下一个
                     int tx = dx[i] + x;
                     int ty = dy[i] + y;
+                    // 坐标越界 已经访问
                     if (tx < 0 || tx >= m || ty < 0 || ty >= n || vis[tx][ty] || get(tx) + get(ty) > k) {
                         continue;
                     }
