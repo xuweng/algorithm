@@ -14,6 +14,7 @@ public class IsSubStructure {
          */
         public boolean isSubStructure(TreeNode A, TreeNode B) {
             if (A == null || B == null) {
+                // 空树不是任意一个树的子结构
                 return false;
             }
             // 只要有ture就返回
