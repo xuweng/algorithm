@@ -1,4 +1,4 @@
-package com.leetcode.tag.must3;
+package com.leetcode.tag.must3.one;
 
 /**
  * 23. 合并K个升序链表

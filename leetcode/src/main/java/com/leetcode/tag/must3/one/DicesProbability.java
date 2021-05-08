@@ -1,4 +1,4 @@
-package com.leetcode.tag.must3;
+package com.leetcode.tag.must3.one;
 
 /**
  * 剑指 Offer 60. n个骰子的点数

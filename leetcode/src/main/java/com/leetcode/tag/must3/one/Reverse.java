@@ -1,4 +1,4 @@
-package com.leetcode.tag.must3;
+package com.leetcode.tag.must3.one;
 
 /**
  * 7. 整数反转

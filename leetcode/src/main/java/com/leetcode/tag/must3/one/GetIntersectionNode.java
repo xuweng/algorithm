@@ -1,4 +1,4 @@
-package com.leetcode.tag.must3;
+package com.leetcode.tag.must3.one;
 
 /**
  * 剑指 Offer 52. 两个链表的第一个公共节点
