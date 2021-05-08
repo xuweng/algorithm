@@ -39,7 +39,9 @@ public class MovingCount {
                     if (tx < 0 || tx >= m || ty < 0 || ty >= n || vis[tx][ty] || get(tx) + get(ty) > k) {
                         continue;
                     }
+                    // 入队
                     queue.offer(new int[]{tx, ty});
+                    // 标记
                     vis[tx][ty] = true;
                     ans++;
                 }
