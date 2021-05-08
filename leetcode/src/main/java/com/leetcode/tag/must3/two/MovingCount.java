@@ -43,6 +43,7 @@ public class MovingCount {
                     queue.offer(new int[]{tx, ty});
                     // 标记
                     vis[tx][ty] = true;
+                    // 访问格子个数累加
                     ans++;
                 }
             }
