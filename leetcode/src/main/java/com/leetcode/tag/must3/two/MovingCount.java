@@ -61,4 +61,55 @@ public class MovingCount {
             return res;
         }
     }
+
+    /**
+     * 起点 起点 起点
+     * <p>
+     * 入队 标记
+     * <p>
+     * 入队 标记
+     * <p>
+     * 起点 起点 起点
+     */
+    class Solution1 {
+        public int movingCount(int m, int n, int k) {
+            if (k == 0) {
+                return 1;
+            }
+            // vis[i][j] 为 (i, j) 坐标是否可达
+            boolean[][] vis = new boolean[m][n];
+            int ans = 1;
+            vis[0][0] = true;
+            for (int i = 0; i < m; ++i) {
+                for (int j = 0; j < n; ++j) {
+                    if ((i == 0 && j == 0) || get(i) + get(j) > k) {
+                        continue;
+                    }
+                    // 搜索方向只需朝下或朝右，因此 (i, j) 的格子只会从 (i - 1, j) 或者 (i, j - 1) 两个格子走过来（不考虑边界条件
+                    // 边界判断
+                    if (i - 1 >= 0) {
+                        // 上一行
+                        vis[i][j] = vis[i - 1][j];
+                    }
+                    if (j - 1 >= 0) {
+                        // 左一个
+                        vis[i][j] = vis[i][j] || vis[i][j - 1];
+                    }
+                    // 如果可达返回 1，否则返回 0
+                    ans += vis[i][j] ? 1 : 0;
+                }
+            }
+            return ans;
+        }
+
+        private int get(int x) {
+            int res = 0;
+            while (x != 0) {
+                // 123 3+2+1=6
+                res += x % 10;
+                x /= 10;
+            }
+            return res;
+        }
+    }
 }
