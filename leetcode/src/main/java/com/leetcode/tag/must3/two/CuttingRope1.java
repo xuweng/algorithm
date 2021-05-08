@@ -9,6 +9,7 @@ public class CuttingRope1 {
             if (n < 4) {
                 return n - 1;
             }
+            // 大数溢出
             long result = 1;
             while (n > 4) {
                 result = result * 3 % 1000000007;
