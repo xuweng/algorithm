@@ -9,13 +9,13 @@ public class CuttingRope1 {
             if (n < 4) {
                 return n - 1;
             }
-            int result = 1;
+            long result = 1;
             while (n > 4) {
                 result = result * 3 % 1000000007;
                 n -= 3;
             }
 
-            return result * n % 1000000007;
+            return (int) (result * n % 1000000007);
         }
     }
 }
