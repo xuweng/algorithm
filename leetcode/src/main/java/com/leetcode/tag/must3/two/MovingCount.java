@@ -32,6 +32,7 @@ public class MovingCount {
                     int tx = dx[i] + x;
                     int ty = dy[i] + y;
                     // 坐标越界 已经访问
+                    // 行坐标和列坐标数位之和大于 k 的格子看作障碍物，那么这道题就是一道很传统的搜索题目
                     if (tx < 0 || tx >= m || ty < 0 || ty >= n || vis[tx][ty] || get(tx) + get(ty) > k) {
                         continue;
                     }
@@ -46,6 +47,8 @@ public class MovingCount {
         private int get(int x) {
             int res = 0;
             while (x != 0) {
+                // 123 3+2+1=6
+                // 3 32 321
                 res += x % 10;
                 x /= 10;
             }
