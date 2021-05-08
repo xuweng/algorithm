@@ -29,11 +29,15 @@ public class IsSubStructure {
          * @return
          */
         public boolean recur(TreeNode A, TreeNode B) {
+            // 只要b==null b配匹完
             if (B == null) {
-                // 只要b==null b配匹完
                 return true;
             }
-            if (A == null || A.val != B.val) {
+            // b没有配匹完,a已经配匹完
+            if (A == null) {
+                return false;
+            }
+            if (A.val != B.val) {
                 return false;
             }
             return recur(A.left, B.left) && recur(A.right, B.right);
