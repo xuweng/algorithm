@@ -39,6 +39,10 @@ public class Permutation {
                 if (use[i]) {
                     continue;
                 }
+                // 去重
+                if (i > 0 && chars[i] == chars[i - 1] && !use[i - 1]) {
+                    continue;
+                }
                 use[i] = true;
                 deque.offerLast(chars[i]);
 
