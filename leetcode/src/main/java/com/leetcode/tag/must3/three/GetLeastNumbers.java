@@ -346,6 +346,67 @@ public class GetLeastNumbers {
         return low;
     }
 
+    class Solution6 {
+        public int[] getLeastNumbers(int[] arr, int k) {
+            if (arr == null || arr.length == 0 || k <= 0 || k > arr.length) {
+                return new int[0];
+            }
+
+            // [0,index] k个元素
+            int index = getIndex(arr, k, 0, arr.length - 1);
+            // [0,index] [0,k-1] 区间已经是top k
+
+            int[] result = new int[k];
+            for (int i = 0; i < k; i++) {
+                result[i] = arr[i];
+            }
+
+            return result;
+        }
+
+        private int getIndex(int[] arr, int k, int left, int right) {
+            int p = patition(arr, left, right);
+            if (p == k - 1) {
+                // [0,k-1] k个数
+                return p;
+            }
+            if (p > k - 1) {
+                // 缩小区间
+                return getIndex(arr, k, left, p - 1);
+            }
+            // 扩大区间
+            return getIndex(arr, k, p + 1, right);
+        }
+
+        private int patition(int[] arr, int left, int right) {
+            if (left >= right) {
+                return left;
+            }
+            int p = arr[left];
+            while (left < right) {
+                // p放在右边
+                while (left < right && arr[right] >= p) {
+                    right--;
+                }
+                if (left < right) {
+                    // 移动到左边
+                    arr[left] = arr[right];
+                }
+                while (left < right && arr[left] < p) {
+                    left++;
+                }
+                if (left < right) {
+                    // 移动到右边
+                    arr[right] = arr[left];
+                }
+            }
+
+            arr[left] = p;
+            return left;
+        }
+
+    }
+
     public static void main(String[] args) {
         int[] arr = new int[]{3, 2, 1};
         int low = 0;
