@@ -22,7 +22,7 @@ public class VerifyPostorder {
                 }
             }
             for (int i = min; i >= 0; i--) {
-                if (postorder[i] > postorder[min]) {
+                if (postorder[i] > postorder[right]) {
                     return false;
                 }
             }
