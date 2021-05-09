@@ -15,11 +15,12 @@ public class CopyRandomList {
                 map.put(node, new Node(node.val));
                 node = node.next;
             }
-            while (head != null) {
-                map.get(head).next = map.get(head.next);
-                map.get(head).random = map.get(head.random);
+            Node node1 = head;
+            while (node1 != null) {
+                map.get(node1).next = map.get(node1.next);
+                map.get(node1).random = map.get(node1.random);
 
-                head = head.next;
+                node1 = node1.next;
             }
 
             return map.get(head);
