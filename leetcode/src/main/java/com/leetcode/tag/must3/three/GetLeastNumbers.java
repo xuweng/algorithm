@@ -99,8 +99,10 @@ public class GetLeastNumbers {
                 return;
             }
             if (k < num) {
+                // 缩小区间
                 randomizedSelected(arr, l, pos - 1, k);
             } else {
+                // 扩大区间
                 randomizedSelected(arr, pos + 1, r, k - num);
             }
         }
