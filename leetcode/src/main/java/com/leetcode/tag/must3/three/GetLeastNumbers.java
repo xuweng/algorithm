@@ -157,7 +157,7 @@ public class GetLeastNumbers {
             // 递归终止条件
             int p = patition(arr, low, high);
             if (p == k - 1) {
-                // [0,k-1]区间
+                // [0,k-1]区间 k个数
                 // 找到top k 下标
                 return p;
             }
@@ -170,6 +170,15 @@ public class GetLeastNumbers {
             }
         }
 
+        /**
+         * 倒序 high不动 low++  low=high 321 121 low
+         * 正序 low不动  high-- low=high 123 123 low
+         *
+         * @param arr
+         * @param low
+         * @param high
+         * @return
+         */
         public int patition(int[] arr, int low, int high) {
             // 记录中轴
             int p = arr[low];
@@ -196,7 +205,9 @@ public class GetLeastNumbers {
                 }
                 // 到这里 交换low和high 循环继续
             }
+            // 设置中轴
             arr[low] = p;
+            // 返回中轴
             return low;
         }
     }
