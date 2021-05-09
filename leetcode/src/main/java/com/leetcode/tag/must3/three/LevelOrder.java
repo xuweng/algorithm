@@ -21,7 +21,7 @@ public class LevelOrder {
             if (root == null) {
                 return;
             }
-            result.set(index++, root.val);
+            result.add(index++, root.val);
 
             dfs(root.left);
             dfs(root.right);
