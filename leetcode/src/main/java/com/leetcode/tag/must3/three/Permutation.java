@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class Permutation {
     class Solution {
         boolean[] use;
-        List<String> result = new ArrayList<>();
+        Set<String> result = new HashSet<>();
         List<Character> deque = new ArrayList<>();
 
         public String[] permutation(String s) {
