@@ -14,12 +14,9 @@ public class VerifyPostorder {
                 return true;
             }
             int min = right;
-            for (int i = right; i >= left; i--) {
-                if (postorder[i] < postorder[right]) {
-                    // 第一个<root
-                    min = i;
-                    break;
-                }
+            while (min >= left && postorder[min] >= postorder[right]) {
+                // 第一个<root
+                min--;
             }
             for (int i = min; i >= left; i--) {
                 if (postorder[i] > postorder[right]) {
