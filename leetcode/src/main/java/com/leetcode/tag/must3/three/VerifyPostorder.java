@@ -14,14 +14,14 @@ public class VerifyPostorder {
                 return true;
             }
             int min = right;
-            for (int i = postorder.length - 1; i >= 0; i--) {
+            for (int i = right; i >= left; i--) {
                 if (postorder[i] < postorder[right]) {
                     // 第一个<root
                     min = i;
                     break;
                 }
             }
-            for (int i = min; i >= 0; i--) {
+            for (int i = min; i >= left; i--) {
                 if (postorder[i] > postorder[right]) {
                     return false;
                 }
