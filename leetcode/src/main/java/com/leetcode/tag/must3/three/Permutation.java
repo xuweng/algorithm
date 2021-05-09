@@ -1,9 +1,6 @@
 package com.leetcode.tag.must3.three;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -16,13 +13,15 @@ import java.util.stream.Collectors;
 public class Permutation {
     class Solution {
         boolean[] use;
-        Set<String> result = new HashSet<>();
+        List<String> result = new ArrayList<>();
         List<Character> deque = new ArrayList<>();
 
         public String[] permutation(String s) {
             use = new boolean[s.length()];
             char[] chars = s.toCharArray();
 
+            // 排序去重
+            Arrays.sort(chars);
             dfs(chars);
 
             return result.toArray(new String[0]);
