@@ -1,4 +1,4 @@
-package com.leetcode.tag.contest.three;
+package com.leetcode.tag.must3.three;
 
 /**
  * 剑指 Offer 05. 替换空格

@@ -1,4 +1,4 @@
-package com.leetcode.tag.contest.three;
+package com.leetcode.tag.must3.three;
 
 /**
  * 剑指 Offer 21. 调整数组顺序使奇数位于偶数前面
