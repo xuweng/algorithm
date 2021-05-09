@@ -220,6 +220,7 @@ public class GetLeastNumbers {
             // 递归终止条件
             int p = patition(arr, low, high);
             if (p == k - 1) {
+                // 区间 [0,k-1]
                 // 找到top k 下标
                 return p;
             }
@@ -332,7 +333,7 @@ public class GetLeastNumbers {
         int low = 0;
         int high = arr.length - 1;
 
-        patition1(arr, low, high);
+        //        patition1(arr, low, high);
 
         patition(arr, low, high);
     }
