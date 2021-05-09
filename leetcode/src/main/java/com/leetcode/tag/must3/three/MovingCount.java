@@ -2,6 +2,10 @@ package com.leetcode.tag.must3.three;
 
 /**
  * 剑指 Offer 13. 机器人的运动范围
+ * <p>
+ * 数据范围  数据范围 数据范围
+ * <p>
+ * 配匹 配匹 配匹 配匹
  */
 public class MovingCount {
     class Solution {
@@ -24,7 +28,7 @@ public class MovingCount {
                         dp[i][j] = dp[i - 1][j];
                     }
                     // 左一列
-                    if (j - 1 > 0) {
+                    if (j - 1 >= 0) {
                         dp[i][j] = dp[i][j] || dp[i][j - 1];
                     }
                     count += dp[i][j] ? 1 : 0;
