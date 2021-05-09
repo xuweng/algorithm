@@ -11,6 +11,7 @@ public class MovingCount {
     class Solution {
         public int movingCount(int m, int n, int k) {
             if (k == 0) {
+                // 只能在起点不能移动
                 return 1;
             }
             boolean[][] dp = new boolean[m][n];
