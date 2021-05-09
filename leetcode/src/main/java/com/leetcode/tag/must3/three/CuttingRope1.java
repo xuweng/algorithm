@@ -11,11 +11,11 @@ public class CuttingRope1 {
             }
             long result = 1;
             while (n > 4) {
-                result *= 3;
+                result = result * 3 % 1000000007;
                 n -= 3;
             }
 
-            return (int) (result * n);
+            return (int) (result * n % 1000000007);
         }
     }
 }
