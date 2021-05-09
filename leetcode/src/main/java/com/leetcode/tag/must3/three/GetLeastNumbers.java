@@ -136,4 +136,63 @@ public class GetLeastNumbers {
             nums[j] = temp;
         }
     }
+
+    class Solution4 {
+        public int[] getLeastNumbers(int[] arr, int k) {
+            // 两个参数校验
+            if (arr == null || arr.length == 0 || k <= 0 || k > arr.length) {
+                return new int[0];
+            }
+            // top k中轴下标
+            int index = divide(arr, 0, arr.length - 1, k);
+
+            int[] result = new int[k];
+
+            System.arraycopy(arr, 0, result, 0, index + 1);
+
+            return result;
+        }
+
+        public int divide(int[] arr, int low, int high, int k) {
+            // 递归终止条件
+            int p = patition(arr, low, high);
+            if (p == k - 1) {
+                // 找到top k 下标
+                return p;
+            }
+            if (p < k - 1) {
+                // 扩大区间
+                return divide(arr, p + 1, high, k);
+            } else {
+                // 缩小区间
+                return divide(arr, low, p - 1, k);
+            }
+        }
+
+        public int patition(int[] arr, int low, int high) {
+            // 记录中轴
+            int p = arr[low];
+            // 死循环?
+            while (low < high) {
+                // 边界判断边界麻烦
+                while (low < high && arr[high] >= p) {
+                    high--;
+                }
+                if (low < high) {
+                    // 小的放在左边
+                    arr[low] = arr[high];
+                }
+                while (low < high && arr[low] < p) {
+                    low++;
+                }
+                if (low < high) {
+                    // 大的放在右边
+                    arr[high] = arr[low];
+                }
+                // 到这里 交换low和high 循环继续
+            }
+            arr[low] = p;
+            return low;
+        }
+    }
 }
