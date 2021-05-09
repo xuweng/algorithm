@@ -29,10 +29,13 @@ public class MinDays {
                 high = Math.max(high, j);
             }
             while (low < high) {
+                // 假设尝试 days 作为最小的天数, 看看能不能制作要求的花束
                 int days = (high - low) / 2 + low;
                 if (canMake(bloomDay, days, m, k)) {
+                    // 如果可以制作花束, 那么可以尝试天数再减小一点, 因此right往左走, 缩小搜索范围
                     high = days;
                 } else {
+                    // 如果无法制作花束, 那么可以尝试天数再增大一点, 因此left往右边走, 区间的左边值加大
                     low = days + 1;
                 }
             }
@@ -40,17 +43,23 @@ public class MinDays {
         }
 
         public boolean canMake(int[] bloomDay, int days, int m, int k) {
+            // 记录花束
             int bouquets = 0;
+            // 数=连续的花朵数量
             int flowers = 0;
             int length = bloomDay.length;
             for (int i = 0; i < length && bouquets < m; i++) {
                 if (bloomDay[i] <= days) {
+                    // 必须是连续的花朵, 这个可以通过变量 flower 来计数是否连续, 一旦不连续就重置为 0
                     flowers++;
                     if (flowers == k) {
+                        // 花束++
                         bouquets++;
+                        // 每满足一次连续的 k 朵花, 就可以制作一束花, flower 计数重新为 0 开始计数
                         flowers = 0;
                     }
                 } else {
+                    //  一旦不连续就重置为 0
                     flowers = 0;
                 }
             }
