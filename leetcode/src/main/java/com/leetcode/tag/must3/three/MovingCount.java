@@ -6,13 +6,16 @@ package com.leetcode.tag.must3.three;
 public class MovingCount {
     class Solution {
         public int movingCount(int m, int n, int k) {
+            if (k == 0) {
+                return 1;
+            }
             boolean[][] dp = new boolean[m][n];
             dp[0][0] = true;
             int count = 1;
 
             for (int i = 0; i < m; i++) {
                 for (int j = 0; j < n; j++) {
-                    if (i == 0 && j == 0 || get(i) + get(j) > k) {
+                    if ((i == 0 && j == 0) || get(i) + get(j) > k) {
                         continue;
                     }
                     // 上一行
