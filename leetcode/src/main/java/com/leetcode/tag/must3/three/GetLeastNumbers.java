@@ -9,6 +9,7 @@ import java.util.PriorityQueue;
 public class GetLeastNumbers {
     class Solution {
         public int[] getLeastNumbers(int[] arr, int k) {
+            // 大顶堆
             PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(Comparator.reverseOrder());
             for (int i : arr) {
                 priorityQueue.offer(i);
