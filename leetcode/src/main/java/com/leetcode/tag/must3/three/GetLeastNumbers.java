@@ -172,12 +172,15 @@ public class GetLeastNumbers {
         public int patition(int[] arr, int low, int high) {
             // 记录中轴
             int p = arr[low];
+            // [3,2,1] 3
             // 死循环?
             while (low < high) {
+                // [3,2,1]
                 // 边界判断边界麻烦
                 while (low < high && arr[high] >= p) {
                     high--;
                 }
+                // [1,2,1]
                 if (low < high) {
                     // 小的放在左边
                     arr[low] = arr[high];
@@ -185,6 +188,7 @@ public class GetLeastNumbers {
                 while (low < high && arr[low] < p) {
                     low++;
                 }
+                // []
                 if (low < high) {
                     // 大的放在右边
                     arr[high] = arr[low];
@@ -232,6 +236,10 @@ public class GetLeastNumbers {
          * 0123456 4
          * <p>
          * high=3 low=4
+         * <p>
+         * [3,2,1] 3
+         * <p>
+         * [1,2,3]
          *
          * @param arr
          * @param low
@@ -249,6 +257,7 @@ public class GetLeastNumbers {
                 while (low < high && arr[low] < p) {
                     low++;
                 }
+                // 倒序 交换 [3,2,1] [1,2,3]
                 // 交换 交换后循环继续
                 if (low < high) {
                     int temp = arr[low];
@@ -257,9 +266,74 @@ public class GetLeastNumbers {
                 }
             }
             // 设置中轴
-            arr[low] = p;
+            arr[low + 1] = p;
             // 中轴下标
-            return low;
+            return low + 1;
         }
+    }
+
+    public static int patition(int[] arr, int low, int high) {
+        // 记录中轴
+        int p = arr[low];
+        // [3,2,1] 3
+        // 死循环?
+        while (low < high) {
+            // [3,2,1]
+            // 边界判断边界麻烦
+            while (low < high && arr[high] >= p) {
+                high--;
+            }
+            // [1,2,1]
+            if (low < high) {
+                // 小的放在左边
+                arr[low] = arr[high];
+            }
+            while (low < high && arr[low] < p) {
+                low++;
+            }
+            // low=high
+            if (low < high) {
+                // 大的放在右边
+                arr[high] = arr[low];
+            }
+            // 到这里 交换low和high 循环继续
+        }
+        arr[low] = p;
+        return low;
+    }
+
+    public static int patition1(int[] arr, int low, int high) {
+        // 记录中轴
+        int p = arr[low];
+        while (low < high) {
+            // 判断边界
+            while (low < high && arr[high] >= p) {
+                high--;
+            }
+            while (low < high && arr[low] < p) {
+                low++;
+            }
+            // 倒序 交换 [3,2,1] [1,2,3]
+            // 交换 交换后循环继续
+            if (low < high) {
+                int temp = arr[low];
+                arr[low] = arr[high];
+                arr[high] = temp;
+            }
+        }
+        // 设置中轴
+        arr[low + 1] = p;
+        // 中轴下标
+        return low + 1;
+    }
+
+    public static void main(String[] args) {
+        int[] arr = new int[]{3, 2, 1};
+        int low = 0;
+        int high = arr.length - 1;
+
+        patition1(arr, low, high);
+
+        patition(arr, low, high);
     }
 }
