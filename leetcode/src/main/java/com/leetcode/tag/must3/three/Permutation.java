@@ -1,8 +1,6 @@
 package com.leetcode.tag.must3.three;
 
 import java.util.ArrayList;
-import java.util.Deque;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +15,7 @@ public class Permutation {
     class Solution {
         boolean[] use;
         List<String> result = new ArrayList<>();
-        Deque<Character> deque = new LinkedList<>();
+        List<Character> deque = new ArrayList<>();
 
         public String[] permutation(String s) {
             use = new boolean[s.length()];
@@ -44,11 +42,11 @@ public class Permutation {
                     continue;
                 }
                 use[i] = true;
-                deque.offerLast(chars[i]);
+                deque.add(chars[i]);
 
                 dfs(chars);
 
-                deque.pollLast();
+                deque.remove(deque.size() - 1);
                 use[i] = false;
             }
         }
