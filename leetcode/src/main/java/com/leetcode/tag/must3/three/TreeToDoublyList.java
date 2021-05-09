@@ -12,6 +12,9 @@ public class TreeToDoublyList {
             if (root == null) {
                 return null;
             }
+            if (root.left == null) {
+                head = root;
+            }
 
             dfs(root);
 
