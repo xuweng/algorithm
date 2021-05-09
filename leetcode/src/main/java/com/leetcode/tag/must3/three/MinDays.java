@@ -2,6 +2,8 @@ package com.leetcode.tag.must3.three;
 
 /**
  * 1482. 制作 m 束花所需的最少天数
+ * <p>
+ * 1011. 在 D 天内送达包裹的能力
  */
 public class MinDays {
     /**
