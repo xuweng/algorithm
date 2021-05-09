@@ -195,4 +195,71 @@ public class GetLeastNumbers {
             return low;
         }
     }
+
+    class Solution5 {
+        public int[] getLeastNumbers(int[] arr, int k) {
+            // 两个参数校验
+            if (arr == null || arr.length == 0 || k <= 0 || k > arr.length) {
+                return new int[0];
+            }
+            // top k中轴下标
+            int index = divide(arr, 0, arr.length - 1, k);
+
+            int[] result = new int[k];
+
+            System.arraycopy(arr, 0, result, 0, index + 1);
+
+            return result;
+        }
+
+        public int divide(int[] arr, int low, int high, int k) {
+            // 递归终止条件
+            int p = patition(arr, low, high);
+            if (p == k - 1) {
+                // 找到top k 下标
+                return p;
+            }
+            if (p < k - 1) {
+                // 扩大区间
+                return divide(arr, p + 1, high, k);
+            } else {
+                // 缩小区间
+                return divide(arr, low, p - 1, k);
+            }
+        }
+
+        /**
+         * 0123456 4
+         * <p>
+         * high=3 low=4
+         *
+         * @param arr
+         * @param low
+         * @param high
+         * @return
+         */
+        public int patition(int[] arr, int low, int high) {
+            // 记录中轴
+            int p = arr[low];
+            while (low < high) {
+                // 判断边界
+                while (low < high && arr[high] >= p) {
+                    high--;
+                }
+                while (low < high && arr[low] < p) {
+                    low++;
+                }
+                // 交换 交换后循环继续
+                if (low < high) {
+                    int temp = arr[low];
+                    arr[low] = arr[high];
+                    arr[high] = temp;
+                }
+            }
+            // 设置中轴
+            arr[low] = p;
+            // 中轴下标
+            return low;
+        }
+    }
 }
