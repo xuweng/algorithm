@@ -172,7 +172,7 @@ public class GetLeastNumbers {
 
         /**
          * 32133333 中轴放在右边 high--
-         * 321
+         * 321 123
          * 123
          * <p>
          * 倒序 high不动 low++  low=high 321 121 low
