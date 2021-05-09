@@ -11,6 +11,7 @@ public class ShipWithinDays {
             int left = Arrays.stream(weights).max().getAsInt();
             int right = Arrays.stream(weights).sum();
 
+            // left=right 退出循环
             while (left < right) {
                 int mid = left + (right - left) / 2;
                 // 天数
