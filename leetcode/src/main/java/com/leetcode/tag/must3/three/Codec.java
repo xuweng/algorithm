@@ -22,6 +22,7 @@ public class Codec {
             return "#";
         }
 
+        // 先序遍历
         return root.val + "," + serialize(root.left) + "," + serialize(root.right);
     }
 
@@ -36,6 +37,7 @@ public class Codec {
         if ("#".equals(split[root])) {
             return null;
         }
+        // 先序遍历
         TreeNode node = new TreeNode(Integer.parseInt(split[root++]));
         node.left = dfs(split);
         node.right = dfs(split);
