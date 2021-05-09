@@ -35,6 +35,8 @@ public class Codec {
 
     private TreeNode dfs(String[] split) {
         if ("#".equals(split[root])) {
+            // 注意
+            root++;
             return null;
         }
         // 先序遍历
