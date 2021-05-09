@@ -99,10 +99,10 @@ public class GetLeastNumbers {
                 return;
             }
             if (k < num) {
-                // 缩小区间
+                // 缩小区间 在[l,pos-1] 找 k 个
                 randomizedSelected(arr, l, pos - 1, k);
             } else {
-                // 扩大区间
+                // 扩大区间 在[pos+1,r] 找剩余 k-num
                 randomizedSelected(arr, pos + 1, r, k - num);
             }
         }
