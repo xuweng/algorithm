@@ -1,5 +1,6 @@
 package com.leetcode.tag.must3.three;
 
+import java.util.Comparator;
 import java.util.PriorityQueue;
 
 /**
@@ -8,7 +9,7 @@ import java.util.PriorityQueue;
 public class GetLeastNumbers {
     class Solution {
         public int[] getLeastNumbers(int[] arr, int k) {
-            PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+            PriorityQueue<Integer> priorityQueue = new PriorityQueue<>(k, Comparator.reverseOrder());
             for (int i : arr) {
                 priorityQueue.offer(i);
                 if (priorityQueue.size() > k) {
