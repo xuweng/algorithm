@@ -15,6 +15,7 @@ public class MovingCount {
 
             for (int i = 0; i < m; i++) {
                 for (int j = 0; j < n; j++) {
+                    // 不能进入行坐标和列坐标的数位之和大于k的格子
                     if ((i == 0 && j == 0) || get(i) + get(j) > k) {
                         continue;
                     }
