@@ -10,6 +10,8 @@ public class IsSymmetric {
         }
 
         private boolean dfs(TreeNode root, TreeNode root1) {
+            // 配匹完 配匹完 配匹完
+            // root,root1同时为null true
             if (root == null) {
                 return root1 == null;
             }
