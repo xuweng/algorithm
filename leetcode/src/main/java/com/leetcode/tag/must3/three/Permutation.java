@@ -1,6 +1,8 @@
 package com.leetcode.tag.must3.three;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -55,31 +57,36 @@ public class Permutation {
     }
 
     class Solution1 {
+        List<String> result = new ArrayList<>();
+        boolean[] used;
+
         public String[] permutation(String s) {
-
-            boolean[] used = new boolean[s.length()];
-            Set<String> result = new HashSet<>();
-
-            backTrack(s, used, "", result);
+            used = new boolean[s.length()];
+            char[] chars = s.toCharArray();
+            // 排序去重
+            Arrays.sort(chars);
+            backTrack(chars, "");
 
             return result.toArray(new String[0]);
         }
 
-        private void backTrack(String s, boolean[] used, String temp, Set<String> result) {
-            if (temp.length() == s.length()) {
+        private void backTrack(char[] chars, String temp) {
+            if (temp.length() == chars.length) {
                 result.add(temp);
                 return;
             }
-            for (int i = 0; i < s.length(); i++) {
+            for (int i = 0; i < chars.length; i++) {
                 if (used[i]) {
                     continue;
                 }
                 // 去重
-                if (i > 0 && s.charAt(i - 1) == s.charAt(i) && !used[i - 1]) {
+                if (i > 0 && chars[i - 1] == chars[i] && !used[i - 1]) {
                     continue;
                 }
                 used[i] = true;
-                backTrack(s, used, temp + s.charAt(i), result);
+
+                backTrack(chars, temp + chars[i]);
+
                 used[i] = false;
             }
         }
