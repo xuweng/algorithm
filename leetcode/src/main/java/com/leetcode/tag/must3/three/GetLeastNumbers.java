@@ -392,6 +392,7 @@ public class GetLeastNumbers {
                     // 移动到左边
                     arr[left] = arr[right];
                 }
+                // 移动到左边后 arr[left] < p
                 while (left < right && arr[left] < p) {
                     left++;
                 }
@@ -399,6 +400,7 @@ public class GetLeastNumbers {
                     // 移动到右边
                     arr[right] = arr[left];
                 }
+                // 移动到右边后 arr[right] >= p
             }
 
             arr[left] = p;
