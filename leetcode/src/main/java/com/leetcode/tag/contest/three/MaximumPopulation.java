@@ -22,7 +22,12 @@ public class MaximumPopulation {
                     max = 1;
                     last = i;
                 }
-                result = max1 < max ? logs[last][0] : logs[i][0];
+                if (max1 < max) {
+                    result = logs[last][0];
+                    max1 = max;
+                } else {
+                    result = logs[i][0];
+                }
             }
 
             return result;
