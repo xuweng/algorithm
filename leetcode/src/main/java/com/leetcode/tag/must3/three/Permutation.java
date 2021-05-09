@@ -39,6 +39,7 @@ public class Permutation {
                 if (use[i]) {
                     continue;
                 }
+                // "suvyls"
                 // 去重
                 if (i > 0 && chars[i] == chars[i - 1] && !use[i - 1]) {
                     continue;
