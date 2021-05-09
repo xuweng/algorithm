@@ -323,14 +323,16 @@ public class GetLeastNumbers {
         // 记录中轴
         int p = arr[low];
         while (low < high) {
+            // =p如何移动指针
             // 判断边界
-            while (low < high && arr[high] >= p) {
+            while (low < high && arr[high] > p) {
                 high--;
             }
-            while (low < high && arr[low] <= p) {
+            while (low < high && arr[low] < p) {
                 low++;
             }
             // 倒序 交换 [3,2,1] [1,2,3]
+            // 123
             // 交换 交换后循环继续
             if (low < high) {
                 int temp = arr[low];
@@ -349,8 +351,8 @@ public class GetLeastNumbers {
         int low = 0;
         int high = arr.length - 1;
 
-        //        patition1(arr, low, high);
+        patition1(arr, low, high);
 
-        patition(arr, low, high);
+        //        patition(arr, low, high);
     }
 }
