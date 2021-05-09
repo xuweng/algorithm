@@ -46,6 +46,42 @@ public class TreeToDoublyList {
         }
     }
 
+    class Solution1 {
+        Node pre;
+        Node head;
+
+        public Node treeToDoublyList(Node root) {
+            if (root == null) {
+                return null;
+            }
+            dfs(root);
+
+            head.left = pre;
+            pre.right = head;
+
+            return head;
+        }
+
+        void dfs(Node cur) {
+            if (cur == null) {
+                return;
+            }
+            dfs(cur.left);
+
+            if (pre != null) {
+                pre.right = cur;
+            } else {
+                // 厉害
+                // 记录head
+                head = cur;
+            }
+            cur.left = pre;
+            pre = cur;
+
+            dfs(cur.right);
+        }
+    }
+
     class Node {
         public int val;
         public Node left;
