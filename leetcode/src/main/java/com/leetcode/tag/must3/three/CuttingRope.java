@@ -28,10 +28,10 @@ public class CuttingRope {
                 return n - 1;
             }
             // 6 3*3
-            // 7 3*3*1
+            // 7 3*4
             // 8 3*3*2
             // 9 3*3*3
-            // 10 3*3*3*1
+            // 10 3*3*4
             int result = 1;
             while (n > 4) {
                 result *= 3;
