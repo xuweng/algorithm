@@ -18,23 +18,24 @@ public class SpiralOrder {
             int size = m * n;
             int[] result = new int[size];
             while (index < size) {
+                // 加上index < size 防止长方形数组越界
                 // left到right
-                for (int i = left; i <= right; i++) {
+                for (int i = left; i <= right && index < size; i++) {
                     result[index++] = matrix[top][i];
                 }
                 top++;
                 // top到bu
-                for (int i = top; i <= bu; i++) {
+                for (int i = top; i <= bu && index < size; i++) {
                     result[index++] = matrix[i][right];
                 }
                 right--;
                 // right到left
-                for (int i = right; i >= left; i--) {
+                for (int i = right; i >= left && index < size; i--) {
                     result[index++] = matrix[bu][i];
                 }
                 bu--;
                 // bu到top
-                for (int i = bu; i >= top; i--) {
+                for (int i = bu; i >= top && index < size; i--) {
                     result[index++] = matrix[i][left];
                 }
                 left++;
