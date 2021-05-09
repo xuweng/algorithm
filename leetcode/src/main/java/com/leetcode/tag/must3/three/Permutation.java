@@ -1,7 +1,9 @@
 package com.leetcode.tag.must3.three;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -48,6 +50,37 @@ public class Permutation {
 
                 deque.remove(deque.size() - 1);
                 use[i] = false;
+            }
+        }
+    }
+
+    class Solution1 {
+        public String[] permutation(String s) {
+
+            boolean[] used = new boolean[s.length()];
+            Set<String> result = new HashSet<>();
+
+            backTrack(s, used, "", result);
+
+            return result.toArray(new String[0]);
+        }
+
+        private void backTrack(String s, boolean[] used, String temp, Set<String> result) {
+            if (temp.length() == s.length()) {
+                result.add(temp);
+                return;
+            }
+            for (int i = 0; i < s.length(); i++) {
+                if (used[i]) {
+                    continue;
+                }
+                // 去重
+                if (i > 0 && s.charAt(i - 1) == s.charAt(i) && !used[i - 1]) {
+                    continue;
+                }
+                used[i] = true;
+                backTrack(s, used, temp + s.charAt(i), result);
+                used[i] = false;
             }
         }
     }
