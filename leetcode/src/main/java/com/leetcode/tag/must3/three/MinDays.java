@@ -51,6 +51,8 @@ public class MinDays {
             int length = bloomDay.length;
             for (int i = 0; i < length && bouquets < m; i++) {
                 if (bloomDay[i] <= days) {
+                    // 第 i 朵花会在 bloomDay[i] 时盛开
+                    // 第 i 朵花在days天内盛开 可以制作花
                     // 必须是连续的花朵, 这个可以通过变量 flower 来计数是否连续, 一旦不连续就重置为 0
                     flowers++;
                     if (flowers == k) {
@@ -60,10 +62,12 @@ public class MinDays {
                         flowers = 0;
                     }
                 } else {
+                    // 第 i 朵花在不是days天内盛开
                     //  一旦不连续就重置为 0
                     flowers = 0;
                 }
             }
+            // 花束>=m
             return bouquets >= m;
         }
     }
