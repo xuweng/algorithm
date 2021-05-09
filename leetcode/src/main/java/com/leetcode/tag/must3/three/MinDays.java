@@ -24,6 +24,7 @@ public class MinDays {
                 // 花园中的花朵数量少于 k×m，即数组 bloomDay 的长度小于 k×m，则无法制作出指定数量的花束
                 return -1;
             }
+            // 确定数据范围
             int low = 1, high = 1;
             for (int j : bloomDay) {
                 high = Math.max(high, j);
