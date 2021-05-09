@@ -29,6 +29,7 @@ public class MinDays {
             for (int j : bloomDay) {
                 high = Math.max(high, j);
             }
+            // low=high 退出循环
             while (low < high) {
                 // 假设尝试 days 作为最小的天数, 看看能不能制作要求的花束
                 int days = (high - low) / 2 + low;
