@@ -40,6 +40,34 @@ public class LevelOrder1 {
         }
     }
 
+    class Solution1 {
+        private List<List<Integer>> ret = new ArrayList<>();
+
+        public List<List<Integer>> levelOrder(TreeNode root) {
+            dfs(0, root);
+
+            return ret;
+        }
+
+        private void dfs(int depth, TreeNode root) {
+            if (root == null) {
+                return;
+            }
+            if (ret.size() == depth) {
+                ret.add(new LinkedList<>());
+            }
+            if ((depth & 1) == 1) {
+                // 偶数 头插
+                ret.get(depth).add(0, root.val);
+            } else {
+                // 奇数 尾插
+                ret.get(depth).add(root.val);
+            }
+            dfs(depth + 1, root.left);
+            dfs(depth + 1, root.right);
+        }
+    }
+
     class TreeNode {
         int val;
         TreeNode left;
