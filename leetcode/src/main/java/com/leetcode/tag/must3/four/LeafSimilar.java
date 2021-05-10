@@ -22,7 +22,9 @@ public class LeafSimilar {
             if (root == null) {
                 return;
             }
-            list.add(root.val);
+            if (root.left == null && root.right == null) {
+                list.add(root.val);
+            }
 
             dfs(root.left, list);
             dfs(root.right, list);
