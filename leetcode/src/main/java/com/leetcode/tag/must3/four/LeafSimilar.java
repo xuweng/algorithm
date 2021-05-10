@@ -1,6 +1,8 @@
 package com.leetcode.tag.must3.four;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -28,6 +30,36 @@ public class LeafSimilar {
 
             dfs(root.left, list);
             dfs(root.right, list);
+        }
+    }
+
+    class Solution1 {
+        public boolean leafSimilar(TreeNode root1, TreeNode root2) {
+            List<Integer> list = new ArrayList<>();
+            List<Integer> list1 = new ArrayList<>();
+
+            dfs(root1, list);
+            dfs(root2, list1);
+
+            return list.equals(list1);
+        }
+
+        private void dfs(TreeNode root, List<Integer> list) {
+            Deque<TreeNode> deque = new LinkedList<>();
+            // 两个条件厉害
+            while (root != null || !deque.isEmpty()) {
+                while (root != null) {
+                    // left先全部入栈
+                    deque.push(root);
+                    root = root.left;
+                }
+                TreeNode pop = deque.pop();
+                if (pop.left == null && pop.right == null) {
+                    list.add(pop.val);
+                }
+                // 切换到right
+                root = pop.right;
+            }
         }
     }
 
