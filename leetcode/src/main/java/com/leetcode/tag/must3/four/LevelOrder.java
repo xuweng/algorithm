@@ -19,6 +19,9 @@ public class LevelOrder {
         }
 
         private void dfs(TreeNode root, int depth) {
+            if (root == null) {
+                return;
+            }
             if (result.size() == depth) {
                 result.add(new ArrayList<>());
             }
