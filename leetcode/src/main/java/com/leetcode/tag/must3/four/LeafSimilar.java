@@ -53,11 +53,12 @@ public class LeafSimilar {
                     deque.push(root);
                     root = root.left;
                 }
+                // root=null
                 TreeNode pop = deque.pop();
                 if (pop.left == null && pop.right == null) {
                     list.add(pop.val);
                 }
-                // 切换到right
+                // 切换到right pop.right可能=null
                 root = pop.right;
             }
         }
