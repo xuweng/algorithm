@@ -63,7 +63,8 @@ public class GetLeastNumbers {
                     arr[right] = arr[left];
                 }
             }
-            // arr[left]>=p
+            // 123456 513789
+            // arr[right]<=p left<=right arr[left] <= p
             arr[left] = p;
             return left;
         }
