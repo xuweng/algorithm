@@ -23,7 +23,7 @@ public class FindContinuousSequence {
                     left++;
                 } else {
                     int[] a = new int[right - left];
-                    for (int i = left; i <= right; i++) {
+                    for (int i = left; i < right; i++) {
                         a[i - left] = i;
                     }
                     list.add(a);
