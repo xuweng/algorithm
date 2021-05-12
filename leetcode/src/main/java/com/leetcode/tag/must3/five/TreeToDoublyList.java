@@ -31,8 +31,8 @@ public class TreeToDoublyList {
                 // 记录head
                 head = root;
             }
-            pre = root;
             root.left = pre;
+            pre = root;
 
             dfs(root.right);
         }
