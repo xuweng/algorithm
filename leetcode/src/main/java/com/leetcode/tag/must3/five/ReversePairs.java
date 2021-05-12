@@ -31,7 +31,7 @@ public class ReversePairs {
             int r = 0;
 
             while (i < mergeL.length && j < mergeR.length) {
-                if (mergeL[i] < mergeR[j]) {
+                if (mergeL[i] <= mergeR[j]) {
                     result[r++] = mergeL[i++];
                 } else {
                     // i和i的后面都是
