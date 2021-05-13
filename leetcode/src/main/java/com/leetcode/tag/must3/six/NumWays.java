@@ -21,7 +21,7 @@ public class NumWays {
                         // 向右移动
                         dp[i][j] = (dp[i][j] + dp[i - 1][j - 1]) % mod;
                     }
-                    if (j + 1 < arrLen) {
+                    if (j + 1 <= max) {
                         // 向左移动
                         dp[i][j] = (dp[i][j] + dp[i - 1][j + 1]) % mod;
                     }
