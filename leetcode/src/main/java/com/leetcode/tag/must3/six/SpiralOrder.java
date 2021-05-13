@@ -6,6 +6,9 @@ package com.leetcode.tag.must3.six;
 public class SpiralOrder {
     class Solution {
         public int[] spiralOrder(int[][] matrix) {
+            if (matrix == null || matrix.length == 0) {
+                return new int[0];
+            }
             int m = matrix.length;
             int n = matrix[0].length;
             int top = 0;
