@@ -54,14 +54,12 @@ public class CanJump {
             // 跳跃的最大长度为 x+nums[x]
             // 维护 最远可以到达的位置
             int rightmost = 0;
-            for (int i = 0; i < n; ++i) {
-                if (i <= rightmost) {
-                    // x+nums[x] 更新 最远可以到达的位置
-                    rightmost = Math.max(rightmost, i + nums[i]);
-                    if (rightmost >= n - 1) {
-                        // 最后一个位置可达
-                        return true;
-                    }
+            for (int i = 0; i < n && i <= rightmost; ++i) {
+                // x+nums[x] 更新 最远可以到达的位置
+                rightmost = Math.max(rightmost, i + nums[i]);
+                if (rightmost >= n - 1) {
+                    // 最后一个位置可达
+                    return true;
                 }
             }
             return false;
