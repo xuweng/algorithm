@@ -22,7 +22,7 @@ public class DeleteAndEarn {
 
             for (int i = 2; i <= max; i++) {
                 // 相邻不能同时选择
-                dp[i] = Math.max(dp[i - 1], dp[i - 2] + nums[i] * count[i]);
+                dp[i] = Math.max(dp[i - 1], dp[i - 2] + i * count[i]);
             }
 
             return dp[max];
