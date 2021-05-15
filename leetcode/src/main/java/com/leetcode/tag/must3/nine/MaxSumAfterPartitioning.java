@@ -13,7 +13,9 @@ public class MaxSumAfterPartitioning {
                 int max = dp[i];
                 // 倒序
                 for (int j = i - 1; j >= 0 && (i - j) <= K; j--) {
+                    // MAX是 nums[j,i−1] 范围内的局部最大值
                     max = Math.max(max, A[j]);
+                    // (i - j)个max
                     dp[i] = Math.max(dp[i], dp[j] + (i - j) * max);
                 }
             }
