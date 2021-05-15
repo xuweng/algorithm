@@ -6,10 +6,10 @@ package com.leetcode.tag.must3.nine;
 public class IsValidBST {
     class Solution {
         public boolean isValidBST(TreeNode root) {
-            return dfs(root, Integer.MIN_VALUE, Integer.MAX_VALUE);
+            return dfs(root, Long.MIN_VALUE, Long.MAX_VALUE);
         }
 
-        private boolean dfs(TreeNode root, int min, int max) {
+        private boolean dfs(TreeNode root, long min, long max) {
             if (root == null) {
                 return true;
             }
