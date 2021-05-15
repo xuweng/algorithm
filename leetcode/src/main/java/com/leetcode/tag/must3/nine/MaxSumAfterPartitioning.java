@@ -17,6 +17,7 @@ public class MaxSumAfterPartitioning {
                     // MAX是 nums[j,i−1] 范围内的局部最大值
                     max = Math.max(max, A[j]);
                     // (i - j)个max
+                    // dp[j] 长度为j,下一个下标就是j,[j,i-1]
                     dp[i] = Math.max(dp[i], dp[j] + (i - j) * max);
                 }
             }
