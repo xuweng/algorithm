@@ -9,6 +9,7 @@ public class SplitArray {
     class Solution {
         public int splitArray(int[] nums, int m) {
             int n = nums.length;
+            // 令 f[i][j]表示将数组的前 i 个数分割为 j 段所能得到的最大连续子数组和的最小值
             int[][] f = new int[n + 1][m + 1];
             for (int i = 0; i <= n; i++) {
                 Arrays.fill(f[i], Integer.MAX_VALUE);
