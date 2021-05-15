@@ -28,6 +28,7 @@ public class MaxSumAfterPartitioning {
         public int maxSumAfterPartitioning(int[] A, int K) {
             int n = A.length;
             // dp[i]：数组的前i个数即nums[0,1...i-1],被切了Y-刀，分割成Y个数组
+            // 长度
             int[] dp = new int[n];
             for (int i = 0; i < n; i++) {
                 int max = 0;
@@ -37,7 +38,8 @@ public class MaxSumAfterPartitioning {
                     // MAX是 nums[j,i−1] 范围内的局部最大值
                     max = Math.max(max, A[j]);
                     // (i - j)个max
-                    dp[i] = Math.max(dp[i], dp[j] + (i - j + 1) * max);
+                    // 数据越界
+                    dp[i] = Math.max(dp[i], dp[j - 1] + (i - j + 1) * max);
                 }
             }
             return dp[n - 1];
