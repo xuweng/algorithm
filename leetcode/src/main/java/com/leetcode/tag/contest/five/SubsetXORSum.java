@@ -16,16 +16,22 @@ public class SubsetXORSum {
             return res;
         }
 
-        //i：表示来到第i个位置
-        public void dfs(int[] nums, int i, int xorSum) {
-            if (i == nums.length) {
+        /**
+         * index：表示来到第index个位置
+         *
+         * @param nums
+         * @param index
+         * @param xorSum
+         */
+        public void dfs(int[] nums, int index, int xorSum) {
+            if (index == nums.length) {
                 res += xorSum;
                 return;
             }
-            //当前位置要
-            dfs(nums, i + 1, xorSum ^ nums[i]);
-            //当前位置不要
-            dfs(nums, i + 1, xorSum);
+            // 选择index
+            dfs(nums, index + 1, xorSum ^ nums[index]);
+            // 不选择index
+            dfs(nums, index + 1, xorSum);
         }
     }
 }
