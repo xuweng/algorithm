@@ -8,17 +8,21 @@ public class RearrangeSticks {
         int mod = (int) (1e9 + 7);
 
         public int rearrangeSticks(int n, int k) {
-            int[][] dp = new int[n + 1][k + 1];
-            // 长度 长度 长度
+            long[][] dp = new long[n + 1][k + 1];
+            dp[0][0] = 1;
+            // 长度 个数
+            // 考虑最后一根木棍是否可以被看到
             for (int i = 1; i <= n; i++) {
                 for (int j = 1; j <= k; j++) {
+                    // 如果可以被看到，那么最后一根木棍的长度一定为 i
                     dp[i][j] = dp[i - 1][j - 1];
+                    // 如果不可以被看到，那么最后一根木棍的长度为 [1,i−1] 中的某个值
                     dp[i][j] += dp[i - 1][j] * (i - 1);
                     dp[i][j] %= mod;
                 }
             }
 
-            return dp[n][k];
+            return (int) dp[n][k];
         }
     }
 }
