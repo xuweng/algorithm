@@ -81,4 +81,34 @@ public class SplitArray {
             return cnt <= m;
         }
     }
+
+    class Solution2 {
+        public int splitArray(int[] nums, int m) {
+            int left = Arrays.stream(nums).max().getAsInt();
+            int right = Arrays.stream(nums).sum();
+
+            while (left < right) {
+                int mid = left + (right - left) / 2;
+                int sum = 0;
+                // 第一个
+                int cnt = 1;
+                for (int num : nums) {
+                    sum += num;
+                    if (sum > mid) {
+                        // 下一个
+                        cnt++;
+                        sum = num;
+                    }
+                }
+                if (cnt <= m) {
+                    // 满足条件 缩小区间
+                    right = mid;
+                } else {
+                    left = mid + 1;
+                }
+            }
+            // left=right
+            return left;
+        }
+    }
 }
