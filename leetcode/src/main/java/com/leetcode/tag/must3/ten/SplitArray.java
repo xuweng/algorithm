@@ -27,7 +27,7 @@ public class SplitArray {
                 // 枚举下标
                 for (int j = 0; j < i; j++) {
                     // 枚举k
-                    for (int k = 1; k <= Math.min(i, m); j++) {
+                    for (int k = 1; k <= Math.min(i, m); k++) {
                         // 前k-1个 第k个 最后一个
                         // 第k个 [j,i-1] 区间和 preSum[i] - preSum[j]
                         dp[i][k] = Math.min(dp[i][k], Math.max(dp[j][k - 1], preSum[i] - preSum[j]));
