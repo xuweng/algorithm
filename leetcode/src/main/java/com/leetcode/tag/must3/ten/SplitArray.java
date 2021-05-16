@@ -44,41 +44,41 @@ public class SplitArray {
      * <p>
      * 方法二：二分查找 + 贪心
      * <p>
+     * 类似船的运输
+     * <p>
      * 「使……最大值尽可能小」是二分搜索题目常见的问法。
      */
     class Solution1 {
         public int splitArray(int[] nums, int m) {
-            int left = 0, right = 0;
-            for (int num : nums) {
-                right += num;
-                if (left < num) {
-                    left = num;
-                }
-            }
+            int left = Arrays.stream(nums).max().getAsInt();
+            int right = Arrays.stream(nums).sum();
+
             while (left < right) {
-                int mid = (right - left) / 2 + left;
+                int mid = left + (right - left) / 2;
                 if (check(nums, mid, m)) {
+                    // 满足条件 缩小区间
                     right = mid;
                 } else {
                     left = mid + 1;
                 }
             }
+            // left=right
             return left;
         }
 
         public boolean check(int[] nums, int x, int m) {
             int sum = 0;
+            // 第一个
             int cnt = 1;
             for (int num : nums) {
-                if (sum + num > x) {
+                sum += num;
+                if (sum > x) {
+                    // 下一个
                     cnt++;
                     sum = num;
-                } else {
-                    sum += num;
                 }
             }
             return cnt <= m;
         }
     }
-
 }
