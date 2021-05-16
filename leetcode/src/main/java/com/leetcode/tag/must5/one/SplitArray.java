@@ -16,7 +16,7 @@ public class SplitArray {
             for (int[] ints : dp) {
                 Arrays.fill(ints, Integer.MAX_VALUE);
             }
-            dp[0][0] = 1;
+            dp[0][0] = 0;
             for (int i = 1; i <= nums.length; i++) {
                 for (int j = 0; j < i; j++) {
                     for (int k = 1; k <= m; k++) {
