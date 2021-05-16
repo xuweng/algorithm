@@ -95,7 +95,12 @@ public class MinSwaps {
                 b[i] = '1';
             }
             // 比较原串到两种目标串需要移动的次数，取最小值
-            return Math.min(getValue(chars, a), getValue(chars, b));
+            int res = Math.min(getValue(chars, a), getValue(chars, b));
+            if (res == Integer.MAX_VALUE) {
+                // 说明不是两种情况
+                return -1;
+            }
+            return res;
         }
 
         private int getValue(char[] chars, char[] b) {
@@ -115,7 +120,7 @@ public class MinSwaps {
             }
             // 错误次数不一样的情况下是无解的，'0' '1' 必须是成对存在的，比如'1'错误了2次，'0'错误了一次，无论怎么交换都不行
             if (count0 != count1) {
-                return -1;
+                return Integer.MAX_VALUE;
             }
             return count0;
         }
