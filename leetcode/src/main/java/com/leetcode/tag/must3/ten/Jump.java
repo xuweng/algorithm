@@ -26,4 +26,25 @@ public class Jump {
             return dp[nums.length - 1];
         }
     }
+
+    class Solution1 {
+        public int jump(int[] nums) {
+            if (nums == null) {
+                return 0;
+            }
+            int max = 0;
+            int result = 0;
+            int end = 0;
+            for (int i = 0; i < nums.length - 1; i++) {
+                max = Math.max(max, i + nums[i]);
+                if (i == end) {
+                    // 边界
+                    result++;
+                    end = max;
+                }
+            }
+
+            return result;
+        }
+    }
 }
