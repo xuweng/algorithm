@@ -7,8 +7,9 @@ import java.util.Arrays;
  * <p>
  * 长度划分 前k-1 第k
  * <p>
- * dp[j]        [j,i-1]
- * dp[j][k-1]   [j,i-1]
+ * dp[i] dp[j] [j,i-1]
+ * <p>
+ * dp[i][k] dp[j][k-1] [j,i-1]
  */
 public class SplitArray {
     class Solution {
