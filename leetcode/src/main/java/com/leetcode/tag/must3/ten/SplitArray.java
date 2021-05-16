@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 /**
  * 410. 分割数组的最大值
+ * <p>
+ * 长度划分 前k-1 第k
  */
 public class SplitArray {
     class Solution {
