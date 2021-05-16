@@ -15,14 +15,20 @@ public class SplitArray {
                 Arrays.fill(f[i], Integer.MAX_VALUE);
             }
             f[0][0] = 0;
-            int[] sub = new int[n + 1];
-            for (int i = 0; i < n; i++) {
-                sub[i + 1] = sub[i] + nums[i];
-            }
+            // 前缀和
+            int[] preSum = new int[n + 1];
             for (int i = 1; i <= n; i++) {
+                preSum[i] = preSum[i - 1] + nums[i - 1];
+            }
+            // 枚举长度
+            for (int i = 1; i <= n; i++) {
+                // 枚举下标
                 for (int j = 0; j < i; j++) {
+                    // 枚举k
                     for (int k = 1; k <= Math.min(i, m); j++) {
-                        f[i][k] = Math.min(f[i][k], Math.max(f[j][k - 1], sub[i] - sub[j]));
+                        // 前k-1个 第k个 最后一个
+                        // 第k个 [j,i-1] 区间和 preSum[i] - preSum[j]
+                        f[i][k] = Math.min(f[i][k], Math.max(f[j][k - 1], preSum[i] - preSum[j]));
                     }
                 }
             }

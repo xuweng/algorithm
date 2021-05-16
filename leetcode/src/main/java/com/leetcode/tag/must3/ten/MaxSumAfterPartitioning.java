@@ -15,6 +15,8 @@ public class MaxSumAfterPartitioning {
                 // 长度j 下标j
                 for (int j = i - 1; j >= 0 && (i - j) <= k; j--) {
                     max = Math.max(max, arr[j]);
+                    // 前j个 最后一个
+                    // 最后一个 [j,i-1]
                     dp[i] = Math.max(dp[i], dp[j] + (i - j) * max);
                 }
             }
