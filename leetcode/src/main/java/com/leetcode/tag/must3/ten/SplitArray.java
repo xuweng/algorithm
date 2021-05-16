@@ -9,12 +9,12 @@ public class SplitArray {
     class Solution {
         public int splitArray(int[] nums, int m) {
             int n = nums.length;
-            // 令 f[i][j]表示将数组的前 i 个数分割为 j 段所能得到的最大连续子数组和的最小值
-            int[][] f = new int[n + 1][m + 1];
-            for (int i = 0; i <= n; i++) {
-                Arrays.fill(f[i], Integer.MAX_VALUE);
+            // 令 dp[i][j]表示将数组的前 i 个数分割为 j 段所能得到的最大连续子数组和的最小值
+            int[][] dp = new int[n + 1][m + 1];
+            for (int[] ints : dp) {
+                Arrays.fill(ints, Integer.MAX_VALUE);
             }
-            f[0][0] = 0;
+            dp[0][0] = 0;
             // 前缀和
             int[] preSum = new int[n + 1];
             for (int i = 1; i <= n; i++) {
@@ -28,11 +28,11 @@ public class SplitArray {
                     for (int k = 1; k <= Math.min(i, m); j++) {
                         // 前k-1个 第k个 最后一个
                         // 第k个 [j,i-1] 区间和 preSum[i] - preSum[j]
-                        f[i][k] = Math.min(f[i][k], Math.max(f[j][k - 1], preSum[i] - preSum[j]));
+                        dp[i][k] = Math.min(dp[i][k], Math.max(dp[j][k - 1], preSum[i] - preSum[j]));
                     }
                 }
             }
-            return f[n][m];
+            return dp[n][m];
         }
     }
 }
