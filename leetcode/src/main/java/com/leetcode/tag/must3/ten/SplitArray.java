@@ -38,4 +38,47 @@ public class SplitArray {
             return dp[n][m];
         }
     }
+
+    /**
+     * 「将数组分割为 m 段，求……」是动态规划题目常见的问法。
+     * <p>
+     * 方法二：二分查找 + 贪心
+     * <p>
+     * 「使……最大值尽可能小」是二分搜索题目常见的问法。
+     */
+    class Solution1 {
+        public int splitArray(int[] nums, int m) {
+            int left = 0, right = 0;
+            for (int num : nums) {
+                right += num;
+                if (left < num) {
+                    left = num;
+                }
+            }
+            while (left < right) {
+                int mid = (right - left) / 2 + left;
+                if (check(nums, mid, m)) {
+                    right = mid;
+                } else {
+                    left = mid + 1;
+                }
+            }
+            return left;
+        }
+
+        public boolean check(int[] nums, int x, int m) {
+            int sum = 0;
+            int cnt = 1;
+            for (int num : nums) {
+                if (sum + num > x) {
+                    cnt++;
+                    sum = num;
+                } else {
+                    sum += num;
+                }
+            }
+            return cnt <= m;
+        }
+    }
+
 }
