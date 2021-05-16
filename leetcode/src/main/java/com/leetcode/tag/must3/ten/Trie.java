@@ -24,6 +24,7 @@ public class Trie {
         Node p = root;
         for (int i = 0; i < word.length(); i++) {
             int index = word.charAt(i) - 'a';
+            // 判断位置 重点
             if (p.child[index] == null) {
                 p.child[index] = new Node();
             }
@@ -44,6 +45,7 @@ public class Trie {
         Node p = root;
         for (int i = 0; i < word.length(); i++) {
             int index = word.charAt(i) - 'a';
+            // 判断位置 重点
             if (p.child[index] == null) {
                 return false;
             }
@@ -64,6 +66,7 @@ public class Trie {
         Node p = root;
         for (int i = 0; i < prefix.length(); i++) {
             int index = prefix.charAt(i) - 'a';
+            // 判断位置 重点
             if (p.child[index] == null) {
                 return false;
             }
