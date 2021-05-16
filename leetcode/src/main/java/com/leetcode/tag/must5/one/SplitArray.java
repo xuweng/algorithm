@@ -20,6 +20,7 @@ public class SplitArray {
             for (int i = 1; i <= nums.length; i++) {
                 for (int j = 0; j < i; j++) {
                     for (int k = 1; k <= m; k++) {
+                        // [j,i-1]
                         dp[i][k] = Math.min(dp[i][k], Math.max(dp[j][k - 1], sum[i] - sum[j]));
                     }
                 }
