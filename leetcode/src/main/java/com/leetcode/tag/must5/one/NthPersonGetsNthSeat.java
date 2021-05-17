@@ -5,6 +5,16 @@ package com.leetcode.tag.must5.one;
  */
 public class NthPersonGetsNthSeat {
     class Solution {
+        /**
+         * f(1)=1 和 f(2)=0.5
+         * <p>
+         * 当 n≥3 时，根据 f(n) = f(n-1)
+         * <p>
+         * 当 n≥2 时，对任意正整数 n 都有 f(n)=0.5
+         *
+         * @param n
+         * @return
+         */
         public double nthPersonGetsNthSeat(int n) {
             return n == 1 ? 1.0 : 0.5;
         }
