@@ -9,8 +9,8 @@ public class IsCousins {
         TreeNode head1;
 
         public boolean isCousins(TreeNode root, int x, int y) {
-            int i = dfs(root, x);
-            int j = dfs(root, y);
+            int i = dfs(null, root, x, true);
+            int j = dfs(null, root, y, false);
 
             if (head == head1) {
                 return false;
@@ -19,15 +19,20 @@ public class IsCousins {
             return i == j;
         }
 
-        private int dfs(TreeNode root, int x) {
+        private int dfs(TreeNode parent, TreeNode root, int x, boolean is) {
             if (root == null) {
                 return -1;
             }
             if (root.val == x) {
+                if (is) {
+                    head = parent;
+                } else {
+                    head1 = parent;
+                }
                 return 0;
             }
-            int left = dfs(root.left, x);
-            int right = dfs(root.right, x);
+            int left = dfs(root, root.left, x, is);
+            int right = dfs(root, root.right, x, is);
             if (left == -1 && right == -1) {
                 return -1;
             }
