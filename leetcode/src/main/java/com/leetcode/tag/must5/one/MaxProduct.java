@@ -15,7 +15,7 @@ public class MaxProduct {
             if (nums[0] < 0) {
                 fu[0] = nums[0];
             }
-            int max = zhe[0];
+            int max = nums[0];
             for (int i = 1; i < nums.length; i++) {
                 if (nums[i] > 0) {
                     zhe[i] = zhe[i - 1] != 0 ? zhe[i - 1] * nums[i] : nums[i];
