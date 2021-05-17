@@ -18,6 +18,9 @@ public class CanCross {
             if (stones.length == 2) {
                 return true;
             }
+            for (int i = 0; i < stones.length; i++) {
+                map.put(stones[i], i);
+            }
 
             // 0到1 1步
             return dfs(stones, 1, 1);
