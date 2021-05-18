@@ -132,7 +132,7 @@ public class SolveSudoku {
                 }
                 //一行搞定
                 line[i][digit] = column[j][digit] = block[i / 3][j / 3][digit] = false;
-                //board[i][j]不需要重置.标记数组重置就可以.
+                //board[i][j]不需要重置.标记数组重置就可以. board[i][j]本来是 “.” 没有重置就会不断被覆盖
             }
 
             return false;
