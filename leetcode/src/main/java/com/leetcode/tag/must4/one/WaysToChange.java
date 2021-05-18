@@ -1,4 +1,4 @@
-package com.leetcode.tag.must4;
+package com.leetcode.tag.must4.one;
 
 /**
  * 面试题 08.11. 硬币

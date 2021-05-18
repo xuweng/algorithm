@@ -1,4 +1,4 @@
-package com.leetcode.tag.must4;
+package com.leetcode.tag.must4.one;
 
 import java.util.HashMap;
 import java.util.Map;
