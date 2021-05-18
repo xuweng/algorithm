@@ -22,7 +22,7 @@ public class LongestPalindrome {
                     } else {
                         dp[i][j] = Math.max(dp[i][j - 1], dp[i + 1][j]);
                     }
-                    if (dp[i][j] > right - left) {
+                    if (dp[i][j] > right - left + 1) {
                         left = i;
                         right = j;
                     }
