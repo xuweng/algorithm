@@ -52,7 +52,7 @@ public class GetLeastNumbers {
                 }
             }
             arr[left] = p;
-            return p;
+            return left;
         }
     }
 }
