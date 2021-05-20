@@ -8,7 +8,7 @@ public class NumWays {
         int mod = (int) (1e9 + 7);
 
         public int numWays(int steps, int arrLen) {
-            int max = Math.max(steps / 2, arrLen - 1);
+            int max = Math.min(steps / 2, arrLen - 1);
             int[][] dp = new int[steps + 1][max + 1];
             dp[0][0] = 1;
 
