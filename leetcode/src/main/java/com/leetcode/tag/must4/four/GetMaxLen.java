@@ -21,7 +21,7 @@ public class GetMaxLen {
                 if (nums[i] > 0) {
                     zhe[i] = zhe[i - 1] + 1;
                     fu[i] = fu[i - 1] > 0 ? fu[i - 1] + 1 : 0;
-                } else if (nums[0] < 0) {
+                } else if (nums[i] < 0) {
                     zhe[i] = fu[i - 1] > 0 ? fu[i - 1] + 1 : 0;
                     fu[i] = zhe[i - 1] + 1;
                 }
