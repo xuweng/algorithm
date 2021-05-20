@@ -15,7 +15,7 @@ public class NumTrees {
 
             for (int i = 1; i <= n; i++) {
                 for (int j = 0; j < i; j++) {
-                    dp[i] = Math.max(dp[i], dp[j] * dp[i - j - 1]);
+                    dp[i] += dp[j] * dp[i - j - 1];
                 }
             }
 
