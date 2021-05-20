@@ -21,7 +21,7 @@ public class SplitArray {
                 for (int j = 0; j < i; j++) {
                     for (int k = 1; k <= m; k++) {
                         // [0,j-1] [j,i-1]
-                        dp[i][j] = Math.min(dp[i][j], Math.max(dp[j][k - 1], sum[i] - sum[j]));
+                        dp[i][k] = Math.min(dp[i][k], Math.max(dp[j][k - 1], sum[i] - sum[j]));
                     }
                 }
             }
