@@ -10,10 +10,10 @@ public class GetMaxLen {
             int[] fu = new int[nums.length];
 
             if (nums[0] > 0) {
-                zhe[0] = nums[0];
+                zhe[0] = 1;
             }
             if (nums[0] < 0) {
-                fu[0] = nums[0];
+                fu[0] = 1;
             }
 
             int max = zhe[0];
