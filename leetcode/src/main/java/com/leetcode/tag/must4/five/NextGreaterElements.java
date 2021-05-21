@@ -24,7 +24,7 @@ public class NextGreaterElements {
                 while (!deque.isEmpty() && deque.peekLast() <= nums[index]) {
                     deque.pollLast();
                 }
-                result[index] = deque.isEmpty() ? -1 : deque.peekFirst();
+                result[index] = deque.isEmpty() ? -1 : deque.peekLast();
                 deque.offerLast(nums[index]);
             }
 
