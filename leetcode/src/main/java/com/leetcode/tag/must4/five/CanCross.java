@@ -68,7 +68,7 @@ public class CanCross {
             dp[1][1] = true;
 
             for (int i = 2; i < stones.length; i++) {
-                for (int j = 1; j < stones.length; j++) {
+                for (int j = 1; j < i; j++) {
                     int k = stones[i] - stones[j];
                     if (k > j + 1) {
                         continue;
