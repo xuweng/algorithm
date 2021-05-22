@@ -36,6 +36,7 @@ public class MinimumTimeRequired {
                 return;
             }
             for (int i = 0; i < k; i++) {
+                // 0--0 1--0 2--0 3--0
                 // 当前工作u分配给工人i
                 sum[i] += jobs[u];
 
@@ -84,6 +85,7 @@ public class MinimumTimeRequired {
                 // 工作u分配工人used
                 sum[used] = jobs[u];
 
+                // 0--0 1--1 2--2 3--3
                 // 下一份工作u+1分配给工人used+1
                 dfs(u + 1, used + 1, sum, Math.max(sum[used], max));
 
