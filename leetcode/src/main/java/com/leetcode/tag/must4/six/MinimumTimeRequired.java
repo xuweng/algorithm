@@ -83,12 +83,14 @@ public class MinimumTimeRequired {
             // 优先分配给「空闲工人」
             if (used < k) {
                 // 工作u分配工人used
+                // 直接赋值 不是累加 一份工作分配给一个人
                 sum[used] = jobs[u];
 
                 // 0--0 1--1 2--2 3--3
                 // 下一份工作u+1分配给工人used+1
                 dfs(u + 1, used + 1, sum, Math.max(sum[used], max));
 
+                // 回溯 置0
                 sum[used] = 0;
             }
             for (int i = 0; i < used; i++) {
