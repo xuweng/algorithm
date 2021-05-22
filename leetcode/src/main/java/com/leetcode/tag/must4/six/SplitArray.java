@@ -42,7 +42,7 @@ public class SplitArray {
                 int sum = 0;
                 for (int num : nums) {
                     sum += num;
-                    if (num > mid) {
+                    if (sum > mid) {
                         count++;
                         sum = num;
                     }
