@@ -27,6 +27,7 @@ public class MinimumTimeRequired {
          */
         private void dfs(int u, int[] sum, int max) {
             if (max >= ans) {
+                // 剪枝
                 return;
             }
             if (u == n) {
@@ -35,7 +36,7 @@ public class MinimumTimeRequired {
                 return;
             }
             for (int i = 0; i < k; i++) {
-                // 当前工作u分配给i
+                // 当前工作u分配给工人i
                 sum[i] += jobs[u];
 
                 // 分配下一份工作
