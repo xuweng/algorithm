@@ -13,7 +13,7 @@ public class CountSquares {
             int count = 0;
             for (int i = 0; i < m; i++) {
                 for (int j = 0; j < n; j++) {
-                    if (matrix[0][0] == 0) {
+                    if (matrix[i][j] == 0) {
                         continue;
                     }
                     if (i == 0 || j == 0) {
