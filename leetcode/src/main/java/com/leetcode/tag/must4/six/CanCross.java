@@ -36,6 +36,9 @@ public class CanCross {
             if (meno.containsKey(key)) {
                 return meno.get(key);
             }
+            if (index == stones.length - 1) {
+                return true;
+            }
             for (int i = k - 1; i <= k + 1; i++) {
                 if (i == 0) {
                     continue;
