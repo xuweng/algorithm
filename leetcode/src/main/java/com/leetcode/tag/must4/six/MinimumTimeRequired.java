@@ -95,7 +95,6 @@ public class MinimumTimeRequired {
                 // 回溯 置0
                 sum[used] = 0;
             }
-            // used==k
             // 工人已经分配完 还有2份工作
             for (int i = 0; i < used; i++) {
                 // 当前工作u分配给工人i
