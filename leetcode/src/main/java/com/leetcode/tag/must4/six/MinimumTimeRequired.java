@@ -38,6 +38,7 @@ public class MinimumTimeRequired {
                 // 当前工作u分配给i
                 sum[i] += jobs[u];
 
+                // 分配下一份工作
                 dfs(u + 1, sum, Math.max(sum[i], max));
 
                 sum[i] -= jobs[u];
