@@ -80,6 +80,8 @@ public class MinimumTimeRequired {
                 ans = max;
                 return;
             }
+            // 工作多n 工人少k
+            // 6 4 4份工作分配给4个工人 还有2份工作
             // 优先分配给「空闲工人」
             if (used < k) {
                 // 工作u分配工人used
@@ -93,6 +95,8 @@ public class MinimumTimeRequired {
                 // 回溯 置0
                 sum[used] = 0;
             }
+            // used==k
+            // 工人已经分配完 还有2份工作
             for (int i = 0; i < used; i++) {
                 // 当前工作u分配给工人i
                 sum[i] += jobs[u];
