@@ -97,6 +97,7 @@ public class MinimumTimeRequired {
             }
             // 工人已经分配完 还有2份工作
             for (int i = 0; i < used; i++) {
+                // [0,used-1]的工人已经分配工作 累加
                 // 当前工作u分配给工人i
                 sum[i] += jobs[u];
 
