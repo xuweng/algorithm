@@ -43,7 +43,7 @@ public class ReversePairs {
                 result[re++] = l[i++];
             }
             while (j < r.length) {
-                result[re++] = l[j++];
+                result[re++] = r[j++];
             }
 
             return result;
