@@ -8,7 +8,7 @@ import java.util.Arrays;
 public class SplitArray {
     class Solution {
         public int splitArray(int[] nums, int m) {
-            int[] sum = new int[nums.length];
+            int[] sum = new int[nums.length + 1];
             for (int i = 1; i <= nums.length; i++) {
                 sum[i] = sum[i - 1] + nums[i - 1];
             }
@@ -28,6 +28,33 @@ public class SplitArray {
             }
 
             return dp[nums.length][m];
+        }
+    }
+
+    class Solution1 {
+        public int splitArray(int[] nums, int m) {
+            int left = Arrays.stream(nums).max().getAsInt();
+            int right = Arrays.stream(nums).sum();
+
+            while (left < right) {
+                int mid = left + (right - left) / 2;
+                int count = 1;
+                int sum = 0;
+                for (int num : nums) {
+                    sum += num;
+                    if (num > mid) {
+                        count++;
+                        sum = num;
+                    }
+                }
+                if (count <= m) {
+                    right = mid;
+                } else {
+                    left = mid + 1;
+                }
+            }
+
+            return left;
         }
     }
 }
