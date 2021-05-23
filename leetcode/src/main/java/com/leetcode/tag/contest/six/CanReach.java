@@ -25,9 +25,15 @@ public class CanReach {
     class Solution1 {
         public boolean canReach(String s, int minJump, int maxJump) {
             int max = 0;
+
             for (int i = 0; i < s.length() && i <= max; i++) {
-                if (s.charAt(i) == '0') {
-                    max = Math.max(max, Math.max(i + minJump, Math.min(i + maxJump, s.length() - 1)));
+                int left = i + minJump;
+                int right = Math.min(i + maxJump, s.length() - 1);
+
+                for (int j = left; j <= right; j++) {
+                    if (s.charAt(j) == '0') {
+                        max = Math.max(max, j);
+                    }
                 }
                 if (max >= s.length() - 1) {
                     return true;
