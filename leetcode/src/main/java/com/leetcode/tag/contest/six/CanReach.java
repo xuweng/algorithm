@@ -34,7 +34,7 @@ public class CanReach {
 
                 for (int j = right; j >= left; j--) {
                     if (s.charAt(j) == '0') {
-                        max = j;
+                        max = Math.max(max, j);
                         break;
                     }
                 }
