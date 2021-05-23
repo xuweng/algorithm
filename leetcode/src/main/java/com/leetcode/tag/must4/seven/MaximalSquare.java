@@ -28,7 +28,7 @@ public class MaximalSquare {
                 }
             }
 
-            return max;
+            return max * max;
         }
     }
 }
