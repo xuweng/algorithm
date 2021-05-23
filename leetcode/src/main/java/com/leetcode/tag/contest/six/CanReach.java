@@ -32,9 +32,10 @@ public class CanReach {
                 int left = i + minJump;
                 int right = Math.min(i + maxJump, s.length() - 1);
 
-                for (int j = left; j <= right; j++) {
+                for (int j = right; j >= left; j--) {
                     if (s.charAt(j) == '0') {
-                        max = Math.max(max, j);
+                        max = j;
+                        break;
                     }
                 }
                 if (max >= s.length() - 1) {
