@@ -9,10 +9,10 @@ public class CanReach {
             boolean[] dp = new boolean[s.length()];
             dp[0] = true;
 
-            for (int i = 0; i < s.length(); i++) {
-                for (int j = 0; j < i; j++) {
-                    if (s.charAt(j) == '0' && (j + minJump <= i && i <= Math.min(j + maxJump, s.length() - 1))) {
-                        dp[i] = true;
+            for (int j = 1; j < s.length(); j++) {
+                for (int i = 0; i < j; i++) {
+                    if (dp[i] && s.charAt(j) == '0' && (i + minJump <= j && j <= Math.min(i + maxJump, s.length() - 1))) {
+                        dp[j] = true;
                         break;
                     }
                 }
