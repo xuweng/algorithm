@@ -10,8 +10,8 @@ public class CanReach {
             dp[0] = true;
 
             for (int j = 1; j < s.length(); j++) {
-                for (int i = 0; i < j; i++) {
-                    if (dp[i] && s.charAt(j) == '0' && (i + minJump <= j && j <= Math.min(i + maxJump, s.length() - 1))) {
+                for (int i = 0; i < j && s.charAt(j) == '0'; i++) {
+                    if (dp[i] && (i + minJump <= j && j <= Math.min(i + maxJump, s.length() - 1))) {
                         dp[j] = true;
                         break;
                     }
