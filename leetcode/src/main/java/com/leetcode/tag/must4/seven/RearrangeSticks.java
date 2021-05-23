@@ -16,6 +16,7 @@ public class RearrangeSticks {
                     dp[i][j] = dp[i - 1][j - 1];
                     // 前i-1看到j
                     dp[i][j] += dp[i - 1][j] * (i - 1);
+                    dp[i][j] %= mod;
                 }
             }
 
