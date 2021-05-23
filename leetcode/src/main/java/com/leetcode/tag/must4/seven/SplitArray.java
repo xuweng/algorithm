@@ -29,4 +29,31 @@ public class SplitArray {
             return dp[nums.length][m];
         }
     }
+
+    class Solution1 {
+        public int splitArray(int[] nums, int m) {
+            int left = Arrays.stream(nums).max().getAsInt();
+            int right = Arrays.stream(nums).sum();
+
+            while (left < right) {
+                int mid = left + (right - left) / 2;
+                int count = 1;
+                int sum = 0;
+                for (int num : nums) {
+                    sum += num;
+                    if (sum > mid) {
+                        count++;
+                        sum = num;
+                    }
+                }
+                if (count <= m) {
+                    right = mid;
+                } else {
+                    left = mid + 1;
+                }
+            }
+
+            return left;
+        }
+    }
 }
