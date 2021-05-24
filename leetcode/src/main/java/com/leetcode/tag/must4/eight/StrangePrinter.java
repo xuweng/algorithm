@@ -62,4 +62,33 @@ public class StrangePrinter {
             return dp[0][s.length() - 1];
         }
     }
+
+    class Solution2 {
+        /**
+         * 枚举长度 + 枚举左端点 + 枚举分割点
+         *
+         * @param s
+         * @return
+         */
+        public int strangePrinter(String s) {
+            int n = s.length();
+            int[][] f = new int[n + 1][n + 1];
+            // 枚举长度
+            for (int len = 1; len <= n; len++) {
+                // 枚举左端点
+                for (int l = 0; l + len - 1 < n; l++) {
+                    // 右端点
+                    int r = l + len - 1;
+                    f[l][r] = f[l + 1][r] + 1;
+                    // 枚举分割点 [l,r]
+                    for (int k = l + 1; k <= r; k++) {
+                        if (s.charAt(l) == s.charAt(k)) {
+                            f[l][r] = Math.min(f[l][r], f[l][k - 1] + f[k + 1][r]);
+                        }
+                    }
+                }
+            }
+            return f[0][n - 1];
+        }
+    }
 }
