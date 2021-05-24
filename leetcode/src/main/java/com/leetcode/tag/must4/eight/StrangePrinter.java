@@ -50,7 +50,7 @@ public class StrangePrinter {
                         dp[i][j] = dp[i][j - 1];
                     } else {
                         int minn = Integer.MAX_VALUE;
-                        for (int k = i + 1; k < j; k++) {
+                        for (int k = i; k < j; k++) {
                             // 分别完成该区间的左右两部分的打印
                             // 两部分分别为区间 [i,k] 和区间 [k+1,j]
                             minn = Math.min(minn, dp[i][k] + dp[k + 1][j]);
