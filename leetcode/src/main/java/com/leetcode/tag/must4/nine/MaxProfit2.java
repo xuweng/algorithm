@@ -11,7 +11,7 @@ public class MaxProfit2 {
 
             for (int i = 1; i < prices.length; i++) {
                 int b = Math.max(buy, sell - prices[i]);
-                int s = Math.max(sell, buy + prices[i]);
+                int s = Math.max(sell, buy + prices[i] - fee);
 
                 buy = b;
                 sell = s;
