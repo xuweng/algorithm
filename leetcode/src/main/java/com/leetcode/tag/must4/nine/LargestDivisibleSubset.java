@@ -22,7 +22,7 @@ public class LargestDivisibleSubset {
                 dp[i] = 1;
                 for (int j = 0; j < i; j++) {
                     if (nums[i] % nums[j] == 0) {
-                        if (dp[i] > dp[j] + 1) {
+                        if (dp[i] < dp[j] + 1) {
                             dp[i] = dp[j] + 1;
                             back[i] = j;
                         }
