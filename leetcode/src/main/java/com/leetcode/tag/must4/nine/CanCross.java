@@ -29,7 +29,7 @@ public class CanCross {
         private boolean dfs(int[] stones, int index, int k) {
             String key = index + "_" + k;
             if (meno.containsKey(key)) {
-                return true;
+                return meno.get(key);
             }
             if (index == stones.length - 1) {
                 return true;
