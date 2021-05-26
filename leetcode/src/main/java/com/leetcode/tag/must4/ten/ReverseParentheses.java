@@ -26,7 +26,7 @@ public class ReverseParentheses {
                 return temp + dfs(s, "");
             } else if (s.charAt(index) == ')') {
                 index++;
-                return re(temp);
+                return dfs(s, re(temp));
             }
 
             return "";
