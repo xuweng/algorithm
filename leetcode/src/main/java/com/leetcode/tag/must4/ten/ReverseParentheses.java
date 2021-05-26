@@ -60,14 +60,47 @@ public class ReverseParentheses {
             for (int i = 0; i < s.length(); i++) {
                 char ch = s.charAt(i);
                 if (ch == '(') {
+                    // 插入到栈中
                     stack.push(sb.toString());
+                    //  置为空
                     sb.setLength(0);
                 } else if (ch == ')') {
+                    // 反转
                     sb.reverse();
                     sb.insert(0, stack.pop());
                 } else {
                     sb.append(ch);
                 }
+            }
+            return sb.toString();
+        }
+    }
+
+    class Solution2 {
+        public String reverseParentheses(String s) {
+            int n = s.length();
+            int[] pair = new int[n];
+            Deque<Integer> stack = new LinkedList<>();
+            for (int i = 0; i < n; i++) {
+                if (s.charAt(i) == '(') {
+                    stack.push(i);
+                } else if (s.charAt(i) == ')') {
+                    int j = stack.pop();
+                    pair[i] = j;
+                    pair[j] = i;
+                }
+            }
+
+            StringBuilder sb = new StringBuilder();
+            int index = 0, step = 1;
+            while (index < n) {
+                if (s.charAt(index) == '(' || s.charAt(index) == ')') {
+                    index = pair[index];
+                    step = -step;
+                } else {
+                    sb.append(s.charAt(index));
+                }
+                index += step;
             }
             return sb.toString();
         }
