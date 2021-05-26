@@ -26,10 +26,10 @@ public class ReverseParentheses {
                 return dfs(s, temp + s.charAt(index++));
             } else if (s.charAt(index) == '(') {
                 index++;
-                return temp + dfs(s, "");
+                return temp + dfs(s, "") + dfs(s, "");
             } else if (s.charAt(index) == ')') {
                 index++;
-                return dfs(s, re(temp));
+                return re(temp);
             }
 
             return "";
