@@ -38,6 +38,8 @@ public class NumDecodings {
                 if (i >= 2 && s.charAt(i - 2) != '0' && (s.charAt(i - 2) - '0') * 10 + s.charAt(i - 1) - '0' <= 26) {
                     c += a;
                 }
+                a = b;
+                b = c;
             }
 
             return c;
