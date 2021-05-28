@@ -60,4 +60,25 @@ public class TotalHammingDistance {
             return count;
         }
     }
+
+    /**
+     * 应用乘法原理统计集合元素组合个数
+     */
+    class Solution3 {
+        public int totalHammingDistance(int[] nums) {
+            int ans = 0;
+            for (int x = 31; x >= 0; x--) {
+                int s0 = 0, s1 = 0;
+                for (int u : nums) {
+                    if (((u >> x) & 1) == 1) {
+                        s1++;
+                    } else {
+                        s0++;
+                    }
+                }
+                ans += s0 * s1;
+            }
+            return ans;
+        }
+    }
 }
