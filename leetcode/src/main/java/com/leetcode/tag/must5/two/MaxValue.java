@@ -26,6 +26,7 @@ public class MaxValue {
                 l = Math.max(l, left[i]);
                 r = Math.max(r, right[i]);
             }
+            dp[0] = l + r;
             for (int i = 1; i <= k; i++) {
                 for (int j = 0; j < i; j++) {
                     dp[i] = Math.max(dp[i], left[j] + right[i - j - 1] + root.val);
