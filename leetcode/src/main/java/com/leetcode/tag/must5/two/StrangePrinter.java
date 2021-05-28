@@ -17,7 +17,7 @@ public class StrangePrinter {
                     } else {
                         int min = Integer.MAX_VALUE;
                         for (int k = i; k < j; k++) {
-                            min = Math.min(min, dp[i][k] + dp[k][j]);
+                            min = Math.min(min, dp[i][k] + dp[k + 1][j]);
                         }
                         dp[i][j] = min;
                     }
