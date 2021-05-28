@@ -13,12 +13,13 @@ public class StrangePrinter {
             for (int i = s.length() - 2; i >= 0; i--) {
                 for (int j = i + 1; j < s.length(); j++) {
                     if (s.charAt(i) == s.charAt(j)) {
-                        dp[i][j] = dp[i - 1][j];
+                        dp[i][j] = dp[i][j - 1];
                     } else {
                         int min = Integer.MAX_VALUE;
                         for (int k = i; k < j; k++) {
                             min = Math.min(min, dp[i][k] + dp[k][j]);
                         }
+                        dp[i][j] = min;
                     }
                 }
             }
