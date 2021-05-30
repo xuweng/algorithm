@@ -51,7 +51,7 @@ public class CanCross {
                     return true;
                 }
             }
-
+            meno.put(key, false);
             return false;
         }
     }
