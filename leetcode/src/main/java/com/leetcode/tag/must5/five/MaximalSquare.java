@@ -22,7 +22,7 @@ public class MaximalSquare {
                         dp[i][j] = 1;
                     } else {
                         // 三取小
-                        dp[i][j] = Math.min(dp[i][j - 1], Math.max(dp[i - 1][j], dp[i - 1][j - 1])) + 1;
+                        dp[i][j] = Math.min(dp[i][j - 1], Math.min(dp[i - 1][j], dp[i - 1][j - 1])) + 1;
                     }
                     max = Math.max(max, dp[i][j]);
                 }
