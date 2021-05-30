@@ -7,8 +7,6 @@ public class MaxSumAfterPartitioning {
     class Solution {
         public int maxSumAfterPartitioning(int[] arr, int k) {
             int[] dp = new int[arr.length + 1];
-            dp[0] = 1;
-
             for (int i = 1; i <= arr.length; i++) {
                 int max = 0;
                 for (int j = i - 1; j >= 0 && (i - j <= k); j--) {
