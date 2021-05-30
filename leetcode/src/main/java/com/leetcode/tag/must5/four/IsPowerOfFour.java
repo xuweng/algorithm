@@ -31,6 +31,7 @@ public class IsPowerOfFour {
     class Solution1 {
         public boolean isPowerOfFour(int n) {
             // 如果 n 是 4 的幂，那么 n 一定也是 2 的幂
+            // 10000 & 01010 = 0
             // mask=(10101010101010101010101010101010)2
             return n > 0 && (n & (n - 1)) == 0 && (n & 0xaaaaaaaa) == 0;
         }
