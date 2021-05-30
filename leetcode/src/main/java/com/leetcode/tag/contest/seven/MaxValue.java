@@ -1,7 +1,8 @@
 package com.leetcode.tag.contest.seven;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * 5773. 插入后的最大值
@@ -10,45 +11,29 @@ public class MaxValue {
     class Solution {
         public String maxValue(String n, int x) {
             char[] chars = n.toCharArray();
+            List<String> list1 = new ArrayList<>();
             StringBuilder stringBuilder = new StringBuilder();
-            boolean is = true;
+            stringBuilder.append(n);
             if (chars[0] == '-') {
-                stringBuilder.append('-');
-                Arrays.sort(chars);
-                for (int i = 1, charsLength = chars.length; i < charsLength; i++) {
-                    char aChar = chars[i];
-                    if (Integer.parseInt(String.valueOf(aChar)) < x) {
-                        stringBuilder.append(aChar);
-                    } else {
-                        if (is) {
-                            stringBuilder.append(x);
-                            is = false;
-                        }
-                        stringBuilder.append(aChar);
-                    }
+                stringBuilder.deleteCharAt(0);
+                for (int i = 0; i < chars.length; i++) {
+                    stringBuilder.insert(i, x);
+                    list1.add(stringBuilder.toString());
+                    stringBuilder.deleteCharAt(i);
                 }
+                Collections.sort(list1);
 
-                return stringBuilder.toString();
-            }
-            Character[] characters = new Character[chars.length];
-            for (int i = 0; i < chars.length; i++) {
-                characters[i] = chars[i];
-            }
-            Arrays.sort(characters, Collections.reverseOrder());
-
-            for (Character character : characters) {
-                if (Integer.parseInt(String.valueOf(character)) > x) {
-                    stringBuilder.append(character);
-                } else {
-                    if (is) {
-                        stringBuilder.append(x);
-                        is = false;
-                    }
-                    stringBuilder.append(character);
-                }
+                return "-" + list1.get(0);
             }
 
-            return stringBuilder.toString();
+            for (int i = 0; i <= chars.length; i++) {
+                stringBuilder.insert(i, x);
+                list1.add(stringBuilder.toString());
+                stringBuilder.deleteCharAt(i);
+            }
+            Collections.sort(list1);
+
+            return list1.get(list1.size() - 1);
         }
     }
 }
