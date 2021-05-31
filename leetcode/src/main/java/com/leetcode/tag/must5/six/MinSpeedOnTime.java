@@ -40,7 +40,7 @@ public class MinSpeedOnTime {
             }
             // 搜索边界
             int left = 1;
-            int right = Integer.MAX_VALUE;
+            int right = Arrays.stream(dist).max().getAsInt() * 100;
             while (left < right) {
                 int mid = left + (right - left) / 2;
                 // 如果以 mid 速度可达，那么就尝试减小速度
