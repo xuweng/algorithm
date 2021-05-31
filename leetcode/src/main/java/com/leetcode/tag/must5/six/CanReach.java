@@ -1,5 +1,7 @@
 package com.leetcode.tag.must5.six;
 
+import java.util.Arrays;
+
 /**
  * 1871. 跳跃游戏 VII
  * <p>
@@ -93,6 +95,42 @@ public class CanReach {
                 pre[i] = pre[i - 1] + (f[i] ? 1 : 0);
             }
             return f[n - 1];
+        }
+    }
+
+    /**
+     * 前缀和 + dp
+     */
+    class Solution3 {
+        public boolean canReach(String s, int minJump, int maxJump) {
+            int len = s.length();
+            char[] chars = s.toCharArray();
+            //记录某个点是否能达到 如果能到就是0 ,不能达到就是1
+            int[] dp = new int[len + 1];
+            //首先设置所有的点都不能达到
+            Arrays.fill(dp, 1);
+            //但是chars[0] = '0' 那么第一个点一定是能达到的 那么设置为 0
+            dp[1] = 0;
+            //这个是前缀和的数组，记录的是dp这个数组的前缀和
+            int[] pre = new int[len + 1];
+            //第一个一定是0
+            pre[1] = 0;
+            //遍历数组
+            for (int i = 2; i <= len; i++) {
+                // 选择chars[i - 1]为 0  通过判断这个点的 i - maxJump 到 i - minJump 点的和 是否比 这两个点的距离之和近
+                // 如果近就说明这里面至少存在一个0 那么就可以通过这个0 来到达chars[i - 1]这个点
+                if (chars[i - 1] == '0') {
+                    if (i - minJump >= 1) {
+                        int r = i - minJump;
+                        int l = Math.max(i - maxJump, 1);
+                        dp[i] = pre[r] - pre[l - 1] < r - l + 1 ? 0 : 1;
+                    }
+                }
+                //每次都维护前缀和数组,加入 0 或者 1
+                pre[i] += pre[i - 1] + dp[i];
+            }
+
+            return dp[len] == 0;
         }
     }
 }
