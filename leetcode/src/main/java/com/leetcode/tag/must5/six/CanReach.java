@@ -124,6 +124,7 @@ public class CanReach {
                         // [l,r]
                         // 区间长度 r-l+1
                         // 区间和 pre[r]-pre[l-1]
+                        // 区间[l,r]有0就可以到达
                         int r = i - minJump;
                         int l = Math.max(i - maxJump, 1);
                         dp[i] = pre[r] - pre[l - 1] < r - l + 1 ? 0 : 1;
