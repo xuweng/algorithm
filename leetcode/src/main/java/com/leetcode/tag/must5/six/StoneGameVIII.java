@@ -100,4 +100,23 @@ public class StoneGameVIII {
             return dp[2];
         }
     }
+
+    class Solution4 {
+        public int stoneGameVIII(int[] stones) {
+            int[] prefixSum = new int[stones.length];
+            prefixSum[0] = stones[0];
+
+            for (int i = 1; i < prefixSum.length; i++) {
+                prefixSum[i] = prefixSum[i - 1] + stones[i];
+            }
+            Integer[] mem = new Integer[stones.length + 1];
+
+            mem[stones.length - 1] = prefixSum[stones.length - 1];
+
+            for (int i = stones.length - 2; i >= 1; i--) {
+                mem[i] = Math.max(prefixSum[i] - mem[i + 1], mem[i + 1]);
+            }
+            return mem[1];
+        }
+    }
 }
