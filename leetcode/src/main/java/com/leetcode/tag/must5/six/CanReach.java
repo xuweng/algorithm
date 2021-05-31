@@ -54,19 +54,18 @@ public class CanReach {
             int n = s.length();
             boolean[] dp = new boolean[n];
             dp[0] = true;
-            int cnt = 1;    //滑窗cnt初始化，一开始i = 0是可达的，所以cnt初始化为1
+            // 滑窗cnt初始化，一开始i = 0是可达的，所以cnt初始化为1
+            int cnt = 1;
             for (int i = minJump; i < n; ++i) {
-                //判断当前坐标是否可达
+                // 判断当前坐标是否可达
                 if (s.charAt(i) == '0' && cnt > 0) {
                     dp[i] = true;
                 }
-
-                //滑窗移动后左端坐标离开带来的更新
+                // 滑窗移动后左端坐标离开带来的更新
                 if (i >= maxJump && dp[i - maxJump]) {
                     --cnt;
                 }
-
-                //滑窗移动后右端坐标加入带来的更新
+                // 滑窗移动后右端坐标加入带来的更新
                 if (dp[i - minJump + 1]) {
                     ++cnt;
                 }
