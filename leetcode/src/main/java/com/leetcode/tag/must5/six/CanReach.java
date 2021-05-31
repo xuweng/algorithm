@@ -121,6 +121,9 @@ public class CanReach {
                 // 如果近就说明这里面至少存在一个0 那么就可以通过这个0 来到达chars[i - 1]这个点
                 if (chars[i - 1] == '0') {
                     if (i - minJump >= 1) {
+                        // [l,r]
+                        // 区间长度 r-l+1
+                        // 区间和 pre[r]-pre[l-1]
                         int r = i - minJump;
                         int l = Math.max(i - maxJump, 1);
                         dp[i] = pre[r] - pre[l - 1] < r - l + 1 ? 0 : 1;
