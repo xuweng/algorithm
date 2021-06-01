@@ -31,7 +31,9 @@ public class MaxJumps {
             if (f[dis] != 0) {
                 return f[dis];
             }
-            //初始值
+            // 可以往左跳也可以往右跳，只要在范围内
+            // 每一根柱子，他最小的访问数目是1，就是他自己（比如左右紧挨着的柱子都比它高）
+            // 初始值
             f[dis] = 1;
             //向右跳
             for (int i = dis + 1; i < arr.length && i <= dis + d; i++) {
