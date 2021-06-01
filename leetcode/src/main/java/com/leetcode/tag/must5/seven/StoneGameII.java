@@ -39,6 +39,8 @@ public class StoneGameII {
                     // 剩下的堆数不能全部取走
                     // 最优情况就是让下一个人取的更少 当前取更多
                     for (int x = 1; x <= 2 * M; x++) {
+                        // 下一个人 dp[i + x][Math.max(M, x)]
+                        // 当前 sum - dp[i + x][Math.max(M, x)]
                         dp[i][M] = Math.max(dp[i][M], sum - dp[i + x][Math.max(M, x)]);
                     }
                 }
