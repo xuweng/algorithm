@@ -78,6 +78,7 @@ public class PalindromePartition {
                         // >1个
                         dp[i][j] = dp[i - 1][i - 1] + pali[i][j];
                         for (int x = i; x < j; x++) {
+                            // [i-1,j-1]
                             // [i-1][x] [x+1,j]
                             dp[i][j] = Math.min(dp[i][j], dp[i - 1][x] + pali[x + 1][j]);
                         }
