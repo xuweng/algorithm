@@ -69,7 +69,8 @@ public class PalindromePartition {
             for (int i = 1; i <= k; i++) {
                 for (int j = i; j <= s.length(); j++) {
                     if (i == 1) {
-                        // 1个
+                        // 切割成1个 j表示当前字符串的长度
+                        // 整个 [0,j-1]
                         dp[i][j] = pali[i][j];
                     } else {
                         // >1个
