@@ -41,6 +41,9 @@ public class PalindromePartition {
         }
     }
 
+    /**
+     * 区间dp
+     */
     class Solution1 {
         public int palindromePartition(String s, int k) {
             // pali[i][j] = pali[i+1][j-1]+1(如果i和j位置的字符串不等)
@@ -55,19 +58,24 @@ public class PalindromePartition {
                         pali[i][j] = pali[i + 1][j - 1];
                     }
                     if (s.charAt(i - 1) != s.charAt(j - 1)) {
+                        // 分割1次
                         pali[i][j]++;
                     }
                 }
             }
 
             int[][] dp = new int[k + 1][s.length() + 1];
+            // 用dp[i][j]表示，i表示切割成i个 j表示当前字符串的长度
             for (int i = 1; i <= k; i++) {
                 for (int j = i; j <= s.length(); j++) {
                     if (i == 1) {
+                        // 1个
                         dp[i][j] = pali[i][j];
                     } else {
+                        // >1个
                         dp[i][j] = dp[i - 1][i - 1] + pali[i][j];
                         for (int x = i; x < j; x++) {
+                            // [i-1][x] [x+1,j]
                             dp[i][j] = Math.min(dp[i][j], dp[i - 1][x] + pali[x + 1][j]);
                         }
                     }
