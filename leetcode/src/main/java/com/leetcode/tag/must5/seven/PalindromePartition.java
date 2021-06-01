@@ -51,6 +51,8 @@ public class PalindromePartition {
             // 注意 如果j-i<=1，即i到j之间有小于等于2个字符串的时候
             // pali[i][j] = 1(如果i和j位置的字符串不等)
             // pali[i][j] = 0(如果i和j位置的字符串相等)
+
+            // 计算切割成1个，长度为j 每个区间 的最小
             int[][] pali = new int[s.length() + 1][s.length() + 1];
             for (int i = s.length(); i >= 1; i--) {
                 for (int j = i; j <= s.length(); j++) {
