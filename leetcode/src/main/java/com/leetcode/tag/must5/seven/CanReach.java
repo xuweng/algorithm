@@ -1,4 +1,4 @@
-package com.leetcode.tag.must5;
+package com.leetcode.tag.must5.seven;
 
 import java.util.Arrays;
 
