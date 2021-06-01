@@ -60,7 +60,7 @@ public class PalindromePartition {
                         pali[i][j] = pali[i + 1][j - 1];
                     }
                     if (s.charAt(i - 1) != s.charAt(j - 1)) {
-                        // 分割1次
+                        // 修改1次
                         pali[i][j]++;
                     }
                 }
