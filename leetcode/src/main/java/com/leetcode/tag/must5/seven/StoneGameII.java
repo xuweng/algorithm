@@ -32,9 +32,12 @@ public class StoneGameII {
             sum += piles[i];
             for (int M = 1; M <= len; M++) {
                 if (i + 2 * M >= len) {
+                    // [i][M] 一次性全部取
                     // i + 2M >= len, dp[i][M] = sum[i : len - 1], 剩下的堆数能够直接全部取走，那么最优的情况就是剩下的石子总和
                     dp[i][M] = sum;
                 } else {
+                    // 剩下的堆数不能全部取走
+                    // 最优情况就是让下一个人取的更少 当前取更多
                     for (int x = 1; x <= 2 * M; x++) {
                         dp[i][M] = Math.max(dp[i][M], sum - dp[i + x][Math.max(M, x)]);
                     }
