@@ -43,6 +43,11 @@ public class PalindromePartition {
 
     class Solution1 {
         public int palindromePartition(String s, int k) {
+            // pali[i][j] = pali[i+1][j-1]+1(如果i和j位置的字符串不等)
+            // pali[i][j] = pali[i+1][j-1] (如果i和j位置的字符串相等)
+            // 注意 如果j-i<=1，即i到j之间有小于等于2个字符串的时候
+            // pali[i][j] = 1(如果i和j位置的字符串不等)
+            // pali[i][j] = 0(如果i和j位置的字符串相等)
             int[][] pali = new int[s.length() + 1][s.length() + 1];
             for (int i = s.length(); i >= 1; i--) {
                 for (int j = i; j <= s.length(); j++) {
