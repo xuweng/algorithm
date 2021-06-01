@@ -27,37 +27,44 @@ public class MaxJumps {
             return max;
         }
 
-        public int dp(int dis) {
-            if (f[dis] != 0) {
-                return f[dis];
+        public int dp(int index) {
+            if (f[index] != 0) {
+                // 这个柱子已经计算过
+                return f[index];
             }
             // 可以往左跳也可以往右跳，只要在范围内
             // 每一根柱子，他最小的访问数目是1，就是他自己（比如左右紧挨着的柱子都比它高）
             // 初始值
-            f[dis] = 1;
-            //向右跳
-            for (int i = dis + 1; i < arr.length && i <= dis + d; i++) {
-                if (arr[i] >= arr[dis]) {
+            f[index] = 1;
+            // 向右跳
+            for (int i = index + 1; i < arr.length && i <= index + d; i++) {
+                if (arr[i] >= arr[index]) {
+                    // 遇到了比当前柱子高或等的柱子，就不再往更远的地方跳了
                     break;
                 }
-                f[dis] = Math.max(dp(i) + 1, f[dis]);
+                // 右边下一个位置
+                f[index] = Math.max(dp(i) + 1, f[index]);
             }
-            //向左跳
-            for (int i = dis - 1; i >= 0 && i >= dis - d; i--) {
-                if (arr[i] >= arr[dis]) {
+            // 向左跳
+            for (int i = index - 1; i >= 0 && i >= index - d; i--) {
+                if (arr[i] >= arr[index]) {
+                    // 遇到了比当前柱子高或等的柱子，就不再往更远的地方跳了
                     break;
                 }
-                f[dis] = Math.max(dp(i) + 1, f[dis]);
+                // 左边下一个位置
+                f[index] = Math.max(dp(i) + 1, f[index]);
             }
-            return f[dis];
+            return f[index];
         }
     }
 
     class Solution1 {
         int[] arr;
-        int n; //数组长度
+        //数组长度
+        int n;
         int d;
-        int[] dp;   //用来存储每个柱子的最大结果
+        //用来存储每个柱子的最大结果
+        int[] dp;
 
         public int maxJumps(int[] arr, int d) {
             this.arr = arr;
@@ -72,15 +79,21 @@ public class MaxJumps {
         }
 
         private int getMaxFromOnePoint(int p) {
-            if (dp[p] != 0) return dp[p];   //当前柱子已经计算过，直接返回它的值
+            //当前柱子已经计算过，直接返回它的值
+            if (dp[p] != 0) {
+                return dp[p];
+            }
             // 如果没有，分别计算它往左和往右跳一次可以得到的最大值
             int leftMax = 0;
             int l = 1;  // 往左跳的距离
             while (p - l >= 0 && l <= d) {
-                if (arr[p - l] >= arr[p]) {   //遇到了高柱子挡路，只能结束
+                //遇到了高柱子挡路，只能结束
+                if (arr[p - l] >= arr[p]) {
                     break;
                 } else {
-                    if (dp[p - l] == 0) dp[p - l] = getMaxFromOnePoint(p - l);
+                    if (dp[p - l] == 0) {
+                        dp[p - l] = getMaxFromOnePoint(p - l);
+                    }
                     leftMax = Math.max(leftMax, dp[p - l]);
                     l++;
                 }
@@ -92,7 +105,9 @@ public class MaxJumps {
                 if (arr[p + r] >= arr[p]) {
                     break;
                 } else {
-                    if (dp[p + r] == 0) dp[p + r] = getMaxFromOnePoint(p + r);
+                    if (dp[p + r] == 0) {
+                        dp[p + r] = getMaxFromOnePoint(p + r);
+                    }
                     rightMax = Math.max(rightMax, dp[p + r]);
                     r++;
                 }
