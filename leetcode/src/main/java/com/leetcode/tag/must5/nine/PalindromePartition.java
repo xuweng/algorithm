@@ -30,12 +30,13 @@ public class PalindromePartition {
             }
 
             for (int i = 1; i <= s.length(); i++) {
-                for (int x = 0; x < i; x++) {
+                for (int x = 1; x < i; x++) {
                     int min = Integer.MAX_VALUE;
+                    // 两段
+                    // [0,x-1] [x,i-1]
+                    // k在这里遍历不能赋值
                     for (int j = 1; j <= k; j++) {
-                        // [i-1,j-1]
-                        // [i-1][x] [x+1,j]
-                        min = Math.min(min, dp[i - 1][x] + dp[x + 1][j]);
+                        dp[i][j] = Math.min(min, dp[x][j - 1] + ints[x + 1][i]);
                     }
                 }
             }
@@ -78,7 +79,6 @@ public class PalindromePartition {
                         // >1个
                         dp[i][j] = dp[i - 1][i - 1] + pali[i][j];
                         for (int x = i; x < j; x++) {
-                            // [0,4] [5,j-1]
                             // [0,x-1] [x,j-1]
                             dp[i][j] = Math.min(dp[i][j], dp[i - 1][x] + pali[x + 1][j]);
                         }
