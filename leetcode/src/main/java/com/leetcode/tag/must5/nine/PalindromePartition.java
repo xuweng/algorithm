@@ -1,5 +1,7 @@
 package com.leetcode.tag.must5.nine;
 
+import java.util.Arrays;
+
 /**
  * 1278. 分割回文串 III
  * <p>
@@ -17,7 +19,6 @@ public class PalindromePartition {
             // 不分割
             // 长度 长度 长度
             int[][] ints = new int[s.length() + 1][s.length() + 1];
-            int[][] dp = new int[s.length() + 1][k + 1];
             for (int i = s.length(); i >= 1; i--) {
                 for (int j = i + 1; j <= s.length(); j++) {
                     ints[i][j] = ints[i + 1][j - 1];
@@ -25,18 +26,20 @@ public class PalindromePartition {
                         // 修改一次
                         ints[i][j]++;
                     }
-                    dp[i][j] = ints[i][j];
                 }
             }
-
+            int[][] dp = new int[s.length() + 1][k + 1];
+            for (int[] ints1 : dp) {
+                Arrays.fill(ints1, Integer.MAX_VALUE);
+            }
+            dp[0][0] = 0;
             for (int i = 1; i <= s.length(); i++) {
-                for (int x = 1; x < i; x++) {
-                    int min = Integer.MAX_VALUE;
+                dp[i][1] = ints[i][1];
+                for (int x = 0; x < i; x++) {
                     // 两段
                     // [0,x-1] [x,i-1]
-                    // k在这里遍历不能赋值
-                    for (int j = 1; j <= k; j++) {
-                        dp[i][j] = Math.min(min, dp[x][j - 1] + ints[x + 1][i]);
+                    for (int j = 2; j <= k; j++) {
+                        dp[i][j] = Math.min(dp[i][j], dp[x][j - 1] + ints[x + 1][i]);
                     }
                 }
             }
