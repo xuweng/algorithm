@@ -17,6 +17,7 @@ public class CanReach {
             for (int i = 2; i <= s.length(); i++) {
                 if (s.charAt(i - 1) == '0') {
                     if (i - minJump >= 1) {
+                        // l > 1
                         int l = Math.max(1, i - maxJump);
                         int r = i - minJump;
                         // [l-1,r-1]
