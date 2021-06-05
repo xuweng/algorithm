@@ -10,6 +10,7 @@ public class RemoveElements {
                 return null;
             }
             ListNode ya = new ListNode(-1);
+            ya.next = head;
             ListNode cur = ya;
 
             while (cur != null && cur.next != null) {
