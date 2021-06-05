@@ -23,7 +23,7 @@ public class CanCross {
             }
 
             // 0到1 1步
-            return dfs(stones, 9, stones.length - 1);
+            return dfs(stones, 1, 1);
         }
 
         private boolean dfs(int[] stones, int index, int k) {
@@ -51,6 +51,37 @@ public class CanCross {
                 }
             }
             meno.put(key, false);
+            return false;
+        }
+    }
+
+    class Solution1 {
+        public boolean canCross(int[] stones) {
+            if (stones[1] != 1) {
+                return false;
+            }
+            if (stones.length == 2) {
+                return true;
+            }
+
+            boolean[][] dp = new boolean[stones.length][stones.length];
+            dp[1][1] = true;
+
+            for (int i = 2; i < stones.length; i++) {
+                for (int j = 1; j < i; j++) {
+                    int k = stones[i] - stones[j];
+                    if (k > j + 1) {
+                        continue;
+                    }
+                    dp[i][k] = dp[j][k - 1] || dp[j][k] || dp[j][k + 1];
+                }
+            }
+            for (int i = 0; i < stones.length; i++) {
+                if (dp[stones.length - 1][i]) {
+                    return true;
+                }
+            }
+
             return false;
         }
     }
