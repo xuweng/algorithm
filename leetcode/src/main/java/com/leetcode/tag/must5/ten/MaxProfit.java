@@ -20,7 +20,7 @@ public class MaxProfit {
             for (int i = 1; i < prices.length; i++) {
                 dp[0][1] = Math.max(dp[0][1], dp[0][0] - prices[i]);
                 for (int j = 1; j <= k; j++) {
-                    dp[j][0] = Math.max(dp[j][0], dp[j - 1][1] - prices[i]);
+                    dp[j][0] = Math.max(dp[j][0], dp[j - 1][1] + prices[i]);
                     dp[j][1] = Math.max(dp[j][1], dp[j][0] - prices[i]);
 
                     max = Math.max(max, dp[j][0]);
