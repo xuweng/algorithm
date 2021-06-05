@@ -16,7 +16,7 @@ public class StoneGame {
             }
             for (int i = piles.length - 2; i >= 0; i--) {
                 for (int j = i + 1; j < piles.length; j++) {
-                    dp[i][j] = Math.max(piles[i] - dp[i + 1][j], piles[j] + dp[i][j - 1]);
+                    dp[i][j] = Math.max(piles[i] - dp[i + 1][j], piles[j] - dp[i][j - 1]);
                 }
             }
 
@@ -32,7 +32,7 @@ public class StoneGame {
             }
             for (int i = piles.length - 2; i >= 0; i--) {
                 for (int j = i + 1; j < piles.length; j++) {
-                    dp[j] = Math.max(piles[i] - dp[j], piles[j] + dp[j - 1]);
+                    dp[j] = Math.max(piles[i] - dp[j], piles[j] - dp[j - 1]);
                 }
             }
 
