@@ -6,6 +6,8 @@ package com.leetcode.tag.must6.one;
 public class MinFlips {
     class Solution {
         /**
+         * 滑动窗口
+         * <p>
          * 称一个字符串是 交替 的，需要满足任意相邻字符都不同。
          * <p>
          * 比方说，字符串 "010" 和 "1010" 都是交替的，但是字符串 "0100" 不是
