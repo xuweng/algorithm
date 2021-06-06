@@ -6,6 +6,15 @@ package com.leetcode.tag.must6.one;
 public class FindRotation {
     int temp;
 
+    /**
+     * 将一个矩阵 90 度顺时针旋转 4 次，旋转后的矩阵与本身一致
+     * <p>
+     * 模拟 4 次将 mat 90 度顺时针旋转的操作，并在每次旋转操作后与 target 比较
+     *
+     * @param mat
+     * @param target
+     * @return
+     */
     public boolean findRotation(int[][] mat, int[][] target) {
         int n = mat.length;
         // 最多旋转 4 次
