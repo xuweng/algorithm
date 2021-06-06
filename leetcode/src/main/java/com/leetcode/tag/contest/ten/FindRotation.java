@@ -9,6 +9,9 @@ public class FindRotation {
             int m = mat.length;
             int i = 0;
             int j = m - 1;
+            if (m == 1) {
+                return mat[0][0] == target[0][0];
+            }
 
             while (i < j) {
                 for (int k = 0; k < m; k++) {
