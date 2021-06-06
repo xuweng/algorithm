@@ -41,7 +41,9 @@ public class FindMaxForm {
             int[][] dp = new int[m + 1][n + 1];
             for (String str : strs) {
                 int[] count = count(str);
+                // 倒序
                 for (int i = m; i >= count[0]; i--) {
+                    // 倒序
                     for (int j = n; j >= count[1]; j--) {
                         dp[i][j] = Math.max(dp[i][j], dp[i - count[0]][j - count[1]] + 1);
                     }
