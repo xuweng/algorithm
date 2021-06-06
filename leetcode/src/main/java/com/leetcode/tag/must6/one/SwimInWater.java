@@ -31,6 +31,8 @@ public class SwimInWater {
                     if (j + 1 < n) {
                         int b = get(i, j + 1);
                         int w = Math.max(grid[i][j], grid[i][j + 1]);
+
+                        list.add(new int[]{a, b, w});
                     }
                 }
             }
