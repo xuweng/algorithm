@@ -33,7 +33,7 @@ public class FindRotation {
                     }
                 }
 
-                if (mat == target) {
+                if (Arrays.deepEquals(mat, target)) {
                     return true;
                 }
             }
