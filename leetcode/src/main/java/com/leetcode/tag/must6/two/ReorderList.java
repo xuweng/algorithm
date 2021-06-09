@@ -109,6 +109,38 @@ public class ReorderList {
         }
     }
 
+    class Solution2 {
+        public void reorderList(ListNode head) {
+            if (head == null) {
+                return;
+            }
+            ListNode cur = head;
+            List<ListNode> list = new ArrayList<>();
+            while (cur != null) {
+                list.add(cur);
+                ListNode pre = cur;
+                cur = cur.next;
+                // 断开链表 结点独立
+                pre.next = null;
+            }
+
+            dfs(list, 0, list.size() - 1);
+        }
+
+        private ListNode dfs(List<ListNode> list, int start, int end) {
+            if (start == end) {
+                return list.get(start);
+            }
+            if (start > end) {
+                return null;
+            }
+            list.get(start).next = list.get(end);
+            list.get(end).next = dfs(list, start + 1, end - 1);
+
+            return list.get(start);
+        }
+    }
+
     class ListNode {
         int val;
         ListNode next;
