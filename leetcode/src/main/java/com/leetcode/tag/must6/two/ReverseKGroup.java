@@ -28,10 +28,12 @@ public class ReverseKGroup {
                 for (int i = 0; i < k; ++i) {
                     tail = tail.next;
                     if (tail == null) {
+                        // 不够k 直接返回
                         return hair.next;
                     }
                 }
                 ListNode nex = tail.next;
+                // 反转 [head, tail]
                 ListNode[] reverse = myReverse(head, tail);
                 head = reverse[0];
                 tail = reverse[1];
