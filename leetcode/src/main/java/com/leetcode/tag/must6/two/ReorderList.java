@@ -60,8 +60,10 @@ public class ReorderList {
          * @return
          */
         public ListNode middleNode(ListNode head) {
+            // 快慢指针
             ListNode slow = head;
             ListNode fast = head;
+            // 判断快指针
             while (fast.next != null && fast.next.next != null) {
                 slow = slow.next;
                 fast = fast.next.next;
@@ -76,9 +78,12 @@ public class ReorderList {
          * @return
          */
         public ListNode reverseList(ListNode head) {
+            // 前一个
             ListNode prev = null;
+            // 当前
             ListNode curr = head;
             while (curr != null) {
+                // 下一个
                 ListNode nextTemp = curr.next;
                 curr.next = prev;
                 prev = curr;
