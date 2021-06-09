@@ -129,9 +129,11 @@ public class ReorderList {
 
         private ListNode dfs(List<ListNode> list, int start, int end) {
             if (start == end) {
+                // 只有一个
                 return list.get(start);
             }
             if (start > end) {
+                // 越界
                 return null;
             }
             // 第一个连接最后一个
