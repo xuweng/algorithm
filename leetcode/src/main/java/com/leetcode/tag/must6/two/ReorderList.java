@@ -134,7 +134,9 @@ public class ReorderList {
             if (start > end) {
                 return null;
             }
+            // 第一个连接最后一个
             list.get(start).next = list.get(end);
+            // 最后一个 递归
             list.get(end).next = dfs(list, start + 1, end - 1);
 
             return list.get(start);
