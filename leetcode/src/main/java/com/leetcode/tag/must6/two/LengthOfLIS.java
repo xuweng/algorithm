@@ -33,7 +33,7 @@ public class LengthOfLIS {
 
             for (int i = 1; i < nums.length; i++) {
                 if (di[index] < nums[i]) {
-                    // 递增
+                    // 递增 直接加入末尾
                     di[++index] = nums[i];
                 } else {
                     // 二分 替换 第一个 >
