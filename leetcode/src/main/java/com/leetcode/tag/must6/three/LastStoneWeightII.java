@@ -21,7 +21,7 @@ public class LastStoneWeightII {
                 }
             }
 
-            return sum - dp[s];
+            return sum - 2 * dp[s];
         }
     }
 }
