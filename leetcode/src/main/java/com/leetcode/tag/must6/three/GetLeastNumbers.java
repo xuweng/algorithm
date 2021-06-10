@@ -46,6 +46,9 @@ public class GetLeastNumbers {
                 while (left < right && arr[left] < p) {
                     left++;
                 }
+                if (left < right) {
+                    arr[right] = arr[left];
+                }
             }
             arr[left] = p;
             return left;
