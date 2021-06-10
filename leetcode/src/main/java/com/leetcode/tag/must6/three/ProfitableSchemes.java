@@ -21,6 +21,7 @@ public class ProfitableSchemes {
                     for (int k = minProfit; k >= 0; k--) {
                         // 至少k
                         dp[j][k] += dp[j - g][Math.max(0, k - p)];
+                        dp[j][k] %= mod;
                     }
                 }
             }
