@@ -8,7 +8,7 @@ public class RemoveElements {
         public ListNode removeElements(ListNode head, int val) {
             ListNode ya = new ListNode(-1);
             ya.next = head;
-            ListNode cur = head;
+            ListNode cur = ya;
 
             while (cur != null && cur.next != null) {
                 if (cur.next.val == val) {
