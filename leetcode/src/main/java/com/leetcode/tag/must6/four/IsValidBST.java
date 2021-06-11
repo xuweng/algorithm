@@ -13,7 +13,7 @@ public class IsValidBST {
             if (root == null) {
                 return true;
             }
-            if (root.val < min || root.val > max) {
+            if (root.val <= min || root.val >= max) {
                 return false;
             }
 
