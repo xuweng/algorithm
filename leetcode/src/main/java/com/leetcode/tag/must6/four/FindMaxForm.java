@@ -22,7 +22,7 @@ public class FindMaxForm {
         private int[] count(String s) {
             int[] result = new int[2];
             for (int i = 0; i < s.length(); i++) {
-                result[s.charAt(i)]++;
+                result[s.charAt(i) - '0']++;
             }
 
             return result;
