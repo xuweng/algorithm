@@ -22,4 +22,39 @@ public class LengthOfLIS {
             return max;
         }
     }
+
+    class Solution1 {
+        public int lengthOfLIS(int[] nums) {
+            if (nums == null || nums.length == 0) {
+                return 0;
+            }
+            int[] di = new int[nums.length];
+            int index = 0;
+            di[0] = nums[0];
+
+            for (int i = 1; i < nums.length; i++) {
+                // 递增 直接放入末尾
+                if (di[index] < nums[i]) {
+                    di[++index] = nums[i];
+                } else {
+                    // 二分 第一个 >
+                    int left = 0;
+                    int right = index;
+
+                    while (left < right) {
+                        int mid = left + (right - left) / 2;
+                        if (di[mid] < nums[i]) {
+                            left = mid + 1;
+                        } else {
+                            right = mid;
+                        }
+                    }
+                    // 替换
+                    di[left] = nums[i];
+                }
+            }
+            // 长度
+            return index + 1;
+        }
+    }
 }
