@@ -52,14 +52,14 @@ public class MaximumRemovals {
         public int maximumRemovals(String s, String p, int[] removable) {
             int left = 0;
             int right = removable.length - 1;
-            while (left < right) {
+            while (left <= right) {
                 int mid = left + (right - left) / 2;
                 if (isSubsequence(s, p, mid, removable)) {
                     // 扩大mid
                     left = mid + 1;
                 } else {
                     // 缩小mid
-                    right = mid;
+                    right = mid - 1;
                 }
             }
             return left;
