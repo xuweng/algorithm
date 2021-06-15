@@ -56,10 +56,10 @@ public class MaximumRemovals {
                 int mid = left + (right - left) / 2;
                 if (isSubsequence(s, p, mid, removable)) {
                     // 扩大mid
-                    right = mid + 1;
+                    left = mid + 1;
                 } else {
                     // 缩小mid
-                    left = mid;
+                    right = mid;
                 }
             }
             return left;
