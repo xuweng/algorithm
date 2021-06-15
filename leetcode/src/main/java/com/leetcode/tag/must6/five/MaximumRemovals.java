@@ -22,12 +22,15 @@ public class MaximumRemovals {
             return r + 1;
         }
 
-        // 判断p是否是s的子串,且不能包含被删除的元素
+        /**
+         * 判断p是否是s的子串,且不能包含被删除的元素
+         */
         public boolean isSubsequence(String s, String p, int k, int[] removable) {
             int m = s.length();
             int n = p.length();
             int i = 0;
             int j = 0;
+            // 被删除的元素
             boolean[] state = new boolean[m];
             for (int x = 0; x <= k; x++) {
                 state[removable[x]] = true;
