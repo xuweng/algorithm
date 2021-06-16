@@ -19,7 +19,7 @@ public class ProfitableSchemes {
                 for (int j = n; j >= g; j--) {
                     // 枚举利润
                     for (int k = minProfit; k >= 0; k--) {
-                        dp[j][k] += Math.max(dp[j][k], dp[j - g][Math.max(0, k - p)]);
+                        dp[j][k] += dp[j - g][Math.max(0, k - p)];
                         dp[j][k] %= mod;
                     }
                 }
