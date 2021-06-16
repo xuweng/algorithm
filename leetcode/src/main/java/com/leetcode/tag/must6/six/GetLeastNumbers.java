@@ -6,7 +6,7 @@ package com.leetcode.tag.must6.six;
 public class GetLeastNumbers {
     class Solution {
         public int[] getLeastNumbers(int[] arr, int k) {
-            if (arr == null || arr.length == 0 || k <= 0 || k > arr.length {
+            if (arr == null || arr.length == 0 || k <= 0 || k > arr.length) {
                 return new int[0];
             }
             int index = getIndex(arr, k, 0, arr.length - 1);
