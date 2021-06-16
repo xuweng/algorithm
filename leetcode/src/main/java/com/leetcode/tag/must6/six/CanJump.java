@@ -10,7 +10,7 @@ public class CanJump {
             dp[0] = true;
 
             for (int i = 1; i < nums.length; i++) {
-                for (int j = i; j > 0; j--) {
+                for (int j = 0; j < i; j++) {
                     if (dp[j] && nums[j] >= i - j) {
                         dp[i] = true;
                         break;
