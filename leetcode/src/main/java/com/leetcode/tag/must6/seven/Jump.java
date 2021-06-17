@@ -14,7 +14,9 @@ public class Jump {
 
             for (int i = 1; i < nums.length; i++) {
                 for (int j = 0; j < i; j++) {
-                    dp[i] = Math.min(dp[i], dp[j] + 1);
+                    if (nums[j] >= i - j) {
+                        dp[i] = Math.min(dp[i], dp[j] + 1);
+                    }
                 }
             }
 
