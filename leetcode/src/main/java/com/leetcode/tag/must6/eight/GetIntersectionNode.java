@@ -3,7 +3,7 @@ package com.leetcode.tag.must6.eight;
 /**
  * 160. 相交链表
  */
-public class NumSquares {
+public class GetIntersectionNode {
     public class Solution {
         public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
             ListNode a = headA;
