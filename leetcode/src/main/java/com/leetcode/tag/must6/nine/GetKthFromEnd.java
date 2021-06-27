@@ -18,7 +18,7 @@ public class GetKthFromEnd {
                 head = head.next;
             }
 
-            return cur;
+            return head;
         }
     }
 
