@@ -12,7 +12,7 @@ public class WonderfulSubstrings {
             int count = 0;
 
             for (int i = 0; i < word.length(); i++) {
-                for (int j = 0; j < word.length(); j++) {
+                for (int j = i; j < word.length(); j++) {
                     if (is(word.substring(i, j + 1))) {
                         count++;
                     }
@@ -25,7 +25,7 @@ public class WonderfulSubstrings {
         private boolean is(String s) {
             int[] count = new int[26];
             for (int i = 0; i < s.length(); i++) {
-                count[s.charAt(i) - '0']++;
+                count[s.charAt(i) - 'a']++;
             }
             int n = 0;
             for (int i : count) {
