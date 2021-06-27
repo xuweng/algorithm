@@ -14,7 +14,7 @@ public class NumSquares {
                 coins[i] = i * i;
             }
             int[] dp = new int[n + 1];
-            Arrays.fill(dp, Integer.MAX_VALUE);
+            Arrays.fill(dp, Integer.MAX_VALUE - 1);
             dp[0] = 0;
 
             for (int coin : coins) {
