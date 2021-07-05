@@ -43,7 +43,7 @@ public class DecodeString {
             // 过滤右括号 ]
             // 下一个
             index++;
-
+            // 处理剩下字符串
             return result + get();
         }
 
