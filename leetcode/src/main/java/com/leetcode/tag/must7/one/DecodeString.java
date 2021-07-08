@@ -18,7 +18,7 @@ public class DecodeString {
         }
 
         private String dfs() {
-            if (index > str.length() || str.charAt(index) == ']') {
+            if (index >= str.length() || str.charAt(index) == ']') {
                 return "";
             }
             StringBuilder result = new StringBuilder();
