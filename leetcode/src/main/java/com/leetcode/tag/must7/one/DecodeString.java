@@ -48,7 +48,7 @@ public class DecodeString {
 
         private int getDigit() {
             int result = 0;
-            while (index < str.length() && Character.isLetter(str.charAt(index))) {
+            while (index < str.length() && Character.isDigit(str.charAt(index))) {
                 result = result * 10 + (str.charAt(index) - '0');
                 index++;
             }
