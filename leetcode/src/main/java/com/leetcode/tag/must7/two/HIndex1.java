@@ -22,4 +22,29 @@ public class HIndex1 {
             return 0;
         }
     }
+
+    /**
+     * 方法二：二分搜索
+     */
+    class Solution1 {
+        public int hIndex(int[] citations) {
+            int n = citations.length;
+            int left = 0, right = n - 1;
+            while (left <= right) {
+                int mid = left + (right - left) / 2;
+                if (citations[mid] == n - mid) {
+                    return n - mid;
+                }
+                if (citations[mid] < n - mid) {
+                    // 扩大
+                    left = mid + 1;
+                } else {
+                    // 缩小
+                    right = mid - 1;
+                }
+            }
+
+            return n - left;
+        }
+    }
 }
