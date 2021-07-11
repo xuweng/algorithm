@@ -59,6 +59,7 @@ public class HIndex1 {
                 if (citations[mid] == n - mid) {
                     return n - mid;
                 }
+                // 排除mid
                 if (citations[mid] < n - mid) {
                     // 扩大
                     left = mid + 1;
