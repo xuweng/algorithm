@@ -57,6 +57,8 @@ public class HIndex {
     class Solution2 {
         public int hIndex(int[] cs) {
             int n = cs.length;
+            // [0.n)
+            // [0,n-1]
             int l = 0, r = n;
             while (l < r) {
                 int mid = l + r + 1 >> 1;
