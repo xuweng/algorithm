@@ -48,4 +48,27 @@ public class HIndex1 {
             return n - left;
         }
     }
+
+    class Solution2 {
+        public int hIndex(int[] citations) {
+            int n = citations.length;
+            // [0,n)
+            int left = 0, right = n;
+            while (left < right) {
+                int mid = (right + left) / 2;
+                if (citations[mid] == n - mid) {
+                    return n - mid;
+                }
+                if (citations[mid] < n - mid) {
+                    // 扩大
+                    left = mid + 1;
+                } else {
+                    // 缩小
+                    right = mid;
+                }
+            }
+
+            return n - left;
+        }
+    }
 }
