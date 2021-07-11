@@ -87,4 +87,41 @@ public class HIndex {
             return ans >= mid;
         }
     }
+
+    class Solution3 {
+        public int hIndex(int[] cs) {
+            int n = cs.length;
+            // [0.n)
+            // [0,n-1]
+            int left = 0;
+            int right = n - 1;
+            while (left < right) {
+                // [0,n-1]
+                // left + right + 1  两个选择第二个 防止死循环
+                int mid = (left + right + 1) >> 1;
+                if (check(cs, mid)) {
+                    // 满足条件
+                    // 如果 h 有多种可能的值，h 指数是其中最大的那个
+                    // 扩大
+                    left = mid;
+                } else {
+                    // 缩小
+                    right = mid - 1;
+                }
+            }
+            return left;
+        }
+
+        boolean check(int[] cs, int mid) {
+            // 引用次数>mid 的数量
+            int ans = 0;
+            for (int i : cs) {
+                if (i >= mid) {
+                    ans++;
+                }
+            }
+            // 引用了至少 mid 次
+            return ans >= mid;
+        }
+    }
 }
