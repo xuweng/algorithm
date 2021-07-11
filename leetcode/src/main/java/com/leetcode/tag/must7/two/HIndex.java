@@ -49,6 +49,10 @@ public class HIndex {
 
     /**
      * 模拟 + 二分
+     * 找到满足条件「引用次数至少为 x 次的 x 篇论文」中的最大 x 值
+     * <p>
+     * 少于等于 x 的数值必然满足条件；
+     * 大于 x 的数值必然不满足。
      */
     class Solution2 {
         public int hIndex(int[] cs) {
