@@ -61,6 +61,9 @@ public class HIndex {
             while (l < r) {
                 int mid = l + r + 1 >> 1;
                 if (check(cs, mid)) {
+                    // 满足条件
+                    // 如果 h 有多种可能的值，h 指数是其中最大的那个
+                    // 扩大
                     l = mid;
                 } else {
                     r = mid - 1;
@@ -70,12 +73,14 @@ public class HIndex {
         }
 
         boolean check(int[] cs, int mid) {
+            // 引用次数>mid 的数量
             int ans = 0;
             for (int i : cs) {
                 if (i >= mid) {
                     ans++;
                 }
             }
+            // 引用了至少 mid 次
             return ans >= mid;
         }
     }
