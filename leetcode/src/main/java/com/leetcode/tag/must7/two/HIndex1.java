@@ -29,6 +29,7 @@ public class HIndex1 {
     class Solution1 {
         public int hIndex(int[] citations) {
             int n = citations.length;
+            // [0,n-1]
             int left = 0, right = n - 1;
             while (left <= right) {
                 int mid = left + (right - left) / 2;
