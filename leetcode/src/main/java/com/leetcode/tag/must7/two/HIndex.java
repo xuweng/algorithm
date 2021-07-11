@@ -95,6 +95,8 @@ public class HIndex {
             // [0,n-1]
             int left = 0;
             int right = n - 1;
+            // n-1
+            // 0 < 0 不能进入循环
             while (left < right) {
                 // [0,n-1]
                 // left + right + 1  两个选择第二个 防止死循环
