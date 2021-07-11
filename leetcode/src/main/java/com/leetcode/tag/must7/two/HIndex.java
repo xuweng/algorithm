@@ -66,6 +66,7 @@ public class HIndex {
                     // 扩大
                     l = mid;
                 } else {
+                    // 缩小
                     r = mid - 1;
                 }
             }
