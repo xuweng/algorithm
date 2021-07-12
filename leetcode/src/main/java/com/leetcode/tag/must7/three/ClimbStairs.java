@@ -6,10 +6,7 @@ package com.leetcode.tag.must7.three;
 public class ClimbStairs {
     class Solution {
         public int climbStairs(int n) {
-            if (n == 1) {
-                return 1;
-            }
-            if (n == 2) {
+            if (n == 1 || n == 0) {
                 return 1;
             }
 
